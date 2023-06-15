@@ -1,4 +1,9 @@
 
+$("#btnAgregarCaja").on("click", function(e)
+{
+  $("#modalRegistro").modal("show");
+})
+
 ep = ""; //almacena el estado del piso
 $("#swEditarPiso").on("click", function(e)
 {
@@ -27,7 +32,7 @@ var table;
       },
 
         "ajax":{
-          "url":"read_pisos.php",
+          "url":"read_caja.php",
           "type":"GET",
           "dataSrc":""
         },
@@ -35,8 +40,8 @@ var table;
         "columns":[
           {"data":"id"},
           {"data":"nombre"},
-          {"data":"creado_por"},
           {"data":"estado"},
+          {"data":"creado_por"},
           {"data":"fecha_reg"},
           {
               "defaultContent": '<button type="submit" class="btn btn-primary editar" id="btnEditar"><img src="../img/edit.png" width="15"></button>'
@@ -93,7 +98,7 @@ $("#btnGuardar").on("click", function(e)
     let fecha = getFecha();
     e.preventDefault();
     $.ajax({
-      url:"crear_piso.php?nomPiso="+nombre+"&fecha="+fecha,
+      url:"crear_caja.php?nomCaja="+nombre+"&fecha="+fecha,
       type: "POST",
       success: function(e)
       {
@@ -137,10 +142,10 @@ $("#btnModificar").on("click", function(e)
   if(nombre!="")
   {
     $("#errNomPisoEditar").html("");
-    let idPiso = $("#idPiso").text();
+    let idCaja = $("#idPiso").text();
     e.preventDefault();
     $.ajax({
-      url:"editar_piso.php?idPiso="+idPiso+"&nomPiso="+nombre+"&estado="+ep,
+      url:"editar_caja.php?idCaja="+idCaja+"&nomCaja="+nombre+"&estado="+ep,
       type: "POST",
       success: function(e)
       {
@@ -152,7 +157,7 @@ $("#btnModificar").on("click", function(e)
             icon: "success",
           });
         }
-        if(e.match("No se puede desactivar el piso porque existen ubicaciones activadas"))
+        if(e.match("No se puede desactivar la caja porque existen ventas activas asociadas"))
         {
           swal({
             title: "Aviso",

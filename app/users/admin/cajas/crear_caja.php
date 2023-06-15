@@ -21,18 +21,19 @@
     $id_cl = $_SESSION['user']["id_cl"];
     $piso = 1;
 
-    $nom = utf8_decode($_GET['nomPiso']);
+    $nom = $_GET['nomCaja'];
     $fecha = $_GET['fecha'];
 
-	$sql = "INSERT INTO pisos VALUES (NULL, '$id_cl','$nom', '$id_us', 'S', '$fecha');";
+	$sql = "INSERT INTO cajas VALUES 
+	(NULL, '$id_cl','$nom', 'S', '$id_us', '$fecha');";
 	$resultado = mysqli_query($conexion, $sql);
 
 	if($resultado)
 	{
-		echo "Piso agregado correctamente";
+		echo "Caja agregada correctamente";
 	}
 	else
 	{
-		die("Error al agregar piso: ". mysqli_error($conexion));
+		die("Error al agregar caja: ". mysqli_error($conexion));
 	}
 ?>

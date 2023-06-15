@@ -19,11 +19,11 @@
     $id_us = $_SESSION['user']['id'];
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
-    $piso = 1;
+    $Caja = 1;
 
-    $nom = $_GET["nomPiso"];
+    $nom = $_GET["nomCaja"];
 	$estado = $_GET["estado"];
-	$idPiso = $_GET["idPiso"];
+	$idCaja = $_GET["idCaja"];
 
     //obtener fecha
 	$hoy = getdate();
@@ -33,39 +33,45 @@
 	$resultado = "";
 	if($estado=='N')
 	{
-		$sql = "SELECT * FROM pisos p JOIN ubicaciones u ON p.id = u.piso WHERE u.estado='S' AND p.id = '$idPiso'";
+		$sql = 
+		"SELECT * FROM cajas c
+		JOIN correlativo corr
+		ON corr.caja = c.id 
+		WHERE corr.estado='A' 
+		AND c.id_cl = '1'
+		AND c.id = '1'";
 		$resultado = mysqli_query($conexion, $sql);
 		if($resultado->num_rows==0)
 		{
-			$sql = "UPDATE pisos SET nombre = '$nom', estado = '$estado' WHERE id = $idPiso;";
+			$sql = "UPDATE cajas SET nom_caja = '$nom', estado = '$estado' WHERE id = $idCaja;";
 			$resultado = mysqli_query($conexion, $sql);
 			if($resultado)
 			{
-				echo "Piso editado correctamente";
+				echo "Caja editada correctamente";
 			}
 			else
 			{
-				die("Error al modificar piso: ". mysqli_error($conexion));
+				die("Error al modificar caja: ". mysqli_error($conexion));
 			}
 		}
 		else
 		{
-			$sql = "UPDATE pisos SET nombre = '$nom' WHERE id = $idPiso;";
+			$sql = "UPDATE Cajas SET nom_caja = '$nom' WHERE id = $idCaja;";
 			$resultado = mysqli_query($conexion, $sql);
-			echo "No se puede desactivar el piso porque existen ubicaciones activadas. Solo se editó el nombre.";
+			echo "No se puede desactivar la caja porque existen ventas activas asociadas. Solo se editó el nombre.";
 		}
 	}
 	else
 	{
-		$sql = "UPDATE pisos SET nombre = '$nom', estado = '$estado' WHERE id = $idPiso;";
+		$sql = "UPDATE Cajas SET nom_caja = '$nom', estado = '$estado' WHERE id = $idCaja;";
 		$resultado = mysqli_query($conexion, $sql);
 		if($resultado)
 		{
-			echo "Piso editado correctamente";
+			echo "Caja editada correctamente";
 		}
 		else
 		{
-			die("Error al modificar piso: ". mysqli_error($conexion));
+			die("Error al modificar la caja: ". mysqli_error($conexion));
 		}
 	}
 

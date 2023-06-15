@@ -67,8 +67,8 @@
                                             echo modalRegistro();
                                             echo modalEditar();
                                         ?>
-                                        <h1>Pisos</h1>
-                                        <button type="button" class="btn btn-success" id="btnAgregarCategoria" data-toggle="modal" data-target="#modalRegistro">Agregar piso</button>
+                                        <h1>Cajas</h1>
+                                        <button type="button" class="btn btn-success" id="btnAgregarCaja">Agregar caja</button>
                                         <property name="characterEncoding" value="UTF-8">
 
                                             <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
@@ -76,8 +76,8 @@
                                                 <tr>
                                                 <th>Id</th>
                                                 <th>Nombre</th>
-                                                <th>Creado_por</th>
                                                 <th>Estado</th>
+                                                <th>Creado por</th>
                                                 <th>Fecha</th>
                                                 <th>Editar</th>
                                                 </tr>
@@ -105,6 +105,6 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
-    <script src="piso.js"></script>
+    <script src="caja.js"></script>
 
 </html>
