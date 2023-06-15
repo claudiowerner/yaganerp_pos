@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2023 a las 02:49:54
+-- Tiempo de generación: 15-06-2023 a las 17:37:55
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -89,6 +89,21 @@ CREATE TABLE `autorizacion` (
   `clave` varchar(45) NOT NULL,
   `estado` varchar(5) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cajas`
+--
+
+CREATE TABLE `cajas` (
+  `id` int(11) NOT NULL,
+  `id_cl` varchar(5) NOT NULL,
+  `nom_caja` varchar(45) NOT NULL,
+  `estado` varchar(5) NOT NULL,
+  `creado_por` varchar(45) NOT NULL,
+  `fecha_reg` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
