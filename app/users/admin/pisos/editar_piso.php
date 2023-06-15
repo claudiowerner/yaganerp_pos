@@ -21,51 +21,52 @@
     $id_cl = $_SESSION['user']["id_cl"];
     $piso = 1;
 
-    $nom = $_GET["nom"];
+    $nom = $_GET["nomPiso"];
 	$estado = $_GET["estado"];
-	$idUbic = $_GET["idUbic"];
-	$piso = $_GET["piso"];
+	$idPiso = $_GET["idPiso"];
 
     //obtener fecha
 	$hoy = getdate();
 	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
 	
+	//
+	$resultado = "";
 	if($estado=='N')
 	{
-		$sql = "SELECT * FROM ubicaciones WHERE id_cl = '$id_cl' AND id = '$idUbic';";
+		$sql = "SELECT * FROM pisos p JOIN ubicaciones u ON p.id = u.piso WHERE u.estado='S' AND p.id = '$idPiso'";
 		$resultado = mysqli_query($conexion, $sql);
-		
 		if($resultado->num_rows==0)
 		{
-			$sql = "UPDATE ubicaciones SET nombre = '$nom', estado = '$estado' WHERE id = $idUbic;";
+			$sql = "UPDATE pisos SET nombre = '$nom', estado = '$estado' WHERE id = $idPiso;";
 			$resultado = mysqli_query($conexion, $sql);
 			if($resultado)
 			{
-				echo "Ubicación editada correctamente";
+				echo "Piso editado correctamente";
 			}
 			else
 			{
-				die("Error al modificar ubicación: ". mysqli_error($conexion));
+				die("Error al modificar piso: ". mysqli_error($conexion));
 			}
 		}
 		else
 		{
-			$sql = "UPDATE ubicaciones SET nombre = '$nom' WHERE id = $idUbic;";
+			$sql = "UPDATE pisos SET nombre = '$nom' WHERE id = $idPiso;";
 			$resultado = mysqli_query($conexion, $sql);
-			echo "No se puede desactivar la ubicación $nom porque existen mesas activadas asociadas a esta ubicación. Solo se cambió el nombre y el piso.";
+			echo "No se puede desactivar el piso porque existen ubicaciones activadas. Solo se editó el nombre.";
 		}
 	}
 	else
 	{
-		$sql = "UPDATE ubicaciones SET nombre = '$nom', piso = $piso, `estado` = '$estado' WHERE id_cl = '$id_cl' AND id = '$idUbic';";
+		$sql = "UPDATE pisos SET nombre = '$nom', estado = '$estado' WHERE id = $idPiso;";
 		$resultado = mysqli_query($conexion, $sql);
 		if($resultado)
 		{
-			echo "Ubicación editada correctamente";
+			echo "Piso editado correctamente";
 		}
 		else
 		{
-			die("Error al modificar ubicación: ". mysqli_error($conexion));
+			die("Error al modificar piso: ". mysqli_error($conexion));
 		}
 	}
+
 ?>

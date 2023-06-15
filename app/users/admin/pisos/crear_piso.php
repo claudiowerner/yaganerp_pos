@@ -21,19 +21,18 @@
     $id_cl = $_SESSION['user']["id_cl"];
     $piso = 1;
 
-    $nom = $_GET['nomUbic'];
-    $piso = $_GET['piso'];
+    $nom = utf8_decode($_GET['nomPiso']);
     $fecha = $_GET['fecha'];
 
-	$sql = "INSERT INTO ubicaciones (`id`, `id_cl`, `nombre`, `piso`, `estado`, `creado_por`, `fecha_reg`) VALUES (null, '$id_cl', '$nom', '$piso', 'S', '$id_us', '$fecha');";
+	$sql = "INSERT INTO pisos VALUES (NULL, '$id_cl','$nom', '$id_us', 'S', '$fecha');";
 	$resultado = mysqli_query($conexion, $sql);
 
 	if($resultado)
 	{
-		echo "Ubicación agregada correctamente";
+		echo "Piso agregado correctamente";
 	}
 	else
 	{
-		die("Error al agregar ubicación: ". mysqli_error($conexion));
+		die("Error al agregar piso: ". mysqli_error($conexion));
 	}
 ?>

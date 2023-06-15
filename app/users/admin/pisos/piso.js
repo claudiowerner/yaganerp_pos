@@ -1,19 +1,17 @@
-eu = ""; //almacena el estado de la ubicacion seleccionada
-$("#swEditarUbicacion").on("click", function(e)
+
+ep = ""; //almacena el estado del piso
+$("#swEditarPiso").on("click", function(e)
 {
   if(e.target.checked)
   {
-    eu = "S";
+    ep = "S";
   }
   else
   {
-    eu = "N";
+    ep = "N";
   }
 })
-
 var table;
-cargarPiso();
-
 
     //Datatable
     var idCat = 0;
@@ -29,17 +27,16 @@ cargarPiso();
       },
 
         "ajax":{
-          "url":"read_ubicaciones.php",
+          "url":"read_pisos.php",
           "type":"GET",
           "dataSrc":""
         },
         //columnas
         "columns":[
           {"data":"id"},
-          {"data":"ubicacion"},
           {"data":"nombre"},
-          {"data":"estado"},
           {"data":"creado_por"},
+          {"data":"estado"},
           {"data":"fecha_reg"},
           {
               "defaultContent": '<button type="submit" class="btn btn-primary editar" id="btnEditar"><img src="../img/edit.png" width="15"></button>'
@@ -64,67 +61,43 @@ cargarPiso();
         }
       });
 
-function cargarPiso()
-{
-  $.ajax({
-
-    url:"read_pisos.php",
-    type: "POST",
-    success: function(response)
-    {
-      let tasks = JSON.parse(response);
-      let template = "";
-      tasks.forEach(piso=>{
-        template+=`<option value="${piso.id}">${piso.nombre}</option>`;
-      });
-      $("#slctPiso").html(template);
-      $("#slctPisoEditar").html(template);
-    }
-  }).fail( function(e) {
-      console.log( 'Error!!'+e.responseText );
-  }).always( function() {
-      console.log( 'Always piso' );
-  });
-}
-
-
 $("#producto").on("click", "tr", function(e)
 {
   e.preventDefault();
   var cat = $("#producto").DataTable();
   var datos = cat.row(this).data();
-
+  var estado = "";
+  $("#modalEditar").modal('show'); 
+  $("#idPiso").html(datos.id);
+  $("#nomPisoEditar").val(datos.nombre);
+  
   if(datos.estado == "ACTIVO")
   {
-    $("#swEditarUbicacion").prop("checked", true);
-    eu = "S";
+    $("#swEditarPiso").prop("checked", true);
+    ep = "S";
   }
   else
   {
-    $("#swEditarUbicacion").prop("checked", false);
-    eu = "N";
+    $("#swEditarPiso").prop("checked", false);
+    ep = "N";
   }
-
-  $("#modalEditar").modal('show'); 
-  $("#idUbic").html(datos.id);
-  $("#nomUbicacionEditar").val(datos.ubicacion);
-  $("#slctEstadoEditar").val(datos.estado);
+  
+  document.getElementById("estadoPiso").value = estado;
 });
 
 $("#btnGuardar").on("click", function(e)
 {
-  let nombre = $("#nomUbicacion").val();
+  let nombre = $("#nomPiso").val();
   if(nombre!="")
   {
-    $("#errNomUbic").html("");
-    let slctPiso = $("#slctPiso").val();
     let fecha = getFecha();
     e.preventDefault();
     $.ajax({
-      url:"crear_ubicacion.php?nomUbic="+nombre+"&piso="+slctPiso+"&fecha="+fecha,
+      url:"crear_piso.php?nomPiso="+nombre+"&fecha="+fecha,
       type: "POST",
       success: function(e)
       {
+        $("#errNomPiso").html("");
         if(e.match("correctamente"))
         {
           swal({
@@ -133,10 +106,10 @@ $("#btnGuardar").on("click", function(e)
             icon: "success",
           });
         }
-        if(e.match("error"))
+        if(e.match("Error")||e.match("error"))
         {
           swal({
-            title: "Error",
+            title: "Error al modificar",
             text: e,
             icon: "error",
           });
@@ -152,23 +125,22 @@ $("#btnGuardar").on("click", function(e)
   }
   else
   {
-    $("#errNomUbic").html("Debe rellenar este campo");
+    
+    $("#errNomPiso").html("Debe rellenar este campo");
   }
+
 });
 
 $("#btnModificar").on("click", function(e)
 {
-  let nombre = $("#nomUbicacionEditar").val();
-  
+  let nombre = $("#nomPisoEditar").val();
   if(nombre!="")
   {
-    $("#errNomUbicEditar").html("");
-    let id = $("#idUbic").text();
-    let piso = $("#slctPisoEditar").val();
-
+    $("#errNomPisoEditar").html("");
+    let idPiso = $("#idPiso").text();
     e.preventDefault();
     $.ajax({
-      url:"editar_ubicacion.php?idUbic="+id+"&nom="+nombre+"&estado="+eu+"&piso="+piso,
+      url:"editar_piso.php?idPiso="+idPiso+"&nomPiso="+nombre+"&estado="+ep,
       type: "POST",
       success: function(e)
       {
@@ -180,7 +152,7 @@ $("#btnModificar").on("click", function(e)
             icon: "success",
           });
         }
-        if(e.match("No se puede desactivar la ubicación"))
+        if(e.match("No se puede desactivar el piso porque existen ubicaciones activadas"))
         {
           swal({
             title: "Aviso",
@@ -191,13 +163,13 @@ $("#btnModificar").on("click", function(e)
         if(e.match("Error")||e.match("error"))
         {
           swal({
-            title: "Error",
+            title: "Error al modificar",
             text: e,
             icon: "error",
           });
         }
-        $("#modalEditar").modal("hide");
         $('#producto').DataTable().ajax.reload();
+        $("#modalEditar").modal("hide");
       }
     })
     .fail(function(e)
@@ -207,7 +179,7 @@ $("#btnModificar").on("click", function(e)
   }
   else
   {
-    $("#errNomUbicEditar").html("Debe rellenar este campo");
+    $("#errNomPisoEditar").html("Debe rellenar este campo");
   }
 });
 

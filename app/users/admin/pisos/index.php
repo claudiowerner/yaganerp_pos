@@ -62,28 +62,26 @@
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
-                                        <?php 
+                                        <?php
                                             require "modal.php";
                                             echo modalRegistro();
                                             echo modalEditar();
                                         ?>
-
-                                        <h1>Ubicaciones</h1>
-                                        <button type="button" class="btn btn-success" id="btnAgregarUbicacion" data-toggle="modal" data-target="#modalRegistro">Agregar ubicación</button>
+                                        <h1>Pisos</h1>
+                                        <button type="button" class="btn btn-success" id="btnAgregarCategoria" data-toggle="modal" data-target="#modalRegistro">Agregar piso</button>
                                         <property name="characterEncoding" value="UTF-8">
 
                                             <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
-                                                <thead>
-                                                    <tr>
-                                                    <th>id</th>
-                                                    <th>Ubicación</th>
-                                                    <th>Piso</th>
-                                                    <th>Estado</th>
-                                                    <th>Creado por</th>
-                                                    <th>Fecha</th>
-                                                    <th>Editar</th>
-                                                    </tr>
-                                                </thead>
+                                            <thead>
+                                                <tr>
+                                                <th>Id</th>
+                                                <th>Nombre</th>
+                                                <th>Creado_por</th>
+                                                <th>Estado</th>
+                                                <th>Fecha</th>
+                                                <th>Editar</th>
+                                                </tr>
+                                            </thead>
                                             </table>
                                         </property>
                                     </div>
@@ -107,6 +105,6 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
-    <script src="ubicaciones.js"></script>
+    <script src="piso.js"></script>
 
 </html>

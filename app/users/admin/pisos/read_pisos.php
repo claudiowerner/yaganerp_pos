@@ -16,10 +16,7 @@ if(isset($_SESSION['user'])){
     require_once '../../../conexion.php';
 
     //query
-    $consulta = "SELECT u.id, p.nombre, u.nombre AS ubicacion, 
-    us.nombre AS creado_por, u.estado, u.fecha_reg FROM ubicaciones u 
-    JOIN pisos p ON u.piso = p.id 
-    JOIN usuarios us on us.id = u.creado_por where u.id_cl = $id_cl";
+    $consulta = "SELECT p.id, p.nombre, u.nombre AS nom_usuario, p.estado, p.fecha_reg FROM pisos p JOIN usuarios u ON u.id=p.creado_por WHERE p.id_cl = '$id_cl'";
     $resultado = $conexion->query($consulta);
     if ($resultado->num_rows > 0){
       $json = array();
@@ -37,9 +34,8 @@ if(isset($_SESSION['user'])){
         $json[] =array(
           'id' => $row['id'],
           'nombre' => $row['nombre'],
-          'ubicacion' => $row['ubicacion'],
+          'creado_por' => $row['nom_usuario'],
           'estado' => $estado,
-          'creado_por' => $row['creado_por'],
           'fecha_reg' => $row['fecha_reg']
         );
       };

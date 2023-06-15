@@ -1,8 +1,8 @@
 <?php
-	
+
 	function modalRegistro()
 	{
-		return"<div class='modal fade' id='modalRegistro' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+		return "<div class='modal fade' id='modalRegistro' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
@@ -15,20 +15,11 @@
               <table>
                 <tr>
                   <td>
-                    <label name='nombreUbicacion'>Nombre</label>
+                    <label name='nombrePiso'>Nombre</label>
                   </td>
                   <td>
-                    <input type='text' name='nomUbicacion' id='nomUbicacion' class='form-control' required>
-                    <strong id='errNomUbic' style='color: red'></strong>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label name='piso'>Piso</label>
-                  </td>
-                  <td>
-                    <select id='slctPiso' class='form-control'>
-                    </select>
+                    <input type='text' name='nomProd' id='nomPiso' class='form-control' required>
+                    <strong id='errNomPiso' style='color:red'></strong>
                   </td>
                 </tr>
               </table>
@@ -43,7 +34,7 @@
           </div>
         </div>
       </div>
-    </div>";
+      </div>";
 	}
 
 	function modalEditar()
@@ -52,7 +43,7 @@
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
-              <h5 class='modal-title' id='exampleModalLongTitle'>Editando id <strong id='idUbic'></strong></h5>
+              <h5 class='modal-title' id='exampleModalLongTitle'>Editando piso id <strong id=idPiso>ID</strong></h5>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
@@ -61,29 +52,20 @@
               <table>
                 <tr>
                   <td>
-                    <label name='nombreUbicacion'>Nombre</label>
+                    <label name='nombrePiso'>Nombre</label>
                   </td>
                   <td>
-                    <input type='text' name='nomUbicacionEditar' id='nomUbicacionEditar' class='form-control' required>
-                    <strong id='errNomUbicEditar' style='color: red'></strong>
-                  </td>
+                    <input type='text' name='nomProd' id='nomPisoEditar' class='form-control' required>
+                    <strong id='errNomPisoEditar' style='color:red'></strong>
+                    </td>
                 </tr>
                 <tr>
                   <td>
-                    <label name='piso'>Piso</label>
+                    <label name='estadoPiso'>Estado</label>
                   </td>
                   <td>
-                    <select id='slctPisoEditar' class='form-control'>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label name='estado'>Estado</label>
-                  </td>
-                  <td>
-                    <input type='checkbox' id='swEditarUbicacion'/>
-                    <label for='swEditarUbicacion' class='switch'></label>
+                    <input type='checkbox' id='swEditarPiso' onChange='check(this)'/>
+                    <label for='swEditarPiso' class='switch'></label>
                   </td>
                 </tr>
               </table>
@@ -91,7 +73,7 @@
           </div>
           <div class='modal-footer'>
             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-            <button type='submit' id='btnModificar' class='btn btn-primary'>Guardar</button>
+            <button type='submit' id='btnModificar' class='btn btn-primary'>Modificar</button>
           </div>
         </div>
       </div>

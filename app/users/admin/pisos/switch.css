@@ -39,16 +39,16 @@
 
 
 
-#swEditarUbicacion
+#swEditarPiso
 {
     display: none;
 }
-#swEditarUbicacion:checked~ .switch
+#swEditarPiso:checked~ .switch
 {
     background: #61a0ff;
     transition:0.3s;
 }
-#swEditarUbicacion:checked~ .switch:after
+#swEditarPiso:checked~ .switch:after
 {
     left: 23px; 
 }
