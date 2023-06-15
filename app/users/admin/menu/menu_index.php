@@ -13,7 +13,7 @@
               <ul id="menu-showhide" class="topnav">
                   <li class="devider-title">
                       <h3>
-                        <i class="fontello-settings"></i><span>Opciones restaurant</span>
+                        <i class="fontello-settings"></i><span>Opciones POS</span>
                       </h3>
                   </li>
                   <li >
@@ -24,21 +24,9 @@
                       </a>
                   </li>
                   <li>
-                      <a class="tooltip-tip" href="pisos">
+                      <a class="tooltip-tip" href="cajas">
                           <i class=" fontello-mail-1"></i>
-                          <span>Pisos</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a class="tooltip-tip" href="ubicaciones">
-                          <i class=" fontello-mail-1"></i>
-                          <span>Ubicaciones</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a class="tooltip-tip" href="mesas">
-                          <i class=" fontello-mail-1"></i>
-                          <span>Mesas</span>
+                          <span>Cajas</span>
                       </a>
                   </li>
                   

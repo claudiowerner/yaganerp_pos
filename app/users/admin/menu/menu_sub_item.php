@@ -23,19 +23,7 @@
                       </a>
                   </li>
                   <li>
-                      <a class="tooltip-tip" href="../../pisos">
-                          <i class=" fontello-mail-1"></i>
-                          <span>Pisos</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a class="tooltip-tip" href="../../ubicaciones">
-                          <i class=" fontello-mail-1"></i>
-                          <span>Ubicaciones</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a class="tooltip-tip" href="../../mesas">
+                      <a class="tooltip-tip" href="../../cajas">
                           <i class=" fontello-mail-1"></i>
                           <span>Mesas</span>
                       </a>
