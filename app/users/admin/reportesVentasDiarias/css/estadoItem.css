@@ -1,0 +1,14 @@
+.CERRADO
+{
+    background-color: aliceblue;
+}
+
+.EN-CURSO
+{
+    background-color: aquamarine;
+}
+
+.ANULADO
+{
+    background-color: beige;
+}

@@ -1,0 +1,219 @@
+
+
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.boton
+{
+    margin: 10px;
+}
+
+.switch
+{
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+    background: #aaaa;
+    border-radius: 100px;
+    position: relative;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.switch::after
+{
+    position: absolute;
+    content: "";
+    width: 17px;
+    height: 17px;
+    background-color: #fff;
+    border-radius: 100px;
+    top: 4px;
+    left: 5px;
+    transition:0.3s;
+}
+
+/*vender*/
+#vender
+{
+    display: none;
+}
+#vender:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#vender:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+/*pagar mesa*/
+
+#pagarMesa
+{
+    display: none;
+}
+#pagarMesa:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#pagarMesa:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+
+/*anular venta*/
+
+#anularVenta
+{
+    display: none;
+}
+#anularVenta:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#anularVenta:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+
+/*cambiar mesa*/
+
+#cambiarMesa
+{
+    display: none;
+}
+#cambiarMesa:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#cambiarMesa:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+/**
+                            Editar
+*/
+#venderEditar
+{
+    display: none;
+}
+#venderEditar:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#venderEditar:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+/*pagar mesa*/
+
+#pagarMesaEditar
+{
+    display: none;
+}
+#pagarMesaEditar:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#pagarMesaEditar:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+
+/*anular venta*/
+
+#anularVentaEditar
+{
+    display: none;
+}
+#anularVentaEditar:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#anularVentaEditar:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+
+/*cambiar mesa*/
+
+#cambiarMesaEditar
+{
+    display: none;
+}
+#cambiarMesaEditar:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#cambiarMesaEditar:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+
+/*------------------------------------------configuraciones-----------------------------*/
+
+#swStockProductos
+{
+    display: none;
+}
+#swStockProductos:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swStockProductos:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+
+#swEstadoClave
+{
+    display: none;
+}
+#swEstadoClave:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swEstadoClave:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+
+#swConvenio
+{
+    display: none;
+}
+#swConvenio:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swConvenio:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+
