@@ -120,31 +120,9 @@
                             <div class="card-header" style="align:left;">
                                 <table width="100%">
                                     <tr>
-                                        <td>Venta <strong>MESA </strong><strong id="nomMesa"><?php echo $_GET['nomMesa']?></strong><strong id="nMesa" style="display: none"><?php echo $_GET['id']?></strong>
+                                        <td>Venta <strong>CAJA </strong><strong id="nomCaja"><?php echo $_GET['nomCaja']?></strong><strong id="nMesa" style="display: none"><?php echo $_GET['id']?></strong>
                                         <strong id="idMesa" style="display:none"><?php echo $idMesa;?></strong></td>
-                                        <td>Piso <strong name="piso" id="piso">CARGANDO...</strong></td>
-                                        <td>Ubicación <strong name="ubicacion" id="ubicacion">CARGANDO...</strong><strong id="idUbic" style="display:none"><?php echo $_GET["idUbic"]?></strong></td>
                                         <td>ID venta: <strong name="id_venta" id="id_venta">CARGANDO...</strong></td>
-                                        <td>
-                                            Tipo de venta:
-                                            <strong name="id_venta" id="tipoDeVenta">
-                                                <?php
-                                                    if($tipoVenta=="N")
-                                                    {
-                                                        echo "Normal";
-                                                    }
-                                                    if($tipoVenta=="C")
-                                                    {
-                                                        echo "Convenio";
-                                                    }
-                                                    if($tipoVenta==null)
-                                                    {
-                                                        echo "N/Iden";
-                                                    }
-                                                ?>
-                                            </strong>
-                                            <strong id="tv" style="display: none"><?php echo$tipoVenta?></strong>
-                                        </td>
                                         <td>Caja/turno: <strong name="nombreCaja" id="nombreCaja">CARGANDO...</strong></td>
                                         <td><strong name="id_caja" id="id_caja" style="display: none"></strong></td>
                                     </tr>

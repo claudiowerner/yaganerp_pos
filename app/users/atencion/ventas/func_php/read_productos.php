@@ -29,6 +29,7 @@ if(isset($_SESSION['user'])){
     while ($row = $resultado->fetch_array()) {
       $json[] =array(
         'id' => $row['id_prod'],
+        'codigo_barra' => ($row['codigo_barra']),
         'nombre_prod' => ($row['nombre_prod']),
         'cantidad' => ($row['cantidad']),
         'estado' => ($row['estado']),

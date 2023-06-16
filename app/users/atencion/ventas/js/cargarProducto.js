@@ -15,11 +15,11 @@ function cargarProducto()
 
             if(cantidad<stock)
             {
-              template+=`<option value="${p.id}">${p.nombre_prod} -- STOCK CRÍTICO</option>`;
+              template+=`<option value="${p.id}">${p.codigo_barra} - ${p.nombre_prod} -- STOCK CRÍTICO</option>`;
             }
             else
             {
-              template+=`<option value="${p.id}">${p.nombre_prod}</option>`;
+              template+=`<option value="${p.id}">${p.codigo_barra} - ${p.nombre_prod}</option>`;
             }
           });
           $("#prod").html(template);

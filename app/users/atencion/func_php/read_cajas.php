@@ -17,14 +17,17 @@ if(isset($_SESSION['user'])){
 
 
     //query
-    $consulta = "SELECT id, nombre FROM pisos WHERE id_cl = $id_cl and estado = 'S'";
+    $consulta = 
+    "SELECT * FROM cajas 
+    WHERE id_cl = $id_cl";
   $resultado = $conexion->query($consulta);
   if ($resultado->num_rows > 0){
   $json = array();
    while ($row = $resultado->fetch_array()) {
      $json[] =array(
          'id' => $row['id'],
-         'nombre' => $row['nombre']
+         'nombre' => $row['nom_caja'],
+         'estado' => $row['estado']
        );
    }
    echo json_encode($json);

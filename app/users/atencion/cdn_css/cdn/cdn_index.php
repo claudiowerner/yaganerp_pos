@@ -4,6 +4,9 @@
 
     <script type='text/javascript' src='../../tipo_usuario/acceso_ventas_dashboard.js'></script>
     <script type='text/javascript' src='../../js/bootstrap.js'></script>
+    <script type='text/javascript' src='../../js/ajax-loading.js'></script>
+    <script type='text/javascript' src='../../js/sweetalert.min.js'></script>
+
     <script type='text/javascript' src='../../js/date.js'></script>
     <script type='text/javascript' src='../../js/slimscroll/jquery.slimscroll.js'></script>
     <script type='text/javascript' src='../../js/jquery.nicescroll.min.js'></script>

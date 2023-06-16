@@ -53,12 +53,26 @@
             ?>
             <!-- CONTENT -->
                 <div class="wrap-fluid" id="paper-bg">
-                    <div id=restaurant>
-                      Cargando restaurant...
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <h3 class="card-title"></h3>
+                        <div class="plan">
+                          <div class="col-md-12">
+                            <div class="card card-warning"">
+                              <div class="card-header">
+                              </div>
+                              <div class="card-body" id=cajas>
+                                Cargando cajas...
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
             <!-- #/paper bg -->
-        </div>
+          </div>
         <!-- ./wrap-sidebar-content -->
 
         <!-- / END OF CONTENT -->
@@ -75,7 +89,7 @@
     <script src="../../js/select2.js"></script>
 
     <!--llamada a restaurant.js-->
-    <script src="func_js/restaurant.js"></script>
+    <script src="func_js/cajas.js"></script>
 
 
 

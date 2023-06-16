@@ -21,7 +21,7 @@
         FROM correlativo 
         WHERE id_cl = $id_cl 
         AND estado = 'A'
-        AND mesa = $idMesa";
+        AND caja = $idMesa";
         $resultado = $conexion->query($consulta);
 
         $corr = "";
