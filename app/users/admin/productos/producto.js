@@ -1,4 +1,4 @@
-ep = ""; //almacena el estado del piso
+ep = "S"; //almacena el estado del piso
 $("#swEditarProducto").on("click", function(e)
 {
   if(e.target.checked)
@@ -57,16 +57,14 @@ cargarCategoria();
         //columnas
         "columns":[
           {"data":"id"},
+          {"data":"codigo_barra"},
           {"data":"nombre_prod"},
           {"data":"nombre_cat"},
           {"data":"cantidad"},
           {"data":"valor_neto"},
           {"data":"valor_venta"},
           {"data":"estado"},
-          {"data":"es_acom"},
-          {"data":"tiene_acom"},
-          {"data":"comanda_cocina"},
-          {"data":"comanda_bar"},
+          {"data":"creado_por"},
           {"data":"fecha_reg"},
           {
               "defaultContent": '<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" id="btnEditar"><img src="../img/edit.png" width="15"></button>'
@@ -119,7 +117,6 @@ $("#producto").on('click', 'tr', function(e)
   e.preventDefault();
   var cat = $('#producto').DataTable();
   var datos = cat.row(this).data();
-  
   $.ajax(
   {
     url:"read_categorias_prod_especifico.php",
@@ -161,10 +158,6 @@ $("#producto").on('click', 'tr', function(e)
         respuesta.forEach(r=>
         {
           $("#estadoCatEditar").val(r.estado);
-          $("#esAcomEditar").val(r.es_acom);
-          $("#tieneAcomEditar").val(r.tiene_acom);
-          $("#comandaCocinaEditar").val(r.comanda_cocina);
-          $("#comandaBarEditar").val(r.comanda_bar);
         })
       }
     }
@@ -174,9 +167,16 @@ $("#producto").on('click', 'tr', function(e)
     console.log("fail ajax producto: "+e.responseText);
   })
 
+  //eliminar signo $ de los valores
+  let vn = datos.valor_neto;
+  let vt = datos.valor_venta;
+  let valor_neto = vn.slice(1);
+  let valor_venta = vt.slice(1);
+
   $("#nomProdEditar").val(datos.nombre_prod);
-  $("#valorNetoEditar").val(datos.valor_neto);
-  $("#valorVentaEditar").val(datos.valor_venta);
+  $("#codBarraEditar").val(datos.codigo_barra);
+  $("#valorNetoEditar").val(valor_neto);
+  $("#valorVentaEditar").val(valor_venta);
   $("#cantidadEditar").val(datos.cantidad);
   
   $("#tituloModalEditar").html(datos.id);
@@ -198,12 +198,9 @@ $("#formRegistroProducto").submit(function(e)
   var can = $("#cantidad").val();
   var vn = $("#valorNeto").val();
   var vv = $("#valorVenta").val();
-  var ea = $("#esAcom").val();
-  var ta = $("#tieneAcom").val();
-  var cc = $("#comandaCocina").val();
-  var cb = $("#comandaBar").val();
+  var cb = $("#codBarra").val();
 
-  if(lc=="O"||ea=="O"||ta=="O"||cc=="O"||cb=="O")
+  if(lc=="O"||cb=="O")
   {
     if(lc=="O")
     {
@@ -212,38 +209,6 @@ $("#formRegistroProducto").submit(function(e)
     if(lc!="O")
     {
       $("#errCategoria").html("");
-    }
-    if(ea=="O")
-    {
-      $("#errAcom").html("Debe seleccionar una opción válida.");
-    }
-    if(ea!="O")
-    {
-      $("#errAcom").html("");
-    }
-    if(ta=="O")
-    {
-      $("#errTieneAcom").html("Debe seleccionar una opción válida.");
-    }
-    if(ta!="O")
-    {
-      $("#errTieneAcom").html("");
-    }
-    if(cc=="O")
-    {
-      $("#errComandaCocina").html("Debe seleccionar una opción válida.");
-    }
-    if(cc!="O")
-    {
-      $("#errComandaCocina").html("");
-    }
-    if(cb=="O")
-    {
-      $("#errComandaBar").html("Debe seleccionar una opción válida.");
-    }
-    if(cb!="O")
-    {
-      $("#errComandaBar").html("");
     }
   }
   else
@@ -268,49 +233,49 @@ $("#formRegistroProducto").submit(function(e)
         else
         {
           $.ajax(
-        {
-            url:"func_phpcrear_producto_exe.php?nomProd="+np+"&cat="+lc+"&can="+can+"&vn="+vn+"&vv="+vv+"&ea="+ea+"&ta="+ta+"&cc="+cc+"&cb="+cb,
-            type: "POST",
-            success: function(e)
             {
-              if(e.match("correctamente"))
+              url:"crear_producto_exe.php?nomProd="+np+"&cat="+lc+"&can="+can+"&vn="+vn+"&vv="+vv+"&cod_barra="+cb,
+              type: "POST",
+              success: function(e)
               {
-                swal({
-                  title: "Excelente",
-                  text: e,
-                  icon: "success",
-                });
+                if(e.match("correctamente"))
+                {
+                  swal({
+                    title: "Excelente",
+                    text: e,
+                    icon: "success",
+                  });
+                }
+                if(e.match("No se puede desactivar el piso porque existen ubicaciones activadas"))
+                {
+                  swal({
+                    title: "Aviso",
+                    text: e,
+                    icon: "warning",
+                  });
+                }
+                if(e.match("Error")||e.match("error"))
+                {
+                  swal({
+                    title: "Error al modificar",
+                    text: e,
+                    icon: "error",
+                  });
+                }
+                $('#producto').DataTable().ajax.reload();
+                $("#formRegistro").trigger('reset');
+                $("#modalRegistro").modal("hide");
+                $("#formRegistroProducto").trigger("reset");
               }
-              if(e.match("No se puede desactivar el piso porque existen ubicaciones activadas"))
-              {
-                swal({
-                  title: "Aviso",
-                  text: e,
-                  icon: "warning",
-                });
-              }
-              if(e.match("Error")||e.match("error"))
-              {
-                swal({
-                  title: "Error al modificar",
-                  text: e,
-                  icon: "error",
-                });
-              }
-              $('#producto').DataTable().ajax.reload();
-              $("#formRegistro").trigger('reset');
-              $("#modalRegistro").modal("hide");
-              $("#formRegistroProducto").trigger("reset");
-            }
-          })
-          .fail(function(e)
-          {
-            swal({
-              title: "Error",
-              text: "Ocurrió un error al intentar registrar el producto: "+e.responseText,
-              icon: "error",
-            });
-          })
+            })
+            .fail(function(e)
+            {
+              swal({
+                title: "Error",
+                text: "Ocurrió un error al intentar registrar el producto: "+e.responseText,
+                icon: "error",
+              });
+            })
         }
       }
     })
@@ -326,21 +291,17 @@ $("#formEditarProducto").submit(function(e)
   e.preventDefault();
   var id = $("#tituloModalEditar").text();
   var np = $("#nomProdEditar").val();
+  var cod_barra = $("#codBarraEditar").val();
   var lc = $("#listCatEditar").val();
   var can = $("#cantidadEditar").val();
   var vn = $("#valorNetoEditar").val();
-  var vv = $("#valorVenta").val();
-  var ec = $("#estadoCatEditar").val();
-  var ea = $("#esAcomEditar").val();
-  var ta = $("#tieneAcomEditar").val();
-  var cc = $("#comandaCocinaEditar").val();
-  var cb = $("#comandaBarEditar").val();
+  var vv = $("#valorVentaEditar").val();
 
   //hora
   let hora = getHora();
   $.ajax(
     {
-      url:"editar_producto_exe.php?id="+id+"&nomProd="+np+"&cat="+lc+"&can="+can+"&vn="+vn+"&ec="+ep+"&ea="+ea+"&ta="+ta+"&cc="+cc+"&cb="+cb+"&hora="+hora,
+      url:"editar_producto_exe.php?codigo_barra="+cod_barra+"&id="+id+"&nomProd="+np+"&cat="+lc+"&can="+can+"&vv="+vv+"&vn="+vn+"&estado="+ep+"&hora="+hora,
       type: "GET",
       success: function(e)
       {

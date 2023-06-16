@@ -76,16 +76,14 @@
                                                 <thead>
                                                     <tr>
                                                     <th>ID</th>
+                                                    <th>Cód. de barra</th>
                                                     <th>Nombre</th>
                                                     <th>Categoría</th>
-                                                    <th>Unid</th>
+                                                    <th>Cantidad</th>
                                                     <th>Valor neto</th>
                                                     <th>Valor venta</th>
                                                     <th>Estado</th>
-                                                    <th>Es Acom</th>
-                                                    <th>Tiene Acom</th>
-                                                    <th>Comanda cocina</th>
-                                                    <th>Comanda Bar</th>
+                                                    <th>Creado por</th>
                                                     <th>Fecha</th>
                                                     <th>Editar</th>
                                                     </tr>

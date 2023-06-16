@@ -21,20 +21,20 @@
     $id_cl = $_SESSION['user']["id_cl"];
     $piso = 1;
 
-    $nom = utf8_decode($_GET['nomProd']);
+	$cod_barra = $_GET['cod_barra'];
+    $nom = $_GET['nomProd'];
     $cat = $_GET['cat'];
     $can = $_GET['can'];
     $vn = $_GET['vn'];
-    $ea = $_GET['ea'];
-    $ta = $_GET['ta'];
-    $cc = $_GET['cc'];
-    $cb = $_GET['cb'];
     $vv = $_GET['vv'];
 
     //obtener fecha
 	$hoy = getdate();
 	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
-	$sql = "INSERT INTO productos VALUES (null, '$id_cl', '$nom', '$cat', '$can', '$vn', '$vv', '$ea', '$ta', '$cc', '$cb', '$nombre', 'S', '$fecha');";
+	$sql = 
+	"INSERT INTO productos 
+	VALUES (null, '$id_cl', '$cod_barra', '$nom', '$cat', '$can', '$vn', '$vv', 'S', '$id_us', '$fecha');
+	";
 	$resultado = mysqli_query($conexion, $sql);
 
 	if($resultado)

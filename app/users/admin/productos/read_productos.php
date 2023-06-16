@@ -17,57 +17,20 @@ if(isset($_SESSION['user'])){
 
     //query
     $consulta = 
-    "SELECT p.id_prod, p.nombre_prod, p.categoria, p.cantidad, smp.estado AS estado_stock, p.valor_neto, p.valor_venta, p.es_acompanamiento, p.tiene_acompanamiento, p.comanda_cocina, p.comanda_bar, p.creado_por, p.estado, p.fecha_reg, c.nombre_cat 
+    "SELECT p.id_prod, p.codigo_barra, p.nombre_prod, p.categoria, p.cantidad, smp.estado AS estado_stock, 
+    p.valor_neto, p.valor_venta, u.nombre AS creado_por, p.estado, p.fecha_reg, c.nombre_cat 
     FROM productos p 
-    JOIN categorias c ON p.categoria = c.id 
+    JOIN usuarios u 
+    ON u.id = p.creado_por
+    JOIN categorias c 
+    ON p.categoria = c.id 
     JOIN stock_minimo_producto smp ON smp.id_cl = p.id_cl
-    WHERE p.id_cl = '$id_cl'";
+    WHERE p.id_cl = '1'";
     $resultado = $conexion->query($consulta);
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())
       {
-        $es_acom = $row['es_acompanamiento'];
-        $tiene_acom = $row['tiene_acompanamiento'];
-        $estado_stock = "";
-
-        if($es_acom == "S")
-        {
-          $es_acom="SI";
-        }
-        else
-        {
-          $es_acom="NO";
-        };
-
-        if($tiene_acom == "S")
-        {
-          $tiene_acom="SI";
-        }
-        else
-        {
-          $tiene_acom="NO";
-        };
-
-        $comanda_cocina = $row['comanda_cocina'];
-        if($comanda_cocina == "S")
-        {
-          $comanda_cocina="SI";
-        }
-        else
-        {
-          $comanda_cocina="NO";
-        };
-
-        $comanda_bar = $row['comanda_bar'];
-        if($comanda_bar == "S")
-        {
-          $comanda_bar="SI";
-        }
-        else
-        {
-          $comanda_bar="NO";
-        };
 
         $estado = $row['estado'];
         if($estado == "S")
@@ -90,15 +53,12 @@ if(isset($_SESSION['user'])){
 
         $json[] =array(
           'id' => $row['id_prod'],
-          'nombre_prod' => ($row['nombre_prod']),
+          'codigo_barra' => ($row['codigo_barra']),
+          'nombre_prod' => $row['nombre_prod'],
           'nombre_cat' => $row['nombre_cat'],
           'cantidad' => $estado_stock,
-          'valor_neto' => $row['valor_neto'],
-          'valor_venta' => $row['valor_venta'],
-          'es_acom' => $es_acom,
-          'tiene_acom' => $tiene_acom,
-          'comanda_cocina' => $comanda_cocina,
-          'comanda_bar' => $comanda_bar,
+          'valor_neto' => "$".$row['valor_neto'],
+          'valor_venta' => "$".$row['valor_venta'],
           'estado' => $estado,
           'creado_por' => $row['creado_por'],
           'fecha_reg' => $row['fecha_reg']

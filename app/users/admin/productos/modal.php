@@ -14,6 +14,12 @@
               <div class='modal-body'>
                 <table id='productos2' class='table'>
                   <tr>
+                    <td><label name='codBarra'>Código de barra</label></td>
+                    <td>
+                      <input type='text' name='codBarra' id='codBarra' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
                     <td><label name='nombreProd'>Nombre</label></td>
                     <td>
                       <input type='text' name='nomProd' id='nomProd' class='form-control' required>
@@ -47,53 +53,6 @@
                       <input type='number' name='cantidad' id='valorVenta' class='form-control' required></td>
                     </td>
                   </tr>
-                  <tr>
-                    <tr>
-                      <td><label name='cat'>Es acompañamiento</label></td>
-                      <td>
-                        <select id='esAcom' class='form-control'>
-                          <option value='O'>---SELECCIONE---</option>
-                          <option value='S'>Si</option>
-                          <option value='N'>No</option>
-                        </select>
-                        <strong id='errAcom' style='color:red'></strong>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><label name='cat'>Tiene acompañamiento</label></td>
-                      <td>
-                        <select id='tieneAcom' class='form-control'>
-                          <option value='O'>---SELECCIONE---</option>
-                          <option value='S'>Si</option>
-                          <option value='N'>No</option>
-                        </select>
-                        <strong id='errTieneAcom' style='color:red'></strong>
-                      </td>
-                    </tr>
-                  </tr>
-                  <tr>
-                    <td><label name='cat'>Comanda cocina</label></td>
-                      <td>
-                        <select id='comandaCocina' class='form-control'>
-                          <option value='O'>---SELECCIONE---</option>
-                          <option value='S'>Si</option>
-                          <option value='N'>No</option>
-                        </select>
-                        <strong id='errComandaCocina' style='color:red'></strong>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><label name='cat'>Comanda bar</label></td>
-                      <td>
-                        <select id='comandaBar' class='form-control'>
-                          <option value='O'>---SELECCIONE---</option>
-                          <option value='S'>Si</option>
-                          <option value='N'>No</option>
-                        </select>
-                        <strong id='errComandaBar' style='color:red'></strong>
-                      </td>
-                    </tr>
-                </tr>
                 </table>
                 <div>
                   <label id='lblMsj'></label>
@@ -124,9 +83,14 @@
               <div class='modal-body'>
                 <table id='productos2' class='table'>
                   <tr>
+                    <td><label name='nombreCat'>Código de barra</label></td>
+                    <td>
+                      <input type='text' id='codBarraEditar' name='nomProdEditar' class='form-control' required></td>
+                    </tr>
+                  <tr>
                     <td><label name='nombreCat'>Nombre</label></td>
                     <td>
-                      <input type='text' id='nomProdEditar' name='nomProdEditar' id='nomCatEditar' class='form-control' required></td>
+                      <input type='text' id='nomProdEditar' name='nomProdEditar' class='form-control' required></td>
                     </tr>
                     <tr>
                       <td><label name='cat'>Categoría</label></td>
@@ -156,49 +120,9 @@
                   <tr>
                     <td><label name='cat'>Estado</label></td>
                     <td>
-                      <input type='checkbox' id='swEditarProducto' onChange='check(this)'/>
+                      <input type='checkbox' id='swEditarProducto'/>
                       <label for='swEditarProducto' class='switch'></label>
                     </td>
-                    <tr>
-                      <td><label name='cat'>Es acompañamiento</label></td>
-                      <td>
-                        <select id='esAcomEditar' class='form-control'>
-                          <option value='O'>---SELECCIONE---</option>
-                          <option value='S'>Si</option>
-                          <option value='N'>No</option>
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><label name='cat'>Tiene acompañamiento</label></td>
-                      <td>
-                        <select id='tieneAcomEditar' class='form-control'>
-                          <option value='O'>---SELECCIONE---</option>
-                          <option value='S'>Si</option>
-                          <option value='N'>No</option>
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><label name='cat'>Comanda cocina</label></td>
-                      <td>
-                        <select id='comandaCocinaEditar' class='form-control'>
-                          <option value='O'>---SELECCIONE---</option>
-                          <option value='S'>Si</option>
-                          <option value='N'>No</option>
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><label name='cat'>Comanda bar</label></td>
-                      <td>
-                        <select id='comandaBarEditar' class='form-control'>
-                          <option value='O'>---SELECCIONE---</option>
-                          <option value='S'>Si</option>
-                          <option value='N'>No</option>
-                        </select>
-                      </td>
-                    </tr>
                   </tr>
                 </tr>
                 </table>

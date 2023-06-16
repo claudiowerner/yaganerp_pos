@@ -30,20 +30,28 @@
 		$can = $_GET['can'];
 	}
     $vn = $_GET['vn'];
-    $ec = $_GET['ec'];
-    $ea = $_GET['ea'];
-    $ta = $_GET['ta'];
-    $cc = $_GET['cc'];
-    $cb = $_GET['cb'];
+    $vv = $_GET['vv'];
+    $estado = $_GET['estado'];
+    $codigo_barra = $_GET['codigo_barra'];
     $hora = $_GET['hora'];
 
     //obtener fecha
 	$hoy = getdate();
 	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
-	$sql = "UPDATE productos set nombre_prod = '$nom',categoria = $cat, cantidad = $can, valor_neto = $vn, estado = '$ec', es_acompanamiento = '$ea', tiene_acompanamiento = '$ta', comanda_cocina= '$cc', comanda_bar = '$cb' where id_prod= $id";
+	$sql = 
+	"UPDATE productos SET 
+	codigo_barra = '$codigo_barra', 
+	nombre_prod = '$nom',
+	categoria = '$cat', 
+	cantidad = '$can', 
+	valor_neto = '$vn', 
+	valor_venta = '$vv',
+	estado = '$estado'
+	WHERE id_prod = '$id';
+	";
 	$resultado = mysqli_query($conexion, $sql);
 
-	if($ec=='N')
+	if($estado=='N')
 	{
 		//obtener fecha
 		$hoy = getdate();

@@ -27,14 +27,11 @@ if(isset($_SESSION['user'])){
         $json[] =array(
           'id' => $row['id_prod'],
           'nombre_prod' => ($row['nombre_prod']),
+          'codigo_barra' => ($row['codigo_barra']),
           'nombre_cat' => $row['nombre_cat'],
           'cantidad' => $row['cantidad'],
           'valor_neto' => $row['valor_neto'],
           'valor_venta' => $row['valor_venta'],
-          'es_acom' => $row['es_acompanamiento'],
-          'tiene_acom' => $row['tiene_acompanamiento'],
-          'comanda_cocina' => $row['comanda_cocina'],
-          'comanda_bar' => $row['comanda_bar'],
           'estado' => $row['estado'],
           'creado_por' => $row['creado_por'],
           'fecha_reg' => $row['fecha_reg']
