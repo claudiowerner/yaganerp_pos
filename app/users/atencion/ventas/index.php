@@ -33,7 +33,7 @@
     <meta content="" name="author">
     <link href="ico/favicon.ico" rel="shortcut icon">
 
-    <title>YaganERP Venta MESA <?php echo $_GET['id']?></title>
+    <title>YaganERP Venta CAJA <?php echo $_GET['nomCaja']?></title>
 
     <?php require "../cdn_css/css/css_item.php";?>
 
@@ -80,11 +80,11 @@
                                     <td>
                                         <label name="lblProd">Producto</label>
                                     </td>
-                                    <td>
-                                        <select name="slctProd" id="prod" class="form-control" style="width: 300px" onChange="productoValido()">
+                                    <td align="left" width="450px">
+                                        <select name="slctProd" id="prod" class="form-control" style="width: 400px" onChange="productoValido()">
                                         </select>
                                     </td>
-                                    <td>
+                                    <td align="left" width="40px">
                                         <label name="lblCantidad">Cantidad</label>
                                     </td>
                                     <td>
@@ -95,12 +95,6 @@
                                         <button type="button" id="sumarCant" class="btn btn-success">
                                         <img src="../../../img/sumar.png" width="10">
                                         </button>
-                                    </td>
-                                    <td>
-                                        <label>Observaciones</label>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" name="observaciones" id="obs">
                                     </td>
                                     <td>
                                         <button id="btnAgregarVenta" class="btn btn-success" disabled=true>Agregar</button>
@@ -157,30 +151,7 @@
                     <div class="plan">
                         <div class="col-md-12">
                             <div class="card card-warning">
-                                <div class="card-header">Imprimir comandas</div>
-                                    <div class="card-body">
-                                        <div class="row" id="">
-                                            <table width="100%">
-                                                <tr>
-                                                    <td>
-                                                        <button id="btnComandaCocina" class="btn btn-success" style="width: 100px;" disabled>A cocina</button>
-                                                    </td>
-                                                    <td>
-                                                        <button id="btnComandaBar" class="btn btn-success" style="width: 100px;" disabled>A bar</button>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="plan">
-                            <div class="col-md-12">
-                                <div class="card card-warning">
-                                    <div class="card-header">Imprimir/pagar cuentas</div>
+                                <div class="card-header">Imprimir/pagar cuentas</div>
                                     <div class="card-body">
                                         <div class="row" id="">
                                             <table width="100%">
@@ -217,26 +188,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="plan">
-                        <div class="col-md-12">
-                            <div class="card card-warning">
-                                <div class="card-header">Actividades de mesa</div>
-                                    <div class="card-body">
-                                        <div class="row" id="div_cambiarMesa">
-                                            <table width="100%">
-                                                <tr>
-                                                    <td><button id="btnUnifSepararMesas" class="btn btn-success" style="width: 100px;">Acción mesas</button></td>
-                                                    <td><button class="btn btn-success" style="width: 100px;" data-target="#cambiarMesa" data-toggle="modal">Cambiar</button></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     
@@ -259,33 +210,17 @@
     <script src="js/getFechaHora.js"></script>
     <script src="js/comprobar_estado_stock_minimo.js"></script>
     <script src="js/ventas.js"></script>
-    <script src="js/cambioMesa.js"></script>
-    <script src="js/cargarCuentaInd.js"></script>
     <script src="js/cargarNombreIdCajaAbierta.js"></script>
-    <script src="js/valorVentaInd.js"></script>
     <script src="js/cargarMetodoPago.js"></script>
-    <script src="js/cargarNroPisoUbicacion.js"></script>
-    <script src="js/cargarMesasSeparar.js"></script>
-    <script src="js/cargarMesasUnificar.js"></script>
     <script src="js/cargarProducto.js"></script>
-    <script src="js/cargarVentaGeneral.js"></script>
-    <script src="js/cargarVentaInd.js"></script>
-    <script src="js/cargarVentasMesa.js"></script>
+    <script src="js/cargarVentasCaja.js"></script>
     <script src="js/checkboxGroupCuentaGeneral.js"></script>
-    <script src="js/checkCtaIndividual.js"></script>
-    <script src="js/checkPropinaIndividual.js"></script>
-    <script src="js/comandas.js"></script>
     <script src="js/eliminarVenta.js"></script>
     <script src="js/imprCtaGeneral.js"></script>
-    <script src="js/imprCtaInd.js"></script>
-    <script src="js/listarMesas.js"></script>
     <script src="js/modificarCant.js"></script>
     <script src="js/validarMetodoPago.js"></script>
-    <script src="js/separarMesas.js"></script>
-    <script src="js/unificarMesas.js"></script>
     <script src="js/permisos.js"></script>
     <script src="js/anularVenta.js"></script>
-    <script src="js/cargarNomMesa.js"></script>
     <script src="js/comprobarCantidad.js"></script>
 </body>
 

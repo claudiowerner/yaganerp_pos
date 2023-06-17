@@ -19,23 +19,23 @@
 
 
 
-    $consulta = "SELECT c.correlativo AS corr, 
-    v.id, v.mesa, ub.nombre AS ubicacion,
-    u.nombre, p.id_prod, p.nombre_prod, v.id_venta, SUM(v.cantidad) AS cantidad, 
+    $consulta = 
+    "SELECT c.correlativo AS corr, 
+    v.id, v.caja, 
+    u.nombre, p.id_prod, p.nombre_prod, v.id_venta, 
+    SUM(v.cantidad) AS cantidad, 
     v.tipo_venta, SUM(v.valor) AS valor, 
-    SUM(v.propina) AS propina, v.estado, v.fecha ,
-    m.estado_gral 
+    v.estado, v.fecha
     FROM ventas v
-    JOIN mesas m ON m.id = v.mesa
+    JOIN cajas caj ON caj.id = v.caja
     JOIN usuarios u on u.id = v.usuario
     JOIN productos p on p.id_prod=v.producto 
-    JOIN ubicaciones ub on v.ubicacion=ub.id
     JOIN correlativo c on c.correlativo = v.id_venta 
     WHERE v.id_cl = '$id_cl' 
-    AND v.mesa = '$nMesa' 
+    AND caj.id = '$nMesa' 
     AND c.correlativo = '$idVenta'
     AND v.estado!='N'
-    AND m.estado_gral = 'A'
+    AND caj.estado = 'A'
     GROUP BY v.id ORDER BY v.id ASC" ;
     $resultado = $conexion->query($consulta);
     $json = array();

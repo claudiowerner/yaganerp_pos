@@ -154,10 +154,7 @@ $("#btnEliminarVenta").on('click', function(e)
                 icon: "success",
               });
               cargarVentasMesa();
-              cargarVentaInd();
               cargarVentaGeneral();
-              comprobarComandaCocina();
-              comprobarComandaBar();
               $('#solicClaveAut').modal('hide');
             }
           }).fail( function(e) {
@@ -341,7 +338,6 @@ $("#btnPagoInd").on('click', function(e)
         success: function(e)
         {
           cargarVentasMesa();
-          cargarVentaInd();
           cargarVentaGeneral();
           swal({
             title: "Excelente",
@@ -621,10 +617,6 @@ function registrarVenta(id_venta, idUbic, idProd, cantProd, obs, tipoVenta, idMe
       success: function(r)
       {
         cargarVentasMesa();
-        cargarVentaInd();
-        cargarVentaGeneral();
-        comprobarComandaCocina();
-        comprobarComandaBar();
       }
     }).fail( function(e) {
       console.log( 'Error productos!!'+e.responseText );
@@ -644,8 +636,6 @@ function modificarCant(id, cant, idProd)
       success: function(r)
       {
         cargarVentasMesa();
-        cargarVentaInd();
-        cargarVentaGeneral();
       }
     })
     .fail( function(e) 
