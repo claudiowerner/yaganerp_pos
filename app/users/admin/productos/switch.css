@@ -39,6 +39,22 @@
 
 
 
+#swPesaje
+{
+    display: none;
+}
+#swPesaje:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swPesaje:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+
+
 #swEditarProducto
 {
     display: none;

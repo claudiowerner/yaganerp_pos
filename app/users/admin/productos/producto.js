@@ -1,4 +1,5 @@
 ep = "S"; //almacena el estado del piso
+
 $("#swEditarProducto").on("click", function(e)
 {
   if(e.target.checked)
@@ -11,6 +12,23 @@ $("#swEditarProducto").on("click", function(e)
   }
 })
 
+
+rp = "N"; //almacena el estado de que si el producto requiere pesaje o no
+$("#swPesaje").on("click", function(e)
+{
+  html = "";
+  if(e.target.checked)
+  {
+    rp = "S";
+    html = "Valor neto por KG.";
+  }
+  else
+  {
+    rp = "N";
+    html = "Valor neto";
+  }
+  $("#lblValorNeto").html(html);
+})
 var table;
 
 //cargar estado de trabajo con o sin stock (activado o desactivado)
@@ -214,8 +232,6 @@ $("#formRegistroProducto").submit(function(e)
   else
   {
     //comprobar existencia de nombre del producto
-
-
     $.ajax({
       url:"validar_nombre_producto.php",
       data: {"nombre":np},
@@ -234,7 +250,7 @@ $("#formRegistroProducto").submit(function(e)
         {
           $.ajax(
             {
-              url:"crear_producto_exe.php?nomProd="+np+"&cat="+lc+"&can="+can+"&vn="+vn+"&vv="+vv+"&cod_barra="+cb,
+              url:"crear_producto_exe.php?nomProd="+np+"&cat="+lc+"&can="+can+"&vn="+vn+"&vv="+vv+"&cod_barra="+cb+"&rp="+rp,
               type: "POST",
               success: function(e)
               {

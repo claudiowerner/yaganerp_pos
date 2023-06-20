@@ -14,6 +14,19 @@
               <div class='modal-body'>
                 <table id='productos2' class='table'>
                   <tr>
+                    <td margin=auto>
+                      <div class=button>
+                        <label name='swPesaje'>¿Requiere pesaje?</label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class=boton>                    
+                        <input type='checkbox' id='swPesaje'/>
+                        <label for='swPesaje' class='switch'></label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
                     <td><label name='codBarra'>Código de barra</label></td>
                     <td>
                       <input type='text' name='codBarra' id='codBarra' class='form-control' required>
@@ -42,7 +55,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td><label name='cat'>Valor neto</label></td>
+                    <td><label name='cat' id='lblValorNeto'>Valor neto</label></td>
                     <td>
                       <input type='number' name='cantidad' id='valorNeto' class='form-control' required></td>
                     </td>
