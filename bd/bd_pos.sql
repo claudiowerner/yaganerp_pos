@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2023 a las 17:37:55
+-- Tiempo de generación: 20-06-2023 a las 03:38:40
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -90,6 +90,13 @@ CREATE TABLE `autorizacion` (
   `estado` varchar(5) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Volcado de datos para la tabla `autorizacion`
+--
+
+INSERT INTO `autorizacion` (`id`, `id_cl`, `clave`, `estado`) VALUES
+(1, '1', '123456', 'S');
+
 -- --------------------------------------------------------
 
 --
@@ -105,6 +112,15 @@ CREATE TABLE `cajas` (
   `fecha_reg` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `cajas`
+--
+
+INSERT INTO `cajas` (`id`, `id_cl`, `nom_caja`, `estado`, `creado_por`, `fecha_reg`) VALUES
+(1, '1', 'C01', 'S', '1', '2023-05-15'),
+(2, '1', 'C02', 'S', '1', '2023-05-15'),
+(3, '1', 'C03', 'S', '1', '2023-05-15');
+
 -- --------------------------------------------------------
 
 --
@@ -119,6 +135,16 @@ CREATE TABLE `categorias` (
   `creado_por` varchar(45) NOT NULL,
   `fecha_reg` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `id_cl`, `nombre_cat`, `estado`, `creado_por`, `fecha_reg`) VALUES
+(1, '1', 'Galletas', 'S', 'Admin', '2023-06-15'),
+(2, '1', 'CD', 'S', 'Admin', '2023-06-15'),
+(3, '1', 'Vinilo', 'S', 'Admin', '2023-06-15'),
+(4, '1', 'Cassette', 'S', 'Admin', '2023-06-15');
 
 -- --------------------------------------------------------
 
@@ -140,6 +166,13 @@ CREATE TABLE `cierre_caja` (
   `valor_total` varchar(145) NOT NULL,
   `fecha_reg` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `cierre_caja`
+--
+
+INSERT INTO `cierre_caja` (`id`, `id_cl`, `piso`, `nombre`, `creado_por`, `desde`, `hasta`, `estado`, `valor_neto`, `propina`, `valor_total`, `fecha_reg`) VALUES
+(1, 1, '1', 'Caja 15-16-2023', '1', '2023-06-15 13:23:12', '0000-00-00 00:00:00', 'A', '0', '0', '0', '2023-06-15 13:23:12');
 
 -- --------------------------------------------------------
 
@@ -163,7 +196,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `nombre`, `rut`, `nom_fantasia`, `razon_social`, `direccion`, `correo`, `telefono`) VALUES
-(1, '1', '19150634-0', 'Restaurant de prueba', 'Prueba S.A.', 'Camping Playa Werner 0000', 'claudiowernern@hotmail.com', '+56978841411');
+(1, '1', '19150634-0', 'Supermercado de prueba', 'Prueba S.A.', 'Camping Playa Werner 0000', 'claudiowernern@hotmail.com', '+56978841411');
 
 -- --------------------------------------------------------
 
@@ -175,21 +208,24 @@ CREATE TABLE `correlativo` (
   `id` int(11) NOT NULL,
   `correlativo` int(11) NOT NULL,
   `id_cl` varchar(5) NOT NULL,
-  `mesa` varchar(25) NOT NULL,
-  `nom_mesa` varchar(45) NOT NULL,
-  `piso` varchar(45) NOT NULL,
-  `ubicacion` varchar(45) NOT NULL,
-  `tipo_venta` varchar(5) NOT NULL,
+  `caja` varchar(25) NOT NULL,
+  `nom_caja` varchar(45) NOT NULL,
   `usuario` varchar(45) NOT NULL,
   `valor` varchar(20) NOT NULL,
-  `propina` varchar(45) NOT NULL,
   `boleta` varchar(50) NOT NULL,
   `forma_pago` int(11) NOT NULL,
   `id_cierre` varchar(5) NOT NULL,
   `estado` varchar(2) NOT NULL,
   `fecha` datetime NOT NULL,
   `fecha_cierre` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='	';
+
+--
+-- Volcado de datos para la tabla `correlativo`
+--
+
+INSERT INTO `correlativo` (`id`, `correlativo`, `id_cl`, `caja`, `nom_caja`, `usuario`, `valor`, `boleta`, `forma_pago`, `id_cierre`, `estado`, `fecha`, `fecha_cierre`) VALUES
+(1, 1, '1', '1', 'C01', '1', '0', '1', 0, '1', 'A', '2023-06-20 20:15:59', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -223,19 +259,30 @@ INSERT INTO `metodo_pago` (`id`, `id_cl`, `nombre_metodo_pago`, `estado`) VALUES
 CREATE TABLE `productos` (
   `id_prod` int(5) NOT NULL,
   `id_cl` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `codigo_barra` varchar(100) NOT NULL,
   `nombre_prod` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `categoria` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `cantidad` int(5) NOT NULL,
   `valor_neto` varchar(7) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `valor_venta` varchar(7) CHARACTER SET latin2 COLLATE latin2_general_ci NOT NULL,
-  `es_acompanamiento` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `tiene_acompanamiento` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `comanda_cocina` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `comanda_bar` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `creado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `creado_por` varchar(45) NOT NULL,
   `fecha_reg` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `categoria`, `cantidad`, `valor_neto`, `valor_venta`, `estado`, `creado_por`, `fecha_reg`) VALUES
+(1, '1', '840705109369', 'Foo Fighters - Glasstonbury 2017 - pt2', '3', 10, '15000', '27000', 'S', '1', '2023-06-15'),
+(2, '1', '7804612579427', '31 Minutos - 31 canciones de amor - 2012', '2', 15, '3600', '8990', 'S', '1', '2023-06-15'),
+(3, '1', '2292547192', 'Luis Miguel - Soy Como Quiero Ser', '2', 10, '5000', '9990', 'S', '1', '2023-06-16'),
+(4, '1', '5099747618642', 'Los Tres - Fome', '4', 10, '20000', '35000', 'S', '1', '2023-06-16'),
+(5, '1', '5099747609640', 'Los Tres - Unplugged', '4', 20, '20000', '35000', 'S', '1', '2023-06-16'),
+(6, '1', '886971408027', 'Soda Stereo - Último Concierto A', '2', 10, '10000', '14990', 'S', '1', '2023-06-17'),
+(7, '1', '886971408126', 'Soda Stereo - Último Concierto B', '2', 20, '10000', '14990', 'S', '1', '2023-06-17'),
+(8, '1', '7804612579434', '31 Minutos - Ratoncitos - 2012', '2', 20, '5000', '8990', 'S', '1', '2023-06-17');
 
 -- --------------------------------------------------------
 
@@ -293,25 +340,30 @@ CREATE TABLE `ventas` (
   `id_venta` int(11) NOT NULL,
   `id_cl` varchar(5) NOT NULL,
   `id_caja` varchar(5) NOT NULL,
-  `mesa` varchar(25) NOT NULL,
-  `nom_mesa` varchar(25) NOT NULL,
-  `piso` varchar(45) NOT NULL,
-  `ubicacion` varchar(45) NOT NULL,
+  `nom_caja` varchar(25) NOT NULL,
   `usuario` int(5) NOT NULL,
   `producto` int(5) NOT NULL,
   `cantidad` varchar(20) NOT NULL,
   `valor` varchar(20) NOT NULL,
-  `propina` varchar(45) NOT NULL,
-  `tipo_venta` varchar(5) NOT NULL,
-  `forma_venta` varchar(45) NOT NULL,
-  `impreso` varchar(5) NOT NULL,
-  `forma_pago` int(11) NOT NULL,
   `estado` varchar(2) NOT NULL,
   `fecha` datetime NOT NULL,
   `fecha_pago` datetime DEFAULT NULL,
-  `des` varchar(100) NOT NULL,
-  `obs` varchar(350) DEFAULT NULL
+  `des` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='								';
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`id`, `id_venta`, `id_cl`, `id_caja`, `nom_caja`, `usuario`, `producto`, `cantidad`, `valor`, `estado`, `fecha`, `fecha_pago`, `des`) VALUES
+(1, 1, '1', '1', 'C01', 1, 2, '1', '8990', 'N', '2023-06-20 20:28:47', '0000-00-00 00:00:00', '0'),
+(2, 1, '1', '1', 'C01', 1, 1, '1', '27000', 'A', '2023-06-20 20:29:26', '0000-00-00 00:00:00', '0'),
+(3, 1, '1', '1', 'C01', 1, 1, '1', '27000', 'A', '2023-06-20 20:29:36', '0000-00-00 00:00:00', '0'),
+(4, 1, '1', '1', 'C01', 1, 2, '1', '8990', 'A', '2023-06-20 20:32:58', '0000-00-00 00:00:00', '0'),
+(5, 1, '1', '1', 'C01', 1, 1, '1', '27000', 'A', '2023-06-20 20:34:34', '0000-00-00 00:00:00', '0'),
+(6, 1, '1', '1', 'C01', 1, 5, '1', '35000', 'N', '2023-06-20 20:43:03', '0000-00-00 00:00:00', '0'),
+(7, 1, '1', '1', 'C01', 1, 6, '1', '14990', 'A', '2023-06-20 21:14:26', '0000-00-00 00:00:00', '0'),
+(8, 1, '1', '1', 'C01', 1, 2, '1', '8990', 'A', '2023-06-20 21:15:15', '0000-00-00 00:00:00', '0');
 
 --
 -- Índices para tablas volcadas
@@ -345,6 +397,12 @@ ALTER TABLE `anula_ventas`
 -- Indices de la tabla `autorizacion`
 --
 ALTER TABLE `autorizacion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `cajas`
+--
+ALTER TABLE `cajas`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -433,19 +491,25 @@ ALTER TABLE `anula_ventas`
 -- AUTO_INCREMENT de la tabla `autorizacion`
 --
 ALTER TABLE `autorizacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `cajas`
+--
+ALTER TABLE `cajas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `cierre_caja`
 --
 ALTER TABLE `cierre_caja`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -457,7 +521,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `correlativo`
 --
 ALTER TABLE `correlativo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `metodo_pago`
@@ -469,7 +533,7 @@ ALTER TABLE `metodo_pago`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_prod` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_prod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `stock_minimo_producto`
@@ -487,7 +551,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
