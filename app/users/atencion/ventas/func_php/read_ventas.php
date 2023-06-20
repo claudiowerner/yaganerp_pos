@@ -9,7 +9,7 @@
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
     $piso = 1;
-    $nMesa = $_GET['nMesa'];
+    $nCaja = $_GET['nCaja'];
     $idVenta = $_GET['idVenta'];
 
 
@@ -21,21 +21,20 @@
 
     $consulta = 
     "SELECT c.correlativo AS corr, 
-    v.id, v.caja, 
+    v.id, v.id_caja, 
     u.nombre, p.id_prod, p.nombre_prod, v.id_venta, 
     SUM(v.cantidad) AS cantidad, 
-    v.tipo_venta, SUM(v.valor) AS valor, 
+    SUM(v.valor) AS valor, 
     v.estado, v.fecha
     FROM ventas v
-    JOIN cajas caj ON caj.id = v.caja
+    JOIN cajas caj ON caj.id = v.id_caja
     JOIN usuarios u on u.id = v.usuario
     JOIN productos p on p.id_prod=v.producto 
     JOIN correlativo c on c.correlativo = v.id_venta 
     WHERE v.id_cl = '$id_cl' 
-    AND caj.id = '$nMesa' 
+    AND caj.id = '$nCaja' 
     AND c.correlativo = '$idVenta'
-    AND v.estado!='N'
-    AND caj.estado = 'A'
+    AND v.estado='A'
     GROUP BY v.id ORDER BY v.id ASC" ;
     $resultado = $conexion->query($consulta);
     $json = array();
@@ -53,15 +52,11 @@
         $json[] =array(
         'id' => $row['id'],
         'id_venta' => $venta,
-        'mesa' => $row['mesa'],
-        'ubicacion' => $row['ubicacion'],
         'usuario' => $row['nombre'],
         'nombre_prod' => ($row['nombre_prod']),
         'id_prod' => $row['id_prod'],
-        'tipo_venta' => $row['tipo_venta'],
         'cantidad' => $row['cantidad'],
-        'valor' => $row['valor'],
-        'propina' => $row['propina'],
+        'valor' => $row['valor'], 
         'estado' => $row['estado'],
         'fecha' => $row['fecha'],
         'corr' => $row['corr']

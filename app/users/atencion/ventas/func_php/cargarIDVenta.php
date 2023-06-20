@@ -11,7 +11,7 @@
         $id_cl = $_SESSION['user']["id_cl"];
         $piso = 1;
         $id_caja = 0;
-        $idMesa = $_POST["idMesa"];
+        $nCaja = $_POST["nCaja"];
 
         require_once '../../../../conexion.php';
 
@@ -21,7 +21,7 @@
         FROM correlativo 
         WHERE id_cl = $id_cl 
         AND estado = 'A'
-        AND caja = $idMesa";
+        AND caja = $nCaja";
         $resultado = $conexion->query($consulta);
 
         $corr = "";

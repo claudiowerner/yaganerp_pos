@@ -19,11 +19,9 @@
 	    $nombre = $_SESSION['user']["nombre"];
 	    $id_cl = $_SESSION['user']["id_cl"];
 	    $piso = 1;
-	    $id_mesa = $_GET['id_mesa'];
-	    $nom_mesa = $_GET['nom_mesa'];
-	    $ubic = $_GET['ubic'];
+	    $idCaja = $_GET['idCaja'];
+	    $nomCaja = $_GET['nomCaja'];
 		$hora = $_GET['hora'];
-		$tipoVenta = $_GET["tipoVenta"];
 
 		//obtener fecha
 		$hoy = getdate();
@@ -40,7 +38,7 @@
 		}
 
 		//obtener ID caja/turno abierto
-		$idCaja = "";
+		$idCierre = "";
 		$sql = 
 		"SELECT id FROM cierre_caja 
 		WHERE id_cl = '$id_cl'
@@ -50,7 +48,7 @@
 
 		while($row = $r->fetch_array())
 		{
-			$idCaja = $row["id"];
+			$idCierre = $row["id"];
 		}
 
 		//registro tabla correlativo
@@ -79,7 +77,8 @@
 			echo "No se generó el ID";
 		}		
 		
-		$correlativo = "INSERT INTO correlativo VALUES ($id, $corr, '$id_cl', '$id_mesa', '$nom_mesa', '$piso', '$ubic', '$tipoVenta', '$nombre', '0', '0', '$boleta', '1', '$idCaja', 'A', '$fecha', '0000-00-00 00:00:00')";
+		$correlativo = "INSERT INTO correlativo VALUES 
+		($id, $corr, '$id_cl', '$idCaja', '$nomCaja', '$id_us', '0', '$boleta', '0', '$idCierre', 'A', '$fecha', '0000-00-00 00:00:00')";
 		$r2 = mysqli_query($conexion, $correlativo);
 		   
 		if($r1&&$r2)

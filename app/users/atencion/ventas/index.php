@@ -97,7 +97,7 @@
                                         </button>
                                     </td>
                                     <td>
-                                        <button id="btnAgregarVenta" class="btn btn-success" disabled=true>Agregar</button>
+                                        <button id="btnAgregarVenta" class="btn btn-success agregar" disabled=true>Agregar</button>
                                     </td>
                                 </tr>
                             </table>
@@ -114,7 +114,7 @@
                             <div class="card-header" style="align:left;">
                                 <table width="100%">
                                     <tr>
-                                        <td>Venta <strong>CAJA </strong><strong id="nomCaja"><?php echo $_GET['nomCaja']?></strong><strong id="nMesa" style="display: none"><?php echo $_GET['id']?></strong>
+                                        <td>Venta <strong>CAJA </strong><strong id="nomCaja"><?php echo $_GET['nomCaja']?></strong><strong id="nCaja" style="display: none"><?php echo $_GET['id']?></strong>
                                         <strong id="idMesa" style="display:none"><?php echo $idMesa;?></strong></td>
                                         <td>ID venta: <strong name="id_venta" id="id_venta">CARGANDO...</strong></td>
                                         <td>Caja/turno: <strong name="nombreCaja" id="nombreCaja">CARGANDO...</strong></td>
@@ -147,7 +147,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-6">
                     <div class="plan">
                         <div class="col-md-12">
                             <div class="card card-warning">
@@ -169,7 +169,7 @@
                 </div>
 
 
-                <div class="col-lg-3">
+                <div class="col-lg-6">
                     <div class="plan">
                         <div class="col-md-12">
                             <div class="card card-warning">
@@ -209,7 +209,6 @@
     <script src="js/cargarIDVenta.js"></script>
     <script src="js/getFechaHora.js"></script>
     <script src="js/comprobar_estado_stock_minimo.js"></script>
-    <script src="js/ventas.js"></script>
     <script src="js/cargarNombreIdCajaAbierta.js"></script>
     <script src="js/cargarMetodoPago.js"></script>
     <script src="js/cargarProducto.js"></script>
@@ -222,6 +221,8 @@
     <script src="js/permisos.js"></script>
     <script src="js/anularVenta.js"></script>
     <script src="js/comprobarCantidad.js"></script>
+    <script src="js/ventas.js"></script>
+    
 </body>
 
 </html>

@@ -1,5 +1,3 @@
-comprobarComandaCocina();
-comprobarComandaBar();
 
 var table;
 
@@ -14,10 +12,6 @@ let idUbic = "";
 let idProd = "";
 let cantProd = "";
 let obs = "";
-let idMesa = "";
-let nomMesa = "";
-//obtener tipo de venta (si es normal/convenio)
-let tipoVenta = "";
 
 //variable que almacena el nombre del producto y la cantidad
 var descProd = new Array();
@@ -28,10 +22,7 @@ $("#prod").select2();
 let array = new Array();
 
 //obtener número de mesa
-let nMesa = $("#nMesa").html();
-
-//obtener variable de tipo de venta (N o C)
-let varTipoVenta = ""; 
+let nCaja = $("#nCaja").html();
 
 //se verifica si la opcion seleccionada de la venta de productos es válida o no
 function productoValido()
@@ -46,45 +37,15 @@ function productoValido()
     $("#btnAgregarVenta").attr("disabled", false);
   }
 }
-if(tipoVenta.match(/Iden/))
-{
-  $.ajax(
-    {
-      url: "func_php/read_tipo_venta.php?nMesa="+nMesa,
-      type: "GET",
-      success: function(e)
-      {
-        if(e.match("N"))
-        {
-          $("#tipoDeVenta").html("Normal");
-          $("#tv").html("N");
-        }
-        if(e.match("C"))
-        {
-          $("#tipoDeVenta").html("Convenio");
-          $("#tv").html("C");
-        }
-      }
-    }
-  )
-  .fail(function(e)
-  {
-    console.log(e.responseText)
-  })
-}
 
-
-
-$("#btnAgregarVenta").on('click', function(e)
+$(".agregar").on('click', function(e)
 {
   let id_venta = $("#id_venta").text();
-  let idUbic = $("#idUbic").text();
   let idProd = $("#prod").val();
   let cantProd = $("#cantProd").text();
   let obs = $("#obs").val();
-  let tipoVenta = $("#tv").text();
-  let idMesa = $("#nMesa").text();
-  let nomMesa = $("#nomMesa").text();
+  let idCaja = $("#nCaja").text();
+  let nomCaja = $("#nomCaja").text();
   //capturar hora
   let hora = getHora();
 
@@ -110,13 +71,12 @@ $("#btnAgregarVenta").on('click', function(e)
     }
     else
     {
-      registrarVenta(id_venta, idUbic, idProd, cantProd, obs, tipoVenta, idMesa, nomMesa, hora);
+      registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
     } 
   }
   else
   {
-    alert("PASA AL ELSE: "+estadoStock);
-    registrarVenta(id_venta, idUbic, idProd, cantProd, obs, tipoVenta, idMesa, nomMesa, hora);
+    registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
   }
 })
 
@@ -153,7 +113,7 @@ $("#btnEliminarVenta").on('click', function(e)
                 text: r,
                 icon: "success",
               });
-              cargarVentasMesa();
+              cargarVentasCaja();
               cargarVentaGeneral();
               $('#solicClaveAut').modal('hide');
             }
@@ -337,7 +297,7 @@ $("#btnPagoInd").on('click', function(e)
         data:{"descProdInd":descProdInd, "idCaja":idCaja},
         success: function(e)
         {
-          cargarVentasMesa();
+          cargarVentasCaja();
           cargarVentaGeneral();
           swal({
             title: "Excelente",
@@ -370,9 +330,6 @@ $("#btnCerrar").on("click", function(e)
 {
   let id = $("#id_venta").text();
   let idMesa = $("#idMesa").text(); 
-  let subtotal = $("#subtotal").text();
-  let propina = $("#propina").text();
-  let total = $("#total").text();
   let fecha = getFechaBD();
   let hora = getHora();
 
@@ -552,7 +509,7 @@ function confirmarPaga(boton)
         text: e,
         icon: "success",
       });
-      cargarVentasMesa();
+      cargarVentasCaja();
       cargarVentaGeneral();
       /*si el número de botón seleccionado es 2 (btnPagarVenta), se mostrará el mensaje de venta exitosa y
       se vuelve al apartado donde se muestran las mesas*/
@@ -568,55 +525,15 @@ function confirmarPaga(boton)
   })
 }
 
-function comprobarComandaCocina()
-{
-    let nMesa = $("#nMesa").text();
-    $.ajax({
-        url: "func_php/comprobar_comanda_cocina.php?nMesa="+nMesa,
-        type: "GET",
-        success: function(e)
-        {
-            if(e!=0)
-            {
-            $("#btnComandaCocina").attr("disabled", false);
-            }
-            else
-            {
-            $("#btnComandaCocina").attr("disabled", true);
-            }
-        }
-    })
-}
-
-function comprobarComandaBar()
-{
-    let nMesa = $("#nMesa").text();
-    $.ajax({
-        url: "func_php/comprobar_comanda_bar.php?nMesa="+nMesa,
-        type: "GET",
-        success: function(e)
-        {
-            if(e!=0)
-            {
-            $("#btnComandaBar").attr("disabled", false);
-            }
-            else
-            {
-            $("#btnComandaBar").attr("disabled", true);
-            }
-        }
-    })
-}
-
-function registrarVenta(id_venta, idUbic, idProd, cantProd, obs, tipoVenta, idMesa, nomMesa, hora)
+function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
 {
   $.ajax(
     {
-      url:"func_php/crear_venta_exe.php?idMesa="+idMesa+"&idUbic="+idUbic+"&id_venta="+id_venta+"&idProd="+idProd+"&cantProd="+cantProd+"&obs="+obs+"&nMesa="+nMesa+"&nomMesa="+nomMesa+"&hora="+hora+"&tipoVenta="+tipoVenta,
+      url:"func_php/crear_venta_exe.php?idCaja="+idCaja+"&id_venta="+id_venta+"&idProd="+idProd+"&cantProd="+cantProd+"&nomCaja="+nomCaja+"&hora="+hora,
       type: "GET",
       success: function(r)
       {
-        cargarVentasMesa();
+        cargarVentasCaja();
       }
     }).fail( function(e) {
       console.log( 'Error productos!!'+e.responseText );
@@ -635,7 +552,7 @@ function modificarCant(id, cant, idProd)
       type: "GET",
       success: function(r)
       {
-        cargarVentasMesa();
+        cargarVentasCaja();
       }
     })
     .fail( function(e) 

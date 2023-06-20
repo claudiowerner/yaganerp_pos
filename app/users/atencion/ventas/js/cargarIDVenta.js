@@ -1,13 +1,14 @@
-idMesa = $("#nMesa").text();
+nCaja = $("#nCaja").text();
 
 $.ajax(
     {
         url:"func_php/cargarIDVenta.php",
-        data: {"idMesa": idMesa},
+        data: {"nCaja": nCaja},
         type: "POST",
         success: function(e)
         {
             $("#id_venta").html(e);
+            cargarVentasCaja();
         }
     }
 )

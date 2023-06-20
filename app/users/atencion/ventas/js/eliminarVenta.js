@@ -29,7 +29,7 @@ async function accionEliminarVenta(boton)
                                   icon: "success"
                                 }
                               )
-                            cargarVentasMesa();
+                            cargarVentasCaja();
                             cargarVentaInd();
                             cargarVentaGeneral();
                             comprobarComandaCocina();

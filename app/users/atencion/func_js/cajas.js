@@ -85,7 +85,23 @@
     id = $(this).attr('nroCaja');
     nomCaja = $(this).attr("nomCaja");
 
-    location.href = "ventas/index.php?id="+id+"&nomCaja="+nomCaja+"&tipoVenta=&idMesa="+id+"&idUbic="+ubic;
+    //CREAR CORRELATIVO
+    let hora = getHora();
+    $.ajax({
+      url: "correlativo/correlativo.php?nomCaja="+nomCaja+"&idCaja="+id+"&hora="+hora,
+      type: "GET",
+      success: function(r)
+      {
+        location.href = "ventas/index.php?id="+id+"&nomCaja="+nomCaja+"&tipoVenta=&idMesa="+id+"&idUbic="+ubic;
+      }
+    })
+    .done(function(){
+      console.log("Done correlativo");
+    })
+    .fail(function(r)
+    {
+      console.log("fail correlativo: "+r.responseText)
+    })
   });
 
 
@@ -140,28 +156,4 @@ function getFecha ()
   }
   var fecha = ano+"-"+mes+"-"+dia;
   return fecha;
-}
-
-function ventaNormal(e,id)
-{
-  console.log(e)
-  tipoVenta = "N";
-
-  //CREAR CORRELATIVO
-  let hora = getHora();
-  $.ajax({
-    url: "correlativo/correlativo.php?nom_mesa="+nomMesa+"&id_mesa="+id+"&ubic="+ubic+"&hora="+hora+"&tipoVenta="+tipoVenta,
-    type: "GET",
-    success: function(r)
-    {
-      location.href = "ventas/index.php?id="+id+"&nomMesa="+nomMesa+"&tipoVenta="+tipoVenta+"&idMesa="+id+"&idUbic="+ubic;
-    }
-  })
-  .done(function(){
-    console.log("Done correlativo");
-  })
-  .fail(function(r)
-  {
-    console.log("fail correlativo: "+r.responseText)
-  })
 }
