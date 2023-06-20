@@ -16,7 +16,7 @@ if(isset($_SESSION['user'])){
 
     //query
     $consulta = 
-    "SELECT p.id_prod, p.codigo_barra, p.nombre_prod, smp.stock_minimo, p.cantidad, smp.estado
+    "SELECT p.id_prod, p.codigo_barra, c.nombre_cat, p.nombre_prod, smp.stock_minimo, p.cantidad, smp.estado
     FROM productos p 
     JOIN categorias c ON p.categoria = c.id 
     JOIN stock_minimo_producto smp ON p.id_cl = smp.id_cl
@@ -33,6 +33,7 @@ if(isset($_SESSION['user'])){
         'nombre_prod' => ($row['nombre_prod']),
         'cantidad' => ($row['cantidad']),
         'estado' => ($row['estado']),
+        'nombre_cat' => ($row['nombre_cat']),
         'stock_minimo' => ($row['stock_minimo'])
       );
     };

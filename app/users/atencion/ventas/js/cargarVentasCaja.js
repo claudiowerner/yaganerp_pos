@@ -11,6 +11,7 @@ function cargarVentasCaja()
       type: "GET",
       success: function(response)
       {
+        alert(response);
         let tasks = JSON.parse(response);
         tasks.forEach(v=>{
           descProd.push({"nom_prod": v.nombre_prod, "cant":v.cantidad});
@@ -38,8 +39,8 @@ function cargarVentasCaja()
                         <td>
                           ${v.nombre_prod}
                         </td>
-                        <td id=tipoVenta>
-                          ${v.tipo_venta}
+                        <td id=nombre_cat>
+                          ${v.nombre_cat}
                         </td>
                         <td id=cantVenta>
                           ${v.cantidad}
@@ -71,8 +72,6 @@ function cargarVentasCaja()
         let template_2 = '';
         tasks.forEach(v=>{
           subtotal = parseFloat(subtotal)+parseFloat(v.valor);
-          propina = parseFloat(v.propina)+parseFloat(propina);
-          total = parseFloat(propina)+parseFloat(subtotal);
           template_2=`<td colspan="9" align="right">
                       <strong>SUB TOTAL $</strong>
                     </td>

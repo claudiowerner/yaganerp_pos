@@ -22,7 +22,8 @@
     $consulta = 
     "SELECT c.correlativo AS corr, 
     v.id, v.id_caja, 
-    u.nombre, p.id_prod, p.nombre_prod, v.id_venta, 
+    u.nombre, p.id_prod, p.nombre_prod, v.id_venta,
+    cat.nombre_cat, 
     SUM(v.cantidad) AS cantidad, 
     SUM(v.valor) AS valor, 
     v.estado, v.fecha
@@ -30,6 +31,7 @@
     JOIN cajas caj ON caj.id = v.id_caja
     JOIN usuarios u on u.id = v.usuario
     JOIN productos p on p.id_prod=v.producto 
+    JOIN categorias cat ON cat.id = p.categoria
     JOIN correlativo c on c.correlativo = v.id_venta 
     WHERE v.id_cl = '$id_cl' 
     AND caj.id = '$nCaja' 
@@ -56,6 +58,7 @@
         'nombre_prod' => ($row['nombre_prod']),
         'id_prod' => $row['id_prod'],
         'cantidad' => $row['cantidad'],
+        'nombre_cat' => $row['nombre_cat'],
         'valor' => $row['valor'], 
         'estado' => $row['estado'],
         'fecha' => $row['fecha'],
