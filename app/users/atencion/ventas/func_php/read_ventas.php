@@ -23,7 +23,7 @@
     "SELECT c.correlativo AS corr, 
     v.id, v.id_caja, 
     u.nombre, p.id_prod, p.nombre_prod, v.id_venta,
-    cat.nombre_cat, 
+    cat.nombre_cat, p.pesaje,
     SUM(v.cantidad) AS cantidad, 
     SUM(v.valor) AS valor, 
     v.estado, v.fecha
@@ -62,6 +62,7 @@
         'valor' => $row['valor'], 
         'estado' => $row['estado'],
         'fecha' => $row['fecha'],
+        'pesaje' => $row['pesaje'],
         'corr' => $row['corr']
       );
     };

@@ -11,7 +11,6 @@ function cargarVentasCaja()
       type: "GET",
       success: function(response)
       {
-        alert(response);
         let tasks = JSON.parse(response);
         tasks.forEach(v=>{
           descProd.push({"nom_prod": v.nombre_prod, "cant":v.cantidad});
@@ -21,7 +20,7 @@ function cargarVentasCaja()
           if(v.estado=='A')
           {
             estado = "<button class='btn btn-danger' disabled='true'>PENDIENTE</button>";
-            aumentar = "<button class='btn btn-success' id='"+v.id+"' cant='"+v.cantidad+"' id_prod='"+v.id_prod+"' onClick=obtenerIDVenta(this) data-target='#cambiarCantidad' data-toggle='modal'>+O-</button>";
+            aumentar = "<button class='btn btn-success modCant' id='"+v.id+"' pesaje='"+v.pesaje+"' cant='"+v.cantidad+"' id_prod='"+v.id_prod+"' onClick=obtenerIDVenta(this)>+O-</button>";
             eliminar = "<button id='btnEliminarVenta' idVenta='"+v.id+"' class='btn btn-danger' onClick=accionEliminarVenta(this)>Eliminar</button>";
             imprimir = "<button id='imprimir' class='btn btn-warning'>Imprimir</button>";
           }
@@ -133,16 +132,7 @@ function cargarVentasCaja()
     });
 }
 
-//Funcion que recibe el botón +o-. Además, obtiene la cantidad de cierto producto para ser eliminada
-async function obtenerIDVenta(boton)
-{
-  let id = $(boton).attr("id");
-  let cant = $(boton).attr("cant");
-  let id_prod = $(boton).attr("id_prod");
 
-  $("#idVenta").html(id);
-  $("#cantProdMod").html(cant);
-  $("#id_prod").html(id_prod);
-  
-}
+
+
 

@@ -30,18 +30,16 @@
 
 	//obtener valor precio del producto
 	$valor = 0;
-	echo $sql = "SELECT valor_venta FROM productos WHERE id_cl = '$id_cl' AND id_prod = '$idProd'";
+	$sql = "SELECT valor_venta FROM productos WHERE id_cl = '$id_cl' AND id_prod = '$idProd'";
 	$resultado = mysqli_query($conexion, $sql);
 	while ($row = $resultado->fetch_array())
 	{
-		$valor = intval($row['valor_venta'])*intval($cantProd);
-		echo "Valor ".$valor." ";
+		$valor = intval($row['valor_venta']);
 	}
 
-	//Calcular propina
-	$propina = $valor*0.10;
-
-	echo $sql = "UPDATE ventas SET cantidad = '$cantProd', valor=$valor, propina=$propina WHERE id = '$id';";
+	echo $sql = 
+	"UPDATE ventas SET cantidad = $cantProd, valor=$valor*$cantProd 
+	WHERE id_cl = '$id_cl' AND id = '$id';";
 	$resultado = mysqli_query($conexion, $sql);
 
 	if($resultado)

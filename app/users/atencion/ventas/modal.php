@@ -104,65 +104,6 @@
   </div>
   ";
   }
-  function modalUnificarMesa()
-  {
-    return "<!--modalCambiarMesa-->
-  <div class='modal fade' id='modalUnificarMesa' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
-    <div class='modal-dialog' style='max-width: 900px!important;' role='document'>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <h5 class='modal-title' id='tipoVenta'>Unificar mesa
-            <!--Env�o de MESA ACTUAL a PHP via JS--><label id='nMesaActual'></label></h5>
-          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-            <span aria-hidden='true'>&times;</span>
-          </button>
-        </div>
-        <div class='modal-body' align='center'>
-          <section id=''>
-            <select id='unificarMesas' class='form-control select2 nombreMesa' multiple='multiple'>
-            </select>
-          </section>
-        </div>
-        <div class='modal-footer'>
-          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-          <button class='btn btn-success' id='btnConfirmarUnif'>Confirmar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  ";
-  }
-
-  
-  function modalSepararMesa()
-  {
-    return "<!--modalCambiarMesa-->
-  <div class='modal fade' id='modalSepararMesa' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
-    <div class='modal-dialog' style='max-width: 900px!important;' role='document'>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <h5 class='modal-title' id='tipoVenta'>Separar mesa
-            <!--Envío de MESA ACTUAL a PHP via JS--><label id='nMesaActual'></label></h5>
-          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-            <span aria-hidden='true'>&times;</span>
-          </button>
-        </div>
-        <div class='modal-body' align='center'>
-          <section id=''>
-            <select id='separarMesas' class='form-control select2 nombreMesaSeparar' multiple='multiple'>
-            </select>
-          </section>
-        </div>
-        <div class='modal-footer'>
-          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-          <button class='btn btn-success' id='btnConfirmarSeparacion'>Confirmar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  ";
-  }
-
   function modalCambiarCantidad()
   {
     return "<!--modalCambiarCantidad-->
@@ -177,18 +118,50 @@
                 <span aria-hidden='true'>&times;</span>
               </button>
             </div>
-            <div class='modal-body' align='center'>
+            <div class='modal-body' align='center' id='modificarCantidad'>
+              <button type='button' id='restarCantMod' class='btn btn-danger'>
+                <img src='../../../img/restar.png' width='10'>
+              </button>
+              <strong id='cantProdMod'>1</strong>
               <button type='button' id='sumarCantMod' class='btn btn-success'>
-                      <img src='../../../img/sumar.png' width='10'>
-                    </button>
-                    <strong id='cantProdMod'>1</strong>
-                    <button type='button' id='restarCantMod' class='btn btn-danger'>
-                      <img src='../../../img/restar.png' width='10'>
-                    </button>
+                <img src='../../../img/sumar.png' width='10'>
+              </button>
             </div>
             <div class='modal-footer'>
               <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
               <button class='btn btn-success' id='btnActCantidad' data-dismiss='modal'>Actualizar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      ";
+  }
+  function modalCambiarCantidadPesaje()
+  {
+    return "<!--modalCambiarCantidad-->
+      <div class='modal fade' id='cambiarCantidadPesaje' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <h5 class='modal-title' id='tipoVenta'>Modificar pesaje
+                <!--Envío de ID venta a PHP via JS--><span id='idVentaPesaje'></span>
+                <!--Envío de NOMBRE DEL PRODUCTO a PHP via JS--><label id='id_prodPesaje' style='display:  none'></label></h5>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+            </div>
+            <div class='modal-body' align='center' id='modificarCantidad'>
+              <table>
+                <tr>
+                  <td>Ingrese el pesaje: </td>
+                  <td><input type='number' id='cantModPesaje' class='form form-control' ></td>
+                  <td>KGs</td>
+                </tr>
+              </table>
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+              <button class='btn btn-success' id='btnActCantidadPesaje' data-dismiss='modal'>Actualizar</button>
             </div>
           </div>
         </div>
@@ -244,84 +217,6 @@
             <div class='modal-footer'>
               <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
               <button class='btn btn-success' id='btnImprCtaGral' data-dismiss='modal' disabled='true'>Imprimir cuenta</button>
-            </div>
-          </div>
-        </div>
-      </div>";
-  }
-  function modalImprimirCtaIndividual()
-  {
-    return "<!--modal Imprimir cuenta individual-->
-      <div class='modal fade' id='imprCtaInd' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
-        <div class='modal-dialog' role='document' style='max-width: 900px!important;' role='document'>
-          <div class='modal-content'>
-            <div class='modal-header'>
-              <h5 class='modal-title' id='tipoVenta'>Pagar cuenta individual</h5>
-              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-              </button>
-            </div>
-            <div class='modal-body' align='center'>
-              <table id='tblPagoInd' class='table'>
-                <th>Sel</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Valor neto</th>
-                <th>Propina</th>
-                <th colspan=2>Total</th>
-                <tbody id='ctaInd' class='table-hover'>
-                  <tr>
-                    <td>
-                      Cargando...
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div>
-                <table class='table'>
-                  <tr>
-                    <td>
-                      <strong>Método de pago</strong>
-                    </td> 
-                    <td>
-                      <select id='metodoPagoInd' class='form-control' onChange='activarBotonCuentaInd(this)'>
-                        <option>Cargando...</option>
-                      </select>
-                    </td>
-                    <td>
-                      <input type=button class='btn btn-success' id='btnPagoInd' disabled´='true' value='Pagar cuenta individual'/>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-            <div class='modal-footer'>
-              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-              <button class='btn btn-success' id='btnImprimirCtaInd' data-dismiss='modal' disabled='true'>Imprimir cuenta</button>
-            </div>
-          </div>
-        </div>
-      </div>";
-  }
-
-  function modalUnificarSeparar()
-  {
-    return 
-    "<!--modal Unificar separar mesas-->
-      <div class='modal fade' id='modalUnifSepararMesas' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
-        <div class='modal-dialog' role='document' style='max-width: 900px!important;' role='document'>
-          <div class='modal-content'>
-            <div class='modal-header'>
-              <h5 class='modal-title' id='tipoVenta'>Unificar/separar mesas</h5>
-              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-              </button>
-            </div>
-            <div class='modal-body' align='center'>
-              <td><button id='btnUnificarMesa' class='btn btn-success' style='width: 100px;'>Unificar</button></td>
-              <td><button id='btnSepararMesa' class='btn btn-success' style='width: 100px;'>Separar</button></td>
-            </div>
-            <div class='modal-footer'>
             </div>
           </div>
         </div>

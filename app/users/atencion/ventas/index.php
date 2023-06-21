@@ -56,13 +56,8 @@
 
             echo modalSolicitarAutorizacion();
             echo modalAnular();
-            echo modalCambiarMesa();
-            echo modalUnificarMesa();
-            echo modalSepararMesa();
             echo modalCambiarCantidad();
-            echo modalImprimirCtaGral();
-            echo modalImprimirCtaIndividual(); 
-            echo modalUnificarSeparar();   
+            echo modalCambiarCantidadPesaje();
         ?>
         <!-- CONTENT -->
         <div class="wrap-fluid" id="paper-bg">
