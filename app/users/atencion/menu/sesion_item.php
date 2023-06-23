@@ -1,8 +1,8 @@
 <?php
 
-    echo "<div class='row'>
-        
-
+    echo 
+    
+    "<div>    
     <div class='col-lg-12'>
         <ul class='nav navbar-nav navbar-right'>
             <li>

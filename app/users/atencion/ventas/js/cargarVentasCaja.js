@@ -66,35 +66,16 @@ function cargarVentasCaja()
                     <tr>`;
         });
         let subtotal = 0;
-        let propina = 0;
+        let subtotal_iva = 0;
+        let iva = 0;
         let total= 0;
-        let template_2 = '';
         tasks.forEach(v=>{
           subtotal = parseFloat(subtotal)+parseFloat(v.valor);
-          template_2=`<td colspan="9" align="right">
-                      <strong>SUB TOTAL $</strong>
-                    </td>
-                    <td>
-                      <p id="subtotal">${subtotal}</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="9" align="right">
-                      <strong>PROPINA $</strong>
-                    </td>
-                    <td>
-                      <p id="propina">${propina}</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="9" align="right">
-                      <strong>TOTAL $</strong>
-                    </td>
-                    <td>
-                      <p id="total">${total}</p>
-                    </td>
-                  </tr>`;
+          iva = parseFloat(subtotal)+parseFloat(v.valor);
         })
+        subtotal_iva = Math.round(subtotal*0.81);
+        iva = Math.round(subtotal*0.19);
+        total = parseInt(subtotal_iva)+parseInt(iva);
         if(template_1=='')
         {
           $("#ventas").html("<tr><td>Sin ventas</td></tr>");
@@ -109,7 +90,7 @@ function cargarVentasCaja()
         }
         else
         {
-          $("#ventas").html(template_1+template_2);
+          $("#ventas").html(template_1);
           //activar botones
 
           $('#ctaCompleta').attr('disabled', true);
@@ -121,6 +102,12 @@ function cargarVentasCaja()
           $('#imprCtaIndividual').attr('disabled', false);
           $('#imprModalCuentaGeneral').attr('disabled', false);
           $('#btnAnular').attr('disabled', false);
+
+          //números en dinero
+          $("#subtotal").html(subtotal_iva);
+          $("#iva").html(iva);
+          $("#totalVenta").html(total);
+          
         }
       }
     }).fail( function(e) {
