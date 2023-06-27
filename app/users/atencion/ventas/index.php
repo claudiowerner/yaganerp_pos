@@ -80,8 +80,8 @@
                                                         <td>
                                                             <label name="lblProd">Producto</label>
                                                         </td>
-                                                        <td align="left" width="450px">
-                                                            <select name="slctProd" id="prod" class="form-control" style="width: 400px" onChange="productoValido()">
+                                                        <td align="left" width="200px">
+                                                            <select name="slctProd" id="prod" class="form form-control" style="width: responsive" onChange="productoValido()">
                                                             </select>
                                                         </td>
                                                         <td align="left" width="40px">
@@ -98,6 +98,12 @@
                                                         </td>
                                                         <td>
                                                             <button id="btnAgregarVenta" class="btn btn-success agregar" disabled=true>Agregar</button>
+                                                        </td>
+                                                        <td align="left" width="40px">
+                                                            <label name="lblCantidad">Cód barra</label>
+                                                        </td>
+                                                        <td align="left" width="">
+                                                            <input type="text" name="cod_barra" id="txtCodBarra" class="form form-control" placeholder="Haga click acá y escanée el código de barra">
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -266,6 +272,8 @@
     <script src="js/comprobarCantidad.js"></script>
     <script src="js/ventas.js"></script>
     <script src="js/scroll.js"></script>
+    <script src="js/pistolaCodigoBarra.js"></script>
+    
     
 </body>
 

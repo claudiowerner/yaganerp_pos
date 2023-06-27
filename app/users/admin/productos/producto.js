@@ -326,7 +326,7 @@ $("#formRegistroProducto").submit(function(e)
         {
           $.ajax(
             {
-              url:"crear_producto_exe.php?nomProd="+np+"&cat="+lc+"&can="+can+"&vn="+vn+"&vv="+vv+"&cod_barra="+cb+"&rp="+rp+"&unidad="+unidad,
+              url:"crear_producto_exe.php?nomProd="+np+"&cat="+lc+"&can="+can+"&vn="+vn+"&vv="+vv+"&cod_barra="+cb+"&rp="+rp+"&unidad="+unidad+"&pesaje="+rp,
               type: "POST",
               success: function(e)
               {

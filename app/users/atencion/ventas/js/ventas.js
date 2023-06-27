@@ -38,12 +38,12 @@ function productoValido()
   }
 }
 
+
 $(".agregar").on('click', function(e)
 {
   let id_venta = $("#id_venta").text();
   let idProd = $("#prod").val();
   let cantProd = $("#cantProd").text();
-  let obs = $("#obs").val();
   let idCaja = $("#nCaja").text();
   let nomCaja = $("#nomCaja").text();
   //capturar hora

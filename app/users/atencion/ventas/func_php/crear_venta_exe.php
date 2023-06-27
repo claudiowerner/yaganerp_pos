@@ -43,7 +43,12 @@
 		//obtener fecha
 		$hoy = getdate();
 		$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hora;
-		    
+
+
+		//Actualizar estado mesa de desocupada a ocupada
+		$sql = "UPDATE cajas SET estado = 'A' WHERE id_cl = '$id_cl' AND id = '$idCaja'";
+		$resultado = mysqli_query($conexion, $sql);
+
 		//registro tabla ventas
 		$sql = 
 		"INSERT INTO ventas VALUES 

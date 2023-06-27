@@ -107,11 +107,9 @@
 
   $(document).on('click', '.btn-danger', function()
   {
-    swal({
-      title:"Aviso",
-      text:"Esta caja ya está abierta. Intente con otra.",
-      icon:"warning"
-    })
+    id = $(this).attr('nroCaja');
+    nomCaja = $(this).attr("nomCaja");
+    location.href = "ventas/index.php?id="+id+"&nomCaja="+nomCaja;
   });
 
 

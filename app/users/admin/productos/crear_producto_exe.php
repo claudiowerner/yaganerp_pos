@@ -28,7 +28,12 @@
     $vn = $_GET['vn'];
     $vv = $_GET['vv'];
     $rp = $_GET['rp'];
-    $unidad = $_GET['unidad'];
+    $unidad = 1;
+
+	if($rp=="S")
+	{
+		$unidad = $_GET['unidad'];
+	}
 
     //obtener fecha
 	$hoy = getdate();

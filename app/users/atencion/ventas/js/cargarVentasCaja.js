@@ -111,12 +111,10 @@ function cargarVentasCaja()
         }
       }
     }).fail( function(e) {
-      console.log( 'Error productos!!'+e.responseText );
+      console.log( 'Error productos!!'+e);
     }).done( function() {
       console.log( 'done productos' );
-    }).always( function() {
-      console.log( 'Always productos' );
-    });
+    })
 }
 
 
