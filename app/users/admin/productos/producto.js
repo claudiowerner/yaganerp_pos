@@ -21,14 +21,43 @@ $("#swPesaje").on("click", function(e)
   {
     rp = "S";
     html = "Valor neto por KG.";
+    $("#pesaje").show();
+    $("#codBarra").attr("required", false);
+    $("#codBarra").attr("placeholder", "Campo no necesario");
   }
   else
   {
     rp = "N";
     html = "Valor neto";
+    $("#pesaje").hide();
+    $("#codBarra").attr("required", true);
+    $("#codBarra").attr("placeholder", "");
   }
   $("#lblValorNeto").html(html);
 })
+
+rpEditar = "N"; //almacena el estado de que si el producto a editar requiere pesaje o no
+$("#swPesajeEditar").on("click", function(e)
+{
+  enabled = true;
+  if(e.target.checked)
+  {
+    rpEditar = "S";
+    enabled = true;
+    $("#pesajeEditar").show();
+    $("#codBarraEditar").attr("required", true);
+    $("#codBarraEditar").attr("placeholder", "");
+  }
+  else
+  {
+    rpEditar = "N";
+    enabled = false;
+    $("#pesajeEditar").hide();
+    $("#codBarraEditar").attr("required", false);
+    $("#codBarraEditar").attr("placeholder", "");
+  }
+})
+
 var table;
 
 //cargar estado de trabajo con o sin stock (activado o desactivado)
@@ -53,6 +82,7 @@ $.ajax({
 })
 
 cargarCategoria();
+cargarUnidad();
 
     //Datatable
     var idCat = 0;
@@ -85,7 +115,7 @@ cargarCategoria();
           {"data":"creado_por"},
           {"data":"fecha_reg"},
           {
-              "defaultContent": '<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" id="btnEditar"><img src="../img/edit.png" width="15"></button>'
+              "defaultContent": '<button type="submit" id="btnEditar" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" ><img src="../img/edit.png" width="15"></button>'
           }
         ],
 
@@ -130,11 +160,63 @@ function cargarCategoria()
   });
 }
 
+//cargar el tipo de unidad de medida para la opción de agregar/editar producto
+function cargarUnidad()
+{
+  
+  $.ajax(
+    {
+      url:"read_unidades_medida.php",
+      type: "POST",
+      success: function(e)
+      {
+        json = JSON.parse(e);
+        template = "<option>---SELECCIONE---</option>";
+        json.forEach(j=>{
+          template += `<option value='${j.id}'>${j.nombre_medida}</option>`;
+        })
+        $("#slctUnidad").html(template);
+        $("#slctUnidadEditar").html(template);
+      }
+    }
+  )
+}
+
 $("#producto").on('click', 'tr', function(e)
 {
+  console.log(e)
   e.preventDefault();
   var cat = $('#producto').DataTable();
   var datos = cat.row(this).data();
+  let id = datos.id;
+  
+
+  //ajax que consulta si el prducto seleccionado lleva pesaje o no y qué tipo de medida usa.
+  $.ajax(
+    {
+      url:"read_unidad_medida_prod_especifico.php",
+      data: {"id_prod": id},
+      type: "POST",
+      success: function(e)
+      {
+        json = JSON.parse(e);
+        json.forEach(e=>
+          {
+            if(e.pesaje=="N")
+            {
+              $("#swPesajeEditar").attr("checked", false)
+            }
+            else
+            {
+              $("#swPesajeEditar").attr("checked", true)
+            }
+            $("#slctUnidadEditar").val(e.id);
+          })
+      }
+    }
+  )
+
+
   $.ajax(
   {
     url:"read_categorias_prod_especifico.php",
@@ -163,11 +245,12 @@ $("#producto").on('click', 'tr', function(e)
     console.log("fail ajax producto: "+e.responseText);
   })
 
+  
   $.ajax(
   {
     url:"read_productos_especifico.php",
     type: "POST",
-    data: {"id_prod":datos.id},
+    data: {"id_prod":id},
     success: function(response)
     {
       let respuesta = JSON.parse(response)
@@ -199,14 +282,6 @@ $("#producto").on('click', 'tr', function(e)
   
   $("#tituloModalEditar").html(datos.id);
 
-  //verificar si se seleccionó el botón desactivar o no
-  let btn_desact = false;
-  //si se presiona el botón btnDesact, el estado de btn_desact cambia a true
-  $("#btnDesact").on('click', function(e)
-  {
-    btn_desact=true;
-  });
-
 });
 $("#formRegistroProducto").submit(function(e)
 {
@@ -217,6 +292,7 @@ $("#formRegistroProducto").submit(function(e)
   var vn = $("#valorNeto").val();
   var vv = $("#valorVenta").val();
   var cb = $("#codBarra").val();
+  var unidad = $("#slctUnidad").val();
 
   if(lc=="O"||cb=="O")
   {
@@ -250,7 +326,7 @@ $("#formRegistroProducto").submit(function(e)
         {
           $.ajax(
             {
-              url:"crear_producto_exe.php?nomProd="+np+"&cat="+lc+"&can="+can+"&vn="+vn+"&vv="+vv+"&cod_barra="+cb+"&rp="+rp,
+              url:"crear_producto_exe.php?nomProd="+np+"&cat="+lc+"&can="+can+"&vn="+vn+"&vv="+vv+"&cod_barra="+cb+"&rp="+rp+"&unidad="+unidad,
               type: "POST",
               success: function(e)
               {
@@ -302,6 +378,9 @@ $("#formRegistroProducto").submit(function(e)
   }
 });
 
+//editar producto
+
+
 $("#formEditarProducto").submit(function(e)
 {
   e.preventDefault();
@@ -312,12 +391,14 @@ $("#formEditarProducto").submit(function(e)
   var can = $("#cantidadEditar").val();
   var vn = $("#valorNetoEditar").val();
   var vv = $("#valorVentaEditar").val();
+  var unid = $("#slctUnidadEditar").val();
+  var pesaje = "";
 
   //hora
   let hora = getHora();
   $.ajax(
     {
-      url:"editar_producto_exe.php?codigo_barra="+cod_barra+"&id="+id+"&nomProd="+np+"&cat="+lc+"&can="+can+"&vv="+vv+"&vn="+vn+"&estado="+ep+"&hora="+hora,
+      url:"editar_producto_exe.php?codigo_barra="+cod_barra+"&id="+id+"&nomProd="+np+"&cat="+lc+"&can="+can+"&vv="+vv+"&vn="+vn+"&estado="+ep+"&hora="+hora+"&medida="+unid+"&pesaje="+rpEditar,
       type: "GET",
       success: function(e)
       {

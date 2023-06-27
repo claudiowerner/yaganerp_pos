@@ -53,6 +53,20 @@
     left: 23px; 
 }
 
+#swPesajeEditar
+{
+    display: none;
+}
+#swPesajeEditar:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swPesajeEditar:checked~ .switch:after
+{
+    left: 23px; 
+}
+
 
 
 #swEditarProducto

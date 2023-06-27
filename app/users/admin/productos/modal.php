@@ -44,7 +44,7 @@
                       <select class='form-control' id='listCat' required>
                       </select>
                       <strong id='errCategoria' style='color:red'></strong>
-                      </td>
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -54,6 +54,10 @@
                       <input type='number' name='cantidad' id='cantidad' class='form-control' required>
                     </td>
                   </tr>
+                  <tr id='pesaje' style='display: none'>
+                    <td><label id='lblUnidad'>Unidad:</label></td>
+                    <td><select id='slctUnidad' class='form form-control'></select></td>
+                  </tr>
                   <tr>
                     <td><label name='cat' id='lblValorNeto'>Valor neto</label></td>
                     <td>
@@ -61,9 +65,11 @@
                     </td>
                   </tr>
                   <tr>
-                    <td><label name='cat'>Valor venta</label></td>
                     <td>
-                      <input type='number' name='cantidad' id='valorVenta' class='form-control' required></td>
+                      <label name='cat'>Valor venta</label>
+                    </td>
+                    <td>
+                      <input type='number' name='cantidad' id='valorVenta' class='form-control' required>
                     </td>
                   </tr>
                 </table>
@@ -96,6 +102,19 @@
               <div class='modal-body'>
                 <table id='productos2' class='table'>
                   <tr>
+                    <td margin=auto>
+                      <div class=button>
+                        <label name='swPesajeEditar'>¿Requiere pesaje?</label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class=boton>                    
+                        <input type='checkbox' id='swPesajeEditar'/>
+                        <label for='swPesajeEditar' class='switch'></label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
                     <td><label name='nombreCat'>Código de barra</label></td>
                     <td>
                       <input type='text' id='codBarraEditar' name='nomProdEditar' class='form-control' required></td>
@@ -117,6 +136,10 @@
                     <td>
                       <input type='number' name='cantidad' id='cantidadEditar' class='form-control' required>
                     </td>
+                  </tr>
+                  <tr id='pesajeEditar'>
+                    <td><label id='lblUnidad'>Unidad</label></td>
+                    <td><select id='slctUnidadEditar' class='form form-control'></select></td>
                   </tr>
                   <tr>
                     <td><label name='cat'>Valor neto</label></td>

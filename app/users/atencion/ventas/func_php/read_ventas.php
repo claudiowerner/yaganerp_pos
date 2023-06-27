@@ -23,7 +23,7 @@
     "SELECT c.correlativo AS corr, 
     v.id, v.id_caja, 
     u.nombre, p.id_prod, p.nombre_prod, v.id_venta,
-    cat.nombre_cat, p.pesaje,
+    cat.nombre_cat, p.pesaje, um.nombre_medida,
     SUM(v.cantidad) AS cantidad, 
     SUM(v.valor) AS valor, 
     v.estado, v.fecha
@@ -31,6 +31,7 @@
     JOIN cajas caj ON caj.id = v.id_caja
     JOIN usuarios u on u.id = v.usuario
     JOIN productos p on p.id_prod=v.producto 
+    JOIN unidades_medida um ON p.unidad_medida = um.id
     JOIN categorias cat ON cat.id = p.categoria
     JOIN correlativo c on c.correlativo = v.id_venta 
     WHERE v.id_cl = '$id_cl' 
@@ -63,6 +64,7 @@
         'estado' => $row['estado'],
         'fecha' => $row['fecha'],
         'pesaje' => $row['pesaje'],
+        'nombre_medida' => $row['nombre_medida'],
         'corr' => $row['corr']
       );
     };

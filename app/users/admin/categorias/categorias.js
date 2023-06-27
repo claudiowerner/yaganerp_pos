@@ -141,7 +141,7 @@ $("#btnGuardarCambios").on('click', function(resp)
   
   $.ajax(
         {
-            url:"func_phpeditar_categoria_exe.php",
+            url:"editar_categoria_exe.php",
     type: "POST",
     data: {"nomCat":nc, "estadoCat":ec, "id":id, "hora":hora},
     success: function(e)

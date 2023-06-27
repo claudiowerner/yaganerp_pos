@@ -28,13 +28,14 @@
     $vn = $_GET['vn'];
     $vv = $_GET['vv'];
     $rp = $_GET['rp'];
+    $unidad = $_GET['unidad'];
 
     //obtener fecha
 	$hoy = getdate();
 	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
 	$sql = 
 	"INSERT INTO productos 
-	VALUES (null, '$id_cl', '$cod_barra', '$nom', '$cat', '$can', '$rp', '$vn', '$vv', 'S', '$id_us', '$fecha');
+	VALUES (null, '$id_cl', '$cod_barra', '$nom', '$cat', '$can', '$rp', '$unidad', '$vn', '$vv', 'S', '$id_us', '$fecha');
 	";
 	$resultado = mysqli_query($conexion, $sql);
 

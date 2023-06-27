@@ -41,8 +41,8 @@ function cargarVentasCaja()
                         <td id=nombre_cat>
                           ${v.nombre_cat}
                         </td>
-                        <td id=cantVenta>
-                          ${v.cantidad}
+                        <td>
+                          <a id=cantVenta>${v.cantidad}</a> ${v.nombre_medida}
                         </td>
                         <td id=valVenta>
                           $${v.valor}

@@ -34,21 +34,44 @@
     $estado = $_GET['estado'];
     $codigo_barra = $_GET['codigo_barra'];
     $hora = $_GET['hora'];
+	$medida = $_GET["medida"];
+	$pesaje = $_GET["pesaje"];
 
     //obtener fecha
 	$hoy = getdate();
 	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
-	$sql = 
-	"UPDATE productos SET 
-	codigo_barra = '$codigo_barra', 
-	nombre_prod = '$nom',
-	categoria = '$cat', 
-	cantidad = '$can', 
-	valor_neto = '$vn', 
-	valor_venta = '$vv',
-	estado = '$estado'
-	WHERE id_prod = '$id';
-	";
+	$sql = "";
+	if($pesaje === "N")
+	{
+		$sql = 
+		"UPDATE productos SET 
+		codigo_barra = '$codigo_barra', 
+		nombre_prod = '$nom',
+		categoria = '$cat', 
+		cantidad = '$can', 
+		valor_neto = '$vn', 
+		valor_venta = '$vv',
+		pesaje = '$pesaje',
+		estado = '$estado'
+		WHERE id_prod = '$id';
+		";
+	}
+	else
+	{
+		$sql = 
+		"UPDATE productos SET 
+		codigo_barra = '$codigo_barra', 
+		nombre_prod = '$nom',
+		categoria = '$cat', 
+		cantidad = '$can', 
+		valor_neto = '$vn', 
+		valor_venta = '$vv',
+		pesaje = '$pesaje',
+		unidad_medida = '$medida',
+		estado = '$estado'
+		WHERE id_prod = '$id';
+		";
+	}
 	$resultado = mysqli_query($conexion, $sql);
 
 	if($estado=='N')
