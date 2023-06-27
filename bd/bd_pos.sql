@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2023 a las 03:38:40
+-- Tiempo de generación: 28-06-2023 a las 00:07:03
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -35,6 +35,14 @@ CREATE TABLE `anula_categoria` (
   `fecha` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `anula_categoria`
+--
+
+INSERT INTO `anula_categoria` (`id`, `id_cl`, `id_categoria`, `anulado_por`, `fecha`) VALUES
+(1, 1, 1, 'Admin', '2023-06-26 14:26:35'),
+(2, 1, 1, 'Admin', '2023-06-26 14:26:39');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +56,15 @@ CREATE TABLE `anula_productos` (
   `anulado_por` varchar(45) NOT NULL,
   `fecha` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `anula_productos`
+--
+
+INSERT INTO `anula_productos` (`id`, `id_cl`, `id_producto`, `anulado_por`, `fecha`) VALUES
+(1, '1', 10, 'Admin', '2023-06-26 14:36:53'),
+(2, '1', 1, 'Admin', '2023-06-26 16:35:35'),
+(3, '1', 1, 'Admin', '2023-06-27 16:26:21');
 
 -- --------------------------------------------------------
 
@@ -119,7 +136,8 @@ CREATE TABLE `cajas` (
 INSERT INTO `cajas` (`id`, `id_cl`, `nom_caja`, `estado`, `creado_por`, `fecha_reg`) VALUES
 (1, '1', 'C01', 'S', '1', '2023-05-15'),
 (2, '1', 'C02', 'S', '1', '2023-05-15'),
-(3, '1', 'C03', 'S', '1', '2023-05-15');
+(3, '1', 'C03', 'S', '1', '2023-05-15'),
+(4, '1', 'C04', 'S', '1', '2023-05-26');
 
 -- --------------------------------------------------------
 
@@ -144,7 +162,9 @@ INSERT INTO `categorias` (`id`, `id_cl`, `nombre_cat`, `estado`, `creado_por`, `
 (1, '1', 'Galletas', 'S', 'Admin', '2023-06-15'),
 (2, '1', 'CD', 'S', 'Admin', '2023-06-15'),
 (3, '1', 'Vinilo', 'S', 'Admin', '2023-06-15'),
-(4, '1', 'Cassette', 'S', 'Admin', '2023-06-15');
+(4, '1', 'Cassette', 'S', 'Admin', '2023-06-15'),
+(5, '1', 'Pan', 'S', 'Admin', '2023-06-20'),
+(6, '1', 'Golosinas', 'S', 'Admin', '2023-06-26');
 
 -- --------------------------------------------------------
 
@@ -225,7 +245,13 @@ CREATE TABLE `correlativo` (
 --
 
 INSERT INTO `correlativo` (`id`, `correlativo`, `id_cl`, `caja`, `nom_caja`, `usuario`, `valor`, `boleta`, `forma_pago`, `id_cierre`, `estado`, `fecha`, `fecha_cierre`) VALUES
-(1, 1, '1', '1', 'C01', '1', '0', '1', 0, '1', 'A', '2023-06-20 20:15:59', '0000-00-00 00:00:00');
+(1, 1, '1', '1', 'C01', '1', '0', '1', 0, '1', 'A', '2023-06-20 20:15:59', '0000-00-00 00:00:00'),
+(2, 2, '1', '1', 'C01', '1', '0', '1', 0, '1', 'A', '2023-06-20 12:45:16', '0000-00-00 00:00:00'),
+(3, 3, '1', '1', 'C01', '1', '0', '1', 0, '1', 'A', '2023-06-20 13:35:52', '0000-00-00 00:00:00'),
+(4, 4, '1', '1', 'C01', '1', '0', '1', 0, '1', 'A', '2023-06-20 13:36:20', '0000-00-00 00:00:00'),
+(5, 5, '1', '1', 'C01', '1', '0', '1', 0, '1', 'N', '2023-06-20 13:36:42', '2023-06-23 21:00:18'),
+(6, 6, '1', '1', 'C01', '1', '0', '1', 0, '1', 'A', '2023-06-26 15:08:55', '0000-00-00 00:00:00'),
+(7, 7, '1', '1', 'C01', '1', '0', '1', 0, '1', 'A', '2023-06-28 18:05:11', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -263,6 +289,8 @@ CREATE TABLE `productos` (
   `nombre_prod` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `categoria` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `cantidad` int(5) NOT NULL,
+  `pesaje` varchar(5) NOT NULL,
+  `unidad_medida` int(5) DEFAULT NULL,
   `valor_neto` varchar(7) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `valor_venta` varchar(7) CHARACTER SET latin2 COLLATE latin2_general_ci NOT NULL,
   `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -274,15 +302,17 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `categoria`, `cantidad`, `valor_neto`, `valor_venta`, `estado`, `creado_por`, `fecha_reg`) VALUES
-(1, '1', '840705109369', 'Foo Fighters - Glasstonbury 2017 - pt2', '3', 10, '15000', '27000', 'S', '1', '2023-06-15'),
-(2, '1', '7804612579427', '31 Minutos - 31 canciones de amor - 2012', '2', 15, '3600', '8990', 'S', '1', '2023-06-15'),
-(3, '1', '2292547192', 'Luis Miguel - Soy Como Quiero Ser', '2', 10, '5000', '9990', 'S', '1', '2023-06-16'),
-(4, '1', '5099747618642', 'Los Tres - Fome', '4', 10, '20000', '35000', 'S', '1', '2023-06-16'),
-(5, '1', '5099747609640', 'Los Tres - Unplugged', '4', 20, '20000', '35000', 'S', '1', '2023-06-16'),
-(6, '1', '886971408027', 'Soda Stereo - Último Concierto A', '2', 10, '10000', '14990', 'S', '1', '2023-06-17'),
-(7, '1', '886971408126', 'Soda Stereo - Último Concierto B', '2', 20, '10000', '14990', 'S', '1', '2023-06-17'),
-(8, '1', '7804612579434', '31 Minutos - Ratoncitos - 2012', '2', 20, '5000', '8990', 'S', '1', '2023-06-17');
+INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `categoria`, `cantidad`, `pesaje`, `unidad_medida`, `valor_neto`, `valor_venta`, `estado`, `creado_por`, `fecha_reg`) VALUES
+(1, '1', '840705109369', 'Foo Fighters - Glasstonbury 2017 - pt2', '3', 10, 'N', 1, '15000', '27000', 'S', '1', '2023-06-15'),
+(2, '1', '7804612579427', '31 Minutos - 31 canciones de amor - 2012', '2', 15, 'N', 1, '3600', '8990', 'S', '1', '2023-06-15'),
+(3, '1', '2292547192', 'Luis Miguel - Soy Como Quiero Ser', '2', 10, 'N', 1, '5000', '9990', 'S', '1', '2023-06-16'),
+(4, '1', '5099747618642', 'Los Tres - Fome', '4', 10, 'N', 1, '20000', '35000', 'S', '1', '2023-06-16'),
+(5, '1', '5099747609640', 'Los Tres - Unplugged', '4', 20, 'N', 1, '20000', '35000', 'S', '1', '2023-06-16'),
+(6, '1', '886971408027', 'Soda Stereo - Último Concierto A', '2', 10, 'N', 1, '10000', '14990', 'S', '1', '2023-06-17'),
+(7, '1', '886971408126', 'Soda Stereo - Último Concierto B', '2', 20, 'N', 1, '10000', '14990', 'S', '1', '2023-06-17'),
+(8, '1', '7804612579434', '31 Minutos - Ratoncitos - 2012', '2', 20, 'N', 1, '5000', '8990', 'S', '1', '2023-06-17'),
+(9, '1', '00000000000000', 'Pan', '5', 20, 'S', 2, '3500', '3500', 'S', '1', '2023-06-20'),
+(14, '1', '7509848221156', 'Silvio Rodriguez - Silvio', '2', 10, 'N', 0, '1000', '15000', 'S', '1', '2023-06-28');
 
 -- --------------------------------------------------------
 
@@ -303,6 +333,28 @@ CREATE TABLE `stock_minimo_producto` (
 
 INSERT INTO `stock_minimo_producto` (`id`, `id_cl`, `estado`, `stock_minimo`) VALUES
 (2, 1, 'S', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `unidades_medida`
+--
+
+CREATE TABLE `unidades_medida` (
+  `id` int(5) NOT NULL,
+  `nombre_medida` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `unidades_medida`
+--
+
+INSERT INTO `unidades_medida` (`id`, `nombre_medida`) VALUES
+(1, 'Unid'),
+(2, 'KG'),
+(3, 'mms'),
+(4, 'cms'),
+(5, 'mts');
 
 -- --------------------------------------------------------
 
@@ -356,14 +408,28 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id`, `id_venta`, `id_cl`, `id_caja`, `nom_caja`, `usuario`, `producto`, `cantidad`, `valor`, `estado`, `fecha`, `fecha_pago`, `des`) VALUES
-(1, 1, '1', '1', 'C01', 1, 2, '1', '8990', 'N', '2023-06-20 20:28:47', '0000-00-00 00:00:00', '0'),
+(1, 1, '1', '1', 'C01', 1, 2, '2.5', '8750', 'N', '2023-06-20 20:28:47', '0000-00-00 00:00:00', '0'),
 (2, 1, '1', '1', 'C01', 1, 1, '1', '27000', 'A', '2023-06-20 20:29:26', '0000-00-00 00:00:00', '0'),
 (3, 1, '1', '1', 'C01', 1, 1, '1', '27000', 'A', '2023-06-20 20:29:36', '0000-00-00 00:00:00', '0'),
 (4, 1, '1', '1', 'C01', 1, 2, '1', '8990', 'A', '2023-06-20 20:32:58', '0000-00-00 00:00:00', '0'),
 (5, 1, '1', '1', 'C01', 1, 1, '1', '27000', 'A', '2023-06-20 20:34:34', '0000-00-00 00:00:00', '0'),
 (6, 1, '1', '1', 'C01', 1, 5, '1', '35000', 'N', '2023-06-20 20:43:03', '0000-00-00 00:00:00', '0'),
 (7, 1, '1', '1', 'C01', 1, 6, '1', '14990', 'A', '2023-06-20 21:14:26', '0000-00-00 00:00:00', '0'),
-(8, 1, '1', '1', 'C01', 1, 2, '1', '8990', 'A', '2023-06-20 21:15:15', '0000-00-00 00:00:00', '0');
+(8, 1, '1', '1', 'C01', 1, 2, '1', '8990', 'A', '2023-06-20 21:15:15', '0000-00-00 00:00:00', '0'),
+(9, 2, '1', '1', 'C01', 1, 1, '1', '27000', 'A', '2023-06-20 12:45:44', '0000-00-00 00:00:00', '0'),
+(10, 2, '1', '1', 'C01', 1, 4, '1', '35000', 'N', '2023-06-20 12:56:36', '0000-00-00 00:00:00', '0'),
+(11, 2, '1', '1', 'C01', 1, 4, '1', '35000', 'A', '2023-06-20 13:03:19', '0000-00-00 00:00:00', '0'),
+(12, 5, '1', '1', 'C01', 1, 9, '2', '7000', 'N', '2023-06-20 13:36:49', '2023-06-23 21:00:18', '0'),
+(13, 5, '1', '1', 'C01', 1, 1, '1', '27000', 'N', '2023-06-20 14:02:51', '2023-06-23 21:00:18', '0'),
+(14, 5, '1', '1', 'C01', 1, 4, '1', '35000', 'N', '2023-06-21 14:54:33', '2023-06-23 21:00:18', '0'),
+(16, 5, '1', '1', 'C01', 1, 2, '1', '8990', 'N', '2023-06-22 17:46:16', '2023-06-23 21:00:18', '0'),
+(15, 5, '1', '1', 'C01', 1, 1, '1', '27000', 'N', '2023-06-22 19:38:10', '2023-06-23 21:00:18', '0'),
+(17, 5, '1', '1', 'C01', 1, 9, '3', '10500', 'N', '2023-06-22 17:53:16', '2023-06-23 21:00:18', '0'),
+(18, 5, '1', '1', 'C01', 1, 1, '1', '27000', 'N', '2023-06-23 20:22:56', '2023-06-23 21:00:18', '0'),
+(19, 6, '1', '1', 'C01', 1, 1, '1', '27000', 'A', '2023-06-26 15:10:17', '0000-00-00 00:00:00', '0'),
+(20, 6, '1', '1', 'C01', 1, 9, '2.5', '8750', 'A', '2023-06-26 15:12:24', '0000-00-00 00:00:00', '0'),
+(21, 7, '1', '1', 'C01', 1, 14, '1', '15000', 'A', '2023-06-28 18:05:34', '0000-00-00 00:00:00', '0'),
+(22, 7, '1', '1', 'C01', 1, 14, '1', '15000', 'A', '2023-06-28 18:05:40', '0000-00-00 00:00:00', '0');
 
 --
 -- Índices para tablas volcadas
@@ -448,6 +514,12 @@ ALTER TABLE `stock_minimo_producto`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `unidades_medida`
+--
+ALTER TABLE `unidades_medida`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -467,13 +539,13 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `anula_categoria`
 --
 ALTER TABLE `anula_categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `anula_productos`
 --
 ALTER TABLE `anula_productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `anula_turnos`
@@ -497,13 +569,13 @@ ALTER TABLE `autorizacion`
 -- AUTO_INCREMENT de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `cierre_caja`
@@ -521,7 +593,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `correlativo`
 --
 ALTER TABLE `correlativo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `metodo_pago`
@@ -533,13 +605,19 @@ ALTER TABLE `metodo_pago`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_prod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_prod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `stock_minimo_producto`
 --
 ALTER TABLE `stock_minimo_producto`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `unidades_medida`
+--
+ALTER TABLE `unidades_medida`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -551,7 +629,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
