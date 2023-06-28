@@ -60,6 +60,7 @@
                         echo modalAnular();
                         echo modalCambiarCantidad();
                         echo modalCambiarCantidadPesaje();
+                        echo modalMetodoPago();
                     ?>
                 </div>
                 <!-- CONTENT -->
@@ -160,31 +161,7 @@
                                                         <div class="card-header">Imprimir/pagar cuentas</div>
                                                             <div class="card-body">
                                                                 <div class="row" id="">
-                                                                    <table width="100%">
-                                                                        <tr>
-                                                                            <td><button class="btn btn-success" id="imprCuentaGeneral" style="width: 100px;" disabled="true" >General</button></td>
-                                                                            <td><button class="btn btn-success" id="imprCtaIndividual" style="width: 100px;" disabled="true">Individual</button>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="plan">
-                                                <div class="col-md-12">
-                                                    <div class="card card-warning">
-                                                        <div class="card-header">Anular</div>
-                                                        <div class="card-body">
-                                                            <div class="row" id="div_anular">
-                                                                <table width="100%">
-                                                                    <tr>
-                                                                        <td><button class="btn btn-success" id="btnCerrar" style="width: 100px;">Cerrar venta</button></td>
-                                                                        <td><button class="btn btn-warning" id="btnAnular" disabled="true" style="width: 100px;">Anular</button></td>
-                                                                    </tr>
+                                                                    
                                                                 </table>
                                                             </div>
                                                         </div>
@@ -227,6 +204,12 @@
                                                         <td>
                                                             <p><strong>$</strong><strong id="totalVenta">ESPERANDO...</strong></p>
                                                         </td>
+                                                    </tr>
+                                                </table>
+                                                <table width="100%">
+                                                    <tr width="100%">
+                                                        <td width="100%"><button id="imprimirBoleta" class="btn btn-success" id="btnPagar" disabled="true" >Boleta</button></td>
+                                                        <td width="100%"><button id="pagarVenta" class="btn btn-success" id="btnPagar" disabled="true" >Pagar</button></td>
                                                     </tr>
                                                 </table>
                                             </div>

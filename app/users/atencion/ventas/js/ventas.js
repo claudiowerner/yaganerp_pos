@@ -204,7 +204,12 @@ $("#btnAnularVenta").on('click', function(e)
   }
 })
 
-$("#btnPagoCtaGral").on('click', function(e)
+$("#pagarVenta").on("click", function(e)
+{
+  $("#modalMetodoPago").modal("show");
+})
+
+$("#btnConfirmarPaga").on('click', function(e)
 {
   swal({
     title: "¿Está seguro?",
@@ -225,182 +230,10 @@ $("#btnPagoCtaGral").on('click', function(e)
   });
 });
 
-$("#btnPagoInd").on('click', function(e)
-{
-  arr = JSON.stringify(descProdInd);
-  arrJson = JSON.parse(arr)
-  productos = "";
-  arrJson.forEach(j=>
-    {
-      productos += j.producto +" x"+j.cantidad+"\n";
-    }
-  )
-  
-  valorNeto = $("#valorIndividual").text();
-  propina = $("#propinaIndividual").text();
-  total = $("#totalIndividual").texttotal
-  
-  idCaja = $("#id_caja").text();
-
-  swal({
-    title: "¿Está seguro?",
-    text: "¿Desea realizar el pago de los siguientes productos?\n"+productos,
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  })
-  .then((pagar) => {
-    if (pagar)
-    {
-      formaPago = $("#metodoPagoInd").val();
-      $.ajax({
-        url:"func_php/pagar_venta_ind_exe.php?valor="+valorNeto+"&propina="+propina+"&forma_pago="+formaPago,
-        data:{"descProdInd":descProdInd, "idCaja":idCaja},
-        success: function(e)
-        {
-          cargarVentasCaja();
-          cargarVentaGeneral();
-          swal({
-            title: "Excelente",
-            text: e,
-            icon: "success",
-          });
-          ventaInd = 0;
-          descProdInd = [];
-        }
-      })
-      .fail(function(e)
-      {
-        swal({
-          title: "Error",
-          text: e,
-          icon: "error",
-        });
-      });
-      contadorVentas(id_venta);
-    } 
-    else 
-    {
-      swal("Operación cancelada");
-    }
-  });
-});
-
-
-$("#btnCerrar").on("click", function(e)
-{
-  let id = $("#id_venta").text();
-  let idMesa = $("#idMesa").text(); 
-  let fecha = getFechaBD();
-  let hora = getHora();
-
-  swal({
-    title: "¿Está seguro?",
-    text: "¿Desea cerrar esta venta?",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  })
-  .then((eliminarVenta) => {
-    if (eliminarVenta)
-    {
-      nomMesa = $("#nomMesa").text();
-      idUbic = $("#idUbic").text();
-      $.ajax(
-        {
-          url:"func_php/comprobar_venta_activa.php",
-          data:{"nMesa": nMesa, "nom_mesa":nomMesa},
-          type: "POST",
-          success: function (e)
-          {
-            /*Si e==1, quiere decir que si existen productos SIN PAGAR, por lo que no se permitirá cerrar la mesa
-            si existen ventas o productos sin pagar*/
-  
-            if(e==1)
-            {
-              swal({
-                title: "Error",
-                text: "¡Existen productos sin pagar!",
-                icon: "error",
-              });
-            }
-            else
-            {
-              //cierre de mesa
-              data = {
-                "idMesa":idMesa,
-                "id_venta":id,
-                "nomMesa":nomMesa,
-                "idUbic":idUbic,
-                "fecha":fecha,
-                "hora":hora
-              }
-
-              $.ajax({
-                url:"func_php/cerrar_mesa.php",
-                data: data,
-                type: "POST",
-                success: function(e)
-                {
-                  swal({
-                    title: "Excelente",
-                    text: e,
-                    icon: "success",
-                  });
-                }
-              })
-              location.href = "../";
-            }
-          }
-        }
-      )
-    }
-    else
-    {
-      swal("Operación cancelada");
-    }
-  });
-})
-
-
 var ventaInd = 0;
 
 //array para rebajar stock según venta individual
 let descProdInd = new Array();
-
-//acciones pago venta individual
-$(document).on('click', "#checkPagarVentaInd", function(e)
-{
-  var tr = e.target.closest('tr');
-
-  let idVentaInd = $(this).attr("venta");
-  let valor = $(this).attr("valor");
-  let propina = $(this).attr("propina");
-  let prod = "";
-  let cant = 0;
-  let totalVenta = $("#totalVentaInd").text();
-  let fecha = getFechaBD();
-  let hora = getHora();
-  let id_venta = $("#id_venta").text();//envío de correlativo;
-
-  if(e.target.checked)
-  {
-    prod = tr.cells[1].innerText;
-    cant = parseInt(tr.cells[2].innerText) + parseInt(cant);
-    descProdInd.push({"correlativo":id_venta,"valor":valor,"propina":propina,"idVentaInd":idVentaInd,"producto":prod,"cantidad":cant,"totalVenta":totalVenta,"fecha":fecha,"hora":hora});
-    ventaInd = parseInt(totalVenta)+parseInt(tr.cells[6].innerText);
-  }
-  else
-  {
-    ventaInd = ventaInd-parseInt(tr.cells[6].innerText);
-    //obtener el index del array donde se ubica el ID del objeto a eliminar
-
-    descProdInd = descProdInd.filter(pr => pr.idVentaInd != idVentaInd);
-    ventaInd = parseInt(totalVenta)-parseInt(tr.cells[6].innerText);
-  }
-  $("#totalVentaInd").html(ventaInd);
-});
-
 
 //acciones impresion venta individual
 let valorCuentaInd = 0;
@@ -450,17 +283,15 @@ function contadorVentas(id_venta)
 function confirmarPaga(boton)
 {
   let id = $("#id_venta").text();
-  let nMesa = $("#nMesa").text(); 
-  let subtotal = $("#subtotal").text();
-  let propina = $("#propinaCuentaGeneral").text();
-  let total = $("#total").text();
+  let nCaja = $("#nCaja").text(); 
+  let totalVenta = $("#totalVenta").text();
   let fecha = getFechaBD();
   let hora = getHora();
   let idCaja = $("#id_caja").text();
   let formaPago = $("#metodoPagoGral").val();
 
   $.ajax({
-    url: "func_php/pagar_venta_exe.php?nMesa="+nMesa+"&valor="+subtotal+"&propina="+propina+"&total="+total+"&producto="+descProd+"&fecha="+fecha+"&hora="+hora+"&idCaja="+idCaja+"&forma_pago="+formaPago+"&id_venta="+id,
+    url: "func_php/pagar_venta_exe.php?nCaja="+nCaja+"&totalVenta="+totalVenta+"&producto="+descProd+"&fecha="+fecha+"&hora="+hora+"&idCaja="+idCaja+"&forma_pago="+formaPago+"&id_venta="+id,
     data: {'producto': descProd},
     type: "GET",
     success: function(e)

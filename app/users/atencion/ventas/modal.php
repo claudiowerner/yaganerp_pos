@@ -169,10 +169,10 @@
       ";
   }
 
-  function modalImprimirCtaGral()
+  function modalMetodoPago()
   {
     return "<!--modal Imprimir cuenta General-->
-      <div class='modal fade' id='imprCtaGral' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+      <div class='modal fade' id='modalMetodoPago' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
         <div class='modal-dialog' role='document' style='max-width: 900px!important;' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
@@ -182,20 +182,6 @@
               </button>
             </div>
             <div class='modal-body' align='center'>
-              <table id='tblPagoGral' class='table'>
-                <tr>
-                  <th>Ítem</th>
-                  <th>Folio</th>
-                  <th>Ubicación</th>
-                  <th>Producto</th>
-                  <th>Cantidad</th>
-                  <th>Valor</th>
-                  <th>Sel</th>
-                  <th>Propina</th>
-                </tr>
-                <tbody id='bodyImprCtaGral'>
-                </tbody>
-              </table>
               <div>
                 <table class='table'>
                   <tr>
@@ -208,15 +194,11 @@
                       </select>
                     </td>
                     <td>
-                      <button class='btn btn-success' id='btnPagoCtaGral' disabled='true'>Pagar cuenta</button>
+                      <button class='btn btn-success' id='btnConfirmarPaga' disabled='true'>Pagar cuenta</button>
                     </td>
                   </tr>
                 </table>
               </div>
-            </div>
-            <div class='modal-footer'>
-              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-              <button class='btn btn-success' id='btnImprCtaGral' data-dismiss='modal' disabled='true'>Imprimir cuenta</button>
             </div>
           </div>
         </div>

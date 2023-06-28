@@ -23,11 +23,6 @@
 	$nombre = $_SESSION['user']["nombre"];
 	$id_cl = $_SESSION['user']["id_cl"];
 	$piso = 1;
-
-	$nMesa = $_GET['nMesa'];
-	$valor = $_GET['valor'];
-	$propina = $_GET['propina'];
-	$valorTotal = $valor+$propina;
 	
 	$producto = $_GET['producto'];
 	$fecha = $_GET['fecha'];
@@ -35,13 +30,13 @@
 	$forma_pago = $_GET['forma_pago'];
 	$idCaja = $_GET['idCaja'];
 	$id_venta = $_GET['id_venta'];
+	$valorTotal = $_GET["totalVenta"];
+	$nCaja = $_GET["nCaja"];
 
 
 	$sql = 
 	"UPDATE cierre_caja cc
-	SET valor_neto = cc.valor_neto + $valor,
-	propina = cc.propina + $propina,
-	valor_total = cc.valor_total + $valorTotal
+	SET valor_total = cc.valor_total + $valorTotal
 	WHERE cc.id_cl = '$id_cl'
 	AND cc.id = '$idCaja';";
 	$r3 = mysqli_query($conexion, $sql);
@@ -59,12 +54,11 @@
 	//actualizar tabla correlativo
 	$sql = 
 	"UPDATE correlativo 
-	SET valor = '$valor', 
-	propina = '$propina' , 
+	SET valor = '$valorTotal',
 	estado = 'C', 
 	boleta = '$boleta', 
 	fecha_cierre= '$fecha $hora' 
-	WHERE mesa = '$nMesa' 
+	WHERE caja = '$nCaja' 
 	AND estado = 'A';";
 	$r1 = mysqli_query($conexion, $sql);
 
@@ -74,7 +68,7 @@
 	SET estado = 'C', 
 	fecha_pago='$fecha $hora',
 	forma_pago = '$forma_pago'
-	WHERE mesa = '$nMesa' 
+	WHERE id_caja = '$nCaja' 
 	AND estado = 'A' 
 	AND id_cl = '$id_cl'
 	AND id_venta = '$id_venta'";

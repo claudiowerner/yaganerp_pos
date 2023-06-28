@@ -79,29 +79,16 @@ function cargarVentasCaja()
         if(template_1=='')
         {
           $("#ventas").html("<tr><td>Sin ventas</td></tr>");
-          $('#ctaCompleta').attr('disabled', true);
-          $('#ctaIndividual').attr('disabled', true);
-          $('#imprCtaInd').attr('disabled', true);
-          $('#btnPagoCtaCompleta').attr('disabled', true);
-          $('#btnPagoInd').attr('disabled', true);
-          $('#imprCtaIndividual').attr('disabled', true);
-          $('#imprModalCuentaGeneral').attr('disabled', true);
-          $('#btnAnular').attr('disabled', true);
+          $('#imprimirBoleta').attr('disabled', true);
+          $('#pagarVenta').attr('disabled', true);
         }
         else
         {
           $("#ventas").html(template_1);
           //activar botones
 
-          $('#ctaCompleta').attr('disabled', true);
-          $('#ctaIndividual').attr('disabled', true);
-          $('#imprCtaInd').attr('disabled', true);
-          $('#btnPagoCtaCompleta').attr('disabled', false);
-          $('#btnPagoInd').attr('disabled', false);
-          $('#imprCuentaGeneral').attr('disabled', false);
-          $('#imprCtaIndividual').attr('disabled', false);
-          $('#imprModalCuentaGeneral').attr('disabled', false);
-          $('#btnAnular').attr('disabled', false);
+          $('#imprimirBoleta').attr('disabled', false);
+          $('#pagarVenta').attr('disabled', false);
 
           //números en dinero
           $("#subtotal").html(subtotal_iva);
