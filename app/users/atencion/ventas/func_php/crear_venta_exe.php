@@ -64,6 +64,7 @@
 		'A', 
 		'$fecha', 
 		'0000-00-00 00:00:00', 
+		'0',
 		'0')";
 		$resultado = mysqli_query($conexion, $sql);
 		    

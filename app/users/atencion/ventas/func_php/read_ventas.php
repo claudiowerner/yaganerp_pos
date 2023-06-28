@@ -37,7 +37,7 @@
     WHERE v.id_cl = '$id_cl' 
     AND caj.id = '$nCaja' 
     AND c.correlativo = '$idVenta'
-    AND v.estado='A'
+    AND v.estado!='N'
     GROUP BY v.id ORDER BY v.id ASC" ;
     $resultado = $conexion->query($consulta);
     $json = array();
