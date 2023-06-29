@@ -23,20 +23,9 @@ $("#btnImprCtaGral").on("click", function()
   if(confirm("¿Desea imprimir la cuenta general?"))
   {
     //definicion de variables a enviar
-    nMesa = $("#nMesa").text();
-    idVenta = $("#id_venta").text();
-    fecha = getFechaBD();
-    hora = getHora();
-    formaPago = $("#metodoPagoGral").val();
-    neto = $("#valorNeto").text();
-    propina = $("#propinaCuentaGeneral").text();
-    folio = $("#id_venta").text();
-    idCaja = $("#id_caja").text();
+    
 
-    let piso = $("#piso").text();
-    let ubicacion = $("#ubicacion").text();
-
-    window.open ("cuentas/cta_general.php?propina1="+propina+
+    /*window.open ("cuentas/cta_general.php?propina1="+propina+
                     "&valorNeto="+valorNeto+
                     "&nMesa="+ nMesa+ 
                     "&idVenta="+ idVenta+
@@ -46,7 +35,7 @@ $("#btnImprCtaGral").on("click", function()
                     "&neto="+ neto+
                     "&propina="+ propina+
                     "&folio="+ folio+
-                    "&idCaja="+ idCaja, "_blank");
+                    "&idCaja="+ idCaja, "_blank");*/
 
 
   }

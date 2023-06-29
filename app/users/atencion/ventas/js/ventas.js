@@ -301,6 +301,29 @@ function confirmarPaga(boton)
         text: e,
         icon: "success",
       });
+
+      nCaja = $("#nCaja").text();
+      idVenta = $("#id_venta").text();
+      fecha = getFechaBD();
+      hora = getHora();
+      formaPago = $("#metodoPagoGral").val();
+      neto = $("#valorNeto").text();
+      folio = $("#id_venta").text();
+      idCaja = $("#id_caja").text();
+      
+      data = {
+        "nCaja": nCaja,
+        "idVenta": idVenta,
+        "fecha": fecha,
+        "hora": hora,
+        "formaPago": formaPago,
+        "neto": neto,
+        "folio": folio,
+        "idCaja": idCaja
+      }
+      window.open("ticket/ticket.php?numero="+idVenta+"&folio="+folio+"&nCaja="+nCaja)
+
+
       cargarVentasCaja();
       cargarVentaGeneral();
       /*si el número de botón seleccionado es 2 (btnPagarVenta), se mostrará el mensaje de venta exitosa y

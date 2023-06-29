@@ -129,7 +129,7 @@
                                                         </tr>
                                                     </table> 
                                                 </div>
-                                                <div class="card-body">
+                                                <div id="imprimirBoleta" class="card-body">
                                                     <div class="row" id="">
                                                         <table class="table table-hover" width="100%" id="tablaVentas">
                                                             <th>Atención</th>
