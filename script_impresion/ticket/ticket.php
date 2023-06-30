@@ -1,12 +1,16 @@
 <?php
 
+//cabeceras CORS
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+
+
 
 session_start();
-$id_us = $_SESSION['user']['id'];
-$nombre = $_SESSION['user']["nombre"];
-$id_cl = $_SESSION['user']["id_cl"];
-include("../../../../conexion.php");
-
+$id_cl = $_POST["id_usuario"];
+include("conexion.php");
 
 $conexion->set_charset("utf8");
 
@@ -24,7 +28,7 @@ function normaliza ($cadena){
     return utf8_encode($cadena);
 }
 
-require '../../../../vendor/mike42/escpos-php/autoload.php';
+require 'autoload.php';
 
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\EscposImage;
@@ -38,12 +42,11 @@ $direccion = "";
 $correo = "";
 $telefono = "";
 
-$consulta = "SELECT nom_fantasia, razon_social, direccion, correo, telefono FROM cliente WHERE id = $id_cl ";
+$consulta = 
+"SELECT nom_fantasia, razon_social, direccion, correo, telefono 
+FROM cliente WHERE id = $id_cl ";
 $resultado = $conexion->query($consulta);
 if ($resultado->num_rows > 0){
-
-
-  
   while ($row = $resultado->fetch_array()) 
   {
     $nom_fantasia = $row['nom_fantasia'];
@@ -70,6 +73,7 @@ $valor_total = 0;
 $result = mysqli_query($conexion,$sql) or die (mysql_error());
 if ($result->num_rows>0)
 {
+
   while ($row = mysqli_fetch_array($result)){
     $id_venta = $row['id_venta'];
     $productos[] =array(
@@ -81,13 +85,20 @@ if ($result->num_rows>0)
     $valor_total = $valor_total + $row['valor'];
   }
 }
-	/* --------------- */
+/* --------------- */
+
+
+
+
+
+
+
 
 // $date = date('l jS \of F Y h:i:s A');
 $date = $_POST["fecha"];
 
 // Enter the share name for your USB printer here
-$connector = new WindowsPrintConnector("smb://127.0.0.1/XP-80CII");
+$connector = new WindowsPrintConnector("smb://192.168.1.20/XP-80CII");
 //$connector = new NetworkPrintConnector('192.168.1.25');
 $printer = new Printer($connector);
 
@@ -178,8 +189,6 @@ $printer -> close();
 
 echo "Impresión correcta";
 /* A wrapper to do organise item names & prices into columns */
-
-
 
 
 class item

@@ -301,30 +301,45 @@ function confirmarPaga(boton)
         text: e,
         icon: "success",
       });
+      id_usuario = "";
+      //obtener ID de usuario/cliente
+      $.ajax(
+        {
+          url: "../../user.php",
+          type: "POST",
+          async:false,
+          success: function(e)
+          {
+            id_usuario = e;
+            alert(e)
+          }
+        }
+      )
 
       nCaja = $("#nCaja").text();
-      idVenta = $("#id_venta").text();
+      idVenta = parseInt($("#id_venta").text());
       fecha = getFechaBD();
       hora = getHora();
       formaPago = $("#metodoPagoGral").val();
       neto = $("#valorNeto").text();
       folio = $("#id_venta").text();
-      idCaja = $("#id_caja").text();
       fecha = getFechaBD()+" "+getHora();
+
+      alert(idVenta);
+
+
       datos = {
+        "id_usuario":id_usuario,
         "nCaja": nCaja,
         "idVenta": idVenta,
         "fecha": fecha,
-        "hora": hora,
         "formaPago": formaPago,
-        "neto": neto,
-        "folio": folio,
-        "idCaja": idCaja
+        "folio": folio
       }
       
       $.ajax(
         {
-          url: "ticket/ticket.php",
+          url: "https://192.168.1.20/impresion_yaganerp/vendor/ticket.php",
           data: datos,
           type: "POST",
           success: function(e)
