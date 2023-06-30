@@ -310,8 +310,8 @@ function confirmarPaga(boton)
       neto = $("#valorNeto").text();
       folio = $("#id_venta").text();
       idCaja = $("#id_caja").text();
-      
-      data = {
+      fecha = getFechaBD()+" "+getHora();
+      datos = {
         "nCaja": nCaja,
         "idVenta": idVenta,
         "fecha": fecha,
@@ -321,7 +321,24 @@ function confirmarPaga(boton)
         "folio": folio,
         "idCaja": idCaja
       }
-      window.open("ticket/ticket.php?numero="+idVenta+"&folio="+folio+"&nCaja="+nCaja)
+      
+      $.ajax(
+        {
+          url: "ticket/ticket.php",
+          data: datos,
+          type: "POST",
+          success: function(e)
+          {
+            swal(
+              {
+                title: "Excelente",
+                text: e,
+                icon: "success"
+              }
+            )
+          }
+        }
+      )
 
 
       cargarVentasCaja();

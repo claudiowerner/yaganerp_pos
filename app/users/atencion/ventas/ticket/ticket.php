@@ -10,10 +10,10 @@ include("../../../../conexion.php");
 
 $conexion->set_charset("utf8");
 
-$ids = $_GET['numero'];
-$folio = $_GET['folio'];
-$nCaja = $_GET['nCaja'];
-//$folio = $_GET['fol'];
+$idVenta = $_POST['idVenta'];
+$folio = $_POST['folio'];
+$nCaja = $_POST['nCaja'];
+//$folio = $_POST['fol'];
 
 function normaliza ($cadena){
     $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
@@ -77,16 +77,16 @@ if ($result->num_rows>0)
       "cantidad" => $row['cantidad'],
       "valor" => $row['valor']
     );
-    $valor_total = $row['valor'];
+    $valor_total = $valor_total + $row['valor'];
   }
 }
 	/* --------------- */
 
 // $date = date('l jS \of F Y h:i:s A');
-$date = date('d-m-Y H:i:s');
+$date = $_POST["fecha"];
 
 // Enter the share name for your USB printer here
-$connector = new WindowsPrintConnector("smb://127.0.0.1/XP-80C");
+$connector = new WindowsPrintConnector("smb://127.0.0.1/XP-80CII");
 //$connector = new NetworkPrintConnector('192.168.1.25');
 $printer = new Printer($connector);
 
@@ -99,7 +99,7 @@ $printer -> feed();
 $printer -> setJustification(Printer::JUSTIFY_CENTER);
 $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
 $printer -> setTextSize(1, 1);
-$printer -> text("SOLICITUD DE MATERIALES Y REPUESTOS N: ".$ids."\n");
+$printer -> text("Venta NRO: ".$idVenta."\n");
 $printer -> feed();
 $printer -> setFont(Printer::FONT_B);
 $printer -> setTextSize(1, 1);
@@ -119,7 +119,7 @@ $printer -> text("--------------- PRODUCTOS ------------------\n");
 
 for($i=0;$i<count($productos);$i++)
 {
-  $printer -> text($productos[$i]["nombre_prod"]. " ".$productos[$i]["cantidad"]." $".$productos[$i]["valor"]."<br>");
+  $printer -> text(substr($productos[$i]["nombre_prod"],0,20). "\t".$productos[$i]["cantidad"]."\t$".$productos[$i]["valor"]."\n");
 }
 
 //calculo subtotal
@@ -127,8 +127,12 @@ $iva = $valor_total*0.81;
 $subtotal = $valor_total*0.19;
 $printer -> feed();
 $printer -> setEmphasis(true);
-$printer -> text($subtotal);
-$printer -> text("IVA: ".$iva);
+
+$printer -> setJustification(Printer::JUSTIFY_RIGHT);
+$printer -> setEmphasis(true);
+
+$printer -> text("Subtotal: ".$subtotal."\n");
+$printer -> text("IVA: ".$iva."\n");
 $printer -> setEmphasis(false);
 $printer -> feed();
 /* Tax and total */
@@ -138,16 +142,6 @@ $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
 $printer -> text($valor_total);
 $printer -> selectPrintMode();
 /* Footer */
-
-/* OBSERVACIONES */
-$printer -> feed();
-$printer -> selectPrintMode(Printer::JUSTIFY_LEFT);
-$printer -> text("OBSERVACIONES:\n");
-
-$printer -> setJustification(Printer::JUSTIFY_LEFT);
-$printer -> setEmphasis(true);
-//$printer -> text(new item(''));
-$printer -> setEmphasis(false);
 
 $printer -> feed(2);
 /* FIN OBSERVACIONES */
@@ -170,81 +164,11 @@ $printer -> feed(2);
 
 /* Cut the receipt and open the cash drawer */
 $printer -> cut();
-
-$printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-//$printer -> bitImage($logo);
-
-$printer -> feed();
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-$printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-$printer -> setTextSize(1, 1);
-$printer -> text("COMPROBANTE SALIDA BODEGA N: ".$ids."\n");
-$printer -> feed();
-$printer -> setFont(Printer::FONT_B);
-$printer -> setTextSize(1, 1);
-//$printer -> text("DESTINO: ".$region." - ".$cliente." - ".$centro."\n");
-$printer -> feed();
-$printer -> selectPrintMode();
-//$printer -> text("ATENDIDO POR: ".strtoupper($nombre)."\n");
-
-//$printer -> feed();
-
-/* Title of receipt */
-$printer -> setEmphasis(true);
-$printer -> text("$date\n");
-$printer -> setEmphasis(false);
-$printer -> feed();
-/* Items */
-$printer -> setJustification(Printer::JUSTIFY_LEFT);
-$printer -> setEmphasis(true);
-
-
-$printer -> feed();
-$printer -> setEmphasis(true);
-$printer -> text($subtotal);
-$printer -> setEmphasis(false);
-$printer -> feed();
-/* Tax and total */
-$printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-//$printer -> text($total);
-$printer -> selectPrintMode();
-
-/* OBSERVACIONES */
-$printer -> feed();
-$printer -> selectPrintMode(Printer::JUSTIFY_LEFT);
-$printer -> text("OBSERVACIONES:\n");
-
-$printer -> setJustification(Printer::JUSTIFY_LEFT);
-$printer -> setEmphasis(true);
-//$printer -> text(new item(''));
-$printer -> setEmphasis(false);
-
-
-$printer -> feed(2);
-/* FIN OBSERVACIONES */
-/* Footer */
-$printer -> feed(2);
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-
-
-$printer->setJustification();
-// Reset
-/* Barcodes - see barcode.php for more detail */
-$printer -> setBarcodeHeight(80);
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-$printer -> setBarcodeTextPosition(Printer::BARCODE_TEXT_BELOW);
-//$printer -> barcode($cod_barras);
-$printer -> feed();
-//$printer -> text("www.facebook.com/nativo.restobar.35\n");
-//$printer -> text("AVDA. VICENTE PEREZ ROSALES ESQ. CANDELARIA\n");
-//$printer -> text("LLANQUIHUE - X REGION DE LOS LAGOS\n");
-$printer -> feed(2);
-
-$printer -> cut();
 $printer -> pulse();
 $printer -> close();
+
+
+echo "Impresión correcta";
 /* A wrapper to do organise item names & prices into columns */
 
 
