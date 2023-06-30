@@ -60,6 +60,7 @@ JOIN productos p ON p.id_prod = v.producto
 WHERE v.id_cl = $id_cl 
 AND v.id_venta = $folio 
 AND v.id_caja = '$nCaja' 
+AND v.estado = 'C'
 ORDER BY v.id ASC";
 
 $productos = array();
@@ -99,7 +100,14 @@ $printer -> feed();
 $printer -> setJustification(Printer::JUSTIFY_CENTER);
 $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
 $printer -> setTextSize(1, 1);
+$printer -> text($nom_fantasia."\n");
+$printer -> text($razon_social."\n");
+$printer -> text($direccion."\n");
+$printer -> text($correo."\n");
+$printer -> text($telefono."\n");
+$printer -> text("--------------------------------------------\n");
 $printer -> text("Venta NRO: ".$idVenta."\n");
+$printer -> text("--------------------------------------------\n");
 $printer -> feed();
 $printer -> setFont(Printer::FONT_B);
 $printer -> setTextSize(1, 1);
@@ -119,20 +127,20 @@ $printer -> text("--------------- PRODUCTOS ------------------\n");
 
 for($i=0;$i<count($productos);$i++)
 {
-  $printer -> text(substr($productos[$i]["nombre_prod"],0,20). "\t".$productos[$i]["cantidad"]."\t$".$productos[$i]["valor"]."\n");
+  $printer -> text(substr($productos[$i]["nombre_prod"],0,20). "  ".$productos[$i]["cantidad"]."  $".$productos[$i]["valor"]."\n");
 }
 
 //calculo subtotal
-$iva = $valor_total*0.81;
-$subtotal = $valor_total*0.19;
+$subtotal = $valor_total*0.81;
+$iva = $valor_total*0.19;
 $printer -> feed();
 $printer -> setEmphasis(true);
 
 $printer -> setJustification(Printer::JUSTIFY_RIGHT);
 $printer -> setEmphasis(true);
 
-$printer -> text("Subtotal: ".$subtotal."\n");
-$printer -> text("IVA: ".$iva."\n");
+$printer -> text("Subtotal: $".$subtotal."\n");
+$printer -> text("IVA: $".$iva."\n");
 $printer -> setEmphasis(false);
 $printer -> feed();
 /* Tax and total */
