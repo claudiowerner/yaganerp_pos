@@ -23,6 +23,7 @@ function cargarVentasCaja()
             aumentar = "<button class='btn btn-success modCant' id='"+v.id+"' pesaje='"+v.pesaje+"' cant='"+v.cantidad+"' id_prod='"+v.id_prod+"' onClick=obtenerIDVenta(this)>+O-</button>";
             eliminar = "<button id='btnEliminarVenta' idVenta='"+v.id+"' class='btn btn-danger' onClick=accionEliminarVenta(this)>Eliminar</button>";
             imprimir = "<button id='imprimir' class='btn btn-warning'>Imprimir</button>";
+            $('#btnCrearVenta').attr('disabled', true);
           }
           else
           {
@@ -30,6 +31,7 @@ function cargarVentasCaja()
             aumentar = "<button class='btn btn-success' disabled='true'>+O-</button>";
             eliminar = "<button class='btn btn-danger'  disabled='true'>Eliminar</button>";
             imprimir = "<button id='imprimir' class='btn btn-warning' disabled='true'>Imprimir</button>";
+            $('#btnCrearVenta').attr('disabled', false);
           }
           template_1+=`<tr>
                         <td>
@@ -81,6 +83,11 @@ function cargarVentasCaja()
           $("#ventas").html("<tr><td>Sin ventas</td></tr>");
           $('#imprimirBoleta').attr('disabled', true);
           $('#pagarVenta').attr('disabled', true);
+          $('#btnCrearVenta').attr('disabled', true);
+          
+          $("#subtotal").html(0);
+          $("#iva").html(0);
+          $("#totalVenta").html(0);
         }
         else
         {

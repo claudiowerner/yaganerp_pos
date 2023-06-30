@@ -230,6 +230,29 @@ $("#btnConfirmarPaga").on('click', function(e)
   });
 });
 
+
+$("#btnCrearVenta").on("click", function(e)
+{
+  idCaja = $("#nCaja").text();
+  nomCaja = $("#nomCaja").text();
+  hora = getHora();
+  $.ajax(
+    {
+      url: "../correlativo/correlativo.php?idCaja="+idCaja+"&nomCaja="+nomCaja+"&hora="+hora,
+      type: "GET",
+      success: function(e)
+      {
+        if(e==1)
+        {
+          cargarIDVentaCaja();
+        }
+      }
+    }
+  )
+})
+
+
+
 var ventaInd = 0;
 
 //array para rebajar stock según venta individual
@@ -311,7 +334,6 @@ function confirmarPaga(boton)
           success: function(e)
           {
             id_usuario = e;
-            alert(e)
           }
         }
       )
@@ -324,9 +346,6 @@ function confirmarPaga(boton)
       neto = $("#valorNeto").text();
       folio = $("#id_venta").text();
       fecha = getFechaBD()+" "+getHora();
-
-      alert(idVenta);
-
 
       datos = {
         "id_usuario":id_usuario,

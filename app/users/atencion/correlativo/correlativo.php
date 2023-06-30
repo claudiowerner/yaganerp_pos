@@ -83,7 +83,7 @@
 		   
 		if($r1&&$r2)
 		{
-			echo "Correlativo agregado correctamente";
+			echo 1;
 		}
 		else
 		{
