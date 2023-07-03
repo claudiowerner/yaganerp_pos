@@ -29,13 +29,13 @@
 
     $hoy = getdate();
     $fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
-	echo $sql = "UPDATE correlativo SET estado = 'N', fecha_cierre = '$fecha $hora' WHERE correlativo = '$corr';";
+	$sql = "UPDATE correlativo SET estado = 'N', fecha_cierre = '$fecha $hora' WHERE correlativo = '$corr';";
 	$r1 = mysqli_query($conexion, $sql);
 
-	echo $sql = "UPDATE ventas SET estado = 'N', fecha_pago = '$fecha $hora' WHERE id_venta = '$corr';";
+	$sql = "UPDATE ventas SET estado = 'N', fecha_pago = '$fecha $hora' WHERE id_venta = '$corr';";
 	$r2 = mysqli_query($conexion, $sql);
 
-	echo $sql = "INSERT INTO anula_ventas VALUES(null,$id_cl,$corr,'$nombre','$fecha $hora')";
+	$sql = "INSERT INTO anula_ventas VALUES(null,$id_cl,$corr,'$nombre','$fecha $hora')";
 	$r4 = mysqli_query($conexion, $sql);
 
 	if($r1&&$r2&&$r4)

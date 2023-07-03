@@ -136,13 +136,6 @@ $("#btnEliminarVenta").on('click', function(e)
   }
 });
 
-$("#btnAnular").on('click', function(e)
-{
-  nMesa = $("#nMesa").text();
-  $("#mesaAnular").html(nMesa);
-});
-
-
 
 $("#pagarVenta").on("click", function(e)
 {
@@ -312,7 +305,7 @@ function confirmarPaga(boton)
   {
     swal({
       title: "Error",
-      text: "Error paga venta: "+e.responseText,
+      text: "Error al intentar imprimir: "+e.responseText,
       icon: "error",
     });
   })

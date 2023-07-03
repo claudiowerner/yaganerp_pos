@@ -37,3 +37,22 @@ function getFechaBD()
   var fecha = ano+"-"+mes+"-"+dia;
   return fecha;
 }
+
+function getFechaNormal()
+{
+  var hoy = new Date();
+  //fecha
+  let dia = hoy.getDate();
+  let mes = parseInt(hoy.getMonth())+parseInt(1);
+  let ano = hoy.getFullYear();
+  if(dia<10)
+  {
+    dia = "0"+hoy.getDate();
+  }
+  if(mes<10)
+  {
+    mes = "0"+mes;
+  }
+  var fecha = dia+"-"+mes+"-"+ano;
+  return fecha;
+}
