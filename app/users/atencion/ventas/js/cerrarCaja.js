@@ -50,6 +50,7 @@ $("#btnCerrarCaja").on("click", function(e)
                                         icon: "success"
                                     }
                                     )
+                                    location.href = "../";
                                 }
                             }
                             )
