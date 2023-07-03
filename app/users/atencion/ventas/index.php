@@ -100,7 +100,10 @@
                                                             <button id="btnAgregarVenta" class="btn btn-success agregar" disabled=true>Agregar</button>
                                                         </td>
                                                         <td>
-                                                            <button id="btnCrearVenta" class="btn btn-warning agregar" disabled=true>Crear nueva venta</button>
+                                                            <button id="btnCrearVenta" class="btn btn-warning" disabled=true>Crear nueva venta</button>
+                                                        </td>
+                                                        <td>
+                                                            <button id="btnCerrarCaja" class="btn btn-danger">Cerrar caja</button>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -127,7 +130,7 @@
                                                 </div>
                                                 <div id="imprimirBoleta" class="card-body">
                                                     <div class="row" id="">
-                                                        <table class="table table-hover" width="100%" id="tablaVentas">
+                                                        <table class="table table-hover responsive" width="100%" id="tablaVentas">
                                                             <th>Atención</th>
                                                             <th>Pedido</th>
                                                             <th>Tipo</th>
@@ -149,23 +152,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="plan">
-                                                <div class="col-md-12">
-                                                    <div class="card card-warning">
-                                                        <div class="card-header">Imprimir/pagar cuentas</div>
-                                                            <div class="card-body">
-                                                                <div class="row" id="">
-                                                                    
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -176,7 +162,7 @@
                                     <div class="card card-warning">
                                         <div class="card-header">Anular</div>
                                             <div class="card-body">
-                                                <table class="table">
+                                                <table class="table table-hover responsive">
                                                     <tr>
                                                         <td colspan="9" align="right">
                                                             <strong>SUB TOTAL:</strong>
@@ -203,9 +189,12 @@
                                                     </tr>
                                                 </table>
                                                 <table width="100%">
-                                                    <tr width="100%">
-                                                        <td width="100%"><button id="imprimirBoleta" class="btn btn-success" id="btnPagar" disabled="true" >Boleta</button></td>
-                                                        <td width="100%"><button id="pagarVenta" class="btn btn-success" id="btnPagar" disabled="true" >Pagar</button></td>
+                                                    <tr>
+                                                        <td><button id="btnAnularVenta" class="btn btn-warning anularVenta" >Anular venta</button></td>
+                                                        <td><button id="imprimirBoleta" class="btn btn-success" id="btnPagar" disabled="true" >Boleta</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan=2><button id="pagarVenta" class="btn btn-success" id="btnPagar" disabled="true" >Pagar</button></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -234,6 +223,9 @@
     <script type="text/javascript" src="../../../js/select2.js"></script>
 
     <!--llamada a ventas-->
+    <script src="js/anularVenta.js"></script>
+    <script src="js/correlativo.js"></script>
+    <script src="js/cerrarCaja.js"></script>
     <script src="js/cargarIDVenta.js"></script>
     <script src="js/getFechaHora.js"></script>
     <script src="js/comprobar_estado_stock_minimo.js"></script>
@@ -247,7 +239,6 @@
     <script src="js/modificarCant.js"></script>
     <script src="js/validarMetodoPago.js"></script>
     <script src="js/permisos.js"></script>
-    <script src="js/anularVenta.js"></script>
     <script src="js/comprobarCantidad.js"></script>
     <script src="js/ventas.js"></script>
     <script src="js/scroll.js"></script>

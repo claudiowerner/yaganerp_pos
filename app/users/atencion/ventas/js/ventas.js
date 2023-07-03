@@ -138,71 +138,11 @@ $("#btnEliminarVenta").on('click', function(e)
 
 $("#btnAnular").on('click', function(e)
 {
-  idVenta = $("#id_venta").text();
   nMesa = $("#nMesa").text();
-  $("#anVentaAnular").html(idVenta);
   $("#mesaAnular").html(nMesa);
 });
 
-$("#btnAnularVenta").on('click', function(e)
-{
-  let corr = $("#anVentaAnular").text();
-  let clave = $("#claveAnular").val();
-  let nMesa = $("#mesaAnular").text();
-  if(clave=='')
-  {
-    $("#msjClaveAnular").html("<span style='color: red'>Debe rellenar el campo</span>");
-  }
-  else
-  {
-    $("#msjClaveAnular").html("<span style='color: red'></span>");
-    $.ajax({
-      url: "func_php/clave_aut.php",
-      data: {"clave":clave},
-      type: "GET",
-      success: function(r)
-      {
-        if(r==0||r.match(/Fatal error.*/))
-        {
-          $("#msjClaveAnular").html("<span style='color: red'>La clave ingresada no es correcta</span>");
-        }
-        else
-        {
-          let hora = getHora();
-          $.ajax({
-            url: "func_php/anular_venta_exe.php?corr="+corr+"&hora="+hora+"&nMesa="+nMesa,
-            type: "POST",
-            success: function(r)
-            {
-              let msje = r;
-              swal({
-                title: "Excelente",
-                text: e,
-                icon: "success",
-              });
-              if(msje=="Venta anulada correctamente"||msje.match(/Venta anulada correctamente/))
-              {
-                location.href = '../';
-              }
-            }
-          }).fail( function(e) {
-            console.log( 'Error eliminar venta!!'+e.responseText );
-          }).done( function() {
-            console.log( 'done eliminar venta' );
-          }).always( function() {
-            console.log( 'Always eliminar venta' );
-          });
-        }
-      }
-    }).fail( function(e) {
-      console.log( 'Error eliminar venta!!'+e.responseText );
-    }).done( function() {
-      console.log( 'done eliminar venta' );
-    }).always( function() {
-      console.log( 'Always eliminar venta' );
-    });
-  }
-})
+
 
 $("#pagarVenta").on("click", function(e)
 {
@@ -233,23 +173,10 @@ $("#btnConfirmarPaga").on('click', function(e)
 
 $("#btnCrearVenta").on("click", function(e)
 {
-  idCaja = $("#nCaja").text();
-  nomCaja = $("#nomCaja").text();
-  hora = getHora();
-  $.ajax(
-    {
-      url: "../correlativo/correlativo.php?idCaja="+idCaja+"&nomCaja="+nomCaja+"&hora="+hora,
-      type: "GET",
-      success: function(e)
-      {
-        if(e==1)
-        {
-          cargarIDVentaCaja();
-        }
-      }
-    }
-  )
+  //esta función se ubica en el archivo correlativo.js
+  correlativo();
 })
+
 
 
 

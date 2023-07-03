@@ -13,6 +13,7 @@ function cargarVentasCaja()
       {
         let tasks = JSON.parse(response);
         tasks.forEach(v=>{
+          
           descProd.push({"nom_prod": v.nombre_prod, "cant":v.cantidad});
           let aumentar;
           let imprimir;
@@ -101,7 +102,6 @@ function cargarVentasCaja()
           $("#subtotal").html(subtotal_iva);
           $("#iva").html(iva);
           $("#totalVenta").html(total);
-          
         }
       }
     }).fail( function(e) {

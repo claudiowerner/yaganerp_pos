@@ -29,19 +29,16 @@
 
     $hoy = getdate();
     $fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
-	$sql = "UPDATE correlativo SET estado = 'N', fecha_cierre = '$fecha $hora' WHERE correlativo = '$corr';";
+	echo $sql = "UPDATE correlativo SET estado = 'N', fecha_cierre = '$fecha $hora' WHERE correlativo = '$corr';";
 	$r1 = mysqli_query($conexion, $sql);
 
-	$sql = "UPDATE ventas SET estado = 'N', fecha_pago = '$fecha $hora' WHERE id_venta = '$corr';";
+	echo $sql = "UPDATE ventas SET estado = 'N', fecha_pago = '$fecha $hora' WHERE id_venta = '$corr';";
 	$r2 = mysqli_query($conexion, $sql);
 
-	$sql = "UPDATE mesas SET estado_gral = 'S' WHERE num_mesa = '$nMesa';";
-	$r3 = mysqli_query($conexion, $sql);
-
-	$sql = "INSERT INTO anula_ventas VALUES(null,$id_cl,$corr,'$nombre','$fecha $hora')";
+	echo $sql = "INSERT INTO anula_ventas VALUES(null,$id_cl,$corr,'$nombre','$fecha $hora')";
 	$r4 = mysqli_query($conexion, $sql);
 
-	if($r1&&$r2&&$r3&&$r4)
+	if($r1&&$r2&&$r4)
 	{
 		echo "Venta anulada correctamente";
 	}
