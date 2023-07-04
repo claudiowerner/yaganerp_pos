@@ -19,7 +19,6 @@ else
   $id_us = $_SESSION['user']['id'];
   $nombre = $_SESSION['user']["nombre"];
   $id_cl = $_SESSION['user']["id_cl"];
-  $piso = 1;
 
   $nomCaja = $_GET['nomCaja'];
 
@@ -29,7 +28,19 @@ else
   require_once '../../../conexion.php';
 
 	//query
-	$consulta = "INSERT INTO cierre_caja VALUES (null, '$id_cl', '$piso', '$nomCaja', '1', '$fecha $hora', '0000-00-00 00:00:00', 'A', '0', '0', '0', '$fecha $hora');";
+	$consulta = 
+  "INSERT INTO cierre_caja 
+  VALUES (
+    null, 
+    '$id_cl',
+    '$nomCaja', 
+    '$id_us', 
+    '$fecha $hora', 
+    '0000-00-00 00:00:00', 
+    'A', 
+    '0', 
+    '$fecha $hora'
+  );";
   $resultado = $conexion->query($consulta);
 
   if($resultado)

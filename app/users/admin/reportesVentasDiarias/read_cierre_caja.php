@@ -25,11 +25,11 @@ if(isset($_SESSION['user'])){
   require_once '../../../conexion.php';
 
 	//query
-	$consulta = "SELECT cc.id AS id, cc.piso, cc.nombre 
+	$consulta = "SELECT cc.id AS id, cc.nombre 
   AS nombre, u.nombre as creado_por, 
   DATE_FORMAT(cc.desde, '%d-%m-%Y %H:%i:%s') AS desde, 
   DATE_FORMAT(cc.hasta, '%d-%m-%Y %H:%i:%s') AS hasta, cc.estado,  
-  cc.valor_neto, cc.propina, cc.valor_total FROM cierre_caja cc 
+  cc.valor_total FROM cierre_caja cc 
   JOIN usuarios u ON cc.creado_por = u.id 
   WHERE cc.id_cl = $id_cl 
   AND DATE_FORMAT(cc.desde, '%d-%m-%Y') LIKE '%$desde%' 
@@ -51,14 +51,11 @@ if(isset($_SESSION['user'])){
 
       $json[] =array(
               'id' => $row['id'],
-              'piso' => $row['piso'],
               'nombre' => $row['nombre'],
               'creado_por' => $row['creado_por'],
               'desde' => $row['desde'],
               'hasta' => $row['hasta'],
               'estado' => $estado,
-              'valor_neto' => $row['valor_neto'],
-              'propina' => $row['propina'],
               'valor_total' => $row['valor_total'],
             );
     };

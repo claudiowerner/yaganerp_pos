@@ -79,14 +79,11 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Piso</th>
                                                     <th>Nombre</th>
                                                     <th>Creado por</th>
                                                     <th>Desde</th>
                                                     <th>Hasta</th>
                                                     <th>Estado</th>
-                                                    <th>Valor neto</th>
-                                                    <th>Propina</th>
                                                     <th>Valor total</th>
                                                     <th>Cerrar</th>
                                                 </tr>

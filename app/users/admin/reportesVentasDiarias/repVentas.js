@@ -247,6 +247,7 @@ function obtenerCierresCaja()
     async: false,
     success: function(response)
     {
+      alert(response)
       template = '';
       if(response)
       {
@@ -282,14 +283,11 @@ function obtenerCierresCaja()
             template+=
             `<tr idCaja=`+c.id+` nomCaja="`+c.nombre+`" class='${estado}' nomCaja='${c.nombre}'>
               <td>${c.id}</td>
-              <td>${c.piso}</td>
               <td>${c.nombre}</td>
               <td>${c.creado_por}</td>
               <td>${c.desde}</td>
               <td>${fecha_cierre}</td>
               <td>${c.estado}</td>
-              <td>$${c.valor_neto}</td>
-              <td>$${c.propina}</td>
               <td>$${c.valor_total}</td>
               <td>`+button1+button2+`</td>
             </tr>`;
