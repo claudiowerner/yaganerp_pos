@@ -19,15 +19,6 @@ $folio = $_POST['folio'];
 $nCaja = $_POST['nCaja'];
 //$folio = $_POST['fol'];
 
-function normaliza ($cadena){
-    $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
-    $modificadas= 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidNoooooouuuyybyRr';
-    $cadena = utf8_decode($cadena);
-    $cadena = strtr($cadena, utf8_decode($originales), $modificadas);
-
-    return utf8_encode($cadena);
-}
-
 require 'autoload.php';
 require 'function_normaliza.php';
 

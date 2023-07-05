@@ -104,7 +104,38 @@ $("#btnValidarCierre").on('click', function(e)
                     icon: "success",
                   });
                   
-                window.open("voucher_cierre_cajas/voucher_cierre_caja.php?nombre_caja="+nombre_caja+"&id_cierre="+nCaja);
+                  nCaja = $("#nCaja").text();
+                  nomCaja = $("#nomCaja").text();
+
+                  datos = {
+                    "idCierre": nCaja,
+                    "nomCaja": nomCaja
+                  }
+                  $.ajax(
+                    {
+                      url:"https://192.168.1.20/impresion_yaganerp/vendor/ticket_resumen_turno.php",
+                      data: datos,
+                      type: "POST",
+                      success: function(e)
+                      {
+                        swal({
+                          title: "Excelente",
+                          text: e,
+                          icon: "success"
+                        })
+                      }
+                    }
+                  )
+                  .fail(function(e)
+                  {
+                    swal({
+                      title: "Error",
+                      text: e.responseText,
+                      icon: "error"
+                    })
+                  })
+
+
                 }
                 obtenerCierresCaja();
               }
@@ -247,7 +278,6 @@ function obtenerCierresCaja()
     async: false,
     success: function(response)
     {
-      alert(response)
       template = '';
       if(response)
       {
