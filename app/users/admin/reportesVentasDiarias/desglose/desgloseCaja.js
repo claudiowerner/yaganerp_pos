@@ -20,17 +20,15 @@ $("#desgloseCaja").on("click", "button.btn-success", function()
 
 $("#btnReimprimirResumen").on("click", function(e)
 {
-  caja = $("#caja").text();
-  nCaja = $("#nCaja").text();
-  window.open("../voucher_cierre_cajas/voucher_cierre_caja.php?nombre_caja="+caja+"&id_cierre="+nCaja);
+  imprimirResumenVenta("../../../");
 })
 
 
 
 function cargarDesglose()
 {
-  caja = $("#caja").text();
-  nCaja = $("#nCaja").text();
+  caja = $("#nCaja").text();
+  nomCaja = $("#nomCaja").text();
   let horaDesde = $("#horaDesde").val();
   let horaHasta = $("#horaHasta").val();
   $.ajax(

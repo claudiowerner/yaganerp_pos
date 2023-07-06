@@ -27,7 +27,11 @@
   require_once '../../../conexion.php';
 
 	//Comprobar si existen mesas con ventas abiertas
-	$consulta = "SELECT * FROM correlativo c WHERE c.estado = 'A' AND c.id_cl = '$id_cl'";
+	$consulta = 
+  "SELECT * FROM correlativo c
+  WHERE c.estado = 'A' 
+  AND caja = $nCaja
+  AND c.id_cl = '$id_cl'";
   $resultado = $conexion->query($consulta);
 
   //Si no existen mesas abiertas (num_rows debe ser == 0)

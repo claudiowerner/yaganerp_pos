@@ -113,6 +113,8 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
-    <script src="repVentas.js"></script>
+    <script src="js/id_usuario.js"></script>
+    <script src="js/repVentas.js"></script>
+    <script src="js/imprimir.js"></script>
 
 </html>

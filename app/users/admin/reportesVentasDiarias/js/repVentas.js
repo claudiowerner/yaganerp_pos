@@ -2,6 +2,10 @@
 obtenerCierresCaja();
 let nombre_caja = "";
 
+
+id_usuario = cargarIDUsuario("../../");
+alert(id_usuario);
+
 $("#btnCrearCajaNueva").on("click", function(e)
 {
   $.ajax(
@@ -104,36 +108,7 @@ $("#btnValidarCierre").on('click', function(e)
                     icon: "success",
                   });
                   
-                  nCaja = $("#nCaja").text();
-                  nomCaja = $("#nomCaja").text();
-
-                  datos = {
-                    "idCierre": nCaja,
-                    "nomCaja": nomCaja
-                  }
-                  $.ajax(
-                    {
-                      url:"https://192.168.1.20/impresion_yaganerp/vendor/ticket_resumen_turno.php",
-                      data: datos,
-                      type: "POST",
-                      success: function(e)
-                      {
-                        swal({
-                          title: "Excelente",
-                          text: e,
-                          icon: "success"
-                        })
-                      }
-                    }
-                  )
-                  .fail(function(e)
-                  {
-                    swal({
-                      title: "Error",
-                      text: e.responseText,
-                      icon: "error"
-                    })
-                  })
+                  imprimirResumenVenta("../../");
 
 
                 }

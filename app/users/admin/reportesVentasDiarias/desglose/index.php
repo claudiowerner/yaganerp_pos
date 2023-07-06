@@ -64,7 +64,7 @@
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
-                                    <h1>Detalle de venta turno/caja <strong id=caja><?php echo $idCaja?></strong> <strong id=nCaja style="display: none"><?php echo $idCaja?></strong></h1>
+                                    <h1>Detalle de venta turno/caja <strong id=nCaja style="display: none"><?php echo $idCaja?></strong> <strong id=nomCaja><?php echo $nomCaja?></strong></h1>
                                     <div class="col-md-12" style="width:100%" align=center>
                                     <table>
                                         <tr>
@@ -121,6 +121,8 @@
 
     <!--llamada a categorias-->
     <script src="desgloseCaja.js"></script>
+    <script src="../js/id_usuario.js"></script>
+    <script src="../js/imprimir.js"></script>
 
 </body>
 
