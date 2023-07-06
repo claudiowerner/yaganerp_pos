@@ -10,17 +10,17 @@ function leerCaja()
     success: function(response)
     {
       let valor = 0;
-      let propina = 0;
+      let iva = 0;
       let valorTotal = 0;
       let tasks = JSON.parse(response);
       let template = '';
-      let nomMesa = "";
+      let nomCaja = "";
       let estado_venta = "";
         tasks.forEach(c=>{
           if(c.estado_venta  == "CERRADO")
           {
             valor=parseFloat(valor)+parseFloat(c.valor);
-            propina=parseFloat(propina)+parseFloat(c.propina);
+            iva=parseFloat(iva)+parseFloat(c.iva);
             valorTotal=parseFloat(valorTotal)+parseFloat(c.valor_total);
           }
           template+=
@@ -32,10 +32,10 @@ function leerCaja()
             <td>${c.cantidad}</td>
             <td>${c.metodo_pago}</td>
             <td>$${c.valor}</td>
-            <td>$${c.propina}</td>
+            <td>$${c.iva}</td>
             <td>$${c.valor_total}</td>
           </tr>`;
-          nomMesa = c.nom_mesa;
+          nomCaja = c.nom_caja;
           estado_venta = c.estado_venta;
         });
         template +=
@@ -47,7 +47,7 @@ function leerCaja()
             <strong>$${valor}</strong>
           </td>
           <td>
-            <strong>$${propina}</strong>
+            <strong>$${iva}</strong>
           </td>
           <td>
             <strong>$${valorTotal}</strong>

@@ -48,7 +48,7 @@
                                     <table>
                                         <tr>
                                             <td>
-                                                <strong>Mesa: </strong>
+                                                <strong>Caja: </strong>
                                             </td>
                                             <td id="nombre_mesa">
                                                 CARGANDO...
@@ -73,7 +73,7 @@
                                                 <th>Cantidad</th>
                                                 <th>Forma pago</th>
                                                 <th>Valor</th>
-                                                <th>Propina</th>                                                    <th>Valor total</th>
+                                                <th>IVA(19%)</th>                                                    <th>Valor total</th>
                                             </tr>
                                         </thead>
                                         <tbody id="bodyDesgloseVenta">    

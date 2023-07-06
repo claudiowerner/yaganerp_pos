@@ -18,20 +18,17 @@
 
 	//query
   $sql = 
-  "SELECT us.nombre, p.nombre_prod, m.nom_mesa, 
+  "SELECT us.nombre, p.nombre_prod, caja.nom_caja, 
   SUM(v.cantidad) AS cantidad,
   mp.nombre_metodo_pago, 
   SUM(v.valor) AS valor, 
-  SUM(v.propina) AS propina, 
-  SUM(v.valor+v.propina) AS valor_total, 
   c.estado AS estado_venta,
   v.estado AS estado_prod, v.fecha 
   FROM ventas v 
   JOIN metodo_pago mp ON mp.id = v.forma_pago
   JOIN correlativo c ON c.id = v.id_venta
-  JOIN mesas m ON m.id = v.mesa
+  JOIN cajas caja ON caja.id = v.id_caja
   JOIN usuarios us ON us.id = v.usuario 
-  JOIN ubicaciones u ON u.id=v.ubicacion 
   JOIN productos p ON p.id_prod = v.producto 
   WHERE v.id_cl = $id_cl 
   AND v.id_venta = $idVenta 
@@ -74,12 +71,12 @@
     }
     $json[] =array(
               'nombre' => ($row['nombre']),
-              'nom_mesa' => $row['nom_mesa'],
+              'nom_caja' => $row['nom_caja'],
               'nombre_prod' => ($row['nombre_prod']),
               'cantidad' => $row['cantidad'],
-              'valor' => $row['valor'],
-              'propina' => $row['propina'],
-              'valor_total' => $row['valor_total'],
+              'valor' => round($row['valor']*0.81),
+              'iva' => round($row['valor']*0.19),
+              'valor_total' => $row['valor'],
               'estado_prod' => $estado_prod,
               'estado_venta' => $estado_venta,
               'metodo_pago' => $row['nombre_metodo_pago'],
