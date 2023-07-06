@@ -20,13 +20,16 @@
   require_once '../../../../conexion.php';
 
 	//query
-  $sql = "SELECT v.id_venta, cc.nombre, u.nombre 
-  AS creado_por, v.mesa, 
+  $sql = 
+  "SELECT v.id_venta, 
+  cc.nombre, 
+  u.nombre 
+  AS creado_por,
+  v.nom_caja, 
   DATE_FORMAT(v.fecha, '%d-%m-%y %H:%i:%s') AS fecha,
-  DATE_FORMAT(v.fecha_pago, '%d-%m-%y %H:%i:%s') AS fecha_pago , v.estado,
-  SUM(v.valor) AS valor, 
-  sum(v.propina) AS propina, 
-  sum(v.valor+v.propina) AS valor_total 
+  DATE_FORMAT(v.fecha_pago, '%d-%m-%y %H:%i:%s') AS fecha_pago , 
+  v.estado,
+  SUM(v.valor) AS valor_total
   FROM cierre_caja cc 
   JOIN usuarios u ON u.id = cc.creado_por 
   JOIN ventas v ON cc.id=v.id_caja 
@@ -55,17 +58,14 @@
       {
         $estado = 'CERRADO';
       }
-
     $json[] =array(
               'id_venta' => $row['id_venta'],
               'nombre' => $row['nombre'],
               'creado_por' => $row['creado_por'],
-              'mesa' => $row['mesa'],
+              'nom_caja' => $row['nom_caja'],
               'desde' => $row['fecha'],
               'hasta' => $row['fecha_pago'],
               'estado' => $estado,
-              'valor' => $row['valor'],
-              'propina' => $row['propina'],
               'valor_total' => $row['valor_total']
             );
   }

@@ -61,8 +61,6 @@ function cargarDesglose()
           <td>${c.desde}</td>
           <td>${c.hasta}</td>
           <td>${c.estado}</td>
-          <td>$${c.valor}</td>
-          <td>$${c.propina}</td>
           <td>$${c.valor_total}</td>
           <td>`+button+`</td>
         </tr>`;
