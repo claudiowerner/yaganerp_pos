@@ -2,7 +2,7 @@
 
 
 
-    $mysqli = new mysqli('localhost','root','','yaganerp_webservices');
+    $mysqli = new mysqli('localhost','root','','yaganerp_pos');
 
     if ($mysqli->connect_errno):
 
@@ -12,7 +12,7 @@
 
 
 
-    $conexion = new mysqli('localhost','root','','yaganerp_webservices') or die("error" . mysqli_errno($connect));
+    $conexion = new mysqli('localhost','root','','yaganerp_pos') or die("error" . mysqli_errno($connect));
 
 
 

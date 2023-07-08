@@ -1,13 +1,4 @@
-  //activar/desactivar boton venta convenio
-  convenio = "";
-  $.ajax({
-    url: "func_php/config_convenio.php",
-    type: "POST",
-    success: function(e)
-    {
-      convenio = e;
-    }
-  })
+
   let id = "";
   let fecha = getFecha();
   let hora = getHora();
@@ -22,7 +13,7 @@
     {
       if(e=="0"||e.match(/0/))
       {
-        $("#restaurant").html(`<div align=center class="card bg-gradient-danger">
+        $("#cajas").html(`<div align=center class="card bg-gradient-danger">
               <div class="card-header">
                 <h3 align="center" class="card-title"><strong>EL SISTEMA SE BLOQUEÓ</strong></h3>
               </div>

@@ -268,12 +268,7 @@ function confirmarPaga(boton)
       fecha = getFechaBD()+" "+getHora();
 
       datos = {
-        "id_usuario":id_usuario,
-        "nCaja": nCaja,
-        "idVenta": idVenta,
-        "fecha": fecha,
-        "formaPago": formaPago,
-        "folio": folio
+        "idVenta": idVenta
       }
       
       $.ajax(

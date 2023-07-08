@@ -4,7 +4,6 @@ let nombre_caja = "";
 
 
 id_usuario = cargarIDUsuario("../../");
-alert(id_usuario);
 
 $("#btnCrearCajaNueva").on("click", function(e)
 {
