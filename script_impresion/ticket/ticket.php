@@ -3,7 +3,7 @@
 include("clases/item.php");
 include("clases/item3.php");
 require("function_normaliza.php");
-require("header");
+require("header.php");
 
 include("../conexion.php");
 
