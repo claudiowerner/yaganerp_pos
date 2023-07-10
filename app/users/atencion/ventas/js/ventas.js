@@ -232,9 +232,10 @@ function confirmarPaga(boton)
   let hora = getHora();
   let idCaja = $("#id_caja").text();
   let formaPago = $("#metodoPagoGral").val();
+  alert(idCaja);
 
   $.ajax({
-    url: "func_php/pagar_venta_exe.php?nCaja="+nCaja+"&totalVenta="+totalVenta+"&producto="+descProd+"&fecha="+fecha+"&hora="+hora+"&idCaja="+idCaja+"&forma_pago="+formaPago+"&id_venta="+id,
+    url: "func_php/pagar_venta_exe.php?nCaja="+nCaja+"&totalVenta="+totalVenta+"&producto="+descProd+"&fecha="+fecha+"&hora="+hora+"&idCaja="+idCaja+"&forma_pago="+formaPago+"&id_venta="+id+"&idCierre="+idCaja,
     data: {'producto': descProd},
     type: "GET",
     success: function(e)

@@ -5,11 +5,11 @@ include("clases/item3.php");
 require("function_normaliza.php");
 require("header.php");
 
-include("../conexion.php");
+include("conexion.php");
 
 $conexion->set_charset("utf8");
 
-$ids = $_GET['numero'];
+$ids = $_POST['idVenta'];
 
 require "autoload.php";
 
@@ -342,5 +342,8 @@ $printer -> cut();*/
 $printer -> pulse();
 $printer -> close();
 /* A wrapper to do organise item names & prices into columns */
+
+echo "El ticket/boleta se imprimió correctamente";
+
 
 ?>

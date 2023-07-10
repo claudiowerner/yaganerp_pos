@@ -32,6 +32,7 @@
 	$id_venta = $_GET['id_venta'];
 	$valorTotal = $_GET["totalVenta"];
 	$nCaja = $_GET["nCaja"];
+	$idCierre = $_GET["nCaja"];
 
 
 	$sql = 
@@ -50,16 +51,15 @@
 	{
 		$boleta = $row['boleta'];
 	}
-
 	//actualizar tabla correlativo
 	$sql = 
 	"UPDATE correlativo 
 	SET valor = '$valorTotal',
 	estado = 'C', 
 	boleta = '$boleta', 
-	fecha_cierre= '$fecha $hora' 
-	WHERE caja = '$nCaja' 
-	AND estado = 'A';";
+	fecha_cierre= '$fecha $hora',
+	forma_pago = '$forma_pago'
+	WHERE id = '$id_venta'";
 	$r1 = mysqli_query($conexion, $sql);
 
 	//actualizar tabla ventas
@@ -84,7 +84,7 @@
 	{
 		//acrónimo cp= Cantidad Pedido
 		$np = $producto[$i]['nom_prod'];
-		 $cp_pedido = $producto[$i]['cant'];
+		$cp_pedido = $producto[$i]['cant'];
 
 		$sql = "SELECT (cantidad-$cp_pedido) AS cant 
 		FROM productos WHERE nombre_prod = '$np'";

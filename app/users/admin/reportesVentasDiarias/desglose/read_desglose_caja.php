@@ -13,6 +13,7 @@
   $piso = 1;
 
   $idCaja = $_GET['idCaja'];
+  
 
   $horaDesde = $_GET["horaDesde"];
   $horaHasta = $_GET["horaHasta"];  
@@ -33,7 +34,7 @@
   FROM cierre_caja cc 
   JOIN usuarios u ON u.id = cc.creado_por 
   JOIN ventas v ON cc.id=v.id_caja 
-  WHERE id_caja = '$idCaja'
+  WHERE cc.id = '$idCaja'
   AND v.estado = 'C'
   AND DATE_FORMAT(fecha, '%H:%i-%s') LIKE '%$horaDesde%'
   AND DATE_FORMAT(v.fecha_pago, '%H:%i-%s') LIKE '%$horaHasta%'

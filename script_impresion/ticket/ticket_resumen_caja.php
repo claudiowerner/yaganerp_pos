@@ -6,14 +6,14 @@ include("clases/item3.php");
 require("function_normaliza.php");
 require("header.php");
 
-include("../conexion.php");
+include("conexion.php");
 
 $conexion->set_charset("utf8");
 
-$nCaja = $_GET['nCaja'];
-$idCierre = $_GET['idCierre'];
-$fecha = $_GET['fecha'];
-$nomCaja = $_GET['nomCaja'];
+$nCaja = $_POST['nCaja'];
+$idCierre = $_POST['idCierre'];
+$fecha = $_POST['fecha'];
+$nomCaja = $_POST['nomCaja'];
 
 
 require "autoload.php";
@@ -197,100 +197,12 @@ $printer -> feed(2);
 /* Cut the receipt and open the cash drawer */
 $printer -> cut();
 
-/*$printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
 
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-//$printer -> bitImage($logo);
-
-$printer -> feed();
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-$printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-$printer -> setTextSize(1, 1);
-$printer -> text("COMPROBANTE SALIDA BODEGA N: ".$ids."\n");
-$printer -> feed();
-$printer -> setFont(Printer::FONT_B);
-$printer -> setTextSize(1, 1);
-//$printer -> text("DESTINO: ".$region." - ".$cliente." - ".$centro."\n");
-$printer -> feed();
-$printer -> selectPrintMode();
-//$printer -> text("ATENDIDO POR: ".strtoupper($nombre)."\n");
-
-//$printer -> feed();
-
-/* Title of receipt */
-/*$printer -> setEmphasis(true);
-$printer -> text("$date\n");
-$printer -> setEmphasis(false);
-$printer -> feed();
-/* Items */
-/*$printer -> setJustification(Printer::JUSTIFY_LEFT);
-$printer -> setEmphasis(true);
-
-/*$printer -> text("--------------- MATERIALES ------------------\n");
-foreach ($items as $item) {
-    $printer -> text($item);
-}
-
-$printer -> feed();
-$printer -> text("--------------- REPUESTOS -------------------\n");
-
-foreach ($items1 as $item1) {
-    $printer -> text($item1);
-}
-
-$printer -> feed();
-$printer -> setEmphasis(true);
-$printer -> text($subtotal);
-$printer -> setEmphasis(false);
-$printer -> feed();
-/* Tax and total */
-//$printer -> text($tax);
-/*$printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-//$printer -> text($total);
-$printer -> selectPrintMode();
-
-/* OBSERVACIONES */
-/*$printer -> feed();
-$printer -> selectPrintMode(Printer::JUSTIFY_LEFT);
-$printer -> text("OBSERVACIONES:\n");
-
-$printer -> setJustification(Printer::JUSTIFY_LEFT);
-$printer -> setEmphasis(true);
-$printer -> text(new item3(''));
-$printer -> setEmphasis(false);
-foreach ($items3 as $item3) {
-  $printer -> text($item3);
-}
-
-$printer -> feed(2);
-/* FIN OBSERVACIONES */
-/* Footer */
-/*$printer -> feed(2);
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-
-$printer -> feed(1);
-$printer -> text("-------------------------------------------\n");
-$printer -> text("COMPROBANTE SOLICITANTE.\n");
-//$printer -> text(strtoupper($operador)."\n");
-//$printer -> text("RUT: ".$rut."\n");
-$printer -> feed(2);
-
-$printer->setJustification();
-// Reset
-/* Barcodes - see barcode.php for more detail */
-/*$printer -> setBarcodeHeight(80);
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-$printer -> setBarcodeTextPosition(Printer::BARCODE_TEXT_BELOW);
-//$printer -> barcode($cod_barras);
-$printer -> feed();
-//$printer -> text("www.facebook.com/nativo.restobar.35\n");
-//$printer -> text("AVDA. VICENTE PEREZ ROSALES ESQ. CANDELARIA\n");
-//$printer -> text("LLANQUIHUE - X REGION DE LOS LAGOS\n");
-$printer -> feed(2);
-
-$printer -> cut();*/
 $printer -> pulse();
 $printer -> close();
 /* A wrapper to do organise item names & prices into columns */
+
+echo "El resumen de caja se ha impreso correctamente"
+
 
 ?>

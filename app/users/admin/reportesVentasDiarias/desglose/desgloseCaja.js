@@ -37,6 +37,7 @@ function cargarDesglose()
     type: 'GET',
     success: function(response)
     {
+      alert(response)
       let tasks = JSON.parse(response);
       let template = '';
       tasks.forEach(c=>{
