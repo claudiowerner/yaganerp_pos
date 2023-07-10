@@ -18,9 +18,15 @@
   $horaDesde = $_GET["horaDesde"];
   $horaHasta = $_GET["horaHasta"];  
 
-  require_once '../../../../conexion.php';
+  require_once '../../../../../conexion.php';
 
 	//query
+
+ /* $sql = 
+  "SELECT c.correlativo 
+  FROM correlativo c
+  WHERE c.id_cierre = $id;"; 
+*/
   $sql = 
   "SELECT v.id_venta, 
   cc.nombre, 

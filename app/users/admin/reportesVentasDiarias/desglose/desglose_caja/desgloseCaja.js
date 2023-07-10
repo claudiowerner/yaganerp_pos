@@ -29,6 +29,9 @@ function cargarDesglose()
 {
   caja = $("#nCaja").text();
   nomCaja = $("#nomCaja").text();
+
+  valor = 0;
+
   let horaDesde = $("#horaDesde").val();
   let horaHasta = $("#horaHasta").val();
   $.ajax(
@@ -37,7 +40,6 @@ function cargarDesglose()
     type: 'GET',
     success: function(response)
     {
-      alert(response)
       let tasks = JSON.parse(response);
       let template = '';
       tasks.forEach(c=>{
@@ -55,6 +57,8 @@ function cargarDesglose()
         {
           estado = "ANULADO";
         }
+        valor = parseInt(valor) + parseInt(c.valor_total);
+        alert(c.valor_total)
         template+=
         `<tr idVenta=`+c.id_venta+` class="${estado}">
           <td>${c.id_venta}</td>
@@ -74,10 +78,14 @@ function cargarDesglose()
           <td colspan=9>Sin ventas</td>
         </tr>`;
       } 
-        $("#bodyDetalleCaja").html(template);
-      }
+      template += 
+      `<tr>
+        <td colspan=5><strong>TOTAL:</strong></td>
+        <td><strong>$</strong><strong>${valor}</strong></td>
+      </tr>`
+      $("#bodyDetalleCaja").html(template);
     }
-  )
+  })
   .done( function() {
     console.log( 'Success!!' );
   }).fail( function(resp) {

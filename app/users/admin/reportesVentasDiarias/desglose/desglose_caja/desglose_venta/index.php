@@ -19,13 +19,13 @@
 
   <title>YaganERP Administrador</title>
 
-  <?php require "../../../cdn_css/css/css_sub_sub_item.php";?>
-  <link rel="stylesheet" href="../../css/estadoItem.css">
+  <?php require "../../../../cdn_css/css/css_sub_sub_sub_item.php";?>
+  <link rel="stylesheet" href="../../../css/estadoItem.css">
 
   
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<?php require "../../../menu/sesion_sub_sub_item.php";?>
+<?php require "../../../../menu/sesion_sub_sub_sub_item.php";?>
     <!-- END OF TOPNAV -->
     <!-- Comtainer -->
     <div class="container-fluid paper-wrap bevel tlbr">
@@ -33,8 +33,8 @@
         <!-- SIDE MENU -->
         <div class="wrap-sidebar-content">
             <?php 
-                require "../../../menu/menu_sub_sub_item.php";
-                require "../../../menu/top_menu_sub_sub_item.php";
+                require "../../../../menu/menu_sub_sub_sub_item.php";
+                require "../../../../menu/top_menu_sub_sub_item.php";
             ?>
             <!-- CONTENT -->
             <div class="wrap-fluid" id="paper-bg">
@@ -100,7 +100,7 @@
     <!-- 
     ================================================== -->
     <!-- Main jQuery Plugins -->
-    <?php require "../../../cdn_css/cdn/cdn_sub_sub_item.php";?>
+    <?php require "../../../../cdn_css/cdn/cdn_sub_sub_sub_item.php";?>
     <!--Datatables-->
     <script type="text/javascript" src="../../../../datatables/datatables.js"></script>
 

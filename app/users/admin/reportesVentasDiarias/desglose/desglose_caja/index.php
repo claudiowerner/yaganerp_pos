@@ -36,7 +36,7 @@
 
     <title>YaganERP Administrador</title>
 
-    <?php require "../../cdn_css/css/css_sub_item.php";?>
+    <?php require "../../../cdn_css/css/css_sub_sub_item.php";?>
     
     <link rel="stylesheet" href="../css/estadoItem.css">
 
@@ -45,7 +45,7 @@
 
 <body role="document">
 
-    <?php require "../../menu/sesion_sub_item.php";?>
+    <?php require "../../../menu/sesion_sub_item.php";?>
     <!-- END OF TOPNAV -->
     <!-- Comtainer -->
     <div class="container-fluid paper-wrap bevel tlbr">
@@ -53,8 +53,8 @@
         <!-- SIDE MENU -->
         <div class="wrap-sidebar-content">
             <?php 
-                require "../../menu/menu_sub_item.php";
-                require "../../menu/top_menu_sub_item.php";
+                require "../../../menu/menu_sub_item.php";
+                require "../../../menu/top_menu_sub_item.php";
             ?>
             <!-- CONTENT -->
             <div class="wrap-fluid" id="paper-bg">
@@ -66,16 +66,27 @@
                                     <div class="card-header">
                                     <h1>Detalle de venta turno/caja <strong id=nCaja style="display: none"><?php echo $idCaja?></strong> <strong id=nomCaja><?php echo $nomCaja?></strong></h1>
                                     <div class="col-md-12" style="width:100%" align=center>
+                                    <table>
+                                        <tr>
+                                            <td><strong>Desde</strong></td>
+                                            <td><input type="calendar" name="horaDesde" id="horaDesde" class="form-control" placeholder="HH:MM:SS"></td>
+                                            <td><strong>Hasta</strong></td>
+                                            <td><input type="text" name="horaHasta" id="horaHasta" class="form-control" placeholder="HH:MM:SS"></td>
+                                        </tr>
+                                    </table>
                                     </div>
                                     <div class="col-md-12">
                                         </table>
                                         <table id="desgloseCaja" class="table table-bordered table-hover dt-resposive display nowrap">
                                         <thead>
                                             <tr>
-                                                <th>Caja</th>
-                                                <th>Estado</th>
-                                                <th>Valor generado</th>
-                                                <th>Ver detalle</th>
+                                            <th>ID venta</th>
+                                            <th>Creado por</th>
+                                            <th>Desde</th>
+                                            <th>Hasta</th>
+                                            <th>Estado</th>
+                                            <th>Valor total</th>
+                                            <th>Ver detalle</th>
                                             </tr>
                                         </thead>
                                         <tbody id="bodyDetalleCaja">
@@ -101,15 +112,15 @@
     <!-- 
     ================================================== -->
     <!-- Main jQuery Plugins -->
-    <?php require "../../cdn_css/cdn/cdn_sub_item.php";?>
+    <?php require "../../../cdn_css/cdn/cdn_sub_sub_item.php";?>
     <!--Datatables-->
     <script type="text/javascript" src="../../../../datatables/datatables.js"></script>
 
 
     <!--llamada a categorias-->
-    <script src="desglose.js"></script>
-    <script src="../js/id_usuario.js"></script>
-    <script src="../js/imprimir.js"></script>
+    <script src="desgloseCaja.js"></script>
+    <script src="../../js/id_usuario.js"></script>
+    <script src="../../js/imprimir.js"></script>
 
 </body>
 

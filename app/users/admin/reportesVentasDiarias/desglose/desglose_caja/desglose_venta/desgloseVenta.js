@@ -54,7 +54,7 @@ function leerCaja()
           </td>
         </tr>`;
         $("#bodyDesgloseVenta").html(template);
-        $("#nombre_mesa").html(nomMesa);
+        $("#nombre_mesa").html(nomCaja);
         $("#estadoVenta").html(estado_venta);
       }
     }
