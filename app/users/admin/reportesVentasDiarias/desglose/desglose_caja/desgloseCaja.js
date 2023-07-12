@@ -58,7 +58,6 @@ function cargarDesglose()
           estado = "ANULADO";
         }
         valor = parseInt(valor) + parseInt(c.valor_total);
-        alert(c.valor_total)
         template+=
         `<tr idVenta=`+c.id_venta+` class="${estado}">
           <td>${c.id_venta}</td>

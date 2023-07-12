@@ -10,6 +10,7 @@ permisos = "";
 
 //variable que obtiene si se accede a un item o subitem u otros
 let item = $("#session").attr("item");
+alert(item);
 if(item=="index")
 {
     url = "../../tipo_usuario/tipo_usuario.php";
@@ -29,6 +30,12 @@ if(item=="subsubitem")
 {
     url = "../../../../../tipo_usuario/tipo_usuario.php";
     permisos = "../../../../../tipo_usuario/read_permisos.php";
+}
+
+if(item=="subsubsubitem")
+{
+    url = "../../../../../../tipo_usuario/tipo_usuario.php";
+    permisos = "../../../../../../tipo_usuario/read_permisos.php";
 }
 $.ajax(
 {
@@ -70,6 +77,11 @@ $.ajax(
                     {
                         index = "../../../index.php";
                         atencion = "../../../../atencion/index.php";
+                    }
+                    if(item=="subsubsubitem")
+                    {
+                        index = "../../../../index.php";
+                        atencion = "../../../../../atencion/index.php";
                     }
                     tituloIndex = "Dashboard";
                     tituloAtencion = "Acceder a ventas";
