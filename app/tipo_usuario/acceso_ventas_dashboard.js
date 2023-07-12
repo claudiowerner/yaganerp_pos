@@ -10,7 +10,6 @@ permisos = "";
 
 //variable que obtiene si se accede a un item o subitem u otros
 let item = $("#session").attr("item");
-alert(item);
 if(item=="index")
 {
     url = "../../tipo_usuario/tipo_usuario.php";

@@ -66,14 +66,14 @@
                                     <div class="card-header">
                                     <h1>Detalle de venta turno/caja <strong id=nCaja style="display: none"><?php echo $idCaja?></strong> <strong id=nomCaja><?php echo $nomCaja?></strong></h1>
                                     <div class="col-md-12" style="width:100%" align=center>
-                                    <table>
+                                    <!--<table>
                                         <tr>
                                             <td><strong>Desde</strong></td>
                                             <td><input type="calendar" name="horaDesde" id="horaDesde" class="form-control" placeholder="HH:MM:SS"></td>
                                             <td><strong>Hasta</strong></td>
                                             <td><input type="text" name="horaHasta" id="horaHasta" class="form-control" placeholder="HH:MM:SS"></td>
                                         </tr>
-                                    </table>
+                                    </table>-->
                                     </div>
                                     <div class="col-md-12">
                                         </table>

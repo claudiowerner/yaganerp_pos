@@ -16,9 +16,18 @@
   
 
   $horaDesde = $_GET["horaDesde"];
-  $horaHasta = $_GET["horaHasta"];  
+  $horaHasta = $_GET["horaHasta"];
 
   require_once '../../../../../conexion.php';
+  if($horaDesde=="")
+  {
+    $horaDesde = "00:00:00";
+  }
+
+  if($horaHasta=="")
+  {
+    $horaHasta = "23:59:59";
+  }
 
 	//query
 
@@ -27,6 +36,7 @@
   FROM correlativo c
   WHERE c.id_cierre = $id;"; 
 */
+
   $sql = 
   "SELECT v.id_venta, 
   cc.nombre, 
@@ -42,8 +52,7 @@
   JOIN ventas v ON cc.id=v.id_caja 
   WHERE cc.id = '$idCaja'
   AND v.estado = 'C'
-  AND DATE_FORMAT(fecha, '%H:%i-%s') LIKE '%$horaDesde%'
-  AND DATE_FORMAT(v.fecha_pago, '%H:%i-%s') LIKE '%$horaHasta%'
+  #AND DATE_FORMAT(fecha_pago, '%H:%i-%s') BETWEEN '%$horaDesde%' AND '%$horaHasta%'
   GROUP BY id_venta";
 
   $query = mysqli_query($conexion, $sql);
