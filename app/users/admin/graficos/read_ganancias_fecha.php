@@ -1,15 +1,19 @@
 <?php
 
-session_start();
+  session_start();
 
-if(isset($_SESSION['user'])){
-  $tipo = $_SESSION['user']['tipo_usuario'];
- if($tipo == 3){
-   header('Location: ../');
- }
- }else{
- header('Location: ../');
- }
+  if(isset($_SESSION['user']))
+  {
+    $tipo = $_SESSION['user']['tipo_usuario'];
+    if($tipo == 3)
+    {
+      header('Location: ../');
+    }
+  }
+  else
+  {
+    header('Location: ../');
+  }
 
 
   $id_us = $_SESSION['user']['id'];
@@ -23,15 +27,22 @@ if(isset($_SESSION['user'])){
 
 
 	//query
-	$consulta = "SELECT date_format(fecha_cierre, '%d/%m/%Y') AS fecha FROM correlativo WHERE estado = 'C' GROUP BY(date_format(fecha_cierre, '%d/%m/%Y')) ORDER BY (date_format(fecha_cierre, '%d/%m/%Y')) ASC";
+	$consulta = 
+  "SELECT date_format(fecha_cierre, '%d/%m/%Y') AS fecha 
+  FROM correlativo WHERE estado = 'C' 
+  GROUP BY(date_format(fecha_cierre, '%d/%m/%Y')) 
+  ORDER BY (date_format(fecha_cierre, '%d/%m/%Y')) ASC";
   $resultado = $conexion->query($consulta);
-  if ($resultado->num_rows > 0){
-  $json = array();
-   while ($row = $resultado->fetch_array()) {
-     $json[] =array(
-         'fecha' => $row['fecha']);
-   }
-   echo json_encode($json);
+  if ($resultado->num_rows > 0)
+  {
+    $json = array();
+    while ($row = $resultado->fetch_array()) 
+    {
+      $json[] =array(
+        'fecha' => $row['fecha']
+      );
+    }
+    echo json_encode($json);
  }
 
 ?>

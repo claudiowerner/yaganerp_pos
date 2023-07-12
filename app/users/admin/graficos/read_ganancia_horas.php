@@ -21,8 +21,10 @@ if(isset($_SESSION['user'])){
     for($i=0;$i<=23;$i++)
     {
       $hf = $i+1;//hora final
-      $sql = "SELECT SUM(valor+propina) AS valor FROM correlativo 
-      WHERE id_cl = $id_cl AND fecha_cierre BETWEEN '$fecha $i:00:00' AND '$fecha $hf:00:00'
+      $sql = 
+      "SELECT SUM(valor) AS valor FROM correlativo 
+      WHERE id_cl = $id_cl 
+      AND fecha_cierre BETWEEN '$fecha $i:00:00' AND '$fecha $hf:00:00'
       AND estado = 'C'";
       $res = $conexion->query($sql);
       while($row=$res->fetch_array())

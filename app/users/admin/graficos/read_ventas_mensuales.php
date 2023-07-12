@@ -36,7 +36,10 @@ if(isset($_SESSION['user'])){
 
     for($i=1;$i<=12;$i++)
     {
-      $sql = "SELECT sum(valor+propina) AS valor_total FROM correlativo WHERE id_cl = 1 AND date_format(fecha, '%m') = $i AND year(fecha) = $ano";
+      $sql = 
+      "SELECT sum(valor) AS valor_total 
+      FROM correlativo WHERE id_cl = $id_cl
+      AND date_format(fecha, '%m') = $i AND year(fecha) = $ano";
       $res = $conexion->query($sql);
       while($row=$res->fetch_array())
       {
