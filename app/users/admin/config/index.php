@@ -75,20 +75,6 @@
 
         <div class="row" >
             <div class="col-lg-12">
-                <div class="plan" id="configConvenio" style="cursor:pointer">
-                    <div class="col-md-12">
-                        <div class="card card-warning">
-                            <div class="card-header" style="align:left;" align="left">
-                                <strong align="left" >Configuración de convenio ></strong><br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row" >
-            <div class="col-lg-12">
                 <div class="plan" id="configCuentas" style="cursor:pointer">
                     <div class="col-md-12">
                         <div class="card card-warning">

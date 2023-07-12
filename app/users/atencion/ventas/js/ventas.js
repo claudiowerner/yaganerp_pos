@@ -55,29 +55,7 @@ $(".agregar").on('click', function(e)
   }
 
   
-  if (estadoStock.match("S"))
-  {
-    //se obtiene la cantidad para ser comparada y decidir si se hace la venta o no 
-    cantidadBD = parseInt(comprobarCantidad(idProd));
-    if(cantProd>cantidadBD)
-    {
-      swal(
-        {
-          title: "Aviso",
-          text: "Cantidad insuficiente. No se agregó la venta.",
-          icon: "warning"
-        }
-      )
-    }
-    else
-    {
-      registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
-    } 
-  }
-  else
-  {
-    registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
-  }
+  registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora);
 })
 
 $("#btnEliminarVenta").on('click', function(e)
@@ -232,8 +210,6 @@ function confirmarPaga(boton)
   let hora = getHora();
   let idCaja = $("#id_caja").text();
   let formaPago = $("#metodoPagoGral").val();
-  alert(idCaja);
-
   $.ajax({
     url: "func_php/pagar_venta_exe.php?nCaja="+nCaja+"&totalVenta="+totalVenta+"&producto="+descProd+"&fecha="+fecha+"&hora="+hora+"&idCaja="+idCaja+"&forma_pago="+formaPago+"&id_venta="+id+"&idCierre="+idCaja,
     data: {'producto': descProd},
@@ -307,22 +283,5 @@ function confirmarPaga(boton)
   })
 }
 
-function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
-{
-  $.ajax(
-    {
-      url:"func_php/crear_venta_exe.php?idCaja="+idCaja+"&id_venta="+id_venta+"&idProd="+idProd+"&cantProd="+cantProd+"&nomCaja="+nomCaja+"&hora="+hora,
-      type: "GET",
-      success: function(r)
-      {
-        cargarVentasCaja();
-      }
-    }).fail( function(e) {
-      console.log( 'Error productos!!'+e.responseText );
-    }).done( function() {
-      console.log( 'done productos' );
-    }).always( function() {
-      console.log( 'Always productos' );
-    });
-}
+
 

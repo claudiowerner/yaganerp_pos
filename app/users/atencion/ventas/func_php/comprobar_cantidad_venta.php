@@ -10,7 +10,7 @@ $idProd = $_POST["idProd"];
 require_once '../../../../conexion.php';
 
 //query
-$consulta = "SELECT cantidad FROM productos WHERE id_cl = 1 AND id_prod = $idProd";
+$consulta = "SELECT cantidad FROM productos WHERE id_cl = $id_cl AND id_prod = $idProd";
 $resultado = $conexion->query($consulta);
 
 while($row = $resultado->fetch_array())

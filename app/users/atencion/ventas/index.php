@@ -243,6 +243,8 @@
     <script src="js/ventas.js"></script>
     <script src="js/scroll.js"></script>
     <script src="js/pistolaCodigoBarra.js"></script>
+    <script src="js/registrarVenta.js"></script>
+    <script src="js/cargarNumeroStockMinimo.js"></script>
     
     
 </body>
