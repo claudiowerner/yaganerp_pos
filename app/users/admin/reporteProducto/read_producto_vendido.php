@@ -16,7 +16,14 @@ session_start();
   require_once '../../../conexion.php';
 
 	//query
-	$consulta = "SELECT c.nombre_cat, p.nombre_prod, sum(v.cantidad) AS cantidad, sum(v.valor+v.propina) AS valor_total FROM ventas v JOIN productos p ON p.id_prod = v.producto JOIN categorias c ON c.id = p.categoria WHERE c.id_cl = $id_cl GROUP BY p.id_prod ORDER BY cantidad DESC";
+	$consulta = 
+  "SELECT c.nombre_cat, p.nombre_prod, sum(v.cantidad) AS cantidad, sum(v.valor) AS valor_total 
+  FROM ventas v 
+  JOIN productos p ON p.id_prod = v.producto 
+  JOIN categorias c ON c.id = p.categoria 
+  WHERE c.id_cl = $id_cl 
+  GROUP BY p.id_prod 
+  ORDER BY cantidad DESC";
   $resultado = $conexion->query($consulta);
   $json = array();
     while ($row = $resultado->fetch_array()) {
