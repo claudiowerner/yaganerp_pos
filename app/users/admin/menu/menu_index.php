@@ -70,13 +70,13 @@
                   <li>
                       <a class="tooltip-tip" href="reporteMesa">
                           <i class=" fontello-mail-1"></i>
-                          <span>Mesas con más ventas</span>
+                          <span>Cajas con más ventas</span>
                       </a>
                   </li>
                   <li>
                     <a class="tooltip-tip" href="pisos">
                       <i class=" fontello-mail-1"></i>
-                        <span>Gráfico de ventas</span>
+                        
                     </a>
                   </li>
                   <li class="devider-title">
