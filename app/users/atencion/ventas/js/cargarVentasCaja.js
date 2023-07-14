@@ -21,7 +21,7 @@ function cargarVentasCaja()
           if(v.estado=='A')
           {
             estado = "<button class='btn btn-danger' disabled='true'>PENDIENTE</button>";
-            aumentar = "<button class='btn btn-success modCant' id='"+v.id+"' pesaje='"+v.pesaje+"' cant='"+v.cantidad+"' id_prod='"+v.id_prod+"' onClick=obtenerIDVenta(this)>+O-</button>";
+            aumentar = "<button class='btn btn-success modCant' id='"+v.id+"' pesaje='"+v.pesaje+"' cant='"+v.cantidad+"' id_prod='"+v.id_prod+"' onClick=obtenerIDVenta(this)>- Ó +</button>";
             eliminar = "<button id='btnEliminarVenta' idVenta='"+v.id+"' class='btn btn-danger' onClick=accionEliminarVenta(this)>Eliminar</button>";
             imprimir = "<button id='imprimir' class='btn btn-warning'>Imprimir</button>";
             $('#btnCrearVenta').attr('disabled', true);
@@ -29,7 +29,7 @@ function cargarVentasCaja()
           else
           {
             estado = "<button class='btn btn-success' disabled='true'style='width: 100%;'>PAGADO</button>";
-            aumentar = "<button class='btn btn-success' disabled='true'>+O-</button>";
+            aumentar = "<button class='btn btn-success' disabled='true'>- Ó +</button>";
             eliminar = "<button class='btn btn-danger'  disabled='true'>Eliminar</button>";
             imprimir = "<button id='imprimir' class='btn btn-warning' disabled='true'>Imprimir</button>";
             $('#btnCrearVenta').attr('disabled', false);
@@ -61,9 +61,6 @@ function cargarVentasCaja()
                         </td>
                         <td>
                           ${eliminar}
-                        </td>
-                        <td>
-                          ${imprimir}
                         </td>
                       </tr>
                     <tr>`;

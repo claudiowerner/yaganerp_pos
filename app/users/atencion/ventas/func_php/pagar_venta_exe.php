@@ -32,14 +32,30 @@
 	$id_venta = $_GET['id_venta'];
 	$valorTotal = $_GET["totalVenta"];
 	$nCaja = $_GET["nCaja"];
-	$idCierre = $_GET["nCaja"];
+	$idCierre = $_GET["idCierre"];
 
+	
+	$sql = 
+	"SELECT sum(valor) AS valor
+	FROM correlativo
+	WHERE id_cierre = $idCierre";
+	
+	$totalCorr = 0;
+	$resTotalCorr = $conexion->query($sql);
+	if($resTotalCorr->num_rows!=0)
+	{
+		while($row = $resTotalCorr->fetch_array())
+		{
+			$totalCorr = $row["valor"];
+		}
+	}
 
+	$total_caja = $totalCorr + $valorTotal;
 	$sql = 
 	"UPDATE cierre_caja cc
-	SET valor_total = cc.valor_total + $valorTotal
+	SET valor_total = '$total_caja'
 	WHERE cc.id_cl = '$id_cl'
-	AND cc.id = '$idCaja';";
+	AND cc.id = '$idCierre';";
 	$r3 = mysqli_query($conexion, $sql);
 
 	//generar nro boleta

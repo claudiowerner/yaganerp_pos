@@ -144,7 +144,7 @@ $printer -> feed();
 //$printer -> text($tax);
 
 $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-$printer -> text(new item3("TOTAL: ","$ ".$total));
+$printer -> text(new item3("TOTAL: ","$".$total));
 $printer -> selectPrintMode();
 /* Footer */
 

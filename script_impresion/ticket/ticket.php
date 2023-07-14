@@ -27,9 +27,8 @@ $sql = "SELECT v.id_cl, v.id, p.id_prod, v.cantidad, v.valor
 FROM ventas v
 JOIN productos p ON p.id_prod = v.producto 
 AND v.id_venta = $ids
-AND v.estado = 'C'
 ORDER BY v.id ASC";
-$result = mysqli_query($conexion,$sql) or die (mysql_error());
+$result = mysqli_query($conexion,$sql) or die (mysqli_error());
 
 //declaración de variables de calculo de precios
 $subtotal = 0;
@@ -55,9 +54,10 @@ if ($result->num_rows>0){
 }
 //descarga de datos de supermercado (nombre de fantasía, etc)
 $sql = 
-"SELECT * FROM cliente WHERE id = $id_cl";
-
+"SELECT * FROM cliente 
+WHERE id = $id_cl";
 $resDatos = $conexion->query($sql);
+
 //recorrer array valor para rellenar el array items3
 for($i=0;$i<count($id);$i++)
 {

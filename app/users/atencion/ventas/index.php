@@ -78,12 +78,14 @@
                                                 </div>
                                                 <table width="100%">
                                                     <tr>
-                                                        <td align="left" width="40px">
-                                                            <label name="lblCantidad">Cód barra</label>
-                                                        </td>
                                                         <td align="left" width="">
-                                                            <input type="text" name="cod_barra" id="txtCodBarra" class="form form-control" placeholder="Haga click acá y escanée el código de barra">
+                                                            <label name="lblCantidad">Producto</label>
                                                         </td>
+                                                        <td align="left" width="100%">
+                                                            <select id="prod" class="form form-control" onChange="productoValido()">
+                                                            </select>
+                                                        </td>
+                                                        
                                                         <td align="left" width="40px">
                                                             <label name="lblCantidad">Cantidad</label>
                                                         </td>
@@ -98,6 +100,14 @@
                                                         </td>
                                                         <td>
                                                             <button id="btnAgregarVenta" class="btn btn-success agregar" disabled=true>Agregar</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" width="40px">
+                                                            <label name="lblCantidad">Código de barra</label>
+                                                        </td>
+                                                        <td align="left" width="">
+                                                            <input type="text" name="cod_barra" id="txtCodBarra" class="form form-control" placeholder="Haga click acá y escanée el código de barra">
                                                         </td>
                                                         <td>
                                                             <button id="btnCrearVenta" class="btn btn-warning" disabled=true>Crear nueva venta</button>
@@ -138,9 +148,8 @@
                                                             <th>Valor</th>
                                                             <th>Estado</th>
                                                             <th>Fecha</th>
-                                                            <th>+O-</th>
+                                                            <th>- Ó +</th>
                                                             <th>Eliminar</th>
-                                                            <th>Imprimir</th>
                                                             <tbody id="ventas" class="table-hover ">
                                                                 <tr>
                                                                     <td>Cargando...</td>
@@ -245,6 +254,7 @@
     <script src="js/pistolaCodigoBarra.js"></script>
     <script src="js/registrarVenta.js"></script>
     <script src="js/cargarNumeroStockMinimo.js"></script>
+    <script src="js/imprimir.js"></script>
     
     
 </body>
