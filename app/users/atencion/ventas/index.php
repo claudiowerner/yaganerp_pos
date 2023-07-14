@@ -43,6 +43,7 @@
 </head>
 
 <body>
+<span id="opcion" style="display:none">2</span>
     <?php require "../menu/sesion_item.php";?>
     <!-- END OF TOPNAV -->
     <!-- Comtainer -->
@@ -250,7 +251,6 @@
     <script src="js/permisos.js"></script>
     <script src="js/comprobarCantidad.js"></script>
     <script src="js/ventas.js"></script>
-    <script src="js/scroll.js"></script>
     <script src="js/pistolaCodigoBarra.js"></script>
     <script src="js/registrarVenta.js"></script>
     <script src="js/cargarNumeroStockMinimo.js"></script>

@@ -36,6 +36,7 @@ if(item=="subsubsubitem")
     url = "../../../../../../tipo_usuario/tipo_usuario.php";
     permisos = "../../../../../../tipo_usuario/read_permisos.php";
 }
+
 $.ajax(
 {
     url:url,
@@ -49,8 +50,8 @@ $.ajax(
             let opciones = $("#session").html();
             let index;
             let atencion;
-            let tituloIndex;
-            let tituloAtencion;
+            let tituloIndex = "";
+            let tituloAtencion = "";
             tipo_usuario = usuario.tipo_usuario;
             if(tipo_usuario==1)
             {
@@ -125,7 +126,6 @@ $.ajax(
                         <span>
                         </span>`+tituloAtencion+`</a>
                     </li>`;
-
                     $.ajax(
                         {
                             url:permisos,

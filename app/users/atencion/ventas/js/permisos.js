@@ -2,8 +2,8 @@
 
 let id_usu = $("#id_usuario").text();
 $.ajax(
-        {
-            url:"../../read_permisos_usuario.php",
+    {
+        url:"../../read_permisos_usuario.php",
         data:{"id_usu": id_usu},
         type: "POST",
         success: function(e)
