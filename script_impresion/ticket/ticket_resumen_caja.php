@@ -84,7 +84,7 @@ for($i=0;$i<count($id);$i++)
 //recorrer array para rellenar array Items3
 for($i=0;$i<count($id);$i++)
 {
-    $items3[] = new item3(normaliza(strtoupper($nombre_metodo_pago[$i].": ")), $valor[$i]);
+    $items3[] = new item3(normaliza(strtoupper($nombre_metodo_pago[$i].": ")), "$".$valor[$i]);
 }
 
 // $date = date('l jS \of F Y h:i:s A');
@@ -121,7 +121,7 @@ $printer -> selectPrintMode();
 $printer -> setJustification(Printer::JUSTIFY_LEFT);
 $printer -> setEmphasis(true);
 
-$printer -> text("--------------- RESUMEN DE VENTAS ------------------\n");
+$printer -> text("--------------- RESUMEN DE VENTAS --------------\n");
 
 foreach ($items3 as $item1) {
   $printer -> text($item1);
@@ -144,7 +144,7 @@ $printer -> feed();
 //$printer -> text($tax);
 
 $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-$printer -> text(new item3("TOTAL: ",$total));
+$printer -> text(new item3("TOTAL: ","$ ".$total));
 $printer -> selectPrintMode();
 /* Footer */
 
@@ -164,12 +164,7 @@ $printer -> feed(2);
 
 $printer -> feed(2);
 $printer -> setJustification(Printer::JUSTIFY_CENTER);
-/*
-$printer -> feed(1);
-$printer -> text("-------------------------------------------\n");
-$printer -> text("FIRMA SOLICITANTE\n");
-$printer -> text(strtoupper($operador)."\n");
-$printer -> text("RUT: ".$rut."\n");*/
+
 
 $printer -> feed(2);
 
