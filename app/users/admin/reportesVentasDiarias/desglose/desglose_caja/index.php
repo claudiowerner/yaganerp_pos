@@ -95,7 +95,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <button id="btnReimprimirResumen" class="btn btn-success">Reimprimir resumen de ventas</button>
+                                    <!--<button id="btnReimprimirResumen" class="btn btn-success">Reimprimir resumen de ventas</button>-->
                                 </div>
                             </div>
                         </div>

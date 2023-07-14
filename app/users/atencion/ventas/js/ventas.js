@@ -252,6 +252,7 @@ function confirmarPaga(boton)
         {
           url: "https://192.168.1.20/impresion_yaganerp/vendor/ticket.php",
           data: datos,
+          cache: false,
           type: "POST",
           success: function(e)
           {
