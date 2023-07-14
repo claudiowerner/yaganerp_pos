@@ -12,7 +12,8 @@
   $id_cl = $_SESSION['user']["id_cl"];
   $piso = 1;
 
-  $idCierre = $_GET['idCaja'];
+  $idCaja = $_GET['idCaja'];
+  $idCierre = $_GET['idCierre'];
   
 
   $horaDesde = $_GET["horaDesde"];

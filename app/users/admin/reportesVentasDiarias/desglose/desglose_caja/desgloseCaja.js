@@ -1,6 +1,7 @@
 //obtener nombre y desglose de la caja
 let caja = "";
 let nCaja = "";
+
 cargarDesglose();
 $("#horaDesde").on("keyup", function(e)
 {
@@ -29,14 +30,14 @@ function cargarDesglose()
 {
   caja = $("#nCaja").text();
   nomCaja = $("#nomCaja").text();
-
+  idCierre = $("#idCierre").text();
   valor = 0;
 
   let horaDesde = $("#horaDesde").val();
   let horaHasta = $("#horaHasta").val();
   $.ajax(
   {
-    url: 'read_desglose_caja.php?idCaja='+caja+"&horaDesde="+horaDesde+"&horaHasta="+horaHasta,
+    url: 'read_desglose_caja.php?idCierre='+idCierre+'&idCaja='+caja+"&horaDesde="+horaDesde+"&horaHasta="+horaHasta,
     type: 'GET',
     success: function(response)
     {

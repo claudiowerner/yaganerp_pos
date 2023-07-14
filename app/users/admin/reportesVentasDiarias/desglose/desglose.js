@@ -4,13 +4,14 @@ let nCaja = "";
 
 caja = $("#nCaja").text();
 nomCaja = $("#nomCaja").text();
+idCierre = $("#idCierre").text();
 
 valor = 0;
 let horaDesde = $("#horaDesde").val();
 let horaHasta = $("#horaHasta").val();
 $.ajax(
 {
-  url: 'read_desglose.php?idCaja='+caja+"&horaDesde="+horaDesde+"&horaHasta="+horaHasta,
+  url: 'read_desglose.php?idCaja='+caja+"&horaDesde="+horaDesde+"&horaHasta="+horaHasta+"&idCierre="+idCierre,
   type: 'GET',
   success: function(response)
   {
@@ -76,10 +77,9 @@ $("#horaHasta").on("keyup", function(e)
 
 function metodoBtnDetalle(e)
 {
-  console.log(e);
   let id = $(e).attr('idCaja');
   let nom_caja = $(e).attr('nomCaja');
-  location.href = "desglose_caja/index.php?id="+id+"&nomCaja="+nom_caja;
+  location.href = "desglose_caja/index.php?id="+id+"&nomCaja="+nom_caja+"&idCierre="+idCierre;
 }
 
 /*$("#clase").on("click", function()

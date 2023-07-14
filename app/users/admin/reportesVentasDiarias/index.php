@@ -21,6 +21,7 @@
   $id_cl = $_SESSION['user']["id_cl"];
   $piso = 1;
 
+
 ?>
 
 <!DOCTYPE html>
@@ -63,16 +64,16 @@
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
-                                    <h1>Reporte de caja diaria</h1>
+                                        <h1>Reporte de caja diaria</h1>
                                         <button id="btnCrearCajaNueva" class="btn btn-success" >Abrir caja</button>
                                         <div class="col-md-12" style="width:100%" align=center>
                                             <table>
-                                            <tr>
-                                                <td><strong>Desde</strong></td>
-                                                <td><input type="calendar" name="fechaDesde" id="fechaDesde" class="form-control" placeholder="DD-MM-AAAA"></td>
-                                                <td><strong>Hasta</strong></td>
-                                                <td><input type="text" name="fechaHasta" id="fechaHasta" class="form-control" placeholder="DD-MM-AAAA"></td>
-                                            </tr>
+                                                <tr>
+                                                    <td><strong>Desde</strong></td>
+                                                    <td><input type="calendar" name="fechaDesde" id="fechaDesde" class="form-control" placeholder="DD-MM-AAAA"></td>
+                                                    <td><strong>Hasta</strong></td>
+                                                    <td><input type="text" name="fechaHasta" id="fechaHasta" class="form-control" placeholder="DD-MM-AAAA"></td>
+                                                </tr>
                                             </table>
                                         </div>
                                         <table id="cierreCaja" class="table table-bordered table-hover dt-resposive display nowrap">

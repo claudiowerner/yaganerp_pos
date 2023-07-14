@@ -13,6 +13,7 @@
   $piso = 1;
 
   $idCaja = $_GET['idCaja'];
+  $idCierre = $_GET['idCierre'];
   
 
   $horaDesde = $_GET["horaDesde"];
@@ -38,22 +39,23 @@
 */
 
   $sql = 
-  "SELECT v.id_venta, 
-  cc.nombre, 
-  u.nombre 
-  AS creado_por,
-  v.nom_caja, 
-  DATE_FORMAT(v.fecha, '%d-%m-%y %H:%i:%s') AS fecha,
-  DATE_FORMAT(v.fecha_pago, '%d-%m-%y %H:%i:%s') AS fecha_pago , 
-  v.estado,
-  SUM(v.valor) AS valor_total
-  FROM cierre_caja cc 
-  JOIN usuarios u ON u.id = cc.creado_por 
-  JOIN ventas v ON cc.id=v.id_caja 
-  WHERE cc.id = '$idCaja'
-  AND v.estado = 'C'
-  #AND DATE_FORMAT(fecha_pago, '%H:%i-%s') BETWEEN '%$horaDesde%' AND '%$horaHasta%'
-  GROUP BY id_venta";
+    "SELECT v.id_venta, 
+    cc.nombre, 
+    u.nombre 
+    AS creado_por,
+    corr.nom_caja,
+    DATE_FORMAT(v.fecha, '%d-%m-%y %H:%i:%s') AS fecha,
+    DATE_FORMAT(v.fecha_pago, '%d-%m-%y %H:%i:%s') AS fecha_pago , 
+    v.estado,
+    SUM(v.valor) AS valor_total
+    FROM cierre_caja cc 
+    JOIN correlativo corr ON cc.id = corr.id_cierre
+    JOIN usuarios u ON u.id = cc.creado_por 
+    JOIN ventas v ON corr.correlativo = v.id_venta
+    WHERE cc.id = '$idCierre'
+    AND corr.caja = $idCaja
+    AND v.estado = 'C'
+    GROUP BY id_venta";
 
   $query = mysqli_query($conexion, $sql);
 

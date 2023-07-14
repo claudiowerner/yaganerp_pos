@@ -106,10 +106,7 @@ $("#btnValidarCierre").on('click', function(e)
                     text: e,
                     icon: "success",
                   });
-                  
                   imprimirResumenVenta("../../");
-
-
                 }
                 obtenerCierresCaja();
               }
@@ -175,7 +172,7 @@ $("#cierreCaja").on('click', 'button.btn-success', function(e)
   let element = $(this)[0].parentElement.parentElement;
   let id = $(element).attr('idCaja');
   let nomCaja = $(element).attr('nomCaja');
-  location.href = "desglose/index.php?id="+id+"&nomCaja="+nomCaja;
+  location.href = "desglose/index.php?idCierre="+id+"&nomCaja="+nomCaja;
 })
 
 $("#cierreCaja").on('click', 'button.btn-danger', function(e)
@@ -285,7 +282,7 @@ function obtenerCierresCaja()
               fecha_cierre = "-";
             }
             template+=
-            `<tr idCaja=`+c.id+` nomCaja="`+c.nombre+`" class='${estado}' nomCaja='${c.nombre}'>
+            `<tr idCaja=`+c.id+` nomCaja="`+c.nombre+`" class='${estado}' nomCaja='${c.nombre}' idCierre=''>
               <td>${c.id}</td>
               <td>${c.nombre}</td>
               <td>${c.creado_por}</td>

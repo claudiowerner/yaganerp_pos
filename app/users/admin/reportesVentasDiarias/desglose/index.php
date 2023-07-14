@@ -1,7 +1,8 @@
 <?php
   session_start();
-  $idCaja = $_GET['id'];
   $nomCaja = $_GET['nomCaja'];
+  $idCierre = $_GET['idCierre'];
+  
   if(isset($_SESSION['user']))
   {
     $tipo = $_SESSION['user']['tipo_usuario'];
@@ -45,6 +46,7 @@
 
 <body role="document">
 
+<strong id="idCierre" style="display: none"><?php echo$idCierre?></strong>
     <?php require "../../menu/sesion_sub_item.php";?>
     <!-- END OF TOPNAV -->
     <!-- Comtainer -->
@@ -64,8 +66,10 @@
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
-                                    <h1>Detalle de venta turno/caja <strong id=nCaja style="display: none"><?php echo $idCaja?></strong> <strong id=nomCaja><?php echo $nomCaja?></strong></h1>
-                                    <div class="col-md-12" style="width:100%" align=center>
+                                        <h1>Detalle de venta turno/caja <br><strong id=nomCaja ><?php echo $nomCaja?></strong></h1>
+                                        <strong id="idCierre" style="display:none"><?php echo$idCierre?></strong>
+                                        
+                                        <div class="col-md-12" style="width:100%" align=center>
                                     </div>
                                     <div class="col-md-12">
                                         </table>

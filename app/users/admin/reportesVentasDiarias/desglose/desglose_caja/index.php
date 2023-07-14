@@ -1,6 +1,7 @@
 <?php
   session_start();
   $idCaja = $_GET['id'];
+  $idCierre = $_GET['idCierre'];
   $nomCaja = $_GET['nomCaja'];
   if(isset($_SESSION['user']))
   {
@@ -64,48 +65,47 @@
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
-                                    <h1>Detalle de venta turno/caja <strong id=nCaja style="display: none"><?php echo $idCaja?></strong> <strong id=nomCaja><?php echo $nomCaja?></strong></h1>
-                                    <div class="col-md-12" style="width:100%" align=center>
-                                    <!--<table>
-                                        <tr>
-                                            <td><strong>Desde</strong></td>
-                                            <td><input type="calendar" name="horaDesde" id="horaDesde" class="form-control" placeholder="HH:MM:SS"></td>
-                                            <td><strong>Hasta</strong></td>
-                                            <td><input type="text" name="horaHasta" id="horaHasta" class="form-control" placeholder="HH:MM:SS"></td>
-                                        </tr>
-                                    </table>-->
+                                        <h1>Detalle de venta turno/caja <strong id=nCaja style="display: none"><?php echo $idCaja?></strong> <strong id=nomCaja><?php echo $nomCaja?></strong></h1>
+                                        <strong id="idCierre" style="display: none"><?php echo $idCierre?></strong>
+                                        <div class="col-md-12" style="width:100%" align=center>
+                                        <!--<table>
+                                            <tr>
+                                                <td><strong>Desde</strong></td>
+                                                <td><input type="calendar" name="horaDesde" id="horaDesde" class="form-control" placeholder="HH:MM:SS"></td>
+                                                <td><strong>Hasta</strong></td>
+                                                <td><input type="text" name="horaHasta" id="horaHasta" class="form-control" placeholder="HH:MM:SS"></td>
+                                            </tr>
+                                        </table>-->
                                     </div>
                                     <div class="col-md-12">
-                                        </table>
                                         <table id="desgloseCaja" class="table table-bordered table-hover dt-resposive display nowrap">
-                                        <thead>
-                                            <tr>
-                                            <th>ID venta</th>
-                                            <th>Creado por</th>
-                                            <th>Desde</th>
-                                            <th>Hasta</th>
-                                            <th>Estado</th>
-                                            <th>Valor total</th>
-                                            <th>Ver detalle</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="bodyDetalleCaja">
-                                                
-                                        </tbody>
-                                    </table>
+                                            <thead>
+                                                <tr>
+                                                    <th>ID venta</th>
+                                                    <th>Creado por</th>
+                                                    <th>Desde</th>
+                                                    <th>Hasta</th>
+                                                    <th>Estado</th>
+                                                    <th>Valor total</th>
+                                                    <th>Ver detalle</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="bodyDetalleCaja">
+                                                    
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <button id="btnReimprimirResumen" class="btn btn-success">Reimprimir resumen de ventas</button>
                                 </div>
-                                <button id="btnReimprimirResumen" class="btn btn-success">Reimprimir resumen de ventas</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- #/paper bg -->
             </div>
-            <!-- #/paper bg -->
-        </div>
-        <!-- ./wrap-sidebar-content -->
+            <!-- ./wrap-sidebar-content -->
 
         <!-- / END OF CONTENT -->
-
     </div>
     <!-- Container -->
 
