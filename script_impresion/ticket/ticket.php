@@ -20,7 +20,10 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
 //$logo = EscposImage::load("bt.jpg", false);
 
-$sql = "SELECT v.id, p.id_prod, v.cantidad, v.valor
+
+
+
+$sql = "SELECT v.id_cl, v.id, p.id_prod, v.cantidad, v.valor
 FROM ventas v
 JOIN productos p ON p.id_prod = v.producto 
 AND v.id_venta = $ids
@@ -38,6 +41,8 @@ $id = array();
 $id_prod = array();
 $cantidad = array();
 $valor = array();
+
+$id_cl = "";
 if ($result->num_rows>0){
   while ($row = $result->fetch_array()){
     $id[] = $row['id'];
@@ -45,77 +50,19 @@ if ($result->num_rows>0){
     $cantidad[] = $row['cantidad'];
     $valor[] = $row['valor'];
     $total = $row["valor"] + $total;
+    $id_cl = $row["id_cl"];
   }
 }
+//descarga de datos de supermercado (nombre de fantasía, etc)
+$sql = 
+"SELECT * FROM cliente WHERE id = $id_cl";
 
+$resDatos = $conexion->query($sql);
 //recorrer array valor para rellenar el array items3
 for($i=0;$i<count($id);$i++)
 {
-  
   $items3[] = new item3(normaliza(strtoupper($valor[$i])));
 }
-
-
-//mysql_connect($server, $db_user, $db_pass) or die (mysql_error());
-
-
-
-/*$result = mysql_db_query($database,"SELECT id_mat, id_rep, id, correccion_mat, correccion_rep FROM det_smm WHERE id_smm = '$ids'") or die (mysql_error());
-  if (mysql_num_rows($result)>0)
-  {
-    while ($row = mysql_fetch_array($result))
-    {
-      $id_mat = $row['id_mat'];
-      $id_rep = $row['id_rep'];
-      $mat = $row['correccion_mat'];
-      $rep = $row['correccion_rep'];
-    }
-  }
-*/
-
-/*$array_id = implode("-", $id);
-$array_id_venta = implode("-", $id_venta);
-$array_id_prod = implode("-", $id_prod);
-$array_cantidad = implode("-", $cantidad);
-$array_valor = implode("-", $valor);*/
-
-
-
-/*$newArray_id = array();
-for($k=0; $k<count($id);$k++)
-{
-  if ($id_prod[$k]>0){
-    $newArray_id[$k] = $id[$k];
-  }
-}
-
-
-
-$newArray_id_prod = array();
-for($k=0; $k<count($id);$k++)
-{
-  if ($id_prod[$k]>0){
-    $newArray_id_prod[$k] = $id_prod[$k];
-  }
-}
-
-
-$newArray_cantidad = array();
-for($k=0; $k<count($id);$k++)
-{
-  if ($id_prod[$k]>0){
-    $newArray_cantidad[$k] = $cantidad[$k];
-  }
-}
-
-$newArray_valor = array();
-for($k=0; $k<count($id);$k++)
-{
-  if ($id_prod[$k]>0){
-    $newArray_valor[$k] = $valor[$k];
-  }
-}
-*/
 
 
 for($i=0;$i<count($id);$i++){
@@ -130,7 +77,7 @@ for($i=0;$i<count($id);$i++){
     {
       $nombre_prod = $qry["nombre_prod"];
       //echo "Producto: ".$nombre_prod." - CANTIDAD: ".$cantidad[$i]; echo "<br>";
-      $items[] = new item3(normaliza(strtoupper($nombre_prod))." X ".$cantidad[$i], $valor[$i]);
+      $items[] = new item3(normaliza(strtoupper($nombre_prod))." X ".$cantidad[$i], "$".$valor[$i]);
 		}
 	}
 }
@@ -160,7 +107,19 @@ $printer -> feed();
 $printer -> setJustification(Printer::JUSTIFY_CENTER);
 $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
 $printer -> setTextSize(1, 1);
+while($row = $resDatos->fetch_array())
+{
+  $printer -> text("RUT: ".$row["rut"]."\n");
+  $printer -> text($row["nom_fantasia"]."\n");
+  $printer -> text($row["razon_social"]."\n");
+  $printer -> text($row["direccion"]."\n");
+  $printer -> text($row["correo"]."\n");
+  $printer -> text($row["telefono"]."\n");
+}
+$printer -> feed();
+$printer -> text("-------------------\n");
 $printer -> text("VENTA NRO: ".$ids."\n");
+$printer -> text("-------------------\n");
 $printer -> feed();
 $printer -> setFont(Printer::FONT_B);
 $printer -> setTextSize(1, 1);
@@ -194,19 +153,19 @@ $printer -> feed();
 $printer -> setEmphasis(true);
 //subtotal
 
-$subtotal = $total*0.81;
-$iva = $total*0.19;
+$subtotal = round($total*0.81);
+$iva = round($total*0.19);
 
 
-$printer -> text(new item3("Subtotal: ",$subtotal));
-$printer -> text(new item3("I.V.A.: ",$iva));
+$printer -> text(new item3("Subtotal: ","$".$subtotal));
+$printer -> text(new item3("I.V.A.: ","$".$iva));
 $printer -> setEmphasis(false);
 $printer -> feed();
 /* Tax and total */
 //$printer -> text($tax);
 
 $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-$printer -> text(new item3("TOTAL: ",$total));
+$printer -> text(new item3("TOTAL: ","$".$total));
 $printer -> selectPrintMode();
 /* Footer */
 
@@ -226,12 +185,6 @@ $printer -> feed(2);
 
 $printer -> feed(2);
 $printer -> setJustification(Printer::JUSTIFY_CENTER);
-/*
-$printer -> feed(1);
-$printer -> text("-------------------------------------------\n");
-$printer -> text("FIRMA SOLICITANTE\n");
-$printer -> text(strtoupper($operador)."\n");
-$printer -> text("RUT: ".$rut."\n");*/
 
 $printer -> feed(2);
 
@@ -246,99 +199,6 @@ $printer -> feed(2);
 
 /* Cut the receipt and open the cash drawer */
 $printer -> cut();
-
-/*$printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-//$printer -> bitImage($logo);
-
-$printer -> feed();
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-$printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-$printer -> setTextSize(1, 1);
-$printer -> text("COMPROBANTE SALIDA BODEGA N: ".$ids."\n");
-$printer -> feed();
-$printer -> setFont(Printer::FONT_B);
-$printer -> setTextSize(1, 1);
-//$printer -> text("DESTINO: ".$region." - ".$cliente." - ".$centro."\n");
-$printer -> feed();
-$printer -> selectPrintMode();
-//$printer -> text("ATENDIDO POR: ".strtoupper($nombre)."\n");
-
-//$printer -> feed();
-
-/* Title of receipt */
-/*$printer -> setEmphasis(true);
-$printer -> text("$date\n");
-$printer -> setEmphasis(false);
-$printer -> feed();
-/* Items */
-/*$printer -> setJustification(Printer::JUSTIFY_LEFT);
-$printer -> setEmphasis(true);
-
-/*$printer -> text("--------------- MATERIALES ------------------\n");
-foreach ($items as $item) {
-    $printer -> text($item);
-}
-
-$printer -> feed();
-$printer -> text("--------------- REPUESTOS -------------------\n");
-
-foreach ($items1 as $item1) {
-    $printer -> text($item1);
-}
-
-$printer -> feed();
-$printer -> setEmphasis(true);
-$printer -> text($subtotal);
-$printer -> setEmphasis(false);
-$printer -> feed();
-/* Tax and total */
-//$printer -> text($tax);
-/*$printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-//$printer -> text($total);
-$printer -> selectPrintMode();
-
-/* OBSERVACIONES */
-/*$printer -> feed();
-$printer -> selectPrintMode(Printer::JUSTIFY_LEFT);
-$printer -> text("OBSERVACIONES:\n");
-
-$printer -> setJustification(Printer::JUSTIFY_LEFT);
-$printer -> setEmphasis(true);
-$printer -> text(new item3(''));
-$printer -> setEmphasis(false);
-foreach ($items3 as $item3) {
-  $printer -> text($item3);
-}
-
-$printer -> feed(2);
-/* FIN OBSERVACIONES */
-/* Footer */
-/*$printer -> feed(2);
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-
-$printer -> feed(1);
-$printer -> text("-------------------------------------------\n");
-$printer -> text("COMPROBANTE SOLICITANTE.\n");
-//$printer -> text(strtoupper($operador)."\n");
-//$printer -> text("RUT: ".$rut."\n");
-$printer -> feed(2);
-
-$printer->setJustification();
-// Reset
-/* Barcodes - see barcode.php for more detail */
-/*$printer -> setBarcodeHeight(80);
-$printer -> setJustification(Printer::JUSTIFY_CENTER);
-$printer -> setBarcodeTextPosition(Printer::BARCODE_TEXT_BELOW);
-//$printer -> barcode($cod_barras);
-$printer -> feed();
-//$printer -> text("www.facebook.com/nativo.restobar.35\n");
-//$printer -> text("AVDA. VICENTE PEREZ ROSALES ESQ. CANDELARIA\n");
-//$printer -> text("LLANQUIHUE - X REGION DE LOS LAGOS\n");
-$printer -> feed(2);
-
-$printer -> cut();*/
 $printer -> pulse();
 $printer -> close();
 /* A wrapper to do organise item names & prices into columns */
