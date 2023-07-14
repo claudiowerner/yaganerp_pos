@@ -25,18 +25,6 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
 //$logo = EscposImage::load("bt.jpg", false);
 
-/*$sql = 
-"SELECT mp.nombre_metodo_pago,
-SUM(v.valor) AS valor_total
-FROM ventas v
-JOIN metodo_pago mp
-ON mp.id = v.forma_pago
-JOIN correlativo c 
-ON c.correlativo = v.id_venta
-WHERE  v.id_caja = $nCaja
-GROUP BY v.forma_pago ";
-$resultado = $conexion->query($sql);*/
-
 //declaración de variables de calculo de precios
 $total = 0;
 
@@ -70,7 +58,7 @@ for($i=0;$i<count($id);$i++)
     ON v.id_venta = corr.correlativo
     JOIN cajas c 
     ON c.id = corr.caja
-    WHERE corr.id_cierre = 3
+    WHERE corr.id_cierre = $idCierre
     AND c.id = $nCaja
     AND v.forma_pago = ".$id[$i];
 

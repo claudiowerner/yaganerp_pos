@@ -1,11 +1,10 @@
-function imprimirResumenVenta(dir)
+function imprimirResumenVenta(dir, idCierre)
 {
-    nCaja = $("#nCaja").text();
     nomCaja = $("#nomCaja").text();
     id_cl = cargarIDUsuario(dir);
 
     datos = {
-        "idCierre": nCaja,
+        "idCierre": idCierre,
         "nomCaja": nomCaja,
         "id_cl": id_cl
     }

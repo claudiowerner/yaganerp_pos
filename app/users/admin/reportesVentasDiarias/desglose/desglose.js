@@ -89,5 +89,5 @@ function metodoBtnDetalle(e)
 
 $("#btnReimprimirResumen").on("click", function(e)
 {
-  imprimirResumenVenta("../../../");
+  imprimirResumenVenta("../../../",idCierre);
 })

@@ -22,15 +22,26 @@
 
   $fecha = $_GET['fecha'];
   $hora = $_GET['hora'];
-  $nCaja = $_GET['nCaja'];
+  $idCierre = $_GET['idCierre'];
 
   require_once '../../../conexion.php';
 
+  //anular ventas con valor 0
+  $sql = 
+  "UPDATE correlativo 
+  SET estado = 'N',
+  fecha_cierre = '$fecha $hora'
+  WHERE valor = 0 
+  AND id_cl = $id_cl
+  AND id_cierre = $idCierre";
+  $res = $conexion->query($sql);
+
 	//Comprobar si existen mesas con ventas abiertas
+
 	$consulta = 
   "SELECT * FROM correlativo c
   WHERE c.estado = 'A' 
-  AND caja = $nCaja
+  AND caja = $idCierre
   AND c.id_cl = '$id_cl'";
   $resultado = $conexion->query($consulta);
 
@@ -43,7 +54,7 @@
     "SELECT nombre 
     FROM cierre_caja 
     WHERE id_cl = '$id_cl'
-    AND id = '$nCaja';";
+    AND id = '$idCierre';";
     $resultado = $conexion->query($sql);
     while($row = $resultado->fetch_array())
     {
@@ -56,7 +67,7 @@
     SET hasta = '$fecha $hora', 
     estado = 'C' 
     WHERE id_cl = '$id_cl' 
-    AND id = $nCaja;";
+    AND id = $idCierre;";
     $resultado = $conexion->query($sql);
     if($resultado)
     {

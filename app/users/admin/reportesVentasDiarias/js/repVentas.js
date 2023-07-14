@@ -82,12 +82,12 @@ $("#btnValidarCierre").on('click', function(e)
           $('#solicClaveAutCerrar').modal('hide');
           let fecha = getFecha();
           let hora = getHora(); 
-          let nCaja = $("#nCaja").text();
+          let idCierre = $("#idCierre").text(); 
           nombre_caja = $("#nomCaja").text();
           //ajax cerrar caja
           $.ajax(
             {
-              url:"cierre_caja.php?fecha="+fecha+"&hora="+hora+"&nCaja="+nCaja,
+              url:"cierre_caja.php?fecha="+fecha+"&hora="+hora+"&nCaja="+nCaja+"&idCierre="+idCierre,
               data: "GET",
               success: function(e)
               {
@@ -106,7 +106,7 @@ $("#btnValidarCierre").on('click', function(e)
                     text: e,
                     icon: "success",
                   });
-                  imprimirResumenVenta("../../");
+                  imprimirResumenVenta("../../",idCierre);
                 }
                 obtenerCierresCaja();
               }
@@ -170,18 +170,19 @@ $("#btnAbrirCaja").on('click', function(e)
 $("#cierreCaja").on('click', 'button.btn-success', function(e)
 {
   let element = $(this)[0].parentElement.parentElement;
-  let id = $(element).attr('idCaja');
+  let idCierre = $(element).attr('idCierre');
   let nomCaja = $(element).attr('nomCaja');
-  location.href = "desglose/index.php?idCierre="+id+"&nomCaja="+nomCaja;
+  location.href = "desglose/index.php?idCierre="+idCierre+"&nomCaja="+nomCaja;
 })
 
 $("#cierreCaja").on('click', 'button.btn-danger', function(e)
 {
   let element = $(this)[0].parentElement.parentElement;
-  let id = $(element).attr('idCaja');
+  let id = $(element).attr('idCierre');
   let nomCaja = $(element).attr('nomCaja');
   $("#nomCaja").html(nomCaja);
   $("#nCaja").html(id);
+  $("#idCierre").html(id);
   $("#solicClaveAutCerrar").modal("show");
 })
 
@@ -282,7 +283,7 @@ function obtenerCierresCaja()
               fecha_cierre = "-";
             }
             template+=
-            `<tr idCaja=`+c.id+` nomCaja="`+c.nombre+`" class='${estado}' nomCaja='${c.nombre}' idCierre=''>
+            `<tr idCierre=`+c.id+` nomCaja="`+c.nombre+`" class='${estado}' nomCaja='${c.nombre}'>
               <td>${c.id}</td>
               <td>${c.nombre}</td>
               <td>${c.creado_por}</td>
