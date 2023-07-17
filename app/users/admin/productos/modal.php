@@ -26,7 +26,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr>
+                  <tr id=codBarra>
                     <td><label name='codBarra'>Código de barra</label></td>
                     <td>
                       <input type='text' name='codBarra' id='codBarra' class='form-control' required>
@@ -46,7 +46,7 @@
                       <strong id='errCategoria' style='color:red'></strong>
                     </td>
                   </tr>
-                  <tr>
+                  <tr id=cantidad>
                     <td>
                       <label name='cant'>Cantidad</label>
                     </td>
@@ -114,7 +114,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr>
+                  <tr id=codBarraEditar>
                     <td><label name='nombreCat'>Código de barra</label></td>
                     <td>
                       <input type='text' id='codBarraEditar' name='nomProdEditar' class='form-control' required></td>
@@ -131,7 +131,7 @@
                       </select>
                     </td>
                   </tr>
-                  <tr>
+                  <tr id=cantidadEditar>
                     <td><label name='cant'>Cantidad</label></td>
                     <td>
                       <input type='number' name='cantidad' id='cantidadEditar' class='form-control' required>

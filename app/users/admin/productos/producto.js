@@ -23,6 +23,7 @@ $("#swPesaje").on("click", function(e)
     html = "Valor neto por KG.";
     $("#pesaje").show();
     $("#codBarra").attr("required", false);
+    $("#codBarra").prop("disabled", true);
     $("#codBarra").attr("placeholder", "Campo no necesario");
   }
   else
