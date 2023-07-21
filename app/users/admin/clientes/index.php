@@ -70,6 +70,7 @@
 
                                         <h1>Cuentas corrientes de cliente</h1>
                                         <button type="button" class="btn btn-success" id="btnAgregarCliente">Agregar cliente</button>
+                                        <input type="text" name="txtBusqueda" id="txtBusqueda" class="form form-control" placeholder="Ingrese parámetro de búsqueda">
                                         <property name="characterEncoding" value="UTF-8">
 
                                             <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
@@ -85,6 +86,9 @@
                                                         <th>Opciones</th>
                                                     </tr>
                                                 </thead>
+                                                <tbody id="bodyCliente">
+
+                                                </tbody>
                                             </table>
                                         </property>
                                     </div>

@@ -1,78 +1,73 @@
 
+let busqueda = "";
+cargarDatosCliente(busqueda);
+
+
 $("#btnAgregarCliente").on("click", function(e)
 {
   $("#modalRegistro").modal("show");
 });
 
-
-
-
-//Datatable
-  var idCat = 0;
-    table = $('#producto').DataTable({
-      "createdRow": function( row, data, dataIndex){
-        if( data.estado ==  `ACTIVO`){
-          $(row).addClass('ACTIVO');
+function cargarDatosCliente(busqueda)
+{
+  $.ajax
+  (
+    {
+    url:"read_clientes.php",
+    data: {"busqueda": busqueda},
+    type: "POST",
+    success: function(e)
+    {
+      let json;
+      try {
+        json = JSON.parse(e);
+        if(Array.isArray(json))
+        {
+          template = "";
+          json.forEach(j=>{
+            template += `
+            <tr>
+              <td>${j.id}</td>
+              <td>${j.rut}</td>
+              <td>${j.nombre}</td>
+              <td>${j.apellido}</td>
+              <td>${j.estado}</td>
+              <td>${j.nombre_usuario}</td>
+              <td>
+                <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick="btnVerCuentas(this)">Ver cuentas</button>
+                <button type="submit" id="btnEditar" class="btn btn-primary"><img src="../img/edit.png" width="15"></button>
+              </td>
+            </tr>`
+          });
+          if(template=="")
+          {
+            template = "<tr><td colspan='8'>Sin resultados</td></tr>";
+          }
         }
         else
         {
-          $(row).addClass('INACTIVO');
+          template = "<tr><td colspan='8'>Sin resultados</td></tr>";
         }
-      },
+      } 
+      catch (e) 
+      {
+        return console.error("Error JSON Parse: "+e); // error in the above string (in this case, yes)!
+      }
+    
+    $("#bodyCliente").html(template);
+  }
+})
+}
 
-        "ajax":{
-          "url":"read_clientes.php",
-          "type":"GET",
-          "dataSrc":""
-        },
-        //columnas
-        "columns":[
-          {"data":"id"},
-          {"data":"rut"},
-          {"data":"nombre"},
-          {"data":"apellido"},
-          {"data":"estado"},
-          {"data":"nombre_usuario"},
-          {"data":"fecha_registro"},
-          {
-            "defaultContent": '<button type="submit" id="btnEditar" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" ><img src="../img/edit.png" width="15"></button>'
-          }
-        ],
-
-        //Configuración de Datatable
-        "iDisplayLength": 10,
-        "language": {
-          "lenghtMenu":"Mostrar _MENU_ registros",
-          "zeroRecords": "No se encontraron resultados.",
-          "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-          "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-          "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-          "sSearch":"Buscar",
-          "oPaginate":{
-            "sFirst":"Primero",
-            "sLast":"Último",
-            "sNext":"Siguiente",
-            "sPrevious":"Anterior"
-          }
-        }
-      });
-
-$("#producto").on('click', 'tr', function(e)
+$("#txtBusqueda").on("keyup", function(e)
 {
-  e.preventDefault();
-  var cliente = $('#producto').DataTable();
-  var datos = cliente.row(this).data();
-  let rut = datos.rut;
-  let nombre = datos.nombre;
-  let apellido = datos.apellido;
+  busqueda = $("#txtBusqueda").val()
+  cargarDatosCliente(busqueda);
+})
 
-  
-
-});
-
-function btnCuenta(e)
+function btnVerCuentas(e)
 {
-  alert("ver cuenta");
+  alert(e.id);
 }
 
 $("#formRegistroCliente").submit(function(e)
@@ -88,8 +83,7 @@ $("#formRegistroCliente").submit(function(e)
     type: "POST",
     success: function(e)
     {
-      alert(e)
-      if(e==1)
+      if(e!=0)
       {
         swal({
           title: "Aviso",
@@ -122,9 +116,9 @@ $("#formRegistroCliente").submit(function(e)
                   icon: "success",
                 });
               }
-              $('#producto').DataTable().ajax.reload();
               $("#modalRegistro").modal("hide");
               $("#formRegistroCliente").trigger("reset");
+              cargarDatosCliente("");
             }
           })
           .fail(function(e)

@@ -18,7 +18,7 @@ if(isset($_SESSION['user'])){
     $consulta = 
     "SELECT * FROM clientes_negocio
     WHERE id_cl = $id_cl
-    AND rut = $rut";
+    AND rut = '$rut'";
     $resultado = $conexion->query($consulta);
 
     echo $resultado->num_rows;
