@@ -18,7 +18,6 @@ function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
     {
         let cantidad = comprobarCantidad(idProd);
         let stockMinimo = cargarNumeroStockMinimo();
-        
 
         if(cantidad<=stockMinimo)
         {
@@ -54,7 +53,7 @@ function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
         }
         else
         {
-            
+            accionGuardarVenta(idCaja, id_venta, idProd, hora, cantProd, nomCaja);
         }
     }
     if(sm_activado.match("N"))

@@ -38,7 +38,7 @@ $("#btnCerrarCaja").on("click", function(e)
                         //imprimir ticket
                         $.ajax(
                             {
-                                url: "https://192.168.1.20/impresion_yaganerp/vendor/ticket_resumen_caja.php",
+                                url: "https://webposerp.cl/impresion_yaganerp/vendor/ticket_resumen_caja.php",
                                 data: datos,
                                 type: "POST",
                                 success: function(e)

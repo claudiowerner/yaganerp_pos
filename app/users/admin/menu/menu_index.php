@@ -29,7 +29,29 @@
                           <span>Cajas</span>
                       </a>
                   </li>
-                  
+                  <li class="devider-title">
+                        <h3>
+                            <i class="fontello-settings"></i><span>Cuentas y proveedores</span>
+                        </h3>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip" href="clientes">
+                        <i class=" fontello-mail-1"></i>
+                            Clientes
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip" href="proveedores">
+                        <i class=" fontello-mail-1"></i>
+                            Proveedores
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip" href="pedidos">
+                        <i class=" fontello-mail-1"></i>
+                            Pedidos
+                        </a>
+                    </li>
                   <li class="devider-title">
                       <h3>
                         <i class="fontello-settings"></i><span>Inventario</span>

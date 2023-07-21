@@ -55,17 +55,15 @@
 
 
 <body>
-    <div id="preloader">
-        <div id="status">&nbsp;
-            Cargando...
-        </div>
-    </div>
-
+	<div class="error">
+		<span>Los datos ingresados son incorrectos. Intente nuevamente.</span>
+	</div>
     <section class="ftco-section ">
 		<div class="container" style="">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5 col-lg-12">
-					<h2 class="heading-section"><strong>Bienvenido a YaganERP POS&nbsp;</strong> </h2>
+					<h2 class="heading-section"><strong>Bienvenido a WebPOS&nbsp;</strong> </h2>
+					<h3 class="heading-section"><strong>Sistema de ventas online&nbsp;</strong> </h3>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -80,18 +78,13 @@
                         </div>
                         <form id="Frm" action="">
                             <div class="form-group">
-                                <label>Nombre</label>
+                               
                                 <input name="t_user" required placeholder="Usuario" type="text" class="form-control" autofocus autocomplete="off">
                             </div>
                             <div class="form-group">
-                                <a href="#" class="pull-right label-forgot">¿Olvidó su contraseña?</a>
-                                <label>Contraseña</label>
+                                <a href="#" class="pull-right label-forgot primary">¿Olvidó su contraseña?</a>
+                                <label></label>
                                 <input name="t_pass" required placeholder="Contraseña" type="password" class="form-control">
-                            </div>
-                            <div class="checkbox pull-left">
-                                <label>
-                                    <input type="checkbox">Remember me
-                                </label>
                             </div>
                             <button class="btn btn-primary btn-block botonlg">Iniciar sesión&nbsp;</button>
                         </form>
@@ -100,6 +93,10 @@
             </div>
         </div>
 	</section>
+	s
+	<footer>
+		pies
+	</footer>
 
     <!-- 
 
@@ -143,8 +140,4 @@
 
 
 
-                                    <div class="error">
-
-        <span>Los datos ingresados son incorrectos. Intente nuevamente.</span>
-
-    </div>
+                                    

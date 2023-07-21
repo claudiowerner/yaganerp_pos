@@ -100,7 +100,7 @@
                                                             </button>
                                                         </td>
                                                         <td>
-                                                            <button id="btnAgregarVenta" class="btn btn-success agregar" disabled=true>Agregar</button>
+                                                            <button id="venta" name="agregar" class="agregar btn btn-success" disabled>Agregar</button>
                                                         </td>
                                                     </tr>
                                                     <tr>

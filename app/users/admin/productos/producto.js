@@ -438,24 +438,21 @@ $("#formEditarProducto").submit(function(e)
     })
 });
 
-function getHora()
+function getFechaBD()
 {
   var hoy = new Date();
-  var h = hoy.getHours();
-  var min = hoy.getMinutes();
-  var sec = hoy.getSeconds();
-  if(hora<10)
+  //fecha
+  let dia = hoy.getDate();
+  let mes = parseInt(hoy.getMonth())+parseInt(1);
+  let ano = hoy.getFullYear();
+  if(dia<10)
   {
-    h = '0'+h;
+    dia = "0"+hoy.getDate();
   }
-  if(min<10)
+  if(mes<10)
   {
-    min = '0'+min;
+    mes = "0"+mes;
   }
-  if(sec<10)
-  {
-    sec = '0'+sec;
-  }
-  var hora = h+":"+min+":"+sec;
-  return hora;
+  var fecha = ano+"-"+mes+"-"+dia;
+  return fecha;
 }

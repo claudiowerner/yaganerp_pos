@@ -30,16 +30,15 @@ function productoValido()
   let valor = $("#prod").val();
   if(valor=="N")
   {
-    $("#btnAgregarVenta").attr("disabled", true);
+    $("#venta").attr("disabled", true);
   }
   else
   {
-    $("#btnAgregarVenta").attr("disabled", false);
+    $("#venta").attr("disabled", false);
   }
 }
 
-
-$(".agregar").on('click', function(e)
+$("#venta").on('click', function(e)
 {
   let id_venta = $("#id_venta").text();
   let idProd = $("#prod").val();
@@ -92,7 +91,7 @@ $("#btnEliminarVenta").on('click', function(e)
                 icon: "success",
               });
               cargarVentasCaja();
-              cargarVentaGeneral();
+              
               $('#solicClaveAut').modal('hide');
             }
           }).fail( function(e) {
@@ -239,7 +238,7 @@ function confirmarPaga(boton)
 
 
       cargarVentasCaja();
-      cargarVentaGeneral();
+      
       /*si el número de botón seleccionado es 2 (btnPagarVenta), se mostrará el mensaje de venta exitosa y
       se vuelve al apartado donde se muestran las mesas*/
     }

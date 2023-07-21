@@ -15,7 +15,7 @@ function imprimirBoleta()
       
     $.ajax(
         {
-            url: "https://192.168.1.20/impresion_yaganerp/vendor/ticket.php",
+            url: "https://webposerp.cl/impresion_yaganerp/vendor/ticket.php",
             data: datos,
             cache: false,
             type: "POST",
@@ -30,5 +30,5 @@ function imprimirBoleta()
                 )
             }
         }
-        )
+    )
 }
