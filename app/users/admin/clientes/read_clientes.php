@@ -20,7 +20,9 @@ if(isset($_SESSION['user'])){
       {
         //query
         $consulta = 
-        "SELECT cln.id, cln.rut, cln.nombre, cln.apellido, cln.estado, us.nombre AS nombre_usuario, cln.fecha_registro FROM clientes_negocio cln
+        "SELECT cln.id, cln.rut, cln.nombre, cln.apellido, cln.estado, us.nombre AS nombre_usuario, 
+        DATE_FORMAT(cln.fecha_registro,'%d-%m-%Y') AS fecha_registro 
+        FROM clientes_negocio cln
         JOIN usuarios us 
         ON cln.creado_por = us.id
         WHERE cln.id_cl = $id_cl";
@@ -29,7 +31,7 @@ if(isset($_SESSION['user'])){
       {
         $b = $_POST["busqueda"];
         $consulta = "SELECT cln.id, cln.rut, cln.nombre, cln.apellido, cln.estado, us.nombre AS nombre_usuario,
-              DATE_FORMAT(cln.fecha_registro,'%D-%m-%Y') AS fecha_registro 
+              DATE_FORMAT(cln.fecha_registro,'%d-%m-%Y') AS fecha_registro 
               FROM clientes_negocio cln
               JOIN usuarios us 
               ON cln.creado_por = us.id

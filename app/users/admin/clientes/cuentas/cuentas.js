@@ -13,7 +13,7 @@ function cargarDatosCliente(busqueda)
   $.ajax
   (
     {
-    url:"read_clientes.php",
+    url:"read_cuentas.php",
     data: {"busqueda": busqueda},
     type: "POST",
     success: function(e)

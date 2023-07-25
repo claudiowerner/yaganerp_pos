@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="css/style.css">
 
 
-    <title>YaganERP - Iniciar sesión</title>
+    <title>.:WebPos:.</title>
     <style type="text/css">
 
         .bg
