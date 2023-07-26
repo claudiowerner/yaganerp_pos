@@ -16,28 +16,18 @@ if(isset($_SESSION['user'])){
     
     $rut = $_POST["rut"];
     
-
     $consulta = 
-      "SELECT corr.correlativo, ccr.estado, 
-      DATE_FORMAT(ccr.fecha, '%d-%m-%Y') AS fecha, SUM(v.valor) AS valor
-      FROM cuenta_corriente ccr 
-      JOIN correlativo corr 
-      ON corr.correlativo = ccr.correlativo
-      JOIN ventas v 
-      ON v.id_venta = corr.correlativo
-      WHERE ccr.id_cl = $id_cl
-      AND rut = '$rut'
-      GROUP BY corr.correlativo";
+    "SELECT nombre, apellido 
+    FROM clientes_negocio 
+    WHERE id_cl = $id_cl
+    AND rut = '$rut'";
     $resultado = $conexion->query($consulta);
     $json= array();
     while ($row = $resultado->fetch_array())
     {
-
-        $json[] =array(
-          'correlativo' => $row['correlativo'],
-          'estado' =>  $row['estado'],
-          'fecha' => ($row['fecha']),
-          'valor' => ($row['valor'])
+      $json[] =array(
+          'nombre' => ($row['nombre']),
+          'apellido' => ($row['apellido'])
         );
     }
     echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);

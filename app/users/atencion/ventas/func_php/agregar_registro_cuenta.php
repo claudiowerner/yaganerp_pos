@@ -19,7 +19,7 @@
 	$sql = 
 	"SELECT * FROM cuenta_corriente 
 	WHERE id_cl = $id_cl
-	AND $corr = '$corr'";
+	AND correlativo = '$corr'";
 
 	$res = $conexion->query($sql);
 	if($res->num_rows>0)
@@ -32,7 +32,7 @@
 		"SELECT * FROM cuenta_corriente
 		WHERE id_cl = $id_cl
 		AND rut = '$rut'
-		AND $corr = '$corr'";
+		AND correlativo = '$corr'";
 		$res = $conexion->query($sql);
 		
 		if($res->num_rows>0)
@@ -41,6 +41,7 @@
 		}
 		else
 		{
+			//inserción de cuenta
 			$sql = 
 			"INSERT INTO cuenta_corriente VALUES
 			(null,

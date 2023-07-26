@@ -1,0 +1,57 @@
+function registrarCuenta(rut)
+{
+
+    let correlativo = $("#id_venta").text();
+    let fecha = getFechaBD();
+    
+    let datos = {
+        "rut":rut,
+        "corr": correlativo,
+        "fecha": fecha
+    }
+    //se pregunta si desea añadir la venta a la cuenta del cliente seleccionado
+
+    swal({
+        title: "¿Seguro?",
+        text: 
+        `¿Desea agregar esta venta a la cuenta de este cliente ${rut}?`,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((pagar) => {
+        if (pagar)
+        {
+            $("#btnCrearVenta").prop("disabled", false)
+            //insertar datos en tabla cuenta_corriente
+            $.ajax({
+                url:"func_php/agregar_registro_cuenta.php",
+                data:datos,
+                type: "POST",
+                success: function(e)
+                {
+                    swal({
+                        title:"Excelente",
+                        text:e,
+                        icon:"success"
+                    })
+                }
+            })
+            .fail(function(e)
+            {
+                swal({
+                    title:"Error",
+                    text:e,
+                    icon:"error"
+                })
+            })
+        } 
+        else 
+        {
+            swal("Operación cancelada");
+        }
+      });
+
+    /**/
+
+}

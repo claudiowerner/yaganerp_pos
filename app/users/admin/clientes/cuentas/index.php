@@ -20,6 +20,8 @@
   $id_cl = $_SESSION['user']["id_cl"];
   $piso = 1;
 
+  $rut = $_GET["rut"];
+
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +56,7 @@
                 require "../../menu/top_menu_sub_item.php";
             ?>
             <!-- CONTENT -->
+            <strong id="rut" style="display: none"><?php echo $rut;?></strong>
             <div class="wrap-fluid" id="paper-bg">
                 <div class="row">
                     <div class="col-lg-12">
@@ -67,24 +70,35 @@
                                             echo modalEditar();
                                         ?>
 
-                                        <h1>Cuentas asociadas a: </h1>
+                                        <h1 align="left">Cuentas asociadas a: </h1>
+                                        
+                                        <div align="left">
+                                            <table>
+                                                <tr>
+                                                    <td><strong>Nombre:</strong></td>
+                                                    <td id="nombre">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Apellido:</strong></td>
+                                                    <td id="apellido">Cargando...</td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                         <property name="characterEncoding" value="UTF-8">
 
                                             <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
-                                                        <th>R.U.T.</th>
-                                                        <th>Nombre</th>
-                                                        <th>Apellido</th>
+                                                        <th>Correlativo</th>
                                                         <th>Estado</th>
-                                                        <th>Creado por</th>
-                                                        <th>Fecha registro</th>
-                                                        <th>Opciones</th>
+                                                        <th>Fecha</th>
+                                                        <th>Valor</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="bodyCliente">
-
+                                                <tbody id="bodyCuenta">
+                                                    <tr>
+                                                        <td colspan=4>Cargando...</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </property>

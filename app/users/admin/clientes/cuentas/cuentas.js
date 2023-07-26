@@ -1,224 +1,99 @@
 
-let busqueda = "";
-cargarDatosCliente(busqueda);
+let rut = $("#rut").text()
+let fechaInicio = "";
+let fechaFin = "";
 
+cargarNombreCliente(rut);
+cargarDatos(rut, fechaInicio, fechaFin);
 
-$("#btnAgregarCliente").on("click", function(e)
+function cargarNombreCliente(rut)
 {
-  $("#modalRegistro").modal("show");
-});
-
-function cargarDatosCliente(busqueda)
-{
-  $.ajax
-  (
+  $.ajax(
     {
-    url:"read_cuentas.php",
-    data: {"busqueda": busqueda},
-    type: "POST",
-    success: function(e)
-    {
-      let json;
-      try {
-        json = JSON.parse(e);
-        if(Array.isArray(json))
-        {
-          template = "";
-          json.forEach(j=>{
-            template += `
-            <tr>
-              <td>${j.id}</td>
-              <td>${j.rut}</td>
-              <td>${j.nombre}</td>
-              <td>${j.apellido}</td>
-              <td>${j.estado}</td>
-              <td>${j.nombre_usuario}</td>
-              <td>${j.fecha_registro}</td>
-              <td>
-                <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick="btnVerCuentas(this)">Ver cuentas</button>
-                <button type="submit" id="btnEditar" class="btn btn-primary"><img src="../img/edit.png" width="15"></button>
-              </td>
-            </tr>`
-          });
-          if(template=="")
-          {
-            template = "<tr><td colspan='8'>Sin resultados</td></tr>";
-          }
-        }
-        else
-        {
-          template = "<tr><td colspan='8'>Sin resultados</td></tr>";
-        }
-      } 
-      catch (e) 
+      url: "read_datos_cliente.php",
+      data: {"rut": rut},
+      type: "POST",
+      success: function(e)
       {
-        return console.error("Error JSON Parse: "+e); // error in the above string (in this case, yes)!
-      }
-    
-    $("#bodyCliente").html(template);
-  }
-})
-}
-
-$("#txtBusqueda").on("keyup", function(e)
-{
-  busqueda = $("#txtBusqueda").val()
-  cargarDatosCliente(busqueda);
-})
-
-function btnVerCuentas(e)
-{
-  alert(e.id);
-}
-
-$("#formRegistroCliente").submit(function(e)
-{
-  e.preventDefault();
-  let rut = $("#txtRutClte").val();
-  let nombre =$("#txtNombreClte").val();
-  let apellido =$("#txtApellido").val();
-  
-  $.ajax({
-    url:"validar_rut.php",
-    data: {"rut":rut},
-    type: "POST",
-    success: function(e)
-    {
-      if(e!=0)
-      {
-        swal({
-          title: "Aviso",
-          text: "Ya existe un cliente con el rut "+rut,
-          icon: "warning",
-        });
-      }
-      else
-      {
-        datos = 
-        {
-          "rut": rut,
-          "nombre": nombre,
-          "apellido": apellido,
-          "fecha": getFechaBD()
-        }
-        console.log(datos)
-        $.ajax(
+        let json = JSON.parse(e);
+        json.forEach(j=>
           {
-            url:"crear_cliente.php",
-            data: datos,
-            type: "POST",
-            success: function(e)
-            {
-              if(e.match("correctamente"))
-              {
-                swal({
-                  title: "Excelente",
-                  text: e,
-                  icon: "success",
-                });
-              }
-              $("#modalRegistro").modal("hide");
-              $("#formRegistroCliente").trigger("reset");
-              cargarDatosCliente("");
-            }
-          })
-          .fail(function(e)
-          {
-            swal({
-              title: "Error",
-              text: "Ocurrió un error al intentar registrar el producto: "+e.responseText,
-              icon: "error",
-            });
+            $("#nombre").html(j.nombre);
+            $("#apellido").html(j.apellido);
           })
       }
     }
-  })
-  .fail(function(e)
-  {
-    console.log("Ocurrió un error al intentar registrar el producto: "+e.responseText);
-  })
-});
+  )
+}
 
-//editar producto
-
-
-$("#formEditarProducto").submit(function(e)
+function cargarDatos(rut, fechaInicio, fechaFin)
 {
-  e.preventDefault();
-  var id = $("#tituloModalEditar").text();
-  var np = $("#nomProdEditar").val();
-  var cod_barra = $("#codBarraEditar").val();
-  var lc = $("#listCatEditar").val();
-  var can = $("#cantidadEditar").val();
-  var vn = $("#valorNetoEditar").val();
-  var vv = $("#valorVentaEditar").val();
-  var unid = $("#slctUnidadEditar").val();
-  var pesaje = "";
-
-  //hora
-  let hora = getHora();
+  datos = {
+    "rut": rut
+  }
   $.ajax(
     {
-      url:"editar_producto_exe.php?codigo_barra="+cod_barra+"&id="+id+"&nomProd="+np+"&cat="+lc+"&can="+can+"&vv="+vv+"&vn="+vn+"&estado="+ep+"&hora="+hora+"&medida="+unid+"&pesaje="+rpEditar,
-      type: "GET",
+      url: "read_cuentas.php",
+      data: datos,
+      type: "POST",
       success: function(e)
       {
-        if(e.match("correctamente"))
-        {
-          swal({
-            title: "Excelente",
-            text: e,
-            icon: "success",
-          });
-        }
-        if(e.match("No se puede desactivar"))
-        {
-          swal({
-            title: "Aviso",
-            text: e,
-            icon: "warning",
-          });
-        }
-        if(e.match("Error")||e.match("error"))
-        {
-          swal({
-            title: "Error al modificar",
-            text: e,
-            icon: "error",
-          });
-        }
-        $('#producto').DataTable().ajax.reload();
-        $("#formRegistro").trigger('reset');
-        $("#modalEditar").modal("hide");
-      }
-    })
-    .fail(function(e)
-    {
-      console.log(e.responseText);
-    })
-});
+        json = JSON.parse(e)
+        template = "";
 
-function getHora()
-{
-  var hoy = new Date();
-  var h = hoy.getHours();
-  var min = hoy.getMinutes();
-  var sec = hoy.getSeconds();
-  if(hora<10)
-  {
-    h = '0'+h;
-  }
-  if(min<10)
-  {
-    min = '0'+min;
-  }
-  if(sec<10)
-  {
-    sec = '0'+sec;
-  }
-  var hora = h+":"+min+":"+sec;
-  return hora;
+        valorTotal = 0;
+
+        json.forEach(j=>{
+          if(j.correlativo==null)
+          {
+            //
+          }
+          else
+          {
+            valorTotal = parseInt(valorTotal) + parseInt(j.valor);
+            estado = "";
+
+            btnPagar = "";
+
+            if(j.estado=="A")
+            {
+              estado="<button class='btn btn-danger' style='width:100%' disabled>POR PAGAR</button>";
+              btnPagar=`<button class='btn btn-success' onClick='pagarVenta(${j.correlativo})' >Pagar</button>`;
+            }
+            else
+            {
+              estado="<button class='btn btn-success' style='width:100%' disabled>PAGADO</button>";
+              btnPagar=`<button class='btn btn-success' onClick='pagarVenta(${j.correlativo})' disabled>Pagar</button>`;
+            }
+
+            template = template+
+          `<tr>
+              <td>${j.correlativo}</td>
+              <td>${estado}</td>
+              <td>${j.fecha}</td>
+              <td>$${j.valor}</td>
+              <td>${btnPagar}</td>
+            <tr>`;
+          }
+        })
+        if(template=="")
+        {
+          $("#bodyCuenta").html("<tr><td colspan=4>Sin resultados</td></tr>");
+        }
+        else
+        {
+          template = template +
+          `<tr>
+            <td colspan=3><strong>Total:</strong></td>
+            <td><strong>$${valorTotal}</strong></td>
+          </tr>`;
+          $("#bodyCuenta").html(template);
+        }
+      }
+    }
+  )
 }
+
 
 function getFechaBD()
 {

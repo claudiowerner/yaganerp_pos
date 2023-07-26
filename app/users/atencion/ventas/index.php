@@ -261,6 +261,7 @@
     <script src="js/datosCliente.js"></script>
     <script src="js/agregarCliente.js"></script>
     <script src="js/validarVariableRut.js"></script>
+    <script src="js/agregarACuentaCliente.js"></script>
     
     
 </body>

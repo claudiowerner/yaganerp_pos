@@ -13,51 +13,51 @@ function cargarDatosCliente(busqueda)
   $.ajax
   (
     {
-    url:"read_clientes.php",
-    data: {"busqueda": busqueda},
-    type: "POST",
-    success: function(e)
-    {
-      let json;
-      try {
-        json = JSON.parse(e);
-        if(Array.isArray(json))
-        {
-          template = "";
-          json.forEach(j=>{
-            template += `
-            <tr>
-              <td>${j.id}</td>
-              <td>${j.rut}</td>
-              <td>${j.nombre}</td>
-              <td>${j.apellido}</td>
-              <td>${j.estado}</td>
-              <td>${j.nombre_usuario}</td>
-              <td>${j.fecha_registro}</td>
-              <td>
-                <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick="btnVerCuentas(this)">Ver cuentas</button>
-                <button type="submit" id="btnEditar" class="btn btn-primary"><img src="../img/edit.png" width="15"></button>
-              </td>
-            </tr>`
-          });
-          if(template=="")
+      url:"read_clientes.php",
+      data: {"busqueda": busqueda},
+      type: "POST",
+      success: function(e)
+      {
+        let json;
+        try {
+          json = JSON.parse(e);
+          if(Array.isArray(json))
+          {
+            template = "";
+            json.forEach(j=>{
+              template += `
+              <tr>
+                <td>${j.id}</td>
+                <td>${j.rut}</td>
+                <td>${j.nombre}</td>
+                <td>${j.apellido}</td>
+                <td>${j.estado}</td>
+                <td>${j.nombre_usuario}</td>
+                <td>${j.fecha_registro}</td>
+                <td>
+                  <button type="submit" id="btnVerCuentas" rut="${j.rut}" class="btn btn-success" onClick="btnVerCuentas('${j.rut}')">Ver cuentas</button>
+                  <button type="submit" id="btnEditar" class="btn btn-primary"><img src="../img/edit.png" width="15"></button>
+                </td>
+              </tr>`
+            });
+            if(template=="")
+            {
+              template = "<tr><td colspan='8'>Sin resultados</td></tr>";
+            }
+          }
+          else
           {
             template = "<tr><td colspan='8'>Sin resultados</td></tr>";
           }
-        }
-        else
+        } 
+        catch (e) 
         {
-          template = "<tr><td colspan='8'>Sin resultados</td></tr>";
+          return console.error("Error JSON Parse: "+e); // error in the above string (in this case, yes)!
         }
-      } 
-      catch (e) 
-      {
-        return console.error("Error JSON Parse: "+e); // error in the above string (in this case, yes)!
-      }
     
-    $("#bodyCliente").html(template);
-  }
-})
+      $("#bodyCliente").html(template);
+    }
+  })
 }
 
 $("#txtBusqueda").on("keyup", function(e)
@@ -66,9 +66,9 @@ $("#txtBusqueda").on("keyup", function(e)
   cargarDatosCliente(busqueda);
 })
 
-function btnVerCuentas(e)
+function btnVerCuentas(rut)
 {
-  alert(e.id);
+  location.href = "cuentas/index.php?rut="+rut;
 }
 
 $("#formRegistroCliente").submit(function(e)
