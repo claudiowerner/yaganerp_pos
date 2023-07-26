@@ -81,6 +81,7 @@ function cargarVentasCaja()
           $("#ventas").html("<tr><td>Sin ventas</td></tr>");
           $('#imprimirBoleta').attr('disabled', true);
           $('#pagarVenta').attr('disabled', true);
+          $('#btnAñadirCuenta').attr('disabled', true);
           $('#btnCrearVenta').attr('disabled', true);
           
           $("#subtotal").html(0);
@@ -94,6 +95,7 @@ function cargarVentasCaja()
 
           $('#imprimirBoleta').attr('disabled', false);
           $('#pagarVenta').attr('disabled', false);
+          $('#btnAñadirCuenta').attr('disabled', false);
 
           //números en dinero
           $("#subtotal").html(subtotal_iva);

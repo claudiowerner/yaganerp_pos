@@ -119,6 +119,22 @@ $("#pagarVenta").on("click", function(e)
   $("#modalMetodoPago").modal("show");
 })
 
+$("#btnAñadirCuenta").on("click", function(e)
+{
+  $("#modalAñadirCuenta").modal("show");
+});
+
+$("#btnAgregarCliente").on("click", function(e)
+{
+  //entregar rut previamente escrito desde modalAñadirCuenta al modalAgregarCuenta
+  let rutAñadir = $("#txtRut").val();
+  $("#txtRutGuardar").val(rutAñadir);
+
+  //mostrar modals
+  $("#modalAgregarCliente").modal("show");
+  $("#modalAñadirCuenta").modal("hide");
+})
+
 $("#btnConfirmarPaga").on('click', function(e)
 {
   swal({

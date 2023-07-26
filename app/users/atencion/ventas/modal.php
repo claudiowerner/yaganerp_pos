@@ -77,33 +77,112 @@
 ";
   }
 
-  function modalCambiarMesa()
+  function modalAñadirCuenta()
   {
-    return "<!--modalCambiarMesa-->
-  <div class='modal fade' id='cambiarMesa' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
-    <div class='modal-dialog modal-lg' role='document'>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <h5 class='modal-title' id='tipoVenta'>Cambiar mesa
-            <!--Envío de MESA ACTUAL a PHP via JS--><label id='nMesaActual'></label></h5>
-          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-            <span aria-hidden='true'>&times;</span>
-          </button>
-        </div>
-        <div class='modal-body' align='center'>
-          <section id='restaurant'>
-            Cargando mesas...
-          </section>
-        </div>
-        <div class='modal-footer'>
-          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-          <button class='btn btn-success' id='btnEliminarVenta'>Confirmar</button>
+    return "<!--modalCambiarCantidad-->
+      <div class='modal fade' id='modalAñadirCuenta' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <h5 class='modal-title' id='tipoVenta'>Modificar cantidad venta ID 
+                <!--Env�o de ID venta a PHP via JS--><span id='idVenta'></span>
+                <!--Env�o de NOMBRE DEL PRODUCTO a PHP via JS--><label id='id_prod' style='display:  none'></label></h5>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+            </div>
+            <div class='modal-body' align='center'>
+              <table style='width:100%'>
+                <tr>
+                  <td>
+                    <label for=''>R.U.T.</label>
+                  </td>
+                  <td>
+                    <input type='text' name='txtRut' id='txtRut' class='form form-control'>
+                  </td>
+                  <td>
+                    <button id='btnAgregarCliente' class='btn btn-success' style='width:100%' disabled >Agregar</button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class='modal-body' align='center'>
+              <table class='table'>
+                <th>
+                  <tr style='width:33%'>
+                    <td>R.U.T.</td>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Seleccionar</td>
+                  </tr>
+                </th>
+                <tbody id='datosCliente'>
+                  <tr>
+                    <td colspan=4 align=center>
+                      Indique un parámetro de búsqueda
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>  
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  ";
+      ";
   }
+
+  function modalAgregarCliente()
+  {
+    return "<!--modalCambiarCantidad-->
+      <div class='modal fade' id='modalAgregarCliente' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <h5 class='modal-title' id='tipoVenta'>Modificar cantidad venta ID 
+                <!--Env�o de ID venta a PHP via JS--><span id='idVenta'></span>
+                <!--Env�o de NOMBRE DEL PRODUCTO a PHP via JS--><label id='id_prod' style='display:  none'></label></h5>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+            </div>
+            <div class='modal-body' align='center'>
+              <table style='width:100%'>
+                <tr>
+                  <td>
+                    <label for=''>R.U.T.</label>
+                  </td>
+                  <td>
+                    <input type='text' name='txtRutGuardar' id='txtRutGuardar' class='form form-control'>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label for=''>Nombre:</label>
+                  </td>
+                  <td>
+                    <input type='text' name='txtNombreGuardar' id='txtNombreGuardar' class='form form-control'>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label for=''>Apellido:</label>
+                  </td>
+                  <td>
+                    <input type='text' name='txtApellidoGuardar' id='txtApellidoGuardar' class='form form-control'>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+              <button class='btn btn-success' id='btnGuardarCliente' data-dismiss='modal'>Guardar</button>
+            </div> 
+          </div>
+        </div>
+      </div>
+      ";
+  }
+
   function modalCambiarCantidad()
   {
     return "<!--modalCambiarCantidad-->

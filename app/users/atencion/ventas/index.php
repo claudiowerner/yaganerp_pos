@@ -62,6 +62,8 @@
                         echo modalCambiarCantidad();
                         echo modalCambiarCantidadPesaje();
                         echo modalMetodoPago();
+                        echo modalAñadirCuenta();
+                        echo modalAgregarCliente();
                     ?>
                 </div>
                 <!-- CONTENT -->
@@ -200,11 +202,11 @@
                                                 </table>
                                                 <table width="100%">
                                                     <tr>
-                                                        <td><button id="btnAnularVenta" class="btn btn-warning anularVenta" >Anular venta</button></td>
-                                                        <td><button id="imprimirBoleta" class="btn btn-success" id="btnPagar" disabled="true" >Boleta</button></td>
+                                                        <td><button id="btnAnularVenta" class="btn btn-warning anularVenta" style="width: 100%">Anular venta</button></td>
+                                                        <td><button id="btnAñadirCuenta" class="btn btn-success" id="btnPagar" disabled="true" style="width: 100%">Añadir a la cuenta</button></td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan=2><button id="pagarVenta" class="btn btn-success" id="btnPagar" disabled="true" >Pagar</button></td>
+                                                        <td colspan=2><button id="pagarVenta" class="btn btn-success" id="btnPagar" disabled="true" style="width: 100%">Pagar</button></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -255,6 +257,8 @@
     <script src="js/registrarVenta.js"></script>
     <script src="js/cargarNumeroStockMinimo.js"></script>
     <script src="js/imprimir.js"></script>
+    <script src="js/datosCliente.js"></script>
+    <script src="js/agregarCliente.js"></script>
     
     
 </body>
