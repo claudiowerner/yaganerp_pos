@@ -130,6 +130,11 @@ $("#btnAgregarCliente").on("click", function(e)
   let rutAñadir = $("#txtRut").val();
   $("#txtRutGuardar").val(rutAñadir);
 
+  
+  let valRut = fnValidarRut.validaRut(rutAñadir);
+
+  lblRutValido(valRut);
+
   //mostrar modals
   $("#modalAgregarCliente").modal("show");
   $("#modalAñadirCuenta").modal("hide");

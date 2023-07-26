@@ -146,36 +146,37 @@
               </button>
             </div>
             <div class='modal-body' align='center'>
-              <table style='width:100%'>
-                <tr>
-                  <td>
-                    <label for=''>R.U.T.</label>
-                  </td>
-                  <td>
-                    <input type='text' name='txtRutGuardar' id='txtRutGuardar' class='form form-control'>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label for=''>Nombre:</label>
-                  </td>
-                  <td>
-                    <input type='text' name='txtNombreGuardar' id='txtNombreGuardar' class='form form-control'>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label for=''>Apellido:</label>
-                  </td>
-                  <td>
-                    <input type='text' name='txtApellidoGuardar' id='txtApellidoGuardar' class='form form-control'>
-                  </td>
-                </tr>
-              </table>
+                <table style='width:100%'>
+                  <tr>
+                    <td>
+                      <label for=''>R.U.T.</label>
+                    </td>
+                    <td>
+                      <input type='text' name='txtRutGuardar' id='txtRutGuardar' class='form form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for=''>Nombre:</label>
+                    </td>
+                    <td>
+                      <input type='text' name='txtNombreGuardar' id='txtNombreGuardar' class='form form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for=''>Apellido:</label>
+                    </td>
+                    <td>
+                      <input type='text' name='txtApellidoGuardar' id='txtApellidoGuardar' class='form form-control' required>
+                    </td>
+                  </tr>
+                </table>
             </div>
             <div class='modal-footer'>
+              <label for='' id='lblRutValido'></label>
               <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-              <button class='btn btn-success' id='btnGuardarCliente' data-dismiss='modal'>Guardar</button>
+              <button type='submit' class='btn btn-success' id='btnGuardarCliente' data-dismiss='modal'>Guardar</button>
             </div> 
           </div>
         </div>

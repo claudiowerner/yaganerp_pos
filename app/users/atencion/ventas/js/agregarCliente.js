@@ -1,8 +1,29 @@
+
+
+$("#txtRutGuardar").on("keyup", function(e)
+{
+    let rut = $("#txtRutGuardar").val()
+    let valRut = fnValidarRut.validaRut(rut);
+
+    lblRutValido(valRut);
+})
+
+$("#txtNombreGuardar").on("keyup", function(e)
+{
+    validarTextBoxs();
+});
+
+$("#txtApellidoGuardar").on("keyup", function(e)
+{
+    validarTextBoxs();
+});
+
 $("#btnGuardarCliente").on("click", function(e)
 {
     let rut = $("#txtRutGuardar").val();
     let nombre = $("#txtNombreGuardar").val();
     let apellido = $("#txtApellidoGuardar").val();
+
     let fecha = getFechaBD();
 
     let datos = {
@@ -49,5 +70,24 @@ $("#btnGuardarCliente").on("click", function(e)
         {
             $("#modalAgregarCliente").modal("show");
         }
-      });
+    });
 })
+
+
+function validarTextBoxs()
+{
+    let nombre = $("#txtNombreGuardar").val();
+    let apellido = $("#txtApellidoGuardar").val();
+    if(nombre==""||apellido=="")
+    {
+        $("#lblRutValido").html("Debe rellenar todos los campos");
+        $("#lblRutValido").css("color", "red");
+        $("#btnGuardarCliente").prop("disabled", true)
+    }
+    else
+    {
+        $("#lblRutValido").html("OK");
+        $("#lblRutValido").css("color", "green");
+        $("#btnGuardarCliente").prop("disabled", false)
+    }
+}

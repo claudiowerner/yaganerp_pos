@@ -235,6 +235,7 @@
     <script type="text/javascript" src="../../../js/select2.js"></script>
 
     <!--llamada a ventas-->
+    <script src="../../../js/validarRut.js"></script>
     <script src="js/anularVenta.js"></script>
     <script src="js/correlativo.js"></script>
     <script src="js/cerrarCaja.js"></script>
@@ -259,6 +260,7 @@
     <script src="js/imprimir.js"></script>
     <script src="js/datosCliente.js"></script>
     <script src="js/agregarCliente.js"></script>
+    <script src="js/validarVariableRut.js"></script>
     
     
 </body>
