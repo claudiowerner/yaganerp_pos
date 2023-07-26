@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-07-2023 a las 20:24:26
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 26-07-2023 a las 03:25:24
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `yaganerp_pos`
+-- Base de datos: `webpos`
 --
 
 -- --------------------------------------------------------
@@ -112,7 +112,7 @@ CREATE TABLE `autorizacion` (
 --
 
 INSERT INTO `autorizacion` (`id`, `id_cl`, `clave`, `estado`) VALUES
-(1, '1', '123456', 'S');
+(1, '1', '123456', 'N');
 
 -- --------------------------------------------------------
 
@@ -134,7 +134,7 @@ CREATE TABLE `cajas` (
 --
 
 INSERT INTO `cajas` (`id`, `id_cl`, `nom_caja`, `estado`, `creado_por`, `fecha_reg`) VALUES
-(1, '1', 'C01', 'S', '1', '2023-05-15'),
+(1, '1', 'C01', 'A', '1', '2023-05-15'),
 (2, '1', 'C02', 'S', '1', '2023-05-15'),
 (3, '1', 'C03', 'S', '1', '2023-05-15'),
 (4, '1', 'C04', 'S', '1', '2023-05-26');
@@ -189,7 +189,8 @@ CREATE TABLE `cierre_caja` (
 --
 
 INSERT INTO `cierre_caja` (`id`, `id_cl`, `nombre`, `creado_por`, `desde`, `hasta`, `estado`, `valor_total`, `fecha_reg`) VALUES
-(1, 1, 'Caja 14-07-2023', '1', '2023-07-14 17:49:04', '0000-00-00 00:00:00', 'A', '111990', '2023-07-14 17:49:04');
+(1, 1, 'Caja 14-07-2023', '1', '2023-07-14 17:49:04', '2023-07-19 15:28:29', 'C', '165990', '2023-07-14 17:49:04'),
+(2, 1, 'Caja 25-07-2023', '1', '2023-07-25 15:36:51', '0000-00-00 00:00:00', 'A', '0', '2023-07-25 15:36:51');
 
 -- --------------------------------------------------------
 
@@ -214,6 +215,32 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`id`, `nombre`, `rut`, `nom_fantasia`, `razon_social`, `direccion`, `correo`, `telefono`) VALUES
 (1, '1', '19150634-0', 'Supermercado de prueba', 'Prueba S.A.', 'Camping Playa Werner 0000', 'claudiowernern@hotmail.com', '+56978841411');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clientes_negocio`
+--
+
+CREATE TABLE `clientes_negocio` (
+  `id` int(5) NOT NULL,
+  `id_cl` int(5) NOT NULL,
+  `rut` varchar(10) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `apellido` varchar(45) NOT NULL,
+  `estado` varchar(5) NOT NULL,
+  `creado_por` int(11) NOT NULL,
+  `fecha_registro` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `clientes_negocio`
+--
+
+INSERT INTO `clientes_negocio` (`id`, `id_cl`, `rut`, `nombre`, `apellido`, `estado`, `creado_por`, `fecha_registro`) VALUES
+(1, 1, '19150634-0', 'Claudio Francisco', 'Werner Neira', 'S', 1, '2023-07-25'),
+(2, 1, '7367889-7', 'María Cecilia', 'Neira Gomez', 'S', 1, '2023-07-25'),
+(3, 1, '18752880-1', 'Constanza Sabina', 'Werner Neira', 'S', 1, '2023-07-25');
 
 -- --------------------------------------------------------
 
@@ -246,12 +273,53 @@ INSERT INTO `correlativo` (`id`, `correlativo`, `id_cl`, `caja`, `nom_caja`, `us
 (2, 2, '1', '2', 'C02', '1', '35000', '4', 3, '1', 'C', '2023-07-14 17:50:53', '2023-07-14 17:51:06'),
 (3, 3, '1', '3', 'C03', '1', '35000', '5', 2, '1', 'C', '2023-07-14 17:51:29', '2023-07-14 17:52:00'),
 (4, 4, '1', '4', 'C04', '1', '14990', '6', 1, '1', 'C', '2023-07-14 17:54:31', '2023-07-14 17:54:48'),
-(5, 5, '1', '1', 'C01', '1', '0', '6', 0, '1', 'A', '2023-07-15 18:12:55', '0000-00-00 00:00:00'),
-(6, 6, '1', '2', 'C02', '1', '0', '6', 0, '1', 'A', '2023-07-15 18:29:18', '0000-00-00 00:00:00'),
-(7, 7, '1', '1', 'C01', '1', '0', '6', 0, '1', 'A', '2023-07-15 18:32:33', '0000-00-00 00:00:00'),
-(8, 8, '1', '1', 'C01', '1', '0', '6', 0, '1', 'A', '2023-07-15 19:12:36', '0000-00-00 00:00:00'),
-(9, 9, '1', '1', 'C01', '1', '0', '6', 0, '1', 'A', '2023-07-15 19:16:46', '0000-00-00 00:00:00'),
-(10, 10, '1', '1', 'C01', '1', '0', '6', 0, '1', 'A', '2023-07-15 19:17:02', '0000-00-00 00:00:00');
+(5, 5, '1', '1', 'C01', '1', '0', '6', 0, '1', 'N', '2023-07-15 18:12:55', '2023-07-19 15:28:29'),
+(6, 6, '1', '2', 'C02', '1', '0', '6', 0, '1', 'N', '2023-07-15 18:29:18', '2023-07-19 15:28:29'),
+(7, 7, '1', '1', 'C01', '1', '0', '6', 0, '1', 'N', '2023-07-15 18:32:33', '2023-07-19 15:28:29'),
+(8, 8, '1', '1', 'C01', '1', '0', '6', 0, '1', 'N', '2023-07-15 19:12:36', '2023-07-19 15:28:29'),
+(9, 9, '1', '1', 'C01', '1', '0', '6', 0, '1', 'N', '2023-07-15 19:16:46', '2023-07-19 15:28:29'),
+(10, 10, '1', '1', 'C01', '1', '27000', '8', 3, '1', 'C', '2023-07-15 19:17:02', '2023-07-19 13:28:38'),
+(11, 11, '1', '1', 'C01', '1', '27000', '7', 2, '1', 'C', '2023-07-19 20:15:44', '2023-07-18 20:46:14'),
+(12, 12, '1', '1', 'C01', '1', '0', '8', 0, '1', 'N', '2023-07-19 13:33:41', '2023-07-19 15:28:29'),
+(13, 13, '1', '1', 'C01', '2', '0', '8', 0, '1', 'N', '2023-07-19 15:27:52', '2023-07-19 15:28:29'),
+(14, 14, '1', '1', 'C01', '1', '0', '8', 0, '2', 'A', '2023-07-25 15:36:55', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cuentas_corrientes`
+--
+
+CREATE TABLE `cuentas_corrientes` (
+  `id` int(5) DEFAULT NULL,
+  `id_cl` int(5) DEFAULT NULL,
+  `rut` varchar(10) DEFAULT NULL,
+  `id_venta` int(5) DEFAULT NULL,
+  `estado` varchar(5) DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cuenta_corriente`
+--
+
+CREATE TABLE `cuenta_corriente` (
+  `id` int(10) NOT NULL,
+  `id_cl` int(10) DEFAULT NULL,
+  `rut` varchar(12) DEFAULT NULL,
+  `correlativo` int(10) DEFAULT NULL,
+  `estado` varchar(20) DEFAULT NULL,
+  `fecha` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `cuenta_corriente`
+--
+
+INSERT INTO `cuenta_corriente` (`id`, `id_cl`, `rut`, `correlativo`, `estado`, `fecha`) VALUES
+(1, 1, '19150634-0', 14, 'A', '2023-07-25');
 
 -- --------------------------------------------------------
 
@@ -274,6 +342,22 @@ INSERT INTO `metodo_pago` (`id`, `id_cl`, `nombre_metodo_pago`, `estado`) VALUES
 (1, 0, 'Efectivo', 'S'),
 (2, 0, 'Tarj. Crédito', 'S'),
 (3, 0, 'Tarj. Débito', 'S');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `id` int(5) DEFAULT NULL,
+  `id_cl` int(5) DEFAULT NULL,
+  `id_proveedor` int(5) DEFAULT NULL,
+  `producto` varchar(45) DEFAULT NULL,
+  `cantidad` int(5) DEFAULT NULL,
+  `precio` int(5) DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -302,7 +386,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `categoria`, `cantidad`, `pesaje`, `unidad_medida`, `valor_neto`, `valor_venta`, `estado`, `creado_por`, `fecha_reg`) VALUES
-(1, '1', '840705109369', 'Foo Fighters - Glasstonbury 2017 - pt2', '3', 64, 'S', 1, '15000', '27000', 'S', '1', '2023-06-15'),
+(1, '1', '840705109369', 'Foo Fighters - Glasstonbury 2017 - pt2', '3', 61, 'S', 1, '15000', '27000', 'S', '1', '2023-06-15'),
 (2, '1', '7804612579427', '31 Minutos - 31 canciones de amor - 2012', '2', -410, 'N', 1, '3600', '8990', 'S', '1', '2023-06-15'),
 (3, '1', '2292547192', 'Luis Miguel - Soy Como Quiero Ser', '2', -21, 'N', 1, '5000', '9990', 'S', '1', '2023-06-16'),
 (4, '1', '5099747618642', 'Los Tres - Fome', '4', 8, 'N', 1, '20000', '35000', 'S', '1', '2023-06-16'),
@@ -315,6 +399,21 @@ INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `cat
 (17, '1', '720642442029', 'Guns n Roses - Use Your Illusion II ', '2', -690, 'N', 1, '5500', '11000', 'S', '1', '2023-07-03'),
 (18, '1', '7808226007529', 'Difuntos Correa - Ilusionismo', '2', -84, 'N', 1, '12000', '18000', 'S', '1', '2023-07-03'),
 (19, '1', '', 'plátano', '6', 0, 'S', 2, '2300', '2300', 'S', '1', '2023-07-15');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores`
+--
+
+CREATE TABLE `proveedores` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(5) DEFAULT NULL,
+  `nombre_proveedor` varchar(45) DEFAULT NULL,
+  `rut` varchar(45) DEFAULT NULL,
+  `estado` varchar(5) DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -414,7 +513,15 @@ INSERT INTO `ventas` (`id`, `id_venta`, `id_cl`, `id_caja`, `nom_caja`, `usuario
 (1, 1, '1', '1', 'C01', 1, 1, '1', '27000', 'C', '2023-07-14 17:49:55', '2023-07-14 17:50:00', '2', '0'),
 (2, 2, '1', '2', 'C02', 1, 4, '1', '35000', 'C', '2023-07-14 17:50:59', '2023-07-14 17:51:06', '3', '0'),
 (3, 3, '1', '3', 'C03', 1, 5, '1', '35000', 'C', '2023-07-14 17:51:48', '2023-07-14 17:52:00', '2', '0'),
-(4, 4, '1', '4', 'C04', 1, 6, '1', '14990', 'C', '2023-07-14 17:54:43', '2023-07-14 17:54:48', '1', '0');
+(4, 4, '1', '4', 'C04', 1, 6, '1', '14990', 'C', '2023-07-14 17:54:43', '2023-07-14 17:54:48', '1', '0'),
+(5, 11, '1', '1', 'C01', 1, 0, '1', '0', 'C', '2023-07-19 20:44:16', '2023-07-18 20:46:14', '2', '0'),
+(6, 11, '1', '1', 'C01', 1, 0, '1', '0', 'C', '2023-07-19 20:44:17', '2023-07-18 20:46:14', '2', '0'),
+(7, 11, '1', '1', 'C01', 1, 1, '1', '27000', 'N', '2023-07-19 20:44:19', '0000-00-00 00:00:00', '0', '0'),
+(8, 11, '1', '1', 'C01', 1, 1, '1', '27000', 'C', '2023-07-19 20:46:07', '2023-07-18 20:46:14', '2', '0'),
+(9, 10, '1', '1', 'C01', 1, 1, '1', '27000', 'C', '2023-07-19 13:28:30', '2023-07-19 13:28:38', '3', '0'),
+(10, 14, '1', '1', 'C01', 1, 1, '1', '27000', 'N', '2023-07-25 15:40:56', '0000-00-00 00:00:00', '0', '0'),
+(11, 14, '1', '1', 'C01', 1, 1, '1', '27000', 'N', '2023-07-25 15:44:22', '0000-00-00 00:00:00', '0', '0'),
+(12, 14, '1', '1', 'C01', 1, 4, '1', '35000', 'A', '2023-07-25 15:44:26', '0000-00-00 00:00:00', '0', '0');
 
 --
 -- Índices para tablas volcadas
@@ -475,9 +582,21 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `clientes_negocio`
+--
+ALTER TABLE `clientes_negocio`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `correlativo`
 --
 ALTER TABLE `correlativo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `cuenta_corriente`
+--
+ALTER TABLE `cuenta_corriente`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -491,6 +610,12 @@ ALTER TABLE `metodo_pago`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id_prod`);
+
+--
+-- Indices de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `stock_minimo_producto`
@@ -566,7 +691,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `cierre_caja`
 --
 ALTER TABLE `cierre_caja`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -575,10 +700,22 @@ ALTER TABLE `cliente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `clientes_negocio`
+--
+ALTER TABLE `clientes_negocio`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `correlativo`
 --
 ALTER TABLE `correlativo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `cuenta_corriente`
+--
+ALTER TABLE `cuenta_corriente`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `metodo_pago`
@@ -591,6 +728,12 @@ ALTER TABLE `metodo_pago`
 --
 ALTER TABLE `productos`
   MODIFY `id_prod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `stock_minimo_producto`
@@ -614,7 +757,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
