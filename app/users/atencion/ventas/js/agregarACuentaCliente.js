@@ -30,6 +30,7 @@ function registrarCuenta(rut)
                 type: "POST",
                 success: function(e)
                 {
+
                     swal({
                         title:"Excelente",
                         text:e,

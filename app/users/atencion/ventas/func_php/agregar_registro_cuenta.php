@@ -41,6 +41,50 @@
 		}
 		else
 		{
+			//descontar productos de la BD
+			$arr_id_producto = array();
+			$arr_cant_producto = array();
+			$length = 0;
+
+			//consulta para rellenar los arrays anteriores
+			$sql = 
+			"SELECT producto, cantidad 
+			FROM ventas 
+			WHERE id_venta = $corr";
+
+			$res = $conexion->query($sql);
+			if($res->num_rows>0)
+			{
+				$length = $res->num_rows;
+				while($row=$res->fetch_array())
+				{
+					$arr_id_producto[] = $row["producto"];
+					$arr_cant_producto[] = $row["cantidad"];
+				}
+			}
+
+			$length = $res->num_rows;
+
+			//hacer actualizaciones en la base de datos
+			for($i=0;$i<$length; $i++)
+			{
+				$cantidad = $arr_cant_producto[$i];
+				$id = $arr_id_producto[$i];
+				echo $sql = 
+				"UPDATE productos 
+				SET cantidad = (cantidad-$cantidad)
+				WHERE id_prod = $id";
+
+				$res = $conexion->query($sql);
+				if($res)
+				{
+					echo "sintaxis completada";
+				}
+				else
+				{
+					echo "error: ".mysqli_error($conexion);
+				}
+			}
 			//inserción de cuenta
 			$sql = 
 			"INSERT INTO cuenta_corriente VALUES
