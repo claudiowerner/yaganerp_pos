@@ -42,8 +42,6 @@ $cantidad = array();
 $valor = array();
 
 $id_cl = "";
-echo $result->num_rows;
-echo "\n";
 if ($result->num_rows>0){
   while ($row = $result->fetch_array()){
     $id[] = $row['id'];
@@ -51,11 +49,11 @@ if ($result->num_rows>0){
     $cantidad[] = $row['cantidad'];
     $valor[] = $row['valor'];
     $total = $row["valor"] + $total;
-    echo $id_cl = $row["id_cl"];
+    $id_cl = $row["id_cl"];
   }
 }
 //descarga de datos de supermercado (nombre de fantasía, etc)
-echo $sql = 
+$sql = 
 "SELECT * FROM cliente 
 WHERE id = $id_cl";
 $resDatos = $conexion->query($sql);

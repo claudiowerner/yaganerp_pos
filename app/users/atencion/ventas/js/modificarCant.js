@@ -1,3 +1,4 @@
+
 //aumento de cantidad con botones
 
 
@@ -47,6 +48,10 @@ $("#restarCantMod").on('click', function(e)
 
 $("#btnActCantidad").on('click', function(e)
 {
+  let id = $("#idVenta").text();
+  let idProd = $("#id_prod").text();
+  let cant = parseInt($("#cantProdMod").text());
+  //id = $("");
   if(estadoStock == "S")
   {
     //comprobar cantidad existente en la BD
