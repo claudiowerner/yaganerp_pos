@@ -1,7 +1,6 @@
 
 var table;
 
-
 //se compara si está habilitado el conteo de stock mínimo dentro de la base de datos o no
 let estadoStock = comprobarEstadoStockMinimo();
 let cantidadBD = 0;
@@ -255,7 +254,7 @@ function confirmarPaga(boton)
         }
       )
 
-      imprimirBoleta();
+      imprimirBoleta("ticket.php");
 
 
       cargarVentasCaja();

@@ -35,6 +35,8 @@ function registrarCuenta(rut)
                         text:e,
                         icon:"success"
                     })
+                    //imprimir ticket
+                    imprimirBoleta("ticket_fiado.php");
                 }
             })
             .fail(function(e)
@@ -50,8 +52,8 @@ function registrarCuenta(rut)
         {
             swal("Operación cancelada");
         }
-      });
+    });
 
-    /**/
+    
 
 }

@@ -2,7 +2,6 @@ function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
 {
     //comprobar si está activado el control de stock mínimo
     let sm_activado="";
-    
     $.ajax(
         {
             url:"func_php/comprobar_estado_stock_minimo.php",
@@ -14,6 +13,16 @@ function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
             }
         }
     )
+    .fail(function(e)
+    {
+        swal(
+            {
+                title: "Error",
+                text: e.responseText,
+                icon: "error"
+            }
+        )
+    })
     if(sm_activado.match("S"))
     {
         let cantidad = comprobarCantidad(idProd);

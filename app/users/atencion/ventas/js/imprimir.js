@@ -1,4 +1,4 @@
-function imprimirBoleta()
+function imprimirBoleta(script_php)
 {
     nCaja = $("#nCaja").text();
     idVenta = parseInt($("#id_venta").text());
@@ -15,7 +15,7 @@ function imprimirBoleta()
       
     $.ajax(
         {
-            url: "https://webposerp.cl/impresion_yaganerp/vendor/ticket.php",
+            url: "https://webposerp.cl/impresion_yaganerp/vendor/"+script_php,
             data: datos,
             cache: false,
             type: "POST",

@@ -26,7 +26,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 $sql = "SELECT v.id_cl, v.id, p.id_prod, v.cantidad, v.valor
 FROM ventas v
 JOIN productos p ON p.id_prod = v.producto 
-WHERE v.id_venta = $ids
+AND v.id_venta = $ids
 ORDER BY v.id ASC";
 $result = mysqli_query($conexion,$sql) or die (mysqli_error());
 
@@ -42,8 +42,6 @@ $cantidad = array();
 $valor = array();
 
 $id_cl = "";
-echo $result->num_rows;
-echo "\n";
 if ($result->num_rows>0){
   while ($row = $result->fetch_array()){
     $id[] = $row['id'];
@@ -51,11 +49,11 @@ if ($result->num_rows>0){
     $cantidad[] = $row['cantidad'];
     $valor[] = $row['valor'];
     $total = $row["valor"] + $total;
-    echo $id_cl = $row["id_cl"];
+    $id_cl = $row["id_cl"];
   }
 }
 //descarga de datos de supermercado (nombre de fantasía, etc)
-echo $sql = 
+$sql = 
 "SELECT * FROM cliente 
 WHERE id = $id_cl";
 $resDatos = $conexion->query($sql);
@@ -175,6 +173,8 @@ $printer -> selectPrintMode();
 $printer -> feed();
 $printer -> selectPrintMode(Printer::JUSTIFY_LEFT);
 $printer -> text("OBSERVACIONES:\n");
+$printer -> text("\n");
+$printer -> text("Boleta o venta sin pagar\n");
 
 $printer -> setJustification(Printer::JUSTIFY_LEFT);
 $printer -> setEmphasis(true);
