@@ -1,0 +1,54 @@
+
+
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.boton
+{
+    margin: 10px;
+}
+
+.switch
+{
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+    background: #aaaa;
+    border-radius: 100px;
+    position: relative;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.switch::after
+{
+    position: absolute;
+    content: "";
+    width: 17px;
+    height: 17px;
+    background-color: #fff;
+    border-radius: 100px;
+    top: 4px;
+    left: 5px;
+    transition:0.3s;
+}
+
+#swEstado
+{
+    display: none;
+}
+#swEstado:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swEstado:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+

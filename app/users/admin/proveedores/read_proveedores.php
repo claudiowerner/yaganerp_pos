@@ -17,17 +17,10 @@ if(isset($_SESSION['user'])){
 
     //query
     $consulta = 
-    "SELECT p.id_prod, p.codigo_barra, p.nombre_prod, p.categoria, p.cantidad, 
-    smp.estado AS estado_stock, 
-    p.valor_neto, p.valor_venta, u.nombre AS creado_por, 
-    p.estado, DATE_FORMAT(p.fecha_reg, '%d-%m-%Y') AS fecha_reg, c.nombre_cat 
-    FROM productos p 
-    JOIN usuarios u 
-    ON u.id = p.creado_por
-    JOIN categorias c 
-    ON p.categoria = c.id 
-    JOIN stock_minimo_producto smp ON smp.id_cl = p.id_cl
-    WHERE p.id_cl = '$id_cl'";
+    "SELECT id, nombre_proveedor, rut, estado, 
+    DATE_FORMAT(fecha_registro, '%d-%m-%Y') AS fecha_registro
+    FROM proveedores 
+    WHERE id_cl = $id_cl";
     $resultado = $conexion->query($consulta);
     if ($resultado->num_rows > 0){
       $json = array();
@@ -44,26 +37,12 @@ if(isset($_SESSION['user'])){
           $estado="INACTIVO";
         };
 
-        if($row["estado_stock"]=="S")
-        {
-          $estado_stock = $row["cantidad"];
-        }
-        else
-        {
-          $estado_stock = "Deshab...";
-        }
-
         $json[] =array(
-          'id' => $row['id_prod'],
-          'codigo_barra' => ($row['codigo_barra']),
-          'nombre_prod' => $row['nombre_prod'],
-          'nombre_cat' => $row['nombre_cat'],
-          'cantidad' => $estado_stock,
-          'valor_neto' => "$".$row['valor_neto'],
-          'valor_venta' => "$".$row['valor_venta'],
+          'id' => $row['id'],
+          'nombre_proveedor' => ($row['nombre_proveedor']),
+          'rut' => $row['rut'],
           'estado' => $estado,
-          'creado_por' => $row['creado_por'],
-          'fecha_reg' => $row['fecha_reg']
+          'fecha_registro' => $row['fecha_registro']
         );
       };
       echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);

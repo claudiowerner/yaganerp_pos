@@ -384,7 +384,6 @@ $("#formRegistroProducto").submit(function(e)
 
 $("#formEditarProducto").submit(function(e)
 {
-  debugger;
   e.preventDefault();
   var id = $("#tituloModalEditar").text();
   var np = $("#nomProdEditar").val();
