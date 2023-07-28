@@ -72,7 +72,6 @@
 		WHERE id_prod = '$id';
 		";
 	}
-	echo $sql;
 	$resultado = mysqli_query($conexion, $sql);
 
 	if($estado=='N')
@@ -91,6 +90,6 @@
 	}
 	else
 	{
-		die("Error al modificar producto: ". mysqli_error($conexion));
+		echo die("Error al modificar producto: ". mysqli_error($conexion));
 	}
 ?>

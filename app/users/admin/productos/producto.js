@@ -276,10 +276,10 @@ $("#producto").on('click', 'tr', function(e)
   let valor_venta = vt.slice(1);
 
   $("#nomProdEditar").val(datos.nombre_prod);
-  $("#codBarraEditar").val(datos.codigo_barra);
+  $("#txtCodBarraEditar").val(datos.codigo_barra);
   $("#valorNetoEditar").val(valor_neto);
   $("#valorVentaEditar").val(valor_venta);
-  $("#cantidadEditar").val(datos.cantidad);
+  $("#txtCantidadEditar").val(datos.cantidad);
   
   $("#tituloModalEditar").html(datos.id);
 
@@ -384,12 +384,13 @@ $("#formRegistroProducto").submit(function(e)
 
 $("#formEditarProducto").submit(function(e)
 {
+  debugger;
   e.preventDefault();
   var id = $("#tituloModalEditar").text();
   var np = $("#nomProdEditar").val();
-  var cod_barra = $("#codBarraEditar").val();
+  var cod_barra = $("#txtCodBarraEditar").val();
   var lc = $("#listCatEditar").val();
-  var can = $("#cantidadEditar").val();
+  var can = $("#txtCantidadEditar").val();
   var vn = $("#valorNetoEditar").val();
   var vv = $("#valorVentaEditar").val();
   var unid = $("#slctUnidadEditar").val();
@@ -437,6 +438,28 @@ $("#formEditarProducto").submit(function(e)
       console.log(e.responseText);
     })
 });
+
+function getHora()
+{
+  var hoy = new Date();
+  var h = hoy.getHours();
+  var min = hoy.getMinutes();
+  var sec = hoy.getSeconds();
+  if(hora<10)
+  {
+    h = '0'+h;
+  }
+  if(min<10)
+  {
+    min = '0'+min;
+  }
+  if(sec<10)
+  {
+    sec = '0'+sec;
+  }
+  var hora = h+":"+min+":"+sec;
+  return hora;
+}
 
 function getFechaBD()
 {

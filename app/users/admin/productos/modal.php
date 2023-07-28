@@ -117,7 +117,7 @@
                   <tr id=codBarraEditar>
                     <td><label name='nombreCat'>Código de barra</label></td>
                     <td>
-                      <input type='text' id='codBarraEditar' name='nomProdEditar' class='form-control' required></td>
+                      <input type='text' id='txtCodBarraEditar' name='nomProdEditar' class='form-control' required></td>
                     </tr>
                   <tr>
                     <td><label name='nombreCat'>Nombre</label></td>
@@ -134,7 +134,7 @@
                   <tr id=cantidadEditar>
                     <td><label name='cant'>Cantidad</label></td>
                     <td>
-                      <input type='number' name='cantidad' id='cantidadEditar' class='form-control' required>
+                      <input type='number' name='cantidad' id='txtCantidadEditar' class='form-control' required>
                     </td>
                   </tr>
                   <tr id='pesajeEditar'>

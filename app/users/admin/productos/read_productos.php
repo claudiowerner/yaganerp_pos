@@ -17,8 +17,10 @@ if(isset($_SESSION['user'])){
 
     //query
     $consulta = 
-    "SELECT p.id_prod, p.codigo_barra, p.nombre_prod, p.categoria, p.cantidad, smp.estado AS estado_stock, 
-    p.valor_neto, p.valor_venta, u.nombre AS creado_por, p.estado, p.fecha_reg, c.nombre_cat 
+    "SELECT p.id_prod, p.codigo_barra, p.nombre_prod, p.categoria, p.cantidad, 
+    smp.estado AS estado_stock, 
+    p.valor_neto, p.valor_venta, u.nombre AS creado_por, 
+    p.estado, DATE_FORMAT(p.fecha_reg, '%d-%m-%Y') AS fecha_reg, c.nombre_cat 
     FROM productos p 
     JOIN usuarios u 
     ON u.id = p.creado_por
