@@ -15,11 +15,7 @@ $("#btnCrearCajaNueva").on("click", function(e)
       {
         if(e==1)
         {
-          swal({
-            title: "Aviso",
-            text: "Ya existe una caja abierta",
-            icon: "warning",
-          });
+          msjes_swal("Aviso", "Ya existe una caja abierta", "warning");
         }
         else
         {
@@ -93,19 +89,11 @@ $("#btnValidarCierre").on('click', function(e)
               {
                 if(e.match(/No se puede cerrar/))
                 {
-                  swal({
-                    title: "Aviso",
-                    text: e,
-                    icon: "warning",
-                  });
+                  msjes_swal("Aviso", e, "warning");
                 }
                 else
                 {
-                  swal({
-                    title: "Excelente",
-                    text: e,
-                    icon: "success",
-                  });
+                  msjes_swal("Excelente", e, "success");
                   imprimirResumenVenta("../../",idCierre);
                 }
                 obtenerCierresCaja();
@@ -113,11 +101,7 @@ $("#btnValidarCierre").on('click', function(e)
             })
             .fail(function(e)
             {
-              swal({
-                title: "Error",
-                text: e,
-                icon: "error",
-              });
+              msjes_swal("Error", e, "error");
             })
           }
           else
@@ -128,11 +112,7 @@ $("#btnValidarCierre").on('click', function(e)
       })
       .fail(function(e)
       {
-        swal({
-          title: "Error",
-          text: e,
-          icon: "error",
-        });
+        msjes_swal("Error", e, "error");
       })
     }
   });
@@ -154,11 +134,7 @@ $("#btnAbrirCaja").on('click', function(e)
       type: "GET",
       success: function(e)
       {
-        swal({
-          title: "Excelente",
-          text: e,
-          icon: "success",
-        });
+        msjes_swal("Excelente", e, "success");
         obtenerCierresCaja();
         $("#abrirCaja").modal("hide");
         $("#msjCaja").html("<span style='color: red'></span>");

@@ -49,20 +49,12 @@ $("#btnGuardarCliente").on("click", function(e)
                 type: "POST",
                 success: function(e)
                 {
-                    swal({
-                        title:"Excelente",
-                        text: e,
-                        icon: "success"
-                    })
+                    msjes_swal("Excelente", e, "success");
                 }
             })
             .fail(function(e)
             {
-                swal({
-                    title:"Error",
-                    text:e.responseText,
-                    icon:"error"
-                })
+                msjes_swal("Error", e, "error");
                 $("#modalAgregarCliente").modal("show");
             })
         }

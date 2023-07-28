@@ -84,11 +84,7 @@ $("#btnEliminarVenta").on('click', function(e)
             type: "POST",
             success: function(r)
             {
-              swal({
-                title: "Excelente",
-                text: r,
-                icon: "success",
-              });
+              msjes_swal("Excelente", e, "success");
               cargarVentasCaja();
               
               $('#solicClaveAut').modal('hide');
@@ -212,11 +208,7 @@ function contadorVentas(id_venta)
   })
   .fail(function(e)
   {
-    swal({
-      title: "Error",
-      text: e,
-      icon: "error",
-    });
+    msjes_swal("Error", e, "error");
   })
 }
 
@@ -235,11 +227,7 @@ function confirmarPaga(boton)
     type: "GET",
     success: function(e)
     {
-      swal({
-        title: "Excelente",
-        text: e,
-        icon: "success",
-      });
+      msjes_swal("Excelente", e, "error");
       $("#btnPagarVenta").prop("disabled", true);
       $("#btnAnularVenta").prop("disabled", true);
       $("#btnAñadirCuenta").prop("disabled", true);
@@ -268,11 +256,7 @@ function confirmarPaga(boton)
   })
   .fail(function(e)
   {
-    swal({
-      title: "Error",
-      text: "Error al intentar imprimir: "+e.responseText,
-      icon: "error",
-    });
+    msjes_swal("Error", "Error al intentar imprimir: "+e.responseText, "error");
   })
 }
 

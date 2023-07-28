@@ -252,19 +252,13 @@ $("#btnGuardar").on("click", function(e)
         if(e==0)
         {
           user = $("#user").val();
-          swal({
-            title: "Aviso",
-            text: "El usuario ("+user+") ya se encuentra registrado",
-            icon: "warning",
-          });
+          msjes_swal("Aviso", "El usuario ("+user+") ya se encuentra registrado", "warning");
         }
         if(e==1)
         {
-          swal({
-            title: "Excelente",
-            text: "Usuario ("+user+") registrado exitosamente.",
-            icon: "success",
-          });
+          msjes_swal("Aviso", "Usuario ("+user+") registrado exitosamente.", "warning");
+            
+          
           $('#producto').DataTable().ajax.reload();
           $("#modalRegistro").modal("hide");
         }
@@ -323,11 +317,7 @@ $("#btnModificar").on("click", function(e)
       type:"POST",
       success: function(e)
       {
-        swal({
-          title: "Excelente",
-          text: e,
-          icon: "success",
-        });
+        msjes_swal("Excelente", e, "success");
         $("#modalEditar").modal("hide");
         table.ajax.reload();
       }

@@ -29,11 +29,7 @@ $("#btnCerrarCaja").on("click", function(e)
                 {
                     if(e==1)
                     {
-                        swal({
-                            title: "Excelente",
-                            text: "Caja cerrada correctamente",
-                            icon: "success"
-                        });
+                        msjes_swal("Excelente", "Caja cerrada correctamente", "success");
 
                         //imprimir ticket
                         $.ajax(
@@ -43,13 +39,7 @@ $("#btnCerrarCaja").on("click", function(e)
                                 type: "POST",
                                 success: function(e)
                                 {
-                                    swal(
-                                    {
-                                        title: "Excelente",
-                                        text: e,
-                                        icon: "success"
-                                    }
-                                    )
+                                    msjes_swal("Excelente", e, "success");
                                     location.href = "../";
                                 }
                             }
@@ -57,11 +47,7 @@ $("#btnCerrarCaja").on("click", function(e)
                     }
                     else
                     {
-                        swal({
-                            title: "Error",
-                            text: "Error al cerrar la caja",
-                            icon: "error"
-                        })
+                        msjes_swal("Error", "Error al cerrar la caja", "error");
                     }
                 }
             })

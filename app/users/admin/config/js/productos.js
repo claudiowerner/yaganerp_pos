@@ -59,6 +59,7 @@ function modificarEstadoStock(estado, stock_min)
         type: "POST",
         success: function(e)
         {
+            msjes_swal("Excelente", e, "success");
             swal({
                 title: "Excelente",
                 text: e,

@@ -31,22 +31,14 @@ function registrarCuenta(rut)
                 success: function(e)
                 {
 
-                    swal({
-                        title:"Excelente",
-                        text:e,
-                        icon:"success"
-                    })
+                    msjes_swal("Excelente", e, "success");
                     //imprimir ticket
-                    //imprimirBoleta("ticket_fiado.php");
+                    imprimirBoleta("ticket_fiado.php");
                 }
             })
             .fail(function(e)
             {
-                swal({
-                    title:"Error",
-                    text:e,
-                    icon:"error"
-                })
+                msjes_swal("Error", e, "error");
             })
         } 
         else 

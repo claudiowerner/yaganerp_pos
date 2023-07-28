@@ -405,27 +405,15 @@ $("#formEditarProducto").submit(function(e)
       {
         if(e.match("correctamente"))
         {
-          swal({
-            title: "Excelente",
-            text: e,
-            icon: "success",
-          });
+          msjes_swal("Excelente", e, "success");
         }
         if(e.match("No se puede desactivar"))
         {
-          swal({
-            title: "Aviso",
-            text: e,
-            icon: "warning",
-          });
+          msjes_swal("Aviso", e, "warning");
         }
         if(e.match("Error")||e.match("error"))
         {
-          swal({
-            title: "Error al modificar",
-            text: e,
-            icon: "error",
-          });
+          msjes_swal("Error al modificar", e, "error");
         }
         $('#producto').DataTable().ajax.reload();
         $("#formRegistro").trigger('reset');

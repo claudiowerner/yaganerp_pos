@@ -75,11 +75,7 @@ $("#btnGuardarCambiosCuenta").on("click", function(e)
                     type: "POST",
                     success: function(e)
                     {
-                        swal({
-                            title: "Excelente",
-                            text: e,
-                            icon: "success",
-                          });
+                        msjes_swal("Excelente", e, "success");
                         $("#modalConfCuenta").modal("hide");
                         cargarDatosComanda();
                     }

@@ -15,13 +15,7 @@ function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
     )
     .fail(function(e)
     {
-        swal(
-            {
-                title: "Error",
-                text: e.responseText,
-                icon: "error"
-            }
-        )
+        msjes_swal("Error", e.responseText, "error");
     })
     if(sm_activado.match("S"))
     {

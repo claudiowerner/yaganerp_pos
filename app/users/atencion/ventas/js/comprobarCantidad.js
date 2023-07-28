@@ -10,7 +10,6 @@ function comprobarCantidad(producto)
             async: false,
             success: function(e)
             {
-                alert("Comprobar cantidad: "+e)
                 retorno = e;
             }
         }

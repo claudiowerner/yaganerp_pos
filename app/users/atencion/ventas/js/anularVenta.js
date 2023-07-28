@@ -10,11 +10,7 @@ $(".anularVenta").on("click", function(e)
       type: "GET",
       success: function(e)
       {
-        swal({
-          title:"Excelente",
-          text:e,
-          icon:"success"
-        })
+        msjes_swal("Excelente", e, "success");
         correlativo();
         cargarIDVentaCaja();
         cargarVentasCaja();

@@ -22,13 +22,7 @@ async function accionEliminarVenta(boton)
                         type: "POST",
                         success: function(r)
                         {
-                            swal(
-                                {
-                                  title: "Excelente",
-                                  text: r,
-                                  icon: "success"
-                                }
-                              )
+                            msjes_swal("Excelente", r, "success");
                             cargarVentasCaja();
                             cargarVentaInd();
                             cargarVentaGeneral();
