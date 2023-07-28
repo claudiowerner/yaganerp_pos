@@ -28,6 +28,7 @@
 	}
 	else
 	{
+		
 		$sql = 
 		"SELECT * FROM cuenta_corriente
 		WHERE id_cl = $id_cl
@@ -41,6 +42,15 @@
 		}
 		else
 		{
+			//Setear ventas como Por Pagar
+			$sql = 
+			"UPDATE ventas 
+			SET estado = 'P'
+			WHERE id_venta = $corr
+			AND id_cl = $id_cl";
+
+			$res = $conexion->query($sql);
+		
 			//descontar productos de la BD
 			$arr_id_producto = array();
 			$arr_cant_producto = array();
@@ -70,20 +80,12 @@
 			{
 				$cantidad = $arr_cant_producto[$i];
 				$id = $arr_id_producto[$i];
-				echo $sql = 
+				$sql = 
 				"UPDATE productos 
 				SET cantidad = (cantidad-$cantidad)
 				WHERE id_prod = $id";
 
 				$res = $conexion->query($sql);
-				if($res)
-				{
-					echo "sintaxis completada";
-				}
-				else
-				{
-					echo "error: ".mysqli_error($conexion);
-				}
 			}
 			//inserción de cuenta
 			$sql = 

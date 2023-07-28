@@ -25,12 +25,13 @@ function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
     })
     if(sm_activado.match("S"))
     {
-        let cantidad = comprobarCantidad(idProd);
-        let stockMinimo = cargarNumeroStockMinimo();
+        let cantidad = parseInt(comprobarCantidad(idProd));
+        let stockMinimo = parseInt(cargarNumeroStockMinimo());
+        debugger;
 
         if(cantidad<=stockMinimo)
         {
-            if(cantidad<cantProd)
+            if(cantProd>=cantidad)
             {
                 if(cantidad<=0)
                 {

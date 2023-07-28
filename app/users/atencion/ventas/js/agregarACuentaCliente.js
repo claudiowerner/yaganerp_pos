@@ -25,8 +25,8 @@ function registrarCuenta(rut)
             $("#btnCrearVenta").prop("disabled", false)
             //insertar datos en tabla cuenta_corriente
             $.ajax({
-                url:"func_php/agregar_registro_cuenta.php",
-                data:datos,
+                url: "func_php/agregar_registro_cuenta.php",
+                data: datos,
                 type: "POST",
                 success: function(e)
                 {
@@ -37,7 +37,7 @@ function registrarCuenta(rut)
                         icon:"success"
                     })
                     //imprimir ticket
-                    imprimirBoleta("ticket_fiado.php");
+                    //imprimirBoleta("ticket_fiado.php");
                 }
             })
             .fail(function(e)

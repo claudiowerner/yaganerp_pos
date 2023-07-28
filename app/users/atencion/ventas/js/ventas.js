@@ -41,7 +41,7 @@ $("#venta").on('click', function(e)
 {
   let id_venta = $("#id_venta").text();
   let idProd = $("#prod").val();
-  let cantProd = $("#cantProd").text();
+  let cantProd = parseInt($("#cantProd").text());
   let idCaja = $("#nCaja").text();
   let nomCaja = $("#nomCaja").text();
   //capturar hora
@@ -240,6 +240,9 @@ function confirmarPaga(boton)
         text: e,
         icon: "success",
       });
+      $("#btnPagarVenta").prop("disabled", true);
+      $("#btnAnularVenta").prop("disabled", true);
+      $("#btnAñadirCuenta").prop("disabled", true);
       id_usuario = "";
       //obtener ID de usuario/cliente
       $.ajax(
