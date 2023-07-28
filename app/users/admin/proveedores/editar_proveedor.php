@@ -29,6 +29,7 @@
 	$rut = $_POST["rut"];
 	$nombre = $_POST["nombre"];
 	$estado = $_POST["estado"];
+	$hora = $_POST["hora"];
 	$id = $_POST["id"];
 
 
@@ -47,16 +48,16 @@
 		$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hora;
 
 		$sql = 
-		"INSERT INTO anula_proveedores 
-		 VALUES (null, '$id_cl', '$id', '$nombre', '$fecha');";
+		"INSERT INTO anula_proveedor
+		 VALUES (null, '$id_cl', '$id', '$id_us', '$fecha');";
 		$resultado = mysqli_query($conexion, $sql);
 	}
 	if($resultado)
 	{
-		echo "Producto editado correctamente";
+		echo "Proveedor editado correctamente";
 	}
 	else
 	{
-		echo die("Error al modificar producto: ". mysqli_error($conexion));
+		echo die("Error al modificar Proveedor: ". mysqli_error($conexion));
 	}
 ?>

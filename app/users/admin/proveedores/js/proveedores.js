@@ -88,6 +88,16 @@ $("#producto").on('click', 'tr', function(e)
   let id = datos.id;
   let rut = datos.rut;
   let nombre = datos.nombre_proveedor;
+  let estado = datos.estado;
+
+  if(estado=="ACTIVO")
+  {
+    $("#swEstado").prop("checked", true)
+  }
+  else
+  {
+    $("#swEstado").prop("checked", false)
+  }
 
   $("#idProv").val(id);
   $("#txtRutProveedorEditar").val(rut);
@@ -147,7 +157,8 @@ $("#formEditarProducto").submit(function(e)
     "id": id,
     "rut": rut,
     "nombre": nombre,
-    "estado": epr
+    "estado": epr,
+    "hora": getHora()
   }
 
 
