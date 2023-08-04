@@ -69,7 +69,6 @@ $("#pedidos").on('click', 'tr', function(e)
   var cat = $('#pedidos').DataTable();
   var datos = cat.row(this).data();
   let id = datos.id;
-
   cargarPedido(id);
 })
 

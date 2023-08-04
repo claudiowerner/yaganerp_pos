@@ -3,6 +3,7 @@ let arrProductoEditar = Array();
 let arrValorEditar = Array(); 
 let arrayId = Array();
 let c_id = 0;//contador para el index del arrId
+let id_detalle_pedido = 0;//recibe el ID del detalle del pedido
 function cargarPedido(id)
 {
     c_id=0;
@@ -13,28 +14,23 @@ function cargarPedido(id)
         async: false, 
         success: function(e)
         {
-            arrId = Array();
-            
             body = "";
             json = JSON.parse(e)
             json.forEach(j=>
                 {
                     let element = document.getElementById("slctProveedorEditar");
                     element.value = j.id_proveedor;
-                    id = j.id;
-                    arrayId[c_id] = id;
+                    id_detalle_pedido = parseInt(j.id)+parseInt(1);
+                    arrayId[c_id] = id_detalle_pedido;
                     
-                    //rellenar arrId
-
-
                     body = body+
                     `<tr>
-                        <td id=${j.id} style='display: none'>id=${j.id}</td>
-                        <td><input type='text' id='producto${j.id}' list='${j.id}' class='nombre form form-control' placeholder='Ingrese nombre' value='${j.producto}'></td>
-                        <td><input type='number' id='cantidad${j.id}' list='${j.id}' class='cantidad form form-control' placeholder='Ingrese cantidad' value=${j.cantidad}></td>
-                        <td><input type='number' id='valor${j.id}' list='${j.id}' class='valor form form-control' placeholder='Ingrese valor' value=${j.valor}></td>
-                        <td><button class='editar btn btn-primary' onclick='editar(this,${j.id})'>Guardar editado</button></td>
-                        <td><button id='${j.id}' class='eliminar btn btn-danger' onclick='eliminar(this,${j.id})'>-</button></td>
+                        <td id=${j.id} style='display: none'>${j.id}</td>
+                        <td><input type='text' id='productoEditar${j.id}' class='nombre form form-control' placeholder='Ingrese nombre' value='${j.producto}'></td>
+                        <td><input type='number' id='cantidadEditar${j.id}' class='cantidad form form-control' placeholder='Ingrese cantidad' value=${j.cantidad}></td>
+                        <td><input type='number' id='valorEditar${j.id}' class='valor form form-control' placeholder='Ingrese valor' value=${j.valor}></td>
+                        <td><button class='editar btn btn-primary'  onclick="editar(this,'S',${j.id})">Guardar editado</button></td>
+                        <td><button class='eliminar btn btn-danger' onclick="eliminarEditar(${j.id})">-</button></td>
                     </tr>`; 
                     
                     c_id++;
@@ -45,46 +41,70 @@ function cargarPedido(id)
     })
 }
 
-function rellenarTablaDinamicaEditar(id)
+function rellenarTablaDinamicaEditar(arrProductoEditar,arrCantidadEditar, arrValorEditar)
 {
+    c_id++;
     body = "";
-
     //rellenar arrProducto
     rellenarArrayEditar(arrProductoEditar, arrCantidadEditar, arrValorEditar);
     //rellenar tabla dinámica
-    for(i=0;i<c_id;i++)
-    {
-        body = body+
-        `<tr>
-            <td id=${arrayId[i]} style='display: none'>id=${arrayId[i]}</td>
-            <td><input type='text' id='producto${arrayId[i]}' list='${arrayId[i]}' class='nombre form form-control' placeholder='Ingrese nombre' value=${arrProductoEditar[i]}></td>
-            <td><input type='number' id='cantidad${arrayId[i]}' list='${arrayId[i]}' class='cantidad form form-control' placeholder='Ingrese cantidad' value=${arrCantidadEditar[i]}></td>
-            <td><input type='number' id='valor${arrayId[i]}' list='${arrayId[i]}' class='valor form form-control' placeholder='Ingrese valor' value=${arrValorEditar[i]}></td>
-            <td><button class='editar btn btn-primary' onclick='editar(this,${arrayId[i]})'>Guardar editado</button></td>
-            <td><button class='eliminar btn btn-danger' onclick='eliminarEditar(this,${arrayId[i]})'>-</button></td>
-        </tr>`; 
-    }
-    $("#bodyPedidosEditar").html(body);
+    body = body+
+        `<tr id='${c_id}'>
+            <td><input type='text' id='productoEditar${c_id}' class='nombre form form-control' placeholder='Ingrese nombre' value=''></td>
+            <td><input type='number' id='cantidadEditar${c_id}' class='cantidad form form-control' placeholder='Ingrese cantidad' value=''></td>
+            <td><input type='number' id='valorEditar${c_id}' class='valor form form-control' placeholder='Ingrese valor' value=''></td>
+            <td><button class='editar btn btn-primary' onclick="editar(this,'N',${c_id})">Guardar editado</button></td>
+            <td><button class='eliminar btn btn-danger' onclick='eliminarEditar(${c_id})'>-</button></td>
+        </tr>
+        <tr id='${(c_id+1)}' style='display: none'>
+            <td><input type='text' id='productoEditar${(c_id+1)}' class='nombre form form-control' placeholder='Ingrese nombre' value=''></td>
+            <td><input type='number' id='cantidadEditar${(c_id+1)}' class='cantidad form form-control' placeholder='Ingrese cantidad' value=''></td>
+            <td><input type='number' id='valorEditar${(c_id+1)}' class='valor form form-control' placeholder='Ingrese valor' value=''></td>
+            <td><button class='editar btn btn-primary' onclick="editar(this,'N',${(c_id+1)})">Guardar editado</button></td>
+            <td><button class='eliminar btn btn-danger' onclick='eliminarEditar(${(c_id+1)})'>-</button></td>
+        </tr>`;
+    $("#bodyPedidosEditar").append(body);
     
 }
 
 $("#btnAgregarProductoEditar").on("click", function(e)
 {
     e.preventDefault();
-    arrayId[c_id++] = c_id;
-    rellenarTablaDinamicaEditar(id);
+    rellenarTablaDinamicaEditar(arrProductoEditar, arrCantidadEditar, arrValorEditar);
     comprobarId0(id);
 })
 
-
-function eliminarEditar(boton, e)
+function editar(e, editar, id)
 {
-    $("#"+e).remove();
-    arrProducto = Array();//se reinicia esta variable
-    arrCantidad = Array();//se reinicia esta variable
-    arrValor = Array();//se reinicia esta variable
-    rellenarTablaDinamicaEditar(arrProductoEditar,arrCantidadEditar, arrValorEditar);
-    comprobarId0(id);
+    if(editar=='S')
+    {
+        alert("Se edita");
+    }
+    else
+    {
+        alert("Se inserta");
+    }
+}
+
+function eliminarEditar(detalle)
+{
+    alert(detalle)
+    $("#"+detalle).remove(); 
+    arrProductoEditar = Array();//se reinicia esta variable
+    arrCantidadEditar = Array();//se reinicia esta variable
+    arrValorEditar = Array();//se reinicia esta variable
+    $.ajax(
+        {
+            url: "eliminar_detalle.php",
+            data: {"id_detalle": detalle},
+            type: "POST",
+            async: false,
+            success: function(e)
+            {
+                //
+            }
+        }
+    )
 }
 
 
@@ -95,7 +115,7 @@ function rellenarArrayEditar(arrProductoEditar, arrCantidadEditar, arrValorEdita
 {
     for(i=0;i<c_id;i++)
     {
-        producto = $("#producto"+(arrayId[i])).val();
+        producto = $("#productoEditar"+(arrayId[i])).val();
         if(producto!=undefined)
         {
             arrProductoEditar[i] = producto;
@@ -105,11 +125,10 @@ function rellenarArrayEditar(arrProductoEditar, arrCantidadEditar, arrValorEdita
             arrProductoEditar[i] = "";
         }
     }
-    
     for(i=0;i<c_id;i++)
     {
-        cantidad = $("#cantidad"+(arrayId[i])).val();
-        if(cantidad!=undefined)
+        cantidad = $("#cantidadEditar"+(arrayId[i])).val();
+        if(cantidad!=undefined||cantidad!=0)
         {
             arrCantidadEditar[i] = cantidad;
         }
@@ -121,7 +140,7 @@ function rellenarArrayEditar(arrProductoEditar, arrCantidadEditar, arrValorEdita
     
     for(i=0;i<c_id;i++)
     {
-        valor = $("#valor"+(arrayId[i])).val();
+        valor = $("#valorEditar"+(arrayId[i])).val();
         if(valor!=undefined)
         {
             arrValorEditar[i] = valor;

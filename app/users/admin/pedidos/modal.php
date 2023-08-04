@@ -26,6 +26,7 @@
                 <br>
                 <table id='tblPedidos' class='table'>
                   <tr>
+                    <th>ID</th>
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Valor</th>
