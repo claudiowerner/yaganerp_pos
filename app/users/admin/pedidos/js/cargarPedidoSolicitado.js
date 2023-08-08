@@ -4,8 +4,13 @@ let arrValorEditar = Array();
 let arrayId = Array();
 let c_id = 0;//contador para el index del arrId
 let id_detalle_pedido = 0;//recibe el ID del detalle del pedido
-function cargarPedido(id)
+
+
+
+
+function cargarPedido()
 {
+    id = $("#idModal").text();
     c_id=0;
     $.ajax({
         url:"read_detalle_pedido.php",
@@ -15,17 +20,26 @@ function cargarPedido(id)
         success: function(e)
         {
             body = "";
-            json = JSON.parse(e)
-            json.forEach(j=>
+            try
+            {
+                json = JSON.parse(e);
+                let valorPedido = 0;
+                let valorxCantidad = 0;
+                json.forEach(j=>
                 {
                     let element = document.getElementById("slctProveedorEditar");
                     element.value = j.id_proveedor;
                     id_detalle_pedido = parseInt(j.id)+parseInt(1);
                     arrayId[c_id] = id_detalle_pedido;
+
+                    //calculo del valor total del pedido
+
+                    valorxCantidad = parseInt(j.valor) * parseInt(j.cantidad);
+                    valorPedido = parseInt(valorPedido) + parseInt(valorxCantidad);
                     
                     body = body+
                     `<tr>
-                        <td id=${j.id} style='display: none'>${j.id}</td>
+                        <td id="id_detalle_pedido" style='display: none'>${j.id}</td>
                         <td><input type='text' id='productoEditar${j.id}' class='nombre form form-control' placeholder='Ingrese nombre' value='${j.producto}'></td>
                         <td><input type='number' id='cantidadEditar${j.id}' class='cantidad form form-control' placeholder='Ingrese cantidad' value=${j.cantidad}></td>
                         <td><input type='number' id='valorEditar${j.id}' class='valor form form-control' placeholder='Ingrese valor' value=${j.valor}></td>
@@ -35,7 +49,13 @@ function cargarPedido(id)
                     
                     c_id++;
                 })
-
+                $("#valorPedido").html(valorPedido);
+            }
+            catch(e)
+            {
+                body = "<tr><td id=0 colspan=4>Sin resultados</td></tr>";
+                $("#valorPedido").html("0");
+            }
             $("#bodyPedidosEditar").html(body)
         }
     })
@@ -55,14 +75,8 @@ function rellenarTablaDinamicaEditar(arrProductoEditar,arrCantidadEditar, arrVal
             <td><input type='number' id='valorEditar${c_id}' class='valor form form-control' placeholder='Ingrese valor' value=''></td>
             <td><button class='editar btn btn-primary' onclick="editar(this,'N',${c_id})">Guardar editado</button></td>
             <td><button class='eliminar btn btn-danger' onclick='eliminarEditar(${c_id})'>-</button></td>
-        </tr>
-        <tr id='${(c_id+1)}' style='display: none'>
-            <td><input type='text' id='productoEditar${(c_id+1)}' class='nombre form form-control' placeholder='Ingrese nombre' value=''></td>
-            <td><input type='number' id='cantidadEditar${(c_id+1)}' class='cantidad form form-control' placeholder='Ingrese cantidad' value=''></td>
-            <td><input type='number' id='valorEditar${(c_id+1)}' class='valor form form-control' placeholder='Ingrese valor' value=''></td>
-            <td><button class='editar btn btn-primary' onclick="editar(this,'N',${(c_id+1)})">Guardar editado</button></td>
-            <td><button class='eliminar btn btn-danger' onclick='eliminarEditar(${(c_id+1)})'>-</button></td>
         </tr>`;
+        $("#0").remove()
     $("#bodyPedidosEditar").append(body);
     
 }
@@ -76,37 +90,85 @@ $("#btnAgregarProductoEditar").on("click", function(e)
 
 function editar(e, editar, id)
 {
+    prod = $("#productoEditar"+id).val();
+    cant = $("#cantidadEditar"+id).val();
+    val = $("#valorEditar"+id).val();
+
+    datos_modificar = {
+        "id_detalle": id,
+        "prod": prod,
+        "cant": cant,
+        "val": val,
+    }
+
+
+    datos_insertar = {
+        "id_detalle": id,
+        "prod": prod,
+        "cant": cant,
+        "val": val,
+        "fecha": getFechaBD()
+    }
     if(editar=='S')
     {
-        alert("Se edita");
+        $.ajax(
+            {
+                url: "editar_detalle_pedido.php",
+                data: datos_modificar,
+                type: "POST",
+                success: function(e)
+                {
+                    alert(e);
+                    cargarPedido();
+                } 
+            }
+
+        )
     }
     else
     {
-        alert("Se inserta");
+        $.ajax(
+            {
+                url: "insertar_detalle_pedido.php",
+                data: datos_insertar,
+                type: "POST",
+                success: function(e)
+                {
+                    alert(e);
+                    cargarPedido();
+                } 
+            }
+
+        )
     }
 }
 
 function eliminarEditar(detalle)
 {
-    alert(detalle)
-    $("#"+detalle).remove(); 
-    arrProductoEditar = Array();//se reinicia esta variable
-    arrCantidadEditar = Array();//se reinicia esta variable
-    arrValorEditar = Array();//se reinicia esta variable
-    $.ajax(
+    for(i=0;i<2;i++)
+    {
+        $("#"+detalle).remove(); 
+        arrProductoEditar = Array();//se reinicia esta variable
+        arrCantidadEditar = Array();//se reinicia esta variable
+        arrValorEditar = Array();//se reinicia esta variable
+        let producto = $("#productoEditar"+detalle).val();
+        if(producto!=undefined)
         {
-            url: "eliminar_detalle.php",
-            data: {"id_detalle": detalle},
-            type: "POST",
-            async: false,
-            success: function(e)
-            {
-                //
-            }
+            $.ajax(
+                {
+                    url: "eliminar_detalle.php",
+                    data: {"id_detalle": detalle},
+                    type: "POST",
+                    async: false,
+                    success: function(e)
+                    {
+                        cargarPedido()
+                    }
+                }
+            )
         }
-    )
+    }
 }
-
 
 
 
@@ -186,6 +248,40 @@ function getHora()
   var hora = h+":"+min+":"+sec;
   return hora;
 }
+
+
+$("#swEstadoPedido").on("click", function(e)
+{
+    let label = "";
+    let estado = "";
+    id = $("#idModal").text();
+    if(e.target.checked)
+    {
+        label = "Hecho";
+        estado = "C";
+    }
+    else
+    {
+        label = "Hacer";
+        estado = "A";
+    }
+    datos = {
+        "id": id,
+        "estado": estado
+    };
+    $.ajax({
+        url:"editar_estado_pedido.php",
+        data: datos,
+        type: "POST",
+        success: function(e)
+        {
+            msjes_swal("Excelente", e, "success");
+            $('#pedidos').DataTable().ajax.reload();
+        }
+    })
+    $("#lblEstadoPedido").html(label);
+})
+
 
 function getFechaBD()
 {

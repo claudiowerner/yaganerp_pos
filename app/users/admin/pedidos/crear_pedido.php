@@ -47,7 +47,7 @@
 		$cont = $i+1;
 		$sql = 
 		"INSERT INTO pedidos_detalle 
-		VALUES (null,$id_cl,$id_pedido,$cont,'".$producto[$i]."',".$cantidad[$i].",".$valor[$i].",'$fecha');";
+		VALUES (null,$id_cl,$id_pedido,'".$producto[$i]."',".$cantidad[$i].",".$valor[$i].",'$fecha');";
 		$res = $conexion->query($sql);
 		if($res)
 		{

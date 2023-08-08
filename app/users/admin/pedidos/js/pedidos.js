@@ -16,7 +16,7 @@ var table;
   //Datatable
   table = $('#pedidos').DataTable({
     "createdRow": function( row, data, dataIndex){
-      if( data.estado ==  `ACTIVO`){
+      if( data.estado ==  `HECHO`){
         $(row).addClass('ACTIVO');
       }
       else
@@ -69,7 +69,30 @@ $("#pedidos").on('click', 'tr', function(e)
   var cat = $('#pedidos').DataTable();
   var datos = cat.row(this).data();
   let id = datos.id;
-  cargarPedido(id);
+  $("#idModal").html(id);
+
+  //cargar estado de pedido(si se hizo o no)
+
+  $.ajax({
+    url: "read_estado_pedido.php",
+    data: {"id_pedido": id},
+    type: "POST",
+    success: function(e)
+    {
+      if(e.match("A"))
+      {
+        $("#swEstadoPedido").prop("checked", false)
+        $("#lblEstadoPedido").html("Hacer");
+      }
+      if(e.match("C"))
+      {
+        $("#swEstadoPedido").prop("checked", true)
+        $("#lblEstadoPedido").html("Hecho");
+      }
+    }
+  })
+
+  cargarPedido();
 })
 
 function getHora()

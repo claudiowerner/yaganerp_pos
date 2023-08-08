@@ -15,7 +15,7 @@
 .switch
 {
     display: inline-block;
-    width: 45px;
+    width: 90px;
     height: 25px;
     background: #aaaa;
     border-radius: 100px;
@@ -39,18 +39,18 @@
 
 
 
-#swEditarCategoria
+#swEstadoPedido
 {
     display: none;
 }
-#swEditarCategoria:checked~ .switch
+#swEstadoPedido:checked~ .switch
 {
     background: #61a0ff;
     transition:0.3s;
 }
-#swEditarCategoria:checked~ .switch:after
+#swEstadoPedido:checked~ .switch:after
 {
-    left: 23px; 
+    left: 68px; 
 }
 
 

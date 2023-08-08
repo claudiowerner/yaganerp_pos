@@ -27,11 +27,11 @@ session_start();
   while ($row = $resultado->fetch_array())
   {
     $estado = "";
-    if($row['estado']=="S")
+    if($row['estado']=="C")
     {
-      $estado = "REALIZADO";
+      $estado = "HECHO";
     }
-    else
+    if($row['estado']=="A")
     {
       $estado = "POR HACER";
     }

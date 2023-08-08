@@ -52,18 +52,31 @@
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
-              <h5 class='modal-title'>Editando <strong id='idModal'>ID</strong></h5>
+              <h5 class='modal-title'>Editando pedido <strong id='idModal'>ID</strong></h5>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
             </div>
               <div class='modal-body'>
-                <table id='contenido'>
-                  <tr>
+                <table id='contenido' width='100%'>
+                  <tr align='right'>
                     <td><label name='proveedor'>Proveedor</label></td>
                     <td>
                       <select name='slctProveedorEditar' id='slctProveedorEditar' class='form form-control select2'>
                       </select>
+                    </td>
+                  </tr>
+                  <tr align='left'>
+                    <td >
+                      <div class=button align='right'>
+                        <label name='swEstadoPedido' align='center'>Estado del pedido:</label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class=boton>                    
+                        <input type='checkbox' id='swEstadoPedido'/>
+                        <label id='lblEstadoPedido' for='swEstadoPedido' style='color:white' class='switch'></label>
+                      </div>
                     </td>
                   </tr>
                 </table>
@@ -79,13 +92,21 @@
                     <th>Acción</th>
                   </tr>
                   <tbody id='bodyPedidosEditar'>
-                    
+                    //
                   </tbody>
                 </table>
               </div>
               <div class='modal-footer'>
-                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-                <button type='button' id='btnGuardarCambios' class='btn btn-primary'>Guardar</button>
+                <table width='100%' align='center' class='table'>
+                  <tr>
+                    <td width='50%'><label>Productos solicitados</label></td>
+                    <td id='prodSolic'>0</td>
+                  </tr>
+                  <tr>
+                    <td width='50%'><label>Valor del pedido: </label></td>
+                    <td align='left'><strong>$</strong><strong id='valorPedido'></strong></td>
+                  </tr>
+                </table>
               </div>
           </div>
         </div>
