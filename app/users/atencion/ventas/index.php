@@ -64,6 +64,8 @@
                         echo modalMetodoPago();
                         echo modalAñadirCuenta();
                         echo modalAgregarCliente();
+                        echo modalPagarCuenta();
+                        echo modalSeleccionarCuenta();
                     ?>
                 </div>
                 <!-- CONTENT -->
@@ -117,6 +119,9 @@
                                                         </td>
                                                         <td>
                                                             <button id="btnCerrarCaja" class="btn btn-danger">Cerrar caja</button>
+                                                        </td>
+                                                        <td>
+                                                            <button id="btnPagarCuenta" class="btn btn-success">Pagar cuenta</button>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -262,6 +267,7 @@
     <script src="js/agregarCliente.js"></script>
     <script src="js/validarVariableRut.js"></script>
     <script src="js/agregarACuentaCliente.js"></script>
+    <script src="js/pagarCuenta.js"></script>
     
     
 </body>

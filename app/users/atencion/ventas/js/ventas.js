@@ -227,7 +227,7 @@ function confirmarPaga(boton)
     type: "GET",
     success: function(e)
     {
-      msjes_swal("Excelente", e, "error");
+      msjes_swal("Excelente", e, "success");
       $("#btnPagarVenta").prop("disabled", true);
       $("#btnAnularVenta").prop("disabled", true);
       $("#btnAñadirCuenta").prop("disabled", true);
