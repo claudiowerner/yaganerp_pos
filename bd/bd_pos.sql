@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-07-2023 a las 01:49:55
+-- Tiempo de generación: 09-08-2023 a las 03:48:11
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -367,7 +367,8 @@ INSERT INTO `correlativo` (`id`, `correlativo`, `id_cl`, `caja`, `nom_caja`, `us
 (45, 45, '1', '1', 'C01', '1', '0', '9', 0, '2', 'N', '2023-07-28 19:44:25', '2023-07-28 19:44:26'),
 (46, 46, '1', '1', 'C01', '1', '54000', '10', 3, '2', 'C', '2023-07-28 19:44:26', '2023-07-27 20:09:49'),
 (47, 47, '1', '1', 'C01', '1', '27000', '11', 3, '2', 'C', '2023-07-28 20:10:11', '2023-07-27 20:10:46'),
-(48, 48, '1', '1', 'C01', '1', '18980', '10', 3, '2', 'C', '2023-07-28 14:28:43', '2023-07-28 14:29:37');
+(48, 48, '1', '1', 'C01', '1', '18980', '10', 3, '2', 'C', '2023-07-28 14:28:43', '2023-07-28 14:29:37'),
+(49, 49, '1', '1', 'C01', '1', '0', '9', 0, '2', 'A', '2023-08-02 15:15:15', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -458,14 +459,68 @@ INSERT INTO `metodo_pago` (`id`, `id_cl`, `nombre_metodo_pago`, `estado`) VALUES
 --
 
 CREATE TABLE `pedidos` (
-  `id` int(5) DEFAULT NULL,
-  `id_cl` int(5) DEFAULT NULL,
-  `id_proveedor` int(5) DEFAULT NULL,
-  `producto` varchar(45) DEFAULT NULL,
-  `cantidad` int(5) DEFAULT NULL,
-  `precio` int(5) DEFAULT NULL,
-  `fecha_registro` date DEFAULT NULL
+  `id` int(5) NOT NULL,
+  `id_cl` int(5) NOT NULL,
+  `id_proveedor` int(5) NOT NULL,
+  `estado` varchar(5) NOT NULL,
+  `creado_por` int(11) NOT NULL,
+  `fecha_registro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id`, `id_cl`, `id_proveedor`, `estado`, `creado_por`, `fecha_registro`) VALUES
+(1, 1, 5, 'C', 1, '2023-08-07'),
+(2, 1, 1, 'C', 1, '2023-08-07'),
+(3, 1, 4, 'C', 1, '2023-08-07'),
+(4, 1, 4, 'C', 1, '2023-08-07'),
+(5, 1, 1, 'C', 1, '2023-08-07'),
+(6, 1, 4, 'C', 1, '2023-08-07'),
+(7, 1, 3, 'A', 1, '2023-08-07'),
+(8, 1, 5, 'A', 1, '2023-08-08'),
+(9, 1, 2, 'C', 1, '2023-08-08');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos_detalle`
+--
+
+CREATE TABLE `pedidos_detalle` (
+  `id` int(5) NOT NULL,
+  `id_cl` int(5) NOT NULL,
+  `id_pedido` int(5) NOT NULL,
+  `producto` varchar(45) NOT NULL,
+  `cantidad` int(5) NOT NULL,
+  `valor` int(9) NOT NULL,
+  `fecha_reg` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedidos_detalle`
+--
+
+INSERT INTO `pedidos_detalle` (`id`, `id_cl`, `id_pedido`, `producto`, `cantidad`, `valor`, `fecha_reg`) VALUES
+(50, 1, 1, 'Chocolate', 1, 10000, '2023-08-07'),
+(60, 1, 6, 'Cola de tigre', 10, 2000, '2023-08-07'),
+(62, 1, 2, 'Crazy Frambuesa', 1, 12000, '2023-08-07'),
+(63, 1, 2, 'Mega ', 1, 12000, '2023-08-07'),
+(65, 1, 2, 'Iron Maiden', 1, 13000, '2023-08-07'),
+(66, 1, 2, 'maxibom', 1, 12000, '2023-08-07'),
+(67, 1, 1, 'jajajaja', 1, 1000, '2023-08-07'),
+(68, 1, 1, 'qwe', 11, 1000, '2023-08-07'),
+(70, 1, 1, 'Memoria Ram Kingston ', 12, 35990, '2023-08-08'),
+(71, 1, 1, '123', 1, 1, '2023-08-08'),
+(72, 1, 1, '123', 1, 1, '2023-08-08'),
+(73, 1, 1, '123', 1, 12, '2023-08-08'),
+(74, 1, 1, '123', 123, 123, '2023-08-08'),
+(75, 1, 3, '123', 123, 123, '2023-08-08'),
+(76, 1, 3, '234', 123, 123, '2023-08-08'),
+(77, 1, 1, '123', 123, 123, '2023-08-08'),
+(78, 1, 1, '456', 456, 456, '2023-08-08'),
+(79, 1, 9, 'Chocolito', 5, 12590, '2023-08-08');
 
 -- --------------------------------------------------------
 
@@ -532,7 +587,7 @@ CREATE TABLE `proveedores` (
 --
 
 INSERT INTO `proveedores` (`id`, `id_cl`, `nombre_proveedor`, `rut`, `estado`, `fecha_registro`) VALUES
-(1, 1, 'Savorys', '19150634-0', 'S', '2023-07-28'),
+(1, 1, 'Savory', '19150634-0', 'S', '2023-07-28'),
 (2, 1, 'Covepa S.A.', '19150634-0', 'S', '2023-07-28'),
 (3, 1, 'Evercrisp', '18752880-1', 'S', '2023-07-28'),
 (4, 1, 'Maryun S.A.', '4494605-k', 'S', '2023-07-28'),
@@ -789,6 +844,18 @@ ALTER TABLE `metodo_pago`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `pedidos_detalle`
+--
+ALTER TABLE `pedidos_detalle`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -898,7 +965,7 @@ ALTER TABLE `clientes_negocio`
 -- AUTO_INCREMENT de la tabla `correlativo`
 --
 ALTER TABLE `correlativo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `cuenta_corriente`
@@ -911,6 +978,18 @@ ALTER TABLE `cuenta_corriente`
 --
 ALTER TABLE `metodo_pago`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidos_detalle`
+--
+ALTER TABLE `pedidos_detalle`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
