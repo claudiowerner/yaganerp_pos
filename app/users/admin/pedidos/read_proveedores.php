@@ -32,7 +32,7 @@ if(isset($_SESSION['user'])){
   {
     $json[] =array(
          'id' => $row['id'],
-         'nombre_proveedor' => $row['nombre_proveedor']
+         'nombre_proveedor' => $row['nombre_proveedor'] 
      );
   }
   echo json_encode($json);

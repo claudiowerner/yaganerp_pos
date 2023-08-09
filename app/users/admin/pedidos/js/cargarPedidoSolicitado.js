@@ -49,6 +49,7 @@ function cargarPedido()
                     
                     c_id++;
                 })
+                $("#prodSolic").html(c_id);
                 $("#valorPedido").html(valorPedido);
             }
             catch(e)
@@ -93,6 +94,7 @@ function editar(e, editar, id)
     prod = $("#productoEditar"+id).val();
     cant = $("#cantidadEditar"+id).val();
     val = $("#valorEditar"+id).val();
+    let id_pedido = $("#idModal").text();
 
     datos_modificar = {
         "id_detalle": id,
@@ -103,7 +105,7 @@ function editar(e, editar, id)
 
 
     datos_insertar = {
-        "id_detalle": id,
+        "id_pedido": id_pedido,
         "prod": prod,
         "cant": cant,
         "val": val,
@@ -138,8 +140,11 @@ function editar(e, editar, id)
                     cargarPedido();
                 } 
             }
-
         )
+        .fail(function(e)
+        {
+            msjes_swal("Error",e,"error")
+        })
     }
 }
 

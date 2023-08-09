@@ -14,6 +14,7 @@ var table;
 
 
   //Datatable
+  datosTabla = "";
   table = $('#pedidos').DataTable({
     "createdRow": function( row, data, dataIndex){
       if( data.estado ==  `HECHO`){
@@ -37,8 +38,15 @@ var table;
         {"data":"estado"},
         {"data":"nombre"},
         {"data":"fecha_registro"},
+        {"data":"valor"},
         {
           "defaultContent": '<button type="submit" id="btnEditar" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" ><img src="../img/edit.png" width="15"></button>'
+        },
+        {
+          "data": null,
+          "render": function (data, type, row) {
+            return "<button type='submit' id='btnImprimir' data-id='"+data.id+"' class='btn btn-primary'><img src='../img/impresora.png' width='15'></button>";
+          }
         }
       ],
 
@@ -60,8 +68,6 @@ var table;
       }
     });
 
-
-
   
 $("#pedidos").on('click', 'tr', function(e)
 {
@@ -71,8 +77,23 @@ $("#pedidos").on('click', 'tr', function(e)
   let id = datos.id;
   $("#idModal").html(id);
 
-  //cargar estado de pedido(si se hizo o no)
 
+  //cargar ID del proveedor para preseleccionar dicha opción
+  $.ajax({
+    url: "read_id_proveedor.php",
+    data: {"id_pedido": id},
+    type: "POST",
+    success: function(e)
+    {
+      $("#slctProveedorEditar").select(e);
+    }
+  })
+  .fail(function(e)
+  {
+    msjes_swal("Error",e,"error");
+  })
+
+  //cargar estado de pedido(si se hizo o no)
   $.ajax({
     url: "read_estado_pedido.php",
     data: {"id_pedido": id},

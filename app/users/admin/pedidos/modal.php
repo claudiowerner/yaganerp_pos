@@ -62,7 +62,7 @@
                   <tr align='right'>
                     <td><label name='proveedor'>Proveedor</label></td>
                     <td>
-                      <select name='slctProveedorEditar' id='slctProveedorEditar' class='form form-control select2'>
+                      <select name='slctProveedorEditar' id='slctProveedorEditar' class='form form-control select2' onChange='cambiarProveedor()'>
                       </select>
                     </td>
                   </tr>
@@ -100,7 +100,7 @@
                 <table width='100%' align='center' class='table'>
                   <tr>
                     <td width='50%'><label>Productos solicitados</label></td>
-                    <td id='prodSolic'>0</td>
+                    <td align='left' id='prodSolic'>0</td>
                   </tr>
                   <tr>
                     <td width='50%'><label>Valor del pedido: </label></td>

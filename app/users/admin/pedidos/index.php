@@ -79,7 +79,9 @@
                                                         <td>Estado</td>
                                                         <td>Creado por</td>
                                                         <td>Fecha</td>
-                                                        <td>Acción</td>
+                                                        <td>Valor</td>
+                                                        <td>Editar</td>
+                                                        <td>Imprimir</td>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -115,6 +117,8 @@
     <script src="js/agregarPedido.js"></script>
     <script src="js/cargar_proveedores.js"></script>
     <script src="js/pedidos.js"></script>
+    <script src="js/imprimir_pedido.js"></script>
+    <script src="js/cambiarIdProveedor.js"></script>
 </body>
 
 </html>

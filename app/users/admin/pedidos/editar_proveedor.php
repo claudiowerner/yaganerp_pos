@@ -14,24 +14,24 @@
 	$id_cl = $_SESSION['user']["id_cl"];
 	$piso = 1;
 
-	$fecha = $_POST["fecha"];
-	$producto = $_POST["prod"];
-	$cantidad = $_POST["cant"];
-	$valor = $_POST["val"];
 	$id_pedido = $_POST["id_pedido"]; 
+	$id_prov = $_POST["id_prov"]; 
 
-	//insertar pedido
-	echo $sql = 
-		"INSERT INTO pedidos_detalle 
-		VALUES (null,$id_cl,$id_pedido,'$producto',$cantidad,$valor,'$fecha');";
+	//editar detalle pedido
+	$sql = 
+		"UPDATE pedidos
+		SET 
+		id_proveedor = '$id_prov'
+		WHERE (`id` = '$id_pedido');
+		";
 		$res = $conexion->query($sql);
 		if($res)
 		{
-			echo "Detalle agregado correctamente.";
+			echo "Proveedor modificado correctamente.";
 		}
 		else 
 		{
-			die("Error al agregar pedidos: ". mysqli_error($conexion));
+			die("Error al modificar proveedor: ". mysqli_error($conexion));
 		}
 
 
