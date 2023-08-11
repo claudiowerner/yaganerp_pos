@@ -13,10 +13,8 @@
     <script type='text/javascript' src='../../../js/sliding-menu.js'></script>
     <script type='text/javascript' src='../../../js/scriptbreaker-multiple-accordion-1.js'></script>
     <script type='text/javascript' src='../../../js/tip/jquery.tooltipster.min.js'></script>
-    <script type='text/javascript' src='../../../js/donut-chart/jquery.drawDoughnutChart.js'></script>
     <script type='text/javascript' src='../../../js/tab/jquery.newsTicker.js'></script>
     <script type='text/javascript' src='../../../js/tab/app.ticker.js'></script>
-    <script type='text/javascript' src='../../../js/app.js'></script>
 
 
     <script type='text/javascript' src='../../../js/vegas/jquery.vegas.js'></script>
@@ -37,9 +35,5 @@
     <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
     <script src='../../../js/flot/jquery.flot.pie.min.js' type='text/javascript'></script>
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-    <script src='../../../js/flot/jquery.flot.categories.min.js' type='text/javascript'></script>
-  
-
-    <script src='graficos/graficos.js'></script>
-    <script src='../../../js/chart.js'></script>";
+    <script src='../../../js/flot/jquery.flot.categories.min.js' type='text/javascript'></script>";
 ?>
