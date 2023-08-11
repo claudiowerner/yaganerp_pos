@@ -3,11 +3,13 @@ function registrarCuenta(rut)
 
     let correlativo = $("#id_venta").text();
     let fecha = getFechaBD();
+    let valor = $("#totalVenta").text();
     
     let datos = {
         "rut":rut,
         "corr": correlativo,
-        "fecha": fecha
+        "fecha": fecha,
+        "valor": valor
     }
     //se pregunta si desea añadir la venta a la cuenta del cliente seleccionado
 
@@ -33,7 +35,7 @@ function registrarCuenta(rut)
 
                     msjes_swal("Excelente", e, "success");
                     //imprimir ticket
-                    imprimirBoleta("ticket_fiado.php");
+                    imprimirBoleta("ticket_fiado.php", correlativo);
                 }
             })
             .fail(function(e)

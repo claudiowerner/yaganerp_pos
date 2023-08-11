@@ -12,7 +12,7 @@ $.ajax(
                 `<option value="${m.id}">${m.nombre_opcion}</option>`;
             })
             $("#metodoPagoGral").html(template);
-            $("#metodoPagoInd").html(template);
+            $("#metodoPagoCuenta").html(template);
         }
     }
 )

@@ -24,10 +24,6 @@ async function accionEliminarVenta(boton)
                         {
                             msjes_swal("Excelente", r, "success");
                             cargarVentasCaja();
-                            cargarVentaInd();
-                            cargarVentaGeneral();
-                            comprobarComandaCocina();
-                            comprobarComandaBar();
                             $('#solicClaveAut').modal('hide');
                         }
                     }).fail( function(e) {

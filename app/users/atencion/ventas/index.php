@@ -66,6 +66,7 @@
                         echo modalAgregarCliente();
                         echo modalPagarCuenta();
                         echo modalSeleccionarCuenta();
+                        echo modalMetodoPagoPagarCuenta();
                     ?>
                 </div>
                 <!-- CONTENT -->
@@ -268,6 +269,7 @@
     <script src="js/validarVariableRut.js"></script>
     <script src="js/agregarACuentaCliente.js"></script>
     <script src="js/pagarCuenta.js"></script>
+    <script src="js/confirmarPaga.js"></script>
     
     
 </body>

@@ -154,7 +154,7 @@
                     <label for=''>Cliente</label>
                   </td>
                   <td width='80%'>
-                    <input type='text' id='txtBuscarCliente' class='form form-control select2'>
+                    <input type='text' id='txtBuscarCliente' class='form form-control select2' autocomplete='off'>
                   </td>
                   <td>
                     <button id='btnAgregarCliente' class='btn btn-success' style='width:100%' disabled >Agregar</button>
@@ -370,6 +370,42 @@
                     </td>
                     <td>
                       <button class='btn btn-success' id='btnConfirmarPaga' disabled='true'>Pagar cuenta</button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>";
+  }
+
+  function modalMetodoPagoPagarCuenta()
+  {
+    return "<!--modal Imprimir cuenta General-->
+      <div class='modal fade' id='modalMetodoPagoPagarCuenta' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+        <div class='modal-dialog' role='document' style='max-width: 900px!important;' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <h5 class='modal-title' id='tipoVenta'>Pagar cuenta n <strong id=cuenta>CARGANDO...</strong></h5>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+            </div>
+            <div class='modal-body' align='center'>
+              <div>
+                <table class='table'>
+                  <tr>
+                    <td>
+                      <strong>Método de pago</strong>
+                    </td>
+                    <td>
+                      <select id='metodoPagoCuenta' class='form-control' onChange=' activarBotonPagarCuenta(this)'>
+                        <option>Cargando...</option>
+                      </select>
+                    </td>
+                    <td>
+                      <button class='btn btn-success' id='btnConfirmarPagaCuenta' disabled='true'>Pagar cuenta</button>
                     </td>
                   </tr>
                 </table>

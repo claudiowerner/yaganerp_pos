@@ -13,3 +13,17 @@ function activarBotonCuentaGral(e)
     }
 }
 
+function activarBotonPagarCuenta(e)
+{
+    if(e.value=='SO')
+    {
+        $("#btnConfirmarPagaCuenta").prop("disabled", true);
+    }
+    else
+    {
+        $("#btnConfirmarPagaCuenta").prop("disabled", false);
+    }
+}
+
+
+

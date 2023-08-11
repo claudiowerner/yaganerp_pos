@@ -1,3 +1,5 @@
+let rutCliente = "";
+
 $("#btnPagarCuenta").on("click", function(e)
 {
     $("#modalPagarCuenta").modal("show");
@@ -22,6 +24,7 @@ $("#txtBuscarCliente").on("keyup", function(e)
             url: "func_php/busqueda_datos_cliente.php",
             data: {"rut": rut},
             type: "POST",
+            async: false, 
             success: function(e)
             {
                 try
@@ -36,6 +39,7 @@ $("#txtBuscarCliente").on("keyup", function(e)
                                 <td>${j.apellido}</td>
                                 <td><button onClick='selecCliente("${j.rut}")' class='btn btn-success'>Seleccionar</button></td>
                             </tr>`;
+                            rutCliente = j.rut;
                             $("#datosClientePagarCuenta").html(template)
                         }
                     )
@@ -53,12 +57,49 @@ $("#txtBuscarCliente").on("keyup", function(e)
     }
 })
 
+$("#btnConfirmarPagaCuenta").on("click", function(e)
+{
+    let corr = $("#cuenta").text();
+    swal({
+        title: "¿Está seguro?",
+        text: "¿Desea registrar el pago completo?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((pagar) => {
+        if (pagar)
+        {
+            debugger;
+            let metodoPago = $("#metodoPagoCuenta").val()
+            confirmarPaga("ticket.php",corr, metodoPago);
+            $("#modalMetodoPagoCuenta").modal("hide");
+            cargarCuentasCliente(rutCliente);
+        } 
+        else 
+        {
+            swal("Operación cancelada");
+        }
+      });
+})
+
 
 function selecCliente(rut)
 {
     $("#modalPagarCuenta").modal("hide");
     $("#modalSeleccionarCuenta").modal("show");
-    
+    cargarCuentasCliente(rut);
+}
+
+
+function pagar(corr)
+{
+    $("#modalMetodoPagoPagarCuenta").modal("show");
+    $("#cuenta").html(corr);
+}
+
+function cargarCuentasCliente(rut)
+{
     $.ajax(
         {
             url: "func_php/cargar_cuentas_cliente.php",
@@ -83,27 +124,4 @@ function selecCliente(rut)
             }
         }
     )
-
-}
-
-
-function pagar(corr)
-{
-    swal({
-        title: "¿Está seguro?",
-        text: "¿Desea registrar el pago completo?",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((pagar) => {
-        if (pagar)
-        {
-          confirmarPaga();
-        } 
-        else 
-        {
-          swal("Operación cancelada");
-        }
-      });
 }

@@ -27,6 +27,7 @@ $sql = "SELECT v.id_cl, v.id, p.id_prod, v.cantidad, v.valor
 FROM ventas v
 JOIN productos p ON p.id_prod = v.producto 
 AND v.id_venta = $ids
+AND v.estado!='N'
 ORDER BY v.id ASC";
 $result = mysqli_query($conexion,$sql) or die (mysqli_error());
 

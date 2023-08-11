@@ -23,6 +23,7 @@
     JOIN correlativo corr 
     ON corr.id = ccr.correlativo
     WHERE rut = '$rut'
+    AND ccr.estado = 'A'
     AND ccr.id_cl = $id_cl
     GROUP BY ccr.correlativo" ;
     $resultado = $conexion->query($consulta);

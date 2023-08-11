@@ -15,6 +15,23 @@
     $rut = $_POST["rut"];
     $corr = $_POST["corr"];
     $fecha = $_POST["fecha"];
+    $valor = $_POST["valor"];
+	
+	//seleccionar las ventas que no han sido anuladas
+	$arrayIdVenta = Array();
+
+	$sql = 
+	"SELECT id FROM ventas
+	WHERE id_venta = $corr
+	AND estado = 'A'";
+	$res = $conexion->query($sql);
+	
+	while($row=$res->fetch_array())
+	{
+		$arrayIdVenta[] = $row["id"];
+	}
+
+	print_r($arrayIdVenta);
 
 	$sql = 
 	"SELECT * FROM cuenta_corriente 
@@ -43,10 +60,24 @@
 		else
 		{
 			//Setear ventas como Por Pagar
+			for($i=0; $i<count($arrayIdVenta);$i++)
+			{
+				$venta = $arrayIdVenta[$i];
+				echo $sql = 
+				"UPDATE ventas 
+				SET estado = 'P'
+				WHERE id = $venta 
+				AND id_cl = $id_cl";
+
+				$res = $conexion->query($sql);
+			}
+
+			//Setear valor de cuenta por pagar
 			$sql = 
-			"UPDATE ventas 
-			SET estado = 'P'
-			WHERE id_venta = $corr
+			"UPDATE correlativo 
+			SET estado = 'P',
+			valor = '$valor'
+			WHERE correlativo = $corr
 			AND id_cl = $id_cl";
 
 			$res = $conexion->query($sql);

@@ -58,6 +58,14 @@
 	AND cc.id = '$idCierre';";
 	$r3 = mysqli_query($conexion, $sql);
 
+	
+	$sql = 
+	"UPDATE cuenta_corriente cc
+	SET estado = 'C'
+	WHERE cc.id_cl = '$id_cl'
+	AND cc.correlativo = '$id_venta';";
+	$r3 = mysqli_query($conexion, $sql);
+
 	//generar nro boleta
 	$sql = "SELECT (boleta+1) AS boleta FROM correlativo WHERE id_cl = '$id_cl'";
 	$res = mysqli_query($conexion, $sql);
@@ -84,8 +92,6 @@
 	SET estado = 'C', 
 	fecha_pago='$fecha $hora',
 	forma_pago = '$forma_pago'
-	WHERE id_caja = '$nCaja' 
-	AND estado = 'A' 
 	AND id_cl = '$id_cl'
 	AND id_venta = '$id_venta'";
 	$r2 = mysqli_query($conexion, $sql);

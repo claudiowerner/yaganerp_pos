@@ -1,7 +1,7 @@
-function imprimirBoleta(script_php)
+function imprimirBoleta(script_php, idVenta)
 {
+    alert(idVenta)
     nCaja = $("#nCaja").text();
-    idVenta = parseInt($("#id_venta").text());
     fecha = getFechaBD();
     hora = getHora();
     formaPago = $("#metodoPagoGral").val();
