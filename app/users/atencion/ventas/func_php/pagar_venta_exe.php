@@ -32,6 +32,7 @@
 	$id_venta = $_GET['id_venta'];
 	$valorTotal = $_GET["totalVenta"];
 	$nCaja = $_GET["nCaja"];
+	$nomCaja = $_GET["nomCaja"];
 	$idCierre = $_GET["idCierre"];
 
 	
@@ -90,6 +91,8 @@
 	$sql = 
 	"UPDATE ventas 
 	SET estado = 'C', 
+	id_caja = $idCaja,
+	nom_caja = '$nomCaja',
 	fecha_pago='$fecha $hora',
 	forma_pago = '$forma_pago'
 	AND id_cl = '$id_cl'
@@ -133,6 +136,6 @@
 	}
 	else
 	{
-		die("Error al registrar pago: ". mysqli_error($conexion));
+		die("Error al registrar pago: ". $conexion->error);
 	}
 ?>

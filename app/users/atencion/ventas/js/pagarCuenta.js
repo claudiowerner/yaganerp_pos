@@ -70,7 +70,6 @@ $("#btnConfirmarPagaCuenta").on("click", function(e)
       .then((pagar) => {
         if (pagar)
         {
-            debugger;
             let metodoPago = $("#metodoPagoCuenta").val()
             confirmarPaga("ticket.php",corr, metodoPago);
             $("#modalMetodoPagoCuenta").modal("hide");

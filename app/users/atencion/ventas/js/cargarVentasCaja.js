@@ -12,8 +12,9 @@ function cargarVentasCaja()
       success: function(response)
       {
         let tasks = JSON.parse(response);
+        let contador = 0;
         tasks.forEach(v=>{
-          
+          contador++;
           descProd.push({"nom_prod": v.nombre_prod, "cant":v.cantidad});
           let aumentar;
           let imprimir;
@@ -65,6 +66,7 @@ function cargarVentasCaja()
                       </tr>
                     <tr>`;
         });
+        $("#nProd").html(contador);
         let subtotal = 0;
         let subtotal_iva = 0;
         let iva = 0;

@@ -9,9 +9,14 @@ function cargarIDVentaCaja()
             type: "POST",
             success: function(e)
             {
+                alert(e)
                 $("#id_venta").html(e);
                 cargarVentasCaja();
             }
         }
     )
+    .fail(function(e)
+        {
+            msjes_swal("Error al cargar ID de la venta: ",e,"error");
+        })
 }

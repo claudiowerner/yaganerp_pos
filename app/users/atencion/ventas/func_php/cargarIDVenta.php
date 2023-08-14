@@ -24,7 +24,6 @@
         $resultado = $conexion->query($consulta);
 
         $corr = "";
-
         if($resultado->num_rows!=0)
         {
             while($row = $resultado->fetch_array())
@@ -34,7 +33,10 @@
         }
         else
         {
-            $consulta = "SELECT max(correlativo) AS corr FROM correlativo WHERE id_cl = $id_cl ";
+            $consulta = 
+            "SELECT correlativo AS corr 
+            FROM correlativo 
+            WHERE id_cl = $id_cl ";
             $resultado = $conexion->query($consulta);
 
             while($row = $resultado->fetch_array())

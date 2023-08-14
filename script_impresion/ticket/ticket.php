@@ -43,6 +43,9 @@ $id_prod = array();
 $cantidad = array();
 $valor = array();
 
+//contador de cantidad de productos
+$contProd = 0;
+
 $id_cl = "";
 if ($result->num_rows>0){
   while ($row = $result->fetch_array()){
@@ -52,6 +55,7 @@ if ($result->num_rows>0){
     $valor[] = $row['valor'];
     $total = $row["valor"] + $total;
     $id_cl = $row["id_cl"];
+    $contProd++;
   }
 }
 //descarga de datos de supermercado (nombre de fantasía, etc)
@@ -79,7 +83,7 @@ for($i=0;$i<count($id);$i++){
     {
       $nombre_prod = $qry["nombre_prod"];
       //echo "Producto: ".$nombre_prod." - CANTIDAD: ".$cantidad[$i]; echo "<br>";
-      $items[] = new item3(normaliza(strtoupper($nombre_prod))." X ".$cantidad[$i], "$".$valor[$i]);
+      $items[] = new item3(normaliza(($i+1).") ".strtoupper($nombre_prod))." X ".$cantidad[$i], "$".$valor[$i]);
 		}
 	}
 }
@@ -138,6 +142,7 @@ $printer -> feed();
 $printer -> setJustification(Printer::JUSTIFY_LEFT);
 $printer -> setEmphasis(true);
 
+$printer -> text("Nro. de items: $contProd\n");
 $printer -> text("--------------- PRODUCTOS ------------------\n");
 
 foreach ($items as $item1) {

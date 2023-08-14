@@ -9,6 +9,7 @@ function correlativo()
             type: "GET",
             success: function(e)
             {
+                alert("Correlativo.js "+e)
                 if(e==1)
                 {
                     cargarIDVentaCaja();
@@ -16,4 +17,8 @@ function correlativo()
             }
         }
     )
+    .fail(function(e)
+        {
+            msjes_swal("Error correlativo",e,"error");
+        })
 }

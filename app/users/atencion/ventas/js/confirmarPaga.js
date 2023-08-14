@@ -5,8 +5,9 @@ function confirmarPaga(ticket, id, formaPago)
   let fecha = getFechaBD();
   let hora = getHora();
   let idCaja = $("#id_caja").text();
+  let nomCaja = $("#nomCaja").text();
   $.ajax({
-    url: "func_php/pagar_venta_exe.php?nCaja="+nCaja+"&totalVenta="+totalVenta+"&producto="+descProd+"&fecha="+fecha+"&hora="+hora+"&idCaja="+idCaja+"&forma_pago="+formaPago+"&id_venta="+id+"&idCierre="+idCaja,
+    url: "func_php/pagar_venta_exe.php?nCaja="+nCaja+"&totalVenta="+totalVenta+"&producto="+descProd+"&fecha="+fecha+"&hora="+hora+"&idCaja="+idCaja+"&forma_pago="+formaPago+"&id_venta="+id+"&idCierre="+idCaja+"&nomCaja="+nomCaja,
     data: {'producto': descProd},
     type: "GET",
     success: function(e)
@@ -15,6 +16,7 @@ function confirmarPaga(ticket, id, formaPago)
       $("#btnPagarVenta").prop("disabled", true);
       $("#btnAnularVenta").prop("disabled", true);
       $("#btnAñadirCuenta").prop("disabled", true);
+      $("#btnCrearVenta").prop("disabled", false);
       id_usuario = "";
       //obtener ID de usuario/cliente
       $.ajax(
@@ -28,17 +30,15 @@ function confirmarPaga(ticket, id, formaPago)
           }
         }
       )
+      .fail(function(e)
+      {
+        msjes_swal("Error", "Error al obtener ID de usuario: "+e.responseText, "error");
+      })
       imprimirBoleta(ticket, id);
-
-
-      cargarVentasCaja();
       
       /*si el número de botón seleccionado es 2 (btnPagarVenta), se mostrará el mensaje de venta exitosa y
       se vuelve al apartado donde se muestran las mesas*/
     }
   })
-  .fail(function(e)
-  {
-    msjes_swal("Error", "Error al intentar imprimir: "+e.responseText, "error");
-  })
+  
 }

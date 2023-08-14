@@ -143,6 +143,7 @@
                                                             <strong id="idMesa" style="display:none"><?php echo $idMesa;?></strong></td>
                                                             <td>ID venta: <strong name="id_venta" id="id_venta">CARGANDO...</strong></td>
                                                             <td>Caja/turno: <strong name="nombreCaja" id="nombreCaja">CARGANDO...</strong></td>
+                                                            <td>N° de Productos: <strong name="nProd" id="nProd">CARGANDO...</strong></td>
                                                             <td><strong name="id_caja" id="id_caja" style="display: none"></strong></td>
                                                         </tr>
                                                     </table> 
