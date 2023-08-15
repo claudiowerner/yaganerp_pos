@@ -120,8 +120,9 @@ function editar(e, editar, id)
                 type: "POST",
                 success: function(e)
                 {
-                    alert(e);
                     cargarPedido();
+                    $('#pedidos').DataTable().ajax.reload();
+                    cargarMontoTotalPedidos();
                 } 
             }
 
@@ -136,8 +137,9 @@ function editar(e, editar, id)
                 type: "POST",
                 success: function(e)
                 {
-                    alert(e);
                     cargarPedido();
+                    $('#pedidos').DataTable().ajax.reload();
+                    cargarMontoTotalPedidos();
                 } 
             }
         )
@@ -167,7 +169,9 @@ function eliminarEditar(detalle)
                     async: false,
                     success: function(e)
                     {
-                        cargarPedido()
+                        cargarPedido();
+                        $('#pedidos').DataTable().ajax.reload();
+                        cargarMontoTotalPedidos();
                     }
                 }
             )
@@ -282,6 +286,7 @@ $("#swEstadoPedido").on("click", function(e)
         {
             msjes_swal("Excelente", e, "success");
             $('#pedidos').DataTable().ajax.reload();
+            cargarMontoTotalPedidos();
         }
     })
     $("#lblEstadoPedido").html(label);

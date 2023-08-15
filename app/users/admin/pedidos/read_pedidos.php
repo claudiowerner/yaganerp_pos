@@ -45,7 +45,7 @@ session_start();
          'estado' => $estado,
          'nombre' => $row['nombre'],
          'fecha_registro' => $row['fecha_registro'],
-         'valor' => $row['valor']
+         'valor' => "$".$row['valor']
      );
   }
   echo json_encode($json);

@@ -34,7 +34,7 @@
     <meta content="" name="author">
     <link href="ico/favicon.ico" rel="shortcut icon">
 
-    <title>YaganERP Administrador</title>
+    <title>.:WebPOS Administrador:.</title>
 
     <?php require "../cdn_css/css/css_item.php";?>
 
@@ -60,17 +60,20 @@
                     <div class="col-lg-12">
                         <div class="plan">
                             <div class="col-md-12">
-                                <div class="card card-warning" id="${task.id}">
+                                <div class="card card-warning" id="">
                                     <div class="card-header">
-                                    <?php
-                                        require "modal.php";
-                                        echo modalRegistro();
-                                        echo modalEditar();
+                                        <?php
+                                            require "modal.php";
+                                            echo modalRegistro();
+                                            echo modalEditar();
                                         ?>
 
                                         <div align=left>
                                             <h1>Pedidos</h1>
                                             <button type="button" class="btn btn-success" id="btnAgregarCategoria" data-toggle="modal" data-target="#modalRegistro">Agregar pedido</button>
+                                            <div align=right>
+                                                Monto total en pedidos HECHOS: <strong id='montoPedido'>CARGANDO...</strong>
+                                            </div>
                                             <table id="pedidos" class="table table-bordered table-hover dt-resposive display nowrap">
                                                 <thead>
                                                     <tr>
@@ -119,6 +122,7 @@
     <script src="js/pedidos.js"></script>
     <script src="js/imprimir_pedido.js"></script>
     <script src="js/cambiarIdProveedor.js"></script>
+    <script src="js/cargarMontoTotalPedidos.js"></script>
 </body>
 
 </html>

@@ -35,7 +35,7 @@
     <meta content="" name="author">
     <link href="ico/favicon.ico" rel="shortcut icon">
 
-    <title>YaganERP Administrador</title>
+    <title>.:WebPOS Administrador:.</title>
 
     <?php require "../../cdn_css/css/css_sub_item.php";?>
 
