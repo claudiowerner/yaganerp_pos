@@ -26,7 +26,7 @@
     <script type='text/javascript' src='../../js/number-progress-bar/number-pb.js'></script>
     <script src='../../js/loader/loader.js' type='text/javascript'></script>
     <script src='../../js/loader/demo.js' type='text/javascript'></script>
-    <script type='text/javascript' src='../../js/skycons/skycons.js'></script>
+    <script type='text/javascript' src='../../../js/skycons/skycons.js'></script>
 
     <!-- FLOT CHARTS -->
     <script src='../../js/flot/jquery.flot.min.js' type='text/javascript'></script>
