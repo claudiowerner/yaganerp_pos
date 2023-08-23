@@ -59,29 +59,64 @@
                                     <div class="card-header">
                                         <?php
                                             require "modal.php";
-                                            echo modalRegistro();
-                                            echo modalEditar();
+                                            echo modalRegistroCliente();
+                                            echo modalEditarCliente();
+                                            echo modalRegistrarPlan();
+                                            echo modalEditarPlan();
                                         ?>
-                                        <h1>Cajas</h1>
-                                        <button type="button" class="btn btn-success" id="btnAgregarCaja">Agregar caja</button>
-                                        <property name="characterEncoding" value="UTF-8">
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" href="#clientes" data-toggle="tab">Clientes</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#plan_cliente" data-toggle="tab">Planes</a>
+                                            </li>
+                                        </ul>
 
-                                            <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Id</th>
-                                                        <th>Nombre</th>
-                                                        <th>Rut</th>
-                                                        <th>Estado</th>
-                                                        <th>Correo</th>
-                                                        <th>Telefono</th>
-                                                        <th>Plan comprado</th>
-                                                        <th>Fecha pago</th>
-                                                        <th>Acción</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </property>
+                                        <div class="tab-content">
+                                            <div id="clientes" class="tab-pane fade">
+                                                <h1>Clientes</h1>
+                                                <button type="button" class="btn btn-success" id="btnAgregarCaja">Agregar cliente</button>
+                                                <property name="characterEncoding" value="UTF-8">
+
+                                                    <table id="producto" width="100%" class="table table-bordered table-hover dt-resposive display nowrap">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Nombre</th>
+                                                                <th>Rut</th>
+                                                                <th>Estado</th>
+                                                                <th>Correo</th>
+                                                                <th>Telefono</th>
+                                                                <th>Plan comprado</th>
+                                                                <th>Fecha pago</th>
+                                                                <th>Acción</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </property>
+                                            </div>
+                                            <div id="plan_cliente" class="tab-pane fade">
+                                            <h1>Planes</h1>
+                                                <button type="button" class="btn btn-success" id="btnAgregarPlan">Agregar plan</button>
+                                                <property name="characterEncoding" value="UTF-8">
+
+                                                    <table id="planes" width="100%" class="table table-bordered table-hover dt-resposive display nowrap">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Nombre</th>
+                                                                <th>Estado</th>
+                                                                <th>Usuarios</th>
+                                                                <th>Cajas</th>
+                                                                <th>Valor</th>
+                                                                <th>Editar</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </property>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -103,6 +138,8 @@
     <!-- Main jQuery Plugins -->
     <?php require "cdn_css/cdn/cdn_index.php";?></body>
     <script type="text/javascript" src="../datatables/datatables.js"></script>
-    <script src="administrator.js"></script>
+    <script src="js/cargarPlanes.js"></script>
+    <script src="js/planes.js"></script>
+    <script src="js/administrator.js"></script>
 
 </html>

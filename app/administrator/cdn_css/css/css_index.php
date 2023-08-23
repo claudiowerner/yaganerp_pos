@@ -15,6 +15,7 @@
     <link rel='stylesheet' href='../css/font-awesome.css' />
     <link rel='stylesheet' href='../css/responsive.css'>
     <link rel='stylesheet' href='../js/tip/tooltipster.css'>
+    <link rel='stylesheet' href='../css/select2.css'>
     <link rel='stylesheet' type='text/css' href='../js/vegas/jquery.vegas.css' />
     <link rel='stylesheet' type='text/css' href='../js/number-progress-bar/number-pb.css'>
     <!-- pace loader -->

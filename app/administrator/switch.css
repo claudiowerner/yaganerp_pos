@@ -38,7 +38,7 @@
 }
 
 
-
+/*estadoCliente*/
 #swEstadoCliente
 {
     display: none;
@@ -49,6 +49,21 @@
     transition:0.3s;
 }
 #swEstadoCliente:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+/*estadoPlan*/
+#swEstadoPlan
+{
+    display: none;
+}
+#swEstadoPlan:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swEstadoPlan:checked~ .switch:after
 {
     left: 23px; 
 }

@@ -1,3 +1,7 @@
+cargarPlan();
+
+
+
 
 $("#btnAgregarCaja").on("click", function(e)
 {
@@ -21,7 +25,7 @@ var table;
       },
 
         "ajax":{
-          "url":"read_cliente.php",
+          "url":"php/cliente/read_cliente.php",
           "type":"GET",
           "dataSrc":""
         },
@@ -67,7 +71,7 @@ $("#producto").on("click", "tr", function(e)
   $("#idCliente").html(datos.id);
   
   $.ajax({
-    url: "read_cliente_seleccionado.php",
+    url: "php/cliente/read_cliente_seleccionado.php",
     data: {"id": datos.id},
     type: "POST",
     success: function(e)
@@ -80,7 +84,7 @@ $("#producto").on("click", "tr", function(e)
           $("#correoEditar").val(datos.correo);
           $("#telefonoEditar").val(datos.telefono);
           $("#direccionEditar").val(datos.direccion);
-          $("#planEditar").val(datos.plan_comprado);
+          $("#slctPlanEditar").val(datos.plan_comprado);
           $("#fechaPagoEditar").val(datos.fecha_pago);
           $("#nomFantasiaEditar").val(datos.nom_fantasia);
           $("#razonSocialEditar").val(datos.razon_social);
@@ -109,7 +113,7 @@ $("#btnGuardar").on("click", function(e)
   let correo = $("#correo").val();
   let telefono = $("#telefono").val();
   let direccion = $("#direccion").val();
-  let plan = $("#plan").val();
+  let plan = $("#slctPlan").val();
   let fechaPago = $("#fechaPago").val();
   let nomFantasia = $("#nomFantasia").val();
   let razonSocial = $("#razonSocial").val();
@@ -126,7 +130,7 @@ $("#btnGuardar").on("click", function(e)
     "razonSocial":razonSocial
   }
   $.ajax({
-    url:"crear_cliente.php",
+    url:"php/cliente/crear_cliente.php",
     data: datos,
     type: "POST",
     success: function(e)
@@ -172,7 +176,7 @@ $("#btnModificar").on("click", function(e)
   let correo = $("#correoEditar").val();
   let telefono = $("#telefonoEditar").val();
   let direccion = $("#direccionEditar").val();
-  let plan = $("#planEditar").val();
+  let plan = $("#slctPlanEditar").val();
   let fechaPago = $("#fechaPagoEditar").val();
   let nomFantasia = $("#nomFantasiaEditar").val();
   let razonSocial = $("#razonSocialEditar").val();
@@ -194,7 +198,7 @@ $("#btnModificar").on("click", function(e)
   
     e.preventDefault();
     $.ajax({
-      url:"editar_cliente.php",
+      url:"php/cliente/editar_cliente.php",
       data: datos, 
       type: "POST",
       success: function(e)

@@ -4,21 +4,12 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 session_start();
-
-if(isset($_SESSION['user'])){
-  $tipo = $_SESSION['user']['tipo_usuario'];
-  if($tipo == 1){
-    $id_us = $_SESSION['user']['id'];
-    $nombre = $_SESSION['user']["nombre"];
-    $id_cl = $_SESSION['user']["id_cl"];
-    $piso = 1;
-
-    require_once '../conexion.php';
-
+  require_once '../../../conexion.php';
+    $id = $_POST["id"];
     //query
     $consulta =
-    "SELECT id, nombre, rut, estado, correo, telefono, plan_comprado, 
-    DATE_FORMAT(fecha_pago, '%d-%m-%Y') AS fecha_pago FROM cliente;";
+    "SELECT id, nombre, rut, estado, nom_fantasia, razon_social, direccion, correo, telefono, plan_comprado, 
+    fecha_pago FROM cliente WHERE id = $id;";
     $resultado = $conexion->query($consulta);
     if ($resultado->num_rows > 0){
       $json = array();
@@ -41,6 +32,9 @@ if(isset($_SESSION['user'])){
           'correo' => $row['correo'],
           'telefono' => $row['telefono'],
           'plan_comprado' => $row['plan_comprado'],
+          'nom_fantasia' => $row['nom_fantasia'],
+          'razon_social' => $row['razon_social'],
+          'direccion' => $row['direccion'],
           'fecha_pago' => $row['fecha_pago']
         );
       };
@@ -50,11 +44,4 @@ if(isset($_SESSION['user'])){
     {
       echo die("Error al agregar categoría: ". mysqli_error($conexion));
     }
-
-  }
-}
-else
-{
-  header('Location: ../');
-}
 ?>
