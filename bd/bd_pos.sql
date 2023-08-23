@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2023 a las 19:48:06
+-- Tiempo de generación: 23-08-2023 a las 03:21:56
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -173,7 +173,8 @@ INSERT INTO `cajas` (`id`, `id_cl`, `nom_caja`, `estado`, `creado_por`, `fecha_r
 (3, 1, 'C03', 'S', '1', '2023-05-15'),
 (4, 1, 'C04', 'S', '1', '2023-05-26'),
 (5, 1, 'C05', 'S', '1', '2023-06-28'),
-(6, 1, 'C06', 'S', '1', '2023-06-28');
+(6, 1, 'C06', 'S', '1', '2023-06-28'),
+(7, 1, '', 'S', '1', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -237,21 +238,30 @@ INSERT INTO `cierre_caja` (`id`, `id_cl`, `nombre`, `creado_por`, `desde`, `hast
 
 CREATE TABLE `cliente` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `rut` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `nombre` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `rut` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `estado` varchar(5) NOT NULL,
   `nom_fantasia` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `razon_social` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `direccion` varchar(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `correo` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `telefono` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+  `telefono` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `plan_comprado` int(11) NOT NULL,
+  `fecha_pago` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `nombre`, `rut`, `nom_fantasia`, `razon_social`, `direccion`, `correo`, `telefono`) VALUES
-(1, '1', '19150634-0', 'Supermercado de prueba', 'Prueba S.A.', 'Camping Playa Werner 0000', 'claudiowernern@hotmail.com', '+56978841411');
+INSERT INTO `cliente` (`id`, `nombre`, `rut`, `estado`, `nom_fantasia`, `razon_social`, `direccion`, `correo`, `telefono`, `plan_comprado`, `fecha_pago`) VALUES
+(1, 'Claudio Werner', '19150634-0', 'S', 'Supermercado de prueba', 'Prueba S.A.', 'Camping Playa Werner 0000', 'claudiowernern@hotmail.com', '978841411', 2, '2023-08-21'),
+(2, 'Maria Cecilia Neira Gomez', '7367889-7', 'N', 'Camping Playa Werner', 'CAMPING WERNER', 'Camping Playa Werner S/N', 'playawerner@gmail.com', '978841411', 0, '2023-08-21'),
+(4, 'Claudio Francisco Werner Neira', '4494605-k', 'N', '10', '10', 'Camping Playa Werner S/N', 'claudiowernern@hotmail.com', '652242114', 0, '2023-08-21'),
+(5, '', '', 'S', '', '', '', '', '', 0, '0000-00-00'),
+(6, '', '', 'S', '', '', '', '', '', 0, '0000-00-00'),
+(7, 'Claudio Francisco ', '19150634-0', 'S', 'fantasia', 'fantasia', 'Camping Playa Werner S/N', 'correo', '978841411', 1, '2023-08-22'),
+(8, 'Constanza Werner', '19.150.634-0', 'S', '9789625', '9875665', 'Camping Playa Werner S/N', 'playawerner@gmail.com', '978841411', 1, '2023-08-22');
 
 -- --------------------------------------------------------
 
@@ -435,6 +445,38 @@ INSERT INTO `pedidos_detalle` (`id`, `id_cl`, `id_pedido`, `producto`, `cantidad
 (77, 1, 1, '123', 1, 1000, '2023-08-08'),
 (79, 1, 9, 'Chocolito', 5, 12590, '2023-08-08'),
 (80, 1, 10, 'Cascos de segutidad', 1, 574060, '2023-08-14');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `planes`
+--
+
+CREATE TABLE `planes` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `estado` varchar(5) NOT NULL,
+  `usuarios` int(5) NOT NULL,
+  `cajas` int(5) NOT NULL,
+  `valor` int(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `planes`
+--
+
+INSERT INTO `planes` (`id`, `nombre`, `estado`, `usuarios`, `cajas`, `valor`) VALUES
+(1, 'Plan 3 usuarios + 3 cajas', 'S', 5, 5, 19990),
+(2, 'Plan 1 usuario + 5 cajas', 'S', 1, 5, 20990),
+(3, 'Plan 3 usuarios + 3 cajas', 'S', 3, 3, 30000),
+(4, 'Plan 4 usuarios + 4 cajas', 'S', 4, 4, 21500),
+(5, 'Plan 5 usuarios + 5 cajas', 'S', 5, 5, 30000),
+(6, 'Plan 6 usuarios + 6 cajas', 'S', 6, 6, 20000),
+(7, '', 'N', 0, 0, 0),
+(8, '', 'N', 0, 0, 0),
+(9, '', 'N', 0, 0, 0),
+(10, '', 'N', 0, 0, 0),
+(11, '', 'S', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -781,6 +823,12 @@ ALTER TABLE `pedidos_detalle`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `planes`
+--
+ALTER TABLE `planes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -863,7 +911,7 @@ ALTER TABLE `autorizacion`
 -- AUTO_INCREMENT de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -881,7 +929,7 @@ ALTER TABLE `cierre_caja`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes_negocio`
@@ -912,6 +960,12 @@ ALTER TABLE `pedidos`
 --
 ALTER TABLE `pedidos_detalle`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
+--
+-- AUTO_INCREMENT de la tabla `planes`
+--
+ALTER TABLE `planes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
