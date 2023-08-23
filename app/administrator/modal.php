@@ -126,6 +126,16 @@
             </div>
             <table width='100%'>
               <tr>
+                <td>
+                  <button id='btnCrearAdmin' class='btn btn-primary'>Crear usuario administrador</button>
+                </td>
+                <td>
+                  <button id='btnEnviarCredencial' class='btn btn-primary'>Enviar credenciales</button>
+                </td>
+              </tr>
+
+
+              <tr>
                 <td margin=auto>
                   <div class=button>
                     <label name='swEstadoCliente'>Estado del cliente</label>
@@ -137,7 +147,7 @@
                     <label for='swEstadoCliente' class='switch'></label>
                   </div>
                 </td>
-                </tr>
+              </tr>
               <tr>
                 <td>
                   <label name='nombrePiso'>Nombre</label>
@@ -216,9 +226,6 @@
               </tr>
             </table>
               </form>
-            <div>
-              <label id='lblMsj'></label>
-            </div>
           </div>
           <div class='modal-footer'>
             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
@@ -351,9 +358,6 @@
         </tr>
       </table>
     </form>
-    <div>
-      <label id='lblMsj'></label>
-    </div>
     <div class='modal-footer'>
       <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
       <button type='submit' id='btnModificarPlan' class='btn btn-primary'>Guardar</button>

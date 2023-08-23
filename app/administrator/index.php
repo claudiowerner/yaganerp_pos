@@ -141,5 +141,6 @@
     <script src="js/cargarPlanes.js"></script>
     <script src="js/planes.js"></script>
     <script src="js/administrator.js"></script>
+    <script src="js/crearEnviarUsuario.js"></script>
 
 </html>
