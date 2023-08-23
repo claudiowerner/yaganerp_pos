@@ -23,6 +23,7 @@
     "issues": "https://github.com/ColorlibHQ/AdminLTE/issues"
   },
   "require": {
-    "mike42/escpos-php": "^2.2"
+    "mike42/escpos-php": "^2.2",
+    "phpmailer/phpmailer": "^6.8"
   }
 }

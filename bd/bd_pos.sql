@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-08-2023 a las 03:21:56
+-- Tiempo de generación: 23-08-2023 a las 22:56:38
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -444,7 +444,7 @@ INSERT INTO `pedidos_detalle` (`id`, `id_cl`, `id_pedido`, `producto`, `cantidad
 (76, 1, 3, '234', 123, 1000, '2023-08-08'),
 (77, 1, 1, '123', 1, 1000, '2023-08-08'),
 (79, 1, 9, 'Chocolito', 5, 12590, '2023-08-08'),
-(80, 1, 10, 'Cascos de segutidad', 1, 574060, '2023-08-14');
+(80, 1, 10, 'Cascos de segutidad', 1, 12000, '2023-08-14');
 
 -- --------------------------------------------------------
 
@@ -613,8 +613,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `user`, `pass`, `tipo_usuario`, `id_cl`, `estado`, `permisos`) VALUES
-(1, 'Admin', 'admin', 'admin', 1, 1, 'S', '1,2,3,4'),
-(2, 'Cajero', 'cajero', 'cajero', 2, 1, 'S', '2,3,4');
+(1, 'Admin', 'admin1', 'admin1', 1, 1, 'S', '1,2,3,4'),
+(2, 'Cajero', 'cajero', 'cajero', 2, 1, 'S', '2,3,4'),
+(4, 'Admin', 'admin7', 'admin7', 1, 7, 'S', '1,2,3,4'),
+(5, 'Admin', 'admin8', 'admin8', 1, 8, 'S', '1,2,3,4');
 
 -- --------------------------------------------------------
 
@@ -995,7 +997,7 @@ ALTER TABLE `unidades_medida`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`

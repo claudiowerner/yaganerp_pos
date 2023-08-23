@@ -18,9 +18,9 @@ $("#btnCrearAdmin").on("click", function(e)
                 {
                     msjes_swal("Aviso",e,"warning");
                 }
-                if(e.match(/Error al asignar usuario admin al cliente ID/))
+                if(e.match(/Clave modificada correctamente./))
                 {
-                    msjes_swal("Error",e,"error");
+                    msjes_swal("Excelente",e,"success");
                 }
             }
         }
