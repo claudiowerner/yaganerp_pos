@@ -79,12 +79,12 @@
                         <form id="Frm" action="">
                             <div class="form-group">
                                
-                                <input name="t_user" required placeholder="Usuario" type="text" class="form-control" autofocus autocomplete="off">
+                                <input name="t_user" onkeypress="return check(event)" required placeholder="Usuario" type="text" class="form-control" autofocus autocomplete="off" pattern="[A-Za-z0-9]{1,15}">
                             </div>
                             <div class="form-group">
                                 <a href="#" class="pull-right label-forgot primary">¿Olvidó su contraseña?</a>
                                 <label></label>
-                                <input name="t_pass" required placeholder="Contraseña" type="password" class="form-control">
+                                <input name="t_pass" onkeypress="return check(event)" required placeholder="Contraseña" type="password" class="form-control">
                             </div>
                             <button class="btn btn-primary btn-block botonlg">Iniciar sesión&nbsp;</button>
                         </form>
