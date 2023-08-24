@@ -8,19 +8,20 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 	$mysqli->set_charset('utf8');
 
 	$usuario =  $mysqli->real_escape_string($_POST['t_user']);
-	$pas = $mysqli->real_escape_string($_POST['t_pass']);
+	$pas = $_POST['t_pass'];
 
+	if ($nueva_consulta = $mysqli->prepare("SELECT u.id, u.id_cl, u.nombre, u.pass, u.tipo_usuario FROM usuarios u JOIN cliente c ON c.id = u.id_cl WHERE u.user = ? AND u.estado = 'S' AND c.estado = 'S'"))
+	{
+		$nueva_consulta->bind_param('s', $usuario);
 
-		if ($nueva_consulta = $mysqli->prepare("SELECT u.id, u.id_cl, u.nombre, u.tipo_usuario FROM usuarios u JOIN cliente c ON c.id = u.id_cl WHERE u.user = ? AND u.pass = ? AND u.estado = 'S' AND c.estado = 'S'")){
+		$nueva_consulta->execute();
 
-			$nueva_consulta->bind_param('ss', $usuario, $pas);
+		$resultado = $nueva_consulta->get_result();
 
-			$nueva_consulta->execute();
-
-			$resultado = $nueva_consulta->get_result();
-
-			if($resultado->num_rows > 0){
-				$datos = $resultado->fetch_assoc();
+		if($resultado->num_rows > 0){
+			$datos = $resultado->fetch_assoc();
+			if(password_verify($pas, $datos["pass"]))
+			{
 				$_SESSION['user'] = $datos;
 				echo json_encode(array('error' => false, 'tipo' => $datos['tipo_usuario']));
 			}
@@ -28,8 +29,13 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 			{
 				echo json_encode(array('error' => true));
 			}
-			$nueva_consulta->close();
 		}
+		else
+		{
+			echo json_encode(array('error' => true));
+		}
+		$nueva_consulta->close();
+	}
 }
 
 $mysqli->close();

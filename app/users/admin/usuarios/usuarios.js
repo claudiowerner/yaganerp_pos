@@ -160,7 +160,15 @@ $("#producto").on("click", "tr", function(e)
   $("#nomUserEditar").val(datos.nombre);
   $("#userEditar").val(datos.user);
   $("#slctTipoUsuarioEditar").val(datos.tipo_usuario);
-  $("#slctEstado").val(datos.estado);
+  if(datos.estado=="ACTIVADO")
+  {
+    $("#slctEstado").val("S");
+  }
+  else
+  {
+    $("#slctEstado").val("N");
+  }
+  
   $("#usuario").html(datos.user);
 
 });

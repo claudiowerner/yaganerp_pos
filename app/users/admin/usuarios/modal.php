@@ -193,8 +193,8 @@
               </td>
               <td>
                 <select id="slctEstado" class="form-control">
-                  <option value="ACTIVADO">ACTIVADO</option>
-                  <option value="DESACTIVADO">DESACTIVADO</option>
+                  <option value="S">ACTIVADO</option>
+                  <option value="N">DESACTIVADO</option>
                 </select>
               </td>
             </tr>

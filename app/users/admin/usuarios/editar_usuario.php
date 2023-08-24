@@ -24,7 +24,7 @@
 	$nombre = $_POST["nombre"];
 	$user = $_POST["user"];//nombre de usuario antiguo
 	$user_n = $_POST["user_n"];//nombre de usuario nuevo
-	$pass = $_POST["pass"];
+	$pass = password_hash($_POST["pass"], PASSWORD_DEFAULT);
 	$tipo_usuario = $_POST["tu"];//tipo de usuario
 	$estado = $_POST["estado"]; 
 	$permisos = $_POST["permisos"];
@@ -44,20 +44,11 @@
 		$tu = 3;
 	}
 
-	$e = "";//Conversión de estado a S/N según ACTIVADO/DESACTIVADO
-	if($estado=="ACTIVADO")
-	{
-		$e="S";
-	}
-	if($estado=="DESACTIVADO")
-	{
-		$e = "N";
-	}
 	$sql = '';
 
 	if($pass=="")
 	{
-		$sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', tipo_usuario = '$tu', estado = '$e', permisos='$permisos' WHERE id_cl = $id_cl AND user = '$user';";
+		$sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', tipo_usuario = '$tu', estado = '$estado', permisos='$permisos' WHERE id_cl = $id_cl AND user = '$user';";
 	}
 	if($pass!="")
 	{

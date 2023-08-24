@@ -1,4 +1,5 @@
 jQuery(document).on('submit','#Frm',function(event){
+
 "use strict";
 	event.preventDefault();
 
@@ -23,7 +24,10 @@ jQuery(document).on('submit','#Frm',function(event){
 			{
 				location.href = 'users/atencion';
 			}
-		}else{
+		}
+		else
+		{
+			console.log(respuesta);
 			$('.error').slideDown('slow');
 			setTimeout(function(){
 				$('.error').slideUp('slow');
