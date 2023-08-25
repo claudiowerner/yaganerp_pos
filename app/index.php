@@ -107,18 +107,13 @@
     <script type='text/javascript' src='js/vegas/jquery.vegas.js'></script>
     <script type='text/javascript' src='js/image-background.js'></script>
     <script type="text/javascript" src="js/jquery.tabSlideOut.v1.3.js"></script>
-    <script type="text/javascript" src="js/bg-changer.js"></script>
-
     
     <script type="text/javascript" src="css/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="main.js"></script>
-    <script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
 
 

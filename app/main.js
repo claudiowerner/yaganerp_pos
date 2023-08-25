@@ -10,6 +10,10 @@ jQuery(document).on('submit','#Frm',function(event){
 		data: $(this).serialize(),
 		beforeSend: function(){
 			$('.botonlg').val('Validando...');
+		},
+		success: function(e)
+		{
+			console.log(e);
 		}
 	})
 

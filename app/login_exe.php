@@ -7,8 +7,8 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 
 	$mysqli->set_charset('utf8');
 
-	$usuario =  $mysqli->real_escape_string($_POST['t_user']);
-	$pas = $_POST['t_pass'];
+	$usuario = $mysqli->real_escape_string($_POST['t_user']);
+	$pas = $mysqli->real_escape_string($_POST['t_pass']);
 
 	if ($nueva_consulta = $mysqli->prepare("SELECT u.id, u.id_cl, u.nombre, u.pass, u.tipo_usuario FROM usuarios u JOIN cliente c ON c.id = u.id_cl WHERE u.user = ? AND u.estado = 'S' AND c.estado = 'S'"))
 	{
@@ -22,12 +22,23 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 			$datos = $resultado->fetch_assoc();
 			if(password_verify($pas, $datos["pass"]))
 			{
+				unset($datos["pass"]);
 				$_SESSION['user'] = $datos;
 				echo json_encode(array('error' => false, 'tipo' => $datos['tipo_usuario']));
 			}
 			else
 			{
-				echo json_encode(array('error' => true));
+				if($pas == $datos["pass"])
+				{
+					unset($datos["pass"]);
+					$_SESSION['user'] = $datos;
+					print_r($_SESSION['user']);
+					echo json_encode(array('error' => false, 'tipo' => $datos['tipo_usuario']));
+				}
+				else
+				{
+					echo json_encode(array('error' => true));
+				}
 			}
 		}
 		else

@@ -18,6 +18,7 @@
 	error_reporting(E_ALL);
 
 	$id = $_POST["id"];
+	$correo = $_POST["correo"];
 	
 
 	$pass = str_shuffle("0123456789".uniqid());
@@ -47,8 +48,9 @@
 			Contraseña:$pass.
 			
 			Ante cualquier duda o problema, no dudes en contactarte con nosotros.";
+			$asunto = "WebPOS - Creación de credenciales";
 
-			enviarMail($mensaje);
+			enviarMail($mensaje, $correo, $asunto);
 
 		}
 		else
@@ -77,35 +79,35 @@
 			Contraseña:$pass.
 			
 			Ante cualquier duda o problema, no dudes en contactarte con nosotros.";
-			
-			enviarMail($mensaje);
+			$asunto = "WebPOS - Modificación de contraseña";
+			enviarMail($mensaje, $correo, $asunto);
 		}
 	}
 
 
-	function enviarMail($mensaje)
+	function enviarMail($mensaje, $correo, $asunto)
 	{
-		$mail = new PHPMailer(true);
 		try
 		{
-			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+			$mail = new PHPMailer();
 			$mail->isSMTP();
-			$mail->Host = 'host';
 			$mail->SMTPAuth = true;
-			$mail->Username = 'host';
-			$mail->Password = 'host';
-			$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-			$mail->Port = 'host';
-
-			//datos de correo
-			$mail->setFrom("ventas@webposerp.cl", "Equipo de ventas de WebPOS");
-			$mail->addAddress("ventas@webposerp.cl", "Equipo de ventas de WebPOS");
-			
-			$mail->isHTML(true);
-			$mail->Subject = "Prueba de venta";
-			$mail->Body();
-			
-			echo "Se ha enviado el correo al cliente";
+			$mail->SMTPDebug = true;
+			$mail->Host = 'mail.campingplayawerner.cl';
+			$mail->Port = '465';
+			$mail->Username = 'contacto@campingplayawerner.cl';
+			$mail->Password = 'DvfMKEEhCewgxotuGmYg';
+			$mail->addAddress($correo);
+			$mail->Subject = "$asunto";
+			$mail->Body = $mensaje;
+			if(!$mail->Send())
+			{
+				echo "Error al enviar el mensaje: " . $mail->ErrorInfo;
+			}
+			else
+			{
+				echo "Se ha enviado el correo al cliente";
+			}
 		}
 		catch(Exception $e)
 		{
