@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-08-2023 a las 22:56:38
+-- Tiempo de generación: 25-08-2023 a las 04:18:00
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -289,7 +289,8 @@ INSERT INTO `clientes_negocio` (`id`, `id_cl`, `rut`, `nombre`, `apellido`, `est
 (2, 1, '7367889-7', 'María Cecilia', 'Neira Gomez', 'S', 1, '2023-07-25'),
 (3, 1, '18752880-1', 'Constanza Sabina', 'Werner Neira', 'S', 1, '2023-07-25'),
 (4, 1, '987', '', '', 'S', 1, '2023-07-26'),
-(5, 1, '4494605-k', 'Claudio Federico', 'Werner Hornig', 'S', 1, '2023-07-26');
+(5, 1, '4494605-k', 'Claudio Federico', 'Werner Hornig', 'S', 1, '2023-07-26'),
+(6, 1, '\"; DROP TA', '123', '123', 'S', 1, '2023-08-23');
 
 -- --------------------------------------------------------
 
@@ -601,7 +602,7 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'N',
   `user` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `pass` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `pass` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `tipo_usuario` int(5) NOT NULL,
   `id_cl` int(5) NOT NULL,
   `estado` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -613,10 +614,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `user`, `pass`, `tipo_usuario`, `id_cl`, `estado`, `permisos`) VALUES
-(1, 'Admin', 'admin1', 'admin1', 1, 1, 'S', '1,2,3,4'),
-(2, 'Cajero', 'cajero', 'cajero', 2, 1, 'S', '2,3,4'),
+(1, 'Admin', 'admin1', '179a2e73b6d3405868e7468', 1, 1, 'S', '1,2,3,4'),
+(2, 'Cajero', 'cajero1', '$2y$10$ZdYQFbA09stj6TFNuQiyjODB2wybCJOEoLUdEntP/h00WfvosMQki', 2, 1, 'S', '2,3,4'),
 (4, 'Admin', 'admin7', 'admin7', 1, 7, 'S', '1,2,3,4'),
-(5, 'Admin', 'admin8', 'admin8', 1, 8, 'S', '1,2,3,4');
+(5, 'Admin', 'admin8', '173ec534506a18e83256', 1, 8, 'S', '1,2,3,4');
 
 -- --------------------------------------------------------
 
@@ -937,7 +938,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `clientes_negocio`
 --
 ALTER TABLE `clientes_negocio`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `correlativo`
@@ -997,7 +998,7 @@ ALTER TABLE `unidades_medida`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
