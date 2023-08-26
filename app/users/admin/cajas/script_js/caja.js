@@ -163,11 +163,11 @@ $("#btnModificar").on("click", function(e)
       let validar = validarCajasActivas(cajas_c, cajas_p);
       if(validar==100)//si el numero de los usuarios creados es igual al numero de usuarios permitidos 
       {
-        msjes_swal("Aviso", "Usted está usando el 100% de usuarios permitidos según su plan contratado.", "warning")
+        msjes_swal("Aviso", "Usted está usando el 100% de cajas permitidas según su plan contratado.", "warning")
       }
       if(validar==150)
       {
-        msjes_swal("Aviso", "Usted está excediendo el 100% de usuarios permitidos según su plan contratado.", "warning")
+        msjes_swal("Aviso", "Usted está excediendo el 100% de cajas permitidas según su plan contratado.", "warning")
       }
       if(validar==50)
       {
