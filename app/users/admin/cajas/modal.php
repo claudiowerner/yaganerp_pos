@@ -64,7 +64,7 @@
                     <label name='estadoPiso'>Estado</label>
                   </td>
                   <td>
-                    <input type='checkbox' id='swEditarPiso' onChange='check(this)'/>
+                    <input type='checkbox' id='swEditarPiso'/>
                     <label for='swEditarPiso' class='switch'></label>
                   </td>
                 </tr>

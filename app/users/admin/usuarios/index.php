@@ -65,8 +65,13 @@
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
                                     <h1>Usuarios</h1>
-                                        <button type="button" class="btn btn-success" id="btnAgregarUbicacion" data-toggle="modal" data-target="#modalRegistro">Agregar usuario</button>
-                                        <property name="characterEncoding" value="UTF-8">
+                                    <button type="button" class="btn btn-success" id="btnAgregarUbicacion" data-toggle="modal" data-target="#modalRegistro">Agregar usuario</button>
+                                    
+                                    <div align="right">
+                                        Usuarios activos <b id="us_creados"></b><b>/</b><b id="us_permitidos"> Usuarios permitidos</b>
+                                    </div>
+
+                                    <property name="characterEncoding" value="UTF-8">
                                         <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
                                             <thead>
                                                 <tr>
@@ -80,19 +85,19 @@
                                                 </tr>
                                             </thead>
                                         </table>
-                                        </property>
-                                    </div>
+                                    </property>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #/paper bg -->
         </div>
-        <!-- ./wrap-sidebar-content -->
+        <!-- #/paper bg -->
+    </div>
+<!-- ./wrap-sidebar-content -->
 
-        <!-- / END OF CONTENT -->
+<!-- / END OF CONTENT -->
 
     </div>
     <!-- Container -->
@@ -106,7 +111,10 @@
 
 
     <!--llamada a categorias-->
-    <script src="usuarios.js"></script>
+    <script src="scripts_js/cargar_usuarios_activos.js"></script>
+    <script src="scripts_js/cargar_usuarios_permitidos.js"></script>
+    <script src="scripts_js/usuarios.js"></script>
+    <script src="scripts_js/validar_usuarios_activos.js"></script>
 
 </body>
 

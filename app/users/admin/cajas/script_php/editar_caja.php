@@ -10,7 +10,7 @@
      	    }else{
     	    header('Location: ../../../../index.php');
      	}
-     	require_once '../../../conexion.php';
+     	require_once '../../../../conexion.php';
 
 
 	ini_set('display_errors', 1);
@@ -19,11 +19,10 @@
     $id_us = $_SESSION['user']['id'];
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
-    $Caja = 1;
 
-    $nom = $_GET["nomCaja"];
-	$estado = $_GET["estado"];
-	$idCaja = $_GET["idCaja"];
+    $nom = $_POST["nomCaja"];
+	$estado = $_POST["estado"];
+	$idCaja = $_POST["idCaja"];
 
     //obtener fecha
 	$hoy = getdate();
@@ -38,8 +37,8 @@
 		JOIN correlativo corr
 		ON corr.caja = c.id 
 		WHERE corr.estado='A' 
-		AND c.id_cl = '1'
-		AND c.id = '1'";
+		AND c.id_cl = '$id_cl'
+		AND c.id = '$idCaja'";
 		$resultado = mysqli_query($conexion, $sql);
 		if($resultado->num_rows==0)
 		{

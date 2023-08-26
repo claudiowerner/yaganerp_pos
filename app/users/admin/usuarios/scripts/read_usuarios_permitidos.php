@@ -12,23 +12,24 @@ if(isset($_SESSION['user'])){
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
     $piso = 1;
-    $id_usu = $_POST["id_usu"];
 
-    require_once '../../../conexion.php';
+    require_once '../../../../conexion.php';
 
     //query
-    $consulta = "SELECT permisos FROM usuarios WHERE id_cl = $id_cl AND id = $id_usu;";
+    $consulta = 
+    "SELECT p.usuarios FROM cliente c 
+    JOIN planes p 
+    ON c.plan_comprado = p.id
+    WHERE c.id = $id_cl";
     $resultado = $conexion->query($consulta);
-    if ($resultado->num_rows > 0){
-      $json = array();
-      while ($row = $resultado->fetch_array())
-      {
-        echo $row["permisos"];
-      };
-      }
+    if ($resultado->num_rows > 0)
+    {
+      $imprimir = $resultado->fetch_assoc();
+      echo $imprimir["usuarios"];
+    }
     else
     {
-      echo die("Error al obtener permisos: ". mysqli_error($conexion));
+      echo die("Usuarios activos: ".mysqli_error($conexion));
     }
 
   }

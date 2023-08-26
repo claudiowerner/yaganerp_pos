@@ -69,19 +69,22 @@
                                         ?>
                                         <h1>Cajas</h1>
                                         <button type="button" class="btn btn-success" id="btnAgregarCaja">Agregar caja</button>
+                                        <div align="right">
+                                            Cajas activas <b id="cajas_creadas"></b><b>/</b><b id="cajas_permitidas"></b>
+                                        </div>
                                         <property name="characterEncoding" value="UTF-8">
 
                                             <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
-                                            <thead>
-                                                <tr>
-                                                <th>Id</th>
-                                                <th>Nombre</th>
-                                                <th>Estado</th>
-                                                <th>Creado por</th>
-                                                <th>Fecha</th>
-                                                <th>Editar</th>
-                                                </tr>
-                                            </thead>
+                                                <thead>
+                                                    <tr>
+                                                    <th>Id</th>
+                                                    <th>Nombre</th>
+                                                    <th>Estado</th>
+                                                    <th>Creado por</th>
+                                                    <th>Fecha</th>
+                                                    <th>Editar</th>
+                                                    </tr>
+                                                </thead>
                                             </table>
                                         </property>
                                     </div>
@@ -105,6 +108,9 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
-    <script src="caja.js"></script>
+    <script src="script_js/cargar_cajas_activas.js"></script>
+    <script src="script_js/cargar_cajas_permitidas.js"></script>
+    <script src="script_js/validar_cajas_activas.js"></script>
+    <script src="script_js/caja.js"></script>
 
 </html>

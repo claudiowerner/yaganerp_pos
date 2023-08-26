@@ -1,10 +1,11 @@
-
+cargarUsuariosActivos();
+cargarUsuariosPermitidos();
 var table;
 //Datatable
 var idCat = 0;
 table = $('#producto').DataTable({
   "ajax":{
-    "url":"read_usuarios.php",
+    "url":"scripts/read_usuarios.php",
     "type":"GET",
     "dataSrc":""
     },
@@ -111,7 +112,7 @@ $("#producto").on("click", "tr", function(e)
   //proceso de checkeo de checkbox de permisos
   $.ajax(
     {
-      url:"../../read_permisos_usuario.php",
+      url:"scripts/../../read_permisos_usuario.php",
       data:{"id_usu":id},
       type:"POST",
       success: function(e)
@@ -251,31 +252,49 @@ $("#btnGuardar").on("click", function(e)
   e.preventDefault();
   if(pass==cPass)
   {
-    $.ajax({
-      url:"crear_usuario.php",
-      data:datos,
-      type: "POST",
-      success: function(e)
-      {
-        if(e==0)
-        {
-          user = $("#user").val();
-          msjes_swal("Aviso", "El usuario ("+user+") ya se encuentra registrado", "warning");
-        }
-        if(e==1)
-        {
-          msjes_swal("Aviso", "Usuario ("+user+") registrado exitosamente.", "warning");
-            
-          
-          $('#producto').DataTable().ajax.reload();
-          $("#modalRegistro").modal("hide");
-        }
-      }
-    })
-    .fail(function(e)
+    //validar si se excede de la cuota de usuarios permitidos o no
+    let us_c = parseInt($("#us_creados").text());
+    let us_p = parseInt($("#us_permitidos").text());
+
+    let validar = validarUsuariosActivos(us_c, us_p);
+    
+    if(validar==100)//si el numero de los usuarios creados es igual al numero de usuarios permitidos 
     {
-      console.log(e.responseText);
-    })
+      msjes_swal("Aviso", "Usted está usando el 100% de usuarios permitidos según su plan contratado.", "warning")
+    }
+    if(validar==150)
+    {
+      msjes_swal("Aviso", "Usted está excediendo el 100% de usuarios permitidos según su plan contratado.", "warning")
+    }
+    if(validar==50)
+    {
+      $.ajax({
+        url:"scripts/crear_usuario.php",
+        data:datos,
+        type: "POST",
+        success: function(e)
+        {
+          if(e==0)
+          {
+            user = $("#user").val();
+            msjes_swal("Aviso", "El usuario ("+user+") ya se encuentra registrado", "warning");
+          }
+          if(e==1)
+          {
+            msjes_swal("Excelente", "Usuario ("+user+") registrado exitosamente.", "success");
+              
+            
+            $('#producto').DataTable().ajax.reload();
+            $("#modalRegistro").modal("hide");
+            cargarUsuariosActivos();
+          }
+        }
+      })
+      .fail(function(e)
+      {
+        console.log(e.responseText);
+      })
+    }
     $("#lblMsj").html("<strong></strong>");
   }
   else
@@ -317,10 +336,39 @@ $("#btnModificar").on("click", function(e)
       "tu":tu,
       "permisos":permisosEditar
     }
+    //validar si se excede de la cuota de usuarios permitidos o no
+    let us_c = parseInt($("#us_creados").text());
+    let us_p = parseInt($("#us_permitidos").text());
+    estado = $("#slctEstado").val();
 
-    $.ajax(
+    if(estado=="S")
     {
-      url:"editar_usuario.php",
+      let validar = validarUsuariosActivos(us_c, us_p);
+      if(validar==100)//si el numero de los usuarios creados es igual al numero de usuarios permitidos 
+      {
+        msjes_swal("Aviso", "Usted está usando el 100% de usuarios permitidos según su plan contratado.", "warning")
+      }
+      if(validar==150)
+      {
+        msjes_swal("Aviso", "Usted está excediendo el 100% de usuarios permitidos según su plan contratado.", "warning")
+      }
+      if(validar==50)
+      {
+        modificar(datos);
+      }
+    }
+    if(estado=="N")
+    {
+      modificar(datos);
+    }
+  }
+});
+
+function modificar(datos)
+{
+  $.ajax(
+    {
+      url:"scripts/editar_usuario.php",
       data:datos,
       type:"POST",
       success: function(e)
@@ -328,12 +376,14 @@ $("#btnModificar").on("click", function(e)
         msjes_swal("Excelente", e, "success");
         $("#modalEditar").modal("hide");
         table.ajax.reload();
+        cargarUsuariosActivos();
       }
     })
-  }
-});
-
-
+    .fail(function(e)
+    {
+      msjes_swal("Error",e,"error")
+    })
+}
 
 function getFecha ()
 {

@@ -13,7 +13,7 @@ if(isset($_SESSION['user'])){
     $id_cl = $_SESSION['user']["id_cl"];
     $piso = 1;
 
-    require_once '../../../conexion.php';
+    require_once '../../../../conexion.php';
 
     //query
     $consulta =
