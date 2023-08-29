@@ -16,7 +16,7 @@ if(isset($_SESSION['user'])){
     require_once '../../../conexion.php';
 
     //query
-    $consulta = "SELECT * FROM cierre_caja WHERE id_cl = 1 AND estado = 'A'";
+    $consulta = "SELECT * FROM cierre_caja WHERE id_cl = $id_cl AND estado = 'A'";
     $resultado = $conexion->query($consulta);
 
     $estado_caja = 0;
