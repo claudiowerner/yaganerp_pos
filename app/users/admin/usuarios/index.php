@@ -68,7 +68,8 @@
                                     <button type="button" class="btn btn-success" id="btnAgregarUsuario" data-toggle="modal" data-target="#modalRegistro">Agregar usuario</button>
                                     
                                     <div align="right">
-                                        Usuarios activos <b id="us_creados"></b><b>/</b><b id="us_permitidos"> Usuarios permitidos</b>
+                                        Usuarios activos <b id="us_creados"></b><b>/</b><b id="us_permitidos"> Usuarios permitidos</b><br>
+                                        <strong id="msjeUsuariosActivos" style="color: red"></strong>
                                     </div>
 
                                     <property name="characterEncoding" value="UTF-8">

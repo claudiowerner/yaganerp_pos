@@ -70,7 +70,8 @@
                                         <h1>Cajas</h1>
                                         <button type="button" class="btn btn-success" id="btnAgregarCaja">Agregar caja</button>
                                         <div align="right">
-                                            Cajas activas <b id="cajas_creadas"></b><b>/</b><b id="cajas_permitidas"></b>
+                                            Cajas activas <b id="cajas_creadas"></b><b>/</b><b id="cajas_permitidas"></b><br>
+                                            <strong id="msjeCajasActivas" style="color: red"></strong>
                                         </div>
                                         <property name="characterEncoding" value="UTF-8">
 

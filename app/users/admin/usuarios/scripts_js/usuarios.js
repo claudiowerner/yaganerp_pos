@@ -1,3 +1,41 @@
+table = $('#producto').DataTable({
+  "ajax":{
+    "url":"scripts/read_usuarios.php",
+    "type":"GET",
+    "dataSrc":""
+    },
+    //columnas
+    "columns":[
+      {"data":"id"},
+      {"data":"nombre"},
+      {"data":"user"},
+      {"data":"tipo_usuario"},
+      {"data":"estado"},
+      {"data":"permisos"},
+      {
+        "defaultContent": '<button type="submit" class="btn btn-primary editar" id="btnEditar"><img src="../img/edit.png" width="15"></button>'
+      }
+    ],
+    
+    //Configuración de Datatable
+    "iDisplayLength": 10,
+    "language": {
+      "lenghtMenu":"Mostrar _MENU_ registros",
+      "zeroRecords": "No se encontraron resultados.",
+      "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+      "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+      "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+      "sSearch":"Buscar",
+      "oPaginate":{
+        "sFirst":"Primero",
+        "sLast":"Último",
+        "sNext":"Siguiente",
+        "sPrevious":"Anterior"
+      }
+    }
+  }
+);
+
 $(document).on("ready", function(e)
 {
   cargarUsuariosActivos();
@@ -6,43 +44,7 @@ $(document).on("ready", function(e)
   var table;
   //Datatable
   var idCat = 0;
-  table = $('#producto').DataTable({
-    "ajax":{
-      "url":"scripts/read_usuarios.php",
-      "type":"GET",
-      "dataSrc":""
-      },
-      //columnas
-      "columns":[
-        {"data":"id"},
-        {"data":"nombre"},
-        {"data":"user"},
-        {"data":"tipo_usuario"},
-        {"data":"estado"},
-        {"data":"permisos"},
-        {
-          "defaultContent": '<button type="submit" class="btn btn-primary editar" id="btnEditar"><img src="../img/edit.png" width="15"></button>'
-        }
-      ],
-      
-      //Configuración de Datatable
-      "iDisplayLength": 10,
-      "language": {
-        "lenghtMenu":"Mostrar _MENU_ registros",
-        "zeroRecords": "No se encontraron resultados.",
-        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-        "sSearch":"Buscar",
-        "oPaginate":{
-          "sFirst":"Primero",
-          "sLast":"Último",
-          "sNext":"Siguiente",
-          "sPrevious":"Anterior"
-        }
-      }
-    }
-  );
+  
 
   //permisos de usuario
   let permisos = Array();
@@ -342,8 +344,9 @@ function modificar(datos)
       {
         msjes_swal("Excelente", e, "success");
         $("#modalEditar").modal("hide");
-        table.ajax.reload();
+        $('#producto').DataTable().ajax.reload();
         cargarUsuariosActivos();
+        validarUsuariosActivos();
       }
     })
     .fail(function(e)
