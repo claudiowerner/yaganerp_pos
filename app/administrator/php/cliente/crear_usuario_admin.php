@@ -13,9 +13,8 @@
 	require_once '../../../vendor/phpmailer/phpmailer/src/Exception.php';
 
 
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
 
 	$id = $_POST["id"];
 	$correo = $_POST["correo"];
@@ -75,8 +74,8 @@
 			<br>
 			<br>
 			Tus datos son:<br>
-			Usuario:admin$id<br>
-			Contraseña:$pass.
+			Usuario: admin$id<br>
+			Contraseña: $pass.<br>
 			
 			Ante cualquier duda o problema, no dudes en contactarte con nosotros.";
 			$asunto = "WebPOS - Modificación de contraseña";
@@ -85,24 +84,46 @@
 	}
 
 
-	function enviarMail($mensaje, $correo, $asunto)
+	function enviarMail($cuerpo, $correo, $asunto)
 	{
 		try
 		{
+			//Configuracion del servidor
 			$mail = new PHPMailer();
-			$mail->isSMTP();
-			$mail->SMTPAuth = true;
-			$mail->SMTPDebug = true;
-			$mail->Host = 'mail.campingplayawerner.cl';
-			$mail->Port = '465';
-			$mail->Username = 'contacto@campingplayawerner.cl';
-			$mail->Password = 'DvfMKEEhCewgxotuGmYg';
-			$mail->addAddress($correo);
-			$mail->Subject = "$asunto";
-			$mail->Body = $mensaje;
+			$mail -> SMTPDebug 		= 2;
+			$mail -> isSMTP();
+			$mail -> Host 			= 'smtp-relay.sendinblue.com';
+			$mail -> SMTPAuth 		= true;
+			$mail -> Username 		= 'claudio.werner.neira@gmail.com';
+			$mail -> Password 		= 'hJtKZADWFpQsqgS7';
+
+			$mail->SMTPOptions = array(
+				'ssl' => array(
+				'verify_peer' => false,
+				'verify_peer_name' => false,
+				'allow_self_signed' => true
+				));
+			$mail -> SMTPSecure 	= 'ssl';
+			$mail -> Port			= 465;
+
+			//Receptores
+			$mail -> setFrom("claudiowernern@hotmail.com", "Contacto WebPOS");
+			$mail -> addAddress($correo, "User");
+
+			//contenido del mail
+			$mail -> isHTML 		= true;
+			$mail -> Subject 		= $asunto;
+			$mail -> Body 			= $cuerpo;
+			$mail -> AltBody 		= "Alt body :v";
+			$mail -> CharSet 		= 'UTF-8';
+
+			//enviar correo
+			$mail -> send();
+			
+			
 			if(!$mail->Send())
 			{
-				echo "Error al enviar el mensaje: " . $mail->ErrorInfo;
+				echo " Error al enviar el mensaje: " . $mail->ErrorInfo;
 			}
 			else
 			{
@@ -111,7 +132,7 @@
 		}
 		catch(Exception $e)
 		{
-			echo "Error: ".$mail->ErrorInfo;
+			echo ". No se envió el mensaje. ";
 		}
 	}
 ?>

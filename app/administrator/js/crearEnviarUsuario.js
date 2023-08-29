@@ -4,6 +4,7 @@ $("#btnCrearAdmin").on("click", function(e)
     e.preventDefault();
     let idCliente = $("#idCliente").text();
     let correo = $("#correoEditar").val();
+    alert(idCliente+" "+correo)
 
     $.ajax(
         {
@@ -15,6 +16,7 @@ $("#btnCrearAdmin").on("click", function(e)
             },
             success: function(e)
             {
+                alert(e);
                 if(e.match(/Admin creado correctamente/))
                 {
                     msjes_swal("Excelente",e,"success")
@@ -37,6 +39,7 @@ $("#btnCrearAdmin").on("click", function(e)
     )
     .fail(function(e)
     {
-        msjes_swal("Excelente",e,"success")
+        alert(e)
+        msjes_swal("Error",e.responseText,"error")
     })
 })

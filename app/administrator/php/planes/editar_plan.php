@@ -16,16 +16,44 @@
 	$valor = $_POST["valor"];
 	$estado = $_POST["estado"];
 	
-	$sql = 
-	"SELECT p.estado FROM cliente c 
-	JOIN planes p 
-	ON p.id = c.plan_comprado
-	WHERE p.id = $id
-	AND p.estado = 'S'
-	AND c.estado = 'S'";
-	$res = $conexion->query($sql);
+	if($estado=="N")
+	{
+		$sql = 
+		"SELECT p.estado FROM cliente c 
+		JOIN planes p 
+		ON p.id = c.plan_comprado
+		WHERE p.id = $id
+		AND p.estado = 'S'
+		AND c.estado = 'S'";
+		$res = $conexion->query($sql);
 
-	if($res->num_rows==0)
+		if($res->num_rows==0)
+		{
+			$sql = 
+			"UPDATE planes SET 
+			`nombre` = '$nombre', 
+			`estado` = '$estado', 
+			`usuarios` = '$usuarios', 
+			`cajas` = '$cajas', 
+			`valor` = '$valor' 
+			WHERE (`id` = '$id');";
+			$resultado = mysqli_query($conexion, $sql);
+
+			if($resultado)
+			{
+				echo "Plan modificado correctamente";
+			}
+			else
+			{
+				echo die("Error al modificar plan: ". mysqli_error($conexion));
+			}
+		}
+		else
+		{
+			echo "No se puede desactivar el plan porque existen clientes activos que tienen este plan contratado.";
+		}
+	}
+	else
 	{
 		$sql = 
 		"UPDATE planes SET 
@@ -39,17 +67,14 @@
 
 		if($resultado)
 		{
-			echo "Cliente modificado correctamente";
+			echo "Plan modificado correctamente";
 		}
 		else
 		{
-			echo die("Error al modificar cliente: ". mysqli_error($conexion));
+			echo die("Error al modificar plan: ". mysqli_error($conexion));
 		}
 	}
-	else
-	{
-		echo "No se puede modificar el plan porque existen clientes activos que tienen este plan contratado.";
-	}
+	
 
 	
 	

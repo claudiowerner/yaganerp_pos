@@ -32,7 +32,6 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 				{
 					unset($datos["pass"]);
 					$_SESSION['user'] = $datos;
-					print_r($_SESSION['user']);
 					echo json_encode(array('error' => false, 'tipo' => $datos['tipo_usuario']));
 				}
 				else
