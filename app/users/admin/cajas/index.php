@@ -108,9 +108,9 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
+    <script src="script_js/validar_cajas_activas.js"></script>
     <script src="script_js/cargar_cajas_activas.js"></script>
     <script src="script_js/cargar_cajas_permitidas.js"></script>
-    <script src="script_js/validar_cajas_activas.js"></script>
     <script src="script_js/caja.js"></script>
 
 </html>

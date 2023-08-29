@@ -4,6 +4,7 @@ function cargarCajasActivas()
     {
       url: "script_php/read_cajas_activas.php",
       type: "POST",
+      async: false,
       success: function(e)
       {
         $("#cajas_creadas").html(e);

@@ -18,7 +18,7 @@
 
 	$sql = 
 	"SELECT * FROM usuarios
-	WHERE user = 'admin$id'";
+	WHERE id_cl = '$id'";
 
 	$res = $conexion->query($sql);
 	if($res->num_rows == 0)

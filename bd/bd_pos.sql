@@ -467,17 +467,12 @@ CREATE TABLE `planes` (
 --
 
 INSERT INTO `planes` (`id`, `nombre`, `estado`, `usuarios`, `cajas`, `valor`) VALUES
-(1, 'Plan 3 usuarios + 3 cajas', 'S', 5, 5, 19990),
-(2, 'Plan 1 usuario + 5 cajas', 'S', 1, 5, 20990),
+(1, 'Plan 1 usuarios + 1 cajas', 'S', 5, 5, 19990),
+(2, 'Plan 2 usuario + 2 cajas', 'S', 1, 5, 20990),
 (3, 'Plan 3 usuarios + 3 cajas', 'S', 3, 3, 30000),
 (4, 'Plan 4 usuarios + 4 cajas', 'S', 4, 4, 21500),
 (5, 'Plan 5 usuarios + 5 cajas', 'S', 5, 5, 30000),
-(6, 'Plan 6 usuarios + 6 cajas', 'S', 6, 6, 20000),
-(7, '', 'N', 0, 0, 0),
-(8, '', 'N', 0, 0, 0),
-(9, '', 'N', 0, 0, 0),
-(10, '', 'N', 0, 0, 0),
-(11, '', 'S', 0, 0, 0);
+(6, 'Plan 6 usuarios + 6 cajas', 'S', 6, 6, 20000);
 
 -- --------------------------------------------------------
 

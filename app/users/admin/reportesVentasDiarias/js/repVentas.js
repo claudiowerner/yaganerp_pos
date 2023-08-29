@@ -13,13 +13,21 @@ $("#btnCrearCajaNueva").on("click", function(e)
       type: "GET",
       success: function(e)
       {
+        let validarClave = validarSolicitudClave();
         if(e==1)
         {
           msjes_swal("Aviso", "Ya existe una caja abierta", "warning");
         }
         else
         {
-          $("#solicClaveAutAbrir").modal("show");
+          if(validarClave.match("S"))
+          {
+            $("#solicClaveAutAbrir").modal("show");
+          }
+          else
+          {
+            $("#abrirCaja").modal("show");
+          }
         }
       }
     });
@@ -314,4 +322,20 @@ function tokenizerVoltearString(cadena)
     }
   }
   return retorno;
+}
+
+
+function validarSolicitudClave()
+{
+  let retornar = "";
+  $.ajax({
+    url: "validar_solicitar_clave.php",
+    type: "POST",
+    async: false, 
+    success: function(e)
+    {
+      retornar = e;
+    }
+  })
+  return retornar;
 }

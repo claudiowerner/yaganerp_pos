@@ -1,17 +1,14 @@
-function validarUsuariosActivos(creados, permitidos)
+function validarUsuariosActivos()
 {
-    let retorno;
-    if(creados==permitidos)
+    let us_c = parseInt($("#us_creados").text());
+    let us_p = parseInt($("#us_permitidos").text());
+
+    if(us_c==us_p||us_c>us_p)
     {
-        retorno = 100;//retornará 100 si es que la cantiadad de usuarios activos es igual a la de usuarios permitidos según el plan contratado
+        $("#btnAgregarUsuario").prop("disabled", true);
     }
-    if(creados>permitidos)
+    else
     {
-        retorno = 150;//retornará 150 si se excede la cuota de usuarios permitidos
+        $("#btnAgregarUsuario").prop("disabled", false);
     }
-    if(creados<permitidos)
-    {
-        retorno = 50; //retornará 50 si se está dentro de la cuota de usuarios permitida
-    }
-    return retorno;
 }

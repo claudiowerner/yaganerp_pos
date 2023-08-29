@@ -1,117 +1,105 @@
 
-cargarCajasActivas();
-cargarCajasPermitidas();
-$("#btnAgregarCaja").on("click", function(e)
+$(document).on("ready", function(e)
 {
-  $("#modalRegistro").modal("show");
-})
-
-ep = ""; //almacena el estado del piso
-$("#swEditarPiso").on("click", function(e)
-{
-  if(e.target.checked)
+  cargarCajasActivas();
+  cargarCajasPermitidas();
+  validarCajasActivas();
+  $("#btnAgregarCaja").on("click", function(e)
   {
-    ep = "S";
-  }
-  else
+    $("#modalRegistro").modal("show");
+  })
+
+  ep = ""; //almacena el estado del piso
+  $("#swEditarPiso").on("click", function(e)
   {
-    ep = "N";
-  }
-})
-var table;
+    if(e.target.checked)
+    {
+      ep = "S";
+    }
+    else
+    {
+      ep = "N";
+    }
+  })
+  var table;
 
-    //Datatable
-    var idCat = 0;
-    table = $('#producto').DataTable({
-      "createdRow": function( row, data, dataIndex){
-        if( data.estado ==  `ACTIVO`){
-          $(row).addClass('ACTIVO');
-        }
-        else
-        {
-          $(row).addClass('INACTIVO');
-        }
-      },
-
-        "ajax":{
-          "url":"script_php/read_caja.php",
-          "type":"GET",
-          "dataSrc":""
-        },
-        //columnas
-        "columns":[
-          {"data":"id"},
-          {"data":"nombre"},
-          {"data":"estado"},
-          {"data":"creado_por"},
-          {"data":"fecha_reg"},
+      //Datatable
+      var idCat = 0;
+      table = $('#producto').DataTable({
+        "createdRow": function( row, data, dataIndex){
+          if( data.estado ==  `ACTIVO`){
+            $(row).addClass('ACTIVO');
+          }
+          else
           {
-              "defaultContent": '<button type="submit" class="btn btn-primary editar" id="btnEditar"><img src="../img/edit.png" width="15"></button>'
+            $(row).addClass('INACTIVO');
           }
-        ],
+        },
 
-        //Configuración de Datatable
-        "iDisplayLength": 10,
-        "language": {
-          "lenghtMenu":"Mostrar _MENU_ registros",
-          "zeroRecords": "No se encontraron resultados.",
-          "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-          "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-          "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-          "sSearch":"Buscar",
-          "oPaginate":{
-            "sFirst":"Primero",
-            "sLast":"Último",
-            "sNext":"Siguiente",
-            "sPrevious":"Anterior"
+          "ajax":{
+            "url":"script_php/read_caja.php",
+            "type":"GET",
+            "dataSrc":""
+          },
+          //columnas
+          "columns":[
+            {"data":"id"},
+            {"data":"nombre"},
+            {"data":"estado"},
+            {"data":"creado_por"},
+            {"data":"fecha_reg"},
+            {
+                "defaultContent": '<button type="submit" class="btn btn-primary editar" id="btnEditar"><img src="../img/edit.png" width="15"></button>'
+            }
+          ],
+
+          //Configuración de Datatable
+          "iDisplayLength": 10,
+          "language": {
+            "lenghtMenu":"Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados.",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sSearch":"Buscar",
+            "oPaginate":{
+              "sFirst":"Primero",
+              "sLast":"Último",
+              "sNext":"Siguiente",
+              "sPrevious":"Anterior"
+            }
           }
-        }
-      });
+        });
 
-$("#producto").on("click", "tr", function(e)
-{
-  e.preventDefault();
-  var cat = $("#producto").DataTable();
-  var datos = cat.row(this).data();
-  var estado = "";
-  $("#modalEditar").modal('show'); 
-  $("#idPiso").html(datos.id);
-  $("#nomPisoEditar").val(datos.nombre);
-  
-  if(datos.estado == "ACTIVO")
+  $("#producto").on("click", "tr", function(e)
   {
-    $("#swEditarPiso").prop("checked", true);
-    ep = "S";
-  }
-  else
-  {
-    $("#swEditarPiso").prop("checked", false);
-    ep = "N";
-  }
-});
-
-$("#btnGuardar").on("click", function(e)
-{
-  let nombre = $("#nomPiso").val();
-  if(nombre!="")
-  {
-    let fecha = getFecha();
     e.preventDefault();
-    let cajas_c = parseInt($("#cajas_creadas").text());
-    let cajas_p = parseInt($("#cajas_permitidas").text());
-
-    let validar = validarCajasActivas(cajas_c, cajas_p);
+    var cat = $("#producto").DataTable();
+    var datos = cat.row(this).data();
+    var estado = "";
+    $("#modalEditar").modal('show'); 
+    $("#idPiso").html(datos.id);
+    $("#nomPisoEditar").val(datos.nombre);
     
-    if(validar==100)//si el numero de los usuarios creados es igual al numero de usuarios permitidos 
+    if(datos.estado == "ACTIVO")
     {
-      msjes_swal("Aviso", "Usted está usando el 100% de cajas permitidas según su plan contratado.", "warning")
+      $("#swEditarPiso").prop("checked", true);
+      ep = "S";
     }
-    if(validar==150)
+    else
     {
-      msjes_swal("Aviso", "Usted está excediendo el 100% de cajas permitidas según su plan contratado.", "warning")
+      $("#swEditarPiso").prop("checked", false);
+      ep = "N";
     }
-    if(validar==50)
+  });
+
+  $("#btnGuardar").on("click", function(e)
+  {
+    let nombre = $("#nomPiso").val();
+    if(nombre!="")
     {
+      let fecha = getFecha();
+      e.preventDefault();
       $.ajax({
         url:"script_php/crear_caja.php?nomCaja="+nombre+"&fecha="+fecha,
         type: "POST",
@@ -125,7 +113,7 @@ $("#btnGuardar").on("click", function(e)
           }
           if(e.match("Error")||e.match("error"))
           {
-            msjes_swal("Error al modificar", e, "error");
+            msjes_swal("Error al crear caja", e, "error");
           }
           $('#producto').DataTable().ajax.reload();
           $("#modalRegistro").modal("hide");
@@ -136,57 +124,43 @@ $("#btnGuardar").on("click", function(e)
         console.log(e.responseText);
       })
     }
-  }
-  else
-  {
-    
-    $("#errNomPiso").html("Debe rellenar este campo");
-  }
-
-});
-
-$("#btnModificar").on("click", function(e)
-{
-  let nombre = $("#nomPisoEditar").val();
-  let idCaja = $("#idPiso").text();
-  let datos = {
-    "nomCaja": nombre,
-    "estado": ep,
-    "idCaja": idCaja
-  }
-  if(nombre!="")
-  {
-    if(ep=="S")
+    else
     {
-      let cajas_c = parseInt($("#cajas_creadas").text());
-      let cajas_p = parseInt($("#cajas_permitidas").text());
-      let validar = validarCajasActivas(cajas_c, cajas_p);
-      if(validar==100)//si el numero de los usuarios creados es igual al numero de usuarios permitidos 
-      {
-        msjes_swal("Aviso", "Usted está usando el 100% de cajas permitidas según su plan contratado.", "warning")
-      }
-      if(validar==150)
-      {
-        msjes_swal("Aviso", "Usted está excediendo el 100% de cajas permitidas según su plan contratado.", "warning")
-      }
-      if(validar==50)
+      
+      $("#errNomPiso").html("Debe rellenar este campo");
+    }
+
+  });
+
+  $("#btnModificar").on("click", function(e)
+  {
+    let nombre = $("#nomPisoEditar").val();
+    let idCaja = $("#idPiso").text();
+    let datos = {
+      "nomCaja": nombre,
+      "estado": ep,
+      "idCaja": idCaja
+    }
+    if(nombre!="")
+    {
+      if(ep=="S")
       {
         modificar(datos);
       }
+      if(ep=="N")
+      {
+        modificar(datos);
+      }
+      $("#errNomPisoEditar").html("");
+      
+      e.preventDefault();
     }
-    if(ep=="N")
+    else
     {
-      modificar(datos);
+      $("#errNomPisoEditar").html("Debe rellenar este campo");
     }
-    $("#errNomPisoEditar").html("");
-    
-    e.preventDefault();
-  }
-  else
-  {
-    $("#errNomPisoEditar").html("Debe rellenar este campo");
-  }
-});
+  });
+})
 
 function modificar(datos)
 {
@@ -211,6 +185,7 @@ function modificar(datos)
       $('#producto').DataTable().ajax.reload();
       $("#modalEditar").modal("hide");
       cargarCajasActivas();
+      validarCajasActivas();
     }
   })
   .fail(function(e)

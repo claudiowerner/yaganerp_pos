@@ -30,7 +30,7 @@ function enviarMail($cuerpo, $correo, $asunto)
 
 			//Receptores
 			$mail -> setFrom("claudiowernern@hotmail.com", "Contacto WebPOS");
-			$mail -> addAddress($correo, "User");
+			$mail -> addAddress($correo, $correo);
 
 			//contenido del mail
 			$mail -> isHTML 		= true;

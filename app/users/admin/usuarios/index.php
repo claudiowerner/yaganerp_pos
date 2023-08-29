@@ -65,7 +65,7 @@
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
                                     <h1>Usuarios</h1>
-                                    <button type="button" class="btn btn-success" id="btnAgregarUbicacion" data-toggle="modal" data-target="#modalRegistro">Agregar usuario</button>
+                                    <button type="button" class="btn btn-success" id="btnAgregarUsuario" data-toggle="modal" data-target="#modalRegistro">Agregar usuario</button>
                                     
                                     <div align="right">
                                         Usuarios activos <b id="us_creados"></b><b>/</b><b id="us_permitidos"> Usuarios permitidos</b>
@@ -111,10 +111,10 @@
 
 
     <!--llamada a categorias-->
+    <script src="scripts_js/validar_usuarios_activos.js"></script>
     <script src="scripts_js/cargar_usuarios_activos.js"></script>
     <script src="scripts_js/cargar_usuarios_permitidos.js"></script>
     <script src="scripts_js/usuarios.js"></script>
-    <script src="scripts_js/validar_usuarios_activos.js"></script>
 
 </body>
 

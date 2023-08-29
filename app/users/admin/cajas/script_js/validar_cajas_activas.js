@@ -1,17 +1,14 @@
-function validarCajasActivas(creados, permitidos)
+function validarCajasActivas()
 {
-    let retorno;
-    if(creados==permitidos)
+    let cajas_c = parseInt($("#cajas_creadas").text());
+    let cajas_p = parseInt($("#cajas_permitidas").text());
+
+    if(cajas_c==cajas_p||cajas_c>cajas_p)
     {
-        retorno = 100;//retornará 100 si es que la cantiadad de usuarios activos es igual a la de usuarios permitidos según el plan contratado
+        $("#btnAgregarCaja").prop("disabled", true);
     }
-    if(creados>permitidos)
+    else
     {
-        retorno = 150;//retornará 150 si se excede la cuota de usuarios permitidos
+        $("#btnAgregarCaja").prop("disabled", false);
     }
-    if(creados<permitidos)
-    {
-        retorno = 50; //retornará 50 si se está dentro de la cuota de usuarios permitida
-    }
-    return retorno;
 }
