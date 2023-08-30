@@ -17,23 +17,33 @@
 	$direccion = $_POST["direccion"];
 	$correo = $_POST["correo"];
 	$plan_comprado = $_POST["plan"];
-	$fecha_pago = $_POST["fechaPago"];
 	$telefono = $_POST["telefono"];
 	$id = $_POST["id"];
+	$metodo_pago = $_POST["metodo_pago"];
+	$fechaDesde = $_POST["fechaDesde"];
+	$fechaHasta = $_POST["fechaHasta"];
+	$estado_pago = $_POST["estado_pago"];
 	
 	$sql = 
-	"UPDATE cliente SET 
-	`nombre` = '$nombre', 
-	`rut` = '$rut', 
-	`nom_fantasia` = '$nom_fantasia', 
-	`razon_social` = '$razon_social', 
-	`direccion` = '$direccion', 
-	`correo` = '$correo', 
-	`telefono` = '$telefono', 
-	`plan_comprado` = '$plan_comprado', 
-	`fecha_pago` = '$fecha_pago', 
-	`estado` = '$estado'
-	WHERE id = $id;
+	"UPDATE cliente c
+	JOIN pago_cliente pg SET 
+	c.nombre = '$nombre', 
+	c.rut = '$rut', 
+	c.nom_fantasia = '$nom_fantasia', 
+	c.razon_social = '$razon_social', 
+	c.direccion = '$direccion', 
+	c.correo = '$correo', 
+	c.telefono = '$telefono', 
+	c.plan_comprado = '$plan_comprado',  
+	c.estado = '$estado',
+
+	pg.plan = '$plan_comprado',
+	pg.metodo_pago = '$metodo_pago',
+	pg.fecha_desde = '$fechaDesde',
+	pg.fecha_hasta = '$fechaHasta',
+	pg.estado = '$estado_pago'
+	WHERE c.id = $id
+	AND pg.id_cl = $id;
 	";
 	$resultado = mysqli_query($conexion, $sql);
 

@@ -88,7 +88,10 @@
                                                                 <th>Correo</th>
                                                                 <th>Telefono</th>
                                                                 <th>Plan comprado</th>
-                                                                <th>Fecha pago</th>
+                                                                <th>Fecha registro</th>
+                                                                <th>Paga desde</th>
+                                                                <th>Paga hasta</th>
+                                                                <th>Estado pago</th>
                                                                 <th>Acción</th>
                                                             </tr>
                                                         </thead>
@@ -141,5 +144,6 @@
     <script src="js/planes.js"></script>
     <script src="js/administrator.js"></script>
     <script src="js/crearEnviarUsuario.js"></script>
+    <script src="js/cargarTipoPago.js"></script>
 
 </html>

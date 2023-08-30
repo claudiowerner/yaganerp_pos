@@ -13,98 +13,117 @@
             </div>
             <div class='modal-body'>
               <form id='frmRegistro'>
-              <div align='center'>
-              <h6>---Datos del cliente---</h6>
-            </div>
-            <table width='100%'>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Nombre</label>
-                </td>
-                <td>
-                  <input type='text' name='nomCliente' id='nomCliente' class='form-control' required>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Rut</label>
-                </td>
-                <td>
-                  <input type='text' name='rut' id='rut' class='form-control' required>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Correo</label>
-                </td>
-                <td>
-                  <input type='text' name='correo' id='correo' class='form-control' required>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Telefono</label>
-                </td>
-                <td>
-                  <input type='number' name='telefono' id='telefono' class='form-control' required>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Direccion</label>
-                </td>
-                <td>
-                  <input type='text' name='direccion' id='direccion' class='form-control' required>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Plan comprado</label>
-                </td>
-                <td>
-                  <select  name='slctPlan' id='slctPlan' class='form-control select2' style='width:100%'></select>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Fecha de pago</label>
-                </td>
-                <td>
-                  <input type='date' name='fechaPago' id='fechaPago' class='form-control' required>
-                </td>
-              </tr>
-            </table>
-            <div align='center'>
-              <h6>---Datos de la empresa---</h6>
-            </div>
-            <table width='100%'>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Nombre de fantasía</label>
-                </td>
-                <td>
-                  <input type='text' name='nomFantasia' id='nomFantasia' class='form-control' required>
-                </td>
-              </tr>
-              <td>
-                  <label name='nombrePiso'>Razón social</label>
-                </td>
-                <td>
-                  <input type='text' name='razonSocial' id='razonSocial' class='form-control' required>
-                </td>
-              </tr>
-            </table>
+                <div align='center'>
+                  <h6>---Datos del cliente---</h6>
+                </div>
+                <table width='100%'>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Nombre</label>
+                    </td>
+                    <td>
+                      <input type='text' name='nomCliente' id='nomCliente' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Rut</label>
+                    </td>
+                    <td>
+                      <input type='text' name='rut' id='rut' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Correo</label>
+                    </td>
+                    <td>
+                      <input type='text' name='correo' id='correo' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Telefono</label>
+                    </td>
+                    <td>
+                      <input type='number' name='telefono' id='telefono' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Direccion</label>
+                    </td>
+                    <td>
+                      <input type='text' name='direccion' id='direccion' class='form-control' required>
+                    </td>
+                  </tr>
+                  
+                </table>
+                <div align='center'>
+                  <h6>---Datos de la empresa---</h6>
+                </div>
+                <table width='100%'>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Nombre de fantasía</label>
+                    </td>
+                    <td>
+                      <input type='text' name='nomFantasia' id='nomFantasia' class='form-control' required>
+                    </td>
+                  </tr>
+                  <td>
+                      <label name='nombrePiso'>Razón social</label>
+                    </td>
+                    <td>
+                      <input type='text' name='razonSocial' id='razonSocial' class='form-control' required>
+                    </td>
+                  </tr>
+                </table>
+                <div align='center'>
+                  <h6>--Datos de pago--</h6>
+                </div>
+                <table width='100%'>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Plan comprado</label>
+                    </td>
+                    <td>
+                      <select  name='slctPlan' id='slctPlan' class='form-control select2' style='width:100%'></select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Paga desde</label>
+                    </td>
+                    <td>
+                      <input type='date' name='fechaDesde' id='fechaDesde' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Paga hasta</label>
+                    </td>
+                    <td>
+                      <input type='date' name='fechaHasta' id='fechaHasta' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Método de pago</label>
+                    </td>
+                    <td>
+                      <select id='tipoPago' class='form-control'></select>
+                    </td>
+                  </tr>
+                </table>
               </form>
-            <div>
-              <label id='lblMsj'></label>
             </div>
-          </div>
-          <div class='modal-footer'>
-            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-            <button type='submit' id='btnGuardar' class='btn btn-primary'>Guardar</button>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+              <button type='submit' id='btnGuardar' class='btn btn-primary'>Guardar</button>
+            </div>
           </div>
         </div>
-      </div>
       </div>";
 	}
 
@@ -120,119 +139,129 @@
               </button>
             </div>
             <div class='modal-body'>
-              <form id='frmEditar'>
-              <div align='center'>
-              <h6>---Datos del cliente---</h6>
-            </div>
-            <table width='100%'>
-              <tr>
-                <td>
-                  <button id='btnCrearAdmin' class='btn btn-primary'>Crear usuario administrador</button>
-                </td>
-                <td>
-                  <button id='btnEnviarCredencial' class='btn btn-primary'>Enviar credenciales</button>
-                </td>
-              </tr>
-
-
-              <tr>
-                <td margin=auto>
-                  <div class=button>
-                    <label name='swEstadoCliente'>Estado del cliente</label>
-                  </div>
-                </td>
-                <td>
-                  <div class=boton>                    
-                    <input type='checkbox' id='swEstadoCliente'/>
-                    <label for='swEstadoCliente' class='switch'></label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Nombre</label>
-                </td>
-                <td>
-                  <input type='text' name='nomClienteEditar' id='nomClienteEditar' class='form-control' required>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Rut</label>
-                </td>
-                <td>
-                  <input type='text' name='rutEditar' id='rutEditar' class='form-control' required>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Correo</label>
-                </td>
-                <td>
-                  <input type='text' name='correoEditar' id='correoEditar' class='form-control' required>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Telefono</label>
-                </td>
-                <td>
-                  <input type='number' name='telefonoEditar' id='telefonoEditar' class='form-control' required>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Direccion</label>
-                </td>
-                <td>
-                  <input type='text' name='direccionEditar' id='direccionEditar' class='form-control' required>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Plan comprado</label>
-                </td>
-                <td>
-                  <select  name='slctPlanEditar' id='slctPlanEditar' class='form-control select2'></select>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Fecha de pago</label>
-                </td>
-                <td>
-                  <input type='date' name='fechaPagoEditar' id='fechaPagoEditar' class='form-control' required>
-                </td>
-              </tr>
-            </table>
-            <div align='center'>
-              <h6>---Datos de la empresa---</h6>
-            </div>
-            <table width='100%'>
-              <tr>
-                <td>
-                  <label name='nombrePiso'>Nombre de fantasía</label>
-                </td>
-                <td>
-                  <input type='text' name='nomFantasiaEditar' id='nomFantasiaEditar' class='form-control' required>
-                </td>
-              </tr>
-              <td>
-                  <label name='nombrePiso'>Razón social</label>
-                </td>
-                <td>
-                  <input type='text' name='razonSocialEditar' id='razonSocialEditar' class='form-control' required>
-                </td>
-              </tr>
-            </table>
+              <form id='frmRegistro'>
+                <div align='center'>
+                  <h6>---Datos del cliente---</h6>
+                </div>
+                <table width='100%'>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Nombre</label>
+                    </td>
+                    <td>
+                      <input type='text' name='nomClienteEditar' id='nomClienteEditar' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Rut</label>
+                    </td>
+                    <td>
+                      <input type='text' name='rutEditar' id='rutEditar' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Correo</label>
+                    </td>
+                    <td>
+                      <input type='text' name='correoEditar' id='correoEditar' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Telefono</label>
+                    </td>
+                    <td>
+                      <input type='number' name='telefonoEditar' id='telefonoEditar' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Direccion</label>
+                    </td>
+                    <td>
+                      <input type='text' name='direccionEditar' id='direccionEditar' class='form-control' required>
+                    </td>
+                  </tr>
+                  
+                </table>
+                <div align='center'>
+                  <h6>---Datos de la empresa---</h6>
+                </div>
+                <table width='100%'>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Nombre de fantasía</label>
+                    </td>
+                    <td>
+                      <input type='text' name='nomFantasiaEditar' id='nomFantasiaEditar' class='form-control' required>
+                    </td>
+                  </tr>
+                  <td>
+                      <label name='nombrePiso'>Razón social</label>
+                    </td>
+                    <td>
+                      <input type='text' name='razonSocialEditar' id='razonSocialEditar' class='form-control' required>
+                    </td>
+                  </tr>
+                </table>
+                <div align='center'>
+                  <h6>--Datos de pago--</h6>
+                </div>
+                <table width='100%'>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Plan comprado</label>
+                    </td>
+                    <td>
+                      <select  name='slctPlanEditar' id='slctPlanEditar' class='form-control select2' style='width:100%'></select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Paga desde</label>
+                    </td>
+                    <td>
+                      <input type='date' name='fechaDesdeEditar' id='fechaDesdeEditar' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Paga hasta</label>
+                    </td>
+                    <td>
+                      <input type='date' name='fechaHastaEditar' id='fechaHastaEditar' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Método de pago</label>
+                    </td>
+                    <td>
+                      <select id='tipoPagoEditar' class='form-control'></select>
+                    </td>
+                  </tr>
+                  <td margin=auto>
+                    <div class=button>
+                      <label name='swEstadoPago'>Estado del pago</label>
+                    </div>
+                  </td>
+                  <td>
+                    <div class=boton>                    
+                      <input type='checkbox' id='swEstadoPago'/>
+                      <label for='swEstadoPago' class='switch'></label>
+                    </div>
+                  </td>
+                </table>
               </form>
-          </div>
-          <div class='modal-footer'>
-            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-            <button type='submit' id='btnModificar' class='btn btn-primary'>Guardar</button>
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+              <button type='submit' id='btnModificar' class='btn btn-primary'>Guardar</button>
+            </div>
           </div>
         </div>
-      </div>
       </div>";
 	}
 

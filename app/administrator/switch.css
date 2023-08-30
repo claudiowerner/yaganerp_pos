@@ -69,3 +69,20 @@
 }
 
 
+/*estadoPlan*/
+#swEstadoPago
+{
+    display: none;
+}
+#swEstadoPago:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swEstadoPago:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+
+

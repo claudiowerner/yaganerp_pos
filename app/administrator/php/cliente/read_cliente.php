@@ -9,10 +9,15 @@ require_once '../../../conexion.php';
     //query
     $consulta =
     "SELECT c.id, c.nombre, c.rut, c.estado, c.correo, c.telefono, pl.nombre AS plan_comprado, 
-    DATE_FORMAT(fecha_pago, '%d-%m-%Y') AS fecha_pago 
+    DATE_FORMAT(fecha_registro, '%d-%m-%Y') AS fecha_registro,
+    DATE_FORMAT(pc.fecha_desde, '%d-%m-%Y') AS fecha_desde,
+    DATE_FORMAT(pc.fecha_hasta, '%d-%m-%Y') AS fecha_hasta,
+    pc.estado AS estado_pago
     FROM cliente c
     JOIN planes pl
-    ON pl.id = c.plan_comprado;";
+    ON pl.id = c.plan_comprado
+    JOIN pago_cliente pc
+    ON c.id = pc.id_cl";
     $resultado = $conexion->query($consulta);
     if ($resultado->num_rows > 0){
       $json = array();
@@ -27,6 +32,16 @@ require_once '../../../conexion.php';
         {
           $estado = "INACTIVO";
         }
+
+        $estado_pago = $row['estado_pago'];
+        if($estado_pago=="S")
+        {
+          $ep = "PAGADO";
+        }
+        else
+        {
+          $ep = "SIN PAGAR";
+        }
         $json[] =array(
           'id' => $row['id'],
           'nombre' => $row['nombre'],
@@ -35,7 +50,10 @@ require_once '../../../conexion.php';
           'correo' => $row['correo'],
           'telefono' => $row['telefono'],
           'plan_comprado' => $row['plan_comprado'],
-          'fecha_pago' => $row['fecha_pago']
+          'fecha_registro' => $row['fecha_registro'],
+          'fecha_desde' => $row['fecha_desde'],
+          'fecha_hasta' => $row['fecha_hasta'],
+          'estado_pago' => $ep
         );
       };
       echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
