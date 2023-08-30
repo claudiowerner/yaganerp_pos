@@ -145,6 +145,11 @@
                 </div>
                 <table width='100%'>
                   <tr>
+                    <td colspan=2>
+                      <button id='btnCrearCredenciales' class='btn btn-primary'>Enviar credenciales</button>
+                    </td>
+                  </tr>
+                  <tr>
                     <td>
                       <label name='nombrePiso'>Nombre</label>
                     </td>

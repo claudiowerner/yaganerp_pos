@@ -1,6 +1,7 @@
-$("#btnCrearAdmin").on("click", function(e)
+$("#btnCrearCredenciales").on("click", function(e)
 {
-    $("#btnCrearAdmin").val('Enviando correo...');
+    $("#btnCrearCredenciales").text('Enviando correo...');
+    $("#btnCrearCredenciales").attr('disabled', true);
     e.preventDefault();
     let idCliente = $("#idCliente").text();
     let correo = $("#correoEditar").val();
@@ -31,7 +32,8 @@ $("#btnCrearAdmin").on("click", function(e)
                 {
                     msjes_swal("Error",e,"error");
                 }
-                $("#btnCrearAdmin").val('Crear usuario administrador');
+                $("#btnCrearCredenciales").text('Enviar credenciales');
+                $("#btnCrearCredenciales").attr('disabled', false);
             }
         }
     )

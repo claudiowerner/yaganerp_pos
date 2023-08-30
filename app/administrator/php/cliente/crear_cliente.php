@@ -8,18 +8,18 @@
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 
-	echo "\n ".$nombre = $_POST["nombre"];
-	echo "\n ".$rut = $_POST["rut"];
-	echo "\n ".$correo = $_POST["correo"];
-	echo "\n ".$telefono = $_POST["telefono"];
-	echo "\n ".$direccion = $_POST["direccion"];
-	echo "\n ".$plan = $_POST["plan"];
-	echo "\n ".$fechaRegistro = $_POST["fechaRegistro"];
-	echo "\n ".$fechaDesde = $_POST["fechaDesde"];
-	echo "\n ".$fechaHasta = $_POST["fechaHasta"];
-	echo "\n ".$nomFantasia = $_POST["nomFantasia"];
-	echo "\n ".$razonSocial = $_POST["razonSocial"];
-	echo "\n ".$tipoPago = $_POST["tipoPago"];
+	$nombre = $_POST["nombre"];
+	$rut = $_POST["rut"];
+	$correo = $_POST["correo"];
+	$telefono = $_POST["telefono"];
+	$direccion = $_POST["direccion"];
+	$plan = $_POST["plan"];
+	$fechaRegistro = $_POST["fechaRegistro"];
+	$fechaDesde = $_POST["fechaDesde"];
+	$fechaHasta = $_POST["fechaHasta"];
+	$nomFantasia = $_POST["nomFantasia"];
+	$razonSocial = $_POST["razonSocial"];
+	$tipoPago = $_POST["tipoPago"];
 
 	$nombre_plan = "";
 
