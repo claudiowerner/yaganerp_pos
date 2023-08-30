@@ -59,7 +59,7 @@
 		Teléfono			: $telefono<br>
 		Dirección			: $direccion<br>
 		Plan contratado		: $nombre_plan<br>
-		Fecha de registro	: $fechaRegistro<br><br>
+		Fecha de registro	: $fechaRegistro<br>
 		Pagas desde			: $fechaDesde<br>
 		Pago válido hasta 	: $fechaHasta<br>
 		Nombre de fantasía	: $nomFantasia<br>

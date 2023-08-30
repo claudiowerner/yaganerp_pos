@@ -145,5 +145,7 @@
     <script src="js/administrator.js"></script>
     <script src="js/crearEnviarUsuario.js"></script>
     <script src="js/cargarTipoPago.js"></script>
+    <script src="../js/validarRut.js"></script>
+    
 
 </html>
