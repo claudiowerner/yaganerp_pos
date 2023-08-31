@@ -10,16 +10,14 @@ jQuery(document).on('submit','#Frm',function(event){
 		data: $(this).serialize(),
 		beforeSend: function(){
 			$('.botonlg').val('Validando...');
-		},
-		success: function(e)
-		{
-			console.log(e);
 		}
 	})
 
-	.done(function(respuesta){
-		console.log("respuesta");
-		if (!respuesta.error){
+	.done(function(respuesta)
+	{
+		console.log(respuesta.mensaje);
+		if (!respuesta.error)
+		{
 			if(respuesta.tipo === 1 )
 			{
 				location.href = 'users/admin/';
@@ -29,13 +27,18 @@ jQuery(document).on('submit','#Frm',function(event){
 				location.href = 'users/atencion';
 			}
 		}
+		if(respuesta.renovar==true)//se verifica si se tiene que renovar la contraseña
+		{
+			alert("Aviso: Debe renovar su contraseña, por lo que será redirigido a la sección 'Usuarios', para que pueda renovar su contraseña de administrador.");
+			location.href = 'users/admin/usuarios/';
+		}
 		else
 		{
-			console.log(respuesta);
+			$("#error").html(respuesta.mensaje);
 			$('.error').slideDown('slow');
 			setTimeout(function(){
 				$('.error').slideUp('slow');
-			},3000);
+			},5000);
 			$('#Frm')[0].reset();
 			$('.botonlg').val('Intente Nuevamente');
 		}

@@ -64,4 +64,9 @@
 	{
 		die("Error al modificar usuario: ". mysqli_error($conexion));
 	}
+
+	//codigo que elimina la clave provisoria en caso de existir
+	$sql = 
+	"DELETE FROM pass_provisoria WHERE id_cl = '$id_cl'";
+	$conexion->query($sql);
 ?>
