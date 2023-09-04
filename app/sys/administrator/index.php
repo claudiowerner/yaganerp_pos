@@ -62,6 +62,7 @@
                                             echo modalEditarCliente();
                                             echo modalRegistrarPlan();
                                             echo modalEditarPlan();
+                                            echo modalComprobantesPago();
                                         ?>
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item">
@@ -146,6 +147,8 @@
     <script src="js/crearEnviarUsuario.js"></script>
     <script src="js/cargarTipoPago.js"></script>
     <script src="../js/validarRut.js"></script>
+    <script src="js/cargarArchivos.js"></script>
+    <script src="js/cargar_archivos_comprobantes.js"></script>
     
 
 </html>

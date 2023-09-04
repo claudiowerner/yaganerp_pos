@@ -260,6 +260,7 @@
                   </td>
                 </table>
               </form>
+              <button class='btn btn-primary' id='btnVerComprobantes'>Ver comprobantes de pago</button>
             </div>
             <div class='modal-footer'>
               <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
@@ -272,6 +273,48 @@
 
 
 
+
+  function modalComprobantesPago()
+	{
+		return "<div class='modal fade' id='modalComprobantesPago' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+        <div class='modal-dialog modal-lg' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <h5 class='modal-title' id='exampleModalLongTitle'>Comprobantes de pago <strong id='idCliente'></strong></h5>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+            </div>
+            <div class='modal-body'>
+              <form action='' id='subirArchivo' method='post'>
+                <table width='100%'>
+                  <tr>
+                    <td><label>Cargar archivo: </label></td>
+                    <td><input type='file' id='archivo' class='form form-control'accept='.jpg, .jpeg, .pdf'></td>
+                    <td><button id='btnCargarArchivo' class='btn btn-success'>Cargar archivo</button></td>
+                  </tr>
+                </table>
+                <h6>---Tabla de comprobantes---</h6>
+                <table class='table'>
+                  <th>
+                    <td>ID</td>
+                    <td>Nombre archivo</td>
+                    <td>Fecha de carga</td>
+                  </th>
+                  <tbody id='bodyComprobantes'>
+                  </tbody>
+                </table>
+              </form>
+              <button class='btn btn-primary' id='btnVolver'><- Volver</button>
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+              <button type='submit' id='btnModificar' class='btn btn-primary'>Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>";
+	}
 
 
 

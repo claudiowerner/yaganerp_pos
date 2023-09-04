@@ -64,7 +64,6 @@
 	{
 		//registrar pass caducable
 		$pass_caducable = passCaducable($id, $pass, $fecha, $conexion);
-		echo $pass."\n";
 		$sql = 
 		"UPDATE usuarios
 		SET pass = '$pass'
@@ -92,7 +91,7 @@
 
 	function passCaducable($id_cl, $pass, $fecha, $conexion)
 	{
-		echo $pass."\n";
+		$pass."\n";
 		//eliminar registro de clave creada previamente
 		$sql = 
 		"DELETE FROM pass_provisoria WHERE id_cl = '$id_cl'";
