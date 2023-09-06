@@ -1,7 +1,7 @@
 <?php
   function modalRegistro()
   {
-    return "<div class='modal fade' id='modalRegistro' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+    return "<div class='modal fade' id='modalRegistro' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
@@ -26,10 +26,16 @@
                       </div>
                     </td>
                   </tr>
-                  <tr id=codBarra>
-                    <td><label name='codBarra'>Código de barra</label></td>
+                  <tr>
+                    <td><label name='nombreCat'>Proveedor</label></td>
                     <td>
-                      <input type='text' name='codBarra' id='codBarra' class='form-control' required>
+                      <select name='slctProveedor' id='slctProveedor' class='form-control'></select>
+                    </td>
+                  </tr>
+                  <tr id=codBarra>
+                    <td><label name='codigoBarra'>Código de barra</label></td>
+                    <td>
+                      <input type='text' name='codigoBarra' id='codigoBarra' class='form-control' required>
                     </td>
                   </tr>
                   <tr>
@@ -51,7 +57,7 @@
                       <label name='cant'>Cantidad</label>
                     </td>
                     <td>
-                      <input type='number' name='cantidad' id='cantidad' class='form-control' required>
+                      <input type='number' name='cantidadProd' id='cantidadProd' class='form-control' required>
                     </td>
                   </tr>
                   <tr id='pesaje' style='display: none'>
@@ -62,6 +68,20 @@
                     <td><label name='cat' id='lblValorNeto'>Valor neto</label></td>
                     <td>
                       <input type='number' name='cantidad' id='valorNeto' class='form-control' required></td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label name='cat' id='lblValorNeto'>Margen (%) de ganancia</label></td>
+                    <td>
+                      <input type='number' name='cantidad' id='margenGanancia' class='form-control' required disabled='true'></td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='cat'>Monto de ganancia</label>
+                    </td>
+                    <td>
+                      <input type='number' name='cantidad' id='montoGanancia' class='form-control' required>
                     </td>
                   </tr>
                   <tr>
@@ -114,10 +134,17 @@
                       </div>
                     </td>
                   </tr>
+                  <tr>
+                    <td><label name='nombreCat'>Proveedor</label></td>
+                    <td>
+                      <select name='slctProveedorEditar' id='slctProveedorEditar' class='form-control'></select>
+                    </td>
+                  </tr>
+                  
                   <tr id=codBarraEditar>
                     <td><label name='nombreCat'>Código de barra</label></td>
                     <td>
-                      <input type='text' id='txtCodBarraEditar' name='nomProdEditar' class='form-control' required></td>
+                      <input type='text' id='txtCodBarraEditar' name='nomProdEditar' class='form-control'></td>
                     </tr>
                   <tr>
                     <td><label name='nombreCat'>Nombre</label></td>
@@ -145,6 +172,20 @@
                     <td><label name='cat'>Valor neto</label></td>
                     <td>
                       <input type='number' name='cantidad' id='valorNetoEditar' class='form-control' required></td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label name='cat' id='lblValorNeto'>Margen (%) de ganancia</label></td>
+                    <td>
+                      <input type='number' name='cantidad' id='margenGananciaEditar' class='form-control' required disabled='true'></td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='cat'>Monto de ganancia</label>
+                    </td>
+                    <td>
+                      <input type='number' name='cantidad' id='montoGananciaEditar' class='form-control' required>
                     </td>
                   </tr>
                   <tr>

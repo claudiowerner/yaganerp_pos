@@ -21,18 +21,21 @@
     $id_cl = $_SESSION['user']["id_cl"];
     $piso = 1;
 
-	$cod_barra = $_GET['cod_barra'];
-    $nom = $_GET['nomProd'];
-    $cat = $_GET['cat'];
-    $can = $_GET['can'];
-    $vn = $_GET['vn'];
-    $vv = $_GET['vv'];
-    $rp = $_GET['rp'];
+	$cod_barra = $_POST['cod_barra'];
+    $nom = $_POST['nomProd'];
+    $cat = $_POST['cat'];
+    $can = $_POST['can'];
+    $vn = $_POST['vn'];
+    $vv = $_POST['vv'];
+    $rp = $_POST['rp'];
+    $marGan = $_POST['marGan'];
+    $monGan = $_POST['monGan'];
+    $proveedor = $_POST['proveedor'];
     $unidad = 1;
 
 	if($rp=="S")
 	{
-		$unidad = $_GET['unidad'];
+		$unidad = $_POST['unidad'];
 	}
 
     //obtener fecha
@@ -40,7 +43,7 @@
 	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
 	$sql = 
 	"INSERT INTO productos 
-	VALUES (null, '$id_cl', '$cod_barra', '$nom', '$cat', '$can', '$rp', '$unidad', '$vn', '$vv', 'S', '$id_us', '$fecha');
+	VALUES (null, '$id_cl', '$cod_barra', '$nom', '$proveedor', '$cat', '$can', '$rp', '$unidad', '$vn', '$marGan', '$monGan', '$vv', 'S', '$id_us', '$fecha');
 	";
 	$resultado = mysqli_query($conexion, $sql);
 

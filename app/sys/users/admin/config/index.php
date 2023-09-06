@@ -89,6 +89,20 @@
 
         <div class="row" >
             <div class="col-lg-12">
+                <div class="plan" id="configMargenGanancia" style="cursor: pointer">
+                    <div class="col-md-12">
+                        <div class="card card-warning">
+                            <div class="card-header" style="align:left;" align="left">
+                                    <strong>Configuración de margen de ganancia ></strong><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col-lg-12">
                 <div class="plan" id="configProducto" style="cursor: pointer">
                     <div class="col-md-12">
                         <div class="card card-warning">
@@ -119,6 +133,7 @@
     <script src="js/cuentas.js"></script>
     <script src="js/productos.js"></script>
     <script src="js/convenio.js"></script>
+    <script src="js/margen_ganancia.js"></script>
 </body>
 
 </html>

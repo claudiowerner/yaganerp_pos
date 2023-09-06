@@ -24,7 +24,7 @@ function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
 
         if(cantidad<=stockMinimo)
         {
-            if(cantProd>=cantidad)
+            if(cantProd<=cantidad)
             {
                 if(cantidad<=0)
                 {

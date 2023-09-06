@@ -74,7 +74,7 @@ function rellenarArray(arrProducto, arrCantidad, arrValor)
     
     for(i=0;i<id;i++)
     {
-        cantidad = $("#cantidad"+(i+1)).val();
+        cantidad = $("#cantidadProd"+(i+1)).val();
         if(cantidad!=undefined)
         {
             arrCantidad[i] = cantidad;

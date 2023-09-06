@@ -22,17 +22,18 @@ $("#swPesaje").on("click", function(e)
     rp = "S";
     html = "Valor neto por KG.";
     $("#pesaje").show();
-    $("#codBarra").attr("required", false);
-    $("#codBarra").prop("disabled", true);
-    $("#codBarra").attr("placeholder", "Campo no necesario");
+    $("#codigoBarra").attr("required", false);
+    $("#codigoBarra").prop("disabled", true);
+    $("#codigoBarra").attr("placeholder", "Campo no necesario");
   }
   else
   {
     rp = "N";
     html = "Valor neto";
     $("#pesaje").hide();
-    $("#codBarra").attr("required", true);
-    $("#codBarra").attr("placeholder", "");
+    $("#codigoBarra").attr("required", true);
+    $("#codigoBarra").prop("disabled", false);
+    $("#codigoBarra").attr("placeholder", "");
   }
   $("#lblValorNeto").html(html);
 })
@@ -69,15 +70,14 @@ $.ajax({
   {
     if(e.match("S"))
     {
-      $("#cantidad").attr("disabled", false);
+      $("#cantidadProd").attr("disabled", false);
       $("#cantidadEditar").attr("disabled", false);
-      $("#cantidad").val("Stock desactivado")
     }
     else
     {
-      $("#cantidad").attr("disabled", true);
+      $("#cantidadProd").attr("disabled", true);
       $("#cantidadEditar").attr("disabled", true);
-      $("#cantidad").val("Stock desactivado")
+      $("#cantidadProd").val("Stock desactivado");
     }
   }
 })
@@ -108,9 +108,12 @@ cargarUnidad();
           {"data":"id"},
           {"data":"codigo_barra"},
           {"data":"nombre_prod"},
+          {"data":"nombre_proveedor"},
           {"data":"nombre_cat"},
           {"data":"cantidad"},
           {"data":"valor_neto"},
+          {"data":"margen_ganancia"},
+          {"data":"monto_ganancia"},
           {"data":"valor_venta"},
           {"data":"estado"},
           {"data":"creado_por"},
@@ -200,16 +203,25 @@ $("#producto").on('click', 'tr', function(e)
       type: "POST",
       success: function(e)
       {
-        json = JSON.parse(e);
+        let json = JSON.parse(e);
+        console.log(json);
         json.forEach(e=>
           {
             if(e.pesaje=="N")
             {
-              $("#swPesajeEditar").attr("checked", false)
+              rpEditar = "N";
+              $("#swPesajeEditar").attr("checked", false);
+              $("#pesajeEditar").hide();
+              $("#codBarraEditar").attr("required", true);
+              $("#codBarraEditar").attr("placeholder", "");
             }
             else
             {
+              rpEditar = "S";
               $("#swPesajeEditar").attr("checked", true)
+              $("#pesajeEditar").show();
+              $("#codBarraEditar").attr("required", false);
+              $("#codBarraEditar").attr("placeholder", "");
             }
             $("#slctUnidadEditar").val(e.id);
           })
@@ -260,6 +272,7 @@ $("#producto").on('click', 'tr', function(e)
         respuesta.forEach(r=>
         {
           $("#estadoCatEditar").val(r.estado);
+          $("#slctProveedorEditar").val(r.id_prov);
         })
       }
     }
@@ -272,28 +285,62 @@ $("#producto").on('click', 'tr', function(e)
   //eliminar signo $ de los valores
   let vn = datos.valor_neto;
   let vt = datos.valor_venta;
+  let mg = datos.monto_ganancia;
   let valor_neto = vn.slice(1);
   let valor_venta = vt.slice(1);
+  let monto_ganancia = mg.slice(1);
+  let porc = datos.margen_ganancia;
+  let porcentaje = porc.slice(0, porc.length - 1);
+
+  console.log(datos)
 
   $("#nomProdEditar").val(datos.nombre_prod);
   $("#txtCodBarraEditar").val(datos.codigo_barra);
+  $("#margenGananciaEditar").val(porcentaje);
   $("#valorNetoEditar").val(valor_neto);
+  $("#montoGananciaEditar").val(monto_ganancia);
   $("#valorVentaEditar").val(valor_venta);
   $("#txtCantidadEditar").val(datos.cantidad);
   
   $("#tituloModalEditar").html(datos.id);
 
 });
+
+
+
+
+
+
 $("#formRegistroProducto").submit(function(e)
 {
   e.preventDefault();
   var np = $("#nomProd").val();
   var lc = $("#listCat").val();
-  var can = $("#cantidad").val();
+  var can = $("#cantidadProd").val();
   var vn = $("#valorNeto").val();
   var vv = $("#valorVenta").val();
-  var cb = $("#codBarra").val();
+  var cb = $("#codigoBarra").val();
+  var margenGanancia = $("#margenGanancia").val();
+  var montoGanancia = $("#montoGanancia").val();
   var unidad = $("#slctUnidad").val();
+  var proveedor = $("#slctProveedor").val();
+
+  datos = 
+  {
+    "nomProd":np,
+    "cat":lc,
+    "can":can,
+    "vn":vn,
+    "vv":vv,
+    "cod_barra":cb,
+    "rp":rp,
+    "unidad":unidad,
+    "pesaje":rp,
+    "marGan":margenGanancia,
+    "monGan":montoGanancia,
+    "proveedor":proveedor
+  }
+
 
   if(lc=="O"||cb=="O")
   {
@@ -327,10 +374,12 @@ $("#formRegistroProducto").submit(function(e)
         {
           $.ajax(
             {
-              url:"crear_producto_exe.php?nomProd="+np+"&cat="+lc+"&can="+can+"&vn="+vn+"&vv="+vv+"&cod_barra="+cb+"&rp="+rp+"&unidad="+unidad+"&pesaje="+rp,
+              url:"crear_producto_exe.php",
+              data: datos,
               type: "POST",
               success: function(e)
               {
+                cargarPorcGanancia();
                 if(e.match("correctamente"))
                 {
                   swal({
@@ -385,22 +434,47 @@ $("#formRegistroProducto").submit(function(e)
 $("#formEditarProducto").submit(function(e)
 {
   e.preventDefault();
-  var id = $("#tituloModalEditar").text();
-  var np = $("#nomProdEditar").val();
-  var cod_barra = $("#txtCodBarraEditar").val();
-  var lc = $("#listCatEditar").val();
-  var can = $("#txtCantidadEditar").val();
-  var vn = $("#valorNetoEditar").val();
-  var vv = $("#valorVentaEditar").val();
-  var unid = $("#slctUnidadEditar").val();
-  var pesaje = "";
+  let id = $("#tituloModalEditar").text();
+  let np = $("#nomProdEditar").val();
+  let cod_barra = $("#txtCodBarraEditar").val();
+  let lc = $("#listCatEditar").val();
+  let can = $("#txtCantidadEditar").val();
+  let vn = $("#valorNetoEditar").val();
+  let vv = $("#valorVentaEditar").val();
+  let unid = $("#slctUnidadEditar").val();
+  let marGan = $("#margenGananciaEditar").val();
+  let monGan = $("#montoGananciaEditar").val();
+  let proveedor = $("#slctProveedorEditar").val();
+  
+
+  
+  let pesaje = "";
 
   //hora
   let hora = getHora();
+  let datos = 
+  {
+    "codigo_barra":cod_barra,
+    "id":id,
+    "nomProd":np,
+    "cat":lc,
+    "can":can,
+    "vv":vv,
+    "vn":vn,
+    "estado":ep,
+    "hora":hora,
+    "medida":unid,
+    "pesaje":rpEditar,
+    "marGan": marGan,
+    "monGan": monGan,
+    "proveedor": proveedor
+  };
+
   $.ajax(
     {
-      url:"editar_producto_exe.php?codigo_barra="+cod_barra+"&id="+id+"&nomProd="+np+"&cat="+lc+"&can="+can+"&vv="+vv+"&vn="+vn+"&estado="+ep+"&hora="+hora+"&medida="+unid+"&pesaje="+rpEditar,
-      type: "GET",
+      url:"editar_producto_exe.php",
+      type: "POST",
+      data: datos,
       success: function(e)
       {
         if(e.match("correctamente"))

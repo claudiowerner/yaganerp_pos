@@ -78,9 +78,12 @@
                                                     <th>ID</th>
                                                     <th>Cód. de barra</th>
                                                     <th>Nombre</th>
+                                                    <th>Proveedor</th>
                                                     <th>Categoría</th>
                                                     <th>Cantidad</th>
                                                     <th>Valor neto</th>
+                                                    <th>Margen ganancia</th>
+                                                    <th>Monto ganancia</th>
                                                     <th>Valor venta</th>
                                                     <th>Estado</th>
                                                     <th>Creado por</th>
@@ -112,6 +115,8 @@
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
 
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
+    <script src="calcular_ganancia.js"></script>
     <script src="producto.js"></script>
+    <script src="proveedores.js"></script>
 
 </html>

@@ -6,23 +6,12 @@
 	error_reporting(E_ALL);
 
 	session_start();
-	if(isset($_SESSION['user'])){
-		$tipo = $_SESSION['user']['tipo_usuario'];
-     	if($tipo == 1)
-     	{
-       	    //header('Location: ../');
-     	}
-    }
-    else
-    {
-    	header('Location: ../../../../index.php');
-    }
     require_once '../../../../conexion.php';
 
 	$id_us = $_SESSION['user']['id'];
 	$nombre = $_SESSION['user']["nombre"];
 	$id_cl = $_SESSION['user']["id_cl"];
-	$piso = 1;
+	
 	
 	$producto = $_GET['producto'];
 	$fecha = $_GET['fecha'];
@@ -113,11 +102,11 @@
 
 		$sql = "SELECT (cantidad-$cp_pedido) AS cant 
 		FROM productos WHERE nombre_prod = '$np'";
-		$r = mysqli_query($conexion, $sql);
+		$r4 = mysqli_query($conexion, $sql);
 
 		//cantidad descuento del producto a la bd
 		$cp_desc_bd = 0;
-		while($row = $r->fetch_array())
+		while($row = $r4->fetch_array())
 		{
 			$cp_desc_bd = $row['cant'];
 		}
@@ -125,17 +114,17 @@
 		"UPDATE productos 
 		SET cantidad = '$cp_desc_bd' 
 		WHERE nombre_prod = '$np';";
-		$r = mysqli_query($conexion, $sql);
+		$r5 = mysqli_query($conexion, $sql);
 	}
 
 	
 	
-	if($r1&&$r2&&$r3&&$r)
+	if($r1&&$r2&&$r4&&$r5)
 	{
 		echo "Pago registrado correctamente";
 	}
 	else
 	{
-		die("Error al registrar pago: ". $conexion->error);
+		die("Error al registrar pago: ". mysqli_error($conexion));
 	}
 ?>

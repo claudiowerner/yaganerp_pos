@@ -17,16 +17,19 @@ if(isset($_SESSION['user'])){
 
     //query
     $consulta = 
-    "SELECT p.id_prod, p.codigo_barra, p.nombre_prod, p.categoria, p.cantidad, 
+    "SELECT p.id_prod, p.codigo_barra, p.nombre_prod, prov.nombre_proveedor, p.categoria, p.cantidad, 
     smp.estado AS estado_stock, 
-    p.valor_neto, p.valor_venta, u.nombre AS creado_por, 
+    p.valor_neto, p.valor_venta, p.margen_ganancia, p.monto_ganancia, u.nombre AS creado_por, 
     p.estado, DATE_FORMAT(p.fecha_reg, '%d-%m-%Y') AS fecha_reg, c.nombre_cat 
     FROM productos p 
     JOIN usuarios u 
     ON u.id = p.creado_por
     JOIN categorias c 
     ON p.categoria = c.id 
-    JOIN stock_minimo_producto smp ON smp.id_cl = p.id_cl
+    JOIN stock_minimo_producto smp 
+    ON smp.id_cl = p.id_cl
+    JOIN proveedores prov 
+    ON prov.id = p.proveedor
     WHERE p.id_cl = '$id_cl'";
     $resultado = $conexion->query($consulta);
     if ($resultado->num_rows > 0){
@@ -57,9 +60,12 @@ if(isset($_SESSION['user'])){
           'id' => $row['id_prod'],
           'codigo_barra' => ($row['codigo_barra']),
           'nombre_prod' => $row['nombre_prod'],
+          'nombre_proveedor' => $row['nombre_proveedor'],
           'nombre_cat' => $row['nombre_cat'],
           'cantidad' => $estado_stock,
           'valor_neto' => "$".$row['valor_neto'],
+          'margen_ganancia' => $row['margen_ganancia']."%",
+          'monto_ganancia' => "$".$row['monto_ganancia'],
           'valor_venta' => "$".$row['valor_venta'],
           'estado' => $estado,
           'creado_por' => $row['creado_por'],

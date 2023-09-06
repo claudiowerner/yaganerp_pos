@@ -21,21 +21,24 @@
     $id_cl = $_SESSION['user']["id_cl"];
     $piso = 1;
 
-    $id = $_GET['id'];
-    $nom = $_GET['nomProd'];
-    $cat = $_GET['cat'];
+    $id = $_POST['id'];
+    $nom = $_POST['nomProd'];
+    $cat = $_POST['cat'];
     $can = 0;
-	if($_GET['can']!=0||$_GET['can']!=null||$_GET['can']!="")
+	if($_POST['can']!=0||$_POST['can']!=null||$_POST['can']!="")
 	{
-		$can = $_GET['can'];
+		$can = $_POST['can'];
 	}
-    $vn = $_GET['vn'];
-    $vv = $_GET['vv'];
-    $estado = $_GET['estado'];
-    $codigo_barra = $_GET['codigo_barra'];
-    $hora = $_GET['hora'];
-	$medida = $_GET["medida"];
-	$pesaje = $_GET["pesaje"];
+    $vn = $_POST['vn'];
+    $vv = $_POST['vv'];
+    $estado = $_POST['estado'];
+    $codigo_barra = $_POST['codigo_barra'];
+    $hora = $_POST['hora'];
+	$medida = $_POST["medida"];
+	$pesaje = $_POST["pesaje"];
+	$monGan = $_POST["monGan"];
+	$marGan = $_POST["marGan"];
+	$proveedor = $_POST["proveedor"];
 
     //obtener fecha
 	$hoy = getdate();
@@ -52,7 +55,10 @@
 		valor_neto = '$vn', 
 		valor_venta = '$vv',
 		pesaje = '$pesaje',
-		estado = '$estado'
+		estado = '$estado',
+		margen_ganancia = '$marGan',
+		monto_ganancia = '$monGan',
+		proveedor = '$proveedor'
 		WHERE id_prod = '$id';
 		";
 	}
@@ -68,7 +74,10 @@
 		valor_venta = '$vv',
 		pesaje = '$pesaje',
 		unidad_medida = '$medida',
-		estado = '$estado'
+		estado = '$estado',
+		margen_ganancia = '$marGan',
+		monto_ganancia = '$monGan',
+		proveedor = '$proveedor'
 		WHERE id_prod = '$id';
 		";
 	}
