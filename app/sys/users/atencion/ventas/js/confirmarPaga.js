@@ -1,5 +1,6 @@
 function confirmarPaga(ticket, id, formaPago)
 {
+  debugger;
   let nCaja = $("#nCaja").text();
   let totalVenta = $("#totalVenta").text();
   let fecha = getFechaBD();

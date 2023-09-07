@@ -17,7 +17,6 @@
 	$fecha = $_POST['fecha'];
 	$hora = $_POST['hora'];
 	$forma_pago = $_POST['forma_pago'];
-	$idCaja = $_POST['idCaja'];
 	$id_venta = $_POST['id_venta'];
 	$valorTotal = $_POST["totalVenta"];
 	$nCaja = $_POST["nCaja"];
@@ -81,7 +80,7 @@
 	$sql = 
 	"UPDATE ventas 
 	SET estado = 'C', 
-	id_caja = $idCaja,
+	id_caja = $nCaja,
 	nom_caja = '$nomCaja',
 	fecha_pago='$fecha $hora',
 	forma_pago = '$forma_pago'

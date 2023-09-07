@@ -1,6 +1,5 @@
 function aplicarDescto()
 {
-    debugger;
     let id_venta = parseInt($("#id_venta").text());
     let txtDescto = parseInt($("#txtPorcDescuento").val());
 

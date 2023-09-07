@@ -33,9 +33,13 @@ if(isset($_SESSION['user'])){
         {
           $estado = "ACTIVO";
         }
-        else
+        if($estado=="N")
         {
           $estado = "INACTIVO";
+        }
+        if($estado=="A")
+        {
+          $estado = "OCUPADO";
         }
         $json[] =array(
           'id' => $row['id'],

@@ -34,19 +34,19 @@
                         </h3>
                     </li>
                     <li>
-                        <a class="tooltip-tip" href="../cuentas">
+                        <a class="tooltip-tip" href="../../../../cuentas">
                         <i class=" fontello-mail-1"></i>
                             Clientes
                         </a>
                     </li>
                     <li>
-                        <a class="tooltip-tip" href="../proveedores">
+                        <a class="tooltip-tip" href="../../../../proveedores">
                         <i class=" fontello-mail-1"></i>
                             Proveedores
                         </a>
                     </li>
                     <li>
-                        <a class="tooltip-tip" href="../pedidos">
+                        <a class="tooltip-tip" href="../../../../pedidos">
                         <i class=" fontello-mail-1"></i>
                             Pedidos
                         </a>

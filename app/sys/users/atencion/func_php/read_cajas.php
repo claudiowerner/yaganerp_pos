@@ -19,7 +19,7 @@ if(isset($_SESSION['user'])){
     //query
     $consulta = 
     "SELECT * FROM cajas 
-    WHERE id_cl = $id_cl AND estado = 'S'";
+    WHERE id_cl = $id_cl AND estado != 'N'";
   $resultado = $conexion->query($consulta);
   if ($resultado->num_rows > 0){
   $json = array();

@@ -181,6 +181,7 @@ $("#btnConfirmarPaga").on('click', function(e)
       let id = $("#id_venta").text();
       let formaPago = $("#metodoPagoGral").val();
       confirmarPaga("ticket.php",id, formaPago);
+      cargarVentasCaja();
     } 
     else 
     {

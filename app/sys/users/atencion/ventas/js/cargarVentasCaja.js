@@ -1,8 +1,8 @@
 //carga las ventas asociadas a una mesa y listarlas en el index
 function cargarVentasCaja()
 {
-  let nCaja = $("#nCaja").text();
-  let id_venta = $("#id_venta").text();
+  let nCaja = parseInt($("#nCaja").text());
+  let id_venta = parseInt($("#id_venta").text());
   let template_1 = '';
   let estado = '';
   $.ajax(
