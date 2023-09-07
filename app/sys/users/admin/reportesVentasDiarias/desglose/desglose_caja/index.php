@@ -46,7 +46,7 @@
 
 <body role="document">
 
-    <?php require "../../../menu/sesion_sub_item.php";?>
+    <?php require "../../../menu/sesion_sub_sub_item.php";?>
     <!-- END OF TOPNAV -->
     <!-- Comtainer -->
     <div class="container-fluid paper-wrap bevel tlbr">
@@ -54,8 +54,8 @@
         <!-- SIDE MENU -->
         <div class="wrap-sidebar-content">
             <?php 
-                require "../../../menu/menu_sub_item.php";
-                require "../../../menu/top_menu_sub_item.php";
+                require "../../../menu/menu_sub_sub_item.php";
+                require "../../../menu/top_menu_sub_sub_item.php";
             ?>
             <!-- CONTENT -->
             <div class="wrap-fluid" id="paper-bg">

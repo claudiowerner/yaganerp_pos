@@ -1,5 +1,4 @@
 <?php
-
   echo '<div id="skin-select">
   <span id="opcion">1</span>
   <a id="toggle">
@@ -36,19 +35,19 @@
                         </h3>
                     </li>
                     <li>
-                        <a class="tooltip-tip" href="../clientes">
+                        <a class="tooltip-tip" href="../../../clientes">
                         <i class=" fontello-mail-1"></i>
                             Clientes
                         </a>
                     </li>
                     <li>
-                        <a class="tooltip-tip" href="../proveedores">
+                        <a class="tooltip-tip" href="../../../proveedores">
                         <i class=" fontello-mail-1"></i>
                             Proveedores
                         </a>
                     </li>
                     <li>
-                        <a class="tooltip-tip" href="../pedidos">
+                        <a class="tooltip-tip" href="../../../pedidos">
                         <i class=" fontello-mail-1"></i>
                             Pedidos
                         </a>

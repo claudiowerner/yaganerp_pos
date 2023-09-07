@@ -25,7 +25,7 @@
                     <li>
                         <a class="tooltip-tip" href="../cajas">
                             <i class=" fontello-mail-1"></i>
-                            <span>Mesas</span>
+                            <span>Cajas</span>
                         </a>
                     </li>
 
@@ -35,9 +35,9 @@
                         </h3>
                     </li>
                     <li>
-                        <a class="tooltip-tip" href="../cuentas">
+                        <a class="tooltip-tip" href="../clientes">
                         <i class=" fontello-mail-1"></i>
-                            Cuentas
+                            Clientes
                         </a>
                     </li>
                     <li>

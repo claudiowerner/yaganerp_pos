@@ -29,7 +29,7 @@
     <meta content="" name="author">
     <link href="ico/favicon.ico" rel="shortcut icon">
 
-    <title>YaganERP Atención</title>
+    <title>WebPOS Atención</title>
 
     <?php require "cdn_css/css/css_index.php";?>
 

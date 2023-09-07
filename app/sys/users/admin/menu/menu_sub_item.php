@@ -28,7 +28,29 @@
                           <span>Mesas</span>
                       </a>
                   </li>
-                  
+                  <li class="devider-title">
+                        <h3>
+                            <i class="fontello-settings"></i><span>Cuentas y proveedores</span>
+                        </h3>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip" href="../../clientes">
+                        <i class=" fontello-mail-1"></i>
+                            Clientes
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip" href="../../proveedores">
+                        <i class=" fontello-mail-1"></i>
+                            Proveedores
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip" href="../../pedidos">
+                        <i class=" fontello-mail-1"></i>
+                            Pedidos
+                        </a>
+                    </li>
                   <li class="devider-title">
                       <h3>
                         <i class="fontello-settings"></i><span>Inventario</span>
@@ -71,12 +93,6 @@
                           <i class=" fontello-mail-1"></i>
                           <span>Cajas con más ventas</span>
                       </a>
-                  </li>
-                  <li>
-                    <a class="tooltip-tip" href="../../pisos">
-                      <i class=" fontello-mail-1"></i>
-                        
-                    </a>
                   </li>
                   <li class="devider-title">
                       <h3>

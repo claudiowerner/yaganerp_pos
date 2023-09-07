@@ -72,7 +72,6 @@ function cargarDatos(rut, fechaInicio, fechaFin)
               <td>${estado}</td>
               <td>${j.fecha}</td>
               <td>$${j.valor}</td>
-              <td>${btnPagar}</td>
             <tr>`;
           }
         })

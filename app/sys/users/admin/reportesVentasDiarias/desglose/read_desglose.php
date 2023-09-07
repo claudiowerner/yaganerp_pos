@@ -21,45 +21,103 @@
 
   require_once '../../../../conexion.php';
 
+
+  
+  $arrayCaja = array();
+  $arrayNombre = array();
+  $arrayVentasCaja = array();
+  $arrayValorGenerado = array();
+  $arrayEstado = array();
+
 	//query
 
-  $sql = 
-  "SELECT id 
-  FROM cajas 
-  WHERE id_cl = $id_cl";
+  $sql =
+  "SELECT id FROM cajas WHERE id_cl = '$id_cl'";
 
-  $query = mysqli_query($conexion, $sql);
-
-  $id_caja = array();
-  while($row = $query->fetch_array())
+  $res = $conexion->query($sql);
+  while($row = $res->fetch_assoc())
   {
-    $id_caja[] = $row["id"];
+    $arrayCaja[] = $row["id"];
   }
 
-  $contador = count($id_caja);
+  $cont = count($arrayCaja);
 
-  $array_desglose = array();
-  for($i=0;$i<$contador;$i++)
+
+  for($i=0;$i<$cont;$i++)
   {
-    $id = $id_caja[$i];
-    $sql = "SELECT c.id, c.nom_caja, c.estado, SUM(corr.valor) AS valor
-    FROM cajas c 
-    JOIN correlativo corr
-    WHERE c.id_cl = $id_cl
-    AND corr.caja = $id
-    AND corr.id_cierre = $idCierre
-    AND c.id = $id
-    GROUP BY c.id";
-    $res = mysqli_query($conexion, $sql);
-    while($row = $res->fetch_array())
+    $id = $arrayCaja[$i];
+    $sql =
+    "SELECT nom_caja FROM cajas WHERE id = '$id' AND id_cl = '$id_cl'";
+    $res = $conexion->query($sql);
+    while($row = $res->fetch_assoc())
     {
-      $array_desglose[] = array(
-        "id" => $row["id"],
-        "nom_caja" => $row["nom_caja"],
-        "estado" => $row["estado"],
-        "valor" => $row["valor"],
-      );
+      $arrayNombre[] = $row["nom_caja"];
     }
   }
-  echo json_encode($array_desglose, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+  
+  for($i=0;$i<$cont;$i++)
+  {
+    $id = $arrayCaja[$i];
+    $sql =
+    "SELECT COUNT(caja) AS ventas_caja, estado FROM correlativo WHERE caja = $id AND id_cl = '$id_cl'";
+    $res = $conexion->query($sql);
+    while($row = $res->fetch_assoc())
+    {
+      if($row["ventas_caja"]!=""||$row["estado"]!=null)
+      {
+        $arrayVentasCaja[] = $row["ventas_caja"];
+      }
+      else
+      {
+        $arrayVentasCaja[] = 0;
+      }
+      if($row["estado"]!=null)
+      {
+        if($row["estado"]=="C")
+        {
+          $arrayEstado[] = "CERRADO";
+        }
+        else 
+        {
+          $arrayEstado[] = "ABIERTO";
+        }
+      }
+      else
+      {
+        $arrayEstado[] = "SIN VENTAS";
+      }
+    }
+  }
+
+  for($i=0;$i<$cont;$i++)
+  {
+    $id = $arrayCaja[$i];
+    $sql =
+    "SELECT SUM(valor) AS valor FROM ventas WHERE id_caja = $id AND id_cl = $id_cl";
+    $res = $conexion->query($sql);
+    while($row = $res->fetch_assoc())
+    {
+      if($row["valor"]!="")
+      {
+        $arrayValorGenerado[] = round($row["valor"],0);
+      }
+      else
+      {
+        $arrayValorGenerado[] = 0;
+      }
+    }
+  }
+
+  $json = array();
+
+  for($i=0;$i<$cont;$i++)
+  {
+    $json[] = array(
+      "id" => $arrayCaja[$i],
+      "nom_caja" => $arrayNombre[$i],
+      "valor" => $arrayValorGenerado[$i],
+      "estado" => $arrayEstado[$i],
+    );
+  }
+  echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 ?>

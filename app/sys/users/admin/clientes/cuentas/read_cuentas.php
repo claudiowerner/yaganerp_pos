@@ -19,10 +19,10 @@ if(isset($_SESSION['user'])){
 
     $consulta = 
       "SELECT corr.correlativo, ccr.estado, 
-      DATE_FORMAT(ccr.fecha, '%d-%m-%Y') AS fecha, SUM(v.valor) AS valor
+      DATE_FORMAT(ccr.fecha_registro, '%d-%m-%Y') AS fecha, SUM(v.valor) AS valor
       FROM cuenta_corriente ccr 
       JOIN correlativo corr 
-      ON corr.correlativo = ccr.correlativo
+      ON corr.correlativo = ccr.id_venta
       JOIN ventas v 
       ON v.id_venta = corr.correlativo
       WHERE ccr.id_cl = $id_cl

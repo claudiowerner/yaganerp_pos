@@ -33,7 +33,7 @@
     <meta content="" name="author">
     <link href="ico/favicon.ico" rel="shortcut icon">
 
-    <title>YaganERP Venta CAJA <?php echo $_GET['nomCaja']?></title>
+    <title>WebPOS Venta CAJA <?php echo $_GET['nomCaja']?></title>
 
     <?php require "../cdn_css/css/css_item.php";?>
     
