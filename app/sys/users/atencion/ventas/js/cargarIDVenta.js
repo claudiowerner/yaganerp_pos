@@ -9,7 +9,6 @@ function cargarIDVentaCaja()
             type: "POST",
             success: function(e)
             {
-                alert(e)
                 $("#id_venta").html(e);
                 cargarVentasCaja();
             }

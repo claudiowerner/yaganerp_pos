@@ -133,7 +133,6 @@ function modificarCant(id, cant, idProd)
       type: "GET",
       success: function(r)
       {
-        alert(r)
         cargarVentasCaja();
       }
     })

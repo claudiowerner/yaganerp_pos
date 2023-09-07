@@ -35,7 +35,7 @@ function registrarCuenta(rut)
 
                     msjes_swal("Excelente", e, "success");
                     //imprimir ticket
-                    imprimirBoleta("ticket_fiado.php", correlativo);
+                    //imprimirBoleta("ticket_fiado.php", correlativo);
                 }
             })
             .fail(function(e)

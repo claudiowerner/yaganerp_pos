@@ -31,12 +31,10 @@
 		$arrayIdVenta[] = $row["id"];
 	}
 
-	print_r($arrayIdVenta);
-
 	$sql = 
 	"SELECT * FROM cuenta_corriente 
 	WHERE id_cl = $id_cl
-	AND correlativo = '$corr'";
+	AND id_venta = '$corr'";
 
 	$res = $conexion->query($sql);
 	if($res->num_rows>0)
@@ -50,7 +48,7 @@
 		"SELECT * FROM cuenta_corriente
 		WHERE id_cl = $id_cl
 		AND rut = '$rut'
-		AND correlativo = '$corr'";
+		AND id_venta = '$corr'";
 		$res = $conexion->query($sql);
 		
 		if($res->num_rows>0)
@@ -63,7 +61,7 @@
 			for($i=0; $i<count($arrayIdVenta);$i++)
 			{
 				$venta = $arrayIdVenta[$i];
-				echo $sql = 
+				$sql = 
 				"UPDATE ventas 
 				SET estado = 'P'
 				WHERE id = $venta 

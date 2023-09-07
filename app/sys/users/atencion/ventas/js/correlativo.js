@@ -9,7 +9,6 @@ function correlativo()
             type: "GET",
             success: function(e)
             {
-                alert("Correlativo.js "+e)
                 if(e==1)
                 {
                     cargarIDVentaCaja();

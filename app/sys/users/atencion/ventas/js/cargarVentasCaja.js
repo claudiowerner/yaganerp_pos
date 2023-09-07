@@ -9,13 +9,14 @@ function cargarVentasCaja()
     {
       url:"func_php/read_ventas.php?nCaja="+nCaja+"&idVenta="+id_venta,
       type: "GET",
+      async: false,
       success: function(response)
       {
         let tasks = JSON.parse(response);
         let contador = 0;
         tasks.forEach(v=>{
           contador++;
-          descProd.push({"nom_prod": v.nombre_prod, "cant":v.cantidad});
+          descProd.push({"id_venta":v.id,"nom_prod": v.nombre_prod, "cant":v.cantidad,"valor":v.valor});
           let aumentar;
           let imprimir;
           let eliminar;
@@ -109,6 +110,31 @@ function cargarVentasCaja()
       console.log( 'Error productos!!'+e);
     }).done( function() {
       console.log( 'done productos' );
+    })
+    id_venta = $("#id_venta").text();
+    nCaja = $("#nCaja").text();
+    $.ajax(
+        {
+            url:"func_php/cargarDescto.php",
+            data: {"id_venta": id_venta},
+            type: "POST",
+            success: function(e)
+            {
+                cargarVentasCaja();
+                $("#descuento").html(parseInt(e));
+                let totalVenta = parseInt($("#totalVenta").text());
+                let descto = parseFloat($("#descuento").text()/100);
+                let desctoHecho = Math.round(totalVenta*descto);
+                let valorPostDescto = totalVenta-desctoHecho;
+                $("#totalDescuento").html(desctoHecho);
+                $("#totalVenta").html(valorPostDescto);
+
+            }
+        }
+    )
+    .fail(function(e)
+    {
+        msjes_swal("Error al cargar ID de la venta: ",e,"error");
     })
 }
 

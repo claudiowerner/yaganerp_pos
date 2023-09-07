@@ -11,6 +11,7 @@ let idUbic = "";
 let idProd = "";
 let cantProd = "";
 let obs = "";
+let descto = 0;
 
 //variable que almacena el nombre del producto y la cantidad
 var descProd = new Array();
@@ -112,7 +113,36 @@ $("#btnEliminarVenta").on('click', function(e)
 $("#pagarVenta").on("click", function(e)
 {
   $("#modalMetodoPago").modal("show");
+});
+
+
+//aplicar descuento
+$("#btnAplicarDescto").on("click", function(e)
+{
+  $("#modalDescuento").modal("show");
+});
+
+$("#btnConfirmarDescto").on("click", function(e)
+{
+  swal({
+    title: "¿Está seguro?",
+    text: "¿Desea aplicar descuento?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((pagar) => {
+    if (pagar)
+    {
+      aplicarDescto();
+    } 
+    else 
+    {
+      swal("Sin descuentos aplicados");
+    }
+  });
 })
+
 
 $("#btnAñadirCuenta").on("click", function(e)
 {
@@ -156,7 +186,7 @@ $("#btnConfirmarPaga").on('click', function(e)
       swal("Operación cancelada");
     }
   });
-});
+});  
 
 
 $("#btnCrearVenta").on("click", function(e)

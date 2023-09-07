@@ -38,6 +38,4 @@ async function accionEliminarVenta(boton)
         }
     )
 
-
-
 }

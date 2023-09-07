@@ -14,18 +14,15 @@
     require_once '../../../../conexion.php';
 
     //query
-
-
-
     $consulta = 
-    "SELECT ccr.correlativo, DATE_FORMAT(ccr.fecha, '%d-%m-%Y') AS fecha, corr.valor
+    "SELECT ccr.id_venta AS correlativo, DATE_FORMAT(ccr.fecha_registro, '%d-%m-%Y') AS fecha, corr.valor
     FROM cuenta_corriente ccr
     JOIN correlativo corr 
-    ON corr.id = ccr.correlativo
+    ON corr.id = ccr.id_venta
     WHERE rut = '$rut'
     AND ccr.estado = 'A'
     AND ccr.id_cl = $id_cl
-    GROUP BY ccr.correlativo" ;
+    GROUP BY ccr.id_venta" ;
     $resultado = $conexion->query($consulta);
     $json = array();
     if ($resultado->num_rows > 0){

@@ -67,6 +67,7 @@
                         echo modalPagarCuenta();
                         echo modalSeleccionarCuenta();
                         echo modalMetodoPagoPagarCuenta();
+                        echo modalDescuento();
                     ?>
                 </div>
                 <!-- CONTENT -->
@@ -200,6 +201,14 @@
                                                     </tr>
                                                     <tr>
                                                         <td colspan="9" align="right">
+                                                            <strong>DESCTO (<strong id='descuento'>...</strong>%)</strong>
+                                                        </td>
+                                                        <td>
+                                                            <p><strong>$</strong><strong id="totalDescuento">ESPERANDO...</strong></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="9" align="right">
                                                             <strong>TOTAL</strong>
                                                         </td>
                                                         <td>
@@ -213,7 +222,10 @@
                                                         <td><button id="btnAñadirCuenta" class="btn btn-success" id="btnPagar" disabled="true" style="width: 100%">Añadir a la cuenta</button></td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan=2><button id="pagarVenta" class="btn btn-success" id="btnPagar" disabled="true" style="width: 100%">Pagar</button></td>
+                                                        <td colspan=2><button id="btnAplicarDescto" class="btn btn-success" style="width: 100%">Aplicar descuento</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td colspan=2><button id="pagarVenta" class="btn btn-success" disabled="true" style="width: 100%">Pagar</button></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -271,6 +283,8 @@
     <script src="js/agregarACuentaCliente.js"></script>
     <script src="js/pagarCuenta.js"></script>
     <script src="js/confirmarPaga.js"></script>
+    <script src="js/cargarDescuento.js"></script>
+    <script src="js/aplicarDescto.js"></script>
     
     
 </body>

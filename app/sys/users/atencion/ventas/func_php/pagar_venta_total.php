@@ -23,6 +23,7 @@
 	$nCaja = $_POST["nCaja"];
 	$nomCaja = $_POST["nomCaja"];
 	$idCierre = $_POST["idCierre"];
+	$descto = $_POST["descto"];
 
 	
 	$sql = 
@@ -95,6 +96,15 @@
 	//realizar descuentos en tabla productos
 	for($i = 0;$i<count($producto); $i++)
 	{
+		$id = $producto[$i]["valor"];
+		$valor = $producto[$i]["valor"];
+		$valorDescto = $valor*$descto;
+		$valorTotal = $valor - $valorDescto;
+
+		$sql = 
+		"UPDATE ventas SET valor = '$valorTotal' WHERE id = '$id' AND id_cl = '$id_cl'";
+		$res = $conexion->query($sql);
+
 		//acrónimo cp= Cantidad Pedido
 		$np = $producto[$i]['nom_prod'];
 		$cp_pedido = $producto[$i]['cant'];

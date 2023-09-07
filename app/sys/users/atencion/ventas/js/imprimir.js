@@ -1,6 +1,5 @@
 function imprimirBoleta(script_php, idVenta)
 {
-    alert(idVenta)
     nCaja = $("#nCaja").text();
     fecha = getFechaBD();
     hora = getHora();

@@ -87,6 +87,7 @@ function selecCliente(rut)
 {
     $("#modalPagarCuenta").modal("hide");
     $("#modalSeleccionarCuenta").modal("show");
+    $("#spanRut").html(rut);
     cargarCuentasCliente(rut);
 }
 
