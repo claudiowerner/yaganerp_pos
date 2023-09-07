@@ -254,6 +254,8 @@
     <script type="text/javascript" src="../../../js/select2.js"></script>
 
     <!--llamada a ventas-->
+    <script src="js/cargarDescuento.js"></script>
+    <script src="js/aplicarDescto.js"></script>
     <script src="../../../js/validarRut.js"></script>
     <script src="js/anularVenta.js"></script>
     <script src="js/correlativo.js"></script>
@@ -283,8 +285,6 @@
     <script src="js/agregarACuentaCliente.js"></script>
     <script src="js/pagarCuenta.js"></script>
     <script src="js/confirmarPaga.js"></script>
-    <script src="js/cargarDescuento.js"></script>
-    <script src="js/aplicarDescto.js"></script>
     
     
 </body>

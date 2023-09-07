@@ -96,7 +96,7 @@
 	//realizar descuentos en tabla productos
 	for($i = 0;$i<count($producto); $i++)
 	{
-		$id = $producto[$i]["valor"];
+		$id = $producto[$i]["id_venta"];
 		$valor = $producto[$i]["valor"];
 		$valorDescto = $valor*$descto;
 		$valorTotal = $valor - $valorDescto;

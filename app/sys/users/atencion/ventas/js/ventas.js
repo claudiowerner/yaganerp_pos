@@ -135,6 +135,7 @@ $("#btnConfirmarDescto").on("click", function(e)
     if (pagar)
     {
       aplicarDescto();
+      cargarDescto();
     } 
     else 
     {

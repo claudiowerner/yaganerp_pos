@@ -12,7 +12,7 @@
     $descto = $_POST['descto'];
 
 	$sql = 
-	"UPDATE ventas SET descto = '$descto' WHERE id_cl = $id_cl";
+	"UPDATE ventas SET descto = '$descto' WHERE id_cl = $id_cl AND id_venta = '$idVenta'";
 	$res = $conexion->query($sql);
 	
 	if($res)

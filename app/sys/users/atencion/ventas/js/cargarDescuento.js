@@ -10,9 +10,10 @@ function cargarDescto()
             type: "POST",
             success: function(e)
             {
-                cargarVentasCaja();
                 $("#descuento").html(parseInt(e));
-                let totalVenta = parseInt($("#totalVenta").text());
+                let subtotal = parseInt($("#subtotal").text());
+                let iva = parseInt($("#iva").text());
+                let totalVenta = parseInt(subtotal) + parseInt(iva);
                 let descto = parseFloat($("#descuento").text()/100);
                 let desctoHecho = Math.round(totalVenta*descto);
                 let valorPostDescto = totalVenta-desctoHecho;

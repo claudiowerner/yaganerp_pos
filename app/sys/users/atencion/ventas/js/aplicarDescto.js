@@ -1,7 +1,8 @@
 function aplicarDescto()
 {
-    let id_venta = $("#id_venta").text();
-    let txtDescto = $("#txtPorcDescuento").val();
+    debugger;
+    let id_venta = parseInt($("#id_venta").text());
+    let txtDescto = parseInt($("#txtPorcDescuento").val());
 
     let datos = 
     {
@@ -17,8 +18,6 @@ function aplicarDescto()
             success: function(e)
             {
                 msjes_swal("Excelente", e, "success")
-
-                cargarVentasCaja();
             }
         }
     )
