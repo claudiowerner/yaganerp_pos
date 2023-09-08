@@ -54,7 +54,7 @@
 
   //modal config de info de las cuentas
 
-  echo '<div class="modal fade" id="modalConfCuenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  echo '<div class="modal fade" id="modalConfCuenta" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -76,6 +76,13 @@
               <td align=right><label for="">Razón social</label></td>
               <td align=left>
                   <input type="text" name="txtRazonSocial" id="txtRazonSocial" class="form-control" placeholder="Cargando...">
+                  <strong id="errorRazonSocial" style="color:red"></strong>
+              </td>
+          </tr>
+          <tr>
+              <td align=right><label for="">Giro</label></td>
+              <td align=left>
+                  <select id="slctGiros" class="form form-control">sss</select>
                   <strong id="errorRazonSocial" style="color:red"></strong>
               </td>
           </tr>

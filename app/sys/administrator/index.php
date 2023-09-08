@@ -149,6 +149,7 @@
     <script src="../js/validarRut.js"></script>
     <script src="js/cargarArchivos.js"></script>
     <script src="js/cargar_archivos_comprobantes.js"></script>
+    <script src="js/cargarGiros.js"></script>
     
 
 </html>

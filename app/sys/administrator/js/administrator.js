@@ -132,6 +132,7 @@ $("#producto").on("click", "tr", function(e)
           $("#razonSocialEditar").val(datos.razon_social);
           $("#fechaDesdeEditar").val(datos.fecha_desde);
           $("#fechaHastaEditar").val(datos.fecha_hasta);
+          $("#slctGirosEditar").val(datos.giro);
           if(datos.estado_pago=='S')
           {
             $("#swEstadoPago").prop("checked",true);
@@ -171,9 +172,10 @@ $("#btnGuardar").on("click", function(e)
   let fechaHasta = $("#fechaDesde").val();
   let nomFantasia = $("#nomFantasia").val();
   let razonSocial = $("#razonSocial").val();
-  let tipoPago = $("#tipoPago").val()
+  let tipoPago = $("#tipoPago").val();
+  let giro = $("#slctGiros").val();
 
-   if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||fechaDesde==""||fechaHasta==""||nomFantasia==""||razonSocial=="")
+  if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||fechaDesde==""||fechaHasta==""||nomFantasia==""||razonSocial=="")
   {
     msjes_swal("Aviso", "Debe rellenar todos los campos", "warning");
   }
@@ -191,6 +193,7 @@ $("#btnGuardar").on("click", function(e)
       "fechaDesde":fechaDesde,
       "nomFantasia":nomFantasia,
       "razonSocial":razonSocial,
+      "giro":giro,
       "tipoPago":tipoPago
     }
     $.ajax({
@@ -255,6 +258,7 @@ $("#btnModificar").on("click", function(e)
   let fechaDesde = $("#fechaDesdeEditar").val();
   let fechaHasta = $("#fechaHastaEditar").val();
   let metodo_pago = $("#tipoPagoEditar").val();
+  let giro = $("#slctGirosEditar").val();
   if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||fechaDesde==""||fechaHasta==""||nomFantasia==""||razonSocial=="")
   {
     msjes_swal("Aviso", "Debe rellenar todos los campos", "warning");
@@ -275,7 +279,8 @@ $("#btnModificar").on("click", function(e)
       "fechaDesde":fechaDesde,
       "fechaHasta":fechaHasta,
       "metodo_pago":metodo_pago,
-      "estado_pago":estado_pago
+      "estado_pago":estado_pago,
+      "giro":giro
     }
     e.preventDefault();
     $.ajax({

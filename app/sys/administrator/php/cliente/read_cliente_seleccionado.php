@@ -10,7 +10,7 @@ session_start();
     $consulta =
     "SELECT c.id, c.nombre, c.rut, c.estado, c.nom_fantasia, 
     c.razon_social, c.direccion, c.correo, c.telefono, 
-    c.plan_comprado, pg.fecha_desde, pg.fecha_hasta, pg.estado AS estado_pago
+    c.plan_comprado, pg.fecha_desde, pg.fecha_hasta, pg.estado AS estado_pago, c.giro
     FROM cliente c
     JOIN pago_cliente pg 
     ON c.id = pg.id_cl
@@ -42,7 +42,8 @@ session_start();
           'direccion' => $row['direccion'],
           'fecha_desde' => $row['fecha_desde'],
           'fecha_hasta' => $row['fecha_hasta'],
-          'estado_pago' => $row['estado_pago']
+          'estado_pago' => $row['estado_pago'],
+          'giro' => $row['giro']
         );
       };
       echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);

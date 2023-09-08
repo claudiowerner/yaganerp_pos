@@ -8,6 +8,7 @@ $("#btnGuardarCambiosCuenta").on("click", function(e)
     let direccion = $("#txtDireccion").val();
     let correo = $("#txtCorreo").val();
     let telefono = $("#txtTelefono").val();
+    let giro = $("#slctGiros").val();
 
     if(nomFantasia=="")
     {
@@ -66,7 +67,8 @@ $("#btnGuardarCambiosCuenta").on("click", function(e)
                 "razon_social":razonSocial,
                 "direccion":direccion,
                 "correo": correo,
-                "telefono": telefono
+                "telefono": telefono,
+                "giro": giro
             };
             $.ajax(
                 {
@@ -131,6 +133,7 @@ function cargarDatosComanda()
                             $("#txtDireccion").val(c.direccion);
                             $("#txtCorreo").val(c.correo);
                             $("#txtTelefono").val(c.telefono);
+                            $("#slctGiros").val(c.giro);
                         })
                 }
                 /**/

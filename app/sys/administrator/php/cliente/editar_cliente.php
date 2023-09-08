@@ -23,6 +23,7 @@
 	$fechaDesde = $_POST["fechaDesde"];
 	$fechaHasta = $_POST["fechaHasta"];
 	$estado_pago = $_POST["estado_pago"];
+	$giro = $_POST["giro"];
 	
 	$sql = 
 	"UPDATE cliente c
@@ -35,7 +36,8 @@
 	c.correo = '$correo', 
 	c.telefono = '$telefono', 
 	c.plan_comprado = '$plan_comprado',  
-	c.estado = '$estado',
+	c.estado = '$estado',  
+	c.giro = '$giro',
 
 	pg.plan = '$plan_comprado',
 	pg.metodo_pago = '$metodo_pago',

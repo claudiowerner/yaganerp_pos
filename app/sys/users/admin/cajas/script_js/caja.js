@@ -71,13 +71,14 @@ $(document).on("ready", function(e)
           }
         });
 
+
+
   $("#producto").on("click", "tr", function(e)
   {
     e.preventDefault();
     var cat = $("#producto").DataTable();
     var datos = cat.row(this).data();
     var estado = "";
-    $("#modalEditar").modal('show'); 
     $("#idPiso").html(datos.id);
     $("#nomPisoEditar").val(datos.nombre);
     
@@ -85,11 +86,17 @@ $(document).on("ready", function(e)
     {
       $("#swEditarPiso").prop("checked", true);
       ep = "S";
+      $("#modalEditar").modal('show'); 
     }
-    else
+    if(datos.estado == "INACTIVO")
     {
       $("#swEditarPiso").prop("checked", false);
       ep = "N";
+      $("#modalEditar").modal('show'); 
+    }
+    if(datos.estado == "OCUPADO")
+    {
+      msjes_swal("Aviso", "Caja en proceso de ventas. No se puede editar.", "warning")
     }
   });
 

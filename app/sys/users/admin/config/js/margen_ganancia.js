@@ -16,7 +16,7 @@ $("#btnGuardarCambiosMargen").on("click", function(e)
             type: "POST",
             success: function(e)
             {
-                alert(e)
+                msjes_swal("Excelente", e, "success");
             }
         }
     )

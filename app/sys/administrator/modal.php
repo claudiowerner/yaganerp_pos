@@ -68,14 +68,23 @@
                       <label name='nombrePiso'>Nombre de fantasía</label>
                     </td>
                     <td>
-                      <input type='text' name='nomFantasia' id='nomFantasia' class='form-control' required>
+                      <input type='text' name='nomFantasia' id='nomFantasia' class='form-control' align='center' style='width: 50%' required>
                     </td>
                   </tr>
-                  <td>
+                  <tr>
+                    <td>
                       <label name='nombrePiso'>Razón social</label>
                     </td>
                     <td>
-                      <input type='text' name='razonSocial' id='razonSocial' class='form-control' required>
+                      <input type='text' name='razonSocial' id='razonSocial' class='form-control' align='center' style='width: 50%' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Giro</label>
+                    </td>
+                    <td>
+                      <select name='slctGiros' id='slctGiros' class='form-control select2'></select>
                     </td>
                   </tr>
                 </table>
@@ -208,6 +217,14 @@
                     </td>
                     <td>
                       <input type='text' name='razonSocialEditar' id='razonSocialEditar' class='form-control' required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label name='nombrePiso'>Giro</label>
+                    </td>
+                    <td>
+                      <select name='slctGirosEditar' id='slctGirosEditar' class='form-control select2'></select>
                     </td>
                   </tr>
                 </table>

@@ -19,9 +19,12 @@ if(isset($_SESSION['user']))
     
     //Actualización estado de mesa de ocupado a desocupado
     $sql = 
-    "UPDATE cajas
-    SET estado = 'S' 
-    WHERE id = $idCaja;";
+    "UPDATE cajas c
+    JOIN correlativo corr
+    ON c.id = corr.caja
+    SET c.estado = 'S' ,
+    corr.estado = 'C'
+    WHERE c.id = $idCaja;";
 
     $r = mysqli_query($conexion, $sql);
 

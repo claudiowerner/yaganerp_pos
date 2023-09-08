@@ -9,14 +9,16 @@
     $razon_social = $_POST["razon_social"];
     $direccion = $_POST["direccion"];
     $correo = $_POST["correo"];
-    $telefono = $_POST["telefono"];    
+    $telefono = $_POST["telefono"];   
+    $giro = $_POST["giro"];    
 
     require_once '../../../../conexion.php';
     $sql = "UPDATE cliente SET nom_fantasia = '$nom_fantasia', 
                                     razon_social = '$razon_social', 
                                     direccion = '$direccion', 
                                     correo = '$correo', 
-                                    telefono = '$telefono' 
+                                    telefono = '$telefono', 
+                                    giro = '$giro' 
                                     WHERE id = '$id_cl'";
     $resultado = mysqli_query($conexion, $sql);
 

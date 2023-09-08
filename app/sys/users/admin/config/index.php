@@ -134,6 +134,7 @@
     <script src="js/productos.js"></script>
     <script src="js/convenio.js"></script>
     <script src="js/margen_ganancia.js"></script>
+    <script src="js/cargarGiros.js"></script>
 </body>
 
 </html>

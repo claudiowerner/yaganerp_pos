@@ -20,6 +20,7 @@
 	$nomFantasia = $_POST["nomFantasia"];
 	$razonSocial = $_POST["razonSocial"];
 	$tipoPago = $_POST["tipoPago"];
+	echo"giro: ".$giro = $_POST["giro"];
 
 	$nombre_plan = "";
 
@@ -28,8 +29,8 @@
 	$row = $resultado->fetch_assoc();
 	$nombre_plan = $row["nombre"];
 
-	$sql = "INSERT INTO cliente VALUES 
-	(null,'$nombre', '$rut', 'S', '$nomFantasia', '$razonSocial', '$direccion', '$correo','$telefono', '$plan', '$fechaRegistro');";
+	echo $sql = "INSERT INTO cliente VALUES 
+	(null,'$nombre', '$rut', 'S', $giro, '$nomFantasia', '$razonSocial', '$direccion', '$correo','$telefono', '$plan', '$fechaRegistro');";
 	$r1 = mysqli_query($conexion, $sql);
 
 

@@ -2,14 +2,17 @@
 
 session_start();
 
-if(isset($_SESSION['user'])){
+if(isset($_SESSION['user']))
+{
   $tipo = $_SESSION['user']['tipo_usuario'];
- if($tipo == 3){
-   header('Location: ../');
- }
- }else{
- header('Location: ../');
- }
+  if($tipo == 3){
+    header('Location: ../');
+  }
+}
+else
+{
+  header('Location: ../');
+}
 
 
   $id_us = $_SESSION['user']['id'];
@@ -21,7 +24,7 @@ if(isset($_SESSION['user'])){
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = "SELECT nom_fantasia, razon_social, direccion, correo, telefono FROM cliente WHERE id = $id_cl ";
+	$consulta = "SELECT nom_fantasia, razon_social, giro, direccion, correo, telefono FROM cliente WHERE id = $id_cl ";
     $resultado = $conexion->query($consulta);
     if ($resultado->num_rows > 0){
     $json = array();
@@ -31,7 +34,8 @@ if(isset($_SESSION['user'])){
          'razon_social' => $row['razon_social'],
          'direccion' => $row['direccion'],
          'correo' => $row['correo'],
-         'telefono' => $row['telefono']
+         'telefono' => $row['telefono'],
+         'giro' => $row['giro']
         );
     };
   echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
