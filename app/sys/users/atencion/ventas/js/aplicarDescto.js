@@ -16,7 +16,8 @@ function aplicarDescto()
             type: "POST",
             success: function(e)
             {
-                msjes_swal("Excelente", e, "success")
+                msjes_swal("Excelente", e, "success");
+                cargarDescto();
             }
         }
     )

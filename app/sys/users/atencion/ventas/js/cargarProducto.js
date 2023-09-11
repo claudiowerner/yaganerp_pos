@@ -7,9 +7,12 @@ function cargarProducto()
       type: "POST",
       success: function(response)
       {
-        let tasks = JSON.parse(response);
-        let template = '<option value="N">---SELECCIONE---</option>';
-          tasks.forEach(p=>{
+        try
+        {
+          let tasks = JSON.parse(response);
+          let template = '<option value="N">---SELECCIONE---</option>';
+          tasks.forEach(p=>
+          {
             cantidad = parseInt(p.cantidad);
             stock = parseInt(p.stock_minimo);
 
@@ -21,14 +24,19 @@ function cargarProducto()
             {
               template+=`<option value="${p.id}">${p.codigo_barra} - ${p.nombre_prod} - ${p.nombre_cat}</option>`;
             }
+            $("#prod").html(template);
           });
-          $("#prod").html(template);
-    }
-  }).fail( function(e) {
-    console.log( 'Error productos!!'+e.responseText );
-  }).done( function() {
-    console.log( 'done productos' );
-  }).always( function() {
-    console.log( 'Always productos' );
-  });
+        }
+        catch(e)
+        {
+          $("#prod").html("<option>SIN PRODUCTOS</option>");
+        }
+      }
+    }).fail( function(e) {
+      console.log( 'Error productos!!'+e.responseText );
+    }).done( function() {
+      console.log( 'done productos' );
+    }).always( function() {
+      console.log( 'Always productos' );
+    });
 }

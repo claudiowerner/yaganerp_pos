@@ -14,8 +14,6 @@
 	
 	
 	$producto = $_POST['producto'];
-	$fecha = $_POST['fecha'];
-	$hora = $_POST['hora'];
 	$forma_pago = $_POST['forma_pago'];
 	$idCaja = $_POST['idCaja'];
 	$id_venta = $_POST['id_venta'];
@@ -24,6 +22,7 @@
 	$nomCaja = $_POST["nomCaja"];
 	$idCierre = $_POST["idCierre"];
 
+	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"];
 	
 	$sql = 
 	"SELECT sum(valor) AS valor
@@ -71,7 +70,7 @@
 	SET valor = '$valorTotal',
 	estado = 'C', 
 	boleta = '$boleta', 
-	fecha_cierre= '$fecha $hora',
+	fecha_cierre= '$fecha',
 	forma_pago = '$forma_pago'
 	WHERE id = '$id_venta'";
 	$r1 = mysqli_query($conexion, $sql);
@@ -82,7 +81,7 @@
 	SET estado = 'C', 
 	id_caja = $idCaja,
 	nom_caja = '$nomCaja',
-	fecha_pago='$fecha $hora',
+	fecha_pago='$fecha',
 	forma_pago = '$forma_pago'
 	WHERE id_cl = '$id_cl'
 	AND id_venta = '$id_venta'";

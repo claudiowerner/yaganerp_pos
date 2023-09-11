@@ -1,6 +1,5 @@
 function confirmarPaga(ticket, id, formaPago)
 {
-  debugger;
   let nCaja = $("#nCaja").text();
   let totalVenta = $("#totalVenta").text();
   let fecha = getFechaBD();
@@ -54,7 +53,7 @@ function confirmarPaga(ticket, id, formaPago)
       {
         msjes_swal("Error", "Error al obtener ID de usuario: "+e.responseText, "error");
       })
-      //imprimirBoleta(ticket, id);
+      imprimirBoleta(ticket, id);
       
       /*si el número de botón seleccionado es 2 (btnPagarVenta), se mostrará el mensaje de venta exitosa y
       se vuelve al apartado donde se muestran las mesas*/

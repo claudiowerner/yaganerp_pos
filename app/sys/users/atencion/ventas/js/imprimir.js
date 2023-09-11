@@ -1,33 +1,28 @@
 function imprimirBoleta(script_php, idVenta)
 {
+    id_venta = $("#id_venta").text();
     nCaja = $("#nCaja").text();
     fecha = getFechaBD();
     hora = getHora();
     formaPago = $("#metodoPagoGral").val();
     neto = $("#valorNeto").text();
-    folio = $("#id_venta").text();
-    fecha = getFechaBD()+" "+getHora();
-
-    datos = {
-        "idVenta": idVenta
+    fecha = getFechaBD() + getHora();
+    porcDescto = 0;
+    
+    if(isNaN(parseInt($("#descuento").text())))
+    {
+        porcDescto = 0;
     }
-      
-    $.ajax(
-        {
-            url: "https://webposerp.cl/impresion_yaganerp/vendor/"+script_php,
-            data: datos,
-            cache: false,
-            type: "POST",
-            success: function(e)
-            {
-                swal(
-                    {
-                        title: "Excelente",
-                        text: e,
-                        icon: "success"
-                    }
-                )
-            }
-        }
-    )
+    else
+    {
+        porcDescto = parseInt($("#descuento").text())
+    }
+
+    valDescto = parseInt($("#totalDescuento").text());
+    iva = parseInt($("#iva").text());
+    subtotal = parseInt($("#subtotal").text());
+    total = parseInt($("#totalVenta"));
+
+    window.open(`ticket_pdf/ticket.php?nCaja=${nCaja}&id_venta=${id_venta}&fecha=${fecha}&hora=${hora}&descuento=${porcDescto}&valDescto=${valDescto}&iva=${iva}&subtotal=${subtotal}&total=${total}`, "_blank");
+    window.focus();
 }

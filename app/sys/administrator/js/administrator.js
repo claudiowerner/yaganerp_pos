@@ -196,6 +196,7 @@ $("#btnGuardar").on("click", function(e)
       "giro":giro,
       "tipoPago":tipoPago
     }
+    console.log(datos)
     $.ajax({
       url:"php/cliente/crear_cliente.php",
       data: datos,

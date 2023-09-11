@@ -1,7 +1,7 @@
 cargarIDVentaCaja();
 function cargarIDVentaCaja()
 {
-    nCaja = $("#nCaja").text();
+    let nCaja = $("#nCaja").text();
     $.ajax(
         {
             url:"func_php/cargarIDVenta.php",

@@ -36,7 +36,11 @@
 		(null, 'Admin', 'admin$id', '$pass', '1', '$id', 'S', '1,2,3,4');";
 		$resultado = mysqli_query($conexion, $sql);
 
-		if($resultado)
+		$sql = 
+		"INSERT INTO stock_minimo_producto  VALUES (null, '$id', 'S', '5')";
+		$res2 = $conexion->query($sql);
+
+		if($resultado&&$res2)
 		{
 			echo "Admin creado correctamente. ";
 			$mensaje = 

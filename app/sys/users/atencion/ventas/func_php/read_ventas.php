@@ -24,8 +24,8 @@
     v.id, v.id_caja, 
     u.nombre, p.id_prod, p.nombre_prod, v.id_venta,
     cat.nombre_cat, p.pesaje, um.nombre_medida,
-    SUM(v.cantidad) AS cantidad, 
-    SUM(v.valor) AS valor, 
+    v.cantidad, 
+    v.valor, 
     v.estado, v.fecha
     FROM ventas v
     JOIN cajas caj ON caj.id = v.id_caja

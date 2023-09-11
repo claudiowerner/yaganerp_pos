@@ -22,7 +22,7 @@
 	$nCaja = $_POST["nCaja"];
 	$nomCaja = $_POST["nomCaja"];
 	$idCierre = $_POST["idCierre"];
-	$descto = $_POST["descto"];
+	echo $descto = $_POST["descto"];
 
 	
 	$sql = 
@@ -97,11 +97,12 @@
 	{
 		$id = $producto[$i]["id_venta"];
 		$valor = $producto[$i]["valor"];
-		$valorDescto = $valor*$descto;
+		echo $valorDescto = $valor*$descto;
+		echo "\n";
 		$valorTotal = $valor - $valorDescto;
 
 		$sql = 
-		"UPDATE ventas SET valor = '$valorTotal' WHERE id = '$id' AND id_cl = '$id_cl'";
+		"UPDATE ventas SET valorDescto = '$valorTotal' WHERE id = '$id' AND id_cl = '$id_cl'";
 		$res = $conexion->query($sql);
 
 		//acrónimo cp= Cantidad Pedido

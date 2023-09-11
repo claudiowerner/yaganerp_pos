@@ -83,7 +83,7 @@
       type: "GET",
       success: function(r)
       {
-        location.href = "ventas/index.php?id="+id+"&nomCaja="+nomCaja+"&tipoVenta=&idMesa="+id+"&idUbic="+ubic;
+        location.href = "ventas/index.php?id="+id+"&nomCaja="+nomCaja;
       }
     })
     .done(function(){
