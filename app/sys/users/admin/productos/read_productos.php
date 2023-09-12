@@ -19,7 +19,7 @@ if(isset($_SESSION['user'])){
     $consulta = 
     "SELECT p.id_prod, p.codigo_barra, p.nombre_prod, prov.nombre_proveedor, p.categoria, p.cantidad, 
     smp.estado AS estado_stock, 
-    p.valor_neto, p.valor_venta, p.margen_ganancia, p.monto_ganancia, u.nombre AS creado_por, 
+    p.valor_neto, p.valor_venta, p.margen_ganancia, p.monto_ganancia, p.descuento, u.nombre AS creado_por, 
     p.estado, DATE_FORMAT(p.fecha_reg, '%d-%m-%Y') AS fecha_reg, c.nombre_cat 
     FROM productos p 
     JOIN usuarios u 
@@ -68,6 +68,7 @@ if(isset($_SESSION['user'])){
           'margen_ganancia' => $row['margen_ganancia']."%",
           'monto_ganancia' => "$".$row['monto_ganancia'],
           'valor_venta' => "$".$row['valor_venta'],
+          'descuento' => $row['descuento']."%",
           'estado' => $estado,
           'creado_por' => $row['creado_por'],
           'fecha_reg' => $row['fecha_reg']

@@ -115,6 +115,7 @@ cargarUnidad();
           {"data":"margen_ganancia"},
           {"data":"monto_ganancia"},
           {"data":"valor_venta"},
+          {"data":"descuento"},
           {"data":"estado"},
           {"data":"creado_por"},
           {"data":"fecha_reg"},
@@ -292,6 +293,10 @@ $("#producto").on('click', 'tr', function(e)
   let porc = datos.margen_ganancia;
   let porcentaje = porc.slice(0, porc.length - 1);
 
+  
+  let porcDescto = datos.descuento;//variable que captura el % de descuento indicado en la tabla 
+  let txtDescto = porcDescto.slice(0, porcDescto.length - 1);//valor que se pondrá en el txtDescuento para ser editado
+
   console.log(datos)
 
   $("#nomProdEditar").val(datos.nombre_prod);
@@ -301,6 +306,7 @@ $("#producto").on('click', 'tr', function(e)
   $("#montoGananciaEditar").val(monto_ganancia);
   $("#valorVentaEditar").val(valor_venta);
   $("#txtCantidadEditar").val(datos.cantidad);
+  $("#porcDesctoEditar").val(txtDescto);
   
   $("#tituloModalEditar").html(datos.id);
 

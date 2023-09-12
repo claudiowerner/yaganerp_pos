@@ -85,6 +85,7 @@
                                                     <th>Margen ganancia</th>
                                                     <th>Monto ganancia</th>
                                                     <th>Valor venta</th>
+                                                    <th>Descto(%)</th>
                                                     <th>Estado</th>
                                                     <th>Creado por</th>
                                                     <th>Fecha</th>
