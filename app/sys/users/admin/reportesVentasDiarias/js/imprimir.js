@@ -10,7 +10,7 @@ function imprimirResumenVenta(dir, idCierre)
     }
     $.ajax(
         {
-            url:"https://webposerp.cl/impresion_yaganerp/vendor/ticket_resumen_turno.php",
+            url:"ticket_pdf/ticket.php",
             data: datos,
             type: "POST",
             success: function(e)

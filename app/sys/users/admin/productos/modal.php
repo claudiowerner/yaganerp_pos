@@ -195,6 +195,12 @@
                     </td>
                   </tr>
                   <tr>
+                    <td><label name='valVenta'>Descuento</label></td>
+                    <td>
+                      <input type='number' name='cantidad' id='porcDesctoEditar' class='form-control'></td>
+                    </td>
+                  </tr>
+                  <tr>
                     <td><label name='cat'>Estado</label></td>
                     <td>
                       <input type='checkbox' id='swEditarProducto'/>
@@ -202,18 +208,18 @@
                     </td>
                   </tr>
                 </tr>
-                </table>
-                <div>
-                  <label id='lblMsj'></label>
-                </div>
-              </div>
-              <div class='modal-footer'>
-                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-                <button type='submit' id='btnGuardar' class='btn btn-primary'>Guardar</button>
-              </div>
-            </form>
-          </div>
+              </table>
+            <div>
+          <label id='lblMsj'></label>
         </div>
-      </div>";
+        </div>
+          <div class='modal-footer'>
+            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+            <button type='submit' id='btnGuardar' class='btn btn-primary'>Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>";
   }
 ?>

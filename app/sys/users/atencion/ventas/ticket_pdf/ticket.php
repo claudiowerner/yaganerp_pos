@@ -10,7 +10,7 @@
     require_once '../../../../conexion.php';
     include("clases/item.php");
     include("clases/item3.php");
-    include("function_normaliza.php");
+    include("clases/function_normaliza.php");
 	
     
     $ids = $_GET['id_venta'];
@@ -112,6 +112,7 @@
     $pdf = new PDF_Code128('P','mm',array(90,208));
     $pdf->SetMargins(0,0,0,0);
     $pdf->AddPage();
+    $pdf->SetTitle("Ticket venta $ids");
     
     $pdf->SetFont('Helvetica','B',8);
     $pdf->SetTextColor(0,0,0);

@@ -71,12 +71,12 @@ $.ajax({
     if(e.match("S"))
     {
       $("#cantidadProd").attr("disabled", false);
-      $("#cantidadEditar").attr("disabled", false);
+      $("#txtCantidadEditar").attr("disabled", false);
     }
     else
     {
       $("#cantidadProd").attr("disabled", true);
-      $("#cantidadEditar").attr("disabled", true);
+      $("#txtCantidadEditar").attr("disabled", true);
       $("#cantidadProd").val("Stock desactivado");
     }
   }
@@ -445,7 +445,7 @@ $("#formEditarProducto").submit(function(e)
   let marGan = $("#margenGananciaEditar").val();
   let monGan = $("#montoGananciaEditar").val();
   let proveedor = $("#slctProveedorEditar").val();
-  
+  let descto = parseInt($("#porcDesctoEditar").val());
 
   
   let pesaje = "";
@@ -467,7 +467,8 @@ $("#formEditarProducto").submit(function(e)
     "pesaje":rpEditar,
     "marGan": marGan,
     "monGan": monGan,
-    "proveedor": proveedor
+    "proveedor": proveedor,
+    "descuento": descto
   };
 
   $.ajax(

@@ -30,7 +30,8 @@ if(isset($_SESSION['user'])){
     ON smp.id_cl = p.id_cl
     JOIN proveedores prov 
     ON prov.id = p.proveedor
-    WHERE p.id_cl = '$id_cl'";
+    WHERE p.id_cl = '$id_cl'
+    GROUP BY id_prod";
     $resultado = $conexion->query($consulta);
     if ($resultado->num_rows > 0){
       $json = array();

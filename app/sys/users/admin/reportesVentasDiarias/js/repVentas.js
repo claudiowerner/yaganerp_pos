@@ -65,6 +65,8 @@ $("#btnValidar").on('click', function(e)
 
 $("#btnValidarCierre").on('click', function(e)
 {
+  debugger;
+  let solicitar = validarSolicitudClave();
   let clave = $("#claveCerrarCaja").val();
   if(clave=='')
   {
@@ -84,46 +86,22 @@ $("#btnValidarCierre").on('click', function(e)
         if(clave==1)
         {
           $('#solicClaveAutCerrar').modal('hide');
-          let fecha = getFecha();
-          let hora = getHora(); 
-          let idCierre = $("#idCierre").text(); 
-          nombre_caja = $("#nomCaja").text();
           //ajax cerrar caja
-          $.ajax(
-            {
-              url:"cierre_caja.php?fecha="+fecha+"&hora="+hora+"&nCaja="+nCaja+"&idCierre="+idCierre,
-              data: "GET",
-              success: function(e)
-              {
-                if(e.match(/No se puede cerrar/))
-                {
-                  msjes_swal("Aviso", e, "warning");
-                }
-                else
-                {
-                  msjes_swal("Excelente", e, "success");
-                  imprimirResumenVenta("../../",idCierre);
-                }
-                obtenerCierresCaja();
-              }
-            })
-            .fail(function(e)
-            {
-              msjes_swal("Error", e, "error");
-            })
-          }
-          else
-          {
-            $("#msjClave").html("<span style='color: red'>Clave incorrecta</span>");
-          }
+          cierreCaja();
+          
         }
-      })
-      .fail(function(e)
-      {
-        msjes_swal("Error", e, "error");
-      })
-    }
-  });
+        else
+        {
+          $("#msjClave").html("<span style='color: red'>Clave incorrecta</span>");
+        }
+      }
+    })
+    .fail(function(e)
+    {
+      msjes_swal("Error", e, "error");
+    })
+  }
+});
 
 $("#btnAbrirCaja").on('click', function(e)
 {
@@ -167,7 +145,16 @@ $("#cierreCaja").on('click', 'button.btn-danger', function(e)
   $("#nomCaja").html(nomCaja);
   $("#nCaja").html(id);
   $("#idCierre").html(id);
-  $("#solicClaveAutCerrar").modal("show");
+  let solicitar = validarSolicitudClave();//valida si se solicita la clave de autorizacion para cerrar caja o no
+  if(solicitar.match(/N/))
+  {
+    cierreCaja();
+  }
+  else
+  {
+    $("#solicClaveAutCerrar").modal("show");
+  }
+  
 })
 
 //filtrar registros cierre caja
@@ -324,6 +311,33 @@ function tokenizerVoltearString(cadena)
   return retorno;
 }
 
+function cierreCaja()
+{
+  
+  let idCierre = $("#idCierre").text(); 
+  $.ajax(
+    {
+      url:"cierre_caja.php?idCierre="+idCierre,
+      data: "GET",
+      success: function(e)
+      {
+        if(e.match(/No se puede cerrar/))
+        {
+          msjes_swal("Aviso", e, "warning");
+        }
+        else
+        {
+          msjes_swal("Excelente", e, "success");
+          imprimirResumenVenta("../../",idCierre);
+        }
+        obtenerCierresCaja();
+      }
+    })
+    .fail(function(e)
+    {
+      msjes_swal("Error", e, "error");
+    })
+}
 
 function validarSolicitudClave()
 {

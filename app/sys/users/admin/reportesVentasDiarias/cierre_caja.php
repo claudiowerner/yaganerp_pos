@@ -20,8 +20,8 @@
   $id_cl = $_SESSION['user']["id_cl"];
   $piso = 1;
 
-  $fecha = $_GET['fecha'];
-  $hora = $_GET['hora'];
+	$hoy = getdate();
+	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"];
   $idCierre = $_GET['idCierre'];
 
   require_once '../../../conexion.php';
@@ -30,7 +30,7 @@
   $sql = 
   "UPDATE correlativo 
   SET estado = 'N',
-  fecha_cierre = '$fecha $hora'
+  fecha_cierre = '$fecha'
   WHERE valor = 0 
   AND id_cl = $id_cl
   AND id_cierre = $idCierre";
@@ -64,7 +64,7 @@
     //Cierre de caja
     $sql = 
     "UPDATE cierre_caja 
-    SET hasta = '$fecha $hora', 
+    SET hasta = '$fecha', 
     estado = 'C' 
     WHERE id_cl = '$id_cl' 
     AND id = $idCierre;";

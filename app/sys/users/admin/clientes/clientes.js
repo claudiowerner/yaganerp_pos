@@ -36,7 +36,6 @@ function cargarDatosCliente(busqueda)
                 <td>${j.fecha_registro}</td>
                 <td>
                   <button type="submit" id="btnVerCuentas" rut="${j.rut}" class="btn btn-success" onClick="btnVerCuentas('${j.rut}')">Ver cuentas</button>
-                  <button type="submit" id="btnEditar" class="btn btn-primary"><img src="../img/edit.png" width="15"></button>
                 </td>
               </tr>`
             });

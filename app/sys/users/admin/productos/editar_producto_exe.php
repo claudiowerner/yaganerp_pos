@@ -39,6 +39,7 @@
 	$monGan = $_POST["monGan"];
 	$marGan = $_POST["marGan"];
 	$proveedor = $_POST["proveedor"];
+	$descuento = $_POST["descuento"];
 
     //obtener fecha
 	$hoy = getdate();
@@ -58,7 +59,8 @@
 		estado = '$estado',
 		margen_ganancia = '$marGan',
 		monto_ganancia = '$monGan',
-		proveedor = '$proveedor'
+		proveedor = '$proveedor',
+		descuento = '$descuento'
 		WHERE id_prod = '$id';
 		";
 	}
