@@ -93,7 +93,13 @@
   {
     $id = $arrayCaja[$i];
     $sql =
-    "SELECT SUM(valor) AS valor FROM ventas WHERE id_caja = $id AND id_cl = $id_cl";
+    "SELECT SUM(v.valor) AS valor 
+    FROM ventas v 
+    JOIN correlativo c 
+    ON c.correlativo = v.id_venta
+    AND v.id_cl = $id_cl 
+    AND c.id_cierre = $idCierre
+    AND c.caja = $id";
     $res = $conexion->query($sql);
     while($row = $res->fetch_assoc())
     {

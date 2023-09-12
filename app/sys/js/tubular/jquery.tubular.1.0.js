@@ -1,6 +1,6 @@
 /* jQuery tubular plugin
 |* by Sean McCambridge
-|* http://www.seanmccambridge.com/tubular
+|* https://www.seanmccambridge.com/tubular
 |* version: 1.0
 |* updated: October 1, 2012
 |* since 2010

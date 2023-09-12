@@ -1,4 +1,4 @@
-/*! pdfmake v0.1.60, @license MIT, @link http://pdfmake.org */
+/*! pdfmake v0.1.60, @license MIT, @link https://pdfmake.org */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -1006,7 +1006,7 @@ $exports.store = store;
 /* WEBPACK VAR INJECTION */(function(global) {/*!
  * The buffer module from node.js, for the browser.
  *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @author   Feross Aboukhadijeh <feross@feross.org> <https://feross.org>
  * @license  MIT
  */
 /* eslint-disable no-proto */
@@ -1994,7 +1994,7 @@ function utf8Slice (buf, start, end) {
   return decodeCodePointsArray(res)
 }
 
-// Based on http://stackoverflow.com/a/22747272/680742, the browser with
+// Based on https://stackoverflow.com/a/22747272/680742, the browser with
 // the lowest limit is Chrome, with 0x10000 args.
 // We go 1 magnitude less, for safety
 var MAX_ARGUMENTS_LENGTH = 0x1000
@@ -9232,7 +9232,7 @@ function inspect(obj, opts) {
 exports.inspect = inspect;
 
 
-// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
+// https://en.wikipedia.org/wiki/ANSI_escape_code#graphics
 inspect.colors = {
   'bold' : [1, 22],
   'italic' : [3, 23],
@@ -9323,7 +9323,7 @@ function formatValue(ctx, value, recurseTimes) {
   }
 
   // IE doesn't make error fields non-enumerable
-  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
+  // https://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
   if (isError(value)
       && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
     return formatError(value);
@@ -11137,9 +11137,9 @@ function buildColumnWidths(columns, availableWidth) {
 		availableWidth -= col._calcWidth;
 	});
 
-	// http://www.freesoft.org/CIE/RFC/1942/18.htm
-	// http://www.w3.org/TR/CSS2/tables.html#width-layout
-	// http://dev.w3.org/csswg/css3-tables-algorithms/Overview.src.htm
+	// https://www.freesoft.org/CIE/RFC/1942/18.htm
+	// https://www.w3.org/TR/CSS2/tables.html#width-layout
+	// https://dev.w3.org/csswg/css3-tables-algorithms/Overview.src.htm
 	var minW = autoMin + starMaxMin * starColumns.length;
 	var maxW = autoMax + starMaxMax * starColumns.length;
 	if (minW >= availableWidth) {
@@ -14774,7 +14774,7 @@ var objectAssign = __webpack_require__(266);
 /*!
  * The buffer module from node.js, for the browser.
  *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @author   Feross Aboukhadijeh <feross@feross.org> <https://feross.org>
  * @license  MIT
  */
 function compare(a, b) {
@@ -14812,11 +14812,11 @@ function isBuffer(b) {
 // NB: The URL to the CommonJS spec is kept just for tradition.
 //     node-assert has evolved a lot since then, both in API and behavior.
 
-// http://wiki.commonjs.org/wiki/Unit_Testing/1.0
+// https://wiki.commonjs.org/wiki/Unit_Testing/1.0
 //
 // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
 //
-// Originally from narwhal.js (http://narwhaljs.org)
+// Originally from narwhal.js (https://narwhaljs.org)
 // Copyright (c) 2009 Thomas Robinson <280north.com>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -16952,7 +16952,7 @@ module.exports = UnicodeTrie;
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-   http://www.apache.org/licenses/LICENSE-2.0
+   https://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -17936,7 +17936,7 @@ exports.BrotliOutput = BrotliOutput;
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-   http://www.apache.org/licenses/LICENSE-2.0
+   https://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -22815,7 +22815,7 @@ var VectorMixin = {
     return this.closePath();
   },
   ellipse: function ellipse(x, y, r1, r2) {
-    // based on http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas/2173084#2173084
+    // based on https://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas/2173084#2173084
     if (r2 == null) {
       r2 = r1;
     }
@@ -24500,7 +24500,7 @@ var TextMixin = {
           wordSpacing = Math.max(0, (options.lineWidth - textWidth) / Math.max(1, words.length - 1) - spaceWidth);
           break;
       }
-    } // text baseline alignments based on http://wiki.apache.org/xmlgraphics-fop/LineLayout/AlignmentHandling
+    } // text baseline alignments based on https://wiki.apache.org/xmlgraphics-fop/LineLayout/AlignmentHandling
 
 
     if (typeof options.baseline === 'number') {
@@ -36816,7 +36816,7 @@ var ENCODINGS = [
 ['utf16be', 'utf16be', 'utf16be', 'utf16be', 'utf16be', 'utf16be'],
 
 // macintosh
-// Mappings available at http://unicode.org/Public/MAPPINGS/VENDORS/APPLE/
+// Mappings available at https://unicode.org/Public/MAPPINGS/VENDORS/APPLE/
 // 0	Roman                 17	Malayalam
 // 1	Japanese	            18	Sinhalese
 // 2	Traditional Chinese	  19	Burmese
@@ -36840,11 +36840,11 @@ var ENCODINGS = [
 ['ascii'],
 
 // windows
-// Docs here: http://msdn.microsoft.com/en-us/library/system.text.encoding(v=vs.110).aspx
+// Docs here: https://msdn.microsoft.com/en-us/library/system.text.encoding(v=vs.110).aspx
 ['symbol', 'utf16be', 'shift-jis', 'gb18030', 'big5', 'wansung', 'johab', null, null, null, 'utf16be']];
 
 // Overrides for Mac scripts by language id.
-// See http://unicode.org/Public/MAPPINGS/VENDORS/APPLE/Readme.txt
+// See https://unicode.org/Public/MAPPINGS/VENDORS/APPLE/Readme.txt
 var MAC_LANGUAGE_ENCODINGS = {
   15: 'maciceland',
   17: 'macturkish',
@@ -41137,8 +41137,8 @@ var BBox = function () {
 }();
 
 // This maps the Unicode Script property to an OpenType script tag
-// Data from http://www.microsoft.com/typography/otspec/scripttags.htm
-// and http://www.unicode.org/Public/UNIDATA/PropertyValueAliases.txt.
+// Data from https://www.microsoft.com/typography/otspec/scripttags.htm
+// and https://www.unicode.org/Public/UNIDATA/PropertyValueAliases.txt.
 var UNICODE_SCRIPTS = {
   Caucasian_Albanian: 'aghb',
   Arabic: 'arab',
@@ -41358,7 +41358,7 @@ var RTL = {
   merc: true, // Meroitic Cursive
   mero: true, // Meroitic Hieroglyphs
 
-  // Unicode 7.0 (not listed on http://www.microsoft.com/typography/otspec/scripttags.htm)
+  // Unicode 7.0 (not listed on https://www.microsoft.com/typography/otspec/scripttags.htm)
   mani: true, // Manichaean
   mend: true, // Mende Kikakui
   nbat: true, // Nabataean
@@ -44300,8 +44300,8 @@ var _temp$1;
  *   - apply ljmo, vjmo, and tjmo OpenType features to decomposed Jamo sequences.
  *
  * This logic is based on the following documents:
- *   - http://www.microsoft.com/typography/OpenTypeDev/hangul/intro.htm
- *   - http://ktug.org/~nomos/harfbuzz-hangul/hangulshaper.pdf
+ *   - https://www.microsoft.com/typography/OpenTypeDev/hangul/intro.htm
+ *   - https://ktug.org/~nomos/harfbuzz-hangul/hangulshaper.pdf
  */
 var HangulShaper = (_temp$1 = _class$5 = function (_DefaultShaper) {
   _inherits(HangulShaper, _DefaultShaper);
@@ -47326,7 +47326,7 @@ var Path = function () {
           case 'quadraticCurveTo':
           case 'bezierCurveTo':
             if (c.command === 'quadraticCurveTo') {
-              // http://fontforge.org/bezier.html
+              // https://fontforge.org/bezier.html
               var _c$args2 = c.args,
                   qp1x = _c$args2[0],
                   qp1y = _c$args2[1],
@@ -47347,7 +47347,7 @@ var Path = function () {
                   p3y = _c$args3[5];
             }
 
-            // http://blog.hackers-cafe.net/2009/06/how-to-calculate-bezier-curves-bounding.html
+            // https://blog.hackers-cafe.net/2009/06/how-to-calculate-bezier-curves-bounding.html
             bbox.addPoint(p3x, p3y);
 
             var p0 = [cx, cy];
@@ -47573,7 +47573,7 @@ var Glyph = (_class$8 = function () {
    * Because of the way bezier curves are defined, some of the control points
    * can be outside of the bounding box. Where `bbox` takes this into account,
    * `cbox` does not. Thus, cbox is less accurate, but faster to compute.
-   * See [here](http://www.freetype.org/freetype2/docs/glyphs/glyphs-6.html#section-2)
+   * See [here](https://www.freetype.org/freetype2/docs/glyphs/glyphs-6.html#section-2)
    * for a more detailed description.
    *
    * @type {BBox}
@@ -50897,7 +50897,7 @@ WOFF2Directory.process = function () {
 
 /**
  * Subclass of TTFFont that represents a TTF/OTF font compressed by WOFF2
- * See spec here: http://www.w3.org/TR/WOFF2/
+ * See spec here: https://www.w3.org/TR/WOFF2/
  */
 
 var WOFF2Font = function (_TTFFont) {
@@ -52056,7 +52056,7 @@ Utf32Decoder.prototype.end = function() {
 
 // == UTF-32 Auto codec =============================================================
 // Decoder chooses automatically from UTF-32LE and UTF-32BE using BOM and space-based heuristic.
-// Defaults to UTF-32LE. http://en.wikipedia.org/wiki/UTF-32
+// Defaults to UTF-32LE. https://en.wikipedia.org/wiki/UTF-32
 // Encoder/decoder default can be changed: iconv.decode(buf, 'utf32', {defaultEncoding: 'utf-32be'});
 
 // Encoder prepends BOM (which can be overridden with (addBOM: false}).
@@ -52253,7 +52253,7 @@ Utf16BEDecoder.prototype.end = function() {
 // == UTF-16 codec =============================================================
 // Decoder chooses automatically from UTF-16LE and UTF-16BE using BOM and space-based heuristic.
 // Defaults to UTF-16LE, as it's prevalent and default in Node.
-// http://en.wikipedia.org/wiki/UTF-16 and http://encoding.spec.whatwg.org/#utf-16le
+// https://en.wikipedia.org/wiki/UTF-16 and https://encoding.spec.whatwg.org/#utf-16le
 // Decoder default can be changed: iconv.decode(buf, 'utf16', {defaultEncoding: 'utf-16be'});
 
 // Encoder uses UTF-16LE and prepends BOM (which can be overridden with addBOM: false).
@@ -52372,7 +52372,7 @@ function detectEncoding(buf, defaultEncoding) {
 var Buffer = __webpack_require__(34).Buffer;
 
 // UTF-7 codec, according to https://tools.ietf.org/html/rfc2152
-// See also below a UTF-7-IMAP codec, according to http://tools.ietf.org/html/rfc3501#section-5.1.3
+// See also below a UTF-7-IMAP codec, according to https://tools.ietf.org/html/rfc3501#section-5.1.3
 
 exports.utf7 = Utf7Codec;
 exports.unicode11utf7 = 'utf7'; // Alias UNICODE-1-1-UTF-7
@@ -52488,7 +52488,7 @@ Utf7Decoder.prototype.end = function() {
 
 
 // UTF-7-IMAP codec.
-// RFC3501 Sec. 5.1.3 Modified UTF-7 (http://tools.ietf.org/html/rfc3501#section-5.1.3)
+// RFC3501 Sec. 5.1.3 Modified UTF-7 (https://tools.ietf.org/html/rfc3501#section-5.1.3)
 // Differences:
 //  * Base64 part is started by "&" instead of "+"
 //  * Direct characters are 0x20-0x7E, except "&" (0x26)
@@ -53982,7 +53982,7 @@ module.exports = {
     //
     // After JIS X 0213 appeared, Shift_JIS-2004, EUC-JISX0213 and ISO2022-JP-2004 followed, with just changing the planes.
     //
-    // Overall, it seems that it's a mess :( http://www8.plala.or.jp/tkubota1/unicode-symbols-map2.html
+    // Overall, it seems that it's a mess :( https://www8.plala.or.jp/tkubota1/unicode-symbols-map2.html
 
     'shiftjis': {
         type: '_dbcs',
@@ -54013,7 +54013,7 @@ module.exports = {
 
 
     // == Chinese/GBK ==========================================================
-    // http://en.wikipedia.org/wiki/GBK
+    // https://en.wikipedia.org/wiki/GBK
     // We mostly implement W3C recommendation: https://www.w3.org/TR/encoding/#gbk-encoder
 
     // Oldest GB2312 (1981, ~7600 chars) is a subset of CP936
@@ -54043,9 +54043,9 @@ module.exports = {
 
     // GB18030 is an algorithmic extension of GBK.
     // Main source: https://www.w3.org/TR/encoding/#gbk-encoder
-    // http://icu-project.org/docs/papers/gb18030.html
-    // http://source.icu-project.org/repos/icu/data/trunk/charset/data/xml/gb-18030-2000.xml
-    // http://www.khngai.com/chinese/charmap/tblgbk.php?page=0
+    // https://icu-project.org/docs/papers/gb18030.html
+    // https://source.icu-project.org/repos/icu/data/trunk/charset/data/xml/gb-18030-2000.xml
+    // https://www.khngai.com/chinese/charmap/tblgbk.php?page=0
     'gb18030': {
         type: '_dbcs',
         table: function() { return __webpack_require__(108).concat(__webpack_require__(173)) },
@@ -54079,10 +54079,10 @@ module.exports = {
 
     // == Big5/Taiwan/Hong Kong ================================================
     // There are lots of tables for Big5 and cp950. Please see the following links for history:
-    // http://moztw.org/docs/big5/  http://www.haible.de/bruno/charsets/conversion-tables/Big5.html
+    // https://moztw.org/docs/big5/  https://www.haible.de/bruno/charsets/conversion-tables/Big5.html
     // Variations, in roughly number of defined chars:
-    //  * Windows CP 950: Microsoft variant of Big5. Canonical: http://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP950.TXT
-    //  * Windows CP 951: Microsoft variant of Big5-HKSCS-2001. Seems to be never public. http://me.abelcheung.org/articles/research/what-is-cp951/
+    //  * Windows CP 950: Microsoft variant of Big5. Canonical: https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP950.TXT
+    //  * Windows CP 951: Microsoft variant of Big5-HKSCS-2001. Seems to be never public. https://me.abelcheung.org/articles/research/what-is-cp951/
     //  * Big5-2003 (Taiwan standard) almost superset of cp950.
     //  * Unicode-at-on (UAO) / Mozilla 1.8. Falling out of use on the Web. Not supported by other browsers.
     //  * Big5-HKSCS (-2001, -2004, -2008). Hong Kong standard. 
@@ -54094,11 +54094,11 @@ module.exports = {
     //    MS Internet Explorer switches from big5 to big5-hkscs when a patch applied.
     //    Great discussion & recap of what's going on https://bugzilla.mozilla.org/show_bug.cgi?id=912470#c31
     //    In the encoder, it might make sense to support encoding old PUA mappings to Big5 bytes seq-s.
-    //    Official spec: http://www.ogcio.gov.hk/en/business/tech_promotion/ccli/terms/doc/2003cmp_2008.txt
-    //                   http://www.ogcio.gov.hk/tc/business/tech_promotion/ccli/terms/doc/hkscs-2008-big5-iso.txt
+    //    Official spec: https://www.ogcio.gov.hk/en/business/tech_promotion/ccli/terms/doc/2003cmp_2008.txt
+    //                   https://www.ogcio.gov.hk/tc/business/tech_promotion/ccli/terms/doc/hkscs-2008-big5-iso.txt
     // 
-    // Current understanding of how to deal with Big5(-HKSCS) is in the Encoding Standard, http://encoding.spec.whatwg.org/#big5-encoder
-    // Unicode mapping (http://www.unicode.org/Public/MAPPINGS/OBSOLETE/EASTASIA/OTHER/BIG5.TXT) is said to be wrong.
+    // Current understanding of how to deal with Big5(-HKSCS) is in the Encoding Standard, https://encoding.spec.whatwg.org/#big5-encoder
+    // Unicode mapping (https://www.unicode.org/Public/MAPPINGS/OBSOLETE/EASTASIA/OTHER/BIG5.TXT) is said to be wrong.
 
     'windows950': 'cp950',
     'ms950': 'cp950',
@@ -58336,7 +58336,7 @@ module.exports = __webpack_require__(203).BrotliDecompressBuffer;
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-   http://www.apache.org/licenses/LICENSE-2.0
+   https://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -58653,7 +58653,7 @@ module.exports="W5/fcQLn5gKf2XUbAiQ1XULX+TZz6ADToDsgqk6qVfeC0e4m6OO2wcQ1J76ZBVRV
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-   http://www.apache.org/licenses/LICENSE-2.0
+   https://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -58909,7 +58909,7 @@ exports.lookupOffsets = new Uint16Array([
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-   http://www.apache.org/licenses/LICENSE-2.0
+   https://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -58975,7 +58975,7 @@ exports.kCopyRangeLut = [
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-   http://www.apache.org/licenses/LICENSE-2.0
+   https://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -62158,7 +62158,7 @@ exports.CI_BRK = CI_BRK = 2; // Indirect break opportunity for combining marks
 exports.CP_BRK = CP_BRK = 3; // Prohibited break for combining marks
 
 exports.PR_BRK = PR_BRK = 4; // Prohibited break
-// table generated from http://www.unicode.org/reports/tr14/#Table2
+// table generated from https://www.unicode.org/reports/tr14/#Table2
 
 exports.pairTable = [[PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, CP_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [PR_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, CI_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK], [IN_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, CI_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, IN_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [IN_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK], [IN_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [IN_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [IN_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [IN_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, IN_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, DI_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, IN_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, DI_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [IN_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, CI_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, PR_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [IN_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK], [IN_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, CI_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, IN_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, IN_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, IN_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, IN_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, IN_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, DI_BRK], [DI_BRK, PR_BRK, PR_BRK, IN_BRK, IN_BRK, IN_BRK, PR_BRK, PR_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK, IN_BRK, DI_BRK, DI_BRK, PR_BRK, CI_BRK, PR_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, DI_BRK, IN_BRK]];
 

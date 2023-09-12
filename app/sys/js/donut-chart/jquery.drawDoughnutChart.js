@@ -1,7 +1,7 @@
 /*!
  * jquery.drawDoughnutChart.js
  * Version: 0.4(Beta)
- * Inspired by Chart.js(http://www.chartjs.org/)
+ * Inspired by Chart.js(https://www.chartjs.org/)
  *
  * Copyright 2014 hiro
  * https://github.com/githiro/drawDoughnutChart
@@ -68,7 +68,7 @@
 
     settings.beforeDraw.call($this);
 
-    var $svg = $('<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>').appendTo($this),
+    var $svg = $('<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"></svg>').appendTo($this),
         $paths = [],
         easingFunction = animationOptions[settings.animationEasing],
         doughnutRadius = Min([H / 2,W / 2]) - settings.edgeOffset,
@@ -78,7 +78,7 @@
     //Draw base doughnut
     var baseDoughnutRadius = doughnutRadius + settings.baseOffset,
         baseCutoutRadius = cutoutRadius - settings.baseOffset;
-    $(document.createElementNS('http://www.w3.org/2000/svg', 'path'))
+    $(document.createElementNS('https://www.w3.org/2000/svg', 'path'))
       .attr({
         "d": getHollowCirclePath(baseDoughnutRadius, baseCutoutRadius),
         "fill": settings.baseColor
@@ -86,7 +86,7 @@
       .appendTo($svg);
 
     //Set up pie segments wrapper
-    var $pathGroup = $(document.createElementNS('http://www.w3.org/2000/svg', 'g'));
+    var $pathGroup = $(document.createElementNS('https://www.w3.org/2000/svg', 'g'));
     $pathGroup.attr({opacity: 0}).appendTo($svg);
 
     //Set up tooltip
@@ -112,7 +112,7 @@
 
     for (var i = 0, len = data.length; i < len; i++) {
       segmentTotal += data[i].value;
-      $paths[i] = $(document.createElementNS('http://www.w3.org/2000/svg', 'path'))
+      $paths[i] = $(document.createElementNS('https://www.w3.org/2000/svg', 'path'))
         .attr({
           "stroke-width": settings.segmentStrokeWidth,
           "stroke": settings.segmentStrokeColor,
@@ -278,7 +278,7 @@
 		block.css('font-size', '');
         newText = newText.toString().replace(/(<([^>]+)>)/ig,"");
 		var newFontSize = block.width() / newText.length * settings.ratioFont;
-		// Not very good : http://stephensite.net/WordPressSS/2008/02/19/how-to-calculate-the-character-width-accross-fonts-and-points/
+		// Not very good : https://stephensite.net/WordPressSS/2008/02/19/how-to-calculate-the-character-width-accross-fonts-and-points/
 		// But best quick way the 1.5 number is to affinate in function of the police
 		var maxCharForDefaultFont = block.width() - newText.length * block.css('font-size').replace(/px/, '') / settings.ratioFont;
 		if(maxCharForDefaultFont<0)

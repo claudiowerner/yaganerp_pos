@@ -1,7 +1,7 @@
 /*
  *  Liquid Slider v2
  *  Copyright 2012 Kevin Batdorf
- *  http://liquidslider.com
+ *  https://liquidslider.com
  *  MIT license
  */
 
@@ -46,7 +46,7 @@
     position: relative;
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000;
-    /* from http://davidwalsh.name/translate3d */
+    /* from https://davidwalsh.name/translate3d */
 }
 .liquid-slider .panel-container .fade {
     width: 100%;

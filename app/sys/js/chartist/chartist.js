@@ -13,7 +13,7 @@
   /* Chartist.js 0.1.10
    * Copyright © 2014 Gion Kunz
    * Free to use under the WTFPL license.
-   * http://www.wtfpl.net/
+   * https://www.wtfpl.net/
    */
   // The Chartist core contains shared static functions
 
@@ -390,7 +390,7 @@
       return applyOptions();
     };
 
-    // http://schepers.cc/getting-to-the-point
+    // https://schepers.cc/getting-to-the-point
     Chartist.catmullRom2bezier = function (crp, z) {
       var d = [];
       for (var i = 0, iLen = crp.length; iLen - 2 * !z > i; i += 2) {
@@ -438,7 +438,7 @@
 
     Chartist.svg = function(name, attributes, className, parent) {
 
-      var svgns = 'http://www.w3.org/2000/svg';
+      var svgns = 'https://www.w3.org/2000/svg';
 
       function attr(node, attributes) {
         Object.keys(attributes).forEach(function(key) {
@@ -703,8 +703,8 @@
       // TODO: Currently we need to re-draw the chart on window resize. This is usually very bad and will affect performance.
       // This is done because we can't work with relative coordinates when drawing the chart because SVG Path does not
       // work with relative positions yet. We need to check if we can do a viewBox hack to switch to percentage.
-      // See http://mozilla.6506.n7.nabble.com/Specyfing-paths-with-percentages-unit-td247474.html
-      // Update: can be done using the above method tested here: http://codepen.io/gionkunz/pen/KDvLj
+      // See https://mozilla.6506.n7.nabble.com/Specyfing-paths-with-percentages-unit-td247474.html
+      // Update: can be done using the above method tested here: https://codepen.io/gionkunz/pen/KDvLj
       // The problem is with the label offsets that can't be converted into percentage and affecting the chart container
       window.addEventListener('resize', function () {
         createChart(currentOptions);
@@ -849,8 +849,8 @@
       // TODO: Currently we need to re-draw the chart on window resize. This is usually very bad and will affect performance.
       // This is done because we can't work with relative coordinates when drawing the chart because SVG Path does not
       // work with relative positions yet. We need to check if we can do a viewBox hack to switch to percentage.
-      // See http://mozilla.6506.n7.nabble.com/Specyfing-paths-with-percentages-unit-td247474.html
-      // Update: can be done using the above method tested here: http://codepen.io/gionkunz/pen/KDvLj
+      // See https://mozilla.6506.n7.nabble.com/Specyfing-paths-with-percentages-unit-td247474.html
+      // Update: can be done using the above method tested here: https://codepen.io/gionkunz/pen/KDvLj
       // The problem is with the label offsets that can't be converted into percentage and affecting the chart container
       window.addEventListener('resize', function () {
         createChart(currentOptions);
@@ -910,7 +910,7 @@
 
         // If this is a donut chart we need to adjust our radius to enable strokes to be drawn inside
         // Unfortunately this is not possible with the current SVG Spec
-        // See this proposal for more details: http://lists.w3.org/Archives/Public/www-svg/2003Oct/0000.html
+        // See this proposal for more details: https://lists.w3.org/Archives/Public/www-svg/2003Oct/0000.html
         radius -= options.donut ? options.donutWidth / 2  : 0;
 
         // Calculate end angle based on total sum and current data value and offset with padding
@@ -980,8 +980,8 @@
       // TODO: Currently we need to re-draw the chart on window resize. This is usually very bad and will affect performance.
       // This is done because we can't work with relative coordinates when drawing the chart because SVG Path does not
       // work with relative positions yet. We need to check if we can do a viewBox hack to switch to percentage.
-      // See http://mozilla.6506.n7.nabble.com/Specyfing-paths-with-percentages-unit-td247474.html
-      // Update: can be done using the above method tested here: http://codepen.io/gionkunz/pen/KDvLj
+      // See https://mozilla.6506.n7.nabble.com/Specyfing-paths-with-percentages-unit-td247474.html
+      // Update: can be done using the above method tested here: https://codepen.io/gionkunz/pen/KDvLj
       // The problem is with the label offsets that can't be converted into percentage and affecting the chart container
       window.addEventListener('resize', function () {
         createChart(currentOptions);

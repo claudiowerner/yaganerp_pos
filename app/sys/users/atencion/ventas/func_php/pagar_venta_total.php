@@ -22,7 +22,7 @@
 	$nCaja = $_POST["nCaja"];
 	$nomCaja = $_POST["nomCaja"];
 	$idCierre = $_POST["idCierre"];
-	echo $descto = $_POST["descto"];
+	$descto = $_POST["descto"];
 
 	
 	$sql = 
@@ -97,8 +97,7 @@
 	{
 		$id = $producto[$i]["id_venta"];
 		$valor = $producto[$i]["valor"];
-		echo $valorDescto = $valor*$descto;
-		echo "\n";
+		$valorDescto = $valor*$descto;
 		$valorTotal = $valor - $valorDescto;
 
 		$sql = 

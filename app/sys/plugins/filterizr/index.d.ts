@@ -3,7 +3,7 @@
  * filters over responsive galleries using CSS3 transitions and
  * custom CSS effects.
  * @author Yiotis Kaltsikis
- * @see {@link http://yiotis.net/filterizr}
+ * @see {@link https://yiotis.net/filterizr}
  * @license MIT
  */
 export { default } from './Filterizr';

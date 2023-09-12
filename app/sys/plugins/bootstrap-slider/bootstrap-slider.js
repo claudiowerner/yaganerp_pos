@@ -294,7 +294,7 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 			},
 
 			logarithmic: {
-				/* Based on http://stackoverflow.com/questions/846221/logarithmic-slider */
+				/* Based on https://stackoverflow.com/questions/846221/logarithmic-slider */
 				toValue: function toValue(percentage) {
 					var offset = 1 - this.options.min;
 					var min = Math.log(this.options.min + offset);
@@ -1832,7 +1832,7 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 			},
 			/*
    	Credits to Mike Samuel for the following method!
-   	Source: http://stackoverflow.com/questions/10454518/javascript-how-to-retrieve-the-number-of-decimals-of-a-string-number
+   	Source: https://stackoverflow.com/questions/10454518/javascript-how-to-retrieve-the-number-of-decimals-of-a-string-number
    */
 			_getPercentage: function _getPercentage(ev) {
 				if (this.touchCapable && (ev.type === 'touchstart' || ev.type === 'touchmove' || ev.type === 'touchend')) {

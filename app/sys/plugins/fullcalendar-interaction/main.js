@@ -14,7 +14,7 @@ Docs & License: https://fullcalendar.io/
     Copyright (c) Microsoft Corporation. All rights reserved.
     Licensed under the Apache License, Version 2.0 (the "License"); you may not use
     this file except in compliance with the License. You may obtain a copy of the
-    License at http://www.apache.org/licenses/LICENSE-2.0
+    License at https://www.apache.org/licenses/LICENSE-2.0
 
     THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
     KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
@@ -125,7 +125,7 @@ Docs & License: https://fullcalendar.io/
                     target.addEventListener('touchcancel', _this.handleTouchEnd); // treat it as a touch end
                     // attach a handler to get called when ANY scroll action happens on the page.
                     // this was impossible to do with normal on/off because 'scroll' doesn't bubble.
-                    // http://stackoverflow.com/a/32954565/96342
+                    // https://stackoverflow.com/a/32954565/96342
                     window.addEventListener('scroll', _this.handleTouchScroll, true // useCapture
                     );
                 }

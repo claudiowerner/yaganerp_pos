@@ -1,7 +1,7 @@
 /*!
 
 JSZip v3.2.1 - A JavaScript class for generating and reading zip files
-<http://stuartk.com/jszip>
+<https://stuartk.com/jszip>
 
 (c) 2009-2016 Stuart Knightley <stuart [at] stuartk.com>
 Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/jszip/master/LICENSE.markdown.
@@ -442,7 +442,7 @@ var decToHex = function(dec, bytes) {
  * @param {Boolean} isDir true if the entry is a directory, false otherwise.
  * @return {Number} a 32 bit integer.
  *
- * adapted from http://unix.stackexchange.com/questions/14705/the-zip-formats-external-file-attribute :
+ * adapted from https://unix.stackexchange.com/questions/14705/the-zip-formats-external-file-attribute :
  *
  * TTTTsstrwxrwxrwx0000000000ADVSHR
  * ^^^^____________________________ file type, see zipinfo.c (UNX_*)
@@ -554,9 +554,9 @@ var generateZipParts = function(streamInfo, streamedContent, streamingEnded, off
     }
 
     // date
-    // @see http://www.delorie.com/djgpp/doc/rbinter/it/52/13.html
-    // @see http://www.delorie.com/djgpp/doc/rbinter/it/65/16.html
-    // @see http://www.delorie.com/djgpp/doc/rbinter/it/66/16.html
+    // @see https://www.delorie.com/djgpp/doc/rbinter/it/52/13.html
+    // @see https://www.delorie.com/djgpp/doc/rbinter/it/65/16.html
+    // @see https://www.delorie.com/djgpp/doc/rbinter/it/66/16.html
 
     dosTime = date.getUTCHours();
     dosTime = dosTime << 6;
@@ -1236,7 +1236,7 @@ utils.inherits(NodejsStreamOutputAdapter, Readable);
 
 /**
 * A nodejs stream using a worker as source.
-* @see the SourceWrapper in http://nodejs.org/api/stream.html
+* @see the SourceWrapper in https://nodejs.org/api/stream.html
 * @constructor
 * @param {StreamHelper} helper the helper wrapping the worker
 * @param {Object} options the nodejs stream options
@@ -3199,12 +3199,12 @@ function arrayLikeToString(array) {
     // Performances notes :
     // --------------------
     // String.fromCharCode.apply(null, array) is the fastest, see
-    // see http://jsperf.com/converting-a-uint8array-to-a-string/2
+    // see https://jsperf.com/converting-a-uint8array-to-a-string/2
     // but the stack is limited (and we can get huge arrays !).
     //
     // result += String.fromCharCode(array[i]); generate too many strings !
     //
-    // This code is inspired by http://jsperf.com/arraybuffer-to-string-apply-performance/2
+    // This code is inspired by https://jsperf.com/arraybuffer-to-string-apply-performance/2
     // TODO : we now have workers that split the work. Do we still need that ?
     var chunk = 65536,
         type = exports.getTypeOf(array),
@@ -3709,7 +3709,7 @@ ZipEntries.prototype = {
             all numbers as 64-bit double precision IEEE 754 floating point numbers.
             So, we have 53bits for integers and bitwise operations treat everything as 32bits.
             see https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Operators/Bitwise_Operators
-            and http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf section 8.5
+            and https://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf section 8.5
             */
 
             // should look for a zip64 EOCD locator
@@ -3846,7 +3846,7 @@ ZipEntry.prototype = {
         reader.skip(22);
         // in some zip created on windows, the filename stored in the central dir contains \ instead of /.
         // Strangely, the filename here is OK.
-        // I would love to treat these zip files as corrupted (see http://www.info-zip.org/FAQ.html#backslashes
+        // I would love to treat these zip files as corrupted (see https://www.info-zip.org/FAQ.html#backslashes
         // or APPNOTE#4.4.17.1, "All slashes MUST be forward slashes '/'") but there are a lot of bad zip generators...
         // Search "unzip mismatching "local" filename continuing with "central" filename version" on
         // the internet.
@@ -3854,7 +3854,7 @@ ZipEntry.prototype = {
         // I think I see the logic here : the central directory is used to display
         // content and the local directory is used to extract the files. Mixing / and \
         // may be used to display \ to windows users and use / when extracting the files.
-        // Unfortunately, this lead also to some issues : http://seclists.org/fulldisclosure/2009/Sep/394
+        // Unfortunately, this lead also to some issues : https://seclists.org/fulldisclosure/2009/Sep/394
         this.fileNameLength = reader.readInt(2);
         localExtraFieldsLength = reader.readInt(2); // can't be sure this will be the same as the central dir
         // the fileName is stored as binary data, the handleUTF8 method will take care of the encoding.
@@ -4650,7 +4650,7 @@ var Z_DEFLATED  = 8;
  * - `strategy`
  * - `dictionary`
  *
- * [http://zlib.net/manual.html#Advanced](http://zlib.net/manual.html#Advanced)
+ * [https://zlib.net/manual.html#Advanced](https://zlib.net/manual.html#Advanced)
  * for more information on these.
  *
  * Additional options, for internal needs:
@@ -4902,7 +4902,7 @@ Deflate.prototype.onEnd = function (status) {
  * - strategy
  * - dictionary
  *
- * [http://zlib.net/manual.html#Advanced](http://zlib.net/manual.html#Advanced)
+ * [https://zlib.net/manual.html#Advanced](https://zlib.net/manual.html#Advanced)
  * for more information on these.
  *
  * Sugar (options):
@@ -5030,7 +5030,7 @@ var toString = Object.prototype.toString;
  * - `windowBits`
  * - `dictionary`
  *
- * [http://zlib.net/manual.html#Advanced](http://zlib.net/manual.html#Advanced)
+ * [https://zlib.net/manual.html#Advanced](https://zlib.net/manual.html#Advanced)
  * for more information on these.
  *
  * Additional options, for internal needs:
@@ -5320,7 +5320,7 @@ Inflate.prototype.onEnd = function (status) {
  *
  * - windowBits
  *
- * [http://zlib.net/manual.html#Advanced](http://zlib.net/manual.html#Advanced)
+ * [https://zlib.net/manual.html#Advanced](https://zlib.net/manual.html#Advanced)
  * for more information.
  *
  * Sugar (options):

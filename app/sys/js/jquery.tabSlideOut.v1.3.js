@@ -1,7 +1,7 @@
 /*
     tabSlideOUt v1.3
     
-    By William Paoli: http://wpaoli.building58.com
+    By William Paoli: https://wpaoli.building58.com
 
     To use you must have an image ready to go as your tab
     Make sure to pass in at minimum the path to the image and its dimensions:

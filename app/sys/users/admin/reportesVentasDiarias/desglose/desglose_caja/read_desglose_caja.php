@@ -55,6 +55,7 @@
     WHERE cc.id = '$idCierre'
     AND corr.caja = $idCaja
     AND v.estado = 'C'
+    AND v.id_cl = '$id_cl'
     GROUP BY id_venta";
 
   $query = mysqli_query($conexion, $sql);

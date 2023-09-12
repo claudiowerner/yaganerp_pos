@@ -1,12 +1,12 @@
 /*
  * jQuery styleSwitcher Plugin
  * Examples and documentation at:
- * http://www.immortalwolf.com/demo/jquery-style-switcher/
+ * https://www.immortalwolf.com/demo/jquery-style-switcher/
  * Copyright (c) 2011 immortal wolf
  * Version: 1.4 (27-JAN-2011)
  * Dual licensed under the MIT and GPL licenses.
- * http://en.wikipedia.org/wiki/Gpl
- * http://en.wikipedia.org/wiki/MIT_License
+ * https://en.wikipedia.org/wiki/Gpl
+ * https://en.wikipedia.org/wiki/MIT_License
  * Requires: jQuery v1.2.6 or later
  *
  * @version 1.4 changelog:

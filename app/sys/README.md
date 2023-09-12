@@ -73,13 +73,13 @@ Contribution are always **welcome and recommended**! Here is how:
 #### Contribution Requirements:
 
 - When you contribute, you agree to give a non-exclusive license to AdminLTE.io to use that contribution in any context as we (AdminLTE.io) see appropriate.
-- If you use content provided by another party, it must be appropriately licensed using an [open source](http://opensource.org/licenses) license.
+- If you use content provided by another party, it must be appropriately licensed using an [open source](https://opensource.org/licenses) license.
 - Contributions are only accepted through Github pull requests.
 - Finally, contributed code must work in all supported browsers (see above for browser support).
 
 License
 -------
-AdminLTE is an open source project by [AdminLTE.io](https://adminlte.io) that is licensed under [MIT](http://opensource.org/licenses/MIT). AdminLTE.io
+AdminLTE is an open source project by [AdminLTE.io](https://adminlte.io) that is licensed under [MIT](https://opensource.org/licenses/MIT). AdminLTE.io
 reserves the right to change the license of future releases.
 
 Legacy Releases
@@ -93,12 +93,12 @@ Visit the [releases](https://github.com/ColorlibHQ/AdminLTE/releases) page to vi
 
 Image Credits
 -------------
-[Pixeden](http://www.pixeden.com/psd-web-elements/flat-responsive-showcase-psd)
+[Pixeden](https://www.pixeden.com/psd-web-elements/flat-responsive-showcase-psd)
 
-[Graphicsfuel](http://www.graphicsfuel.com/2013/02/13-high-resolution-blur-backgrounds/)
+[Graphicsfuel](https://www.graphicsfuel.com/2013/02/13-high-resolution-blur-backgrounds/)
 
-[Pickaface](http://pickaface.net/)
+[Pickaface](https://pickaface.net/)
 
 [Unsplash](https://unsplash.com/)
 
-[Uifaces](http://uifaces.com/)
+[Uifaces](https://uifaces.com/)
