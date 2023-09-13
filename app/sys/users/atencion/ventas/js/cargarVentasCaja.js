@@ -14,12 +14,13 @@ function cargarVentasCaja()
       {
         let tasks = JSON.parse(response);
         let contador = 0;
+        let descuento = 0;
         tasks.forEach(v=>{
           contador++;
           descProd.push({"id_venta":v.id,"nom_prod": v.nombre_prod, "cant":v.cantidad,"valor":v.valor});
           let aumentar;
-          let imprimir;
           let eliminar;
+          descuento = parseInt(descuento) + parseInt(v.descto);
           if(v.estado=='A')
           {
             estado = "<button class='btn btn-danger' disabled='true'>PENDIENTE</button>";
@@ -67,6 +68,7 @@ function cargarVentasCaja()
                       </tr>
                     <tr>`;
         });
+        $("#totalDescuento").html(descuento)
         $("#nProd").html(contador);
         let subtotal = 0;
         let subtotal_iva = 0;

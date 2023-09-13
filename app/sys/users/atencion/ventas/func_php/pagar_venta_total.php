@@ -23,30 +23,34 @@
 	$nomCaja = $_POST["nomCaja"];
 	$idCierre = $_POST["idCierre"];
 	$descto = $_POST["descto"];
+	$valorCierreCaja = 0;
 
-	
+	$sql =
+	"UPDATE correlativo SET `valor` = '$valorTotal' WHERE correlativo = $id_venta;";
+	$res = $conexion->query($sql);
+
 	$sql = 
-	"SELECT sum(valor) AS valor
-	FROM correlativo
-	WHERE id_cierre = $idCierre";
-	
-	$totalCorr = 0;
-	$resTotalCorr = $conexion->query($sql);
-	if($resTotalCorr->num_rows!=0)
+	"SELECT SUM(v.valor) AS valor 
+    FROM ventas v 
+    JOIN correlativo c 
+    ON c.correlativo = v.id_venta
+    AND v.id_cl = $id_cl 
+    AND c.id_cierre = $idCierre";
+
+	$res = $conexion->query($sql);
+	while($row=$res->fetch_array())
 	{
-		while($row = $resTotalCorr->fetch_array())
-		{
-			$totalCorr = $row["valor"];
-		}
+		$valorCierreCaja = $row["valor"];
 	}
 
-	$total_caja = $totalCorr + $valorTotal;
-	$sql = 
+	
+
+	echo $sql = 
 	"UPDATE cierre_caja cc
-	SET valor_total = '$total_caja'
+	SET valor_total = '$valorCierreCaja'
 	WHERE cc.id_cl = '$id_cl'
 	AND cc.id = '$idCierre';";
-	$r3 = mysqli_query($conexion, $sql);
+	$r3 = $conexion->query($sql);
 
 	
 	$sql = 
@@ -54,11 +58,11 @@
 	SET estado = 'C'
 	WHERE cc.id_cl = '$id_cl'
 	AND cc.id_venta = '$id_venta';";
-	$r3 = mysqli_query($conexion, $sql);
+	$r3 = $conexion->query($sql);
 
 	//generar nro boleta
 	$sql = "SELECT (boleta+1) AS boleta FROM correlativo WHERE id_cl = '$id_cl'";
-	$res = mysqli_query($conexion, $sql);
+	$res = $conexion->query($sql);
 
 	$boleta = 0;
 	while($row = $res->fetch_array())
@@ -74,7 +78,7 @@
 	fecha_cierre= '$fecha $hora',
 	forma_pago = '$forma_pago'
 	WHERE id = '$id_venta'";
-	$r1 = mysqli_query($conexion, $sql);
+	$r1 = $conexion->query($sql);
 
 	//actualizar tabla ventas
 	$sql = 
@@ -86,7 +90,7 @@
 	forma_pago = '$forma_pago'
 	WHERE id_cl = '$id_cl'
 	AND id_venta = '$id_venta'";
-	$r2 = mysqli_query($conexion, $sql);
+	$r2 = $conexion->query($sql);
 
 	//actualizar
 

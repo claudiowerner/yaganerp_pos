@@ -1,6 +1,5 @@
 function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
 {
-    debugger;
     //comprobar si está activado el control de stock mínimo
     let sm_activado="";
     $.ajax(

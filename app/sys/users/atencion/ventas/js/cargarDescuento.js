@@ -1,4 +1,3 @@
-cargarDescto();
 function cargarDescto()
 {
     let id_venta = parseInt($("#id_venta").text());

@@ -11,21 +11,21 @@
     $piso = 1;
     $nCaja = $_GET['nCaja'];
     $idVenta = $_GET['idVenta'];
+    $descuento = 0;
 
 
     require_once '../../../../conexion.php';
 
     //query
-
-
-
     $consulta = 
     "SELECT c.correlativo AS corr, 
     v.id, v.id_caja, 
     u.nombre, p.id_prod, p.nombre_prod, v.id_venta,
     cat.nombre_cat, p.pesaje, um.nombre_medida,
     v.cantidad, 
-    v.valor, 
+    (p.valor_venta*v.cantidad) AS valor_venta, 
+    (v.valor*p.descuento)/100 AS descto, 
+    p.descuento,
     v.estado, v.fecha
     FROM ventas v
     JOIN cajas caj ON caj.id = v.id_caja
@@ -41,8 +41,10 @@
     GROUP BY v.id ORDER BY v.id ASC" ;
     $resultado = $conexion->query($consulta);
     $json = array();
-    if ($resultado->num_rows > 0){
-      while ($row = $resultado->fetch_array()) {
+    if ($resultado->num_rows > 0)
+    {
+      while ($row = $resultado->fetch_array())
+      {
         $venta = 0;
         if($row['id_venta']==0||$row['id_venta']==null)
         {
@@ -52,6 +54,7 @@
         {
           $venta = $row['id_venta'];
         }
+        $descuento = $row["descto"];
         $json[] =array(
         'id' => $row['id'],
         'id_venta' => $venta,
@@ -60,12 +63,15 @@
         'id_prod' => $row['id_prod'],
         'cantidad' => $row['cantidad'],
         'nombre_cat' => $row['nombre_cat'],
-        'valor' => $row['valor'], 
         'estado' => $row['estado'],
+        'valor' => $row['valor_venta'], 
         'fecha' => $row['fecha'],
         'pesaje' => $row['pesaje'],
         'nombre_medida' => $row['nombre_medida'],
-        'corr' => $row['corr']
+        'corr' => $row['corr'],
+        'pDescuento' => $row['descto'],
+        'pDescuentoMostrar' => $row['descuento']."%",
+        'descto' => $descuento
       );
     };
   }
