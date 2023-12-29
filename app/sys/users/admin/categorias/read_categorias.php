@@ -3,13 +3,7 @@
 session_start();
 
 if(isset($_SESSION['user'])){
-  $tipo = $_SESSION['user']['tipo_usuario'];
- if($tipo == 3){
-   header('Location: ../');
- }
- }else{
- header('Location: ../');
- }
+  
 
 
   $id_us = $_SESSION['user']['id'];
@@ -19,7 +13,7 @@ if(isset($_SESSION['user'])){
 
 
   require_once '../../../conexion.php';
-
+  
 	//query
 	$consulta = "SELECT * FROM categorias WHERE id_cl = $id_cl ";
   $resultado = $conexion->query($consulta);
@@ -46,5 +40,5 @@ if(isset($_SESSION['user'])){
   }
   echo json_encode($json);
  }
-
+} 
 ?>

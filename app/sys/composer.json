@@ -24,6 +24,6 @@
   },
   "require": {
     "mike42/escpos-php": "^2.2",
-    "phpmailer/phpmailer": "^6.8"
+    "phpmailer/phpmailer": "^6.9"
   }
 }

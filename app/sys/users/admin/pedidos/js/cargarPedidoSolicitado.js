@@ -51,6 +51,8 @@ function cargarPedido()
                 })
                 $("#prodSolic").html(c_id);
                 $("#valorPedido").html(valorPedido);
+                let iva_pedido = cargarIvaPedido(valorPedido);
+                alert(iva_pedido);
             }
             catch(e)
             {
@@ -60,6 +62,13 @@ function cargarPedido()
             $("#bodyPedidosEditar").html(body)
         }
     })
+}
+
+//cargar iva total de pedido
+function cargarIvaPedido(e)
+{
+  e = e * 0.19;
+  return e;
 }
 
 function rellenarTablaDinamicaEditar(arrProductoEditar,arrCantidadEditar, arrValorEditar)

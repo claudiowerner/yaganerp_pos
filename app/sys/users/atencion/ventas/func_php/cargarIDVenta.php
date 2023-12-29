@@ -23,28 +23,7 @@
         AND caja = $nCaja";
         $resultado = $conexion->query($consulta);
 
-        $corr = "";
-        if($resultado->num_rows!=0)
-        {
-            while($row = $resultado->fetch_array())
-            {
-                $corr = $row["corr"];
-            }
-        }
-        else
-        {
-            $consulta = 
-            "SELECT correlativo AS corr 
-            FROM correlativo 
-            WHERE id_cl = $id_cl ";
-            $resultado = $conexion->query($consulta);
-
-            while($row = $resultado->fetch_array())
-            {
-                $corr = $row["corr"];
-            }
-        }
-        echo $corr;
+        echo ($resultado->num_rows);
 
     }
     else

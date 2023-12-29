@@ -60,6 +60,6 @@ require_once '../../../conexion.php';
     }
     else
     {
-      echo die("Error al agregar categoría: ". mysqli_error($conexion));
+      echo die("Error al agregar categoría: ". $conexion->error);
     }
 ?>

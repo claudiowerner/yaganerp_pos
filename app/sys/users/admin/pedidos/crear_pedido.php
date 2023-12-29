@@ -24,8 +24,13 @@
 	//insertar pedido
 	$sql = 
 	"INSERT INTO pedidos
-	VALUES (null, '$id_us', '$proveedor', 'A', '$id_us', '$fecha');
-	";
+	VALUES 
+	(null, 
+	'$id_us', 
+	'$proveedor', 
+	'A', 
+	'$id_us', 
+	'$fecha');";
 	$res = $conexion->query($sql);
 
 	//seleccionar id de pedido
@@ -47,7 +52,14 @@
 		$cont = $i+1;
 		$sql = 
 		"INSERT INTO pedidos_detalle 
-		VALUES (null,$id_cl,$id_pedido,'".$producto[$i]."',".$cantidad[$i].",".$valor[$i].",'$fecha');";
+		VALUES 
+		(null,
+		$id_cl,
+		$id_pedido,'
+		".$producto[$i]."',
+		".$cantidad[$i].",
+		".$valor[$i].",
+		'$fecha');";
 		$res = $conexion->query($sql);
 		if($res)
 		{
@@ -55,7 +67,7 @@
 		}
 		else 
 		{
-			die("Error al agregar pedidos: ". mysqli_error($conexion));
+			die("Error al agregar pedidos: ". $conexion->error);
 		}
 	}
 	if($contador_res_ok==$id)

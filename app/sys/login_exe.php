@@ -15,7 +15,6 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"];
 
 
-
 	//consulta para verificar si existe una password temporal
 	if ($pass_provisoria = $mysqli->prepare("SELECT * FROM pass_provisoria WHERE pass = ? "))
 	{

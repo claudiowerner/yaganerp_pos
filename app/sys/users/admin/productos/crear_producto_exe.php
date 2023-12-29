@@ -43,7 +43,24 @@
 	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
 	$sql = 
 	"INSERT INTO productos 
-	VALUES (null, '$id_cl', '$cod_barra', '$nom', '$proveedor', '$cat', '$can', '$rp', '$unidad', '$vn', '$marGan', '$monGan', '$vv', 0,'S', '$id_us', '$fecha');
+	VALUES 
+	(null, 
+	'$id_cl', 
+	'$cod_barra', 
+	'$nom', 
+	'$proveedor', 
+	'$cat', 
+	'$can', 
+	'$rp', 
+	'$unidad', 
+	'$vn', 
+	'$marGan', 
+	'$monGan', 
+	'$vv', 
+	0,
+	'S', 
+	'$id_us', 
+	'$fecha');
 	";
 	$resultado = mysqli_query($conexion, $sql);
 
