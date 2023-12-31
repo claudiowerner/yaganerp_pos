@@ -1,7 +1,6 @@
 cargarIDVentaCaja();
 function cargarIDVentaCaja()
 {
-    debugger;
     let nCaja = $("#nCaja").text();
     $.ajax(
         {
@@ -10,7 +9,6 @@ function cargarIDVentaCaja()
             type: "POST",
             success: function(e)
             {
-                alert(e);
                 $("#id_venta").html(e);
                 cargarVentasCaja();
             }

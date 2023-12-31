@@ -45,7 +45,7 @@
 
 	
 
-	echo $sql = 
+	$sql = 
 	"UPDATE cierre_caja cc
 	SET valor_total = '$valorCierreCaja'
 	WHERE cc.id_cl = '$id_cl'

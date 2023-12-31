@@ -65,7 +65,6 @@ $("#btnValidar").on('click', function(e)
 
 $("#btnValidarCierre").on('click', function(e)
 {
-  debugger;
   let solicitar = validarSolicitudClave();
   let clave = $("#claveCerrarCaja").val();
   if(clave=='')

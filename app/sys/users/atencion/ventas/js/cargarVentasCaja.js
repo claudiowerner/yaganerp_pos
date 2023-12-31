@@ -12,7 +12,6 @@ function cargarVentasCaja()
       async: false,
       success: function(response)
       {
-        console.log(response);
         let tasks = JSON.parse(response);
         let contador = 0;
         let descuento = 0;
