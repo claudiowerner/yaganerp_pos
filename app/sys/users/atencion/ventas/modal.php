@@ -397,7 +397,7 @@ function modalDescuento()
                       <strong>Método de pago</strong>
                     </td>
                     <td>
-                      <select id='metodoPagoGral' class='form-control' onChange='activarBotonCuentaGral(this)'>
+                      <select id='metodoPagoGral' class='form-control' onChange='vueltoEfectivo()'>
                         <option>Cargando...</option>
                       </select>
                     </td>
@@ -405,6 +405,17 @@ function modalDescuento()
                       <button class='btn btn-success' id='btnConfirmarPaga' disabled='true'>Pagar cuenta</button>
                     </td>
                   </tr>
+                </table>
+                <table id='tblMontoVuelto'>
+                  <tr>
+                    <td><label>Paga con:</label></td>
+                    <td><input type='number' id='txtMontoPago' class='form-control'></td>
+                  </tr>
+                  <tr>
+                    <td><label>Vuelto: </label></td>
+                    <td><label id='lblResultadoVuelto'></label></td>
+                  </tr>
+                  
                 </table>
               </div>
             </div>

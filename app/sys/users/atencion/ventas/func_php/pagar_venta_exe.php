@@ -84,7 +84,8 @@
 	fecha_pago='$fecha',
 	forma_pago = '$forma_pago'
 	WHERE id_cl = '$id_cl'
-	AND id_venta = '$id_venta'";
+	AND id_venta = '$id_venta'
+	AND estado != 'N'";
 	$r2 = mysqli_query($conexion, $sql);
 
 	//actualizar

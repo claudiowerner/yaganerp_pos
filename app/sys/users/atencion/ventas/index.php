@@ -285,6 +285,7 @@
     <script src="js/agregarACuentaCliente.js"></script>
     <script src="js/pagarCuenta.js"></script>
     <script src="js/confirmarPaga.js"></script>
+    <script src="js/calcularVuelto.js"></script>
     
     
 </body>
