@@ -3,6 +3,7 @@
 //metodo onChange()
 function activarBotonCuentaGral(e)
 {
+    vueltoEfectivo(e.value);
     if(e.value=='SO')
     {
         $("#btnConfirmarPaga").prop("disabled", true);
