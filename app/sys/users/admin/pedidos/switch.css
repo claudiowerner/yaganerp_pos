@@ -67,3 +67,18 @@
     left: 68px; 
 }
 
+
+
+#swFacturaConIva
+{
+    display: none;
+}
+#swFacturaConIva:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swFacturaConIva:checked~ .switch:after
+{
+    left: 68px; 
+}

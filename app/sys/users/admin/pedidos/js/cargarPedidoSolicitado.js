@@ -337,6 +337,40 @@ $("#swEstadoPago").on("click", function(e)
     $("#lblEstadoPago").html(label);
 })
 
+//SW Estado pago
+$("#swFacturaConIva").on("click", function(e)
+{
+    let label = "";
+    let estado = "";
+    let id = $("#idModal").text();
+    if(e.target.checked)
+    {
+        label = "Si";
+        estado = "S";
+    }
+    else
+    {
+        label = "No";
+        estado = "N";
+    }
+    datos = {
+        "id": id,
+        "fac_con_iva": estado
+    };
+    $.ajax({
+        url:"funciones/editar_factura_con_iva.php",
+        data: datos,
+        type: "POST",
+        success: function(e)
+        {
+            msjes_swal("Excelente", e, "success");
+            $('#pedidos').DataTable().ajax.reload();
+            cargarMontoTotalPedidos();
+        }
+    })
+    $("#lblFacturaConIva").html(label);
+})
+
 function getFechaBD()
 {
   var hoy = new Date();

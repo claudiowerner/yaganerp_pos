@@ -126,6 +126,7 @@
     <script src="js/cargarMontoTotalPedidos.js"></script>
     <script src="js/cargarEstadoPedido.js"></script>
     <script src="js/cargarEstadoPagoPedido.js"></script>
+    <script src="js/cargarFacturaConIva.js"></script>
 </body>
 
 </html>

@@ -96,6 +96,7 @@ $("#pedidos").on('click', 'tr', function(e)
   
   cargarEstadoPedido(id);
   cargarEstadoPagoPedido(id);
+  cargarFacturaConIva(id);
   cargarPedido();
 })
 

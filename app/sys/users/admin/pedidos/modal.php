@@ -92,6 +92,19 @@
                       </div>
                     </td>
                   </tr>
+                  <tr align='left'>
+                    <td >
+                      <div class=button align='right'>
+                        <label name='swFacturaConIva' align='center'>Factura con IVA</label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class=boton>                    
+                        <input type='checkbox' id='swFacturaConIva'/>
+                        <label id='lblFacturaConIva' for='swFacturaConIva' style='color:white' class='switch'></label>
+                      </div>
+                    </td>
+                  </tr>
                 </table>
                 <div>
                   <button id='btnAgregarProductoEditar' class='btn btn-success'>+</button>
