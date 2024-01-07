@@ -39,6 +39,7 @@ var table;
         {"data":"nombre"},
         {"data":"fecha_registro"},
         {"data":"valor"},
+        {"data":"estado_pago"},
         {
           "defaultContent": '<button type="submit" id="btnEditar" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" ><img src="../img/edit.png" width="15"></button>'
         },

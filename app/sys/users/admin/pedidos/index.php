@@ -83,6 +83,7 @@
                                                         <td>Creado por</td>
                                                         <td>Fecha</td>
                                                         <td>Valor</td>
+                                                        <td>Pagado</td>
                                                         <td>Editar</td>
                                                         <td>Imprimir</td>
                                                     </tr>

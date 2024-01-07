@@ -51,7 +51,10 @@ function cargarPedido()
                 })
                 $("#prodSolic").html(c_id);
                 $("#valorPedido").html(valorPedido);
-                let iva_pedido = cargarIvaPedido(valorPedido);
+                let iva_pedido = Math.round(cargarIvaPedido(valorPedido));
+                $("#valorIva").html(iva_pedido);
+                let totalPedido = parseInt(iva_pedido) + parseInt(valorPedido);
+                $("#totalPedido").html(totalPedido );
             }
             catch(e)
             {

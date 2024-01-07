@@ -123,6 +123,10 @@
                     <td width='50%'><label>IVA resultante (19%): </label></td>
                     <td align='left'><strong>$</strong><strong id='valorIva'></strong></td>
                   </tr>
+                  <tr>
+                    <td width='50%'><label>Total del pedido</label></td>
+                    <td align='left'><strong>$</strong><strong id='totalPedido'></strong></td>
+                  </tr>
                 </table>
               </div>
           </div>
