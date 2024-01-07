@@ -44,7 +44,7 @@ $("#btnGuardar").on("click", function(e)
     }
 
     $.ajax({
-        url:"crear_pedido.php",
+        url:"funciones/crear_pedido.php",
         data: datos,
         type: "POST",
         success: function(e)

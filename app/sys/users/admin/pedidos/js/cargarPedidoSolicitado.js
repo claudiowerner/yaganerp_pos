@@ -13,7 +13,7 @@ function cargarPedido()
     id = $("#idModal").text();
     c_id=0;
     $.ajax({
-        url:"read_detalle_pedido.php",
+        url:"funciones/read_detalle_pedido.php",
         data: {"id_pedido":id},
         type: "POST",
         async: false, 
@@ -52,7 +52,6 @@ function cargarPedido()
                 $("#prodSolic").html(c_id);
                 $("#valorPedido").html(valorPedido);
                 let iva_pedido = cargarIvaPedido(valorPedido);
-                alert(iva_pedido);
             }
             catch(e)
             {
@@ -272,7 +271,7 @@ $("#swEstadoPedido").on("click", function(e)
 {
     let label = "";
     let estado = "";
-    id = $("#idModal").text();
+    let id = $("#idModal").text();
     if(e.target.checked)
     {
         label = "Hecho";
@@ -288,7 +287,7 @@ $("#swEstadoPedido").on("click", function(e)
         "estado": estado
     };
     $.ajax({
-        url:"editar_estado_pedido.php",
+        url:"funciones/editar_estado_pedido.php",
         data: datos,
         type: "POST",
         success: function(e)
@@ -301,6 +300,39 @@ $("#swEstadoPedido").on("click", function(e)
     $("#lblEstadoPedido").html(label);
 })
 
+//SW Estado pago
+$("#swEstadoPago").on("click", function(e)
+{
+    let label = "";
+    let estado = "";
+    let id = $("#idModal").text();
+    if(e.target.checked)
+    {
+        label = "Hecho";
+        estado = "C";
+    }
+    else
+    {
+        label = "Hacer";
+        estado = "A";
+    }
+    datos = {
+        "id": id,
+        "estado_pago": estado
+    };
+    $.ajax({
+        url:"funciones/editar_estado_pago_pedido.php",
+        data: datos,
+        type: "POST",
+        success: function(e)
+        {
+            msjes_swal("Excelente", e, "success");
+            $('#pedidos').DataTable().ajax.reload();
+            cargarMontoTotalPedidos();
+        }
+    })
+    $("#lblEstadoPago").html(label);
+})
 
 function getFechaBD()
 {

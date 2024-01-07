@@ -123,6 +123,8 @@
     <script src="js/imprimir_pedido.js"></script>
     <script src="js/cambiarIdProveedor.js"></script>
     <script src="js/cargarMontoTotalPedidos.js"></script>
+    <script src="js/cargarEstadoPedido.js"></script>
+    <script src="js/cargarEstadoPagoPedido.js"></script>
 </body>
 
 </html>

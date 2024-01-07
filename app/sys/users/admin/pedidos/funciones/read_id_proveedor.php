@@ -6,30 +6,23 @@ session_start();
   $id_us = $_SESSION['user']['id'];
   $nombre = $_SESSION['user']["nombre"];
   $id_cl = $_SESSION['user']["id_cl"];
-  $piso = 1;
+  $id_pedido = $_POST["id_pedido"];
 
 
-  require_once '../../../conexion.php';
+  require_once '../../../../conexion.php';
 
 	//query
 	$consulta = 
-  "SELECT SUM(valor*cantidad) AS valor 
-  FROM pedidos_detalle pd
-  JOIN pedidos p 
-  ON p.id = pd.id_pedido
-  WHERE pd.id_cl = $id_cl
-  AND estado = 'C'";
-
+  "SELECT id_proveedor
+  FROM pedidos 
+  WHERE id_cl = $id_cl
+  AND id = $id_pedido";
   $resultado = $conexion->query($consulta);
   if ($resultado->num_rows > 0){
     while ($row = $resultado->fetch_array())
     {
-      echo $row["valor"];
+      echo $row["id_proveedor"];
     }
-  }
-  else
-  {
-    echo "Sin pedidos registrados";
   }
 
 ?>

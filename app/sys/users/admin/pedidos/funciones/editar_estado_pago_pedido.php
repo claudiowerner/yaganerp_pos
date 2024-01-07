@@ -7,18 +7,18 @@
 
 	error_reporting(E_ALL);
 	
-	require_once '../../../conexion.php';
+	require_once '../../../../conexion.php';
 
 	$id_us = $_SESSION['user']['id'];
 	$nombre = $_SESSION['user']["nombre"];
 	$id_cl = $_SESSION['user']["id_cl"];
 	
-	$estado = $_POST["estado"]; 
+	$estado_pago = $_POST["estado_pago"]; 
 	$id_pedido = $_POST["id"]; 
 
 	//editar detalle pedido
 	$sql = 
-		"UPDATE pedidos SET `estado` = '$estado' WHERE (`id` = '$id_pedido');";
+		"UPDATE pedidos SET `estado_pago` = '$estado_pago' WHERE (`id` = '$id_pedido');";
 		$res = $conexion->query($sql);
 		if($res)
 		{

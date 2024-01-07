@@ -7,31 +7,35 @@
 
 	error_reporting(E_ALL);
 	
-	require_once '../../../conexion.php';
+	require_once '../../../../conexion.php';
 
 	$id_us = $_SESSION['user']['id'];
 	$nombre = $_SESSION['user']["nombre"];
 	$id_cl = $_SESSION['user']["id_cl"];
 	$piso = 1;
 
-	$fecha = $_POST["fecha"];
 	$producto = $_POST["prod"];
 	$cantidad = $_POST["cant"];
 	$valor = $_POST["val"];
-	$id_pedido = $_POST["id_pedido"]; 
+	$id_detalle = $_POST["id_detalle"]; 
 
-	//insertar pedido
+	//editar detalle pedido
 	echo $sql = 
-		"INSERT INTO pedidos_detalle 
-		VALUES (null,$id_cl,$id_pedido,'$producto',$cantidad,$valor,'$fecha');";
+		"UPDATE pedidos_detalle 
+		SET 
+		`producto` = '$producto', 
+		`cantidad` = '$cantidad', 
+		`valor` = '$valor' 
+		WHERE (`id` = '$id_detalle');
+		";
 		$res = $conexion->query($sql);
 		if($res)
 		{
-			echo "Detalle agregado correctamente.";
+			echo "Detalle modificado correctamente.";
 		}
 		else 
 		{
-			die("Error al agregar pedidos: ". mysqli_error($conexion));
+			die("Error al modificar detalle: ". mysqli_error($conexion));
 		}
 
 

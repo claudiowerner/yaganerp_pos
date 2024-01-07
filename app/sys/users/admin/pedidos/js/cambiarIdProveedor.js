@@ -8,7 +8,7 @@ function cambiarProveedor()
     }
     $.ajax(
         {
-            url:"editar_proveedor.php",
+            url:"funciones/editar_proveedor.php",
             data:datos,
             type: "POST",
             success: function(e)

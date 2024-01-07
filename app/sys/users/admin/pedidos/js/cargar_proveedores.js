@@ -1,6 +1,6 @@
 //cargar proveedores
 $.ajax({
-  url: "read_proveedores.php",
+  url:"funciones/read_proveedores.php",
   type: "GET",
   success: function(e)
   {

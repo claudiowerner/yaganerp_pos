@@ -27,7 +27,7 @@ var table;
     },
 
       "ajax":{
-        "url":"read_pedidos.php",
+        "url":"funciones/read_pedidos.php",
         "type":"GET",
         "dataSrc":""
       },
@@ -80,7 +80,7 @@ $("#pedidos").on('click', 'tr', function(e)
 
   //cargar ID del proveedor para preseleccionar dicha opción
   $.ajax({
-    url: "read_id_proveedor.php",
+    url:"funciones/read_id_proveedor.php",
     data: {"id_pedido": id},
     type: "POST",
     success: function(e)
@@ -92,27 +92,9 @@ $("#pedidos").on('click', 'tr', function(e)
   {
     msjes_swal("Error",e,"error");
   })
-
-  //cargar estado de pedido(si se hizo o no)
-  $.ajax({
-    url: "read_estado_pedido.php",
-    data: {"id_pedido": id},
-    type: "POST",
-    success: function(e)
-    {
-      if(e.match("A"))
-      {
-        $("#swEstadoPedido").prop("checked", false)
-        $("#lblEstadoPedido").html("Hacer");
-      }
-      if(e.match("C"))
-      {
-        $("#swEstadoPedido").prop("checked", true)
-        $("#lblEstadoPedido").html("Hecho");
-      }
-    }
-  })
-
+  
+  cargarEstadoPedido(id);
+  cargarEstadoPagoPedido(id);
   cargarPedido();
 })
 

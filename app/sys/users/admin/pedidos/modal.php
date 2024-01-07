@@ -79,6 +79,19 @@
                       </div>
                     </td>
                   </tr>
+                  <tr align='left'>
+                    <td >
+                      <div class=button align='right'>
+                        <label name='swEstadoPedido' align='center'>Estado del pago:</label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class=boton>                    
+                        <input type='checkbox' id='swEstadoPago'/>
+                        <label id='lblEstadoPago' for='swEstadoPago' style='color:white' class='switch'></label>
+                      </div>
+                    </td>
+                  </tr>
                 </table>
                 <div>
                   <button id='btnAgregarProductoEditar' class='btn btn-success'>+</button>
