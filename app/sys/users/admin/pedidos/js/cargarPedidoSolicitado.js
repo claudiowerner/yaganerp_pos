@@ -10,6 +10,7 @@ let id_detalle_pedido = 0;//recibe el ID del detalle del pedido
 
 function cargarPedido()
 {
+    debugger;
     id = $("#idModal").text();
     c_id=0;
     $.ajax({
@@ -51,10 +52,23 @@ function cargarPedido()
                 })
                 $("#prodSolic").html(c_id);
                 $("#valorPedido").html(valorPedido);
-                let iva_pedido = Math.round(cargarIvaPedido(valorPedido));
-                $("#valorIva").html(iva_pedido);
-                let totalPedido = parseInt(iva_pedido) + parseInt(valorPedido);
-                $("#totalPedido").html(totalPedido );
+
+                debugger;
+
+                let factura_con_iva = cargarFacturaConIvaCalculo(id);
+                if(factura_con_iva.match(/N/))
+                {
+                    let iva_pedido = cargarIvaPedido(valorPedido);
+                    $("#valorIva").html(iva_pedido);
+                    let totalPedido = parseInt(iva_pedido) + parseInt(valorPedido);
+                    $("#totalPedido").html(totalPedido);
+                }
+                else
+                {
+                    $("#valorIva").html(0);
+                    $("#totalPedido").html(valorPedido);
+                }
+                
             }
             catch(e)
             {
@@ -69,9 +83,30 @@ function cargarPedido()
 //cargar iva total de pedido
 function cargarIvaPedido(e)
 {
-  e = e * 0.19;
+  e = Math.round(e * 0.19);
   return e;
 }
+
+$("#swFacturaConIva").on("click",function(e)
+{
+    let valor_pedido = parseInt($("#valorPedido").text());
+    let iva = cargarIvaPedido(valor_pedido);
+    let totalPedido = parseInt(valor_pedido) + parseInt(iva);
+    
+    if(!e.target.checked)
+    {
+        $("#totalPedido").html(totalPedido);
+        $("#valorIva").html(iva);
+    }
+    else
+    {
+        totalPedido = parseInt(valorPedido)
+        $("#totalPedido").html(totalPedido);
+        $("#valorIva").html(0);
+    }
+})
+
+
 
 function rellenarTablaDinamicaEditar(arrProductoEditar,arrCantidadEditar, arrValorEditar)
 {

@@ -15,7 +15,7 @@ session_start();
 	$consulta = 
   "SELECT p.id, prov.nombre_proveedor, p.estado, u.nombre,
   DATE_FORMAT(p.fecha_registro, '%d-%m-%Y') AS fecha_registro,
-  SUM(pdet.cantidad*pdet.valor) AS valor, p.estado_pago
+  SUM(pdet.cantidad*pdet.valor) AS valor, p.estado_pago, p.fac_con_iva
   FROM pedidos p 
   JOIN proveedores prov 
   ON prov.id = p.id_proveedor
@@ -24,7 +24,7 @@ session_start();
   JOIN usuarios u 
   ON u.id = p.creado_por
   WHERE p.id_cl = $id_cl  
-  GROUP BY id;;";
+  GROUP BY id;";
   $resultado = $conexion->query($consulta);
   if ($resultado->num_rows > 0){
   $json = array();
@@ -50,15 +50,21 @@ session_start();
     {
       $estado_pago = "POR HACER";
     }
+    $valor = $row["valor"];
+    if($row["fac_con_iva"]=="N")
+    {
+      $valor = round($valor*1.19);
+    }
+
     $json[] =array(
          'id' => $row['id'],
          'nombre_proveedor' => $row['nombre_proveedor'],
          'estado' => $estado,
          'nombre' => $row['nombre'],
          'fecha_registro' => $row['fecha_registro'],
-         'valor' => "$".$row['valor'],
+         'valor' => "$".$valor,
          'estado_pago' => $estado_pago
-     );
+        );
   }
   echo json_encode($json);
  }
