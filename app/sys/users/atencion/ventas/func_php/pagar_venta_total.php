@@ -18,6 +18,7 @@
 	$hora = $_POST['hora'];
 	$forma_pago = $_POST['forma_pago'];
 	$id_venta = $_POST['id_venta'];
+
 	$valorTotal = $_POST["totalVenta"];
 	$nCaja = $_POST["nCaja"];
 	$nomCaja = $_POST["nomCaja"];
@@ -35,7 +36,9 @@
     JOIN correlativo c 
     ON c.correlativo = v.id_venta
     AND v.id_cl = $id_cl 
-    AND c.id_cierre = $idCierre";
+    AND c.id_cierre = $idCierre
+	AND v.id_venta = $id_venta
+	AND v.estado !='N'";
 
 	$res = $conexion->query($sql);
 	while($row=$res->fetch_array())
@@ -86,7 +89,7 @@
 	SET estado = 'C', 
 	id_caja = $nCaja,
 	nom_caja = '$nomCaja',
-	fecha_pago='$fecha $hora',
+	fecha_pago = '$fecha $hora',
 	forma_pago = '$forma_pago'
 	WHERE id_cl = '$id_cl'
 	AND id_venta = '$id_venta'";
@@ -112,26 +115,20 @@
 		$np = $producto[$i]['nom_prod'];
 		$cp_pedido = $producto[$i]['cant'];
 
-		$sql = "SELECT (cantidad-$cp_pedido) AS cant 
-		FROM productos WHERE nombre_prod = '$np'";
-		$r4 = mysqli_query($conexion, $sql);
-
-		//cantidad descuento del producto a la bd
-		$cp_desc_bd = 0;
-		while($row = $r4->fetch_array())
-		{
-			$cp_desc_bd = $row['cant'];
-		}
-		$sql = 
-		"UPDATE productos 
-		SET cantidad = '$cp_desc_bd' 
-		WHERE nombre_prod = '$np';";
-		$r5 = mysqli_query($conexion, $sql);
+		echo $sql = 
+		"UPDATE productos p
+		JOIN ventas v
+		ON p.id_prod = v.producto
+		SET p.cantidad = (p.cantidad-$cp_pedido) 
+		WHERE nombre_prod = '$np'
+		AND v.id_venta = $id_venta
+		AND v.id_caja = $idCierre";
+		$r5 = $conexion->query($sql);
 	}
 
 	
 	
-	if($r1&&$r2&&$r4&&$r5)
+	if($r1&&$r2&&$r5)
 	{
 		echo "Pago registrado correctamente";
 	}

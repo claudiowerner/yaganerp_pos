@@ -20,6 +20,8 @@
 	$producto = $_POST["producto"];
 	$cantidad = $_POST["cantidad"];
 	$valor = $_POST["valor"];
+	$factura = $_POST["factura"];
+	$estado_pago = $_POST["estado_pago"];
 
 	//insertar pedido
 	$sql = 
@@ -29,6 +31,8 @@
 	'$id_us', 
 	'$proveedor', 
 	'A', 
+	'$estado_pago',
+	'$factura',
 	'$id_us', 
 	'$fecha');";
 	$res = $conexion->query($sql);

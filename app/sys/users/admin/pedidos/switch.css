@@ -82,3 +82,32 @@
 {
     left: 68px; 
 }
+
+#swFacturaConIvaRegistrar
+{
+    display: none;
+}
+#swFacturaConIvaRegistrar:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swFacturaConIvaRegistrar:checked~ .switch:after
+{
+    left: 68px; 
+}
+
+
+#swEstadoPagoRegistrar
+{
+    display: none;
+}
+#swEstadoPagoRegistrar:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swEstadoPagoRegistrar:checked~ .switch:after
+{
+    left: 68px; 
+}

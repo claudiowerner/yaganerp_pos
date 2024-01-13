@@ -18,7 +18,7 @@
 
     //query
     $consulta = 
-    "SELECT c.correlativo AS corr, 
+    "SELECT p.codigo_barra, c.correlativo AS corr, 
     v.id, v.id_caja, 
     u.nombre, p.id_prod, p.nombre_prod, v.id_venta,
     cat.nombre_cat, p.pesaje, um.nombre_medida,
@@ -56,29 +56,30 @@
         }
         $descuento = $row["descto"];
         $json[] =array(
-        'id' => $row['id'],
-        'id_venta' => $venta,
-        'usuario' => $row['nombre'],
-        'nombre_prod' => ($row['nombre_prod']),
-        'id_prod' => $row['id_prod'],
-        'cantidad' => $row['cantidad'],
-        'nombre_cat' => $row['nombre_cat'],
-        'estado' => $row['estado'],
-        'valor' => $row['valor_venta'], 
-        'fecha' => $row['fecha'],
-        'pesaje' => $row['pesaje'],
-        'nombre_medida' => $row['nombre_medida'],
-        'corr' => $row['corr'],
-        'pDescuento' => $row['descto'],
-        'pDescuentoMostrar' => $row['descuento']."%",
-        'descto' => $descuento
-      );
-    };
+          'id' => $row['id'],
+          'codigo_barra' => $row['codigo_barra'],
+          'id_venta' => $venta,
+          'usuario' => $row['nombre'],
+          'nombre_prod' => ($row['nombre_prod']),
+          'id_prod' => $row['id_prod'],
+          'cantidad' => $row['cantidad'],
+          'nombre_cat' => $row['nombre_cat'],
+          'estado' => $row['estado'],
+          'valor' => $row['valor_venta'], 
+          'fecha' => $row['fecha'],
+          'pesaje' => $row['pesaje'],
+          'nombre_medida' => $row['nombre_medida'],
+          'corr' => $row['corr'],
+          'pDescuento' => $row['descto'],
+          'pDescuentoMostrar' => $row['descuento']."%",
+          'descto' => $descuento
+        );
+      };
+    }
+    echo json_encode($json);
   }
-  echo json_encode($json);
-}
-else
-{
-  header('Location: ../');
-}
+  else
+  {
+    header('Location: ../');
+  }
 ?>

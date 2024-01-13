@@ -1,5 +1,12 @@
 function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
 {
+    alert(`id venta: ${id_venta}\n
+    id_prod: ${idProd}\n
+    cant_prod: ${idProd}\n
+    idCaja: ${idCaja}\n
+    nom_caja: ${nomCaja}\n
+    hora: ${hora}\n
+    `)
     //comprobar si está activado el control de stock mínimo
     let sm_activado="";
     $.ajax(
@@ -75,6 +82,7 @@ function accionGuardarVenta(idCaja, id_venta, idProd, hora, cantProd, nomCaja)
             type: "GET",
             success: function(r)
             {
+                alert(r)
                 cargarVentasCaja();
             }
         })

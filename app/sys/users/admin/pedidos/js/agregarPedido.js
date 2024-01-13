@@ -7,16 +7,54 @@ let arrProducto = Array();
 let arrCantidad = Array();
 let arrValor = Array();
 
-
 comprobarId0(id);
 
+//Factura CON/SIN IVA
+let e_fac = "";
+$("#swFacturaConIvaRegistrar").on("click", function(e)
+{
+    if(e.target.checked)
+    {
+        e_fac = "S";
+    }
+    else
+    {
+        e_fac = "N";
+    }
+})
+
+//estado del pago
+let e_pago = "";
+$("#swEstadoPagoRegistrar").on("click", function(e)
+{
+    if(e.target.checked)
+    {
+        e_pago = "S";
+    }
+    else
+    {
+        e_pago = "N";
+    }
+})
+
+
 $("#btnAgregarProducto").on("click", function(e)
+{
+    button();
+});
+
+$("#btnAgregarProducto2").on("click", function(e)
+{
+    button();
+});
+
+function button()
 {
     id++;
     body = "";
     rellenarTablaDinamica(id);
     comprobarId0(id);
-})
+}
 function eliminar(boton, e)
 {
     console.log(boton.id)
@@ -40,6 +78,8 @@ $("#btnGuardar").on("click", function(e)
         "id":id,
         "producto": arrProducto,
         "valor": arrValor,
+        "factura": e_fac,
+        "estado_pago": e_pago,
         "cantidad": arrCantidad
     }
 

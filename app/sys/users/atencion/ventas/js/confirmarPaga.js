@@ -9,6 +9,7 @@ function confirmarPaga(ticket, id, formaPago)
   let descto = parseFloat($("#descuento").text()/100);
 
   let datos = {
+    "id_venta":id,
     "nCaja": nCaja,
     "totalVenta": totalVenta,
     "producto": descProd,

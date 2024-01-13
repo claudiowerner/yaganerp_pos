@@ -161,7 +161,7 @@ function editar(e, editar, id)
     {
         $.ajax(
             {
-                url: "editar_detalle_pedido.php",
+                url: "funciones/editar_detalle_pedido.php",
                 data: datos_modificar,
                 type: "POST",
                 success: function(e)

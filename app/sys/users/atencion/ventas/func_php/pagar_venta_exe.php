@@ -99,8 +99,9 @@
 		$np = $producto[$i]['nom_prod'];
 		$cp_pedido = $producto[$i]['cant'];
 
-		$sql = "SELECT (cantidad-$cp_pedido) AS cant 
+		echo $sql = "SELECT (cantidad-$cp_pedido) AS cant 
 		FROM productos WHERE nombre_prod = '$np'";
+		echo "\n";
 		$r4 = mysqli_query($conexion, $sql);
 
 		//cantidad descuento del producto a la bd

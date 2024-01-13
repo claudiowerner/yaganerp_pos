@@ -10,40 +10,68 @@
                 <span aria-hidden='true'>&times;</span>
               </button>
             </div>
-              <div class='modal-body'>
-                <table id='contenido'>
-                  <tr>
-                    <td><label name='proveedor'>Proveedor</label></td>
-                    <td>
-                      <select name='slctProveedor' id='slctProveedor' class='form form-control select2'>
-                      </select>
-                    </td>
-                  </tr>
-                </table>
-                <div>
-                  <button id='btnAgregarProducto' class='btn btn-success'>+</button>
-                </div>
-                <br>
-                <table id='tblPedidos' class='table'>
-                  <tr>
-                    <th>ID</th>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Valor</th>
-                    <th>Acción</th>
-                  </tr>
-                  <tbody id='bodyPedidos'>
-                    
-                  </tbody>
-                </table>
+            <div class='modal-body'>
+              <table id='contenido'>
+                <tr>
+                  <td><label name='proveedor'>Proveedor</label></td>
+                  <td>
+                    <select name='slctProveedor' id='slctProveedor' class='form form-control select2'>
+                    </select>
+                  </td>
+                </tr>
+                <tr align='left'>
+                  <td >
+                    <div class=button align='right'>
+                      <label name='swEstadoPagoRegistrar' align='center'>Estado del pago:</label>
+                    </div>
+                  </td>
+                  <td>
+                    <div class=boton>                    
+                      <input type='checkbox' id='swEstadoPagoRegistrar'/>
+                      <label id='lblFacturaConIva' for='swEstadoPagoRegistrar' style='color:white' class='switch'></label>
+                    </div>
+                  </td>
+                </tr>
+                <tr align='left'>
+                  <td >
+                    <div class=button align='right'>
+                      <label name='swFacturaConIvaRegistrar' align='center'>Factura con IVA</label>
+                    </div>
+                  </td>
+                  <td>
+                    <div class=boton>                    
+                      <input type='checkbox' id='swFacturaConIvaRegistrar'/>
+                      <label id='lblFacturaConIva' for='swFacturaConIvaRegistrar' style='color:white' class='switch'></label>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <div>
+                <button id='btnAgregarProducto' class='btn btn-success'>+</button>
               </div>
-              <div class='modal-footer'>
-                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-                <button type='submit' id='btnGuardar' class='btn btn-primary'>Guardar</button>
+              <br>
+              <table id='tblPedidos' class='table'>
+                <tr>
+                  <th>ID</th>
+                  <th>Producto</th>
+                  <th>Cantidad</th>
+                  <th>Valor</th>
+                  <th>Acción</th>
+                </tr>
+                <tbody id='bodyPedidos'>              
+                </tbody>
+              </table>
+              <div>
+                <button id='btnAgregarProducto2' class='btn btn-success'>+</button>
               </div>
-          </div>
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+              <button type='submit' id='btnGuardar' class='btn btn-primary'>Guardar</button>
+            </div>
         </div>
-      </div>";
+      </div>
+    </div>";
 	}
 
   function modalEditar()

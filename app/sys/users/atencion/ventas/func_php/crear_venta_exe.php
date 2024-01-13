@@ -20,7 +20,7 @@
 		$hora = $_GET['hora'];
 		$id_venta = $_GET["id_venta"];
 		$nomCaja = $_GET['nomCaja'];
-		$idCaja = $_GET['idCaja'];
+		echo $idCaja = $_GET['idCaja'];
 
 		//Capturar ID de la caja abierta
 		$idTurno = 0;

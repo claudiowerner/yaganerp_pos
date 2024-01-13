@@ -17,7 +17,7 @@ function cargarVentasCaja()
         let descuento = 0;
         tasks.forEach(v=>{
           contador++;
-          descProd.push({"id_venta":v.id,"nom_prod": v.nombre_prod, "cant":v.cantidad,"valor":v.valor});
+          descProd.push({"id_venta":v.id,"nom_prod": v.nombre_prod,"codigo_barra":v.codigo_barra, "cant":v.cantidad,"valor":v.valor});
           let aumentar;
           let eliminar;
           descuento = parseInt(descuento) + parseInt(v.descto);
