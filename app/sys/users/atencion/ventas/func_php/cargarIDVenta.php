@@ -21,9 +21,13 @@
         WHERE id_cl = $id_cl 
         AND estado = 'A'
         AND caja = $nCaja";
-        $resultado = $conexion->query($consulta);
-
-        echo ($resultado->num_rows);
+        $mostrar = "";
+        $res = $conexion->query($consulta);
+        while($row=$res->fetch_array())
+        {
+            $mostrar = $row["corr"];
+        }
+        echo $mostrar;
 
     }
     else

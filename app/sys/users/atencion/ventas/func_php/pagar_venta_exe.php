@@ -125,6 +125,6 @@
 	}
 	else
 	{
-		die("Error al registrar pago: ". mysqli_error($conexion));
+		die("Error al registrar pago: ". $conexion->error);
 	}
 ?>

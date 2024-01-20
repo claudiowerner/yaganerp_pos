@@ -231,7 +231,7 @@ function obtenerCierresCaja()
             button2 = ``;
             fecha_cierre = "";
             estado = "";
-            if(c.estado=="CERRADO")
+            if(c.estado=="C")
             {
               estado = "CERRADO";
               button1 = "<button type='button' class='btn btn-danger' disabled=true id='btnCerrar'>Cerrar</button>";
@@ -259,7 +259,7 @@ function obtenerCierresCaja()
               <td>${c.creado_por}</td>
               <td>${c.desde}</td>
               <td>${fecha_cierre}</td>
-              <td>${c.estado}</td>
+              <td>${estado}</td>
               <td>$${c.valor_total}</td>
               <td>`+button1+button2+`</td>
             </tr>`;

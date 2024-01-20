@@ -27,44 +27,78 @@ else
 
 
   require_once '../../../conexion.php';
+  //arrays
+  $arrId = array();
+  $arrNombreCaja = array();
+  $arrNombreUsuario = array();
+  $arrFechaDesde = array();
+  $arrFechaHasta = array();
+  $arrEstado = array();
+  $arrValor = array();
+  $json = array();
 
-	//query
-	$consulta = "SELECT cc.id AS id, cc.nombre 
-  AS nombre, u.nombre as creado_por, 
+	//relleno de arrays con información
+  $sql = "SELECT cc.id, cc.nombre, u.nombre AS nombre_usuario,
   DATE_FORMAT(cc.desde, '%d-%m-%Y %H:%i:%s') AS desde, 
-  DATE_FORMAT(cc.hasta, '%d-%m-%Y %H:%i:%s') AS hasta, cc.estado,  
-  cc.valor_total FROM cierre_caja cc 
-  JOIN usuarios u ON cc.creado_por = u.id 
-  WHERE cc.id_cl = $id_cl 
+  DATE_FORMAT(cc.hasta, '%d-%m-%Y %H:%i:%s') AS hasta, 
+  cc.estado AS estado
+  FROM cierre_caja cc 
+  JOIN usuarios u 
+  ON cc.creado_por = u.id 
+  WHERE cc.id_cl = '$id_cl'
   AND DATE_FORMAT(cc.desde, '%d-%m-%Y') LIKE '%$desde%' 
   AND DATE_FORMAT(cc.hasta, '%d-%m-%Y') LIKE '%$hasta%'
-  ORDER BY cc.id DESC";
-  $resultado = $conexion->query($consulta);
-  if ($resultado->num_rows > 0){
-    $json = array();
-    while ($row = $resultado->fetch_array()) {
-      $estado = $row['estado'];
+  ORDER BY id DESC";
+  $res = $conexion->query($sql);
+  while($row = $res->fetch_array())
+  {
+    $arrId[] = $row["id"];
+    $arrNombreCaja[] = $row["nombre"];
+    $arrNombreUsuario[] = $row["nombre_usuario"];
+    $arrFechaDesde[] = $row["desde"];
+    $arrFechaHasta[] = $row["hasta"];
+    $arrEstado[] = $row["estado"];
+  }
 
-      if($estado=='A')
+  //consultar por valor de turno
+  $contador = count($arrId);
+  
+  for($i=0;$i<$contador;$i++)
+  {
+    $id = $arrId[$i];
+    $sql = "SELECT SUM(v.valor) AS valor FROM correlativo corr 
+    JOIN ventas v
+    ON v.id_venta = corr.correlativo
+    WHERE corr.id_cierre = $id";
+    $res = $conexion->query($sql);
+    while($row = $res->fetch_array())
+    {
+      if($row["valor"]=="")
       {
-        $estado = 'EN CURSO';
+        $arrValor[] = 0;
       }
       else
       {
-        $estado = 'CERRADO';
+        $arrValor[] = $row["valor"];
       }
+    }
+  }
+  for($i=0;$i<$contador;$i++)
+  {
+    $json[] = array(
+      "id"=> $arrId[$i],
+      "nombre"=> $arrNombreCaja[$i],
+      "creado_por"=> $arrNombreUsuario[$i],
+      "desde"=> $arrFechaDesde[$i],
+      "hasta"=> $arrFechaHasta[$i],
+      "estado"=> $arrEstado[$i],
+      "valor_total"=> $arrValor[$i]
+    );
+  }
 
-      $json[] =array(
-              'id' => $row['id'],
-              'nombre' => $row['nombre'],
-              'creado_por' => $row['creado_por'],
-              'desde' => $row['desde'],
-              'hasta' => $row['hasta'],
-              'estado' => $estado,
-              'valor_total' => $row['valor_total'],
-            );
-    };
+
   echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
-}
+
+
 
 ?>
