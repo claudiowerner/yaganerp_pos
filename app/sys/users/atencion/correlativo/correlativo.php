@@ -78,7 +78,7 @@
 		}		
 		
 		$correlativo = "INSERT INTO correlativo VALUES 
-		(null, $corr, '$id_cl', '$idCaja', '$nomCaja', '$id_us', '0', '$boleta', '0', '$idCierre', 'A', '$fecha', '0000-00-00 00:00:00')";
+		(null, $corr, '$id_cl', '$idCaja', '$nomCaja', '$id_us', '$boleta', '0', '$idCierre', 'A', '$fecha', '0000-00-00 00:00:00')";
 		$r2 = mysqli_query($conexion, $correlativo);
 		   
 		if($r1&&$r2)
