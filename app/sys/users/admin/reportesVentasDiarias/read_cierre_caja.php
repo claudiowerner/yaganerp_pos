@@ -37,7 +37,8 @@ else
   JOIN usuarios u ON cc.creado_por = u.id 
   WHERE cc.id_cl = $id_cl 
   AND DATE_FORMAT(cc.desde, '%d-%m-%Y') LIKE '%$desde%' 
-  AND DATE_FORMAT(cc.hasta, '%d-%m-%Y') LIKE '%$hasta%'";
+  AND DATE_FORMAT(cc.hasta, '%d-%m-%Y') LIKE '%$hasta%'
+  ORDER BY cc.id DESC";
   $resultado = $conexion->query($consulta);
   if ($resultado->num_rows > 0){
     $json = array();

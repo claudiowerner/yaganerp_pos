@@ -92,7 +92,8 @@
 	fecha_pago = '$fecha $hora',
 	forma_pago = '$forma_pago'
 	WHERE id_cl = '$id_cl'
-	AND id_venta = '$id_venta'";
+	AND id_venta = '$id_venta'
+	AND estado!='N'";
 	$r2 = $conexion->query($sql);
 
 	//actualizar
@@ -115,7 +116,7 @@
 		$np = $producto[$i]['nom_prod'];
 		$cp_pedido = $producto[$i]['cant'];
 
-		echo $sql = 
+		$sql = 
 		"UPDATE productos p
 		JOIN ventas v
 		ON p.id_prod = v.producto

@@ -68,6 +68,7 @@
                         echo modalSeleccionarCuenta();
                         echo modalMetodoPagoPagarCuenta();
                         echo modalDescuento();
+                        echo modalResumenCaja();
                     ?>
                 </div>
                 <!-- CONTENT -->
@@ -116,14 +117,19 @@
                                                         <td align="left" width="">
                                                             <input type="text" name="cod_barra" id="txtCodBarra" class="form form-control" placeholder="Haga click acá y escanée el código de barra">
                                                         </td>
+                                                    </tr>
+                                                    <tr width="100%">
                                                         <td>
-                                                            <button id="btnCrearVenta" class="btn btn-warning" disabled=true>Crear nueva venta</button>
+                                                            <button id="btnCrearVenta" class="btn btn-warning" style="width:200px" disabled=true>Crear nueva venta</button>
                                                         </td>
                                                         <td>
-                                                            <button id="btnCerrarCaja" class="btn btn-danger">Cerrar caja</button>
+                                                            <button id="btnCerrarCaja" class="btn btn-danger" style="width:200px">Cerrar caja</button>
                                                         </td>
                                                         <td>
-                                                            <button id="btnPagarCuenta" class="btn btn-success">Pagar cuenta</button>
+                                                            <button id="btnResumen" class="btn btn-danger" style="width:200px">Resumen</button>
+                                                        </td>
+                                                        <td>
+                                                            <button id="btnPagarCuenta" class="btn btn-success" style="width:200px">Pagar cuenta</button>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -286,6 +292,7 @@
     <script src="js/pagarCuenta.js"></script>
     <script src="js/confirmarPaga.js"></script>
     <script src="js/calcularVuelto.js"></script>
+    <script src="js/resumenCaja.js"></script>
     
     
 </body>
