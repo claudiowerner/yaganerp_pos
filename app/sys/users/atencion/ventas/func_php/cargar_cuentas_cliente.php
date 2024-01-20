@@ -15,10 +15,13 @@
 
     //query
     $consulta = 
-    "SELECT ccr.id_venta AS correlativo, DATE_FORMAT(ccr.fecha_registro, '%d-%m-%Y') AS fecha, corr.valor
+    "SELECT ccr.id_venta AS correlativo, DATE_FORMAT(ccr.fecha_registro, '%d-%m-%Y') AS fecha, (SUM(v.valor)-v.valor*(v.des/100)) AS valor
     FROM cuenta_corriente ccr
     JOIN correlativo corr 
+
     ON corr.id = ccr.id_venta
+    JOIN ventas v 
+    ON corr.correlativo = v.id_venta
     WHERE rut = '$rut'
     AND ccr.estado = 'A'
     AND ccr.id_cl = $id_cl

@@ -75,8 +75,7 @@
 	//actualizar tabla correlativo
 	$sql = 
 	"UPDATE correlativo 
-	SET valor = '$valorTotal',
-	estado = 'C', 
+	SET estado = 'C', 
 	boleta = '$boleta', 
 	fecha_cierre= '$fecha $hora',
 	forma_pago = '$forma_pago'
@@ -129,6 +128,7 @@
 
 	
 	
+
 	if($r1&&$r2&&$r5)
 	{
 		echo "Pago registrado correctamente";

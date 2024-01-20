@@ -60,7 +60,7 @@
 		'$id_us', 
 		'$idProd', 
 		'$cantProd', 
-		'$valor',
+		'$valor', 
 		'A', 
 		'$fecha', 
 		'0000-00-00 00:00:00', 

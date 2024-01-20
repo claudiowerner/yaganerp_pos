@@ -116,8 +116,6 @@
 		WHERE nombre_prod = '$np';";
 		$r5 = mysqli_query($conexion, $sql);
 	}
-
-	
 	
 	if($r1&&$r2&&$r4&&$r5)
 	{
