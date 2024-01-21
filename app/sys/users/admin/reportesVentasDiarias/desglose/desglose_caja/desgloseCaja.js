@@ -63,10 +63,10 @@ function cargarDesglose()
         `<tr idVenta=`+c.id_venta+` class="${estado}">
           <td>${c.id_venta}</td>
           <td>${c.creado_por}</td>
-          <td>${c.desde}</td>
           <td>${c.hasta}</td>
           <td>${c.estado}</td>
           <td>$${c.valor_total}</td>
+          <td>${c.metodo_pago}</td>
           <td>`+button+`</td>
         </tr>`;
         $("#caja").html(c.nombre);

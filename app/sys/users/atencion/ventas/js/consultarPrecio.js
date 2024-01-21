@@ -31,6 +31,7 @@ $("#txtCodConsultaPrecio").on("keyup", function(e)
         let json = JSON.parse(descarga);
         $("#nomProdConsulta").text(json.nombre);
         $("#precioProdConsulta").text(json.valor);
+        $("#txtCodConsultaPrecio").val("");
         
 
     }

@@ -83,10 +83,10 @@
                                                 <tr>
                                                     <th>ID venta</th>
                                                     <th>Creado por</th>
-                                                    <th>Desde</th>
-                                                    <th>Hasta</th>
+                                                    <th>Fecha y hora de pago</th>
                                                     <th>Estado</th>
                                                     <th>Valor total</th>
+                                                    <th>Método de pago</th>
                                                     <th>Ver detalle</th>
                                                 </tr>
                                             </thead>
