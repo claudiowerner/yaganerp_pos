@@ -68,6 +68,18 @@
                                         <h1>Detalle de venta turno/caja <strong id=nCaja style="display: none"><?php echo $idCaja?></strong> <strong id=nomCaja><?php echo $nomCaja?></strong></h1>
                                         <strong id="idCierre" style="display: none"><?php echo $idCierre?></strong>
                                         <div class="col-md-12" style="width:100%" align=center>
+                                        <div align="left">
+                                            <table width="50%">
+                                                <tr>
+                                                    <th>Item</th>
+                                                    <th>Cantidad</th>
+                                                    <th>Valor</th>
+                                                </tr>
+                                                <tbody id="formaPago">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
                                         <!--<table>
                                             <tr>
                                                 <td><strong>Desde</strong></td>
@@ -119,6 +131,7 @@
 
     <!--llamada a categorias-->
     <script src="desgloseCaja.js"></script>
+    <script src="obtenerResumenCaja.js"></script>
     <script src="../../js/id_usuario.js"></script>
     <script src="../../js/imprimir.js"></script>
 
