@@ -70,6 +70,7 @@
                         echo modalDescuento();
                         echo modalResumenCaja();
                         echo modalConsultarPrecio();
+                        echo modalCajaInicial();
                     ?>
                 </div>
                 <!-- CONTENT -->
@@ -300,6 +301,8 @@
     <script src="js/calcularVuelto.js"></script>
     <script src="js/resumenCaja.js"></script>
     <script src="js/consultarPrecio.js"></script>
+    <script src="js/comprobarPrimeraVenta.js"></script>
+    <script src="js/confirmarMontoInicialCaja.js"></script>
     
     
 </body>
