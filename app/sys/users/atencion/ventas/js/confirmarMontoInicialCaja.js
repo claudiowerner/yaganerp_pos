@@ -30,8 +30,17 @@ $("#btnConfirmarMontoInicial").on("click", function()
         else
         {
             let turno = $("#id_caja").text();
-            let mostrar = enviarDatos(turno, nCaja, monto)
-            alert(mostrar)
+            let mostrar = enviarDatos(turno, nCaja, monto);
+
+            if(mostrar.match(/correctamente/))
+            {
+                msjes_swal("Excelente", mostrar, "success");
+            }
+            if(mostrar.match(/error/))
+            {
+                msjes_swal("Error", mostrar, "error");
+            }
+            $("#modalCajaInicial").modal("hide");
         }
     }
 })

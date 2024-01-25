@@ -15,7 +15,6 @@ function cargarNumeroVenta()
 $(document).ready(function()
 {
     let numeroVenta = cargarNumeroVenta();
-    console.log(numeroVenta);
     if(numeroVenta<1)
     {
         $("#modalCajaInicial").modal("show");

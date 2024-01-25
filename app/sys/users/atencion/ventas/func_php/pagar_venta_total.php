@@ -126,10 +126,49 @@
 		$r5 = $conexion->query($sql);
 	}
 
+	//CONSULTAR VALOR TOTAL DE LA VENTA
+	$sql = 
+	"SELECT SUM(valor) AS monto
+	FROM ventas 
+	WHERE id_cl = $id_cl 
+	AND id_venta = $id_venta 
+	AND estado = 'C'";
+	$res = $conexion->query($sql);
+	//captura monto total generado por la venta
+	$monto = 0;
+	while($row = $res->fetch_array())
+	{
+		$monto = $row["monto"];
+	}
+
+	//REGISTRO EN MONTO_CAJA
+	if($forma_pago==1)
+	{
+		
+		$sql = 
+		"INSERT INTO monto_caja VALUES(
+			null,
+			$id_cl,
+			$nCaja,
+			$idCierre,
+			2,
+			$monto
+		)";
+		$r3 = $conexion->query($sql);
+		if($r3)
+		{
+			echo "Pago en efectivo registrado en el movimiento de caja.\n";
+		}
+		else
+		{
+			echo $conexion->error();
+		}
+	}
+
 	
 	
 
-	if($r1&&$r2&&$r5)
+	if($r1&&$r2&&$r3&&$r5)
 	{
 		echo "Pago registrado correctamente";
 	}

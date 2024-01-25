@@ -71,6 +71,7 @@
                         echo modalResumenCaja();
                         echo modalConsultarPrecio();
                         echo modalCajaInicial();
+                        echo modalMovimientoCaja();
                     ?>
                 </div>
                 <!-- CONTENT -->
@@ -95,7 +96,10 @@
                                                             <button id="btnCerrarCaja" class="btn btn-danger" style="width:100%">Cerrar caja</button>
                                                         </td>
                                                         <td>
-                                                            <button id="btnResumen" class="btn btn-danger" style="width:100%">Resumen</button>
+                                                            <button id="btnMovimientoCaja" class="btn btn-primary" style="width:100%">Movimiento de caja</button>
+                                                        </td>
+                                                        <td>
+                                                            <button id="btnResumen" class="btn btn-primary" style="width:100%">Resumen</button>
                                                         </td>
                                                         <td>
                                                             <button id="btnPagarCuenta" class="btn btn-success" style="width:100%">Pagar cuenta</button>
@@ -303,6 +307,7 @@
     <script src="js/consultarPrecio.js"></script>
     <script src="js/comprobarPrimeraVenta.js"></script>
     <script src="js/confirmarMontoInicialCaja.js"></script>
+    <script src="js/movimientoCaja.js"></script>
     
     
 </body>

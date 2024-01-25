@@ -20,7 +20,7 @@
 		$hora = $_GET['hora'];
 		$id_venta = $_GET["id_venta"];
 		$nomCaja = $_GET['nomCaja'];
-		echo $idCaja = $_GET['idCaja'];
+		$idCaja = $_GET['idCaja'];
 
 		//Capturar ID de la caja abierta
 		$idTurno = 0;
@@ -50,7 +50,7 @@
 		$resultado = mysqli_query($conexion, $sql);
 
 		//registro tabla ventas
-		$sql = 
+		echo $sql = 
 		"INSERT INTO ventas VALUES 
 		(null, 
 		$id_venta, 
@@ -66,7 +66,7 @@
 		'0000-00-00 00:00:00', 
 		'0',
 		'0')";
-		$resultado = mysqli_query($conexion, $sql);
+		$resultado = $conexion->query($sql);
 		    
 		if($resultado)
 		{
@@ -74,7 +74,7 @@
 		}
 		else
 		{
-			die("Error al agregar venta: ". mysqli_error($conexion));
+			die("Error al agregar venta: ". $conexion->error);
 		}
 	}
 	else

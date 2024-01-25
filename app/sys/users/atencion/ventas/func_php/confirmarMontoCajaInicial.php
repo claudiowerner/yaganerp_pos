@@ -22,12 +22,13 @@
 		$id_cl,
 		$caja,
 		$id_cierre,
+		1,
 		$monto
 	)";
 	$res = $conexion->query($sql);
 	if($res)
 	{
-		echo "Registro de monto inicial de caja creado exitosamente";
+		echo "Registro de monto inicial de caja creado correctamente";
 	}
 	else
 	{

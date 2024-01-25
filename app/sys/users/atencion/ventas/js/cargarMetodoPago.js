@@ -4,7 +4,6 @@ $.ajax(
         type: "GET",
         success: function(e)
         {
-            console.log("Método pago: "+e);
             template = "<option value='SO'>----------SELECCIONE----------</option>";
             metodos = JSON.parse(e);
             metodos.forEach(m=>{
