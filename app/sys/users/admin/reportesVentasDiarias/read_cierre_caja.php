@@ -69,7 +69,8 @@ else
     $sql = "SELECT SUM(v.valor) AS valor FROM correlativo corr 
     JOIN ventas v
     ON v.id_venta = corr.correlativo
-    WHERE corr.id_cierre = $id";
+    WHERE corr.id_cierre = $id
+    AND v.estado = 'C'";
     $res = $conexion->query($sql);
     while($row = $res->fetch_array())
     {

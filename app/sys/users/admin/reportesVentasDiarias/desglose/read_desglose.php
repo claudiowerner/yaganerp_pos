@@ -99,7 +99,8 @@
     ON c.correlativo = v.id_venta
     AND v.id_cl = $id_cl 
     AND c.id_cierre = $idCierre
-    AND c.caja = $id";
+    AND c.caja = $id
+    AND v.estado = 'C'";
     $res = $conexion->query($sql);
     while($row = $res->fetch_assoc())
     {

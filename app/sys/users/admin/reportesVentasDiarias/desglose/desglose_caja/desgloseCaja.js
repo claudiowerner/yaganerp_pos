@@ -58,7 +58,6 @@ function cargarDesglose()
         {
           estado = "ANULADO";
         }
-        valor = parseInt(valor) + parseInt(c.valor_total);
         template+=
         `<tr idVenta=`+c.id_venta+` class="${estado}">
           <td>${c.id_venta}</td>
@@ -77,12 +76,7 @@ function cargarDesglose()
         <tr>
           <td colspan=9>Sin ventas</td>
         </tr>`;
-      } 
-      template += 
-      `<tr>
-        <td colspan=5><strong>TOTAL:</strong></td>
-        <td><strong>$</strong><strong>${valor}</strong></td>
-      </tr>`
+      }
       $("#bodyDetalleCaja").html(template);
     }
   })

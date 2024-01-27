@@ -27,4 +27,5 @@ json.forEach(j=>{
 });
 
 template += `<tr><td colspan=2><strong>TOTAL:</strong></td><td>$${valor}</td></tr>`;
+$("#valor").html(valor);
 $("#formaPago").html(template);

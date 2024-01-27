@@ -39,7 +39,6 @@ $( document ).ready(function() {
           <td>$${c.valor}</td>
           <td>`+button+`</td>
         </tr>`;
-
         valor = parseInt(valor)+parseInt(c.valor);
         $("#caja").html(c.nombre);
       });

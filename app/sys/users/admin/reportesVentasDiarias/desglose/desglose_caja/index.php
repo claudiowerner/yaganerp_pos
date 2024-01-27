@@ -105,6 +105,12 @@
                                             <tbody id="bodyDetalleCaja">
                                                     
                                             </tbody>
+                                            <tbody id="bodyTotal">
+                                                <tr>
+                                                    <td colspan=4><strong>TOTAL:</strong></td>
+                                                    <td colspan=2><strong>$</strong><strong id='valor'></strong></td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                     <!--<button id="btnReimprimirResumen" class="btn btn-success">Reimprimir resumen de ventas</button>-->

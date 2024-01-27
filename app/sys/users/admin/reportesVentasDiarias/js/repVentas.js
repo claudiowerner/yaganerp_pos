@@ -145,14 +145,32 @@ $("#cierreCaja").on('click', 'button.btn-danger', function(e)
   $("#nCaja").html(id);
   $("#idCierre").html(id);
   let solicitar = validarSolicitudClave();//valida si se solicita la clave de autorizacion para cerrar caja o no
-  if(solicitar.match(/N/))
+  
+  swal({
+    title: "¿Seguro?",
+    text: 
+    `¿Desea cerrar este turno/caja?`,
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+})
+.then((cerrar) => {
+  if (cerrar)
   {
-    cierreCaja();
-  }
-  else
+    if(solicitar.match(/N/))
+    {
+      cierreCaja();
+    }
+    else
+    {
+      $("#solicClaveAutCerrar").modal("show");
+    }
+  } 
+  else 
   {
-    $("#solicClaveAutCerrar").modal("show");
+    swal("Operación cancelada");
   }
+});
   
 })
 

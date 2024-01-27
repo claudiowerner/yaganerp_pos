@@ -39,8 +39,7 @@
     DATE_FORMAT(v.fecha, '%d-%m-%y %H:%i:%s') AS fecha,
     DATE_FORMAT(v.fecha_pago, '%d-%m-%y %H:%i:%s') AS fecha_pago ,
     mp.nombre_metodo_pago, 
-    v.estado,
-    SUM(v.valor) AS valor_total
+    v.estado, SUM(v.valor) AS valor
     FROM cierre_caja cc 
     JOIN correlativo corr ON cc.id = corr.id_cierre
     JOIN usuarios u ON u.id = cc.creado_por 
@@ -78,7 +77,7 @@
               'nom_caja' => $row['nom_caja'],
               'hasta' => $row['fecha_pago'],
               'estado' => $estado,
-              'valor_total' => $row['valor_total'],
+              'valor_total' => $row['valor'],
               'metodo_pago' => strtoupper($row['nombre_metodo_pago'])
             );
   }
