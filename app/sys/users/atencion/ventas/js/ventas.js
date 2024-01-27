@@ -245,8 +245,3 @@ function contadorVentas(id_venta)
     msjes_swal("Error", e, "error");
   })
 }
-
-
-
-
-

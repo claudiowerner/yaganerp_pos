@@ -100,6 +100,7 @@
 	//declaracion variable resultado descuento BD (para ejecutar sentencia SQL)
 	$r = '';
 	//realizar descuentos en tabla productos
+	$cp_pedido = 0;
 	for($i = 0;$i<count($producto); $i++)
 	{
 		$id = $producto[$i]["id_venta"];
@@ -113,17 +114,19 @@
 
 		//acrónimo cp= Cantidad Pedido
 		$np = $producto[$i]['nom_prod'];
-		$cp_pedido = $producto[$i]['cant'];
 
+		//CONTAR CANTIDAD DE PRODUCTOS SOLICITADOS 
+		//DESCONTAR CANTIDAD DE PRODUCTO DE LA BD
 		$sql = 
 		"UPDATE productos p
 		JOIN ventas v
 		ON p.id_prod = v.producto
 		SET p.cantidad = (p.cantidad-$cp_pedido) 
 		WHERE nombre_prod = '$np'
-		AND v.id_venta = $id_venta
-		AND v.id_caja = $idCierre";
+		AND v.id_venta = $id_venta";
 		$r5 = $conexion->query($sql);
+
+		
 	}
 
 	//CONSULTAR VALOR TOTAL DE LA VENTA
