@@ -15,22 +15,20 @@ if(isset($_SESSION['user'])){
   $id_us = $_SESSION['user']['id'];
   $nombre = $_SESSION['user']["nombre"];
   $id_cl = $_SESSION['user']["id_cl"];
-  $nomCat = $_POST['nomCat'];
   $piso = 1;
 
-  require_once '../../../conexion.php';
+
+  require_once '../../../../conexion.php';
 
 	//query
-	$consulta = "SELECT id FROM categorias WHERE id_cl = $id_cl and nombre_cat = '$nomCat'";
+	$consulta = "SELECT estado, stock_minimo FROM stock_minimo_producto WHERE id_cl = $id_cl;";
   $resultado = $conexion->query($consulta);
   if ($resultado->num_rows > 0){
-  $json = array();
-   while ($row = $resultado->fetch_array()) {
-     $json[] =array(
-         'id' => $row['id']
-       );
-   };
-   echo json_encode($json);
- }
+    $json = array();
+    while ($row = $resultado->fetch_array())
+    {
+      echo $row["estado"];
+    };
+  }
 
 ?>

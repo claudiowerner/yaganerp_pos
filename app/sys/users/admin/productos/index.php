@@ -115,9 +115,9 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
 
-    <script type="text/javascript" src="../../../datatables/datatables.js"></script>
-    <script src="calcular_ganancia.js"></script>
-    <script src="producto.js"></script>
-    <script src="proveedores.js"></script>
+    <script src="../../../datatables/datatables.js"></script>
+    <script src="productos/calcular_ganancia.js"></script>
+    <script src="productos/producto.js"></script>
+    <script src="productos/proveedores.js"></script>
 
 </html>

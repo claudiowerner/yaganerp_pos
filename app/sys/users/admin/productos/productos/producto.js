@@ -64,7 +64,7 @@ var table;
 
 //cargar estado de trabajo con o sin stock (activado o desactivado)
 $.ajax({
-  url:"read_config_productos.php",
+  url:"productos/productos/read_config_productos.php",
   type: "POST",
   success: function(e)
   {
@@ -99,7 +99,7 @@ cargarUnidad();
       },
 
         "ajax":{
-          "url":"read_productos.php",
+          "url":"productos/read_productos.php",
           "type":"GET",
           "dataSrc":""
         },
@@ -146,7 +146,7 @@ function cargarCategoria()
     
   $.ajax({
 
-    url:"read_categorias.php",
+    url:"productos/read_categorias.php",
     type: "POST",
     success: function(response)
     {
@@ -171,7 +171,7 @@ function cargarUnidad()
   
   $.ajax(
     {
-      url:"read_unidades_medida.php",
+      url:"productos/read_unidades_medida.php",
       type: "POST",
       success: function(e)
       {
@@ -199,7 +199,7 @@ $("#producto").on('click', 'tr', function(e)
   //ajax que consulta si el prducto seleccionado lleva pesaje o no y qué tipo de medida usa.
   $.ajax(
     {
-      url:"read_unidad_medida_prod_especifico.php",
+      url:"productos/read_unidad_medida_prod_especifico.php",
       data: {"id_prod": id},
       type: "POST",
       success: function(e)
@@ -233,7 +233,7 @@ $("#producto").on('click', 'tr', function(e)
 
   $.ajax(
   {
-    url:"read_categorias_prod_especifico.php",
+    url:"productos/read_categorias_prod_especifico.php",
     type: "POST",
     data: {"nomCat": datos.nombre_cat},
     success: function(e)
@@ -262,7 +262,7 @@ $("#producto").on('click', 'tr', function(e)
   
   $.ajax(
   {
-    url:"read_productos_especifico.php",
+    url:"productos/read_productos_especifico.php",
     type: "POST",
     data: {"id_prod":id},
     success: function(response)
@@ -363,7 +363,7 @@ $("#formRegistroProducto").submit(function(e)
   {
     //comprobar existencia de nombre del producto
     $.ajax({
-      url:"validar_nombre_producto.php",
+      url:"productos/validar_nombre_producto.php",
       data: {"nombre":np},
       type: "POST",
       success: function(e)
@@ -380,7 +380,7 @@ $("#formRegistroProducto").submit(function(e)
         {
           $.ajax(
             {
-              url:"crear_producto_exe.php",
+              url:"productos/crear_producto_exe.php",
               data: datos,
               type: "POST",
               success: function(e)
@@ -479,7 +479,7 @@ $("#formEditarProducto").submit(function(e)
 
   $.ajax(
     {
-      url:"editar_producto_exe.php",
+      url:"productos/editar_producto_exe.php",
       type: "POST",
       data: datos,
       success: function(e)

@@ -18,17 +18,17 @@ if(isset($_SESSION['user'])){
   $piso = 1;
 
 
-  require_once '../../../conexion.php';
+  require_once '../../../../conexion.php';
 
 	//query
-	$consulta = "SELECT id, nombre_cat FROM categorias WHERE id_cl = $id_cl ";
+	$consulta = "SELECT * FROM unidades_medida;";
   $resultado = $conexion->query($consulta);
   if ($resultado->num_rows > 0){
   $json = array();
    while ($row = $resultado->fetch_array()) {
      $json[] =array(
          'id' => $row['id'],
-         'nombre_cat' => $row['nombre_cat']
+         'nombre_medida' => $row['nombre_medida']
      );
    };
    echo json_encode($json);

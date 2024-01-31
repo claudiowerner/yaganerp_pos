@@ -18,17 +18,20 @@ if(isset($_SESSION['user'])){
   $piso = 1;
 
 
-  require_once '../../../conexion.php';
+  require_once '../../../../conexion.php';
 
 	//query
-	$consulta = "SELECT estado, stock_minimo FROM stock_minimo_producto WHERE id_cl = $id_cl;";
+	$consulta = "SELECT id, nombre_cat FROM categorias WHERE id_cl = $id_cl ";
   $resultado = $conexion->query($consulta);
   if ($resultado->num_rows > 0){
-    $json = array();
-    while ($row = $resultado->fetch_array())
-    {
-      echo $row["estado"];
-    };
-  }
+  $json = array();
+   while ($row = $resultado->fetch_array()) {
+     $json[] =array(
+         'id' => $row['id'],
+         'nombre_cat' => $row['nombre_cat']
+     );
+   };
+   echo json_encode($json);
+ }
 
 ?>

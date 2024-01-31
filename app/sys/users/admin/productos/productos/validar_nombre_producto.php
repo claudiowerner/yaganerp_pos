@@ -13,10 +13,10 @@ if(isset($_SESSION['user'])){
 
     $nombre = $_POST["nombre"];
 
-    require_once '../../../conexion.php';
+    require_once '../../../../conexion.php';
 
     //query
-    $consulta = "SELECT * FROM productos WHERE id_cl = 1 AND nombre_prod = '$nombre'";
+    $consulta = "SELECT * FROM productos WHERE id_cl = $id_cl AND nombre_prod = '$nombre'";
     $resultado = $conexion->query($consulta);
 
     $nombre = 0;
