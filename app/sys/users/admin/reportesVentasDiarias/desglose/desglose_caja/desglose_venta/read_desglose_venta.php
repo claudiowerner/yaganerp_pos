@@ -23,7 +23,8 @@
   mp.nombre_metodo_pago, 
   SUM(v.valor) AS valor, 
   c.estado AS estado_venta,
-  v.estado AS estado_prod, v.fecha 
+  v.estado AS estado_prod, 
+  DATE_FORMAT(v.fecha, '%d-%m-%Y %H:%i:%s') AS fecha
   FROM ventas v 
   JOIN metodo_pago mp ON mp.id = v.forma_pago
   JOIN correlativo c ON c.id = v.id_venta

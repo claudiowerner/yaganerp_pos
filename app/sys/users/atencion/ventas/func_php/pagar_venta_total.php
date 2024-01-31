@@ -26,9 +26,6 @@
 	$descto = $_POST["descto"];
 	$valorCierreCaja = 0;
 
-	$sql =
-	"UPDATE correlativo SET `valor` = '$valorTotal' WHERE correlativo = $id_venta;";
-	$res = $conexion->query($sql);
 
 	$sql = 
 	"SELECT SUM(v.valor) AS valor 
@@ -78,7 +75,8 @@
 	SET estado = 'C', 
 	boleta = '$boleta', 
 	fecha_cierre= '$fecha $hora',
-	forma_pago = '$forma_pago'
+	forma_pago = '$forma_pago',
+	id_cierre = '$idCierre'
 	WHERE id = '$id_venta'";
 	$r1 = $conexion->query($sql);
 
