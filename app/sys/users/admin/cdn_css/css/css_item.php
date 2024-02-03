@@ -6,7 +6,7 @@
 
     <!-- Custom styles for this template -->
     <link rel='stylesheet' href='../css/estadoItem.css'>
-    <link rel='stylesheet' href='../../../css/switch.css'>
+    <link rel='stylesheet' href='../../css/switch.css'>
     <link rel='stylesheet' href='switch.css'>
     <link rel='stylesheet' href='../../../css/theme.css'>
     <link rel='stylesheet' href='../../../css/dashboard.css'>

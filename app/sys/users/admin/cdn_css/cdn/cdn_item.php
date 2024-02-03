@@ -1,6 +1,7 @@
 <?php
     echo 
     "<script type='text/javascript' src='../../../js/jquery.js'></script>
+    <script type='text/javascript' src='../../../js/jquery-ui.min.js'></script>
     <script type='text/javascript' src='../../../js/mensajes-swal.js'></script>
     <script type='text/javascript' src='../../../js/sweetalert.min.js'></script>
     <script type='text/javascript' src='../../../tipo_usuario/acceso_ventas_dashboard.js'></script>

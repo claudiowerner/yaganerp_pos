@@ -22,7 +22,6 @@ async function accionEliminarVenta(boton)
                         type: "POST",
                         success: function(r)
                         {
-                            msjes_swal("Excelente", r, "success");
                             cargarVentasCaja();
                             $('#solicClaveAut').modal('hide');
                         }

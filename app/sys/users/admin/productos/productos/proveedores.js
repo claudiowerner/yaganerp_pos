@@ -2,7 +2,7 @@
 
 $.ajax(
     {
-        url: "read_proveedores.php",
+        url: "productos/read_proveedores.php",
         type: "POST",
         success: function(e)
         {

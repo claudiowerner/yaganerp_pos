@@ -1,3 +1,7 @@
+//SELECCIONAR PESTAÑA AL CARGAR LA PÁGINA
+$('a[href="#productos"]').click();
+
+
 ep = "S"; //almacena el estado del piso
 
 $("#swEditarProducto").on("click", function(e)
