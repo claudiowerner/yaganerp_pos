@@ -24,7 +24,7 @@
 
     # descargar datos de la venta
     $sql = 
-    "SELECT * FROM ventas WHERE id_venta = $ids AND id_cl = $id_cl";
+    "SELECT * FROM ventas WHERE id_venta = $ids AND id_cl = $id_cl AND estado!='N'";
 
     $res = $conexion->query($sql);
     while($row = $res->fetch_assoc())
@@ -80,7 +80,9 @@
     ON g.id = c.giro
     JOIN usuarios u 
     ON u.id_cl = c.id
-    WHERE c.id = $id_cl";
+    WHERE c.id = $id_cl
+    AND c.estado='S'
+    GROUP BY c.id";
     $resDatos = $conexion->query($sql);
 
     //recorrer array valor para rellenar el array items3
