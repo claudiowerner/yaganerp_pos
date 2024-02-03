@@ -9,7 +9,7 @@
     $idVenta = $_POST['id_venta'];
 
     $consulta = 
-    "SELECT descto FROM ventas WHERE id_cl = $id_cl AND estado = 'A' AND id_venta = $idVenta" ;
+    "SELECT descto FROM ventas WHERE id_cl = $id_cl AND estado = 'A' AND id_venta = $idVenta GROUP BY id_venta" ;
     $resultado = $conexion->query($consulta);
     $descto = 0;
     if ($resultado->num_rows > 0)

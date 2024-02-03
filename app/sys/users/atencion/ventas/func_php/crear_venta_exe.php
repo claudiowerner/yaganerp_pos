@@ -49,8 +49,25 @@
 		$sql = "UPDATE cajas SET estado = 'A' WHERE id_cl = '$id_cl' AND id = '$idCaja'";
 		$resultado = mysqli_query($conexion, $sql);
 
+		$descto = 0;
+		$sql = "SELECT descto FROM ventas WHERE id_cl = $id_cl AND id_venta = $id_venta AND descto!=0 AND estado!='N' GROUP BY id_venta";
+		$res = $conexion->query($sql);
+		while($row =  $res->fetch_array())
+		{
+			echo $descto = ($row["descto"]/100);
+			echo "\n";
+		}
+
+		//Cálculo de descuento
+		$valor_descto_apl = 0;
+		if($descto!=0)
+		{
+			echo "nana: ".$valor_descto_apl = ($valor*$descto);
+			echo "\n";
+		}
+
 		//registro tabla ventas
-		echo $sql = 
+		$sql = 
 		"INSERT INTO ventas VALUES 
 		(null, 
 		$id_venta, 
@@ -61,11 +78,12 @@
 		'$idProd', 
 		'$cantProd', 
 		'$valor', 
+		'$valor_descto_apl', 
 		'A', 
 		'$fecha', 
 		'0000-00-00 00:00:00', 
 		'0',
-		'0')";
+		'$descto')";
 		$resultado = $conexion->query($sql);
 		    
 		if($resultado)

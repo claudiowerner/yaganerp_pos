@@ -75,6 +75,7 @@ function accionGuardarVenta(idCaja, id_venta, idProd, hora, cantProd, nomCaja)
             type: "GET",
             success: function(r)
             {
+                alert(r)
                 cargarVentasCaja();
             }
         })

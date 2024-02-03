@@ -15,7 +15,7 @@
 
 
     $consulta = 
-    "SELECT descto FROM ventas WHERE id_cl = $id_cl AND id_venta = $idVenta" ;
+    "SELECT descto FROM ventas WHERE id_cl = $id_cl AND id_venta = $idVenta AND estado!='N'" ;
     $resultado = $conexion->query($consulta);
     $json = array();
     if ($resultado->num_rows > 0){
