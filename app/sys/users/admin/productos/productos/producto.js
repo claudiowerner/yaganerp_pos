@@ -301,8 +301,6 @@ $("#producto").on('click', 'tr', function(e)
   let porcDescto = datos.descuento;//variable que captura el % de descuento indicado en la tabla 
   let txtDescto = porcDescto.slice(0, porcDescto.length - 1);//valor que se pondrá en el txtDescuento para ser editado
 
-  console.log(datos)
-
   $("#nomProdEditar").val(datos.nombre_prod);
   $("#txtCodBarraEditar").val(datos.codigo_barra);
   $("#margenGananciaEditar").val(porcentaje);
@@ -367,8 +365,8 @@ $("#formRegistroProducto").submit(function(e)
   {
     //comprobar existencia de nombre del producto
     $.ajax({
-      url:"productos/validar_nombre_producto.php",
-      data: {"nombre":np},
+      url:"productos/validar_existencia_producto.php",
+      data: {"cod_barra":cb},
       type: "POST",
       success: function(e)
       {
@@ -376,7 +374,7 @@ $("#formRegistroProducto").submit(function(e)
         {
           swal({
             title: "Aviso",
-            text: "Ya existe un producto con el nombre "+np,
+            text: "Ya existe un producto con el código "+cb,
             icon: "warning",
           });
         }
