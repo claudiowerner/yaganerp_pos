@@ -24,16 +24,20 @@
 
     # descargar datos de la venta
     $sql = 
-    "SELECT * FROM ventas WHERE id_venta = $ids AND id_cl = $id_cl AND estado!='N'";
+    "SELECT DATE_FORMAT(fecha, '%d-%m-%Y %H:%i:%s') AS fecha,
+    descto, valor
+    FROM ventas WHERE id_venta = $ids AND id_cl = $id_cl AND estado!='N'";
 
     $res = $conexion->query($sql);
+    $cont = 0;
     while($row = $res->fetch_assoc())
     {
         $fecha = $row["fecha"];
         $descto = $row["descto"];
         $valorVenta = $valorVenta + $row["valor"];
+        $cont++;
     }
-
+    
     $valDescto = ($descto/100)*$valorVenta;
     $valDescto = round($valDescto);
     $iva = $valorVenta*0.19;
@@ -43,13 +47,14 @@
     $total = $subtotal + $iva - $valDescto;
     
 
-    $sql = "SELECT v.id_cl, v.id, p.id_prod, v.cantidad, v.valor
+    $sql = "SELECT v.id_cl, v.id, p.id_prod, v.cantidad AS cantidad, SUM(v.valor) AS valor
     FROM ventas v
     JOIN productos p 
     ON p.id_prod = v.producto 
     WHERE v.id_venta = $ids
     AND v.id_cl = '$id_cl'
-    AND v.estado!='N'
+    AND v.estado = 'C'
+    GROUP BY p.id_prod 
     ORDER BY v.id ASC";
     $result = $conexion->query($sql) or die (mysqli_error());
 

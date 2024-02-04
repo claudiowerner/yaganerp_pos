@@ -21,11 +21,13 @@ let descarga = descargarDatos(datos_consulta);
 let json = JSON.parse(descarga);
 let template = ""; 
 let valor = 0;
+let cant_transac= 0;
 json.forEach(j=>{
   valor = parseInt(j.valor) + parseInt(valor);
+  cant_transac = parseInt(j.cant_transac) + parseInt(cant_transac);
   template += `<tr><td><strong>${j.metodo_pago}</strong></td><td>${j.cant_transac}</td><td>$${j.valor}</td></tr>`;
 });
 
-template += `<tr><td colspan=2><strong>TOTAL:</strong></td><td>$${valor}</td></tr>`;
+template += `<tr><td><strong>TOTAL:</strong></td><td><strong>${cant_transac}</strong></td><td><strong>$${valor}</strong></td></tr>`;
 $("#valor").html(valor);
 $("#formaPago").html(template);

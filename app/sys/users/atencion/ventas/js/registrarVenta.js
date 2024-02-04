@@ -75,21 +75,15 @@ function accionGuardarVenta(idCaja, id_venta, idProd, hora, cantProd, nomCaja)
             type: "GET",
             success: function(r)
             {
-                alert(r)
                 cargarVentasCaja();
             }
-        })
-        .fail( function(e) 
-        {
-            console.log( 'Error productos!!'+e.responseText );
-        })
-        .done( function() 
-        {
-            console.log( 'done productos' );
-        })
-        .always( function() 
-        {
-            console.log( 'Always productos' );
         }
+    )
+    .fail( function(e) 
+    {
+        console.log( 'Error productos!!'+e.responseText );}
     );
+
+    $("#cantProd").html("1");
+    
 }
