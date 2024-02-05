@@ -9,7 +9,7 @@ $("#btnCrearCajaNueva").on("click", function(e)
 {
   $.ajax(
     {
-      url:"validar_caja_abierta.php",
+      url:"validar_turno_abierto.php",
       type: "GET",
       success: function(e)
       {
@@ -330,9 +330,13 @@ function tokenizerVoltearString(cadena)
 
 function cierreCaja()
 {
-  
-  let idCierre = $("#idCierre").text(); 
-  $.ajax(
+  let cajaAbierta = validarCajasDeVentaAbierta();
+  cajaAbierta = parseInt(cajaAbierta);
+
+  if(cajaAbierta==0)
+  {
+    let idCierre = $("#idCierre").text(); 
+    $.ajax(
     {
       url:"cierre_caja.php?idCierre="+idCierre,
       data: "GET",
@@ -354,6 +358,22 @@ function cierreCaja()
     {
       msjes_swal("Error", e, "error");
     })
+  }
+  else
+  {
+    msjes_swal("Aviso", "Se deben cerrar todas las cajas de atención al cliente que estén abiertas", "warning");
+  }
+}
+
+function validarCajasDeVentaAbierta()
+{
+  return $.ajax(
+    {
+      url: "validar_caja_abierta.php",
+      type: "POST",
+      async: false,
+    }
+  ).responseText;
 }
 
 function validarSolicitudClave()
