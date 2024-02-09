@@ -72,6 +72,7 @@
                         echo modalConsultarPrecio();
                         echo modalCajaInicial();
                         echo modalMovimientoCaja();
+                        echo modalResumenCierreCaja();
                     ?>
                 </div>
                 <!-- CONTENT -->

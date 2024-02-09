@@ -21,48 +21,52 @@ $("#btnCerrarCaja").on("click", function(e)
       .then((cerrar) => {
         if (cerrar)
         {
-            $.ajax({
-                url:"func_php/cerrar_caja.php",
-                data: {"idCaja": nCaja},
-                type: "POST",
-                success: function(e)
-                {
-                    if(e==1)
-                    {
-                        msjes_swal("Excelente", "Caja cerrada correctamente", "success");
-
-                        //imprimir ticket
-                        $.ajax(
-                            {
-                                url: "https://webposerp.cl/impresion_yaganerp/vendor/ticket_resumen_caja.php",
-                                data: datos,
-                                type: "POST",
-                                success: function(e)
-                                {
-                                    msjes_swal("Excelente", e, "success");
-                                    location.href = "../";
-                                }
-                            }
-                            )
-                    }
-                    else
-                    {
-                        msjes_swal("Error", "Error al cerrar la caja", "error");
-                    }
-                }
-            })
-            .fail(function(e)
-            {
-                swal({
-                    title: "Error",
-                    text: "Error al cerrar la caja: "+e.responseText,
-                    icon: "error"
-                })
-            })
+            $("#modalResumenCierreCaja").modal("show");
+            imprimirInformacion();
         } 
         else 
         {
-          swal("La caja seguirá abierta");
+            swalCajaAbierta();
         }
       });
 })
+
+$("#btnCierreDefinitivoCaja").on("click", function(e)
+{
+    cerrarCaja();
+})
+
+function cerrarCaja()
+{
+    $.ajax({
+        url:"func_php/cerrar_caja.php",
+        data: {"idCaja": nCaja},
+        type: "POST",
+        success: function(e)
+        {
+            if(e==1)
+            {
+                msjes_swal("Excelente", "Caja cerrada correctamente", "success");
+
+                location.href="../";
+            }
+            else
+            {
+                msjes_swal("Error", "Error al cerrar la caja", "error");
+            }
+        }
+    })
+    .fail(function(e)
+    {
+        swal({
+            title: "Error",
+            text: "Error al cerrar la caja: "+e.responseText,
+            icon: "error"
+        })
+    })
+}
+
+function swalCajaAbierta()
+{
+    swal("La caja seguirá abierta");
+}

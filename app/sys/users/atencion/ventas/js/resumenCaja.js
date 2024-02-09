@@ -25,6 +25,11 @@ function descargarResumenCaja()
 $("#btnResumen").on("click", function(e)
 {
     $("#modalResumenCaja").modal("show");
+    imprimirInformacion();
+});
+
+function imprimirInformacion()
+{
     let descarga = descargarResumenCaja();
     let json = JSON.parse(descarga);
     let template = "";
@@ -36,4 +41,5 @@ $("#btnResumen").on("click", function(e)
         })
     template = template +`<tr><td align=right><strong>TOTAL:</strong></td><td><strong>$${valor}</strong></td></tr>`;
     $("#bodyResumenCaja").html(template);
-});
+    $("#bodyResumenCierreCaja").html(template);
+}
