@@ -26,6 +26,7 @@ if(isset($_SESSION['user'])){
       ON v.id_venta = corr.correlativo
       WHERE ccr.id_cl = $id_cl
       AND rut = '$rut'
+      AND v.estado!='N'
       GROUP BY corr.correlativo";
     $resultado = $conexion->query($consulta);
     $json= array();

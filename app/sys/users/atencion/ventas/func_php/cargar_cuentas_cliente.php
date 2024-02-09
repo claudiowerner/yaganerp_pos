@@ -25,6 +25,7 @@
     WHERE rut = '$rut'
     AND ccr.estado = 'A'
     AND ccr.id_cl = $id_cl
+    AND v.estado != 'N'
     GROUP BY ccr.id_venta" ;
     $resultado = $conexion->query($consulta);
     $json = array();
