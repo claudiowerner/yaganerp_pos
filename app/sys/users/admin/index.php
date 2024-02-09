@@ -71,7 +71,7 @@
                                             <select id="añoVenta" class="form-control" onchange="crearGrafico()">
                                             </select>
                                         </span>
-                                        <canvas id="grafic" style="width:10px"></canvas>
+                                        <div id="ventasAño"></div>
                                         </div>
                                         <div class="card-body" id="grafico">
                                         <span align="center">
@@ -79,8 +79,7 @@
                                             <select id="ventasPorDia" class="form-control" onChange="cambioFecha()">
                                             </select>
                                         </span>
-                                        <canvas id="gananciaHora" style="width:10px"></canvas>
-                                        </div>
+                                        <div id="gananciaHora"></div>
                                     </div>
                                 </div>
                             </div>
@@ -101,6 +100,8 @@
     ================================================== -->
     <!-- Main jQuery Plugins -->
     <?php require "cdn_css/cdn/cdn_index.php";?>
+    <script src="graficos/loader.js"></script>
+    <script src='graficos/graficos.js'></script>
 
 
 

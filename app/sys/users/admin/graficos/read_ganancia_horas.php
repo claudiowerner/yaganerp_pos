@@ -22,9 +22,9 @@ if(isset($_SESSION['user'])){
     {
       $hf = $i+1;//hora final
       $sql = 
-      "SELECT SUM(valor) AS valor FROM correlativo 
+      "SELECT SUM(valor) AS valor FROM ventas 
       WHERE id_cl = $id_cl 
-      AND fecha_cierre BETWEEN '$fecha $i:00:00' AND '$fecha $hf:00:00'
+      AND fecha_pago BETWEEN '$fecha $i:00:00' AND '$fecha $hf:00:00'
       AND estado = 'C'";
       $res = $conexion->query($sql);
       while($row=$res->fetch_array())
@@ -34,8 +34,18 @@ if(isset($_SESSION['user'])){
         {
           $contenido=0;
         }
+        $hora = "";
+        if($i<10)
+        {
+          $hora = "0$i";
+        }
+        else
+        {
+          $hora = $i;
+        }
         $datos[] = array(
-          "h".$i=>$contenido
+          "hora"=>$hora,
+          "valor"=>$contenido
         );
       }
     }

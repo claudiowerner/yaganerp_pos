@@ -37,6 +37,5 @@
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
     <script src='../../js/flot/jquery.flot.categories.min.js' type='text/javascript'></script>
     
-    <script src='../../js/chart.js'></script>
-    <script src='graficos/graficos.js'></script>";
+    <script src='../../js/chart.js'></script>";
 ?>

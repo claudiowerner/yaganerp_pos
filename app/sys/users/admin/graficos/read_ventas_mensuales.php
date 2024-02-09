@@ -1,6 +1,7 @@
 
 
 <?php
+setlocale(LC_ALL, 'es_ES');
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 session_start();
@@ -38,8 +39,10 @@ if(isset($_SESSION['user'])){
     {
       $sql = 
       "SELECT sum(valor) AS valor_total 
-      FROM correlativo WHERE id_cl = $id_cl
-      AND date_format(fecha, '%m') = $i AND year(fecha) = $ano";
+      FROM ventas 
+      WHERE id_cl = $id_cl
+      AND date_format(fecha, '%m') = $i AND year(fecha) = $ano
+      AND estado = 'C'";
       $res = $conexion->query($sql);
       while($row=$res->fetch_array())
       {
@@ -53,7 +56,8 @@ if(isset($_SESSION['user'])){
           $contenido=$row['valor_total'];
         }
         $datos[] = array(
-          $meses[$i-1]=>$contenido
+          "mes"=> $meses[$i-1],
+          "valor"=>$contenido
         );
       }
     }

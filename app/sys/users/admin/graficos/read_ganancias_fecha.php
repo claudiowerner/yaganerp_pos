@@ -28,10 +28,13 @@
 
 	//query
 	$consulta = 
-  "SELECT date_format(fecha_cierre, '%d/%m/%Y') AS fecha 
-  FROM correlativo WHERE estado = 'C' 
+  "SELECT date_format(fecha_cierre, '%d/%m/%Y') AS fecha,
+  date_format(fecha_cierre, '%Y-%m-%d') AS fecha_formato_sql
+  FROM correlativo 
+  WHERE estado = 'C' 
+  AND fecha_cierre!='0000-00-00'
   GROUP BY(date_format(fecha_cierre, '%d/%m/%Y')) 
-  ORDER BY (date_format(fecha_cierre, '%d/%m/%Y')) ASC";
+  ORDER BY (date_format(fecha_cierre, '%m')) ASC";
   $resultado = $conexion->query($consulta);
   if ($resultado->num_rows > 0)
   {
@@ -39,7 +42,8 @@
     while ($row = $resultado->fetch_array()) 
     {
       $json[] =array(
-        'fecha' => $row['fecha']
+        'fecha' => $row['fecha'],
+        'fecha_formato_sql' => $row['fecha_formato_sql']
       );
     }
     echo json_encode($json);
