@@ -117,5 +117,6 @@
     <script src="js/id_usuario.js"></script>
     <script src="js/repVentas.js"></script>
     <script src="js/imprimir.js"></script>
+    <script src="js/editarCaja.js"></script>
 
 </html>

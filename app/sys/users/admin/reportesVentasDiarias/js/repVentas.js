@@ -153,26 +153,29 @@ $("#cierreCaja").on('click', 'button.btn-danger', function(e)
     icon: "warning",
     buttons: true,
     dangerMode: true,
-})
-.then((cerrar) => {
-  if (cerrar)
-  {
-    if(solicitar.match(/N/))
+  })
+  .then((cerrar) => {
+    if (cerrar)
     {
-      cierreCaja();
-    }
-    else
+      if(solicitar.match(/N/))
+      {
+        cierreCaja();
+      }
+      else
+      {
+        $("#solicClaveAutCerrar").modal("show");
+      }
+    } 
+    else 
     {
-      $("#solicClaveAutCerrar").modal("show");
+      swal("Operación cancelada");
     }
-  } 
-  else 
-  {
-    swal("Operación cancelada");
-  }
-});
+  });
   
-})
+});
+
+
+
 
 //filtrar registros cierre caja
 $("#fechaDesde").on("keyup", function(e)
@@ -247,12 +250,14 @@ function obtenerCierresCaja()
             tasks.forEach(c=>{
             button1 = ``;
             button2 = ``;
+            buttonEditar = ``;
             fecha_cierre = "";
             estado = "";
             if(c.estado=="C")
             {
               estado = "CERRADO";
               button1 = "<button type='button' class='btn btn-danger' disabled=true id='btnCerrar'>Cerrar</button>";
+              buttonEditar = `<button type='button' class='btn btn-primary' disabled=true>Editar</button>`;
               if(c.valor_total==0)
               {
                 button2 = "<button type='button' class='btn btn-success' disabled=true id='btnVerDetalle'>Ir</button>";
@@ -268,6 +273,7 @@ function obtenerCierresCaja()
               estado="EN-CURSO";
               button1 = "<button type='button' class='btn btn-danger' id='btnCerrar'>Cerrar</button>";
               button2 = "<button type='button' class='btn btn-success' id='btnVerDetalle'>Ir</button>";
+              buttonEditar = `<button type='button' class='btn btn-primary' idCierre='${c.id}' nomCaja='${c.nombre}'>Editar</button>`;
               fecha_cierre = "-";
             }
             template+=
@@ -279,7 +285,7 @@ function obtenerCierresCaja()
               <td>${fecha_cierre}</td>
               <td>${estado}</td>
               <td>$${c.valor_total}</td>
-              <td>`+button1+button2+`</td>
+              <td>`+buttonEditar+button1+button2+`</td>
             </tr>`;
           });
         }
