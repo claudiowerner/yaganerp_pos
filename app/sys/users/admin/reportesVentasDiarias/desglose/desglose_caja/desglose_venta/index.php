@@ -72,8 +72,10 @@
                                                 <th>Producto</th>
                                                 <th>Cantidad</th>
                                                 <th>Forma pago</th>
-                                                <th>Valor</th>
-                                                <th>IVA(19%)</th>                                                    <th>Valor total</th>
+                                                <th>Valor de venta</th>
+                                                <th>IVA(19%)</th>
+                                                <th>Descuento(<strong id="descto"></strong>%)</th>
+                                                <th>Valor total</th>
                                             </tr>
                                         </thead>
                                         <tbody id="bodyDesgloseVenta">    

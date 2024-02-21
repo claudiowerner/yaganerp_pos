@@ -21,7 +21,7 @@ if(isset($_SESSION['user'])){
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = "SELECT id, nombre_cat FROM categorias WHERE id_cl = $id_cl ";
+	$consulta = "SELECT id, nombre_cat FROM categorias WHERE id_cl = $id_cl AND estado!='N'";
   $resultado = $conexion->query($consulta);
   if ($resultado->num_rows > 0){
   $json = array();

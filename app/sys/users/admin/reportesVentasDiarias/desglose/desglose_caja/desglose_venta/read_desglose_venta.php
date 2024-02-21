@@ -24,10 +24,11 @@
   SUM(v.valor) AS valor, 
   c.estado AS estado_venta,
   v.estado AS estado_prod, 
+  v.descto,
   DATE_FORMAT(v.fecha, '%d-%m-%Y %H:%i:%s') AS fecha
   FROM ventas v 
   JOIN metodo_pago mp ON mp.id = v.forma_pago
-  JOIN correlativo c ON c.id = v.id_venta
+  JOIN correlativo c ON c.correlativo = v.id_venta
   JOIN cajas caja ON caja.id = v.id_caja
   JOIN usuarios us ON us.id = v.usuario 
   JOIN productos p ON p.id_prod = v.producto 
@@ -36,7 +37,7 @@
   AND v.estado = 'C'
   GROUP BY p.id_prod";
 
-  $query = mysqli_query($conexion, $sql);
+  $query = $conexion->query($sql);
 
   $json = Array();
   while($row = $query->fetch_array())
@@ -70,14 +71,32 @@
     {
       $estado_venta = "ANULADO";
     }
+    $valor = $row["valor"];
+    $descto = $row["descto"]; 
+
+    $valorDescto = ($valor*$descto)/100;
+        $valorDesctoAplicado = $valor-$valorDescto;
+        $valor_total = 0;
+
+        if($descto == 0)
+        {
+            $valor_total = $valor;
+        }
+        else
+        {
+            $valor_total = $valorDesctoAplicado;
+        }
+    
     $json[] =array(
               'nombre' => ($row['nombre']),
               'nom_caja' => $row['nom_caja'],
               'nombre_prod' => ($row['nombre_prod']),
               'cantidad' => $row['cantidad'],
-              'valor' => round($row['valor']*0.81),
+              'valor' => round($valor*0.81),
               'iva' => round($row['valor']*0.19),
-              'valor_total' => $row['valor'],
+              'valor_descuento' => $valorDescto,
+              'valor_total' => $valor_total,
+              'descto' => $descto,
               'estado_prod' => $estado_prod,
               'estado_venta' => $estado_venta,
               'metodo_pago' => $row['nombre_metodo_pago'],

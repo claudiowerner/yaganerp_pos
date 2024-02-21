@@ -28,6 +28,4 @@ json.forEach(j=>{
   template += `<tr><td><strong>${j.metodo_pago}</strong></td><td>${j.cant_transac}</td><td>$${j.valor}</td></tr>`;
 });
 
-template += `<tr><td><strong>TOTAL:</strong></td><td><strong>${cant_transac}</strong></td><td><strong>$${valor}</strong></td></tr>`;
-$("#valor").html(valor);
 $("#formaPago").html(template);

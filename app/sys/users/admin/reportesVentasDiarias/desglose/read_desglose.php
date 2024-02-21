@@ -91,9 +91,15 @@
 
   for($i=0;$i<$cont;$i++)
   {
+    
+    $valor = 0;
+    $descto = 0;
+    $valorDescto = 0;
+    $valorTotal = 0;
     $id = $arrayCaja[$i];
     $sql =
-    "SELECT SUM(v.valor) AS valor 
+    "SELECT v.valor,
+    v.descto
     FROM ventas v 
     JOIN correlativo c 
     ON c.correlativo = v.id_venta
@@ -101,19 +107,27 @@
     AND c.id_cierre = $idCierre
     AND c.caja = $id
     AND v.estado = 'C'";
+    $valorGenerado = 0;
     $res = $conexion->query($sql);
     while($row = $res->fetch_assoc())
     {
       if($row["valor"]!="")
       {
-        $arrayValorGenerado[] = round($row["valor"],0);
+        $valor = $row["valor"];
+        $descto = $row["descto"];
+        $valorDescto = ($valor*$descto)/100;
+        $valorTotal = $valor-$valorDescto;
+        $valorGenerado = $valorGenerado + $valorTotal;
+
       }
       else
       {
-        $arrayValorGenerado[] = 0;
+        $valorGenerado = 0;
       }
     }
   }
+  
+  $arrayValorGenerado[] = round($valorGenerado);
 
   $json = array();
 

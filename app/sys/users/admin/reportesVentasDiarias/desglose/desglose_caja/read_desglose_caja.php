@@ -39,7 +39,8 @@
     DATE_FORMAT(v.fecha, '%d-%m-%Y %H:%i:%s') AS fecha,
     DATE_FORMAT(v.fecha_pago, '%d-%m-%Y %H:%i:%s') AS fecha_pago ,
     mp.nombre_metodo_pago, 
-    v.estado, SUM(v.valor) AS valor
+    v.estado, SUM(v.valor) AS valor,
+    v.descto
     FROM cierre_caja cc 
     JOIN correlativo corr ON cc.id = corr.id_cierre
     JOIN usuarios u ON u.id = cc.creado_por 
@@ -52,24 +53,41 @@
     GROUP BY id_venta";
 
   $query = mysqli_query($conexion, $sql);
-
+  $valor = 0;
+  $descto = 0;
   $json = Array();
   while($row = $query->fetch_array())
   {
     $estado = $row['estado'];
 
-      if($estado=='A')
-      {
-        $estado = 'EN CURSO';
-      }
-      if($estado=="N")
-      {
-        $estado = 'ANULADO';
-      }
-      if($estado=="C")
-      {
-        $estado = 'CERRADO';
-      }
+    if($estado=='A')
+    {
+      $estado = 'EN CURSO';
+    }
+    if($estado=="N")
+    {
+      $estado = 'ANULADO';
+    }
+    if($estado=="C")
+    {
+      $estado = 'CERRADO';
+    }
+
+    $valor = $row["valor"];
+    $descto = $row["descto"];
+    $valorDescto = ($valor*$descto)/100;
+    $valorDesctoAplicado = $valor-$valorDescto;
+    $valor_total = 0;
+
+    if($descto == 0)
+    {
+        $valor_total = $valor;
+    }
+    else
+    {
+        $valor_total = $valorDesctoAplicado;
+    }
+
     $json[] =array(
               'id_venta' => $row['id_venta'],
               'nombre' => $row['nombre'],
@@ -77,7 +95,7 @@
               'nom_caja' => $row['nom_caja'],
               'hasta' => $row['fecha_pago'],
               'estado' => $estado,
-              'valor_total' => $row['valor'],
+              'valor_total' => $valor_total,
               'metodo_pago' => strtoupper($row['nombre_metodo_pago'])
             );
   }

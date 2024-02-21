@@ -31,7 +31,7 @@ function cargarDesglose()
   caja = $("#nCaja").text();
   nomCaja = $("#nomCaja").text();
   idCierre = $("#idCierre").text();
-  valor = 0;
+  valor_desglose = 0;
 
   let horaDesde = $("#horaDesde").val();
   let horaHasta = $("#horaHasta").val();
@@ -43,7 +43,7 @@ function cargarDesglose()
     {
       let tasks = JSON.parse(response);
       let template = '';
-      tasks.forEach(c=>{
+        tasks.forEach(c=>{
         button = "<button type='button' class='btn btn-success' id='btnDetalleVenta'>Detalle</button>";
         estado = "";
         if(c.estado == "CERRADO")
@@ -58,6 +58,7 @@ function cargarDesglose()
         {
           estado = "ANULADO";
         }
+        valor_desglose = parseInt(valor_desglose)+parseInt(c.valor_total);
         template+=
         `<tr idVenta=`+c.id_venta+` class="${estado}">
           <td>${c.id_venta}</td>
@@ -70,12 +71,17 @@ function cargarDesglose()
         </tr>`;
         $("#caja").html(c.nombre);
       });
+      $("#valor").html(valor_desglose);
       if(template=="")
       {
         template = `
         <tr>
           <td colspan=9>Sin ventas</td>
         </tr>`;
+      }
+      else
+      {
+        
       }
       $("#bodyDetalleCaja").html(template);
     }
