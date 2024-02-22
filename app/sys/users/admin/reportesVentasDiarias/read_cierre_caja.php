@@ -66,7 +66,7 @@ else
   for($i=0;$i<$contador;$i++)
   {
     $id = $arrId[$i];
-    $sql = "SELECT SUM(v.valor) AS valor FROM correlativo corr 
+    $sql = "SELECT SUM(v.valor-((v.valor*v.descto)/100)) AS valor FROM correlativo corr 
     JOIN ventas v
     ON v.id_venta = corr.correlativo
     WHERE corr.id_cierre = $id
