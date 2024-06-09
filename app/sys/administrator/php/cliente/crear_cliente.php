@@ -20,7 +20,8 @@
 	$nomFantasia = $_POST["nomFantasia"];
 	$razonSocial = $_POST["razonSocial"];
 	$tipoPago = $_POST["tipoPago"];
-	echo"giro: ".$giro = $_POST["giro"];
+	$fecha_pago = $_POST["fecha_pago"];
+	$giro = $_POST["giro"];
 
 	$nombre_plan = "";
 
@@ -30,9 +31,8 @@
 	$nombre_plan = $row["nombre"];
 
 	echo $sql = "INSERT INTO cliente VALUES 
-	(null,'$nombre', '$rut', 'S', $giro, '$nomFantasia', '$razonSocial', '$direccion', '$correo','$telefono', '$plan', '$fechaRegistro');";
-	$r1 = mysqli_query($conexion, $sql);
-
+	(null,'$nombre', '$rut', 'S','$nomFantasia', '$razonSocial',  $giro, '$direccion', '$correo','$telefono', '$plan', '$fecha_pago', '$fechaRegistro');";
+	$r1 = $conexion->query($sql);
 
 	//seleccionar el ID del cliente
 

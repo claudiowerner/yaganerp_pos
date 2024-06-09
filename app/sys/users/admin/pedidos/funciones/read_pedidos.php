@@ -62,7 +62,7 @@ session_start();
          'estado' => $estado,
          'nombre' => $row['nombre'],
          'fecha_registro' => $row['fecha_registro'],
-         'valor' => "$".$valor,
+         'valor' => $valor,
          'estado_pago' => $estado_pago
         );
   }

@@ -16,15 +16,15 @@ function obtenerVentasMesa()
         `<tr>
           <td>${c.caja}</td>
           <td>${c.nom_caja}</td>
-          <td>${c.ventas_caja}</td>
-          <td>$${c.valor_total}</td>
+          <td>${formatearNumero("V", c.ventas_caja)}</td>
+          <td>${formatearNumero("P", c.valor_total)}</td>
         </tr>`;
         valor_total = parseInt(c.valor_total) + parseInt(valor_total);
       });
       template+=
         `<tr>
           <td colspan=3 align=right><b>Total: </b></td>
-          <td><b>$${valor_total}</b></td>
+          <td><b>${formatearNumero("P", valor_total)}</b></td>
         </tr>`;
         $("#bodyProductoVendido").html(template); 
         $("#bodyVentaMesa").html(template);

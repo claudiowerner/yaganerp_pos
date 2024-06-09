@@ -10,7 +10,6 @@ let id_detalle_pedido = 0;//recibe el ID del detalle del pedido
 
 function cargarPedido()
 {
-    debugger;
     id = $("#idModal").text();
     c_id=0;
     $.ajax({
@@ -51,22 +50,25 @@ function cargarPedido()
                     c_id++;
                 })
                 $("#prodSolic").html(c_id);
+                let valorFormateado = formatearNumero("P",valorPedido)
+                $("#valorPedidoFormateado").html(valorFormateado);
                 $("#valorPedido").html(valorPedido);
-
-                debugger;
 
                 let factura_con_iva = cargarFacturaConIvaCalculo(id);
                 if(factura_con_iva.match(/N/))
                 {
                     let iva_pedido = cargarIvaPedido(valorPedido);
-                    $("#valorIva").html(iva_pedido);
+                    let iva_formateado = formatearNumero("P",iva_pedido)
+                    $("#valorIvaFormateado").html(iva_formateado);
                     let totalPedido = parseInt(iva_pedido) + parseInt(valorPedido);
-                    $("#totalPedido").html(totalPedido);
+                    let totalPedidoFormateado = formatearNumero("P",totalPedido);
+                    $("#totalPedidoFormateado").html(totalPedidoFormateado);
                 }
                 else
                 {
                     $("#valorIva").html(0);
-                    $("#totalPedido").html(valorPedido);
+                    let valorPedidoFormateado = formatearNumero("P",valorPedido);
+                    $("#totalPedidoFormateado").html(valorPedidoFormateado);
                 }
                 
             }

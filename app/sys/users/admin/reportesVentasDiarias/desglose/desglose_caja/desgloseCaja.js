@@ -44,47 +44,46 @@ function cargarDesglose()
       let tasks = JSON.parse(response);
       let template = '';
         tasks.forEach(c=>{
-        button = "<button type='button' class='btn btn-success' id='btnDetalleVenta'>Detalle</button>";
-        estado = "";
-        if(c.estado == "CERRADO")
+
+          let valor_total_formateado = formatearNumero("P",c.valor_total);
+          button = "<button type='button' class='btn btn-success' id='btnDetalleVenta'>Detalle</button>";
+          estado = "";
+          if(c.estado == "CERRADO")
+          {
+            estado = "CERRADO";
+          }
+          if(c.estado=="EN CURSO")
+          {
+            estado = "EN CURSO";
+          }
+          if(c.estado == "ANULADO")
+          {
+            estado = "ANULADO";
+          }
+          valor_desglose = parseInt(valor_desglose)+parseInt(c.valor_total);
+          desglose_formateado = formatearNumero("P",valor_desglose);
+          template+=
+          `<tr idVenta=`+c.id_venta+` class="${estado}">
+            <td>${c.id_venta}</td>
+            <td>${c.creado_por}</td>
+            <td>${c.hasta}</td>
+            <td>${c.estado}</td>
+            <td>${valor_total_formateado}</td>
+            <td>${c.metodo_pago}</td>
+            <td>`+button+`</td>
+          </tr>`;
+          $("#caja").html(c.nombre);
+        });
+        $("#valor").html(desglose_formateado);
+        if(template=="")
         {
-          estado = "CERRADO";
+          template = `
+          <tr>
+            <td colspan=9>Sin ventas</td>
+          </tr>`;
         }
-        if(c.estado=="EN CURSO")
-        {
-          estado = "EN CURSO";
-        }
-        if(c.estado == "ANULADO")
-        {
-          estado = "ANULADO";
-        }
-        valor_desglose = parseInt(valor_desglose)+parseInt(c.valor_total);
-        template+=
-        `<tr idVenta=`+c.id_venta+` class="${estado}">
-          <td>${c.id_venta}</td>
-          <td>${c.creado_por}</td>
-          <td>${c.hasta}</td>
-          <td>${c.estado}</td>
-          <td>$${c.valor_total}</td>
-          <td>${c.metodo_pago}</td>
-          <td>`+button+`</td>
-        </tr>`;
-        $("#caja").html(c.nombre);
-      });
-      $("#valor").html(valor_desglose);
-      if(template=="")
-      {
-        template = `
-        <tr>
-          <td colspan=9>Sin ventas</td>
-        </tr>`;
+        $("#bodyDetalleCaja").html(template);
       }
-      else
-      {
-        
-      }
-      $("#bodyDetalleCaja").html(template);
-    }
   })
   .done( function() {
     console.log( 'Success!!' );

@@ -108,7 +108,7 @@
                                             <tbody id="bodyTotal">
                                                 <tr>
                                                     <td colspan=4><strong>TOTAL:</strong></td>
-                                                    <td colspan=2><strong>$</strong><strong id='valor'></strong></td>
+                                                    <td colspan=2><strong id='valor'></strong></td>
                                                 </tr>
                                             </tbody>
                                         </table>

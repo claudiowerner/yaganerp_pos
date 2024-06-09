@@ -174,7 +174,6 @@ $("#btnGuardar").on("click", function(e)
   let razonSocial = $("#razonSocial").val();
   let tipoPago = $("#tipoPago").val();
   let giro = $("#slctGiros").val();
-
   if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||fechaDesde==""||fechaHasta==""||nomFantasia==""||razonSocial=="")
   {
     msjes_swal("Aviso", "Debe rellenar todos los campos", "warning");
@@ -194,7 +193,8 @@ $("#btnGuardar").on("click", function(e)
       "nomFantasia":nomFantasia,
       "razonSocial":razonSocial,
       "giro":giro,
-      "tipoPago":tipoPago
+      "tipoPago":tipoPago,
+      "fecha_pago":fechaDesde
     }
     console.log(datos)
     $.ajax({

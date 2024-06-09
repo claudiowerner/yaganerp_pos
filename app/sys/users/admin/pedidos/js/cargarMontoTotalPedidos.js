@@ -6,7 +6,8 @@ function cargarMontoTotalPedidos()
     type: "POST",
     success: function(e)
     {
-      $("#montoPedido").html("$"+e)
+      let resultado = formatearNumero("P",e);
+      $("#montoPedido").html(resultado);
     }
   })
 }

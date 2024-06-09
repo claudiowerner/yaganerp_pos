@@ -3,6 +3,7 @@
     "<script type='text/javascript' src='../../js/jquery.js'></script>
 
     <script type='text/javascript' src='../../js/mensajes-swal.js'></script>
+    <script type='text/javascript' src='../../js/numberFormat.js'></script>
     <script type='text/javascript' src='../../tipo_usuario/acceso_ventas_dashboard.js'></script>
     <script type='text/javascript' src='../../js/bootstrap.js'></script>
     <script type='text/javascript' src='../../js/sweetalert.min.js'></script>

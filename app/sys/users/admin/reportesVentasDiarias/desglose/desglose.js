@@ -31,12 +31,13 @@ $( document ).ready(function() {
         {
           estado = "ABIERTO";
         }
-          
+        
+        valor_formateado = formatearNumero("P",c.valor);
         template+=
         `<tr class="${estado}">
           <td>${c.nom_caja}</td>
           <td>${estado}</td>
-          <td>$${c.valor}</td>
+          <td>${valor_formateado}</td>
           <td>`+button+`</td>
         </tr>`;
         valor = parseInt(valor)+parseInt(c.valor);
@@ -49,10 +50,11 @@ $( document ).ready(function() {
           <td colspan=9>Sin ventas</td>
         </tr>`;
       }
+      valor_total_formateado = formatearNumero("P",valor);
       template+=
       `<tr>
         <td colspan=2>TOTAL: </td>
-        <td>$${valor}</td>
+        <td>${valor_total_formateado}</td>
       </tr>`;
       $("#bodyDetalleCaja").html(template);
     }

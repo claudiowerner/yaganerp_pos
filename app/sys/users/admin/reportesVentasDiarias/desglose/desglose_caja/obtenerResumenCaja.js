@@ -23,9 +23,18 @@ let template = "";
 let valor = 0;
 let cant_transac= 0;
 json.forEach(j=>{
-  valor = parseInt(j.valor) + parseInt(valor);
+  let valor_formateado = 0;
+  if (j.valor == 0)
+  {
+    valor = 0;
+  }
+  {
+    valor = parseInt(j.valor) + parseInt(valor);
+  }
+  valor_formateado = formatearNumero("P",valor);
   cant_transac = parseInt(j.cant_transac) + parseInt(cant_transac);
-  template += `<tr><td><strong>${j.metodo_pago}</strong></td><td>${j.cant_transac}</td><td>$${j.valor}</td></tr>`;
+  template += 
+  `<tr><td><strong>${j.metodo_pago}</strong></td><td>${j.cant_transac}</td><td>${valor_formateado}</td></tr>`;
 });
 
 $("#formaPago").html(template);

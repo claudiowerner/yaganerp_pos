@@ -25,6 +25,14 @@ var table;
         $(row).addClass('INACTIVO');
       }
     },
+    "columnDefs": [
+      {
+          "targets": 5, // Índice de la columna que deseas formatear
+          "render": function (data, type, row, meta) {
+              // Formatear el número en miles y en moneda
+              return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(data);
+          }
+      }],
 
       "ajax":{
         "url":"funciones/read_pedidos.php",

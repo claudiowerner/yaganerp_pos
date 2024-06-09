@@ -66,12 +66,13 @@ function cargarDatos(rut, fechaInicio, fechaFin)
               btnPagar=`<button class='btn btn-success' onClick='pagarVenta(${j.correlativo})' disabled>Pagar</button>`;
             }
 
+            valor_formateado = formatearNumero("P",j.valor);
             template = template+
           `<tr>
               <td>${j.correlativo}</td>
               <td>${estado}</td>
               <td>${j.fecha}</td>
-              <td>$${j.valor}</td>
+              <td>${valor_formateado}</td>
             <tr>`;
           }
         })

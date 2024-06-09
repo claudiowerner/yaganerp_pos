@@ -276,6 +276,7 @@ function obtenerCierresCaja()
               buttonEditar = `<button type='button' class='btn btn-primary' idCierre='${c.id}' nomCaja='${c.nombre}'>Editar</button>`;
               fecha_cierre = "-";
             }
+            valor_formateado = formatearNumero("P",c.valor_total);
             template+=
             `<tr idCierre=`+c.id+` nomCaja="`+c.nombre+`" class='${estado}' nomCaja='${c.nombre}'>
               <td>${c.id}</td>
@@ -284,7 +285,7 @@ function obtenerCierresCaja()
               <td>${c.desde}</td>
               <td>${fecha_cierre}</td>
               <td>${estado}</td>
-              <td>$${c.valor_total}</td>
+              <td>${valor_formateado}</td>
               <td>`+buttonEditar+button1+button2+`</td>
             </tr>`;
           });

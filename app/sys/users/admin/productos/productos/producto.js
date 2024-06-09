@@ -107,6 +107,7 @@ cargarUnidad();
           "type":"GET",
           "dataSrc":""
         },
+        
         //columnas
         "columns":[
           {"data":"id"},
@@ -115,10 +116,10 @@ cargarUnidad();
           {"data":"nombre_proveedor"},
           {"data":"nombre_cat"},
           {"data":"cantidad"},
-          {"data":"valor_neto"},
+          {"data":"valor_neto", render: DataTable.render.number(null, null, "", "$", "") },
           {"data":"margen_ganancia"},
-          {"data":"monto_ganancia"},
-          {"data":"valor_venta"},
+          {"data":"monto_ganancia", render: DataTable.render.number(null, null, "", "$", "") },
+          {"data":"valor_venta", render: DataTable.render.number(null, null, "", "$", "") },
           {"data":"descuento"},
           {"data":"estado"},
           {"data":"creado_por"},
