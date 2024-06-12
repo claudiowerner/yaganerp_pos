@@ -60,18 +60,17 @@
             <h1>Configuraciones</h1>
             <strong id="id_usuario" style="display: none"><?php echo $id_us?></strong>
             <div  class="row">
-                <div class="col-lg-12">
-                    <div class="plan" style="cursor:pointer" id="claveAutorizaciones">
-                        <div class="col-md-12" id="div_ventas" align="left">
-                            <div class="card card-warning">
-                                <div class="card-header" style="align:left;">
+
+                <div  class="row">
+                    <div class="col-lg-12">
+                        <div class="plan" style="cursor:pointer" id="claveAutorizaciones">
+                            <div class="col-md-12" id="div_ventas" align="left">
+                                <div class="card card-warning">
+                                    <div class="card-header" style="align:left;"></div>
+                                <strong align="left">Clave de autorizaciones ></strong>
                             </div>
-                            <strong align="left">Clave de autorizaciones ></strong>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
 
         <div class="row" >
             <div class="col-lg-12">
@@ -114,6 +113,26 @@
                 </div>
             </div>
         </div>
+        <div class="row" >
+            <div class="col-lg-12">
+                <div class="plan" id="planContratado" style="cursor: pointer">
+                    <div class="col-md-12">
+                        <div class="card card-warning">
+                            <div class="card-header" style="align:left;" align="left">
+                                <strong>Plan contratado ></strong><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    
+        </div>
+
+        
     </div>
 
     
@@ -135,6 +154,8 @@
     <script src="js/convenio.js"></script>
     <script src="js/margen_ganancia.js"></script>
     <script src="js/cargarGiros.js"></script>
+    <script src="js/cargarPlanContratado.js"></script>
+    
 </body>
 
 </html>
