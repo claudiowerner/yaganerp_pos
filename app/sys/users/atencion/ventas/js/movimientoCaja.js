@@ -8,7 +8,7 @@ function movimientoCaja()
     }
 
     return $.ajax({
-        url: "func_php/read_movimiento_caja",
+        url: "func_php/read_movimiento_caja.php",
         data: datos,
         type: "POST",
         async: false
