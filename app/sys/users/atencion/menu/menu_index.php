@@ -79,7 +79,7 @@
                     </a>
                   </li>
                   <li>
-                      <a class="tooltip-tip" href="reporteMesa">
+                      <a class="tooltip-tip" href="reporteCaja">
                           <i class=" fontello-mail-1"></i>
                           <span>Cajas con más ventas</span>
                       </a>
