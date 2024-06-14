@@ -49,7 +49,12 @@ if(isset($_SESSION['user'])){
     }
     else
     {
-      echo die("Error al agregar categoría: ". mysqli_error($conexion));
+      echo '{
+        "sEcho": 1,
+        "iTotalRecords": "0",
+        "iTotalDisplayRecords": "0",
+        "aaData": []
+        }';    
     }
 
   }

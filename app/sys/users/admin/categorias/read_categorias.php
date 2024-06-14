@@ -18,27 +18,38 @@ if(isset($_SESSION['user'])){
 	$consulta = "SELECT * FROM categorias WHERE id_cl = $id_cl ";
   $resultado = $conexion->query($consulta);
   if ($resultado->num_rows > 0){
-  $json = array();
-  while ($row = $resultado->fetch_array())
-  {
-    $estado = "";
-    if($row['estado']=="S")
+    $json = array();
+    while ($row = $resultado->fetch_array())
     {
-      $estado = "ACTIVO";
+      $estado = "";
+      if($row['estado']=="S")
+      {
+        $estado = "ACTIVO";
+      }
+      else
+      {
+        $estado = "INACTIVO";
+      }
+      $json[] =array(
+          'id' => $row['id'],
+          'nombre_cat' => $row['nombre_cat'],
+          'estado' => $estado,
+          'creado_por' => $row['creado_por'],
+          'fecha_reg' => $row['fecha_reg']
+      );
     }
-    else
-    {
-      $estado = "INACTIVO";
-    }
-    $json[] =array(
-         'id' => $row['id'],
-         'nombre_cat' => $row['nombre_cat'],
-         'estado' => $estado,
-         'creado_por' => $row['creado_por'],
-         'fecha_reg' => $row['fecha_reg']
-     );
+    echo json_encode($json);
   }
-  echo json_encode($json);
- }
-} 
+  else
+  {
+    echo '{
+      "sEcho": 1,
+      "iTotalRecords": "0",
+      "iTotalDisplayRecords": "0",
+      "aaData": []
+      }';
+  
+  } 
+}
+
 ?>

@@ -26,47 +26,58 @@ session_start();
   WHERE p.id_cl = $id_cl  
   GROUP BY id;";
   $resultado = $conexion->query($consulta);
-  if ($resultado->num_rows > 0){
-  $json = array();
-  while ($row = $resultado->fetch_array())
+  if ($resultado->num_rows > 0)
   {
-    $estado = "";
-    if($row['estado']=="C")
+    $json = array();
+    while ($row = $resultado->fetch_array())
     {
-      $estado = "HECHO";
-    }
-    if($row['estado']=="A")
-    {
-      $estado = "POR HACER";
-    }
+      $estado = "";
+      if($row['estado']=="C")
+      {
+        $estado = "HECHO";
+      }
+      if($row['estado']=="A")
+      {
+        $estado = "POR HACER";
+      }
 
-    //estado pago
-    $estado_pago = "";
-    if($row['estado_pago']=="C")
-    {
-      $estado_pago = "HECHO";
-    }
-    if($row['estado_pago']=="A")
-    {
-      $estado_pago = "POR HACER";
-    }
-    $valor = $row["valor"];
-    if($row["fac_con_iva"]=="N")
-    {
-      $valor = round($valor*1.19);
-    }
+      //estado pago
+      $estado_pago = "";
+      if($row['estado_pago']=="C")
+      {
+        $estado_pago = "HECHO";
+      }
+      if($row['estado_pago']=="A")
+      {
+        $estado_pago = "POR HACER";
+      }
+      $valor = $row["valor"];
+      if($row["fac_con_iva"]=="N")
+      {
+        $valor = round($valor*1.19);
+      }
 
-    $json[] =array(
-         'id' => $row['id'],
-         'nombre_proveedor' => $row['nombre_proveedor'],
-         'estado' => $estado,
-         'nombre' => $row['nombre'],
-         'fecha_registro' => $row['fecha_registro'],
-         'valor' => $valor,
-         'estado_pago' => $estado_pago
-        );
+      $json[] =array(
+          'id' => $row['id'],
+          'nombre_proveedor' => $row['nombre_proveedor'],
+          'estado' => $estado,
+          'nombre' => $row['nombre'],
+          'fecha_registro' => $row['fecha_registro'],
+          'valor' => $valor,
+          'estado_pago' => $estado_pago
+          );
+    }
+    echo json_encode($json);
   }
-  echo json_encode($json);
- }
+  else
+  {
+    echo '{
+      "sEcho": 1,
+      "iTotalRecords": "0",
+      "iTotalDisplayRecords": "0",
+      "aaData": []
+      }';
+  
+  }
 
 ?>
