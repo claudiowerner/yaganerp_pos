@@ -1,63 +1,11 @@
 
 let busqueda = "";
-cargarDatosCliente(busqueda);
-
 
 $("#btnAgregarCliente").on("click", function(e)
 {
   $("#modalRegistro").modal("show");
 });
 
-function cargarDatosCliente(busqueda)
-{
-  $.ajax
-  (
-    {
-      url:"read_clientes.php",
-      data: {"busqueda": busqueda},
-      type: "POST",
-      success: function(e)
-      {
-        let json;
-        try {
-          json = JSON.parse(e);
-          if(Array.isArray(json))
-          {
-            template = "";
-            json.forEach(j=>{
-              template += `
-              <tr>
-                <td>${j.id}</td>
-                <td>${j.rut}</td>
-                <td>${j.nombre}</td>
-                <td>${j.apellido}</td>
-                <td>${j.estado}</td>
-                <td>${j.nombre_usuario}</td>
-                <td>${j.fecha_registro}</td>
-                <td>
-                  <button type="submit" id="btnVerCuentas" rut="${j.rut}" class="btn btn-success" onClick="btnVerCuentas('${j.rut}')">Ver cuentas</button>
-                </td>
-              </tr>`
-            });
-            if(template=="")
-            {
-              template = "<tr><td colspan='8'>Sin resultados</td></tr>";
-            }
-          }
-          else
-          {
-            template = "<tr><td colspan='8'>Sin resultados</td></tr>";
-          }
-        } 
-        catch (e) 
-        {
-          return console.error("Error JSON Parse: "+e); // error in the above string (in this case, yes)!
-        }
-    
-      $("#bodyCliente").html(template);
-    }
-  })
-}
 
 $("#txtBusqueda").on("keyup", function(e)
 {
@@ -78,13 +26,14 @@ $("#formRegistroCliente").submit(function(e)
   let apellido =$("#txtApellido").val();
   
   $.ajax({
-    url:"validar_rut.php",
+    url:"funciones/validar_rut.php",
     data: {"rut":rut},
     type: "POST",
     success: function(e)
     {
       if(e!=0)
       {
+        alert(e);
         msjes_swal("Aviso", "Ya existe un cliente con el rut "+rut, "error");
       }
       else
@@ -96,10 +45,9 @@ $("#formRegistroCliente").submit(function(e)
           "apellido": apellido,
           "fecha": getFechaBD()
         }
-        console.log(datos)
         $.ajax(
           {
-            url:"crear_cliente.php",
+            url:"funciones/crear_cliente.php",
             data: datos,
             type: "POST",
             success: function(e)
@@ -110,7 +58,7 @@ $("#formRegistroCliente").submit(function(e)
               }
               $("#modalRegistro").modal("hide");
               $("#formRegistroCliente").trigger("reset");
-              cargarDatosCliente("");
+              $("#producto").DataTable().ajax.reload();
             }
           })
           .fail(function(e)
@@ -146,7 +94,7 @@ $("#formEditarProducto").submit(function(e)
   let hora = getHora();
   $.ajax(
     {
-      url:"editar_producto_exe.php?codigo_barra="+cod_barra+"&id="+id+"&nomProd="+np+"&cat="+lc+"&can="+can+"&vv="+vv+"&vn="+vn+"&estado="+ep+"&hora="+hora+"&medida="+unid+"&pesaje="+rpEditar,
+      url:"funciones/editar_producto_exe.php?codigo_barra="+cod_barra+"&id="+id+"&nomProd="+np+"&cat="+lc+"&can="+can+"&vv="+vv+"&vn="+vn+"&estado="+ep+"&hora="+hora+"&medida="+unid+"&pesaje="+rpEditar,
       type: "GET",
       success: function(e)
       {

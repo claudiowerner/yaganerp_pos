@@ -113,6 +113,6 @@
 
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
     <script src="javascript/clientes.js"></script>
-    <script src="javascript/datatable.js"></script>
+    <script src="javascript/datatable_cliente.js"></script>
 
 </html>

@@ -14,14 +14,14 @@ var table;
         },
 
           "ajax":{
-            "url":"read_clientes.php",
+            "url":"funciones/read_clientes.php",
             "type":"GET",
             "dataSrc":""
           },
           //columnas
           "columns":[
             {"data":"id"},
-            {"data":"rut", "type": "String"},
+            {"data":"rut"},
             {"data":"nombre"},
             {"data":"apellido"},
             {"data":"estado"},
@@ -31,8 +31,22 @@ var table;
                 "data": null,
                 "bSortable": false,
                 "mRender": function(data, type, value) {
-                    return `<button type="submit" id="btnEditar" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" ><img src="../img/edit.png" width="15"></button>
-                    <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick=btnVerCuentas(`+value.rut+`)>Ver cuentas</button>`;
+
+                  //habilitar o deshabilitar botón VerCuentas si el total de cuentas del cliente es mayor a 0
+                  let disabled;
+                  let cuentas = value.total_cuentas;
+
+                  //se agregará "disabled" a la etiqueta del botón en caso de cumplirse la condición
+                  if(cuentas>0)
+                  {
+                    disabled = "";
+                  }
+                  else
+                  {
+                    disabled = "disabled";
+                  }
+                  return `<button type="submit" id="btnEditar" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" ><img src="../img/edit.png" width="15"></button>
+                  <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick=btnVerCuentas(`+value.rut+`) `+disabled+`>Ver cuentas (`+cuentas+`)</button>`;
                 }
             }
           ],
