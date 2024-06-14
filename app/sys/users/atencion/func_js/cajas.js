@@ -42,19 +42,24 @@
       {
         let tasks = JSON.parse(response);
         let template = '';
-        tasks.forEach(task=>{
-          clase = "";
-          if(task.estado=="S")
-          {
-            clase = "btn-primary";
-          }
-          if(task.estado=="A")
-          {
-            clase = "btn-danger";
-          }
-          template+=
-          `<button class='btn ${clase}' nroCaja=${task.id} nomCaja=${task.nombre}><h1>${task.nombre}</h1></button>`;
-        });
+
+        //Se valida si la variable tasks es un arreglo válido o no
+        if(Array.isArray(tasks))
+        {
+          tasks.forEach(task=>{
+            clase = "";
+            if(task.estado=="S")
+            {
+              clase = "btn-primary";
+            }
+            if(task.estado=="A")
+            {
+              clase = "btn-danger";
+            }
+            template+=
+            `<button class='btn ${clase}' nroCaja=${task.id} nomCaja=${task.nombre}><h1>${task.nombre}</h1></button>`;
+          });
+        }
         $("#cajas").html(template);
       }
     })
