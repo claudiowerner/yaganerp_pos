@@ -70,7 +70,6 @@
 
                                         <h1>Cuentas corrientes de cliente</h1>
                                         <button type="button" class="btn btn-success" id="btnAgregarCliente">Agregar cliente</button>
-                                        <input type="text" name="txtBusqueda" id="txtBusqueda" class="form form-control" placeholder="Ingrese parámetro de búsqueda">
                                         <property name="characterEncoding" value="UTF-8">
 
                                             <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
@@ -113,6 +112,7 @@
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
 
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
-    <script src="clientes.js"></script>
+    <script src="javascript/clientes.js"></script>
+    <script src="javascript/datatable.js"></script>
 
 </html>
