@@ -29,7 +29,7 @@ json.forEach(j=>{
     valor = 0;
   }
   {
-    valor = parseInt(j.valor) + parseInt(valor);
+    valor = parseInt(j.valor);
   }
   valor_formateado = formatearNumero("P",valor);
   cant_transac = parseInt(j.cant_transac) + parseInt(cant_transac);
