@@ -23,15 +23,15 @@
         AND caja = $nCaja";
         $mostrar = "";
         $res = $conexion->query($consulta);
+        
         while($row=$res->fetch_array())
         {
             $mostrar = $row["corr"];
         }
         echo $mostrar;
-
     }
     else
     {
-    header('Location: ../');
+        header('Location: ../');
     }
 ?>

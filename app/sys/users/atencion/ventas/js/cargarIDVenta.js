@@ -1,21 +1,11 @@
-cargarIDVentaCaja();
-function cargarIDVentaCaja()
+function cargarIDVentaCaja(nCaja)
 {
-    let nCaja = $("#nCaja").text();
-    $.ajax(
+    return $.ajax(
         {
             url:"func_php/cargarIDVenta.php",
             data: {"nCaja": nCaja},
             type: "POST",
-            success: function(e)
-            {
-                $("#id_venta").html(e);
-                cargarVentasCaja();
-            }
+            async: false
         }
-    )
-    .fail(function(e)
-    {
-        msjes_swal("Error al cargar ID de la venta: ",e,"error");
-    })
+    ).responseText;
 }

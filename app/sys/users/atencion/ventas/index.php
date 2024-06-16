@@ -309,6 +309,7 @@
     <script src="js/comprobarPrimeraVenta.js"></script>
     <script src="js/confirmarMontoInicialCaja.js"></script>
     <script src="js/movimientoCaja.js"></script>
+    <script src="js/verificar_id_crear_venta.js"></script>
     
     
 </body>
