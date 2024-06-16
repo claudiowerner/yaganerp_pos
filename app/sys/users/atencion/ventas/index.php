@@ -292,6 +292,7 @@
     <script src="js/validarMetodoPago.js"></script>
     <script src="js/permisos.js"></script>
     <script src="js/comprobarCantidad.js"></script>
+    <script src="js/verificar_id_crear_venta.js"></script>
     <script src="js/ventas.js"></script>
     <script src="js/pistolaCodigoBarra.js"></script>
     <script src="js/registrarVenta.js"></script>
@@ -309,7 +310,6 @@
     <script src="js/comprobarPrimeraVenta.js"></script>
     <script src="js/confirmarMontoInicialCaja.js"></script>
     <script src="js/movimientoCaja.js"></script>
-    <script src="js/verificar_id_crear_venta.js"></script>
     
     
 </body>

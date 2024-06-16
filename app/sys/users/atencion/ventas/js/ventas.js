@@ -181,6 +181,8 @@ $("#btnConfirmarPaga").on('click', function(e)
       let id = $("#id_venta").text();
       let formaPago = $("#metodoPagoGral").val();
       confirmarPaga("ticket.php",id, formaPago);
+      
+      cargarCorrelativo();
       cargarVentasCaja();
     } 
     else 
@@ -193,8 +195,8 @@ $("#btnConfirmarPaga").on('click', function(e)
 
 $("#btnCrearVenta").on("click", function(e)
 {
-  //esta función se ubica en el archivo correlativo.js
-  correlativo();
+  cargarCorrelativo();
+  cargarVentasCaja();
 })
 
 

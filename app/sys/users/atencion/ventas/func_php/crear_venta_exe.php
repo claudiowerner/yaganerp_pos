@@ -62,8 +62,7 @@
 		$valor_descto_apl = 0;
 		if($descto!=0)
 		{
-			echo "nana: ".$valor_descto_apl = ($valor*$descto);
-			echo "\n";
+			$valor_descto_apl = ($valor*$descto);
 		}
 
 		//registro tabla ventas
@@ -78,6 +77,7 @@
 		'$idProd', 
 		'$cantProd', 
 		'$valor', 
+		'$descto', 
 		'$valor_descto_apl', 
 		'A', 
 		'$fecha', 
@@ -97,7 +97,7 @@
 	}
 	else
 	{
-		echo "Error al recibir nombre de piso y su estado";
+		echo "Error al recibir datos de venta";
 	}
 
 
