@@ -22,7 +22,8 @@ if(isset($_SESSION['user'])){
     JOIN stock_minimo_producto smp ON p.id_cl = smp.id_cl
     WHERE p.id_cl = '$id_cl' 
     AND p.estado = 'S' 
-    AND p.cantidad>0";
+    AND p.cantidad>0 
+    GROUP BY p.id_prod";
     $resultado = $conexion->query($consulta);
     if ($resultado->num_rows > 0){
     $json = array();

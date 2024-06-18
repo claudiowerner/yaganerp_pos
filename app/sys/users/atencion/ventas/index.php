@@ -310,6 +310,7 @@
     <script src="js/comprobarPrimeraVenta.js"></script>
     <script src="js/confirmarMontoInicialCaja.js"></script>
     <script src="js/movimientoCaja.js"></script>
+    <script src="js/descontar_producto.js"></script>
     
     
 </body>
