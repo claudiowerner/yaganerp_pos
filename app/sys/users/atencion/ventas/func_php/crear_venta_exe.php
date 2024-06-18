@@ -10,7 +10,7 @@
 	$tipo = $_SESSION['user']['tipo_usuario']; 
 	$id_us = $_SESSION['user']['id'];
     $nombre = $_SESSION['user']["nombre"];
-    $id_cl = $_SESSION['user']["id_cl"];
+    echo $id_cl = $_SESSION['user']["id_cl"];
 	
 
 	if(isset($_GET['idProd'])&&$_GET['cantProd'])
@@ -25,7 +25,7 @@
 		//Capturar ID de la caja abierta
 		$idTurno = 0;
 		$sql = "SELECT id FROM cierre_caja WHERE id_cl='$id_cl' and estado='A'";
-		$resultado = mysqli_query($conexion, $sql);
+		$resultado = $conexion->query($sql);
 		while ($row = $resultado->fetch_array())
 		{
 			$idTurno= $row['id'];
@@ -33,8 +33,11 @@
 
 		//obtener valor precio del producto
 		$valor = 0;
-		$sql = "SELECT valor_venta FROM productos WHERE id_cl = '$id_cl' AND id_prod = '$idProd'";
-		$resultado = mysqli_query($conexion, $sql);
+		echo $sql = "SELECT valor_venta 
+		FROM productos 
+		WHERE id_cl = '$id_cl' 
+		AND id_prod = '$idProd'";
+		$resultado = $conexion->query($sql);
 		while ($row = $resultado->fetch_array())
 		{
 			$valor = $row['valor_venta']*$cantProd;
@@ -47,11 +50,11 @@
 
 		//Actualizar estado mesa de desocupada a ocupada
 		$sql = "UPDATE cajas SET estado = 'A' WHERE id_cl = '$id_cl' AND id = '$idCaja'";
-		$resultado = mysqli_query($conexion, $sql);
+		$resultado = $conexion->query($sql);
 
 		$descto = 0;
 		$sql = "SELECT descto FROM ventas WHERE id_cl = $id_cl AND id_venta = $id_venta AND descto!=0 AND estado!='N' GROUP BY id_venta";
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 		while($row =  $res->fetch_array())
 		{
 			echo $descto = ($row["descto"]/100);
@@ -84,7 +87,7 @@
 		'0000-00-00 00:00:00', 
 		'0',
 		'$descto')";
-		$resultado = $conexion->query($sql);
+		$resultado = $conexion->query($sql);;
 		    
 		if($resultado)
 		{

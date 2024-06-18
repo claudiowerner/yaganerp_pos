@@ -11,6 +11,7 @@ $("#txtCodBarra").on("keyup", function(enter)
             type: "POST",
             success: function(e)
             {
+                
                 if(e!=0)
                 {
                     let id_venta = $("#id_venta").text();

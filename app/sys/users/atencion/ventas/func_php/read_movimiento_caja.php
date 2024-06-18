@@ -16,7 +16,7 @@
     $cont_mov = 0;
     $json = array();
     //query
-    $consulta = 
+    $sql = 
     "SELECT mc.monto, mmmc.descripcion
     FROM monto_caja mc 
     JOIN motivo_mov_monto_caja mmmc
@@ -25,7 +25,7 @@
     AND id_caja = $caja 
     AND id_cierre = $id_cierre 
     ORDER BY mc.id ASC" ;
-    $res = $conexion->query($consulta);
+    $res = $conexion->query($sql);;
     while($row = $res->fetch_array())
     {
       $cont_mov++;

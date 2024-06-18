@@ -12,7 +12,7 @@ session_start();
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = 
+	$sql = 
   "SELECT SUM(valor*cantidad) AS valor, p.fac_con_iva
   FROM pedidos_detalle pd
   JOIN pedidos p 
@@ -21,7 +21,7 @@ session_start();
   AND p.estado = 'C'
   GROUP BY pd.id";
 
-  $resultado = $conexion->query($consulta);
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
     $valor_con_iva = 0;
     $valor_sin_iva = 0;

@@ -52,7 +52,7 @@
     AND v.id_cl = '$id_cl'
     GROUP BY id_venta";
 
-  $query = mysqli_query($conexion, $sql);
+  $query = $conexion->query($sql);
   $valor = 0;
   $descto = 0;
   $json = Array();

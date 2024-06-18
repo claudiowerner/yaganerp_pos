@@ -24,8 +24,8 @@ else
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = "SELECT nom_fantasia, razon_social, giro, direccion, correo, telefono FROM cliente WHERE id = $id_cl ";
-    $resultado = $conexion->query($consulta);
+	$sql = "SELECT nom_fantasia, razon_social, giro, direccion, correo, telefono FROM cliente WHERE id = $id_cl ";
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
     $json = array();
     while ($row = $resultado->fetch_array()) {

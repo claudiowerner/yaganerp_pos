@@ -13,9 +13,9 @@
         require_once '../../../../conexion.php';
 
         //query
-        $consulta = 
+        $sql = 
         "SELECT id FROM cierre_caja WHERE id_cl = $id_cl AND estado = 'A'";
-        $res = $conexion->query($consulta);
+        $res = $conexion->query($sql);;
 
         while($row = $res->fetch_array())
         {

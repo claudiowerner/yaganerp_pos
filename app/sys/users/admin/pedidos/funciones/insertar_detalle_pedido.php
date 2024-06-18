@@ -24,7 +24,7 @@
 	echo $sql = 
 		"INSERT INTO pedidos_detalle 
 		VALUES (null,$id_cl,$id_pedido,'$producto',$cantidad,$valor,'$fecha');";
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 		if($res)
 		{
 			echo "Detalle agregado correctamente.";

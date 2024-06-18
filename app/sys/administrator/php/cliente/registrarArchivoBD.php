@@ -9,14 +9,14 @@
     $sql =
     "SELECT count(id)+1 AS id FROM comprobantes WHERE id_cl = $id_cl";
     
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
     $row = $res->fetch_assoc();
     $id = $row["id"];
 
     $sql = 
     "INSERT INTO comprobantes VALUES
     (null, '$id_cl','Comprobante $id', '$dir_archivo', '$fecha_carga')";
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
 
     if($res)
     {

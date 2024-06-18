@@ -24,7 +24,7 @@
 	WHERE id_cl = $id_cl 
 	AND id_cierre = $id_cierre 
 	AND id_caja = $caja";
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 
 	while($row = $res->fetch_array())
 	{
@@ -60,7 +60,7 @@
 			3,
 			$monto
 		)";
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 		if($res)
 		{
 			echo "Movimiento de caja agregado correctamente";

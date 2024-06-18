@@ -7,9 +7,9 @@ session_start();
 require_once '../../../conexion.php';
 
     //query
-    $consulta =
+    $sql =
     "SELECT * FROM giros";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())

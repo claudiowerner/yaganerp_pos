@@ -8,9 +8,9 @@
   $id_cl = $_POST["id_cl"];
   
   //query
-  $consulta =
+  $sql =
   "SELECT * FROM comprobantes WHERE id_cl = '$id_cl'";
-  $resultado = $conexion->query($consulta);
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
     $json = array();
     while ($row = $resultado->fetch_array())

@@ -7,7 +7,7 @@ session_start();
 require_once '../../../conexion.php';
 
     //query
-    $consulta =
+    $sql =
     "SELECT c.id, c.nombre, c.rut, c.estado, c.correo, c.telefono, pl.nombre AS plan_comprado, 
     DATE_FORMAT(fecha_registro, '%d-%m-%Y') AS fecha_registro,
     DATE_FORMAT(pc.fecha_desde, '%d-%m-%Y') AS fecha_desde,
@@ -18,7 +18,7 @@ require_once '../../../conexion.php';
     ON pl.id = c.plan_comprado
     JOIN pago_cliente pc
     ON c.id = pc.id_cl";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())

@@ -62,7 +62,7 @@ if ($result->num_rows>0){
 $sql = 
 "SELECT * FROM cliente 
 WHERE id = $id_cl";
-$resDatos = $conexion->query($sql);
+$resDatos = $conexion->query($sql);;
 
 //recorrer array valor para rellenar el array items3
 for($i=0;$i<count($id);$i++)
@@ -72,11 +72,11 @@ for($i=0;$i<count($id);$i++)
 
 
 for($i=0;$i<count($id);$i++){
-  $consulta = 
+  $sql = 
   "SELECT * FROM productos 
   WHERE id_prod = '".$id_prod[$i]."' ";
 		
-  $resultado = $conexion->query($consulta);
+  $resultado = $conexion->query($sql);;
 	if ($resultado->num_rows > 0)
   {
     while ($qry = $resultado->fetch_array()) 

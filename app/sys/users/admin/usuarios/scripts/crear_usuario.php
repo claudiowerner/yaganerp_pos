@@ -29,7 +29,7 @@
 	
 
 	$sql = "SELECT nombre FROM usuarios WHERE id_cl = '$id_cl' AND user = '$user' ";
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 
 	if($resultado->num_rows>0)
 	{
@@ -38,7 +38,7 @@
 	else
 	{
 		$sql = "INSERT INTO usuarios VALUES (null, '$nombre', '$user', '$pass', '$tu', '$id_cl', 'S','$permisos')";
-		$resultado = mysqli_query($conexion, $sql);
+		$resultado = $conexion->query($sql);
 
 		if($resultado)
 		{

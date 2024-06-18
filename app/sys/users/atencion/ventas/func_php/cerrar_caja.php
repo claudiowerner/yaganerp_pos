@@ -26,7 +26,7 @@ if(isset($_SESSION['user']))
     corr.estado = 'C'
     WHERE c.id = $idCaja;";
 
-    $r = mysqli_query($conexion, $sql);
+    $r = $conexion->query($sql);
 
     if($r)
     {

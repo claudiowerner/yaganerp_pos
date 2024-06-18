@@ -28,7 +28,7 @@
 		    $hoy = getdate();
 		    $fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
 		    $sql = "INSERT INTO categorias VALUES (null,'$id_cl','$nom','S', '$nombre','$fecha')";
-			$resultado = mysqli_query($conexion, $sql);
+			$resultado = $conexion->query($sql);
 
 			if($resultado)
 			{

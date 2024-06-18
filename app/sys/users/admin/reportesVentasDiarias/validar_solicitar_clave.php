@@ -14,11 +14,11 @@ $id_us = $_SESSION['user']['id'];
     require_once '../../../conexion.php';
 
     //query
-    $consulta = 
+    $sql = 
     "SELECT estado 
     FROM autorizacion 
     WHERE id_cl = $id_cl;";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
 
     if($resultado->num_rows>0)
     {

@@ -23,8 +23,8 @@ if(isset($_SESSION['user'])){
 
 
     //query
-    $consulta = "SELECT id, nombre FROM usuarios WHERE id_cl = 1 ";
-  $resultado = $conexion->query($consulta);
+    $sql = "SELECT id, nombre FROM usuarios WHERE id_cl = 1 ";
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
   $json = array();
    while ($row = $resultado->fetch_array()) {

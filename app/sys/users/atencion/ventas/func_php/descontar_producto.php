@@ -29,7 +29,7 @@
         WHERE id_cl = $id_cl
         AND id_venta = $id_venta";
 
-        $res = $conexion->query($sql);
+        $res = $conexion->query($sql);;
         while ($row = $res->fetch_array())
         {
             $arrId[] = $row["id"];
@@ -38,7 +38,7 @@
         }
 
         //numero que se mostrará al ejecutar el descuento en caso de que la consulta se ejecute bien
-        $consulta_ok = 0;
+        $sql_ok = 0;
         //Se obtiene el largo del array
         $largo_array = count($arrId);
 
@@ -52,14 +52,14 @@
             WHERE id_cl = $id_cl
             AND id_prod = $id_prod";
             
-            $res = $conexion->query($sql);
+            $res = $conexion->query($sql);;
 
             if($res)
             {
-                $consulta_ok++;
+                $sql_ok++;
             }
         }
-        echo $consulta_ok;
+        echo $sql_ok;
 
     }
     else {

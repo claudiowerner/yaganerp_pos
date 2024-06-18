@@ -34,16 +34,16 @@
   WHERE valor = 0 
   AND id_cl = $id_cl
   AND id_cierre = $idCierre";
-  $res = $conexion->query($sql);
+  $res = $conexion->query($sql);;
 
 	//Comprobar si existen mesas con ventas abiertas
 
-	$consulta = 
+	$sql = 
   "SELECT * FROM correlativo c
   WHERE c.estado = 'A' 
   AND caja = $idCierre
   AND c.id_cl = '$id_cl'";
-  $resultado = $conexion->query($consulta);
+  $resultado = $conexion->query($sql);;
 
   //Si no existen mesas abiertas (num_rows debe ser == 0)
   if ($resultado->num_rows == 0){
@@ -55,7 +55,7 @@
     FROM cierre_caja 
     WHERE id_cl = '$id_cl'
     AND id = '$idCierre';";
-    $resultado = $conexion->query($sql);
+    $resultado = $conexion->query($sql);;
     while($row = $resultado->fetch_array())
     {
       $nomCaja = $row["nombre"];
@@ -68,7 +68,7 @@
     estado = 'C' 
     WHERE id_cl = '$id_cl' 
     AND id = $idCierre;";
-    $resultado = $conexion->query($sql);
+    $resultado = $conexion->query($sql);;
     if($resultado)
     {
       echo "Cierre de caja '$nomCaja' realizado correctamente";

@@ -25,7 +25,7 @@ ini_set('display_errors', 1);
 	$id_venta = $_GET['id_venta'];
 
 	$sql = "SELECT COUNT(id) AS ventas_cerradas FROM ventas WHERE id_cl = '$id_cl' AND id_venta = $id_venta AND estado = 'A'";
-	$res = mysqli_query($conexion, $sql);
+	$res = $conexion->query($sql);
 	
 
 	while($row = $res->fetch_array())

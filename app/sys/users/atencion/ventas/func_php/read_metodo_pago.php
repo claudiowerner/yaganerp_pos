@@ -17,10 +17,10 @@ if(isset($_SESSION['user'])){
 
 
     //query
-    $consulta = 
+    $sql = 
     "SELECT * FROM metodo_pago
     WHERE id_cl = 0";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array()) {
@@ -31,11 +31,11 @@ if(isset($_SESSION['user'])){
       }
 
       //consulta tabla config
-      $consulta = 
+      $sql = 
       "SELECT * FROM metodo_pago 
       WHERE id_cl = '$id_cl' 
       AND estado = 'S'";
-      $resultado = $conexion->query($consulta);
+      $resultado = $conexion->query($sql);;
       if($resultado->num_rows > 0)
       {
         while($row = $resultado->fetch_array())

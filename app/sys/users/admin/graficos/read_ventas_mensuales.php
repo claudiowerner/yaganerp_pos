@@ -43,7 +43,7 @@ if(isset($_SESSION['user'])){
       WHERE id_cl = $id_cl
       AND date_format(fecha, '%m') = $i AND year(fecha) = $ano
       AND estado = 'C'";
-      $res = $conexion->query($sql);
+      $res = $conexion->query($sql);;
       while($row=$res->fetch_array())
       {
         $contenido = $row['valor_total'];

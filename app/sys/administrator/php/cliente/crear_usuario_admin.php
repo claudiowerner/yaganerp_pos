@@ -24,7 +24,7 @@
 	"SELECT * FROM usuarios
 	WHERE id_cl = '$id'";
 
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 	if($res->num_rows == 0)
 	{
 		//registrar pass caducable
@@ -34,11 +34,11 @@
 		$sql = 
 		"INSERT INTO usuarios VALUES 
 		(null, 'Admin', 'admin$id', '$pass', '1', '$id', 'S', '1,2,3,4');";
-		$resultado = mysqli_query($conexion, $sql);
+		$resultado = $conexion->query($sql);
 
 		$sql = 
 		"INSERT INTO stock_minimo_producto  VALUES (null, '$id', 'S', '5')";
-		$res2 = $conexion->query($sql);
+		$res2 = $conexion->query($sql);;
 
 		if($resultado&&$res2)
 		{
@@ -72,7 +72,7 @@
 		"UPDATE usuarios
 		SET pass = '$pass'
 		WHERE user = 'admin$id'";
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 		
 		if($res)
 		{
@@ -99,12 +99,12 @@
 		//eliminar registro de clave creada previamente
 		$sql = 
 		"DELETE FROM pass_provisoria WHERE id_cl = '$id_cl'";
-		$conexion->query($sql);
+		$conexion->query($sql);;
 		//registrar contraseña en tabla de contraseñas caducables
 		$sql =
 		"INSERT INTO pass_provisoria 
 		VALUES(null, $id_cl, '$pass', '$fecha')";
 
-		return $conexion->query($sql);
+		return $conexion->query($sql);;
 	}
 ?>

@@ -14,8 +14,8 @@
         require_once '../../../../conexion.php';
 
         //query
-        $consulta = "SELECT max(correlativo) AS corr FROM correlativo WHERE id_cl = $id_cl ";
-        $resultado = $conexion->query($consulta);
+        $sql = "SELECT max(correlativo) AS corr FROM correlativo WHERE id_cl = $id_cl ";
+        $resultado = $conexion->query($sql);;
 
         while($row = $resultado->fetch_array())
         {

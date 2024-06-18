@@ -28,7 +28,7 @@ else
   require_once '../../../conexion.php';
 
 	//query
-	$consulta = 
+	$sql = 
   "INSERT INTO cierre_caja 
   VALUES (
     null, 
@@ -41,7 +41,7 @@ else
     '0', 
     '$fecha $hora'
   );";
-  $resultado = $conexion->query($consulta);
+  $resultado = $conexion->query($sql);;
 
   if($resultado)
   {

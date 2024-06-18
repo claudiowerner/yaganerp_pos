@@ -24,7 +24,7 @@
 	"SELECT id FROM ventas
 	WHERE id_venta = $corr
 	AND estado = 'A'";
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 	
 	while($row=$res->fetch_array())
 	{
@@ -36,7 +36,7 @@
 	WHERE id_cl = $id_cl
 	AND id_venta = '$corr'";
 
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 	if($res->num_rows>0)
 	{
 		echo "Esta cuenta ya se asignó a otro cliente";
@@ -49,7 +49,7 @@
 		WHERE id_cl = $id_cl
 		AND rut = '$rut'
 		AND id_venta = '$corr'";
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 		
 		if($res->num_rows>0)
 		{
@@ -67,7 +67,7 @@
 				WHERE id = $venta 
 				AND id_cl = $id_cl";
 
-				$res = $conexion->query($sql);
+				$res = $conexion->query($sql);;
 			}
 
 			//Setear valor de cuenta por pagar
@@ -78,7 +78,7 @@
 			WHERE correlativo = $corr
 			AND id_cl = $id_cl";
 
-			$res = $conexion->query($sql);
+			$res = $conexion->query($sql);;
 		
 			//descontar productos de la BD
 			$arr_id_producto = array();
@@ -91,7 +91,7 @@
 			FROM ventas 
 			WHERE id_venta = $corr";
 
-			$res = $conexion->query($sql);
+			$res = $conexion->query($sql);;
 			if($res->num_rows>0)
 			{
 				$length = $res->num_rows;
@@ -114,7 +114,7 @@
 				SET cantidad = (cantidad-$cantidad)
 				WHERE id_prod = $id";
 
-				$res = $conexion->query($sql);
+				$res = $conexion->query($sql);;
 			}
 			//inserción de cuenta
 			$sql = 
@@ -125,7 +125,7 @@
 			$corr,
 			'A',
 			'$fecha')";
-			$resultado = mysqli_query($conexion, $sql);
+			$resultado = $conexion->query($sql);
 
 			if($resultado)
 			{

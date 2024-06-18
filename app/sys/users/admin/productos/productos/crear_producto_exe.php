@@ -62,7 +62,7 @@
 	'$id_us', 
 	'$fecha');
 	";
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 
 	if($resultado)
 	{

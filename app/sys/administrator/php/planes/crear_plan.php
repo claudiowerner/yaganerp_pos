@@ -12,7 +12,7 @@
 	$valor = $_POST["valor"];
 	$sql = "INSERT INTO planes VALUES 
 	(null,'$nombre', 'S', '$usuarios', '$cajas', '$valor');";
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 
 	if($resultado)
 	{

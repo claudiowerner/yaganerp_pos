@@ -37,7 +37,7 @@
   AND v.estado = 'C'
   GROUP BY p.id_prod";
 
-  $query = $conexion->query($sql);
+  $query = $conexion->query($sql);;
 
   $json = Array();
   while($row = $query->fetch_array())

@@ -30,7 +30,7 @@
 
 		//obtener ID venta
 		$sql = "SELECT MAX(id+1) as id FROM ventas WHERE id_cl='$id_cl'";
-		$r1 = mysqli_query($conexion, $sql);
+		$r1 = $conexion->query($sql);
 		$id_venta = 0;
 		while($row = $r1->fetch_array())
 		{

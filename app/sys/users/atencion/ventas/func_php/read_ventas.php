@@ -17,7 +17,7 @@
     require_once '../../../../conexion.php';
 
     //query
-    $consulta = 
+    $sql = 
     "SELECT p.codigo_barra, c.correlativo AS corr, 
     v.id, v.id_caja, 
     u.nombre, p.id_prod, p.nombre_prod, v.id_venta,
@@ -39,7 +39,7 @@
     AND c.correlativo = '$idVenta'
     AND v.estado!='N'
     GROUP BY v.id ORDER BY v.id ASC" ;
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     $json = array();
     if ($resultado->num_rows > 0)
     {

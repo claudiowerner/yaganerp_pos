@@ -49,7 +49,7 @@ else
   AND DATE_FORMAT(cc.desde, '%d-%m-%Y') LIKE '%$desde%' 
   AND DATE_FORMAT(cc.hasta, '%d-%m-%Y') LIKE '%$hasta%'
   ORDER BY id DESC";
-  $res = $conexion->query($sql);
+  $res = $conexion->query($sql);;
   while($row = $res->fetch_array())
   {
     $arrId[] = $row["id"];
@@ -71,7 +71,7 @@ else
     ON v.id_venta = corr.correlativo
     WHERE corr.id_cierre = $id
     AND v.estado = 'C'";
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
     while($row = $res->fetch_array())
     {
       if($row["valor"]=="")

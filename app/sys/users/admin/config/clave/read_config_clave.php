@@ -14,8 +14,8 @@ session_start();
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = "SELECT estado FROM autorizacion WHERE id_cl = $id_cl;";
-  $resultado = $conexion->query($consulta);
+	$sql = "SELECT estado FROM autorizacion WHERE id_cl = $id_cl;";
+  $resultado = $conexion->query($sql);;
   while ($row = $resultado->fetch_array()) 
   {
     $estado = $row["estado"];

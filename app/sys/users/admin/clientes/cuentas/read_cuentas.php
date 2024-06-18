@@ -16,7 +16,7 @@ if(isset($_SESSION['user'])){
     $rut = $_POST["rut"];
     
 
-    $consulta = 
+    $sql = 
       "SELECT corr.correlativo, ccr.estado, 
       DATE_FORMAT(ccr.fecha_registro, '%d-%m-%Y') AS fecha, SUM(v.valor) AS valor
       FROM cuenta_corriente ccr 
@@ -28,7 +28,7 @@ if(isset($_SESSION['user'])){
       AND rut = '$rut'
       AND v.estado!='N'
       GROUP BY corr.correlativo";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     $json= array();
     while ($row = $resultado->fetch_array())
     {

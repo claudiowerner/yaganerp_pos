@@ -33,7 +33,7 @@
 	"INSERT INTO proveedores
 	 VALUES (null, '$id_cl', '$nombre', '$rut', 'S', '$fecha');
 	";
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 
 	if($resultado)
 	{

@@ -16,8 +16,8 @@ if(isset($_SESSION['user'])){
     require_once '../../../../conexion.php';
 
     //query
-    $consulta = "SELECT COUNT(id) AS cajas_activas FROM cajas WHERE id_cl = $id_cl AND estado!= 'N'";
-    $resultado = $conexion->query($consulta);
+    $sql = "SELECT COUNT(id) AS cajas_activas FROM cajas WHERE id_cl = $id_cl AND estado!= 'N'";
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0)
     {
       $imprimir = $resultado->fetch_assoc();

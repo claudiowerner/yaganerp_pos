@@ -52,7 +52,7 @@ $sql =
 "SELECT id 
 FROM pedidos_detalle 
 WHERE id_pedido = '$id_pedido'";
-$res = $conexion->query($sql);
+$res = $conexion->query($sql);;
 while($row=$res->fetch_array())
 {
   $arrayId[] = $row["id"];
@@ -65,7 +65,7 @@ for($i=0;$i<$cont;$i++)
   "SELECT producto 
   FROM pedidos_detalle 
   WHERE id = ".$arrayId[$i];
-  $res = $conexion->query($sql);
+  $res = $conexion->query($sql);;
 
   while($row=$res->fetch_array())
   {
@@ -80,7 +80,7 @@ for($i=0;$i<$cont;$i++)
   "SELECT cantidad 
   FROM pedidos_detalle 
   WHERE id = ".$arrayId[$i];
-  $res = $conexion->query($sql);
+  $res = $conexion->query($sql);;
 
   while($row=$res->fetch_array())
   {
@@ -94,7 +94,7 @@ for($i=0;$i<$cont;$i++)
   "SELECT valor
   FROM pedidos_detalle 
   WHERE id = ".$arrayId[$i];
-  $res = $conexion->query($sql);
+  $res = $conexion->query($sql);;
 
   while($row=$res->fetch_array())
   {

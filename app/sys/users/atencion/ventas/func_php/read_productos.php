@@ -15,7 +15,7 @@ if(isset($_SESSION['user'])){
     require_once '../../../../conexion.php';
 
     //query
-    $consulta = 
+    $sql = 
     "SELECT p.id_prod, p.codigo_barra, c.nombre_cat, p.nombre_prod, smp.stock_minimo, p.cantidad, smp.estado
     FROM productos p 
     JOIN categorias c ON p.categoria = c.id 
@@ -24,7 +24,7 @@ if(isset($_SESSION['user'])){
     AND p.estado = 'S' 
     AND p.cantidad>0 
     GROUP BY p.id_prod";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
     $json = array();
     while ($row = $resultado->fetch_array()) {

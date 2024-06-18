@@ -35,7 +35,7 @@
 	FROM productos 
 	WHERE id_cl = '$id_cl' 
 	AND id_prod = '$idProd'";
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 	while ($row = $resultado->fetch_array())
 	{
 		$valor = intval($row['valor_venta']);
@@ -44,7 +44,7 @@
 	echo $sql = 
 	"UPDATE ventas SET cantidad = $cantProd, valor=$valor*$cantProd 
 	WHERE id_cl = '$id_cl' AND id = '$id';";
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 
 	if($resultado)
 	{

@@ -16,8 +16,8 @@ if(isset($_SESSION['user'])){
   require_once '../../../conexion.php';
 
   //query
-  $consulta = "SELECT * FROM autorizacion WHERE id_cl = '$id_cl' AND clave = $clave";
-  $resultado = $conexion->query($consulta);
+  $sql = "SELECT * FROM autorizacion WHERE id_cl = '$id_cl' AND clave = $clave";
+  $resultado = $conexion->query($sql);;
 
   $claveOk = 0;
   while($row = $resultado->fetch_array())

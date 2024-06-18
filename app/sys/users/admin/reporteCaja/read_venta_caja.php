@@ -25,7 +25,7 @@ session_start();
   $sql =
   "SELECT id FROM cajas WHERE id_cl = '$id_cl'";
 
-  $res = $conexion->query($sql);
+  $res = $conexion->query($sql);;
   while($row = $res->fetch_assoc())
   {
     $arrayCaja[] = $row["id"];
@@ -39,7 +39,7 @@ session_start();
     $id = $arrayCaja[$i];
     $sql =
     "SELECT nom_caja FROM cajas WHERE id = '$id' AND id_cl = '$id_cl'";
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
     while($row = $res->fetch_assoc())
     {
       $arrayNombre[] = $row["nom_caja"];
@@ -51,7 +51,7 @@ session_start();
     $id = $arrayCaja[$i];
     $sql =
     "SELECT COUNT(caja) AS ventas_caja, estado FROM correlativo WHERE caja = $id AND id_cl = '$id_cl'";
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
     while($row = $res->fetch_assoc())
     {
       if($row["ventas_caja"]!=""||$row["estado"]!="")
@@ -72,7 +72,7 @@ session_start();
     $id = $arrayCaja[$i];
     $sql =
     "SELECT SUM(valor) AS valor FROM ventas WHERE id_caja = $id AND id_cl = $id_cl";
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
     while($row = $res->fetch_assoc())
     {
       if($row["valor"]!="")

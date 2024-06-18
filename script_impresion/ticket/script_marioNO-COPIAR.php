@@ -89,8 +89,8 @@ $result = mysql_db_query($database,"SELECT
 
 	foreach ($newArray_id_mat as $k => $v){
 		//echo $k.": ".$v."<br />";
-		$consulta = "SELECT nombre FROM materiales_liris WHERE id = '$k' ";
-		$resultado = $conexion->query($consulta);
+		$sql = "SELECT nombre FROM materiales_liris WHERE id = '$k' ";
+		$resultado = $conexion->query($sql);;
 		if ($resultado->num_rows > 0){
 		while ($qry = $resultado->fetch_array()) {
       $nombre_mat = $qry["nombre"];
@@ -111,8 +111,8 @@ $result = mysql_db_query($database,"SELECT
 
  	foreach ($newArray_id_rep as $k => $v){
  		//echo $k.": ".$v."<br />";
- 		$consulta = "SELECT nombre FROM repuestos_liris WHERE id = '$k' ";
- 		$resultado = $conexion->query($consulta);
+ 		$sql = "SELECT nombre FROM repuestos_liris WHERE id = '$k' ";
+ 		$resultado = $conexion->query($sql);;
  		if ($resultado->num_rows > 0){
 			while ($qry = $resultado->fetch_array()) {
 				$nombre_rep = $qry["nombre"];

@@ -23,8 +23,8 @@ if(isset($_SESSION['user'])){
 
 
 	//query
-	$consulta = "SELECT id, num_mesa, piso FROM mesas WHERE id_cl = $id_cl and estado ='S'";
-  $resultado = $conexion->query($consulta);
+	$sql = "SELECT id, num_mesa, piso FROM mesas WHERE id_cl = $id_cl and estado ='S'";
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
   $json = array();
    while ($row = $resultado->fetch_array()) {

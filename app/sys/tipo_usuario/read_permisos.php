@@ -13,7 +13,7 @@
   $arreglo = "";//acá se guardan los datos emanados desde la base de datos
 
   $sql = "SELECT permisos FROM usuarios WHERE id_cl = '$id_cl' AND id = '$id_us'";
-  $res = $conexion->query($sql);
+  $res = $conexion->query($sql);;
   
   while($row=$res->fetch_array())
   {

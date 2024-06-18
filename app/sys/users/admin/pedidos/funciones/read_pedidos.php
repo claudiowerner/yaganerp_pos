@@ -12,7 +12,7 @@ session_start();
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = 
+	$sql = 
   "SELECT p.id, prov.nombre_proveedor, p.estado, u.nombre,
   DATE_FORMAT(p.fecha_registro, '%d-%m-%Y') AS fecha_registro,
   SUM(pdet.cantidad*pdet.valor) AS valor, p.estado_pago, p.fac_con_iva
@@ -25,7 +25,7 @@ session_start();
   ON u.id = p.creado_por
   WHERE p.id_cl = $id_cl  
   GROUP BY id;";
-  $resultado = $conexion->query($consulta);
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0)
   {
     $json = array();

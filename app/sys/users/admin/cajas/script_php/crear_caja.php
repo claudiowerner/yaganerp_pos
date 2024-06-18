@@ -26,7 +26,7 @@
 
 	$sql = "INSERT INTO cajas VALUES 
 	(NULL, '$id_cl','$nom', 'S', '$id_us', '$fecha');";
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 
 	if($resultado)
 	{

@@ -12,12 +12,12 @@ session_start();
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = 
+	$sql = 
   "SELECT id_proveedor
   FROM pedidos 
   WHERE id_cl = $id_cl
   AND id = $id_pedido";
-  $resultado = $conexion->query($consulta);
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
     while ($row = $resultado->fetch_array())
     {

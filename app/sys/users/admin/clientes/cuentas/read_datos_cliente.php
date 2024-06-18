@@ -16,12 +16,12 @@ if(isset($_SESSION['user'])){
     
     $rut = $_POST["rut"];
     
-    $consulta = 
+    $sql = 
     "SELECT nombre, apellido 
     FROM clientes_negocio 
     WHERE id_cl = $id_cl
     AND rut = '$rut'";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     $json= array();
     while ($row = $resultado->fetch_array())
     {

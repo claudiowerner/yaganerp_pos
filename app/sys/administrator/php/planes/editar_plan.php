@@ -25,7 +25,7 @@
 		WHERE p.id = $id
 		AND p.estado = 'S'
 		AND c.estado = 'S'";
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 
 		if($res->num_rows==0)
 		{
@@ -37,7 +37,7 @@
 			`cajas` = '$cajas', 
 			`valor` = '$valor' 
 			WHERE (`id` = '$id');";
-			$resultado = mysqli_query($conexion, $sql);
+			$resultado = $conexion->query($sql);
 
 			if($resultado)
 			{
@@ -63,7 +63,7 @@
 		`cajas` = '$cajas', 
 		`valor` = '$valor' 
 		WHERE (`id` = '$id');";
-		$resultado = mysqli_query($conexion, $sql);
+		$resultado = $conexion->query($sql);
 
 		if($resultado)
 		{

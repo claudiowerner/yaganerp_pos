@@ -14,7 +14,7 @@
     require_once '../../../../conexion.php';
 
     //query
-    $consulta = 
+    $sql = 
     "SELECT ccr.id_venta AS correlativo, DATE_FORMAT(ccr.fecha_registro, '%d-%m-%Y') AS fecha, (SUM(v.valor)-v.valor*(v.des/100)) AS valor
     FROM cuenta_corriente ccr
     JOIN correlativo corr 
@@ -27,7 +27,7 @@
     AND ccr.id_cl = $id_cl
     AND v.estado != 'N'
     GROUP BY ccr.id_venta" ;
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     $json = array();
     if ($resultado->num_rows > 0){
       while ($row = $resultado->fetch_array()) {

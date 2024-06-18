@@ -20,7 +20,7 @@
 		"DELETE FROM pedidos_detalle
 		WHERE id = $id_detalle";
 
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 
 		if($res)
 		{

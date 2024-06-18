@@ -26,25 +26,25 @@
 	$nombre_plan = "";
 
 	$sql = "SELECT nombre FROM planes WHERE id = $plan";
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 	$row = $resultado->fetch_assoc();
 	$nombre_plan = $row["nombre"];
 
 	echo $sql = "INSERT INTO cliente VALUES 
 	(null,'$nombre', '$rut', 'S','$nomFantasia', '$razonSocial',  $giro, '$direccion', '$correo','$telefono', '$plan', '$fecha_pago', '$fechaRegistro');";
-	$r1 = $conexion->query($sql);
+	$r1 = $conexion->query($sql);;
 
 	//seleccionar el ID del cliente
 
 	$sql = "SELECT id FROM cliente WHERE rut = '$rut'";
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 	$resp = $res->fetch_assoc();
 	$id_cl = $resp["id"];
 
 	//registrar pago cliente
 	$sql = "INSERT INTO pago_cliente VALUES
 	(null, $id_cl, $plan, $tipoPago, '$fechaDesde', '$fechaHasta', 'S')";
-	$r2 = $conexion->query($sql);
+	$r2 = $conexion->query($sql);;
 
 	if($r1&&$r2)
 	{

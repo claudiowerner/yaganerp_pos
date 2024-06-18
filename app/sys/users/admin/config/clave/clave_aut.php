@@ -15,12 +15,12 @@ require_once '../../../../conexion.php';
 
 	//query
 $sql = "SELECT * FROM autorizacion WHERE id_cl = $id_cl";
-$resultado = mysqli_query($conexion, $sql);
+$resultado = $conexion->query($sql);
 
 if($resultado -> num_rows==0)
 {
   $sql = "INSERT INTO autorizacion VALUES (null, '$id_cl', '$clave', 'S');";
-  $resultado = mysqli_query($conexion, $sql);
+  $resultado = $conexion->query($sql);
 
 
   if($resultado)
@@ -43,7 +43,7 @@ else
   {
     $sql = "UPDATE autorizacion SET clave = '$clave', estado = '$estado' WHERE id_cl = '$id_cl';";
   }
-  $resultado = mysqli_query($conexion, $sql);
+  $resultado = $conexion->query($sql);
   if($resultado)
   {
     echo "Configuración de clave modificada exitosamente.";

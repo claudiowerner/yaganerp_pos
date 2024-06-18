@@ -16,7 +16,7 @@ session_start();
   require_once '../../../conexion.php';
 
 	//query
-	$consulta = 
+	$sql = 
   "SELECT c.nombre_cat, p.nombre_prod, sum(v.cantidad) AS cantidad, sum(v.valor) AS valor_total 
   FROM ventas v 
   JOIN productos p ON p.id_prod = v.producto 
@@ -24,7 +24,7 @@ session_start();
   WHERE c.id_cl = $id_cl 
   GROUP BY p.id_prod 
   ORDER BY cantidad DESC";
-  $resultado = $conexion->query($consulta);
+  $resultado = $conexion->query($sql);;
   $json = array();
     while ($row = $resultado->fetch_array()) {
       $json[] =array(

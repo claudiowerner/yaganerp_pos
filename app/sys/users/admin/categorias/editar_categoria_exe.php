@@ -30,7 +30,7 @@
 			if($estado=='N')
 			{
 				$sql = "SELECT * FROM categorias c JOIN productos p ON c.id = p.categoria WHERE c.id = $id AND p.estado = 'S'";
-				$r_estado = mysqli_query($conexion, $sql);
+				$r_estado = $conexion->query($sql);
 				if($r_estado->num_rows>0)
 				{
 					echo "No se puede desactivar la categoría $nom debido a que existen productos activos asociados a esta categoría";
@@ -39,10 +39,10 @@
 				{
 					//obtener fecha
 					$sql = "INSERT INTO anula_categoria VALUES (null, '$id_cl', '$id', '$nombre', '$fecha');";
-					$r_estado = mysqli_query($conexion, $sql);
+					$r_estado = $conexion->query($sql);
 
 					$sql = "UPDATE categorias set nombre_cat ='$nom', estado = '$estado' where id = '$id' and id_cl = '$id_cl'";
-					$resultado = mysqli_query($conexion, $sql);
+					$resultado = $conexion->query($sql);
 
 					if($resultado||$r_estado)
 					{
@@ -57,10 +57,10 @@
 			else
 			{
 				$sql = "INSERT INTO anula_categoria VALUES (null, '$id_cl', '$id', '$nombre', '$fecha');";
-				$r_estado = mysqli_query($conexion, $sql);
+				$r_estado = $conexion->query($sql);
 
 				$sql = "UPDATE categorias set nombre_cat ='$nom', estado = '$estado' where id = '$id' and id_cl = '$id_cl'";
-				$resultado = mysqli_query($conexion, $sql);
+				$resultado = $conexion->query($sql);
 
 				if($resultado||$r_estado)
 				{

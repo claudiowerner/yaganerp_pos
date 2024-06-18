@@ -54,7 +54,7 @@
 	{
 		$sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', pass = '$pass', tipo_usuario = '$tu', estado = '$estado', permisos='$permisos' WHERE id_cl = $id_cl AND user = '$user';";
 	}
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 
 	if($resultado)
 	{
@@ -68,5 +68,5 @@
 	//codigo que elimina la clave provisoria en caso de existir
 	$sql = 
 	"DELETE FROM pass_provisoria WHERE id_cl = '$id_cl'";
-	$conexion->query($sql);
+	$conexion->query($sql);;
 ?>

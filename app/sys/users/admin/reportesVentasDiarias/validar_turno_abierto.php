@@ -17,8 +17,8 @@ if(isset($_SESSION['user'])){
 
     //query de ventas
     //query
-    $consulta = "SELECT * FROM cierre_caja WHERE id_cl = $id_cl AND estado = 'A'";
-    $resultado = $conexion->query($consulta);
+    $sql = "SELECT * FROM cierre_caja WHERE id_cl = $id_cl AND estado = 'A'";
+    $resultado = $conexion->query($sql);;
 
     $estado_caja = 0;
     while($row = $resultado->fetch_array())

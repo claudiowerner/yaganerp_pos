@@ -24,7 +24,7 @@
 		id_proveedor = '$id_prov'
 		WHERE (`id` = '$id_pedido');
 		";
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 		if($res)
 		{
 			echo "Proveedor modificado correctamente.";

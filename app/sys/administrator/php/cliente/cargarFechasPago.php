@@ -8,9 +8,9 @@ require_once '../../../conexion.php';
 
 $id_cl = $_POST["id"];
     //query
-    $consulta =
+    $sql =
     "SELECT fecha_desde, fecha_hasta FROM pago_cliente WHERE id_cl = $id_cl";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())

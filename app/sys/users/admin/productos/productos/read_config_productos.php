@@ -21,8 +21,8 @@ if(isset($_SESSION['user'])){
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = "SELECT estado, stock_minimo FROM stock_minimo_producto WHERE id_cl = $id_cl;";
-  $resultado = $conexion->query($consulta);
+	$sql = "SELECT estado, stock_minimo FROM stock_minimo_producto WHERE id_cl = $id_cl;";
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
     $json = array();
     while ($row = $resultado->fetch_array())

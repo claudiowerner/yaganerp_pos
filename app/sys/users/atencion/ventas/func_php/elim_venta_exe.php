@@ -18,14 +18,14 @@
 		//Capturar ID de la caja abierta
 		$idCaja = 0;
 		$sql = "SELECT id FROM cierre_caja WHERE id_cl='$id_cl' and estado='A'";
-		$resultado = mysqli_query($conexion, $sql);
+		$resultado = $conexion->query($sql);
 		while ($row = $resultado->fetch_array())
 		{
 			$idCaja= $row['id'];
 		}
 		
 		$sql = "UPDATE ventas SET estado = 'N' WHERE id = $id_venta;";
-		$res2 = mysqli_query($conexion, $sql);
+		$res2 = $conexion->query($sql);
 		if($res2)
 		{
 			echo "Venta eliminada correctamente";

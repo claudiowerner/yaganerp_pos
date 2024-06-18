@@ -82,7 +82,7 @@
 		WHERE id_prod = '$id';
 		";
 	}
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 
 	if($estado=='N')
 	{
@@ -92,7 +92,7 @@
 
 		$sql = "INSERT INTO anula_productos (`id`, `id_cl`, `id_producto`, `anulado_por`, `fecha`) VALUES (null, '$id_cl', '$id', '$nombre', '$fecha');
 ";
-		$resultado = mysqli_query($conexion, $sql);
+		$resultado = $conexion->query($sql);
 	}
 	if($resultado)
 	{

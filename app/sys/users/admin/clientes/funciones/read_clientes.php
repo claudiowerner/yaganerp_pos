@@ -29,7 +29,7 @@ if(isset($_SESSION['user'])){
     FROM clientes_negocio 
     WHERE id_cl = $id_cl 
     GROUP BY id";
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
     if($res->num_rows>0)
     {
       while($row=$res->fetch_array())
@@ -48,7 +48,7 @@ if(isset($_SESSION['user'])){
       WHERE id = $id
       AND id_cl = $id_cl";
 
-      $res = $conexion->query($sql);
+      $res = $conexion->query($sql);;
       if($res->num_rows>0)
       {
         while($row = $res->fetch_array())
@@ -69,7 +69,7 @@ if(isset($_SESSION['user'])){
       WHERE cln.id = $id
       AND cln.id_cl = $id_cl";
 
-      $res = $conexion->query($sql);
+      $res = $conexion->query($sql);;
       if($res->num_rows>0)
       {
         $estado = "";
@@ -103,7 +103,7 @@ if(isset($_SESSION['user'])){
       WHERE rut = '$rut' 
       AND id_cl = $id_cl";
 
-      $res = $conexion->query($sql);
+      $res = $conexion->query($sql);;
       if($res->num_rows>0)
       {
         while($row = $res->fetch_array())

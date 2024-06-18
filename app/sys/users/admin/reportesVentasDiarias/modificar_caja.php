@@ -21,7 +21,7 @@ if(isset($_SESSION['user'])){
   SET nombre = '$nomCaja'
   WHERE id_cl = $id_cl
   AND id = $idCaja";
-  $res = $conexion->query($sql);
+  $res = $conexion->query($sql);;
 
   $arrRespta = array();
   if($res)

@@ -25,7 +25,7 @@
 		1,
 		$monto
 	)";
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 	if($res)
 	{
 		echo "Registro de monto inicial de caja creado correctamente";

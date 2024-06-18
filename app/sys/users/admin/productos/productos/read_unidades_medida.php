@@ -21,8 +21,8 @@ if(isset($_SESSION['user'])){
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = "SELECT * FROM unidades_medida;";
-  $resultado = $conexion->query($consulta);
+	$sql = "SELECT * FROM unidades_medida;";
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
   $json = array();
    while ($row = $resultado->fetch_array()) {

@@ -47,7 +47,7 @@
 	WHERE c.id = $id
 	AND pg.id_cl = $id;
 	";
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 
 	if($resultado)
 	{

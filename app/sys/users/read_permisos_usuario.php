@@ -18,8 +18,8 @@ if(isset($_SESSION['user'])){
   require_once '../conexion.php';
 
     //query
-  $consulta = "SELECT permisos FROM usuarios WHERE id_cl = $id_cl AND id = $id_usu;";
-  $resultado = $conexion->query($consulta);
+  $sql = "SELECT permisos FROM usuarios WHERE id_cl = $id_cl AND id = $id_usu;";
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0)
   {
     $json = array();

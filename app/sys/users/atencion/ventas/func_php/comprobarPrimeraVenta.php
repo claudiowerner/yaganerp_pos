@@ -16,13 +16,13 @@
     require_once '../../../../conexion.php';
 
     //query
-    $consulta = 
+    $sql = 
     "SELECT id
     FROM monto_caja 
     WHERE id_cl = $id_cl 
     AND id_caja = $caja 
     AND id_cierre = $id_cierre" ;
-    $res = $conexion->query($consulta);
+    $res = $conexion->query($sql);;
     echo $res->num_rows;
   }
   else

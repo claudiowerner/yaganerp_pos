@@ -16,12 +16,12 @@
         require_once '../../../../conexion.php';
 
         //query
-        $consulta = 
+        $sql = 
         "SELECT nombre_prod, valor_venta 
         FROM productos 
         WHERE codigo_barra = '$codigo_barra' 
         AND id_cl = $id_cl";
-        $res = $conexion->query($consulta);
+        $res = $conexion->query($sql);;
 
         $json = array();
 

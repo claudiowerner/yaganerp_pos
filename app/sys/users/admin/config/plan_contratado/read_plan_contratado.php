@@ -14,8 +14,8 @@ session_start();
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = "SELECT p.nombre FROM planes p JOIN cliente c ON c.plan_comprado = p.id WHERE c.id = $id_cl";
-  $resultado = $conexion->query($consulta);
+	$sql = "SELECT p.nombre FROM planes p JOIN cliente c ON c.plan_comprado = p.id WHERE c.id = $id_cl";
+  $resultado = $conexion->query($sql);;
   while ($row = $resultado->fetch_array()) 
   {
     echo $nombre = $row["nombre"];

@@ -16,12 +16,12 @@ if(isset($_SESSION['user'])){
     require_once '../../../../conexion.php';
 
     //query
-    $consulta = 
+    $sql = 
     "SELECT p.cajas FROM cliente c 
     JOIN planes p 
     ON c.plan_comprado = p.id
     WHERE c.id = $id_cl";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0)
     {
       $imprimir = $resultado->fetch_assoc();

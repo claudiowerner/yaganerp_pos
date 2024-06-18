@@ -14,11 +14,11 @@
         require_once '../../../../conexion.php';
 
         //query
-        $consulta = 
+        $sql = 
         "SELECT stock_minimo 
         FROM stock_minimo_producto
         WHERE estado='S' AND id_cl = '$id_cl'";
-        $resultado = $conexion->query($consulta);
+        $resultado = $conexion->query($sql);;
 
         if($resultado->num_rows!=0)
         {    

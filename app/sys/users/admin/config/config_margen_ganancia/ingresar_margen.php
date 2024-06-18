@@ -13,7 +13,7 @@
 
   //query
   $sql = "SELECT * FROM margen_ganancia WHERE id_cl = '$id_cl'";
-  $resultado = mysqli_query($conexion, $sql);
+  $resultado = $conexion->query($sql);
 
   if($resultado -> num_rows<=0)
   {
@@ -23,7 +23,7 @@
   {
     $sql = "UPDATE margen_ganancia SET porcentaje = $porcentaje WHERE id_cl = '$id_cl';";
   }
-  $resultado = mysqli_query($conexion, $sql);
+  $resultado = $conexion->query($sql);
   if($resultado)
   {
     echo "Cambios guardados exitosamente";

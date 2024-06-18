@@ -13,9 +13,9 @@ session_start();
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = 
+	$sql = 
   "SELECT porcentaje FROM margen_ganancia WHERE id_cl = $id_cl";
-  $resultado = $conexion->query($consulta);
+  $resultado = $conexion->query($sql);;
   $mostrar = "";
   while($row = $resultado->fetch_array())
   {

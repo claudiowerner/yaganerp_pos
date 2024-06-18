@@ -39,7 +39,7 @@
 	nombre_proveedor = '$nombre',
 	estado = '$estado'
 	WHERE id = '$id'";
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 
 	if($estado=='N')
 	{
@@ -50,7 +50,7 @@
 		$sql = 
 		"INSERT INTO anula_proveedor
 		 VALUES (null, '$id_cl', '$id', '$id_us', '$fecha');";
-		$resultado = mysqli_query($conexion, $sql);
+		$resultado = $conexion->query($sql);
 	}
 	if($resultado)
 	{

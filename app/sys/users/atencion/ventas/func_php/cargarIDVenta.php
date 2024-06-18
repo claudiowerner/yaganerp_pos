@@ -15,14 +15,14 @@
         require_once '../../../../conexion.php';
 
         //query
-        $consulta = 
+        $sql = 
         "SELECT correlativo AS corr 
         FROM correlativo 
         WHERE id_cl = $id_cl 
         AND estado = 'A'
         AND caja = $nCaja";
         $mostrar = "";
-        $res = $conexion->query($consulta);
+        $res = $conexion->query($sql);;
         
         while($row=$res->fetch_array())
         {

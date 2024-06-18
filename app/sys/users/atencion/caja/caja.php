@@ -16,7 +16,7 @@
 	$fecha = $_GET['fecha'];
 	
 	$sql = "SELECT * FROM cierre_caja WHERE id_cl =$id_cl AND estado = 'A'";
-	$r = $conexion->query($sql);
+	$r = $conexion->query($sql);;
 	$turno = 0;
 	
 	while($row = $r->fetch_array())

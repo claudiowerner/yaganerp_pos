@@ -34,7 +34,7 @@
   $sql =
   "SELECT id FROM cajas WHERE id_cl = '$id_cl'";
 
-  $res = $conexion->query($sql);
+  $res = $conexion->query($sql);;
   while($row = $res->fetch_assoc())
   {
     $arrayCaja[] = $row["id"];
@@ -48,7 +48,7 @@
     $id = $arrayCaja[$i];
     $sql =
     "SELECT nom_caja FROM cajas WHERE id = '$id' AND id_cl = '$id_cl'";
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
     while($row = $res->fetch_assoc())
     {
       $arrayNombre[] = $row["nom_caja"];
@@ -60,7 +60,7 @@
     $id = $arrayCaja[$i];
     $sql =
     "SELECT COUNT(caja) AS ventas_caja, estado FROM correlativo WHERE caja = $id AND id_cl = '$id_cl'";
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
     while($row = $res->fetch_assoc())
     {
       if($row["ventas_caja"]!=""||$row["estado"]!=null)
@@ -108,7 +108,7 @@
     AND c.caja = $id
     AND v.estado = 'C'";
     $valorGenerado = 0;
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
     while($row = $res->fetch_assoc())
     {
       if($row["valor"]!="")

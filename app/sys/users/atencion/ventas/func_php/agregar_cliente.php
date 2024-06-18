@@ -22,7 +22,7 @@
 	"SELECT rut FROM clientes_negocio
 	WHERE id_cl = $id_cl
 	AND rut = '$rut'";
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 	
 	if($res->num_rows>0)
 	{
@@ -33,7 +33,7 @@
 		$sql = 
 		"INSERT INTO clientes_negocio 
 		VALUES (null, '$id_cl', '$rut', '$nombre', '$apellido', 'S', '$id_us', '$fecha');";
-		$resultado = $conexion->query($sql);
+		$resultado = $conexion->query($sql);;
 
 		if($resultado)
 		{

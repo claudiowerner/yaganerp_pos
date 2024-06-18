@@ -9,7 +9,7 @@
 	$conexion = $connection;
 
 	$sql = "delete from ubicaciones where id=".$_POST['id'];
-	$resultado = mysqli_query($conexion, $sql);
+	$resultado = $conexion->query($sql);
 
 	if($resultado)
 	{

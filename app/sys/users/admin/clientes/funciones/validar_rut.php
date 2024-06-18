@@ -15,11 +15,11 @@ if(isset($_SESSION['user'])){
     require_once '../../../../conexion.php';
 
     //query
-    $consulta = 
+    $sql = 
     "SELECT * FROM clientes_negocio
     WHERE id_cl = $id_cl
     AND rut = '$rut'";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
 
     echo $resultado->num_rows;
 }

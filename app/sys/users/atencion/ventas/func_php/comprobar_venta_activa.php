@@ -17,8 +17,8 @@ if(isset($_SESSION['user']))
     require_once '../../../../conexion.php';
 
     //query
-    $consulta = "SELECT * FROM ventas WHERE id_cl = $id_cl AND mesa = $nMesa AND estado = 'A'";
-    $resultado = $conexion->query($consulta);
+    $sql = "SELECT * FROM ventas WHERE id_cl = $id_cl AND mesa = $nMesa AND estado = 'A'";
+    $resultado = $conexion->query($sql);;
 
     $venta = 0;
     while($row = $resultado->fetch_array())

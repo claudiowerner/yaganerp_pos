@@ -16,12 +16,12 @@ if(isset($_SESSION['user'])){
     require_once '../../../../conexion.php';
 
     //query
-    $consulta = 
+    $sql = 
     "SELECT rut, nombre, apellido 
     FROM clientes_negocio
     WHERE id_cl = $id_cl
     AND rut LIKE '%$rut%'";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0)
     {
       $json = array();

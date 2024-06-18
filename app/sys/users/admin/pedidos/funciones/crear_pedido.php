@@ -35,13 +35,13 @@
 	'$factura',
 	'$id_us', 
 	'$fecha');";
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 
 	//seleccionar id de pedido
 	$id_pedido = 0;
 	$sql = 
 	"SELECT MAX(id) AS id FROM pedidos;";
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 	
 	while($row= $res->fetch_array())
 	{
@@ -64,7 +64,7 @@
 		".$cantidad[$i].",
 		".$valor[$i].",
 		'$fecha');";
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 		if($res)
 		{
 			$contador_res_ok++;

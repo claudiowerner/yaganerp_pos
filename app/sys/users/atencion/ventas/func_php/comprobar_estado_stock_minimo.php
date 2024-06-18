@@ -15,10 +15,10 @@ if(isset($_SESSION['user'])){
     require_once '../../../../conexion.php';
 
     //query
-    $consulta = 
+    $sql = 
     "SELECT estado FROM stock_minimo_producto 
     WHERE id_cl = $id_cl";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
 
     $estado = 0;
     while($row = $resultado->fetch_array())

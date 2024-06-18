@@ -28,7 +28,7 @@
 		`valor` = '$valor' 
 		WHERE (`id` = '$id_detalle');
 		";
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 		if($res)
 		{
 			echo "Detalle modificado correctamente.";

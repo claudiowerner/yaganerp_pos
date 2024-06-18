@@ -16,8 +16,8 @@ if(isset($_SESSION['user'])){
     require_once '../../../../conexion.php';
 
     //query
-    $consulta = "SELECT id, nombre, user, tipo_usuario, estado, permisos FROM usuarios WHERE id_cl = $id_cl";
-    $resultado = $conexion->query($consulta);
+    $sql = "SELECT id, nombre, user, tipo_usuario, estado, permisos FROM usuarios WHERE id_cl = $id_cl";
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
       $json = array();
       $permisos = array();

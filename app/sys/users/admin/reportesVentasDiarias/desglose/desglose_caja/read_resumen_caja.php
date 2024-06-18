@@ -23,7 +23,7 @@
 
 
     $sql = "SELECT id, nombre_metodo_pago FROM metodo_pago";
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
     while ($row = $res->fetch_array())
     {
       $arrId[] = $row["id"];
@@ -45,7 +45,7 @@
       AND corr.id_cierre = $turno
       AND v.forma_pago = $id
       AND v.id_caja = $caja";
-      $res = $conexion->query($sql);
+      $res = $conexion->query($sql);;
       while($row = $res->fetch_array())
       {
         if($row["valor"]=="")
@@ -67,7 +67,7 @@
       WHERE id_cl = $id_cl 
       AND id_cierre = $turno
       AND forma_pago = $fp";
-      $res = $conexion->query($sql);
+      $res = $conexion->query($sql);;
       while($row = $res->fetch_array())
       {
         $arrMetodoPago[] = $row["cant_transac"];

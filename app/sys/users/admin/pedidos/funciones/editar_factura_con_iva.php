@@ -19,7 +19,7 @@
 	//editar detalle pedido
 	$sql = 
 		"UPDATE pedidos SET `fac_con_iva` = '$fac_con_iva' WHERE (`id` = '$id_pedido');";
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 		if($res)
 		{
 			echo "Detalle modificado correctamente.";

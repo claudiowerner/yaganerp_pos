@@ -15,7 +15,7 @@
 
   //query
   $sql = "SELECT * FROM stock_minimo_producto WHERE id_cl = '$id_cl'";
-  $resultado = mysqli_query($conexion, $sql);
+  $resultado = $conexion->query($sql);
 
   if($resultado -> num_rows<=0)
   {
@@ -26,7 +26,7 @@
     $sql = "UPDATE stock_minimo_producto SET `estado` = '$estado', stock_minimo = '$stock_min' WHERE id_cl = '$id_cl';
     ";
   }
-  $resultado = mysqli_query($conexion, $sql);
+  $resultado = $conexion->query($sql);
   if($resultado)
   {
     echo "Cambios guardados exitosamente";

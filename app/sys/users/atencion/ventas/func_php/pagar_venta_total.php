@@ -37,7 +37,7 @@
 	AND v.id_venta = $id_venta
 	AND v.estado !='N'";
 
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 	while($row=$res->fetch_array())
 	{
 		$valorCierreCaja = $row["valor"];
@@ -50,7 +50,7 @@
 	SET valor_total = '$valorCierreCaja'
 	WHERE cc.id_cl = '$id_cl'
 	AND cc.id = '$idCierre';";
-	$r3 = $conexion->query($sql);
+	$r3 = $conexion->query($sql);;
 
 	
 	$sql = 
@@ -58,11 +58,11 @@
 	SET estado = 'C'
 	WHERE cc.id_cl = '$id_cl'
 	AND cc.id_venta = '$id_venta';";
-	$r3 = $conexion->query($sql);
+	$r3 = $conexion->query($sql);;
 
 	//generar nro boleta
 	$sql = "SELECT (boleta+1) AS boleta FROM correlativo WHERE id_cl = '$id_cl'";
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 
 	$boleta = 0;
 	while($row = $res->fetch_array())
@@ -78,7 +78,7 @@
 	forma_pago = '$forma_pago',
 	id_cierre = '$idCierre'
 	WHERE id = '$id_venta'";
-	$r1 = $conexion->query($sql);
+	$r1 = $conexion->query($sql);;
 
 	//actualizar tabla ventas
 	$sql = 
@@ -91,7 +91,7 @@
 	WHERE id_cl = '$id_cl'
 	AND id_venta = '$id_venta'
 	AND estado!='N'";
-	$r2 = $conexion->query($sql);
+	$r2 = $conexion->query($sql);;
 
 	//actualizar
 
@@ -108,7 +108,7 @@
 
 		$sql = 
 		"UPDATE ventas SET valorDescto = '$valorTotal' WHERE id = '$id' AND id_cl = '$id_cl'";
-		$res = $conexion->query($sql);
+		$res = $conexion->query($sql);;
 
 		//acrónimo cp= Cantidad Pedido
 		$np = $producto[$i]['nom_prod'];
@@ -122,7 +122,7 @@
 		SET p.cantidad = (p.cantidad-$cp_pedido) 
 		WHERE nombre_prod = '$np'
 		AND v.id_venta = $id_venta";
-		$r5 = $conexion->query($sql);
+		$r5 = $conexion->query($sql);;
 
 		
 	}
@@ -134,7 +134,7 @@
 	WHERE id_cl = $id_cl 
 	AND id_venta = $id_venta 
 	AND estado = 'C'";
-	$res = $conexion->query($sql);
+	$res = $conexion->query($sql);;
 	//captura monto total generado por la venta
 	$monto = 0;
 	while($row = $res->fetch_array())
@@ -155,7 +155,7 @@
 			2,
 			$monto
 		)";
-		$r3 = $conexion->query($sql);
+		$r3 = $conexion->query($sql);;
 		if($r3)
 		{
 			echo "Pago en efectivo registrado en el movimiento de caja.\n";

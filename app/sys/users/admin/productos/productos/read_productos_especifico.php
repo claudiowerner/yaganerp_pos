@@ -18,14 +18,14 @@ if(isset($_SESSION['user'])){
     $id_prod = $_POST['id_prod'];
 
     //query
-    $consulta = 
+    $sql = 
     "SELECT p.estado, prov.id AS id_prov from productos p 
     JOIN categorias c 
     ON p.categoria = c.id 
     JOIN proveedores prov
     ON prov.id = p.proveedor
     WHERE p.id_cl = '$id_cl' AND id_prod = $id_prod";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())

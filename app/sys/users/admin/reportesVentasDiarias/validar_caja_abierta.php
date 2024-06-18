@@ -15,8 +15,8 @@ if(isset($_SESSION['user'])){
     require_once '../../../conexion.php';
 
     //query
-    $consulta = "SELECT COUNT(id) AS n_cajas_abiertas FROM cajas WHERE id_cl = $id_cl AND estado = 'A'";
-    $resultado = $conexion->query($consulta);
+    $sql = "SELECT COUNT(id) AS n_cajas_abiertas FROM cajas WHERE id_cl = $id_cl AND estado = 'A'";
+    $resultado = $conexion->query($sql);;
 
     $contador_caja = 0;
     while($row = $resultado->fetch_array())

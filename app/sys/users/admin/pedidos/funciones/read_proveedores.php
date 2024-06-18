@@ -13,11 +13,11 @@ session_start();
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = 
+	$sql = 
   "SELECT id, nombre_proveedor 
   FROM proveedores
   WHERE id_cl = '$id_cl'";
-  $resultado = $conexion->query($consulta);
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0)
   {
     $json = array();

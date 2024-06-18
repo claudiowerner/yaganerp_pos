@@ -14,7 +14,7 @@ session_start();
   require_once '../../../../conexion.php';
 
 	//query
-	$consulta = 
+	$sql = 
   "SELECT prov.id AS id_proveedor, pd.id, pd.producto, pd.cantidad, pd.valor
   FROM proveedores prov
   JOIN pedidos ped
@@ -23,7 +23,7 @@ session_start();
   ON ped.id = pd.id_pedido
   WHERE pd.id_cl = $id_cl
   AND pd.id_pedido = $id_pedido";
-  $resultado = $conexion->query($consulta);
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
   $json = array();
   while ($row = $resultado->fetch_array())

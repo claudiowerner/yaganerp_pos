@@ -28,7 +28,7 @@
     descto, valor
     FROM ventas WHERE id_venta = $ids AND id_cl = $id_cl AND estado!='N'";
 
-    $res = $conexion->query($sql);
+    $res = $conexion->query($sql);;
     $cont = 0;
     while($row = $res->fetch_assoc())
     {
@@ -56,7 +56,7 @@
     AND v.estado = 'C'
     GROUP BY p.id_prod 
     ORDER BY v.id ASC";
-    $result = $conexion->query($sql) or die (mysqli_error());
+    $result = $conexion->query($sql); or die (mysqli_error());
 
     //declaracion de arrays
     $id = array();
@@ -88,7 +88,7 @@
     WHERE c.id = $id_cl
     AND c.estado='S'
     GROUP BY c.id";
-    $resDatos = $conexion->query($sql);
+    $resDatos = $conexion->query($sql);;
 
     //recorrer array valor para rellenar el array items3
     for($i=0;$i<count($id);$i++)
@@ -99,11 +99,11 @@
 
     for($i=0;$i<count($id);$i++)
     {
-        $consulta = 
+        $sql = 
         "SELECT * FROM productos 
         WHERE id_prod = '".$id_prod[$i]."' ";
                 
-        $resultado = $conexion->query($consulta);
+        $resultado = $conexion->query($sql);;
             if ($resultado->num_rows > 0)
             {
                 while ($qry = $resultado->fetch_array()) 

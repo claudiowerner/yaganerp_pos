@@ -20,8 +20,8 @@ if(isset($_SESSION['user'])){
 
   require_once '../../../../conexion.php';
 	//query
-	$consulta = "SELECT id FROM categorias WHERE id_cl = $id_cl and nombre_cat = '$nomCat'";
-  $resultado = $conexion->query($consulta);
+	$sql = "SELECT id FROM categorias WHERE id_cl = $id_cl and nombre_cat = '$nomCat'";
+  $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
   $json = array();
    while ($row = $resultado->fetch_array()) {

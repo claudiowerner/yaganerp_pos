@@ -16,14 +16,14 @@ if(isset($_SESSION['user'])){
     require_once '../../../../conexion.php';
 
     //query
-    $consulta =
+    $sql =
     "SELECT c.id, c.nom_caja, 
     u.nombre AS nom_usuario,
     c.estado, c.fecha_reg 
     FROM cajas c 
     JOIN usuarios u ON u.id=c.creado_por 
     WHERE c.id_cl = '$id_cl'";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())

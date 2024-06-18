@@ -7,7 +7,7 @@ session_start();
   require_once '../../../conexion.php';
     $id = $_POST["id"];
     //query
-    $consulta =
+    $sql =
     "SELECT c.id, c.nombre, c.rut, c.estado, c.nom_fantasia, 
     c.razon_social, c.direccion, c.correo, c.telefono, 
     c.plan_comprado, pg.fecha_desde, pg.fecha_hasta, pg.estado AS estado_pago, c.giro
@@ -15,7 +15,7 @@ session_start();
     JOIN pago_cliente pg 
     ON c.id = pg.id_cl
     WHERE c.id = $id;";
-    $resultado = $conexion->query($consulta);
+    $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())
