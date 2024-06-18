@@ -11,6 +11,7 @@ if(isset($_SESSION['user'])){
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
     $piso = 1;
+    $json = array();
 
     require_once '../../../../conexion.php';
 
@@ -25,7 +26,19 @@ if(isset($_SESSION['user'])){
     {
       $estado = $row["estado"];
     }
-    echo $estado;
+    if ($estado=="S")
+    {
+      $json = array(
+        "activo" => true 
+      );
+    }
+    else
+    {
+      $json = array(
+        "activo" => false
+      );  
+    }
+    echo json_encode($json, JSON_UNESCAPED_UNICODE);
 }
 else
 {

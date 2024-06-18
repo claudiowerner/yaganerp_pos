@@ -1,23 +1,10 @@
 function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
 {
     //comprobar si está activado el control de stock mínimo
-    let sm_activado="";
-    $.ajax(
-        {
-            url:"func_php/comprobar_estado_stock_minimo.php",
-            type:"POST",
-            async: false,
-            success: function(e)
-            {
-                sm_activado = e;
-            }
-        }
-    )
-    .fail(function(e)
-    {
-        msjes_swal("Error", e.responseText, "error");
-    })
-    if(sm_activado.match("S"))
+    let estadoStockMinimo = comprobarEstadoStockMinimo();
+    let jsonEstadoStock = JSON.parse(estadoStockMinimo);
+
+    if(jsonEstadoStock.activo)
     {
         let cantidad = parseInt(comprobarCantidad(idProd));
         let stockMinimo = parseInt(cargarNumeroStockMinimo());
@@ -75,7 +62,6 @@ function accionGuardarVenta(idCaja, id_venta, idProd, hora, cantProd, nomCaja)
             type: "GET",
             success: function(r)
             {
-                alert(r)
                 cargarVentasCaja();
             }
         }

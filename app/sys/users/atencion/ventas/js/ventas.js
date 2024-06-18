@@ -1,5 +1,7 @@
-
-var table;
+$(document).on("ready", function(e)
+{
+  cargarVentasCaja();
+});
 
 //se compara si está habilitado el conteo de stock mínimo dentro de la base de datos o no
 let estadoStock = comprobarEstadoStockMinimo();
@@ -52,8 +54,6 @@ $("#venta").on('click', function(e)
   {
     obs = 'Sin obs.';
   }
-
-  
   registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora);
 })
 

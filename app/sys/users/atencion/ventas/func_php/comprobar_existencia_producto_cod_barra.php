@@ -11,6 +11,9 @@
         $id_cl = $_SESSION['user']["id_cl"];
         $cod_barra = $_POST["cod_barra"]; 
 
+        //ARRAY JSON QUE SE VA A MOSTRAR
+        $json = array();
+
         require_once '../../../../conexion.php';
 
         //query
@@ -24,13 +27,23 @@
         {
             while($row = $resultado->fetch_array())
             {
-                echo $row["id_prod"];
+                $json= array(
+                    "id"=>$row["id_prod"],
+                    "encontrado"=> true
+                );
             }
         }
         else
         {
-            echo 0;
+            $json = array(
+                "titulo" => "¡Aviso!",
+                "mensaje" => "No se han encontrado productos con el código ($cod_barra)",
+                "icono" => "warning",
+                "encontrado"=> false
+            );
         }
+
+        echo json_encode($json, JSON_UNESCAPED_UNICODE);
 
     }
     else

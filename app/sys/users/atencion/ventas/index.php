@@ -311,6 +311,9 @@
     <script src="js/confirmarMontoInicialCaja.js"></script>
     <script src="js/movimientoCaja.js"></script>
     <script src="js/descontar_producto.js"></script>
+    <script src="js/cargar_stock_minimo.js"></script>
+    <script src="js/validarCantidadProdVsStock.js"></script>
+    <script src="js/comprobarStock.js"></script>
     
     
 </body>
