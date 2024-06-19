@@ -13,7 +13,7 @@ if(isset($_SESSION['user'])){
 
     $cod_barra = $_POST["cod_barra"];
 
-    require_once '../../../../conexion.php';
+    require_once '../../../../../conexion.php';
 
     //query
     $sql = "SELECT * FROM productos WHERE id_cl = $id_cl AND codigo_barra = '$cod_barra'";

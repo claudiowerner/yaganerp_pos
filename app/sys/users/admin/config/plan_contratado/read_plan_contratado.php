@@ -11,7 +11,7 @@ session_start();
 
   $estado = "";
 
-  require_once '../../../../conexion.php';
+  require_once '../../../../../conexion.php';
 
 	//query
 	$sql = "SELECT p.nombre FROM planes p JOIN cliente c ON c.plan_comprado = p.id WHERE c.id = $id_cl";

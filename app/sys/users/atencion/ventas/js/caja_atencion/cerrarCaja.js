@@ -39,7 +39,7 @@ $("#btnCierreDefinitivoCaja").on("click", function(e)
 function cerrarCaja()
 {
     $.ajax({
-        url:"func_php/cerrar_caja.php",
+        url:"func_php/caja_atencion/cerrar_caja.php",
         data: {"idCaja": nCaja},
         type: "POST",
         success: function(e)

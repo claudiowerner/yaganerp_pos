@@ -7,7 +7,7 @@
 
 	error_reporting(E_ALL);
 	
-	require_once '../../../../conexion.php';
+	require_once '../../../../../conexion.php';
 
 	$id_us = $_SESSION['user']['id'];
 	$nombre = $_SESSION['user']["nombre"];

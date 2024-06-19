@@ -6,7 +6,7 @@ function descontarProducto()
     
     return $.ajax(
         {
-            url: "func_php/descontar_producto.php",
+            url: "func_php/producto/descontar_producto.php",
             data: {"id_venta": idVenta},
             type: "POST",
             async: false

@@ -21,7 +21,7 @@ $("#txtBuscarCliente").on("keyup", function(e)
     else
     {
         $.ajax({
-            url: "func_php/busqueda_datos_cliente.php",
+            url: "func_php/cliente/busqueda_datos_cliente.php",
             data: {"rut": rut},
             type: "POST",
             async: false, 

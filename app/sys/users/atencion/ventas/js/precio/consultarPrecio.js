@@ -3,7 +3,7 @@ function descargarDetalle(codBarra)
 {
     return $.ajax(
         {
-            url:"func_php/consultarPrecio.php",
+            url:"func_php/precio/consultarPrecio.php",
             data:{"cod_barra": codBarra},
             type: "POST",
             async: false

@@ -3,7 +3,7 @@ function cargarDescto()
     let id_venta = parseInt($("#id_venta").text());
     $.ajax(
         {
-            url:"func_php/cargarDescto.php",
+            url:"func_php/descuento/cargarDescto.php",
             data: {"id_venta": id_venta},
             type: "POST",
             success: function(e)

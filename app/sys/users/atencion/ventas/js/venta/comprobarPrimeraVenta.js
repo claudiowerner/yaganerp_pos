@@ -7,7 +7,7 @@ function cargarNumeroVenta()
         "id_cierre": cierre
     }
     return $.ajax({
-        url: "func_php/comprobarPrimeraVenta.php",
+        url: "func_php/venta/comprobarPrimeraVenta.php",
         data: datos,
         type: "POST",
         async: false

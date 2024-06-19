@@ -18,7 +18,7 @@ if(isset($_SESSION['user'])){
   $piso = 1;
 
 
-  require_once '../../../../conexion.php';
+  require_once '../../../../../conexion.php';
 
 	//query
 	$sql = "SELECT * FROM unidades_medida;";

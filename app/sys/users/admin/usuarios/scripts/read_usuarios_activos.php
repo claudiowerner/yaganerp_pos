@@ -13,7 +13,7 @@ if(isset($_SESSION['user'])){
     $id_cl = $_SESSION['user']["id_cl"];
     $piso = 1;
 
-    require_once '../../../../conexion.php';
+    require_once '../../../../../conexion.php';
 
     //query
     $sql = "SELECT COUNT(id) AS usuarios_activos FROM usuarios WHERE id_cl = $id_cl AND estado = 'S'";

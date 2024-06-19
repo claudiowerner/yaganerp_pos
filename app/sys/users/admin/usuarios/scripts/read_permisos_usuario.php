@@ -14,7 +14,7 @@ if(isset($_SESSION['user'])){
     $piso = 1;
     $id_usu = $_POST["id_usu"];
 
-    require_once '../../../../conexion.php';
+    require_once '../../../../../conexion.php';
 
     //query
     $sql = "SELECT permisos FROM usuarios WHERE id_cl = $id_cl AND id = $id_usu;";

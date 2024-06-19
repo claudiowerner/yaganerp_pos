@@ -8,7 +8,7 @@ function movimientoCaja()
     }
 
     return $.ajax({
-        url: "func_php/read_movimiento_caja.php",
+        url: "func_php/caja_dinero/read_movimiento_caja.php",
         data: datos,
         type: "POST",
         async: false
@@ -28,7 +28,7 @@ function insertarMovimiento()
     }
 
     return $.ajax({
-        url: "func_php/agregarMovimientoCaja.php",
+        url: "func_php/caja_dinero/agregarMovimientoCaja.php",
         data: datos,
         type: "POST",
         async: false

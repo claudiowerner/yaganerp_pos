@@ -11,7 +11,7 @@ session_start();
 
   $estado = "";
 
-  require_once '../../../../conexion.php';
+  require_once '../../../../../conexion.php';
 
 	//query
 	$sql = "SELECT estado FROM autorizacion WHERE id_cl = $id_cl;";

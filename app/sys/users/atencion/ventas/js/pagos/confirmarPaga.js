@@ -25,7 +25,7 @@ function confirmarPaga(ticket, id, formaPago)
   }
 
   $.ajax({
-    url: "func_php/pagar_venta_total.php",
+    url: "func_php/pagos/pagar_venta_total.php",
     data: datos,
     type: "POST",
     success: function(e)

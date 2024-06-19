@@ -11,7 +11,7 @@ $piso = 1;
 $clave = $_POST['clave'];
 $estado = $_POST['estado'];
 
-require_once '../../../../conexion.php';
+require_once '../../../../../conexion.php';
 
 	//query
 $sql = "SELECT * FROM autorizacion WHERE id_cl = $id_cl";

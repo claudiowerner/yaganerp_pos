@@ -69,7 +69,7 @@ $("#btnEliminarVenta").on('click', function(e)
   {
     $("#msjClave").html("<span style='color: red'></span>");
     $.ajax({
-      url: "func_php/clave_aut.php?clave="+clave,
+      url: "func_php/clave_aut/clave_aut.php?clave="+clave,
       type: "GET",
       success: function(r)
       {

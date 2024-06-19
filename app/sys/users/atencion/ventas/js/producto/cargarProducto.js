@@ -3,7 +3,7 @@ function descargarProducto()
 {
   return $.ajax(
     {
-      url:"func_php/read_productos.php",
+      url:"func_php/producto/read_productos.php",
       type: "POST",
       async: false
     }).responseText;

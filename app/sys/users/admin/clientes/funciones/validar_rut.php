@@ -12,7 +12,7 @@ if(isset($_SESSION['user'])){
     $piso = 1;
     $rut = $_POST["rut"];
 
-    require_once '../../../../conexion.php';
+    require_once '../../../../../conexion.php';
 
     //query
     $sql = 

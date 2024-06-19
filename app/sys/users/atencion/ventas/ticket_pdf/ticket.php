@@ -7,7 +7,7 @@
     
 	# Incluyendo librerias necesarias #
     require "../../../../vendor/fpdf/code128.php";
-    require_once '../../../../conexion.php';
+    require_once '../../../../../conexion.php';
     include("clases/item.php");
     include("clases/item3.php");
     include("clases/function_normaliza.php");

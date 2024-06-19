@@ -2,7 +2,7 @@ function cargarNombreIdCaja()
 {
     return $.ajax(
         {
-            url:"func_php/cargarNombreIdCaja.php",
+            url:"func_php/turno/cargarNombreIdCaja.php",
             type: "POST",
             async: false
         }

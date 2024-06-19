@@ -2,7 +2,7 @@
 function descargarIDTurno()
 {
     return $.ajax({
-        url: "func_php/cargarIDTurno.php",
+        url: "func_php/turno/cargarIDTurno.php",
         type: "POST",
         async: false
     }).responseText;
@@ -14,7 +14,7 @@ function descargarResumenCaja()
     let id = descargarIDTurno();
     let idCaja = $("#nCaja").text();
     return $.ajax({
-        url: "func_php/read_resumen_caja.php",
+        url: "func_php/caja_dinero/read_resumen_caja.php",
         data: {"turno":id, "caja": idCaja},
         type: "POST",
         async: false

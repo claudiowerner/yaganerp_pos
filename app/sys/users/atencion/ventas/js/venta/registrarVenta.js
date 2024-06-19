@@ -46,7 +46,7 @@ function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
             accionGuardarVenta(idCaja, id_venta, idProd, hora, cantProd, nomCaja);
         }
     }
-    if(sm_activado.match("N"))
+    if(!jsonEstadoStock.activo)
     {
         accionGuardarVenta(idCaja, id_venta, idProd, hora, cantProd, nomCaja);
     }
@@ -58,7 +58,7 @@ function accionGuardarVenta(idCaja, id_venta, idProd, hora, cantProd, nomCaja)
 {
     $.ajax(
         {
-            url:"func_php/crear_venta_exe.php?idCaja="+idCaja+"&id_venta="+id_venta+"&idProd="+idProd+"&cantProd="+cantProd+"&nomCaja="+nomCaja+"&hora="+hora,
+            url:"func_php/venta/crear_venta_exe.php?idCaja="+idCaja+"&id_venta="+id_venta+"&idProd="+idProd+"&cantProd="+cantProd+"&nomCaja="+nomCaja+"&hora="+hora,
             type: "GET",
             success: function(r)
             {

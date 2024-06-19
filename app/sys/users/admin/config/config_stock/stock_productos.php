@@ -11,7 +11,7 @@
   $estado = $_POST["estado"];
   $stock_min = $_POST["stock_min"];
 
-  require_once '../../../../conexion.php';
+  require_once '../../../../../conexion.php';
 
   //query
   $sql = "SELECT * FROM stock_minimo_producto WHERE id_cl = '$id_cl'";

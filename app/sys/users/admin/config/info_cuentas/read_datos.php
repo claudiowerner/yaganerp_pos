@@ -21,7 +21,7 @@ else
   $piso = 1;
 
 
-  require_once '../../../../conexion.php';
+  require_once '../../../../../conexion.php';
 
 	//query
 	$sql = "SELECT nom_fantasia, razon_social, giro, direccion, correo, telefono FROM cliente WHERE id = $id_cl ";

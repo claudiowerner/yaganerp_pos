@@ -4,7 +4,7 @@ function descargarID(codigo)
 {
     return $.ajax(
         {
-            url: "func_php/comprobar_existencia_producto_cod_barra.php",
+            url: "func_php/pistola/comprobar_existencia_producto_cod_barra.php",
             data: {"cod_barra":codigo},
             type: "POST",
             async: false

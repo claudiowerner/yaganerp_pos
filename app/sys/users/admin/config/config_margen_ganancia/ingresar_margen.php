@@ -9,7 +9,7 @@
   
   $porcentaje = $_POST["porcentaje"];
 
-  require_once '../../../../conexion.php';
+  require_once '../../../../../conexion.php';
 
   //query
   $sql = "SELECT * FROM margen_ganancia WHERE id_cl = '$id_cl'";

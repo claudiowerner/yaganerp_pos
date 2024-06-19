@@ -8,7 +8,7 @@ function cargarVentasCaja()
   let estado = '';
   $.ajax(
     {
-      url:"func_php/read_ventas.php?nCaja="+nCaja+"&idVenta="+id_venta,
+      url:"func_php/venta/read_ventas.php?nCaja="+nCaja+"&idVenta="+id_venta,
       type: "GET",
       async: false,
       success: function(response)
@@ -118,7 +118,7 @@ function cargarVentasCaja()
     nCaja = $("#nCaja").text();
     $.ajax(
       {
-        url:"func_php/cargarDescto.php",
+        url:"func_php/descuento/cargarDescto.php",
         data: {"id_venta": id_venta},
         type: "POST",
         success: function(e)

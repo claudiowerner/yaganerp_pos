@@ -3,7 +3,7 @@ function cargarNumeroStockMinimo()
     let retorno;
     $.ajax(
         {
-            url: "func_php/cargarNumeroStockMinimo.php",
+            url: "func_php/stock/cargarNumeroStockMinimo.php",
             type: "POST",
             async: false,
             success: function(e)

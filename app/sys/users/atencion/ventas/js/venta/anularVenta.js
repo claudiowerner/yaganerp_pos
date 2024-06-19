@@ -6,7 +6,7 @@ $(".anularVenta").on("click", function(e)
 
   $.ajax(
     {
-      url: "func_php/anular_venta_exe.php?corr="+corr+"&hora="+hora+"&nMesa="+nMesa,
+      url: "func_php/venta/anular_venta_exe.php?corr="+corr+"&hora="+hora+"&nMesa="+nMesa,
       type: "GET",
       success: function(e)
       {

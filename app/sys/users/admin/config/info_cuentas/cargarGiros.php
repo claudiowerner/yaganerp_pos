@@ -4,7 +4,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 session_start();
-require_once '../../../../conexion.php';
+require_once '../../../../../conexion.php';
 
     //query
     $sql =

@@ -6,7 +6,7 @@ async function accionEliminarVenta(boton)
 
     $.ajax(
         {
-            url:"func_php/read_config_clave.php",
+            url:"func_php/clave_aut/read_config_clave.php",
             type: "POST",
             success: function(e)
             {
@@ -17,7 +17,7 @@ async function accionEliminarVenta(boton)
                 else
                 {
                     $.ajax({
-                        url: "func_php/elim_venta_exe.php",
+                        url: "func_php/venta/elim_venta_exe.php",
                         data: {"id_venta":id},
                         type: "POST",
                         success: function(r)

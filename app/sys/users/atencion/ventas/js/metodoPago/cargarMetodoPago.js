@@ -1,6 +1,6 @@
 $.ajax(
-        {
-            url:"func_php/read_metodo_pago.php",
+    {
+        url:"func_php/metodo_pago/read_metodo_pago.php",
         type: "GET",
         success: function(e)
         {

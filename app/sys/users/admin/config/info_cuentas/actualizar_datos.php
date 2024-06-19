@@ -12,7 +12,7 @@
     $telefono = $_POST["telefono"];   
     $giro = $_POST["giro"];    
 
-    require_once '../../../../conexion.php';
+    require_once '../../../../../conexion.php';
     $sql = "UPDATE cliente SET nom_fantasia = '$nom_fantasia', 
                                     razon_social = '$razon_social', 
                                     direccion = '$direccion', 

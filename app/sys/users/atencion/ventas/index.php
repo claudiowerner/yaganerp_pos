@@ -265,6 +265,11 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?>
     
+
+    <!--SweetAlert-->
+    <script src="../../../js/sweetalert.min.js"></script>
+    <script src="../../../js/mensajes-swal.js"></script>
+    
     <!--Datatables-->
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
 

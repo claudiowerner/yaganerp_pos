@@ -11,7 +11,7 @@ function aplicarDescto()
 
     $.ajax(
         {
-            url:"func_php/aplicarDescto.php",
+            url:"func_php/descuento/aplicarDescto.php",
             data: datos,
             type: "POST",
             success: function(e)

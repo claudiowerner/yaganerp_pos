@@ -19,7 +19,7 @@
   $horaDesde = $_GET["horaDesde"];
   $horaHasta = $_GET["horaHasta"];  
 
-  require_once '../../../../conexion.php';
+  require_once '../../../../../conexion.php';
 
 
   

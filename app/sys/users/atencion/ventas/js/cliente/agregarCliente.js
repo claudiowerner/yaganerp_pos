@@ -44,7 +44,7 @@ $("#btnGuardarCliente").on("click", function(e)
         if (pagar)
         {
             $.ajax({
-                url: "func_php/agregar_cliente.php",
+                url: "func_php/cliente/agregar_cliente.php",
                 data: datos,
                 type: "POST",
                 success: function(e)

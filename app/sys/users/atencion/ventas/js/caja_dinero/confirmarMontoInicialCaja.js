@@ -6,7 +6,7 @@ function enviarDatos(t,c,m)
         "monto": m
     }
     return $.ajax({
-        url: "func_php/confirmarMontoCajaInicial.php",
+        url: "func_php/caja_dinero/confirmarMontoCajaInicial.php",
         data: datos,
         type: "POST", 
         async: false

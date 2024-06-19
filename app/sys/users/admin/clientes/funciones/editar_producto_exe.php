@@ -10,7 +10,7 @@
      	    }else{
     	    header('Location: ../../../../index.php');
      	}
-     	require_once '../../../../conexion.php';
+     	require_once '../../../../../conexion.php';
 
 
 	ini_set('display_errors', 1);

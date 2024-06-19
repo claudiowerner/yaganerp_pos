@@ -18,7 +18,7 @@ if(isset($_SESSION['user'])){
   $piso = 1;
 
 
-  require_once '../../../../conexion.php';
+  require_once '../../../../../conexion.php';
 
 	//query
 	$sql = "SELECT estado, stock_minimo FROM stock_minimo_producto WHERE id_cl = $id_cl;";
