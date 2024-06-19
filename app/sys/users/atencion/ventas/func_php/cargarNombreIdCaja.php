@@ -21,7 +21,7 @@
 
         while($row = $resultado->fetch_array())
         {
-            $json[]=array(
+            $json = array(
                 'id' => $row["id"],
                 'nombre' => $row["nombre"]
             );

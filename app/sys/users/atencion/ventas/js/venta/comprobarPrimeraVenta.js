@@ -1,5 +1,6 @@
 function cargarNumeroVenta()
 {
+    let nCaja = $("#nCaja").text();
     let cierre = $("#id_caja").text();
     let datos = { 
         "caja": nCaja,

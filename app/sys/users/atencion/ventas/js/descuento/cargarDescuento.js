@@ -1,7 +1,6 @@
 function cargarDescto()
 {
     let id_venta = parseInt($("#id_venta").text());
-    nCaja = $("#nCaja").text();
     $.ajax(
         {
             url:"func_php/cargarDescto.php",
