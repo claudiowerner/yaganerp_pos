@@ -19,5 +19,9 @@
     <!-- pace loader -->
     <script src='../../../js/pace/pace.js'></script>
     <link href='../../../js/pace/themes/orange/pace-theme-flash.css' rel='stylesheet' />
+    
+    <!--FullCalendar-->
+    <link rel='stylesheet' href='../../../css/fullcalendar/require.css'>
+
 ";
 ?>

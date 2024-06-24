@@ -59,7 +59,6 @@ $("#btnAgregarMovimiento").on("click", function(e)
     else
     {
         let insertar = insertarMovimiento();
-        alert(insertar)
         if(insertar.match(/correctamente/))
         {
             msjes_swal("Excelente", insertar, "success");

@@ -35,5 +35,7 @@
     <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
     <script src='../../../js/flot/jquery.flot.pie.min.js' type='text/javascript'></script>
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-    <script src='../../../js/flot/jquery.flot.categories.min.js' type='text/javascript'></script>";
+    <script src='../../../js/flot/jquery.flot.categories.min.js' type='text/javascript'></script>
+    
+    ";
 ?>

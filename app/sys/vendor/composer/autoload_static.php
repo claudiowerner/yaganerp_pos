@@ -6,25 +6,70 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit85c917d7cb5c6412a95a6d33d44a7e78
 {
+    public static $files = array (
+        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Component\\Process\\' => 26,
+        ),
         'P' => 
         array (
             'PHPMailer\\PHPMailer\\' => 20,
+        ),
+        'O' => 
+        array (
+            'OomphInc\\ComposerInstallersExtender\\' => 36,
         ),
         'M' => 
         array (
             'Mike42\\' => 7,
         ),
+        'C' => 
+        array (
+            'Composer\\Installers\\' => 20,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
+        'OomphInc\\ComposerInstallersExtender\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/oomphinc/composer-installers-extender/src',
+        ),
         'Mike42\\' => 
         array (
             0 => __DIR__ . '/..' . '/mike42/escpos-php/src/Mike42',
+        ),
+        'Composer\\Installers\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'C' => 
+        array (
+            'ComponentInstaller' => 
+            array (
+                0 => __DIR__ . '/..' . '/robloach/component-installer/src',
+            ),
+        ),
+        'A' => 
+        array (
+            'Assetic' => 
+            array (
+                0 => __DIR__ . '/..' . '/kriswallsmith/assetic/src',
+            ),
         ),
     );
 
@@ -37,6 +82,7 @@ class ComposerStaticInit85c917d7cb5c6412a95a6d33d44a7e78
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit85c917d7cb5c6412a95a6d33d44a7e78::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit85c917d7cb5c6412a95a6d33d44a7e78::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit85c917d7cb5c6412a95a6d33d44a7e78::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit85c917d7cb5c6412a95a6d33d44a7e78::$classMap;
 
         }, null, ClassLoader::class);

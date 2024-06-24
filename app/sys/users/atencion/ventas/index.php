@@ -37,7 +37,7 @@
 
     <?php require "../cdn_css/css/css_item.php";?>
     
-    <link rel='stylesheet' href='ventas.css'>
+    <link rel='stylesheet' href='css/ventas.css'>
 
 
 </head>
@@ -55,7 +55,10 @@
                 <div class="wrap-sidebar-content">
                     <?php
                         require_once "../menu/top_menu_item.php";
-                        require_once "modal.php";
+                        require_once "modals/modal.php";
+                        require_once "modals/reimprimir_boleta/modalAñoBoleta.php";
+                        require_once "modals/reimprimir_boleta/modalMesBoleta.php";
+                        require_once "modals/reimprimir_boleta/modalDiaBoleta.php";
 
                         echo modalSolicitarAutorizacion();
                         echo modalAnular();
@@ -107,6 +110,9 @@
                                                         </td>
                                                         <td>
                                                             <button id="btnConsultarPrecio" class="btn btn-primary" style="width:100%">Consultar precio</button>
+                                                        </td>
+                                                        <td>
+                                                            <button id="btnReimprimir" class="btn btn-primary" style="width:100%">Reimprimir boleta</button>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -269,12 +275,19 @@
     <!--SweetAlert-->
     <script src="../../../js/sweetalert.min.js"></script>
     <script src="../../../js/mensajes-swal.js"></script>
+
     
     <!--Datatables-->
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
 
     <!--Select2-->
     <script type="text/javascript" src="../../../js/select2.js"></script>
+
+    <!--Moments-->
+    <script src='../../../js/moment/moment.js' type='text/javascript'></script>
+    
+    <!--Full Calendar-->
+    <script src='../../../js/fullcalendar/dist/fullcalendar.js' type='text/javascript'></script>;
 
     <!--llamada a ventas-->
     <script src="js/descuento/cargarDescuento.js"></script>
@@ -316,6 +329,10 @@
     <script src="js/caja_atencion/movimientoCaja.js"></script>
     <script src="js/producto/descontar_producto.js"></script>
     <script src="js/stock/cargar_stock_minimo.js"></script>
+    <script src="js/imprimir/reimprimir_boleta/cargar_año_boleta.js"></script>
+    <script src="js/imprimir/reimprimir_boleta/cargar_mes_boleta.js"></script>
+    <script src="js/imprimir/reimprimir_boleta/cargar_dias_boleta.js"></script>
+    <script src="js/imprimir/calendario/calendario.js"></script>
     
     
 </body>

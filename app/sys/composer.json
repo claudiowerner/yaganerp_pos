@@ -24,6 +24,14 @@
   },
   "require": {
     "mike42/escpos-php": "^2.2",
-    "phpmailer/phpmailer": "^6.9"
+    "phpmailer/phpmailer": "^6.9",
+    "fullcalendar/fullcalendar": "^3.10"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "robloach/component-installer": true,
+      "oomphinc/composer-installers-extender": true
+    }
   }
 }

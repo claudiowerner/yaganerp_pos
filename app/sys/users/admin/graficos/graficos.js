@@ -176,7 +176,6 @@ function descargarDatosVentasHora()
         }
         
         fecha = año+"-"+mes+"-"+dia;
-        alert(fecha);
     }
     return $.ajax({
         url:"graficos/read_ganancia_horas.php?fecha="+fecha,

@@ -33,7 +33,6 @@ $("#formRegistroCliente").submit(function(e)
     {
       if(e!=0)
       {
-        alert(e);
         msjes_swal("Aviso", "Ya existe un cliente con el rut "+rut, "error");
       }
       else

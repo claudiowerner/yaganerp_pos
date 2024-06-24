@@ -7,7 +7,7 @@
     
 	# Incluyendo librerias necesarias #
     require "../../../../vendor/fpdf/code128.php";
-    require_once '../../../../../conexion.php';
+    require_once '../../../../conexion.php';
     include("clases/item.php");
     include("clases/item3.php");
     include("clases/function_normaliza.php");
@@ -26,7 +26,8 @@
     $sql = 
     "SELECT DATE_FORMAT(fecha, '%d-%m-%Y %H:%i:%s') AS fecha,
     descto, valor
-    FROM ventas WHERE id_venta = $ids AND id_cl = $id_cl AND estado!='N'";
+    FROM ventas 
+    WHERE id_venta = $ids AND id_cl = $id_cl AND estado!='N'";
 
     $res = $conexion->query($sql);;
     $cont = 0;
@@ -56,7 +57,7 @@
     AND v.estado = 'C'
     GROUP BY p.id_prod 
     ORDER BY v.id ASC";
-    $result = $conexion->query($sql); or die (mysqli_error());
+    $result = $conexion->query($sql) or die (mysqli_error());
 
     //declaracion de arrays
     $id = array();
@@ -88,7 +89,7 @@
     WHERE c.id = $id_cl
     AND c.estado='S'
     GROUP BY c.id";
-    $resDatos = $conexion->query($sql);;
+    $resDatos = $conexion->query($sql);
 
     //recorrer array valor para rellenar el array items3
     for($i=0;$i<count($id);$i++)
