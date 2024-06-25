@@ -21,7 +21,6 @@
 
 	$valorTotal = $_POST["totalVenta"];
 	$nCaja = $_POST["nCaja"];
-	$nomCaja = $_POST["nomCaja"];
 	$idCierre = $_POST["idCierre"];
 	$descto = $_POST["descto"];
 	$valorCierreCaja = 0;
@@ -85,7 +84,6 @@
 	"UPDATE ventas 
 	SET estado = 'C', 
 	id_caja = $nCaja,
-	nom_caja = '$nomCaja',
 	fecha_pago = '$fecha $hora',
 	forma_pago = '$forma_pago'
 	WHERE id_cl = '$id_cl'

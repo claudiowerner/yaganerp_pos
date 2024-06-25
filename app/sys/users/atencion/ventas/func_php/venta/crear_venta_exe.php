@@ -85,8 +85,7 @@
 		'A', 
 		'$fecha', 
 		'0000-00-00 00:00:00', 
-		'0',
-		'$descto')";
+		'0')";
 		$resultado = $conexion->query($sql);;
 		    
 		if($resultado)

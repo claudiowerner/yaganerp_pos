@@ -41,7 +41,7 @@
 		$valor = intval($row['valor_venta']);
 	}
 
-	echo $sql = 
+	$sql = 
 	"UPDATE ventas SET cantidad = $cantProd, valor=$valor*$cantProd 
 	WHERE id_cl = '$id_cl' AND id = '$id';";
 	$resultado = $conexion->query($sql);

@@ -99,7 +99,6 @@ function renderizarCalendario(año, mes, dias)
 //se rellena la semana
 function semana(template, dia_semana, dia_mes,  mes, año)
 {
-    alert(año)
     let isFinalMes = false;
     let fecha = 0;
     while(dia_semana<=8)
@@ -108,7 +107,7 @@ function semana(template, dia_semana, dia_mes,  mes, año)
         dia_mes--;
         template += 
         `<td >
-            <button id='${año}-${mes}-${(fecha)}' class='btn btn-primary' disabled>
+            <button id='${año}-${mes}-${(fecha)}' class='btn btn-primary' onClick='cargarVentasPorDia(${año},${mes},${(fecha)})' disabled>
                 <h3>${(fecha)}</h3>
             </button>
         </td>`;

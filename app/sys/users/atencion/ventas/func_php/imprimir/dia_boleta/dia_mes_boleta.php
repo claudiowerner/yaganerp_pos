@@ -27,10 +27,10 @@
     $res = $conexion->query($local_date);
 
     $sql = 
-        "SELECT COUNT(id) AS total_ventas,
-        DAY(fecha_cierre) AS fecha
-        FROM correlativo 
-        WHERE id_cl = $id_cl
+        "SELECT DAY(corr.fecha_cierre) AS fecha 
+        FROM correlativo corr
+        JOIN ventas v
+        ON v.id_venta = corr.correlativo
         AND MONTH(fecha_cierre) = $mes_actual
         AND YEAR(fecha_cierre) = $año_actual";
 
@@ -41,8 +41,7 @@
             {
                 $json[] = array(
                     "fecha" => $row["fecha"],
-                    "mes" => $mes_actual,
-                    "total_ventas" => $row["total_ventas"]
+                    "mes" => $mes_actual
                 );
             }
         }

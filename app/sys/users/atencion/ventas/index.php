@@ -59,6 +59,7 @@
                         require_once "modals/reimprimir_boleta/modalAñoBoleta.php";
                         require_once "modals/reimprimir_boleta/modalMesBoleta.php";
                         require_once "modals/reimprimir_boleta/modalDiaBoleta.php";
+                        require_once "modals/reimprimir_boleta/modalCorrelativo.php";
 
                         echo modalSolicitarAutorizacion();
                         echo modalAnular();
@@ -271,6 +272,8 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?>
     
+    <!--Formatear número-->
+    <script src="../../../js/numberFormat.js"></script>
 
     <!--SweetAlert-->
     <script src="../../../js/sweetalert.min.js"></script>
@@ -333,6 +336,7 @@
     <script src="js/imprimir/reimprimir_boleta/cargar_mes_boleta.js"></script>
     <script src="js/imprimir/reimprimir_boleta/cargar_dias_boleta.js"></script>
     <script src="js/imprimir/calendario/calendario.js"></script>
+    <script src="js/imprimir/reimprimir_boleta/cargar_correlativo.js"></script>
     
     
 </body>

@@ -15,7 +15,7 @@
 	$sql = 
 	"SELECT YEAR(fecha_cierre) AS año 
     FROM correlativo 
-    WHERE id_cl = 1 
+    WHERE id_cl = $id_cl
     AND YEAR(fecha_cierre) != 0 
     GROUP BY YEAR(fecha_cierre)";
 	$res = $conexion->query($sql);

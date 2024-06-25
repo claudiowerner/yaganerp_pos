@@ -32,6 +32,7 @@ function calendario(año, mes)
     if(Array.isArray(json))
     {
         json.forEach(j=>{
+            console.log(`#${año}-${mes}-${j.fecha}`);
             $(`#${año}-${mes}-${j.fecha}`).prop("disabled", false);
         })
     }
