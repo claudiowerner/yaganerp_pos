@@ -53,105 +53,36 @@
             <div class="col-md-12">
                 <!-- SIDE MENU -->
                 <div class="wrap-sidebar-content">
+                    <!--Llamada modals-->
                     <?php
-                        require_once "../menu/top_menu_item.php";
-                        require_once "modals/modal.php";
-                        require_once "modals/reimprimir_boleta/modalAñoBoleta.php";
-                        require_once "modals/reimprimir_boleta/modalMesBoleta.php";
-                        require_once "modals/reimprimir_boleta/modalDiaBoleta.php";
-                        require_once "modals/reimprimir_boleta/modalCorrelativo.php";
-
-                        echo modalSolicitarAutorizacion();
-                        echo modalAnular();
-                        echo modalCambiarCantidad();
-                        echo modalCambiarCantidadPesaje();
-                        echo modalMetodoPago();
-                        echo modalAñadirCuenta();
-                        echo modalAgregarCliente();
-                        echo modalPagarCuenta();
-                        echo modalSeleccionarCuenta();
-                        echo modalMetodoPagoPagarCuenta();
-                        echo modalDescuento();
-                        echo modalResumenCaja();
-                        echo modalConsultarPrecio();
-                        echo modalCajaInicial();
-                        echo modalMovimientoCaja();
-                        echo modalResumenCierreCaja();
+                        require_once "items_index/modals/llamado_modals.php";
                     ?>
                 </div>
                 <!-- CONTENT -->
                 <div class="wrap-fluid" id="paper-bg">
+                    <div class="col-lg-10" style='align:left' >
+                        <table width=90%>
+                            <tr>
+                                <td width=90%><h1>Ventas</h1></td>
+                                <td width=5%><button class='btn btn-secondary'><?php require_once "items_index/ventas/dropdown.php";?></button></td>
+                            </tr>
+                        </table>
+                    </div>
                     <div class="row">
                         <div class="col-sm-9">
-                            <h1>Ventas</h1>
                             <strong id="id_usuario" style="display: none"><?php echo $id_us?></strong>
                             <div class="row">
+                                
                                 <div class="col-lg-12">
                                     <div class="plan">
                                         <div class="col-md-12" id="div_ventas">
                                             <div class="card card-warning">
-                                                <div class="card-header" style="align:left;">
+                                                <div>
+                                                    <?php require_once "items_index/botones/botones_index.php";?>
                                                 </div>
-                                                <table>
-                                                    <tr width="100%">
-                                                        <td>
-                                                            <button id="btnCrearVenta" class="btn btn-warning" style="width:100%" disabled=true>Crear nueva venta</button>
-                                                        </td>
-                                                        <td>
-                                                            <button id="btnCerrarCaja" class="btn btn-danger" style="width:100%">Cerrar caja</button>
-                                                        </td>
-                                                        <td>
-                                                            <button id="btnMovimientoCaja" class="btn btn-primary" style="width:100%">Movimiento de caja</button>
-                                                        </td>
-                                                        <td>
-                                                            <button id="btnResumen" class="btn btn-primary" style="width:100%">Resumen</button>
-                                                        </td>
-                                                        <td>
-                                                            <button id="btnPagarCuenta" class="btn btn-success" style="width:100%">Pagar cuenta</button>
-                                                        </td>
-                                                        <td>
-                                                            <button id="btnConsultarPrecio" class="btn btn-primary" style="width:100%">Consultar precio</button>
-                                                        </td>
-                                                        <td>
-                                                            <button id="btnReimprimir" class="btn btn-primary" style="width:100%">Reimprimir boleta</button>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <table width="100%">
-                                                    <tr>
-                                                        <td align="left" width="">
-                                                            <label name="lblCantidad">Producto</label>
-                                                        </td>
-                                                        <td align="left" width="100%">
-                                                            <select id="prod" class="form form-control" onChange="productoValido()">
-                                                            </select>
-                                                        </td>
-                                                        
-                                                        <td align="left" width="40px">
-                                                            <label name="lblCantidad">Cantidad</label>
-                                                        </td>
-                                                        <td>
-                                                            <button type="button" id="restarCant" class="btn btn-danger">
-                                                            <img src="../../../img/restar.png" width="10">
-                                                            </button>
-                                                            <strong id="cantProd">1</strong>
-                                                            <button type="button" id="sumarCant" class="btn btn-success">
-                                                            <img src="../../../img/sumar.png" width="10">
-                                                            </button>
-                                                        </td>
-                                                        <td>
-                                                            <button id="venta" name="agregar" class="agregar btn btn-success" disabled>Agregar</button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="left" width="40px">
-                                                            <label name="lblCantidad">Código de barra</label>
-                                                        </td>
-                                                        <td align="left" width="">
-                                                            <input type="text" name="cod_barra" id="txtCodBarra" class="form form-control" placeholder="Haga click acá y escanée el código de barra">
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                <div>
+                                                    <?php require_once "items_index/producto/producto.php";?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -199,68 +130,12 @@
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
-                        <div id="divPagar" class="col-sm-3 item-fijado">
-                            <h1>Pagar</h1>
-                            <div class="plan">
-                                <div class="col-md-12">
-                                    <div class="card card-warning">
-                                        <div class="card-header">Anular</div>
-                                            <div class="card-body">
-                                                <table class="table table-hover responsive">
-                                                    <tr>
-                                                        <td colspan="9" align="right">
-                                                            <strong>SUB TOTAL:</strong>
-                                                        </td>
-                                                        <td>
-                                                            <p><strong>$</strong><strong id="subtotal">ESPERANDO...</strong></p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="9" align="right">
-                                                            <strong>IVA (19%):</strong>
-                                                        </td>
-                                                        <td>
-                                                            <p><strong>$</strong><strong id="iva">ESPERANDO...</strong></p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="9" align="right">
-                                                            <strong>DESCTO (<strong id='descuento'>...</strong>%)</strong>
-                                                        </td>
-                                                        <td>
-                                                            <p><strong>$</strong><strong id="totalDescuento">ESPERANDO...</strong></p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="9" align="right">
-                                                            <strong>TOTAL</strong>
-                                                        </td>
-                                                        <td>
-                                                            <p><strong>$</strong><strong id="totalVenta">ESPERANDO...</strong></p>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <table width="100%">
-                                                    <tr>
-                                                        <td><button id="btnAnularVenta" class="btn btn-warning anularVenta" style="width: 100%">Anular venta</button></td>
-                                                        <td><button id="btnAñadirCuenta" class="btn btn-success" id="btnPagar" disabled="true" style="width: 100%">Añadir a la cuenta</button></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan=2><button id="btnAplicarDescto" class="btn btn-success" style="width: 100%">Aplicar descuento</button></td>
-                                                    </tr>
-                                                    <tr>
-                                                    <td colspan=2><button id="pagarVenta" class="btn btn-success" disabled="true" style="width: 100%">Pagar</button></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php require_once 'items_index/modulo_pago/modulo_pago.php'?>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
