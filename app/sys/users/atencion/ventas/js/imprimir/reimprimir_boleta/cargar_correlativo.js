@@ -38,7 +38,7 @@ function cargarVentasPorDia(año, mes, fecha)
             <td>${valor_formateado}</td>
             <td>${j.fecha_cierre}</td>
             <td>
-                <button id='reimprimirBoleta' class='btn btn-primary'>
+                <button id='reimprimirBoleta' class='btn btn-primary' onClick=reimprimirBoleta('${j.correlativo}')>
                     <img src="img/impresora.png" width="15">
                 </button>
             </td>

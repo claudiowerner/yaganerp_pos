@@ -23,6 +23,6 @@ function imprimirBoleta(script_php, idVenta)
     subtotal = parseInt($("#subtotal").text());
     total = parseInt($("#totalVenta"));
 
-    window.open(`ticket_pdf/ticket.php?nCaja=${nCaja}&id_venta=${id_venta}&fecha=${fecha}&hora=${hora}&descuento=${porcDescto}&valDescto=${valDescto}&iva=${iva}&subtotal=${subtotal}&total=${total}`, "_blank");
+    window.open(`ticket_pdf/ticket.php?id_venta=${id_venta}&reimpresion=0`, "_blank");
     window.focus();
 }

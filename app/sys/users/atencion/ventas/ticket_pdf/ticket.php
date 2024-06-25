@@ -14,6 +14,9 @@
 	
     
     $ids = $_GET['id_venta'];
+    //se verifica si es reimpresión o no
+    $es_reimpreso = $_GET['reimpresion'];
+    $reimpreso = "";
 
     $descto = 0;
     $valDescto = 0;
@@ -122,11 +125,21 @@
     $pdf->AddPage();
     $pdf->SetTitle("Ticket venta $ids");
     
-    $pdf->SetFont('Helvetica','B',8);
+    $pdf->SetFont('Helvetica','',8);
     $pdf->SetTextColor(0,0,0);
     
     while($row = $resDatos->fetch_array())
-    {
+    {   //si es reimpreso, es =1, si no lo es, =0
+        if($es_reimpreso==1)
+        {
+            $reimpreso = "reimpresión para copia cliente";
+        }
+        if($es_reimpreso==0)
+        {
+            $reimpreso = "copia cliente";
+        }
+        $pdf->MultiCell(0,5,utf8_decode("----------$reimpreso----------"),0,'L',false);
+
         # Encabezado y datos de la empresa #
         $pdf->SetFont('Helvetica','B',8);
         $pdf->SetTextColor(0,0,0);

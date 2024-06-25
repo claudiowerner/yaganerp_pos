@@ -307,7 +307,7 @@
     <script src="js/producto/cargarProducto.js"></script>
     <script src="js/venta/cargarVentasCaja.js"></script>
     <script src="js/venta/eliminarVenta.js"></script>
-    <script src="js/imprimir/imprCtaGeneral.js"></script>
+    <script src="js/imprimir/primera_impresion/imprCtaGeneral.js"></script>
     <script src="js/cantidad/modificarCant.js"></script>
     <script src="js/metodoPago/validarMetodoPago.js"></script>
     <script src="js/permisos/permisos.js"></script>
@@ -317,7 +317,7 @@
     <script src="js/pistola/pistolaCodigoBarra.js"></script>
     <script src="js/venta/registrarVenta.js"></script>
     <script src="js/stock/cargarNumeroStockMinimo.js"></script>
-    <script src="js/imprimir/imprimir.js"></script>
+    <script src="js/imprimir/primera_impresion/imprimir.js"></script>
     <script src="js/cliente/datosCliente.js"></script>
     <script src="js/cliente/agregarCliente.js"></script>
     <script src="js/rut/validarVariableRut.js"></script>
@@ -337,6 +337,7 @@
     <script src="js/imprimir/reimprimir_boleta/cargar_dias_boleta.js"></script>
     <script src="js/imprimir/calendario/calendario.js"></script>
     <script src="js/imprimir/reimprimir_boleta/cargar_correlativo.js"></script>
+    <script src="js/imprimir/reimpresion/reimpresion.js"></script>
     
     
 </body>
