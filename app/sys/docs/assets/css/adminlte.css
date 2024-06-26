@@ -5983,13 +5983,13 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 @media (min-width: 992px) {
   .modal-lg,
-  .modal-xl {
+  .modal-dialog modal-lg {
     max-width: 800px;
   }
 }
 
 @media (min-width: 1200px) {
-  .modal-xl {
+  .modal-dialog modal-lg {
     max-width: 1140px;
   }
 }

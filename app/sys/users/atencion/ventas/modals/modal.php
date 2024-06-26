@@ -519,7 +519,7 @@ function modalDescuento()
   {
     return "<!--modal Imprimir cuenta General-->
       <div class='modal fade' id='modalConsultarPrecio' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
-        <div class='modal-dialog modal-xl' role='document' role='document'>
+        <div class='modal-dialog modal-dialog modal-lg' role='document' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -564,7 +564,7 @@ function modalDescuento()
   {
     return "<!--modal Imprimir cuenta General-->
       <div class='modal fade' id='modalCajaInicial' data-backdrop='static' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
-        <div class='modal-dialog modal-xl' role='document' role='document'>
+        <div class='modal-dialog modal-dialog modal-lg' role='document' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
               <h5><strong>Monto inicial de caja</strong></h5>
@@ -589,7 +589,7 @@ function modalDescuento()
   {
     return "<!--modal Imprimir cuenta General-->
       <div class='modal fade' id='modalMovimientoCaja' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
-        <div class='modal-dialog modal-xl' role='document' role='document'>
+        <div class='modal-dialog modal-dialog modal-lg' role='document' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>

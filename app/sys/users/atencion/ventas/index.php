@@ -213,6 +213,7 @@
     <script src="js/imprimir/calendario/calendario.js"></script>
     <script src="js/imprimir/reimprimir_boleta/cargar_correlativo.js"></script>
     <script src="js/imprimir/reimpresion/reimpresion.js"></script>
+    <script src="js/producto/cargar_producto_busqueda.js"></script>
     
     
 </body>

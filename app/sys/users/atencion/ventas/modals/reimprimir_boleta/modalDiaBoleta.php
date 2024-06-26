@@ -2,7 +2,7 @@
 
     echo "<!--modal Imprimir cuenta General-->
       <div class='modal fade' id='modalDiaBoleta' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
-        <div class='modal-dialog modal-xl' role='document' role='document'>
+        <div class='modal-dialog modal-dialog modal-lg' role='document' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>

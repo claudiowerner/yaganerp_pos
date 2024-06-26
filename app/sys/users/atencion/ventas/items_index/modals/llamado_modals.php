@@ -5,6 +5,7 @@
     require_once "modals/reimprimir_boleta/modalMesBoleta.php";
     require_once "modals/reimprimir_boleta/modalDiaBoleta.php";
     require_once "modals/reimprimir_boleta/modalCorrelativo.php";
+    require_once "modals/producto/buscar_producto.php";
 
     echo modalSolicitarAutorizacion();
     echo modalAnular();
