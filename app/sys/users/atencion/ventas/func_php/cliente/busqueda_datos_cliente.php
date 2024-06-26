@@ -12,6 +12,7 @@ if(isset($_SESSION['user'])){
     $id_cl = $_SESSION['user']["id_cl"];
     
     $rut = $_POST["rut"];
+    $json = array();
 
     require_once '../../../../../conexion.php';
 
@@ -24,7 +25,6 @@ if(isset($_SESSION['user'])){
     $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0)
     {
-      $json = array();
       while ($row = $resultado->fetch_array()) {
         $json[] =array(
           'rut' => $row['rut'],
@@ -33,7 +33,6 @@ if(isset($_SESSION['user'])){
         );
       };
     }
-    
     echo json_encode($json);
   }
   else

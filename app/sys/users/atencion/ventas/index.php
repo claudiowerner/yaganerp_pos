@@ -210,6 +210,10 @@
     <script src="js/imprimir/reimprimir_boleta/cargar_correlativo.js"></script>
     <script src="js/imprimir/reimpresion/reimpresion.js"></script>
     <script src="js/producto/cargar_producto_busqueda.js"></script>
+    <script src="js/cuenta_cliente/busqueda_datos_cliente.js"></script>
+    <script src="js/cuenta_cliente/cargar_cuentas_cliente.js"></script>
+    <script src="js/cuenta_cliente/checkbox/checkbox.js"></script>
+    <script src="js/cuenta_cliente/pagar_cuenta/pagar_cuenta.js"></script>
     
     
 </body>

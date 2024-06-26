@@ -111,7 +111,7 @@ function cargarVentasCaja()
     }).fail( function(e) {
       console.log( 'Error productos!!'+e);
     }).done( function() {
-      console.log( 'done productos' );
+      //
     })
     id_venta = $("#id_venta").text();
     nCaja = $("#nCaja").text();

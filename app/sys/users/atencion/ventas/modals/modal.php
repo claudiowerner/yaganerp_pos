@@ -239,7 +239,7 @@ function modalDescuento()
               <table class='table'>
                 <th>
                   <tr style='width:33%'>
-                    <td>Correlativo</td>
+                    <td>Seleccionar</td>
                     <td>Fecha</td>
                     <td>Valor</td>
                     <td>Pagar</td>
