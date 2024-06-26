@@ -102,7 +102,7 @@ function cargarCuentasCliente(rut)
 {
     $.ajax(
         {
-            url: "func_php/cargar_cuentas_cliente.php",
+            url: "func_php/cuenta_cliente/cargar_cuentas_cliente.php",
             data: {"rut":rut},
             type: "POST",
             success: function(e)

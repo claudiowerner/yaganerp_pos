@@ -18,10 +18,7 @@ function cargarDataTable()
     var boton = 0;
     table = $("#tblProducto").DataTable({
         "createdRow": function( row, data, dataIndex){
-            if(data.estado)
-            {
-                
-            }
+            
         },
         "ajax":{
             "url":"func_php/producto/buscar_producto.php",

@@ -150,10 +150,6 @@
     <!--Formatear número-->
     <script src="../../../js/numberFormat.js"></script>
 
-    <!--SweetAlert-->
-    <script src="../../../js/sweetalert.min.js"></script>
-    <script src="../../../js/mensajes-swal.js"></script>
-
     
     <!--Datatables-->
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>

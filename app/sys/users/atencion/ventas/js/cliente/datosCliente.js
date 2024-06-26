@@ -1,9 +1,20 @@
-
-
-$("#txtRut").on("keyup", function(e)
+//funcion de descarga de datos
+function descargarDatosCliente(rut)
 {
-    let rut = $("#txtRut").val();
-    template = "";
+    return $.ajax(
+        {
+            url:"func_php/cliente/busqueda_datos_cliente.php",
+            data: {"rut": rut},
+            type:"POST",
+            async: false,
+        }
+    ).responseText;
+}
+
+//parseo de información
+function parseoDatosCliente(rut)
+{
+    let template = "";
     if(rut=="")
     {
         template = 
@@ -15,45 +26,44 @@ $("#txtRut").on("keyup", function(e)
     }
     else
     {
-        $.ajax(
-            {
-                url:"func_php/cliente/busqueda_datos_cliente.php",
-                data: {"rut": rut},
-                type:"POST",
-                async: false,
-                success: function(e)
+        let descarga = descargarDatosCliente(rut)
+        json = JSON.parse(descarga);
+        if(Array.isArray(json))
+        {
+            json.forEach
+            (c=>
                 {
-                    try
-                    {
-                        json = JSON.parse(e);
-                        json.forEach
-                        (c=>
-                            {
-                                template = template+
-                                `<tr>
-                                    <td>${c.rut}</td>
-                                    <td>${c.nombre}</td>
-                                    <td>${c.apellido}</td>
-                                    <td>
-                                        <button class="btn btn-success" onClick=registrarCuenta('${c.rut}')>Seleccionar</button>
-                                    </td>
-                                <tr>`;
-                            }
-                        );
-                        $("#btnAgregarCliente").prop("disabled", true);
-                    }
-                    catch(e)
-                    {
-                        template = 
-                        `<tr>
-                            <td colspan=4>Sin resultados</td>
-                        </tr>`;
-                        $("#btnAgregarCliente").prop("disabled", false);
-                    }
+                    template = template+
+                    `<tr>
+                        <td>${c.rut}</td>
+                        <td>${c.nombre}</td>
+                        <td>${c.apellido}</td>
+                        <td>
+                            <button class="btn btn-success" onClick=registrarCuenta('${c.rut}')>Seleccionar</button>
+                        </td>
+                    <tr>`;
                 }
-            }
-        )
+            );
+            $("#btnAgregarCliente").prop("disabled", true);
+        }
+        else
+        {
+            template = 
+            `<tr>
+                <td colspan=4>Sin resultados</td>
+            </tr>`;
+            $("#btnAgregarCliente").prop("disabled", false);
+        }
     }
     $("#datosCliente").html(template);
+}
+
+
+
+
+$("#txtRut").on("keyup", function(e)
+{
+    let rut = $("#txtRut").val();
+    parseoDatosCliente(rut);
 })
 

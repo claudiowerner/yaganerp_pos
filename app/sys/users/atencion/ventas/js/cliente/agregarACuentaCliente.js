@@ -27,7 +27,7 @@ function registrarCuenta(rut)
             $("#btnCrearVenta").prop("disabled", false)
             //insertar datos en tabla cuenta_corriente
             $.ajax({
-                url: "func_php/cliente/agregar_registro_cuenta.php",
+                url: "func_php/cuenta_cliente/agregar_registro_cuenta.php",
                 data: datos,
                 type: "POST",
                 success: function(e)

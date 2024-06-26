@@ -14,7 +14,7 @@
     require_once '../../../../../conexion.php';
     //query
     $sql = 
-    "SELECT ccr.id_venta AS correlativo, DATE_FORMAT(ccr.fecha_registro, '%d-%m-%Y') AS fecha, (SUM(v.valor)-v.valor*(v.des/100)) AS valor
+    "SELECT ccr.id_venta AS correlativo, DATE_FORMAT(ccr.fecha_registro, '%d-%m-%Y') AS fecha, (SUM(v.valor)-v.valor*(v.descto/100)) AS valor
     FROM cuenta_corriente ccr
     JOIN correlativo corr 
 
