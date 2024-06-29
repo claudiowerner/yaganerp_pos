@@ -75,7 +75,6 @@
 		$id_venta, 
 		'$id_cl', 
 		'$idCaja', 
-		'$nomCaja', 
 		'$id_us', 
 		'$idProd', 
 		'$cantProd', 

@@ -1,7 +1,5 @@
 
-
-//array que carga 
-let arrayPagarTotalCuentas = new Array();
+    
 function checkboxPagarCuenta(id_cuenta, valor)
 {
     /* ----------------------------------SUMA DE VALORES PARA IMPRIMIR EN PANTALLA ----------------------*/
@@ -17,7 +15,7 @@ function checkboxPagarCuenta(id_cuenta, valor)
     grupoCheckboxCheckeado();
 
     /*agregar los ID de las cuentas al array de cuentas */
-    agregarIdAlArray(check_particular, id_cuenta)
+    agregarIdAlArray(check_particular, id_cuenta, valor)
 }
 
 
@@ -48,9 +46,10 @@ function agregarIdAlArray(check_particular, id_cuenta)
     else
     {
         //eliminar elementos del arrayPagarTotalCuentas
-        arrayPagarTotalCuentas = arrayPagarTotalCuentas.filter(animal=>animal!=id_cuenta);
+        arrayPagarTotalCuentas = arrayPagarTotalCuentas.filter(id_venta => id_venta != id_cuenta)
     }
     arrayPagarTotalCuentas = arrayPagarTotalCuentas.sort();
+    console.log(arrayPagarTotalCuentas);
 }
 
 
@@ -63,12 +62,12 @@ function grupoCheckboxCheckeado(id_cuenta)
     if(check_grupo)
     {
         //activar botón de pago del total de cuentas
-        $("#btnPagarTotalCuentas").prop("disabled", false);
+        $("#btnPagarCuentas").prop("disabled", false);
 
     }
     else
     {
         //desactivar botón de pago del total de cuentas
-        $("#btnPagarTotalCuentas").prop("disabled", true);
+        $("#btnPagarCuentas").prop("disabled", true);
     }
 }

@@ -6,6 +6,7 @@
     require_once "modals/reimprimir_boleta/modalDiaBoleta.php";
     require_once "modals/reimprimir_boleta/modalCorrelativo.php";
     require_once "modals/producto/buscar_producto.php";
+    require_once "modals/metodo_pago/metodo_pago_cuentas.php";
 
     echo modalSolicitarAutorizacion();
     echo modalAnular();
@@ -16,7 +17,6 @@
     echo modalAgregarCliente();
     echo modalPagarCuenta();
     echo modalSeleccionarCuenta();
-    echo modalMetodoPagoPagarCuenta();
     echo modalDescuento();
     echo modalResumenCaja();
     echo modalConsultarPrecio();

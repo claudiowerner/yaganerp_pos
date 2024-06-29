@@ -175,6 +175,7 @@
     <script src="js/stock/comprobar_estado_stock_minimo.js"></script>
     <script src="js/turno/cargarNombreIdCajaAbierta.js"></script>
     <script src="js/metodoPago/cargarMetodoPago.js"></script>
+    <script src="js/metodoPago/metodo_pago_cuenta/cargarMetodoPago.js"></script>
     <script src="js/producto/cargarProducto.js"></script>
     <script src="js/venta/cargarVentasCaja.js"></script>
     <script src="js/venta/eliminarVenta.js"></script>
@@ -214,6 +215,7 @@
     <script src="js/cuenta_cliente/cargar_cuentas_cliente.js"></script>
     <script src="js/cuenta_cliente/checkbox/checkbox.js"></script>
     <script src="js/cuenta_cliente/pagar_cuenta/pagar_cuenta.js"></script>
+    <script src="js/usuario/obtener_usuario.js"></script>
     
     
 </body>

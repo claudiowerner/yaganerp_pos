@@ -49,7 +49,7 @@ function parseoDatosClienteBusqueda(rut)
             `<tr>
                 <td colspan=4>No se encontraron resultados.</td>
             </tr>`;
-        }
+        }"W"
     }
     $("#datosClientePagarCuenta").html(template)
 }

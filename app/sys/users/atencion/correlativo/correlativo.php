@@ -20,7 +20,6 @@
 	    $id_cl = $_SESSION['user']["id_cl"];
 	    $piso = 1;
 	    $idCaja = $_GET['idCaja'];
-	    $nomCaja = $_GET['nomCaja'];
 		$hora = $_GET['hora'];
 
 		//obtener fecha
@@ -77,9 +76,9 @@
 			echo "No se generó el ID";
 		}		
 		
-		$correlativo = "INSERT INTO correlativo VALUES 
-		(null, $corr, '$id_cl', '$idCaja', '$nomCaja', '$id_us', '$boleta', '0', '0', '$idCierre', 'A', '$fecha', '0000-00-00 00:00:00')";
-		$r2 = mysqli_query($conexion, $correlativo);
+		$sql = "INSERT INTO correlativo VALUES 
+		(null, $corr, '$id_cl', '$idCaja', '$id_us', '$boleta', '0', '0', '$idCierre', 'A', '$fecha', '0000-00-00 00:00:00')";
+		$r2 = $conexion->query($sql);
 		   
 		if($r1&&$r2)
 		{

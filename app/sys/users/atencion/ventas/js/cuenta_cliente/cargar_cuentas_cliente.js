@@ -28,7 +28,6 @@ function parseoDatosCuentasCliente(rut)
                 <td><input type='checkbox' class='checkbox' id='checkbox${corr}' onClick='checkboxPagarCuenta(${corr}, ${j.valor})'></td>
                 <td>${j.fecha}</td>
                 <td>${j.valor}</td>
-                <td><button class='btn btn-success' onClick='pagar(${j.correlativo})'>Pagar</button></td>
             </tr>`;
         }
     )
@@ -36,7 +35,7 @@ function parseoDatosCuentasCliente(rut)
     `<tr>
         <td align=right colspan=2><span>Total: </span></td>
         <td><span id='totalCuentasCliente'>0</span><span> de </span><span>${total}</span></td>
-        <td><button id='btnPagarTotalCuentas' class='btn btn-primary' onclick='realizar_pago()' disabled>Pagar selección</button></td>
+        <td><button id='btnPagarCuentas' class='btn btn-primary' onclick='realizar_pago()' disabled>Pagar selección</button></td>
     </tr>`;
     $("#bodyCuentas").html(template);
 }

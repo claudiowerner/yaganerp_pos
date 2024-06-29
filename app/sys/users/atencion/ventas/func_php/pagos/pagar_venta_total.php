@@ -106,7 +106,7 @@
 
 		$sql = 
 		"UPDATE ventas SET valorDescto = '$valorTotal' WHERE id = '$id' AND id_cl = '$id_cl'";
-		$res = $conexion->query($sql);;
+		$res = $conexion->query($sql);
 
 		//acrónimo cp= Cantidad Pedido
 		$np = $producto[$i]['nom_prod'];
