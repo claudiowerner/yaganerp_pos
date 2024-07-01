@@ -242,7 +242,6 @@ function modalDescuento()
                     <td>Seleccionar</td>
                     <td>Fecha</td>
                     <td>Valor</td>
-                    <td>Pagar</td>
                   </tr>
                 </th>
                 <tbody id='bodyCuentas'>

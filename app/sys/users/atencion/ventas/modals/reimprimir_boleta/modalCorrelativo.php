@@ -1,7 +1,7 @@
 <?php
 
     echo "<!--modal Imprimir cuenta General-->
-      <div class='modal fade' id='modalCorrelativo' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+      <div class='modal fade' id='modalCorrelativo' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true' style='overflow-y: scroll;'>
         <div class='modal-dialog modal-dialog modal-lg' role='document' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>

@@ -24,14 +24,12 @@ function renderizarCalendario(año, mes, dias)
 
         if(j.dia.match(/Mon/)&&j.fecha==1)
         {
-            template+=
-            `<td id='${j.dia} ${j.fecha}-${mes}-${año}'></td>`;
             dia_semana = 1;
             template = template + semana(template, dia_semana, j.n_dias, mes, año)  
         }
-        if(j.dia.match(/Mon/)&&j.fecha==1)
+        if(j.dia.match(/Tuesday/)&&j.fecha==1)
         {
-            template+=
+            template+
             `<td id='${j.dia} ${j.fecha}-${mes}-${año}'></td>`;
             dia_semana = 2;
             template = template + semana(template, dia_semana, j.n_dias, mes, año)
@@ -39,7 +37,8 @@ function renderizarCalendario(año, mes, dias)
         if(j.dia.match(/Wed/)&&j.fecha==1)
         {
             template+=
-            `   <td id=''></td>
+    
+               `<td id=''></td>
                 <td id='${j.dia} ${j.fecha}-${mes}-${año}'></td>`;
             dia_semana = 3;
             template = template + semana(template, dia_semana, j.n_dias, mes, año)
@@ -71,7 +70,7 @@ function renderizarCalendario(año, mes, dias)
                 <td id=''></td>
                 <td id=''></td>
                 <td id=''></td>
-                <td id=''></td>`;
+                <td id='${j.dia} ${j.fecha}-${mes}-${año}'></td>`;
                 dia_semana = 6;
                 template = template + semana(template, dia_semana, j.n_dias, mes, año)
             }
@@ -101,7 +100,7 @@ function semana(template, dia_semana, dia_mes,  mes, año)
 {
     let isFinalMes = false;
     let fecha = 0;
-    while(dia_semana<=8)
+    while(dia_semana<8)
     {
         fecha++
         dia_mes--;

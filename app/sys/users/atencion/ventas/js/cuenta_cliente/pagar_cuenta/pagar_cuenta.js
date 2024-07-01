@@ -25,29 +25,4 @@ function realizar_pago()
     $("#modalMetodoPagoPagarCuenta").modal("show");
     $("#modalSeleccionarCuenta").modal("hide");
 
-    console.log(arrayPagarTotalCuentas);
-}
-
-function realizar_pago_bd()
-{
-    let total_cuentas = arrayPagarTotalCuentas.length;
-    let valor_total = $("#totalCuentasCliente").text();
-    swal({
-        title: "¿Está seguro?",
-        text: `¿Desea cancelar las ${total_cuentas} por un valor de $${valor_total}?`,
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((pagar) => {
-        if (pagar)
-        {
-            let respuesta = pagarCuenta(arrayPagarTotalCuentas);
-            alert(respuesta);
-        } 
-        else 
-        {
-            msjes_swal("La operación ha sido cancelada");
-        }
-      });
 }

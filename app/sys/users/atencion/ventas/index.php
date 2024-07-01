@@ -195,7 +195,8 @@
     <script src="js/cliente/agregarCliente.js"></script>
     <script src="js/rut/validarVariableRut.js"></script>
     <script src="js/cliente/agregarACuentaCliente.js"></script>
-    <script src="js/pagos/pagarCuenta.js"></script>
+    <script src="js/pagos/cuentas/confirmar_paga_cuenta.js"></script>
+    <script src="js/pagos/cuentas/pagarCuenta.js"></script>
     <script src="js/pagos/confirmarPaga.js"></script>
     <script src="js/vuelto/calcularVuelto.js"></script>
     <script src="js/caja_atencion/resumenCaja.js"></script>

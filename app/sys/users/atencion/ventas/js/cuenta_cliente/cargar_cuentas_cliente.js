@@ -33,7 +33,7 @@ function parseoDatosCuentasCliente(rut)
     )
     template +=
     `<tr>
-        <td align=right colspan=2><span>Total: </span></td>
+        <td align=right><span>Total: </span></td>
         <td><span id='totalCuentasCliente'>0</span><span> de </span><span>${total}</span></td>
         <td><button id='btnPagarCuentas' class='btn btn-primary' onclick='realizar_pago()' disabled>Pagar selección</button></td>
     </tr>`;

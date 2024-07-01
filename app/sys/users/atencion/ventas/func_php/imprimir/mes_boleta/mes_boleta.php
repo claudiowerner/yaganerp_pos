@@ -18,12 +18,12 @@
     $res = $conexion->query($local_date);
 
     $sql = 
-    "SELECT DATE_FORMAT(fecha,'%M') AS mes,
-    DATE_FORMAT(fecha, '%m') AS nro_mes
+    "SELECT DATE_FORMAT(fecha_cierre,'%M') AS mes,
+    DATE_FORMAT(fecha_cierre, '%m') AS nro_mes
     FROM correlativo 
     WHERE id_cl = $id_cl
     AND YEAR(fecha_cierre) = $año
-    GROUP BY YEAR(fecha_cierre)";
+    GROUP BY MONTH(fecha_cierre)";
 	$res = $conexion->query($sql);
 
     if($res->num_rows>0)

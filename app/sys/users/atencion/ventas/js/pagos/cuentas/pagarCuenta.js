@@ -10,7 +10,6 @@ $("#btnPagarCuenta").on("click", function(e)
 
 $("#btnConfirmarPagaCuenta").on("click", function(e)
 {
-    console.log(arrayPagarTotalCuentas);
     swal({
         title: "¿Está seguro?",
         text: "¿Desea registrar el pago completo?",
@@ -21,7 +20,8 @@ $("#btnConfirmarPagaCuenta").on("click", function(e)
       .then((pagar) => {
         if (pagar)
         {
-            let resultado = confirmarPagaCuenta("ticket.php",arrayPagarTotalCuentas);
+            //descargar resultado proveniente de la BD
+            let resultado = confirmarPagaCuenta(arrayPagarTotalCuentas);
 
             //parseo de la variable resultado para mostrar el mensaje proveniente del PHP
             let msj = JSON.parse(resultado);
@@ -32,7 +32,7 @@ $("#btnConfirmarPagaCuenta").on("click", function(e)
             {
                 msjes_swal("PAGO EN EFECTIVO", "El pago se registró en el movimiento de caja", msj.icono);
             }
-
+            
             $("#modalMetodoPagoCuenta").modal("hide");
             parseoDatosCuentasCliente(rutCliente);
             arrayPagarTotalCuentas = new Array();
@@ -65,31 +65,3 @@ function pagar(corr)
     $("#modalMetodoPagoPagarCuenta").modal("show");
     $("#cuenta").html(corr);
 }
-
-
-
-function confirmarPagaCuenta(ticket, array)
-{
-    let nCaja = $("#nCaja").text();
-    let idCaja = $("#id_caja").text();
-    let formaPago = $("#metodoPagoCuenta").val();
-    nomCaja = $("#nomCaja").text();
-
-    let datos = {
-        "nCaja": nCaja,
-        "fecha": getFechaBD() +" "+ getHora(),
-        "idCaja": idCaja,
-        "formaPago": formaPago,
-        "array_correlativo": array,
-        "id_turno": idCaja,
-    }
-    console.log(datos)
-    return $.ajax({
-        url: "func_php/pagos/pagar_cuentas.php",
-        data: datos,
-        type: "POST",
-        async: false
-    }).responseText;
-  
-}
-
