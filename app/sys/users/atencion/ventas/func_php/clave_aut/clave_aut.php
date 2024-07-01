@@ -10,22 +10,30 @@ if(isset($_SESSION['user'])){
   $id_us = $_SESSION['user']['id'];
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
-    $piso = 1;
 
-    $clave = $_GET['clave'];
+
+    $json = array();
+
+    $clave = $_POST['clave'];
 
     require_once '../../../../../conexion.php';
 
     //query
     $sql = "SELECT * FROM autorizacion WHERE id_cl = '$id_cl' AND clave = $clave";
-    $resultado = $conexion->query($sql);;
+    $res = $conexion->query($sql);
 
-    $claveOk = 0;
-    while($row = $resultado->fetch_array())
+    if($res->num_rows>0)
     {
-      $claveOk = 1;
+      $json = array(
+        "clave_coincide" => true
+      );
     }
-    echo $claveOk;
+    else
+    {
+      $json = array(
+        "clave_coincide" => false
+      );
+    }
 }
 else
 {

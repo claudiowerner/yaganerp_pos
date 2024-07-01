@@ -22,11 +22,3 @@ $(".anularVenta").on("click", function(e)
     console.log(e.responseText);
   })
 });
-
-
-/*$("#btnAnularVenta").on("click", function(e)
-{
-  alert("Anular venta")
-  
-
-})*/

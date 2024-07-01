@@ -167,7 +167,7 @@
     <script src="js/descuento/cargarDescuento.js"></script>
     <script src="js/descuento/aplicarDescto.js"></script>
     <script src="../../../js/validarRut.js"></script>
-    <script src="js/ventas/anularVenta.js"></script>
+    <script src="js/venta/anularVenta.js"></script>
     <script src="js/correlativo/correlativo.js"></script>
     <script src="js/caja_atencion/cerrarCaja.js"></script>
     <script src="js/venta/cargarIDVenta.js"></script>
@@ -178,6 +178,7 @@
     <script src="js/metodoPago/metodo_pago_cuenta/cargarMetodoPago.js"></script>
     <script src="js/producto/cargarProducto.js"></script>
     <script src="js/venta/cargarVentasCaja.js"></script>
+    <script src="js/venta/clave_aut/clave_aut.js"></script>
     <script src="js/venta/eliminarVenta.js"></script>
     <script src="js/imprimir/primera_impresion/imprCtaGeneral.js"></script>
     <script src="js/cantidad/modificarCant.js"></script>

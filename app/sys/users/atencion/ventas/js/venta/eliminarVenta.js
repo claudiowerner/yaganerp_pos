@@ -1,40 +1,41 @@
-//Accion al intentar eliminar venta
-async function accionEliminarVenta(boton)
+//Procesos en la BD
+function eliminarVenta(id)
 {
-    let id = $(boton).attr("idVenta");
-    $("#anVenta").text(id);
+    return $.ajax({
+        url: "func_php/venta/elim_venta_exe.php",
+        data: {"id_venta":id},
+        type: "POST",
+        async: false
+    }).responseText;
+}
 
-    $.ajax(
+
+//Accion al intentar eliminar venta
+async function accionEliminarVenta(id)
+{
+    $("#anVenta").text(id);
+    let configClave = leerConfigClave()
+    
+    if(configClave.match("S"))
+    {
+        $("#solicClaveAut").modal("show");
+    }
+    else
+    {
+        let descargarRespuesta = eliminarVenta(id);
+        let jsonRes = JSON.parse(descargarRespuesta);
+
+        if(jsonRes.eliminarVenta)
         {
-            url:"func_php/clave_aut/read_config_clave.php",
-            type: "POST",
-            success: function(e)
-            {
-                if(e.match("S"))
-                {
-                    $("#solicClaveAut").modal("show");
-                }
-                else
-                {
-                    $.ajax({
-                        url: "func_php/venta/elim_venta_exe.php",
-                        data: {"id_venta":id},
-                        type: "POST",
-                        success: function(r)
-                        {
-                            cargarVentasCaja();
-                            $('#solicClaveAut').modal('hide');
-                        }
-                    }).fail( function(e) {
-                        console.log( 'Error eliminar venta!!'+e.responseText );
-                    }).done( function() {
-                        console.log( 'done eliminar venta' );
-                    }).always( function() {
-                        console.log( 'Always eliminar venta' );
-                    });
-                }
-            }
+            cargarVentasCaja();
+            $('#solicClaveAut').modal('hide');
         }
-    )
+        
+        if(jsonRes.error)
+        {
+            console.error(jsonRes.error);
+        }
+    }
+   
 
 }

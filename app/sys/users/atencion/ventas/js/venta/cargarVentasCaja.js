@@ -25,7 +25,7 @@ function cargarVentasCaja()
           {
             estado = "<button class='btn btn-danger' disabled='true'>PENDIENTE</button>";
             aumentar = "<button class='btn btn-success modCant' id='"+v.id+"' pesaje='"+v.pesaje+"' cant='"+v.cantidad+"' id_prod='"+v.id_prod+"' onClick=obtenerIDVenta(this)>- Ó +</button>";
-            eliminar = "<button id='btnEliminarVenta' idVenta='"+v.id+"' class='btn btn-danger' onClick=accionEliminarVenta(this)>Eliminar</button>";
+            eliminar = "<button id='btnEliminarVenta' class='btn btn-danger' onClick=accionEliminarVenta("+v.id+")>Eliminar</button>";
             imprimir = "<button id='imprimir' class='btn btn-warning'>Imprimir</button>";
             $('#btnCrearVenta').attr('disabled', true);
           }

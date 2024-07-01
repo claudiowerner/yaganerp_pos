@@ -10,7 +10,8 @@
 	    $id_us = $_SESSION['user']['id'];
 	    $nombre = $_SESSION['user']["nombre"];
 	    $id_cl = $_SESSION['user']["id_cl"];
-	    $piso = 1;
+
+		$json = array();
 
 		$id_venta = $_POST["id_venta"];
 
@@ -28,12 +29,17 @@
 		$res2 = $conexion->query($sql);
 		if($res2)
 		{
-			echo "Venta eliminada correctamente";
+			$json = array(
+				"eliminar_venta" => true
+			);
 		}
 		else
 		{
-			die("Error al eliminar venta: ". mysqli_error($conexion));
+			$json = array(
+				"eliminar_venta" => false,
+				"error" => "Error al eliminar venta: ".$conexion->error()
+			);
 		}
-
+		echo json_encode($json);
 
 ?>

@@ -57,57 +57,6 @@ $("#venta").on('click', function(e)
   registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora);
 })
 
-$("#btnEliminarVenta").on('click', function(e)
-{
-  let id = $("#anVenta").text();
-  let clave = $("#clave").val();
-  if(clave=='')
-  {
-    $("#msjClave").html("<span style='color: red'>Debe rellenar el campo</span>");
-  }
-  else
-  {
-    $("#msjClave").html("<span style='color: red'></span>");
-    $.ajax({
-      url: "func_php/clave_aut/clave_aut.php?clave="+clave,
-      type: "GET",
-      success: function(r)
-      {
-        if(r==0||r.match(/Fatal error.*/))
-        {
-          $("#msjClave").html("<span style='color: red'>La clave ingresada no es correcta</span>");
-        }
-        else
-        {
-          $.ajax({
-            url: "func_php/elim_venta_exe.php",
-            data: {"id_venta":id},
-            type: "POST",
-            success: function(r)
-            {
-              msjes_swal("Excelente", e, "success");
-              cargarVentasCaja();
-              
-              $('#solicClaveAut').modal('hide');
-            }
-          }).fail( function(e) {
-            console.log( 'Error eliminar venta!!'+e.responseText );
-          }).done( function() {
-            console.log( 'done eliminar venta' );
-          }).always( function() {
-            console.log( 'Always eliminar venta' );
-          });
-        }
-      }
-    }).fail( function(e) {
-      console.log( 'Error eliminar venta!!'+e.responseText );
-    }).done( function() {
-      console.log( 'done eliminar venta' );
-    }).always( function() {
-      console.log( 'Always eliminar venta' );
-    });
-  }
-});
 
 
 $("#pagarVenta").on("click", function(e)
