@@ -46,7 +46,7 @@ var table;
                     disabled = "disabled";
                   }
                   return `<button type="submit" id="btnEditar" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" ><img src="../img/edit.png" width="15"></button>
-                  <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick=btnVerCuentas(`+value.rut+`) `+disabled+`>Ver cuentas (`+cuentas+`)</button>`;
+                  <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick=btnVerCuentas('`+value.rut+`') `+disabled+`>Ver cuentas (`+cuentas+`)</button>`;
                 }
             }
           ],

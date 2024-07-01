@@ -82,10 +82,11 @@ function cargarDatos(rut, fechaInicio, fechaFin)
         }
         else
         {
+          valorTotal_formateado = formatearNumero("P", valorTotal)
           template = template +
           `<tr>
             <td colspan=3><strong>Total:</strong></td>
-            <td><strong>$${valorTotal}</strong></td>
+            <td><strong>${valorTotal_formateado}</strong></td>
           </tr>`;
           $("#bodyCuenta").html(template);
         }
