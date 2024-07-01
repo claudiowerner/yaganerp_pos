@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 10-02-2024 a las 21:12:59
--- Versión del servidor: 8.0.31
--- Versión de PHP: 8.0.26
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 01-07-2024 a las 19:55:48
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,32 +27,13 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `anula_categoria`
 --
 
-DROP TABLE IF EXISTS `anula_categoria`;
-CREATE TABLE IF NOT EXISTS `anula_categoria` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
-  `id_categoria` int NOT NULL,
-  `anulado_por` int NOT NULL,
-  `fecha` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_anula_categoria` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
-
---
--- Volcado de datos para la tabla `anula_categoria`
---
-
-INSERT INTO `anula_categoria` (`id`, `id_cl`, `id_categoria`, `anulado_por`, `fecha`) VALUES
-(1, 1, 1, 0, '2023-06-26 14:26:35'),
-(2, 1, 1, 0, '2023-06-26 14:26:39'),
-(3, 1, 1, 0, '2023-12-20 17:14:45'),
-(4, 1, 1, 0, '2023-12-20 17:14:49'),
-(5, 1, 1, 0, '2023-12-20 18:05:29'),
-(6, 1, 1, 0, '2023-12-20 18:06:52'),
-(7, 1, 2, 0, '2024-01-12 18:12:30'),
-(8, 1, 3, 0, '2024-01-12 18:12:36'),
-(9, 1, 4, 0, '2024-01-12 18:12:41'),
-(10, 1, 5, 0, '2024-01-12 18:12:47');
+CREATE TABLE `anula_categoria` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `anulado_por` int(11) NOT NULL,
+  `fecha` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -60,26 +41,13 @@ INSERT INTO `anula_categoria` (`id`, `id_cl`, `id_categoria`, `anulado_por`, `fe
 -- Estructura de tabla para la tabla `anula_productos`
 --
 
-DROP TABLE IF EXISTS `anula_productos`;
-CREATE TABLE IF NOT EXISTS `anula_productos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
-  `id_producto` int NOT NULL,
+CREATE TABLE `anula_productos` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
   `anulado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `fecha` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_anula_productos` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
-
---
--- Volcado de datos para la tabla `anula_productos`
---
-
-INSERT INTO `anula_productos` (`id`, `id_cl`, `id_producto`, `anulado_por`, `fecha`) VALUES
-(1, 1, 10, 'Admin', '2023-06-26 14:36:53'),
-(2, 1, 1, 'Admin', '2023-06-26 16:35:35'),
-(3, 1, 1, 'Admin', '2023-06-27 16:26:21'),
-(4, 1, 51, 'Admin', '2024-02-03 15:23:12');
+  `fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -87,27 +55,13 @@ INSERT INTO `anula_productos` (`id`, `id_cl`, `id_producto`, `anulado_por`, `fec
 -- Estructura de tabla para la tabla `anula_proveedor`
 --
 
-DROP TABLE IF EXISTS `anula_proveedor`;
-CREATE TABLE IF NOT EXISTS `anula_proveedor` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
-  `id_proveedor` int NOT NULL,
+CREATE TABLE `anula_proveedor` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_proveedor` int(11) NOT NULL,
   `anulado_por` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fecha` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_anula_proveedor` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
-
---
--- Volcado de datos para la tabla `anula_proveedor`
---
-
-INSERT INTO `anula_proveedor` (`id`, `id_cl`, `id_proveedor`, `anulado_por`, `fecha`) VALUES
-(1, 1, 1, '1', '2023-07-29 00:00:00'),
-(2, 1, 1, '1', '2023-07-29 18:48:50'),
-(3, 1, 1, '1', '2023-07-29 18:49:42'),
-(4, 1, 1, '1', '2023-07-29 18:52:25'),
-(5, 1, 4, '1', '2023-07-29 18:52:30');
+  `fecha` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -115,16 +69,13 @@ INSERT INTO `anula_proveedor` (`id`, `id_cl`, `id_proveedor`, `anulado_por`, `fe
 -- Estructura de tabla para la tabla `anula_turnos`
 --
 
-DROP TABLE IF EXISTS `anula_turnos`;
-CREATE TABLE IF NOT EXISTS `anula_turnos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
-  `id_turno` int NOT NULL,
+CREATE TABLE `anula_turnos` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_turno` int(11) NOT NULL,
   `anulado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `fecha` date DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_anula_turnos` (`id_cl`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `fecha` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -132,36 +83,24 @@ CREATE TABLE IF NOT EXISTS `anula_turnos` (
 -- Estructura de tabla para la tabla `anula_ventas`
 --
 
-DROP TABLE IF EXISTS `anula_ventas`;
-CREATE TABLE IF NOT EXISTS `anula_ventas` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
-  `id_venta` int NOT NULL,
+CREATE TABLE `anula_ventas` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_venta` int(11) NOT NULL,
   `anulado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `fecha` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_anula_ventas` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `anula_ventas`
 --
 
 INSERT INTO `anula_ventas` (`id`, `id_cl`, `id_venta`, `anulado_por`, `fecha`) VALUES
-(1, 1, 4, 'Admin', '2023-08-14 15:27:59'),
-(2, 1, 8, 'Admin', '2023-08-14 15:59:48'),
-(3, 1, 11, 'Admin', '2023-08-14 16:55:23'),
-(4, 1, 4, 'Admin', '2023-12-31 00:36:02'),
-(5, 1, 1, 'Admin', '2024-01-01 12:06:57'),
-(6, 1, 18, 'Admin', '2024-01-01 19:14:46'),
-(7, 1, 39, 'Admin', '2024-01-12 18:09:17'),
-(8, 1, 72, 'Admin', '2024-01-21 21:58:28'),
-(9, 1, 73, 'Admin', '2024-01-21 21:58:37'),
-(10, 1, 74, 'Admin', '2024-01-21 21:58:40'),
-(11, 1, 126, 'Admin', '2024-01-27 13:58:30'),
-(12, 1, 127, 'Admin', '2024-01-27 14:41:47'),
-(13, 1, 132, 'Admin', '2024-01-28 00:38:36'),
-(14, 1, 149, 'Admin', '2024-02-03 15:17:32');
+(1, 1, 4, 'Admin', '2024-06-17 18:28:02'),
+(2, 1, 4, 'Admin', '2024-06-17 18:28:06'),
+(3, 1, 4, 'Admin', '2024-06-17 18:28:10'),
+(4, 1, 20, 'Admin', '2024-06-18 14:31:30'),
+(5, 1, 21, 'Admin', '2024-06-18 14:32:42');
 
 -- --------------------------------------------------------
 
@@ -169,22 +108,19 @@ INSERT INTO `anula_ventas` (`id`, `id_cl`, `id_venta`, `anulado_por`, `fecha`) V
 -- Estructura de tabla para la tabla `autorizacion`
 --
 
-DROP TABLE IF EXISTS `autorizacion`;
-CREATE TABLE IF NOT EXISTS `autorizacion` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `autorizacion` (
+  `id` int(11) NOT NULL,
   `id_cl` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `clave` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_cl` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `autorizacion`
 --
 
 INSERT INTO `autorizacion` (`id`, `id_cl`, `clave`, `estado`) VALUES
-(1, '1', '123456', 'N');
+(1, '1', '12345', 'N');
 
 -- --------------------------------------------------------
 
@@ -192,24 +128,21 @@ INSERT INTO `autorizacion` (`id`, `id_cl`, `clave`, `estado`) VALUES
 -- Estructura de tabla para la tabla `cajas`
 --
 
-DROP TABLE IF EXISTS `cajas`;
-CREATE TABLE IF NOT EXISTS `cajas` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
+CREATE TABLE `cajas` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
   `nom_caja` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `creado_por` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `fecha_reg` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_cajas` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `fecha_reg` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cajas`
 --
 
 INSERT INTO `cajas` (`id`, `id_cl`, `nom_caja`, `estado`, `creado_por`, `fecha_reg`) VALUES
-(1, 1, 'KIOSCO', 'A', '1', '2023-12-20');
+(1, 1, 'Caja 01', 'A', '1', '2024-05-14');
 
 -- --------------------------------------------------------
 
@@ -217,39 +150,21 @@ INSERT INTO `cajas` (`id`, `id_cl`, `nom_caja`, `estado`, `creado_por`, `fecha_r
 -- Estructura de tabla para la tabla `categorias`
 --
 
-DROP TABLE IF EXISTS `categorias`;
-CREATE TABLE IF NOT EXISTS `categorias` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
+CREATE TABLE `categorias` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
   `nombre_cat` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `creado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `fecha_reg` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_categorias` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `fecha_reg` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
 INSERT INTO `categorias` (`id`, `id_cl`, `nombre_cat`, `estado`, `creado_por`, `fecha_reg`) VALUES
-(1, 1, 'Galletas', 'S', 'Admin', '2023-06-15'),
-(2, 1, 'CD', 'N', 'Admin', '2023-06-15'),
-(3, 1, 'Vinilo', 'N', 'Admin', '2023-06-15'),
-(4, 1, 'Cassette', 'N', 'Admin', '2023-06-15'),
-(5, 1, 'Pan', 'N', 'Admin', '2023-06-20'),
-(6, 1, 'Golosinas', 'S', 'Admin', '2023-06-26'),
-(7, 1, 'Te', 'S', 'Admin', '2023-12-20'),
-(8, 1, 'Bebidas', 'S', 'Admin', '2023-12-20'),
-(9, 1, 'Bebestibles', 'S', 'Admin', '2023-12-22'),
-(10, 1, 'Barras de cereal', 'S', 'Admin', '2023-12-22'),
-(11, 1, 'Carbón parrillero', 'S', 'Admin', '2023-12-22'),
-(12, 1, 'Helados', 'S', 'Admin', '2023-12-25'),
-(13, 1, 'Cocina y abarrotes', 'S', 'Admin', '2024-01-12'),
-(14, 1, 'Leña', 'S', 'Admin', '2024-01-13'),
-(15, 1, 'Aseo personal', 'S', 'Admin', '2024-01-26'),
-(16, 1, 'Lavalozas', 'S', 'Admin', '2024-01-26');
+(1, 1, 'CD', 'S', 'Admin', '2024-06-14');
 
 -- --------------------------------------------------------
 
@@ -257,39 +172,25 @@ INSERT INTO `categorias` (`id`, `id_cl`, `nombre_cat`, `estado`, `creado_por`, `
 -- Estructura de tabla para la tabla `cierre_caja`
 --
 
-DROP TABLE IF EXISTS `cierre_caja`;
-CREATE TABLE IF NOT EXISTS `cierre_caja` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
+CREATE TABLE `cierre_caja` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
   `nombre` varchar(35) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `creado_por` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `desde` datetime NOT NULL,
   `hasta` datetime DEFAULT NULL,
   `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `valor_total` varchar(145) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `fecha_reg` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_cierre_caja` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `fecha_reg` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cierre_caja`
 --
 
 INSERT INTO `cierre_caja` (`id`, `id_cl`, `nombre`, `creado_por`, `desde`, `hasta`, `estado`, `valor_total`, `fecha_reg`) VALUES
-(1, 1, 'Caja 1-01-2024 ', '1', '2024-01-01 12:01:44', '2024-01-10 16:09:59', 'C', '7200', '2024-01-01 12:01:44'),
-(3, 1, 'Caja 13-01-2024', '1', '2024-01-13 14:07:22', '2024-01-20 01:28:59', 'C', '900', '2024-01-13 14:07:22'),
-(4, 1, 'caja 20-01-2023', '1', '2024-01-19 22:29:36', '2024-01-21 04:00:14', 'C', '1200', '2024-01-19 22:29:36'),
-(5, 1, 'caja 21-01-2024', '1', '2024-01-21 01:00:45', '2024-01-22 04:13:43', 'C', '1000', '2024-01-21 01:00:45'),
-(7, 1, 'caja 22-01-2024', '1', '2024-01-22 19:53:00', '2024-01-22 22:58:54', 'C', '10000', '2024-01-22 19:53:00'),
-(10, 1, 'caja prueba3', '1', '2024-01-24 16:03:53', '2024-01-27 00:20:48', 'C', '4000', '2024-01-24 16:03:53'),
-(11, 1, 'Caja 26-01-2024', '1', '2024-01-26 21:21:05', '2024-01-28 04:02:38', 'C', '3000', '2024-01-26 21:21:05'),
-(12, 1, 'caja 28-01-2024', '1', '2024-01-28 12:31:08', '2024-02-01 17:37:07', 'C', '3500', '2024-01-28 12:31:08'),
-(13, 1, 'Caja 01-02-2024', '1', '2024-02-01 14:37:23', '2024-02-02 20:31:44', 'C', '11500', '2024-02-01 14:37:23'),
-(14, 1, 'Caja 02-02-2024', '1', '2024-02-02 17:31:59', '2024-02-04 14:17:29', 'C', '3000', '2024-02-02 17:31:59'),
-(15, 1, 'Caja 04-02-2024', '1', '2024-02-04 12:28:36', '2024-02-05 17:00:36', 'C', '5000', '2024-02-04 12:28:36'),
-(16, 1, 'caja de preuba', '1', '2024-02-05 14:04:36', '2024-02-05 17:04:44', 'C', '0', '2024-02-05 14:04:36'),
-(17, 1, 'Caja 09-01-2024', '1', '2024-02-08 22:01:51', '0000-00-00 00:00:00', 'A', '1600', '2024-02-08 22:01:51');
+(1, 1, 'Venta de CDs', '1', '2024-05-15 01:36:04', '2024-06-26 04:01:26', 'C', '500', '2024-05-15 01:36:04'),
+(2, 1, 'Venta de CDs', '1', '2024-06-25 22:01:46', '0000-00-00 00:00:00', 'A', '900', '2024-06-25 22:01:46');
 
 -- --------------------------------------------------------
 
@@ -297,39 +198,28 @@ INSERT INTO `cierre_caja` (`id`, `id_cl`, `nombre`, `creado_por`, `desde`, `hast
 -- Estructura de tabla para la tabla `cliente`
 --
 
-DROP TABLE IF EXISTS `cliente`;
-CREATE TABLE IF NOT EXISTS `cliente` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cliente` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `rut` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `estado` varchar(5) COLLATE utf8mb3_spanish_ci NOT NULL,
+  `estado` varchar(5) NOT NULL,
   `nom_fantasia` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `razon_social` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `giro` int NOT NULL,
+  `giro` int(11) NOT NULL,
   `direccion` varchar(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `correo` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `telefono` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `plan_comprado` int NOT NULL,
+  `plan_comprado` int(11) NOT NULL,
   `fecha_pago` date NOT NULL,
-  `fecha_registro` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `fecha_registro` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
 INSERT INTO `cliente` (`id`, `nombre`, `rut`, `estado`, `nom_fantasia`, `razon_social`, `giro`, `direccion`, `correo`, `telefono`, `plan_comprado`, `fecha_pago`, `fecha_registro`) VALUES
-(1, 'Claudio Werner', '19150634-0', 'S', 'Supermercado de prueba', 'Camping Playa Werner', 521112, 'Camping Playa Werner 0000', 'claudiowernern@hotmail.com', '978841411', 2, '2023-08-21', '2023-08-21'),
-(2, 'Maria Cecilia Neira Gomez', '7367889-7', 'N', 'Camping Playa Werner', 'CAMPING WERNER', 0, 'Camping Playa Werner S/N', 'playawerner@gmail.com', '978841411', 1, '2023-08-21', '2023-08-21'),
-(4, 'Claudio Francisco Werner Neira', '4494605-k', 'N', '10', '10', 0, 'Camping Playa Werner S/N', 'claudiowernern@hotmail.com', '652242114', 1, '2023-08-21', '2023-08-21'),
-(5, '', '', 'S', '', '', 0, '', '', '', 1, '0000-00-00', '2023-08-21'),
-(6, '', '', 'S', '', '', 0, '', '', '', 1, '0000-00-00', '2023-08-21'),
-(7, 'Claudio Francisco ', '19150634-0', 'S', 'fantasia', 'fantasia', 0, 'Camping Playa Werner S/N', 'correo', '978841411', 1, '2023-08-22', '2023-08-21'),
-(8, 'Constanza Werner', '19.150.634-0', 'S', '9789625', '9875665', 0, 'Camping Playa Werner S/N', 'playawerner@gmail.com', '978841411', 1, '2023-08-22', '2023-08-21'),
-(9, 'Claudio Francisco Werner Neira', '19150634-0', 'S', '521112', 'Camping Playa Werner', 0, 'Camping Playa Werner', 'Camping Playa Werner S/N', '978841411', 1, '0000-00-00', '2023-12-20'),
-(10, 'Claudio Francisco Werner Neira', '19150634-0', 'S', '521112', 'Camping Playa Werner', 0, 'Camping Playa Werner', 'Camping Playa Werner S/N', '978841411', 1, '0000-00-00', '2023-12-20'),
-(11, 'Claudio Francisco Werner Neira', '19150634-0', 'S', '521112', 'Camping Playa Werner', 0, 'Camping Playa Werner', 'Camping Playa Werner S/N', '978841411', 1, '0000-00-00', '2023-12-20');
+(1, 'La Tiendita de Werner', '19150634-0', 'S', 'La Tiendita de Werner', 'Claudio Werner', 11111, 'Camping Playa Werner S/N', 'claudiowernern@hotmail.com', '+56978841411', 1, '2024-05-15', '2024-05-15');
 
 -- --------------------------------------------------------
 
@@ -337,32 +227,25 @@ INSERT INTO `cliente` (`id`, `nombre`, `rut`, `estado`, `nom_fantasia`, `razon_s
 -- Estructura de tabla para la tabla `clientes_negocio`
 --
 
-DROP TABLE IF EXISTS `clientes_negocio`;
-CREATE TABLE IF NOT EXISTS `clientes_negocio` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
+CREATE TABLE `clientes_negocio` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
   `rut` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `apellido` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `creado_por` int NOT NULL,
-  `fecha_registro` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_clientes_negocio` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `creado_por` int(11) NOT NULL,
+  `fecha_registro` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `clientes_negocio`
 --
 
 INSERT INTO `clientes_negocio` (`id`, `id_cl`, `rut`, `nombre`, `apellido`, `estado`, `creado_por`, `fecha_registro`) VALUES
-(1, 1, '19150634-0', 'Claudio Francisco', 'Werner Neira', 'S', 1, '2023-07-25'),
-(2, 1, '7367889-7', 'María Cecilia', 'Neira Gomez', 'S', 1, '2023-07-25'),
-(3, 1, '18752880-1', 'Constanza Sabina', 'Werner Neira', 'S', 1, '2023-07-25'),
-(4, 1, '987', '', '', 'S', 1, '2023-07-26'),
-(5, 1, '4494605-k', 'Claudio Federico', 'Werner Hornig', 'S', 1, '2023-07-26'),
-(6, 1, '\"; DROP TA', '123', '123', 'S', 1, '2023-08-23'),
-(7, 1, '16208523-9', 'Juan Carlos', 'Sitio 2', 'S', 1, '2024-01-27');
+(1, 1, '19150634', '', '', 'S', 1, '2024-06-14'),
+(2, 1, '19150634-0', 'Claudio Francisco', 'Werner', 'S', 1, '2024-06-14'),
+(3, 1, '18752880-1', 'Constanza', 'Werner', 'S', 1, '2024-06-19');
 
 -- --------------------------------------------------------
 
@@ -370,240 +253,39 @@ INSERT INTO `clientes_negocio` (`id`, `id_cl`, `rut`, `nombre`, `apellido`, `est
 -- Estructura de tabla para la tabla `correlativo`
 --
 
-DROP TABLE IF EXISTS `correlativo`;
-CREATE TABLE IF NOT EXISTS `correlativo` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `correlativo` int NOT NULL,
-  `id_cl` int NOT NULL,
+CREATE TABLE `correlativo` (
+  `id` int(11) NOT NULL,
+  `correlativo` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
   `caja` varchar(25) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nom_caja` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `usuario` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `boleta` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `forma_pago` int NOT NULL,
+  `valor` int(11) NOT NULL,
+  `forma_pago` int(11) NOT NULL,
   `id_cierre` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `estado` varchar(2) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `fecha` datetime NOT NULL,
-  `fecha_cierre` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_correlativo` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci COMMENT='	';
+  `fecha_cierre` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='	';
 
 --
 -- Volcado de datos para la tabla `correlativo`
 --
 
-INSERT INTO `correlativo` (`id`, `correlativo`, `id_cl`, `caja`, `nom_caja`, `usuario`, `boleta`, `forma_pago`, `id_cierre`, `estado`, `fecha`, `fecha_cierre`) VALUES
-(1, 1, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 23:33:20', '2024-01-19 22:31:03'),
-(2, 2, 1, '1', 'KIOSCO', '1', '3', 1, '3', 'C', '2024-01-14 23:34:37', '2024-01-13 23:41:29'),
-(3, 3, 1, '1', 'KIOSCO', '1', '4', 1, '3', 'C', '2024-01-14 23:34:39', '2024-01-14 15:51:19'),
-(4, 4, 1, '1', 'KIOSCO', '1', '5', 4, '3', 'C', '2024-01-14 15:48:12', '2024-01-14 16:11:20'),
-(5, 5, 1, '1', 'KIOSCO', '1', '6', 1, '3', 'C', '2024-01-14 15:48:21', '2024-01-14 16:12:42'),
-(6, 6, 1, '1', 'KIOSCO', '1', '7', 4, '3', 'C', '2024-01-14 16:05:10', '2024-01-14 16:16:03'),
-(7, 7, 1, '1', 'KIOSCO', '1', '8', 4, '3', 'C', '2024-01-14 16:05:15', '2024-01-14 16:22:58'),
-(8, 8, 1, '1', 'KIOSCO', '1', '9', 1, '3', 'C', '2024-01-14 16:11:29', '2024-01-14 16:23:42'),
-(9, 9, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:11:30', '2024-01-14 16:25:28'),
-(10, 10, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:12:50', '2024-01-14 16:27:49'),
-(11, 11, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:12:51', '2024-01-14 16:30:20'),
-(12, 12, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:16:21', '2024-01-14 16:32:52'),
-(13, 13, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:16:22', '2024-01-14 16:34:33'),
-(14, 14, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:23:06', '2024-01-14 16:35:48'),
-(15, 15, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:23:07', '2024-01-14 16:52:52'),
-(16, 16, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:24:00', '2024-01-14 16:55:55'),
-(17, 17, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:24:01', '2024-01-14 17:17:11'),
-(18, 18, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:25:35', '2024-01-14 17:21:28'),
-(19, 19, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:25:36', '2024-01-14 17:22:40'),
-(20, 20, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:29:08', '2024-01-14 19:12:26'),
-(21, 21, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:29:10', '2024-01-14 19:22:59'),
-(22, 22, 1, '1', 'KIOSCO', '1', '10', 1, '3', 'C', '2024-01-14 16:30:25', '2024-01-14 19:36:45'),
-(23, 23, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 16:31:09', '2024-01-20 01:28:59'),
-(24, 24, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 16:33:54', '2024-01-20 01:28:59'),
-(25, 25, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 16:33:55', '2024-01-20 01:28:59'),
-(26, 26, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 16:34:39', '2024-01-20 01:28:59'),
-(27, 27, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 16:34:40', '2024-01-20 01:28:59'),
-(28, 28, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 16:38:23', '2024-01-20 01:28:59'),
-(29, 29, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 16:38:24', '2024-01-20 01:28:59'),
-(30, 30, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 16:52:59', '2024-01-20 01:28:59'),
-(31, 31, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 16:53:01', '2024-01-20 01:28:59'),
-(32, 32, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 16:57:08', '2024-01-20 01:28:59'),
-(33, 33, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 16:57:10', '2024-01-20 01:28:59'),
-(34, 34, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 17:18:37', '2024-01-20 01:28:59'),
-(35, 35, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 17:18:37', '2024-01-20 01:28:59'),
-(36, 36, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 17:21:36', '2024-01-20 01:28:59'),
-(37, 37, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 17:21:36', '2024-01-20 01:28:59'),
-(38, 38, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 17:37:13', '2024-01-20 01:28:59'),
-(39, 39, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 17:37:16', '2024-01-20 01:28:59'),
-(40, 40, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 19:12:33', '2024-01-20 01:28:59'),
-(41, 41, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 19:12:33', '2024-01-20 01:28:59'),
-(42, 42, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 19:36:18', '2024-01-20 01:28:59'),
-(43, 43, 1, '1', 'KIOSCO', '1', '9', 0, '3', 'C', '2024-01-14 19:36:23', '2024-01-20 01:28:59'),
-(44, 44, 1, '1', 'KIOSCO', '1', '9', 1, '4', 'C', '2024-01-20 22:30:16', '0000-00-00 00:00:00'),
-(45, 45, 1, '1', 'KIOSCO', '1', '9', 4, '4', 'C', '2024-01-20 22:31:15', '0000-00-00 00:00:00'),
-(46, 46, 1, '1', 'KIOSCO', '1', '11', 1, '4', 'C', '2024-01-20 13:28:56', '2024-01-20 15:56:22'),
-(47, 47, 1, '1', 'KIOSCO', '1', '11', 1, '4', 'C', '2024-01-20 13:33:00', '2024-01-20 14:01:45'),
-(48, 48, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 13:34:24', '2024-01-20 13:34:31'),
-(49, 49, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-20 16:02:22', '2024-01-28 17:06:58'),
-(50, 50, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 16:06:06', '2024-01-20 16:12:33'),
-(51, 51, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 16:15:15', '2024-01-20 16:31:39'),
-(52, 52, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 16:31:47', '2024-01-20 16:32:49'),
-(53, 53, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 16:36:55', '2024-01-20 16:55:21'),
-(54, 54, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 17:08:24', '2024-01-20 17:27:51'),
-(55, 55, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 17:27:57', '2024-01-20 18:57:30'),
-(56, 56, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 19:04:43', '2024-01-20 19:27:08'),
-(57, 57, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 19:27:43', '2024-01-20 19:29:39'),
-(58, 58, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 19:45:05', '2024-01-20 19:52:13'),
-(59, 59, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 19:52:55', '2024-01-20 19:54:53'),
-(60, 60, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 20:02:12', '2024-01-20 20:06:04'),
-(61, 61, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 20:06:12', '2024-01-20 20:08:39'),
-(62, 62, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 20:08:44', '2024-01-20 20:09:31'),
-(63, 63, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 20:16:57', '2024-01-20 20:18:29'),
-(64, 64, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 20:18:36', '2024-01-20 20:28:51'),
-(65, 65, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 20:28:56', '2024-01-20 20:29:54'),
-(66, 66, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-20 20:30:00', '2024-01-20 20:30:33'),
-(67, 67, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-21 21:08:55', '2024-01-20 21:09:25'),
-(68, 68, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-21 21:09:59', '2024-01-20 21:17:37'),
-(69, 69, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-21 21:17:43', '2024-01-20 21:29:56'),
-(70, 70, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-21 21:30:01', '2024-01-20 21:39:22'),
-(71, 71, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-21 21:54:22', '2024-01-20 21:54:50'),
-(72, 72, 1, '1', 'KIOSCO', '1', '9', 0, '4', 'C', '2024-01-21 21:54:58', '2024-01-21 21:58:28'),
-(73, 73, 1, '1', 'KIOSCO', '1', '9', 0, '4', 'C', '2024-01-21 21:58:28', '2024-01-21 21:58:37'),
-(74, 74, 1, '1', 'KIOSCO', '1', '9', 0, '4', 'C', '2024-01-21 21:58:37', '2024-01-21 21:58:40'),
-(75, 75, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-21 21:58:40', '2024-01-20 21:59:18'),
-(76, 76, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-21 22:42:24', '2024-01-20 22:49:22'),
-(77, 77, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-21 22:49:35', '2024-01-20 22:52:38'),
-(78, 78, 1, '1', 'KIOSCO', '1', '10', 1, '4', 'C', '2024-01-21 22:52:44', '2024-01-20 23:53:39'),
-(79, 79, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 12:44:23', '2024-01-21 12:56:27'),
-(80, 80, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 12:56:36', '2024-01-21 13:02:18'),
-(81, 81, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 13:02:42', '2024-01-21 13:49:05'),
-(82, 82, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 14:19:21', '2024-01-21 14:36:12'),
-(83, 83, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 14:55:29', '2024-01-21 14:57:31'),
-(84, 84, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 14:57:36', '2024-01-21 14:58:07'),
-(85, 85, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 15:01:27', '2024-01-21 15:01:45'),
-(86, 86, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 15:01:48', '2024-01-21 15:03:06'),
-(87, 87, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 15:21:45', '2024-01-21 15:33:30'),
-(88, 88, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 15:47:51', '2024-01-21 16:01:36'),
-(89, 89, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 16:09:08', '2024-01-21 16:10:55'),
-(90, 90, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 16:15:20', '2024-01-21 16:18:50'),
-(91, 91, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 16:53:06', '2024-01-21 16:53:41'),
-(92, 92, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 16:53:55', '2024-01-21 17:21:28'),
-(93, 93, 1, '1', 'KIOSCO', '1', '10', 1, '5', 'C', '2024-01-21 17:21:35', '2024-01-21 17:33:31'),
-(94, 94, 1, '1', 'KIOSCO', '1', '9', 0, '5', 'C', '2024-01-21 18:22:32', '0000-00-00 00:00:00'),
-(95, 95, 1, '1', 'KIOSCO', '1', '10', 1, '7', 'C', '2024-01-22 19:54:28', '2024-01-22 19:55:19'),
-(96, 96, 1, '1', 'KIOSCO', '1', '10', 1, '8', 'C', '2024-01-22 20:13:27', '2024-01-24 17:47:28'),
-(97, 97, 1, '2', 'caja', '1', '9', 0, '8', 'A', '2024-01-23 19:55:04', '0000-00-00 00:00:00'),
-(98, 98, 1, '1', 'KIOSCO', '1', '11', 1, '10', 'C', '2024-01-24 17:47:40', '2024-01-24 17:49:04'),
-(99, 99, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-24 17:49:14', '2024-01-24 17:49:26'),
-(100, 100, 1, '1', 'KIOSCO', '1', '11', 4, '10', 'C', '2024-01-24 18:27:27', '2024-01-24 18:30:09'),
-(101, 101, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-24 18:31:02', '2024-01-24 18:31:26'),
-(102, 102, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-24 18:36:23', '2024-01-24 18:37:20'),
-(103, 103, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-24 18:38:34', '2024-01-24 18:38:53'),
-(104, 104, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-24 18:42:46', '2024-01-24 18:43:00'),
-(105, 105, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-24 18:43:41', '2024-01-24 18:43:54'),
-(106, 106, 1, '1', 'KIOSCO', '1', '10', 4, '10', 'C', '2024-01-24 18:44:45', '2024-01-24 18:45:13'),
-(107, 107, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-24 18:47:34', '2024-01-24 18:48:28'),
-(108, 108, 1, '1', 'KIOSCO', '1', '10', 2, '10', 'C', '2024-01-25 13:04:21', '2024-01-25 13:14:40'),
-(109, 109, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-25 13:42:58', '2024-01-25 13:43:19'),
-(110, 110, 1, '1', 'KIOSCO', '1', '11', 1, '10', 'C', '2024-01-25 16:27:40', '2024-01-25 16:31:22'),
-(111, 111, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-25 16:31:53', '2024-01-25 16:32:15'),
-(112, 112, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-25 16:33:51', '2024-01-25 16:34:32'),
-(113, 113, 1, '1', 'KIOSCO', '1', '11', 1, '10', 'C', '2024-01-25 16:36:07', '2024-01-25 16:39:57'),
-(114, 114, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-25 16:40:03', '2024-01-25 16:41:09'),
-(115, 115, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-25 16:41:41', '2024-01-25 16:42:18'),
-(116, 116, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-25 16:44:01', '2024-01-25 16:44:16'),
-(117, 117, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-25 17:20:17', '2024-01-25 17:21:06'),
-(118, 118, 1, '1', 'KIOSCO', '1', '10', 2, '10', 'C', '2024-01-25 17:22:50', '2024-01-25 18:05:26'),
-(119, 119, 1, '1', 'KIOSCO', '1', '10', 1, '10', 'C', '2024-01-27 21:06:19', '2024-01-26 21:06:33'),
-(120, 120, 1, '1', 'KIOSCO', '1', '9', 0, '10', 'C', '2024-01-27 21:07:05', '0000-00-00 00:00:00'),
-(121, 121, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 21:21:21', '2024-01-26 21:23:37'),
-(122, 122, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 21:24:36', '2024-01-26 21:26:23'),
-(123, 123, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 21:26:30', '2024-01-26 21:27:38'),
-(124, 124, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 21:28:46', '2024-01-26 21:29:00'),
-(125, 125, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 21:29:06', '2024-01-26 22:03:26'),
-(126, 126, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 13:55:37', '2024-01-28 00:41:56'),
-(127, 127, 1, '1', 'KIOSCO', '1', '9', 0, '11', 'C', '2024-01-27 13:58:30', '2024-01-27 14:41:47'),
-(128, 128, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 14:41:47', '2024-01-27 14:42:23'),
-(129, 129, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 14:58:05', '2024-01-27 17:36:36'),
-(130, 130, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 17:41:28', '2024-01-28 17:08:16'),
-(131, 131, 1, '1', 'KIOSCO', '1', '9', 1, '12', 'C', '2024-01-27 18:24:21', '0000-00-00 00:00:00'),
-(132, 132, 1, '1', 'KIOSCO', '1', '9', 0, '11', 'C', '2024-01-27 18:25:27', '2024-01-28 00:38:36'),
-(133, 133, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 18:25:50', '2024-01-27 18:45:03'),
-(134, 134, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 18:45:44', '2024-01-27 18:47:34'),
-(135, 135, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 19:40:31', '2024-01-27 19:40:43'),
-(136, 136, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-27 19:41:01', '2024-01-27 21:56:42'),
-(137, 137, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-28 00:38:36', '2024-01-28 00:42:38'),
-(138, 138, 1, '1', 'KIOSCO', '1', '10', 1, '11', 'C', '2024-01-28 00:56:53', '2024-01-28 00:57:01'),
-(139, 139, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-28 12:31:36', '2024-01-28 12:55:06'),
-(140, 140, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-28 12:32:32', '2024-01-28 13:02:03'),
-(141, 141, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-28 13:07:12', '2024-01-28 13:08:07'),
-(142, 142, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-28 13:09:39', '2024-01-28 14:50:53'),
-(143, 143, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-28 14:51:44', '2024-01-28 14:52:01'),
-(144, 144, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-28 14:55:30', '2024-01-28 15:04:44'),
-(145, 145, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-28 15:04:49', '2024-01-28 17:40:43'),
-(146, 146, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-28 18:08:51', '2024-01-28 18:09:12'),
-(147, 147, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-28 18:09:22', '2024-01-29 12:22:24'),
-(148, 148, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-30 11:16:52', '2024-01-30 11:17:31'),
-(149, 149, 1, '1', 'KIOSCO', '1', '9', 0, '12', 'C', '2024-01-30 13:11:38', '2024-02-03 15:17:32'),
-(150, 150, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-30 13:14:13', '2024-01-30 23:07:53'),
-(151, 151, 1, '1', 'KIOSCO', '1', '10', 1, '12', 'C', '2024-01-31 17:17:29', '2024-01-31 17:19:14'),
-(152, 152, 1, '1', 'KIOSCO', '1', '10', 1, '13', 'C', '2024-02-01 14:38:34', '2024-02-01 14:42:18'),
-(153, 153, 1, '1', 'KIOSCO', '1', '10', 1, '13', 'C', '2024-02-01 17:29:04', '2024-02-01 17:31:07'),
-(154, 154, 1, '1', 'KIOSCO', '1', '10', 1, '13', 'C', '2024-02-01 18:35:16', '2024-02-01 18:37:11'),
-(155, 155, 1, '1', 'KIOSCO', '1', '10', 1, '13', 'C', '2024-02-01 18:54:37', '2024-02-01 18:55:51'),
-(156, 156, 1, '1', 'KIOSCO', '1', '10', 1, '13', 'C', '2024-02-01 19:10:01', '2024-02-01 19:11:44'),
-(157, 157, 1, '1', 'KIOSCO', '1', '11', 1, '13', 'C', '2024-02-01 20:18:51', '2024-02-02 00:03:55'),
-(158, 158, 1, '1', 'KIOSCO', '1', '10', 1, '13', 'C', '2024-02-02 00:04:18', '2024-02-02 00:16:26'),
-(159, 159, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-02 13:33:51', '2024-02-02 17:45:57'),
-(160, 160, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-03 21:45:29', '2024-02-02 21:45:47'),
-(161, 161, 1, '1', 'KIOSCO', '1', '10', 4, '14', 'C', '2024-02-03 21:45:56', '2024-02-03 15:03:23'),
-(162, 162, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-03 15:17:33', '2024-02-03 15:18:35'),
-(163, 163, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-03 15:35:02', '2024-02-03 18:30:20'),
-(164, 164, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-03 18:31:09', '2024-02-03 18:42:33'),
-(165, 165, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-03 19:27:27', '2024-02-03 19:27:43'),
-(166, 166, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-03 19:48:50', '2024-02-03 19:49:20'),
-(167, 167, 1, '1', 'KIOSCO', '1', '11', 1, '14', 'C', '2024-02-03 19:51:24', '2024-02-03 19:59:48'),
-(168, 168, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-03 19:59:55', '2024-02-03 20:03:13'),
-(169, 169, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-03 20:05:49', '2024-02-03 20:06:06'),
-(170, 170, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-03 20:06:46', '2024-02-03 20:35:57'),
-(171, 171, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-03 20:56:04', '2024-02-03 21:04:28'),
-(172, 172, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-04 21:29:38', '2024-02-03 21:30:57'),
-(173, 173, 1, '1', 'KIOSCO', '1', '10', 4, '14', 'C', '2024-02-04 21:34:58', '2024-02-03 21:49:53'),
-(174, 174, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-04 21:57:00', '2024-02-03 22:39:09'),
-(175, 175, 1, '1', 'KIOSCO', '1', '10', 1, '14', 'C', '2024-02-04 22:39:35', '2024-02-03 23:15:08'),
-(176, 176, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-04 11:18:55', '2024-02-04 12:29:50'),
-(177, 177, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-04 12:34:58', '2024-02-04 12:36:08'),
-(178, 178, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-04 12:37:30', '2024-02-04 12:49:49'),
-(179, 179, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-04 12:51:22', '2024-02-04 12:52:42'),
-(180, 180, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-04 12:53:12', '2024-02-04 12:53:31'),
-(181, 181, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-04 12:56:05', '2024-02-04 12:56:17'),
-(182, 182, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-04 16:08:41', '2024-02-04 16:09:10'),
-(183, 183, 1, '1', 'KIOSCO', '1', '11', 1, '15', 'C', '2024-02-04 16:09:27', '2024-02-04 16:22:22'),
-(184, 184, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-04 16:26:09', '2024-02-04 19:13:54'),
-(185, 185, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-04 19:14:30', '2024-02-04 19:14:41'),
-(186, 186, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-04 19:19:00', '2024-02-04 19:19:57'),
-(187, 187, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-04 19:55:22', '2024-02-04 19:55:35'),
-(188, 188, 1, '1', 'KIOSCO', '1', '10', 1, '15', 'C', '2024-02-05 22:28:44', '2024-02-04 22:29:05'),
-(189, 189, 1, '1', 'KIOSCO', '1', '9', 0, '15', 'C', '2024-02-05 12:55:13', '0000-00-00 00:00:00'),
-(190, 190, 1, '1', 'KIOSCO', '1', '9', 0, '', 'C', '2024-02-09 22:01:10', '0000-00-00 00:00:00'),
-(191, 191, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-09 22:02:13', '2024-02-08 22:02:47'),
-(192, 192, 1, '1', 'KIOSCO', '1', '9', 0, '17', 'C', '2024-02-09 22:03:41', '0000-00-00 00:00:00'),
-(193, 193, 1, '1', 'KIOSCO', '1', '9', 0, '17', 'C', '2024-02-09 12:22:44', '0000-00-00 00:00:00'),
-(194, 194, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-09 12:47:12', '2024-02-09 12:58:35'),
-(195, 195, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-09 13:48:20', '2024-02-09 13:48:50'),
-(196, 196, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-09 16:13:15', '2024-02-09 16:14:16'),
-(197, 197, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-09 16:14:30', '2024-02-09 17:21:30'),
-(198, 198, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-09 17:38:14', '2024-02-09 17:41:08'),
-(199, 199, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-09 17:42:12', '2024-02-09 18:17:04'),
-(200, 200, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-09 18:19:44', '2024-02-09 19:07:15'),
-(201, 201, 1, '1', 'KIOSCO', '1', '10', 4, '17', 'C', '2024-02-09 20:24:46', '2024-02-09 21:44:38'),
-(202, 202, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-10 21:44:45', '2024-02-09 21:45:53'),
-(203, 203, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-10 21:52:00', '2024-02-09 21:53:50'),
-(204, 204, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-10 21:55:41', '2024-02-09 21:57:58'),
-(205, 205, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-10 21:59:04', '2024-02-10 13:56:55'),
-(206, 206, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-10 17:26:25', '2024-02-10 17:27:02'),
-(207, 207, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-10 17:27:15', '2024-02-10 17:36:13'),
-(208, 208, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-10 17:36:19', '2024-02-10 17:37:11'),
-(209, 209, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-10 17:37:16', '2024-02-10 17:40:58'),
-(210, 210, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-10 17:46:29', '2024-02-10 17:47:43'),
-(211, 211, 1, '1', 'KIOSCO', '1', '10', 1, '17', 'C', '2024-02-10 17:48:16', '2024-02-10 18:06:58');
+INSERT INTO `correlativo` (`id`, `correlativo`, `id_cl`, `caja`, `usuario`, `boleta`, `valor`, `forma_pago`, `id_cierre`, `estado`, `fecha`, `fecha_cierre`) VALUES
+(1, 1, 1, '1', '1', '1', 1200, 1, '2', 'C', '2024-06-28 12:44:08', '2024-06-28 12:45:34'),
+(2, 2, 1, '1', '1', '1', 2000, 1, '2', 'C', '2024-06-28 12:45:43', '2024-06-28 13:17:30'),
+(3, 3, 1, '1', '1', '1', 4800, 2, '2', 'C', '2024-06-28 12:47:45', '2024-06-28 14:31:07'),
+(4, 4, 1, '1', '1', '1', 2200, 1, '2', 'C', '2024-06-28 12:51:22', '2024-06-28 14:06:40'),
+(5, 5, 1, '1', '1', '1', 3000, 1, '2', 'C', '2024-06-28 12:51:28', '2024-06-28 13:17:30'),
+(6, 6, 1, '1', '1', '1', 3600, 1, '2', 'C', '2024-06-28 14:32:06', '2024-06-28 14:32:48'),
+(7, 7, 1, '1', '1', '1', 4800, 1, '2', 'C', '2024-06-28 14:38:25', '2024-06-28 20:13:58'),
+(8, 8, 1, '1', '1', '1', 2400, 1, '2', 'C', '2024-06-28 14:40:51', '2024-06-28 20:13:58'),
+(9, 9, 1, '1', '1', '2', 500, 2, '2', 'C', '2024-06-28 14:41:48', '2024-06-28 20:20:06'),
+(10, 10, 1, '1', '1', '2', 1200, 1, '2', 'C', '2024-06-29 20:20:06', '2024-06-28 21:05:50'),
+(11, 11, 1, '1', '1', '2', 2400, 1, '2', 'C', '2024-06-29 20:20:53', '2024-06-28 21:05:50'),
+(12, 12, 1, '1', '1', '2', 4000, 1, '2', 'C', '2024-06-29 20:21:57', '2024-06-28 21:07:02'),
+(13, 13, 1, '1', '1', '2', 0, 0, '2', 'A', '2024-06-29 21:05:32', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -611,18 +293,15 @@ INSERT INTO `correlativo` (`id`, `correlativo`, `id_cl`, `caja`, `nom_caja`, `us
 -- Estructura de tabla para la tabla `cuentas_corrientes`
 --
 
-DROP TABLE IF EXISTS `cuentas_corrientes`;
-CREATE TABLE IF NOT EXISTS `cuentas_corrientes` (
-  `id` int NOT NULL,
-  `id_cl` int NOT NULL,
+CREATE TABLE `cuentas_corrientes` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
   `rut` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `id_venta` int NOT NULL,
+  `id_venta` int(11) NOT NULL,
   `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `fecha_registro` date NOT NULL,
-  `cuentas_corrientescol` varchar(45) COLLATE utf8mb3_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_cuentas_corrientes` (`id_cl`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `cuentas_corrientescol` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -630,31 +309,32 @@ CREATE TABLE IF NOT EXISTS `cuentas_corrientes` (
 -- Estructura de tabla para la tabla `cuenta_corriente`
 --
 
-DROP TABLE IF EXISTS `cuenta_corriente`;
-CREATE TABLE IF NOT EXISTS `cuenta_corriente` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
+CREATE TABLE `cuenta_corriente` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
   `rut` varchar(45) NOT NULL,
-  `id_venta` int NOT NULL,
+  `id_venta` int(11) NOT NULL,
   `estado` varchar(4) NOT NULL,
-  `fecha_registro` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `fecha_registro` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cuenta_corriente`
 --
 
 INSERT INTO `cuenta_corriente` (`id`, `id_cl`, `rut`, `id_venta`, `estado`, `fecha_registro`) VALUES
-(1, 1, '19150634-0', 4, 'C', '2023-12-31'),
-(2, 1, '19150634-0', 42, 'A', '2024-01-13'),
-(3, 1, '7367889-7', 49, 'C', '2024-01-20'),
-(4, 1, '16208523-9', 126, 'C', '2024-01-27'),
-(5, 1, '7367889-7', 130, 'C', '2024-01-27'),
-(7, 1, '18752880-1', 132, 'A', '2024-01-27'),
-(8, 1, '16208523-9', 139, 'C', '2024-01-28'),
-(9, 1, '18752880-1', 149, 'A', '2024-01-30'),
-(10, 1, '18752880-1', 192, 'A', '2024-02-08');
+(1, 1, '19150634-0', 1, 'C', '2024-06-28'),
+(2, 1, '19150634-0', 2, 'C', '2024-06-28'),
+(3, 1, '19150634-0', 5, 'C', '2024-06-28'),
+(4, 1, '19150634-0', 4, 'C', '2024-06-28'),
+(5, 1, '19150634-0', 3, 'C', '2024-06-28'),
+(6, 1, '19150634-0', 6, 'C', '2024-06-28'),
+(7, 1, '19150634-0', 7, 'C', '2024-06-28'),
+(8, 1, '19150634-0', 8, 'C', '2024-06-28'),
+(9, 1, '19150634-0', 9, 'C', '2024-06-28'),
+(10, 1, '19150634-0', 10, 'C', '2024-06-28'),
+(11, 1, '19150634-0', 11, 'C', '2024-06-28'),
+(12, 1, '19150634-0', 12, 'C', '2024-06-28');
 
 -- --------------------------------------------------------
 
@@ -662,15 +342,13 @@ INSERT INTO `cuenta_corriente` (`id`, `id_cl`, `rut`, `id_venta`, `estado`, `fec
 -- Estructura de tabla para la tabla `giros`
 --
 
-DROP TABLE IF EXISTS `giros`;
-CREATE TABLE IF NOT EXISTS `giros` (
-  `id` int NOT NULL,
+CREATE TABLE `giros` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(200) DEFAULT NULL,
-  `iva` int DEFAULT NULL,
-  `tributa` int DEFAULT NULL,
-  `net` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `iva` int(11) DEFAULT NULL,
+  `tributa` int(11) DEFAULT NULL,
+  `net` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `giros`
@@ -1381,17 +1059,34 @@ INSERT INTO `giros` (`id`, `nombre`, `iva`, `tributa`, `net`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `margen_ganancia`
+--
+
+CREATE TABLE `margen_ganancia` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL,
+  `porcentaje` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `margen_ganancia`
+--
+
+INSERT INTO `margen_ganancia` (`id`, `id_cl`, `porcentaje`) VALUES
+(1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `metodo_pago`
 --
 
-DROP TABLE IF EXISTS `metodo_pago`;
-CREATE TABLE IF NOT EXISTS `metodo_pago` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
+CREATE TABLE `metodo_pago` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
   `nombre_metodo_pago` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `metodo_pago`
@@ -1409,16 +1104,14 @@ INSERT INTO `metodo_pago` (`id`, `id_cl`, `nombre_metodo_pago`, `estado`) VALUES
 -- Estructura de tabla para la tabla `monto_caja`
 --
 
-DROP TABLE IF EXISTS `monto_caja`;
-CREATE TABLE IF NOT EXISTS `monto_caja` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
-  `id_caja` int NOT NULL,
-  `id_cierre` int NOT NULL,
-  `motivo` int NOT NULL,
-  `monto` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `monto_caja` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_caja` int(11) NOT NULL,
+  `id_cierre` int(11) NOT NULL,
+  `motivo` int(11) NOT NULL,
+  `monto` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `monto_caja`
@@ -1532,7 +1225,31 @@ INSERT INTO `monto_caja` (`id`, `id_cl`, `id_caja`, `id_cierre`, `motivo`, `mont
 (105, 1, 1, 17, 2, 800),
 (106, 1, 1, 17, 2, 3600),
 (107, 1, 1, 17, 2, 1300),
-(109, 1, 1, 17, 2, 1600);
+(109, 1, 1, 17, 2, 1600),
+(110, 1, 1, 1, 1, 20000),
+(111, 1, 1, 1, 3, -10000),
+(112, 1, 1, 1, 3, 10000),
+(113, 1, 1, 1, 2, 800),
+(114, 1, 1, 1, 2, 400),
+(115, 1, 1, 1, 2, 800),
+(116, 1, 1, 1, 2, 400),
+(117, 1, 1, 1, 2, 800),
+(118, 1, 1, 1, 2, 1200),
+(119, 1, 1, 1, 2, 400),
+(120, 1, 1, 1, 2, 1600),
+(121, 1, 1, 1, 2, 400),
+(122, 1, 1, 1, 2, 400),
+(123, 1, 1, 1, 2, 4000),
+(124, 1, 1, 1, 2, 400),
+(125, 1, 1, 1, 2, 1200),
+(126, 1, 1, 1, 2, 400),
+(127, 1, 1, 1, 2, 2500),
+(128, 1, 1, 1, 3, -20000),
+(129, 1, 1, 1, 3, 20000),
+(130, 1, 1, 2, 1, 20000),
+(131, 1, 1, 2, 4, 1200),
+(132, 1, 1, 2, 4, 2400),
+(133, 1, 1, 2, 4, 4000);
 
 -- --------------------------------------------------------
 
@@ -1540,12 +1257,10 @@ INSERT INTO `monto_caja` (`id`, `id_cl`, `id_caja`, `id_cierre`, `motivo`, `mont
 -- Estructura de tabla para la tabla `motivo_mov_monto_caja`
 --
 
-DROP TABLE IF EXISTS `motivo_mov_monto_caja`;
-CREATE TABLE IF NOT EXISTS `motivo_mov_monto_caja` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `motivo_mov_monto_caja` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `motivo_mov_monto_caja`
@@ -1553,8 +1268,9 @@ CREATE TABLE IF NOT EXISTS `motivo_mov_monto_caja` (
 
 INSERT INTO `motivo_mov_monto_caja` (`id`, `descripcion`) VALUES
 (1, 'INICIO DE CAJA'),
-(2, 'VENTA'),
-(3, 'MOVIMIENTO DE DINERO');
+(2, 'VENTA EN EFECTIVO'),
+(3, 'MOVIMIENTO DE DINERO'),
+(4, 'PAGO DE CUENTA EN EFECTIVO');
 
 -- --------------------------------------------------------
 
@@ -1562,16 +1278,14 @@ INSERT INTO `motivo_mov_monto_caja` (`id`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `pago_cliente`
 --
 
-DROP TABLE IF EXISTS `pago_cliente`;
-CREATE TABLE IF NOT EXISTS `pago_cliente` (
-  `id` int NOT NULL,
-  `id_cl` int DEFAULT NULL,
-  `plan` int NOT NULL,
-  `metodo_pago` int NOT NULL,
+CREATE TABLE `pago_cliente` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL,
+  `plan` int(11) NOT NULL,
+  `metodo_pago` int(11) NOT NULL,
   `fecha_desde` date NOT NULL,
   `fecha_hasta` date NOT NULL,
-  `estado` varchar(5) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  `estado` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1579,7 +1293,9 @@ CREATE TABLE IF NOT EXISTS `pago_cliente` (
 --
 
 INSERT INTO `pago_cliente` (`id`, `id_cl`, `plan`, `metodo_pago`, `fecha_desde`, `fecha_hasta`, `estado`) VALUES
-(1, 1, 2, 1, '2023-12-20', '2023-12-20', '');
+(1, 1, 2, 1, '2023-12-20', '2023-12-20', ''),
+(2, 1, 1, 1, '2024-05-15', '2024-05-15', 'S'),
+(3, 1, 1, 1, '2024-05-15', '2024-05-15', 'S');
 
 -- --------------------------------------------------------
 
@@ -1587,14 +1303,12 @@ INSERT INTO `pago_cliente` (`id`, `id_cl`, `plan`, `metodo_pago`, `fecha_desde`,
 -- Estructura de tabla para la tabla `pass_provisoria`
 --
 
-DROP TABLE IF EXISTS `pass_provisoria`;
-CREATE TABLE IF NOT EXISTS `pass_provisoria` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int DEFAULT NULL,
-  `pass` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fecha` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `pass_provisoria` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL,
+  `pass` varchar(45) DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1602,19 +1316,16 @@ CREATE TABLE IF NOT EXISTS `pass_provisoria` (
 -- Estructura de tabla para la tabla `pedidos`
 --
 
-DROP TABLE IF EXISTS `pedidos`;
-CREATE TABLE IF NOT EXISTS `pedidos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
-  `id_proveedor` int NOT NULL,
+CREATE TABLE `pedidos` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_proveedor` int(11) NOT NULL,
   `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `estado_pago` varchar(5) COLLATE utf8mb3_spanish_ci NOT NULL,
-  `fac_con_iva` varchar(5) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci NOT NULL,
-  `creado_por` int NOT NULL,
-  `fecha_registro` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_pedidos_detalle` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `estado_pago` varchar(5) NOT NULL,
+  `fac_con_iva` varchar(5) NOT NULL,
+  `creado_por` int(11) NOT NULL,
+  `fecha_registro` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `pedidos`
@@ -1629,7 +1340,7 @@ INSERT INTO `pedidos` (`id`, `id_cl`, `id_proveedor`, `estado`, `estado_pago`, `
 (7, 1, 7, 'C', 'C', '', 1, '2024-01-13'),
 (8, 1, 5, 'C', 'A', 'N', 1, '2024-01-25'),
 (9, 1, 2, 'C', 'C', '', 1, '2024-01-26'),
-(10, 1, 3, 'C', '', '', 1, '2024-02-02');
+(10, 1, 3, 'C', 'C', 'S', 1, '2024-02-02');
 
 -- --------------------------------------------------------
 
@@ -1637,17 +1348,15 @@ INSERT INTO `pedidos` (`id`, `id_cl`, `id_proveedor`, `estado`, `estado_pago`, `
 -- Estructura de tabla para la tabla `pedidos_detalle`
 --
 
-DROP TABLE IF EXISTS `pedidos_detalle`;
-CREATE TABLE IF NOT EXISTS `pedidos_detalle` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int NOT NULL,
-  `id_pedido` int NOT NULL,
+CREATE TABLE `pedidos_detalle` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL,
   `producto` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `cantidad` int NOT NULL,
-  `valor` int NOT NULL,
-  `fecha_reg` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `cantidad` int(11) NOT NULL,
+  `valor` int(11) NOT NULL,
+  `fecha_reg` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `pedidos_detalle`
@@ -1740,16 +1449,14 @@ INSERT INTO `pedidos_detalle` (`id`, `id_cl`, `id_pedido`, `producto`, `cantidad
 -- Estructura de tabla para la tabla `planes`
 --
 
-DROP TABLE IF EXISTS `planes`;
-CREATE TABLE IF NOT EXISTS `planes` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `planes` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `estado` varchar(5) COLLATE utf8mb3_spanish_ci NOT NULL,
-  `usuarios` int NOT NULL,
-  `cajas` int NOT NULL,
-  `valor` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `estado` varchar(5) NOT NULL,
+  `usuarios` int(11) NOT NULL,
+  `cajas` int(11) NOT NULL,
+  `valor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `planes`
@@ -1769,53 +1476,51 @@ INSERT INTO `planes` (`id`, `nombre`, `estado`, `usuarios`, `cajas`, `valor`) VA
 -- Estructura de tabla para la tabla `productos`
 --
 
-DROP TABLE IF EXISTS `productos`;
-CREATE TABLE IF NOT EXISTS `productos` (
-  `id_prod` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `productos` (
+  `id_prod` int(11) NOT NULL,
   `id_cl` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `codigo_barra` varchar(100) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `nombre_prod` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `proveedor` varchar(45) COLLATE utf8mb3_spanish_ci NOT NULL,
+  `proveedor` varchar(45) NOT NULL,
   `categoria` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `cantidad` int NOT NULL,
+  `cantidad` int(11) NOT NULL,
   `pesaje` varchar(5) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
-  `unidad_medida` int DEFAULT NULL,
+  `unidad_medida` int(11) DEFAULT NULL,
   `valor_neto` varchar(7) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `margen_ganancia` int NOT NULL,
-  `monto_ganancia` int NOT NULL,
+  `margen_ganancia` int(11) NOT NULL,
+  `monto_ganancia` int(11) NOT NULL,
   `valor_venta` varchar(7) CHARACTER SET latin2 COLLATE latin2_general_ci NOT NULL,
-  `descuento` int NOT NULL,
+  `descuento` int(11) NOT NULL,
   `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `creado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
-  `fecha_reg` date NOT NULL,
-  PRIMARY KEY (`id_prod`)
-) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `fecha_reg` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
 INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `proveedor`, `categoria`, `cantidad`, `pesaje`, `unidad_medida`, `valor_neto`, `margen_ganancia`, `monto_ganancia`, `valor_venta`, `descuento`, `estado`, `creado_por`, `fecha_reg`) VALUES
-(1, '1', '8445290912336', 'Criollitas', '2', '1', 2, 'N', 1, '840', 43, 360, '1200', 0, 'S', '1', '2023-12-22'),
+(1, '1', '8445290912336', 'Criollitas', '2', '1', -4, 'N', 1, '840', 43, 360, '1200', 0, 'S', '1', '2023-12-22'),
 (2, '1', '7801620009700', 'Agua mineral 600ml', '2', '9', 10, 'N', 1, '689', 45, 311, '1000', 0, 'S', '1', '2023-12-22'),
 (3, '1', '7801610382028', 'Agua tónica schweppes', '2', '9', 0, 'N', 1, '1379', 45, 621, '2000', 0, 'S', '1', '2023-12-22'),
 (4, '1', '7801610001622', 'Coca - Cola 1.5lts', '2', '9', 12, 'N', 1, '1379', 45, 621, '2000', 0, 'S', '1', '2023-12-22'),
-(5, '1', '7613287755810', 'Chokita', '2', '1', 5, 'N', 1, '138', 190, 262, '400', 0, 'S', '1', '2023-12-22'),
-(6, '1', '7613039496275', 'Galleta maravilla 120g', '2', '1', 6, 'N', 1, '560', 79, 440, '1000', 0, 'S', '1', '2023-12-22'),
+(5, '1', '7613287755810', 'Chokita', '1', '1', -12, 'N', 1, '138', 190, 262, '400', 0, 'S', '1', '2023-12-22'),
+(6, '1', '7613039496275', 'Galleta maravilla 120g', '2', '1', 0, 'N', 1, '560', 79, 440, '1000', 0, 'S', '1', '2023-12-22'),
 (7, '1', '7802420127663', 'Ramitas Marco-Polo', '2', '6', 8, 'N', 1, '386', 81, 314, '700', 0, 'S', '1', '2023-12-22'),
-(8, '1', '7613039257333', 'Galleta limón Mckay', '2', '1', 10, 'N', 1, '560', 79, 440, '1000', 0, 'S', '1', '2023-12-22'),
-(9, '1', '8445290793348', 'Galleta Tritón Pack x2', '2', '1', 1, 'N', 1, '1000', 100, 1000, '2000', 0, 'S', '1', '2023-12-22'),
+(8, '1', '7613039257333', 'Galleta limón Mckay', '2', '1', 5, 'N', 1, '560', 79, 440, '1000', 0, 'S', '1', '2023-12-22'),
+(9, '1', '8445290793348', 'Galleta Tritón Pack x2', '2', '1', -1, 'N', 1, '1000', 100, 1000, '2000', 0, 'S', '1', '2023-12-22'),
 (10, '1', '7802215503535', 'Galleta din-don mini', '2', '1', 0, 'N', 1, '334', 50, 166, '500', 0, 'S', '1', '2023-12-22'),
-(11, '1', '7613031651412', 'Galleta mini mantequilla', '2', '1', 7, 'N', 1, '311', 29, 89, '400', 0, 'S', '1', '2023-12-22'),
+(11, '1', '7613031651412', 'Galleta mini mantequilla', '2', '1', 5, 'N', 1, '311', 29, 89, '400', 0, 'S', '1', '2023-12-22'),
 (12, '1', '7801610591123', 'Fanta 591ml', '2', '9', 5, 'N', 1, '770', 30, 230, '1000', 0, 'S', '1', '2023-12-22'),
 (13, '1', '7802800533572', 'Kryzpo queso', '2', '6', -1, 'N', 1, '1723', 45, 777, '2500', 0, 'S', '1', '2023-12-22'),
-(14, '1', '7802230082503', 'Alteza bocado', '2', '1', 3, 'N', 1, '1252', 36, 448, '1700', 0, 'S', '1', '2023-12-22'),
-(15, '1', '7802230082527', 'Alteza frutilla', '2', '1', 2, 'N', 1, '1252', 36, 448, '1700', 0, 'S', '1', '2023-12-22'),
+(14, '1', '7802230082503', 'Alteza bocado', '2', '1', 0, 'N', 1, '1252', 36, 448, '1700', 0, 'S', '1', '2023-12-22'),
+(15, '1', '7802230082527', 'Alteza frutilla', '2', '1', -2, 'N', 1, '1252', 36, 448, '1700', 0, 'S', '1', '2023-12-22'),
 (17, '1', '7802420003875', 'Crunchis Marco Polo', '2', '6', 9998, 'N', 1, '454', 54, 246, '700', 0, 'S', '1', '2023-12-22'),
-(18, '1', '7613031651443', 'Galleta mini Niza', '2', '1', 10, 'N', 1, '311', 29, 89, '400', 0, 'S', '1', '2023-12-22'),
+(18, '1', '7613031651443', 'Galleta mini Niza', '2', '1', 0, 'N', 1, '311', 29, 89, '400', 0, 'S', '1', '2023-12-22'),
 (19, '1', '7801875000583', 'Te Supremo Verde', '2', '9', 2, 'N', 1, '1336', 50, 664, '2000', 0, 'S', '1', '2023-12-22'),
-(20, '1', '7613031651474', 'Galleta mini Coco', '2', '1', 10, 'N', 1, '311', 29, 89, '400', 0, 'S', '1', '2023-12-22'),
-(21, '1', '7804000001691', 'Pack 5 Barr manzana', '2', '1', 1, 'N', 1, '1756', 42, 744, '2500', 0, 'S', '1', '2023-12-22'),
+(20, '1', '7613031651474', 'Galleta mini Coco', '2', '1', 0, 'N', 1, '311', 29, 89, '400', 0, 'S', '1', '2023-12-22'),
+(21, '1', '7804000001691', 'Pack 5 Barr manzana', '2', '1', 0, 'N', 1, '1756', 42, 744, '2500', 0, 'S', '1', '2023-12-22'),
 (22, '1', '7804000001684', 'Barra manzana En Linea', '2', '10', 5, 'N', 1, '351', 42, 149, '500', 0, 'S', '1', '2023-12-22'),
 (23, '1', '7802420001574', 'Snack Mix Marco Polo', '2', '6', 3, 'N', 1, '462', 52, 238, '700', 0, 'S', '1', '2023-12-22'),
 (24, '1', '7804000002223', 'Pack 5 Barr Cranberries', '2', '10', 1, 'N', 1, '1756', 42, 744, '2500', 0, 'S', '1', '2023-12-22'),
@@ -1844,11 +1549,11 @@ INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `pro
 (47, '1', '7801620853204', 'Crush Zero 1.5lts', '3', '8', 10, 'N', 1, '1924', 4, 76, '2000', 0, 'S', '1', '2023-12-31'),
 (48, '1', 'Quitasoles', 'Quitasol ', '1', '12', 99983, 'N', 1, '1000', 100, 1000, '2000', 0, 'S', '1', '2024-01-01'),
 (49, '1', '78023994', 'Bon o bon amarillo', '1', '1', -49, 'N', 1, '125', 100, 125, '250', 0, 'S', '1', '2024-01-01'),
-(50, '1', '78024106', 'Bon o bon blanco', '2', '1', 18, 'N', 1, '125', 100, 125, '250', 0, 'S', '1', '2024-01-01'),
-(51, '1', '7802215515590', 'Donuts blanca bolsa 130grs', '2', '1', 2, 'N', 1, '800', 88, 700, '1500', 0, 'S', '1', '2024-01-01'),
-(52, '1', '7622201693114', 'Galleta Oreo', '1', '1', 1, 'N', 1, '700', 71, 500, '1200', 0, 'S', '1', '2024-01-01'),
-(53, '1', '7802215515019', 'Galleta Gretel', '2', '1', 4, 'N', 1, '990', 21, 210, '1200', 0, 'S', '1', '2024-01-01'),
-(54, '1', '7802215502569', 'Gall Sunny', '1', '1', 4, 'N', 1, '750', 60, 450, '1200', 0, 'S', '1', '2024-01-01'),
+(50, '1', '78024106', 'Bon o bon blanco', '2', '1', -8, 'N', 1, '125', 100, 125, '250', 0, 'S', '1', '2024-01-01'),
+(51, '1', '7802215515590', 'Donuts blanca bolsa 130grs', '2', '1', 0, 'N', 1, '800', 88, 700, '1500', 0, 'S', '1', '2024-01-01'),
+(52, '1', '7622201693114', 'Galleta Oreo', '1', '1', 0, 'N', 1, '700', 71, 500, '1200', 0, 'S', '1', '2024-01-01'),
+(53, '1', '7802215515019', 'Galleta Gretel', '2', '1', 0, 'N', 1, '990', 21, 210, '1200', 0, 'S', '1', '2024-01-01'),
+(54, '1', '7802215502569', 'Gall Sunny', '1', '1', 0, 'N', 1, '750', 60, 450, '1200', 0, 'S', '1', '2024-01-01'),
 (55, '1', '7802000015120', 'De Todito Evercrisp', '1', '6', 17, 'N', 1, '545', 47, 255, '800', 0, 'S', '1', '2024-01-12'),
 (56, '1', '7802000017476', 'Doritos Queso', '4', '6', 17, 'N', 1, '545', 47, 255, '800', 0, 'S', '1', '2024-01-12'),
 (57, '1', '7802408007239', 'Ramitas Normales Fruna', '4', '6', 20, 'N', 1, '258', 94, 242, '500', 0, 'S', '1', '2024-01-12'),
@@ -1864,7 +1569,7 @@ INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `pro
 (67, '1', '7613039589069', 'Tritón Mini Limón', '6', '1', 10, 'N', 1, '302', 32, 98, '400', 0, 'S', '1', '2024-01-13'),
 (68, '1', '7802230081162', 'Kuky Clásica', '6', '1', 10, 'N', 1, '768', 30, 232, '1000', 0, 'S', '1', '2024-01-13'),
 (69, '1', '7613032425616', 'Svelty Move+', '6', '13', 2, 'N', 1, '5450', 47, 2550, '8000', 0, 'S', '1', '2024-01-13'),
-(70, '1', '7613032590369', 'Galleta Niza Normal', '6', '1', 4, 'N', 1, '632', 58, 368, '1000', 0, 'S', '1', '2024-01-13'),
+(70, '1', '7613032590369', 'Galleta Niza Normal', '6', '1', 0, 'N', 1, '632', 58, 368, '1000', 0, 'S', '1', '2024-01-13'),
 (71, '1', '7802950072679', 'Trencito impulsivo', '6', '6', 18, 'N', 1, '166', 51, 84, '250', 0, 'S', '1', '2024-01-13'),
 (72, '1', '7613034891730', 'ChipChipers Chocolate', '6', '1', 5, 'N', 1, '1107', 81, 893, '2000', 0, 'S', '1', '2024-01-13'),
 (73, '1', '8445290262646', 'Leche Nido Polvo', '6', '13', 2, 'N', 1, '6067', 48, 2933, '9000', 0, 'S', '1', '2024-01-13'),
@@ -1872,12 +1577,12 @@ INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `pro
 (75, '1', 'hielo', 'Hielo', '7', '12', 1000, 'N', 1, '800', 88, 700, '1500', 0, 'S', '1', '2024-01-13'),
 (76, '1', '7801620009694', 'Agua Cachantún 600cc', '4', '8', 100, 'N', 1, '300', 233, 700, '1000', 0, 'S', '1', '2024-01-14'),
 (77, '1', '78098152', 'Sal Lobos', '2', '13', 10, 'N', 1, '500', 100, 500, '1000', 0, 'S', '1', '2024-01-20'),
-(78, '1', '7802230086969', 'Tritón chocolate', '2', '1', 20, 'N', 1, '600', 67, 400, '1000', 0, 'S', '1', '2024-01-21'),
+(78, '1', '7802230086969', 'Tritón chocolate', '2', '1', 19, 'N', 1, '600', 67, 400, '1000', 0, 'S', '1', '2024-01-21'),
 (79, '1', '7500435237895', 'Magistral lavaloza', '2', '13', 10, 'N', 1, '1590', 26, 410, '2000', 0, 'S', '1', '2024-01-21'),
 (80, '1', '7802230086952', 'Triton vainilla', '2', '1', 10, 'N', 1, '600', 67, 400, '1000', 0, 'S', '1', '2024-01-21'),
 (81, '1', '7802215503399', 'Mini Dulcitas Costa', '2', '1', 5, 'N', 1, '227', 76, 173, '400', 0, 'S', '1', '2024-01-26'),
 (82, '1', '7802215503863', 'Mini Limón Costa', '2', '1', 5, 'N', 1, '227', 76, 173, '400', 0, 'S', '1', '2024-01-26'),
-(83, '1', '7802215503429', 'Mini Palmeritas Costa', '2', '1', 6, 'N', 1, '227', 76, 173, '400', 0, 'S', '1', '2024-01-26'),
+(83, '1', '7802215503429', 'Mini Palmeritas Costa', '2', '1', 0, 'N', 1, '227', 76, 173, '400', 0, 'S', '1', '2024-01-26'),
 (84, '1', '7802215503450', 'Mini Vino Costa', '2', '1', 227, 'N', 1, '227', 76, 173, '400', 0, 'S', '1', '2024-01-26'),
 (85, '1', '7802215503405', 'Mini Mantequilla Costa', '2', '1', 5, 'N', 1, '227', 76, 173, '400', 0, 'S', '1', '2024-01-26'),
 (86, '1', '7802225688567', 'Arcor Choc Kiss', '2', '1', 30, 'N', 1, '187', 60, 113, '300', 0, 'S', '1', '2024-01-26'),
@@ -1892,10 +1597,10 @@ INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `pro
 (95, '1', 'esponja', 'esponja', '2', '13', 20, 'N', 1, '250', 100, 250, '500', 0, 'S', '1', '2024-02-04'),
 (96, '1', '7801610005521', 'Sprite 2.5lts', '2', '9', 2, 'N', 1, '2000', 50, 1000, '3000', 0, 'S', '1', '2024-02-04'),
 (97, '1', '7702026180287', 'Toallitas Nosotras', '2', '13', 1, 'N', 1, '1490', 101, 1510, '3000', 0, 'S', '1', '2024-02-04'),
-(99, '1', '7801620852689', 'Pepsi Lata 350cc', '1', '1', 6, 'N', 1, '800', 50, 400, '1200', 0, 'S', '1', '2024-02-04'),
+(99, '1', '7801620852689', 'Pepsi Lata 350cc', '1', '1', 0, 'N', 1, '800', 50, 400, '1200', 0, 'S', '1', '2024-02-04'),
 (100, '1', '7801620300203', 'Bebida PAP 350cc', '2', '8', 6, 'N', 1, '600', 100, 600, '1200', 0, 'S', '1', '2024-02-08'),
 (101, '1', '7801620360153', 'Canada Dry Ginger Ale 350cc', '2', '8', 6, 'N', 1, '600', 100, 600, '1200', 0, 'S', '1', '2024-02-08'),
-(102, '1', '7613032443221', 'McKay Mini Morocha', '2', '1', 1, 'N', 1, '240', 67, 160, '400', 0, 'S', '1', '2024-02-09'),
+(102, '1', '7613032443221', 'McKay Mini Morocha', '2', '1', -2, 'N', 1, '240', 67, 160, '400', 0, 'S', '1', '2024-02-09'),
 (103, '1', '7613035760561', 'Mini Sahnenuss Helado', '2', '12', 5, 'N', 1, '1029', 55, 571, '1600', 0, 'S', '1', '2024-02-09'),
 (104, '1', '7613287171726', 'Mini KitKat helado', '1', '12', 10, 'N', 1, '1040', 54, 560, '1600', 0, 'S', '1', '2024-02-09'),
 (105, '1', '7702026177669', 'Toallitas Húmedas Nosotras', '2', '13', 10, 'N', 1, '1890', 59, 1110, '3000', 0, 'S', '1', '2024-02-09'),
@@ -1908,30 +1613,21 @@ INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `pro
 -- Estructura de tabla para la tabla `proveedores`
 --
 
-DROP TABLE IF EXISTS `proveedores`;
-CREATE TABLE IF NOT EXISTS `proveedores` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int DEFAULT NULL,
+CREATE TABLE `proveedores` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL,
   `nombre_proveedor` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `rut` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fecha_registro` date DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_proveedores` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `fecha_registro` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `proveedores`
 --
 
 INSERT INTO `proveedores` (`id`, `id_cl`, `nombre_proveedor`, `rut`, `estado`, `fecha_registro`) VALUES
-(1, 1, 'Savory', '19150634-0', 'S', '2023-07-28'),
-(2, 1, 'Supermercados Lider', '19150634-0', 'S', '2023-12-20'),
-(3, 1, 'Supermercado El Trebol', '19150634-0', 'S', '2023-12-31'),
-(4, 1, 'Fruna', '19150634-0', 'S', '2024-01-12'),
-(5, 1, 'UNIMARC', '81537600-5', 'S', '2024-01-12'),
-(6, 1, 'Distribuidora HN Disvet', '76683980-0', 'S', '2024-01-13'),
-(7, 1, 'La Mansa Pera', '19150634-0', 'S', '2024-01-13');
+(1, 1, 'Sony Music', '19150634-0', 'S', '2024-06-14');
 
 -- --------------------------------------------------------
 
@@ -1939,22 +1635,19 @@ INSERT INTO `proveedores` (`id`, `id_cl`, `nombre_proveedor`, `rut`, `estado`, `
 -- Estructura de tabla para la tabla `stock_minimo_producto`
 --
 
-DROP TABLE IF EXISTS `stock_minimo_producto`;
-CREATE TABLE IF NOT EXISTS `stock_minimo_producto` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_cl` int DEFAULT NULL,
+CREATE TABLE `stock_minimo_producto` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL,
   `estado` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stock_minimo` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_stock_minimo_producto` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `stock_minimo` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `stock_minimo_producto`
 --
 
 INSERT INTO `stock_minimo_producto` (`id`, `id_cl`, `estado`, `stock_minimo`) VALUES
-(2, 1, 'S', 5);
+(3, 1, 'S', 5);
 
 -- --------------------------------------------------------
 
@@ -1962,12 +1655,10 @@ INSERT INTO `stock_minimo_producto` (`id`, `id_cl`, `estado`, `stock_minimo`) VA
 -- Estructura de tabla para la tabla `tipo_pago_cliente`
 --
 
-DROP TABLE IF EXISTS `tipo_pago_cliente`;
-CREATE TABLE IF NOT EXISTS `tipo_pago_cliente` (
-  `id` int NOT NULL,
-  `nombre` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `tipo_pago_cliente` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tipo_pago_cliente`
@@ -1986,12 +1677,10 @@ INSERT INTO `tipo_pago_cliente` (`id`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `unidades_medida`
 --
 
-DROP TABLE IF EXISTS `unidades_medida`;
-CREATE TABLE IF NOT EXISTS `unidades_medida` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nombre_medida` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+CREATE TABLE `unidades_medida` (
+  `id` int(11) NOT NULL,
+  `nombre_medida` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `unidades_medida`
@@ -2010,29 +1699,23 @@ INSERT INTO `unidades_medida` (`id`, `nombre_medida`) VALUES
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'N',
   `user` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `pass` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `tipo_usuario` int NOT NULL,
-  `id_cl` int NOT NULL,
-  `estado` varchar(5) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
-  `permisos` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_usuarios` (`id_cl`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+  `tipo_usuario` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `estado` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `permisos` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `user`, `pass`, `tipo_usuario`, `id_cl`, `estado`, `permisos`) VALUES
-(1, 'Admin', 'admin1', '$2y$10$BDwobPiBjGcGs5auygqi8.th4g5kOOj2zEPv7pccXOfmHzvMZ/ZqC', 1, 1, 'S', '1'),
-(2, 'Cajero', 'cajero1', '$2y$10$ZdYQFbA09stj6TFNuQiyjODB2wybCJOEoLUdEntP/h00WfvosMQki', 2, 1, 'S', '2,3,4'),
-(4, 'Admin', 'admin7', 'admin7', 1, 7, 'S', '1,2,3,4'),
-(5, 'Admin', 'admin8', '173ec534506a18e83256', 1, 8, 'S', '1,2,3,4');
+(1, 'Admin', 'admin1', '$2y$10$C2.8dxyvp1cnubmOqmZxYuDRGY5/G52RPjjCMmhVYjQqWEbmDL9F.', 1, 1, 'S', '1,2,3,4');
 
 -- --------------------------------------------------------
 
@@ -2040,661 +1723,456 @@ INSERT INTO `usuarios` (`id`, `nombre`, `user`, `pass`, `tipo_usuario`, `id_cl`,
 -- Estructura de tabla para la tabla `ventas`
 --
 
-DROP TABLE IF EXISTS `ventas`;
-CREATE TABLE IF NOT EXISTS `ventas` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_venta` int NOT NULL,
+CREATE TABLE `ventas` (
+  `id` int(11) NOT NULL,
+  `id_venta` int(11) NOT NULL,
   `id_cl` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `id_caja` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nom_caja` varchar(25) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `usuario` int NOT NULL,
-  `producto` int NOT NULL,
+  `usuario` int(11) NOT NULL,
+  `producto` int(11) NOT NULL,
   `cantidad` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `valor` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `descto` int NOT NULL,
+  `descto` int(11) NOT NULL,
+  `valorDescto` int(11) NOT NULL,
   `estado` varchar(2) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `fecha` datetime NOT NULL,
   `fecha_pago` datetime DEFAULT NULL,
-  `forma_pago` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `des` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=593 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci COMMENT='								';
+  `forma_pago` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='								';
 
 --
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id`, `id_venta`, `id_cl`, `id_caja`, `nom_caja`, `usuario`, `producto`, `cantidad`, `valor`, `descto`, `estado`, `fecha`, `fecha_pago`, `forma_pago`, `des`) VALUES
-(4, 3, '1', '1', 'KIOSCO', 1, 76, '1', '1000', 0, 'C', '2024-01-14 15:51:06', '2024-01-14 15:51:19', '1', '0'),
-(5, 4, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-01-14 16:10:43', '2024-01-14 16:11:20', '2', '0'),
-(6, 5, '1', '1', 'KIOSCO', 1, 76, '1', '1000', 0, 'C', '2024-01-14 16:12:28', '2024-01-14 16:12:42', '1', '0'),
-(7, 6, '1', '1', 'KIOSCO', 1, 65, '1', '2000', 0, 'C', '2024-01-14 16:14:01', '2024-01-14 16:16:03', '4', '0'),
-(8, 6, '1', '1', 'KIOSCO', 1, 35, '1', '900', 0, 'C', '2024-01-14 16:14:12', '2024-01-14 16:16:03', '4', '0'),
-(9, 6, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:14:16', '2024-01-14 16:16:03', '4', '0'),
-(10, 7, '1', '1', 'KIOSCO', 1, 9, '1', '2000', 0, 'C', '2024-01-14 16:17:07', '2024-01-14 16:22:58', '4', '0'),
-(11, 7, '1', '1', 'KIOSCO', 1, 68, '1', '1000', 0, 'C', '2024-01-14 16:17:33', '2024-01-14 16:22:58', '4', '0'),
-(12, 7, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-14 16:18:08', '2024-01-14 16:22:58', '4', '0'),
-(13, 8, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:23:21', '2024-01-14 16:23:42', '1', '0'),
-(14, 9, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:25:00', '2024-01-14 16:25:28', '1', '0'),
-(15, 9, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-14 16:25:10', '2024-01-14 16:25:28', '1', '0'),
-(16, 9, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-14 16:25:10', '2024-01-14 16:25:28', '1', '0'),
-(17, 9, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-14 16:25:11', '2024-01-14 16:25:28', '1', '0'),
-(18, 10, '1', '1', 'KIOSCO', 1, 32, '1', '700', 0, 'N', '2024-01-14 16:26:18', '2024-01-14 16:27:49', '1', '0'),
-(19, 10, '1', '1', 'KIOSCO', 1, 36, '1', '900', 0, 'N', '2024-01-14 16:26:51', '2024-01-14 16:27:49', '1', '0'),
-(20, 10, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-01-14 16:27:39', '2024-01-14 16:27:49', '1', '0'),
-(21, 10, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-01-14 16:27:39', '2024-01-14 16:27:49', '1', '0'),
-(22, 10, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-01-14 16:27:40', '2024-01-14 16:27:49', '1', '0'),
-(23, 11, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-14 16:29:18', '2024-01-14 16:30:20', '1', '0'),
-(24, 11, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-14 16:29:44', '2024-01-14 16:30:20', '1', '0'),
-(25, 11, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-14 16:29:58', '2024-01-14 16:30:20', '1', '0'),
-(26, 12, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:31:14', '2024-01-14 16:32:52', '1', '0'),
-(27, 12, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-14 16:31:23', '2024-01-14 16:32:52', '1', '0'),
-(28, 12, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-14 16:31:30', '2024-01-14 16:32:52', '1', '0'),
-(29, 12, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-14 16:31:31', '2024-01-14 16:32:52', '1', '0'),
-(30, 13, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:34:01', '2024-01-14 16:34:33', '1', '0'),
-(31, 13, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:34:02', '2024-01-14 16:34:33', '1', '0'),
-(32, 13, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:34:02', '2024-01-14 16:34:33', '1', '0'),
-(33, 14, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:35:08', '2024-01-14 16:35:48', '1', '0'),
-(34, 14, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:35:08', '2024-01-14 16:35:48', '1', '0'),
-(35, 15, '1', '1', 'KIOSCO', 1, 8, '1', '1000', 0, 'N', '2024-01-14 16:39:44', '0000-00-00 00:00:00', '0', '0'),
-(36, 15, '1', '1', 'KIOSCO', 1, 65, '1', '2000', 0, 'N', '2024-01-14 16:42:33', '0000-00-00 00:00:00', '0', '0'),
-(37, 15, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:51:26', '2024-01-14 16:52:52', '1', '0'),
-(38, 15, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:51:27', '2024-01-14 16:52:52', '1', '0'),
-(39, 15, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:51:27', '2024-01-14 16:52:52', '1', '0'),
-(40, 15, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-14 16:51:28', '2024-01-14 16:52:52', '1', '0'),
-(41, 16, '1', '1', 'KIOSCO', 1, 31, '1', '700', 0, 'N', '2024-01-14 16:53:35', '0000-00-00 00:00:00', '0', '0'),
-(42, 16, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-01-14 16:54:36', '2024-01-14 16:55:55', '1', '0'),
-(43, 16, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-14 16:55:35', '2024-01-14 16:55:55', '1', '0'),
-(44, 16, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-14 16:55:36', '2024-01-14 16:55:55', '1', '0'),
-(45, 17, '1', '1', 'KIOSCO', 1, 68, '1', '1000', 0, 'C', '2024-01-14 17:15:54', '2024-01-14 17:17:11', '1', '0'),
-(46, 17, '1', '1', 'KIOSCO', 1, 68, '1', '1000', 0, 'C', '2024-01-14 17:16:08', '2024-01-14 17:17:11', '1', '0'),
-(47, 17, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-14 17:16:19', '2024-01-14 17:17:11', '1', '0'),
-(48, 17, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-14 17:16:22', '2024-01-14 17:17:11', '1', '0'),
-(49, 18, '1', '1', 'KIOSCO', 1, 32, '1', '700', 0, 'C', '2024-01-14 17:18:54', '2024-01-14 17:21:28', '1', '0'),
-(50, 18, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-01-14 17:19:11', '2024-01-14 17:21:28', '1', '0'),
-(51, 18, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-14 17:20:23', '2024-01-14 17:21:28', '1', '0'),
-(52, 19, '1', '1', 'KIOSCO', 1, 72, '1', '2000', 0, 'C', '2024-01-14 17:21:44', '2024-01-14 17:22:40', '1', '0'),
-(53, 19, '1', '1', 'KIOSCO', 1, 37, '1', '800', 0, 'N', '2024-01-14 17:37:05', '0000-00-00 00:00:00', '0', '0'),
-(54, 20, '1', '1', 'KIOSCO', 1, 37, '1', '800', 0, 'C', '2024-01-14 17:37:19', '2024-01-14 19:12:26', '1', '0'),
-(55, 21, '1', '1', 'KIOSCO', 1, 50, '1', '250', 0, 'C', '2024-01-14 19:12:53', '2024-01-14 19:22:59', '1', '0'),
-(56, 21, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-14 19:15:00', '2024-01-14 19:22:59', '1', '0'),
-(57, 21, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-14 19:15:00', '2024-01-14 19:22:59', '1', '0'),
-(58, 22, '1', '1', 'KIOSCO', 1, 35, '1', '900', 0, 'C', '2024-01-14 19:36:33', '2024-01-14 19:36:45', '1', '0'),
-(59, 44, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-01-20 22:30:42', '2024-01-19 22:31:03', '1', '0'),
-(60, 44, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-01-20 22:30:46', '2024-01-19 22:31:03', '1', '0'),
-(61, 44, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-01-20 22:30:48', '2024-01-19 22:31:03', '1', '0'),
-(62, 2, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'N', '2024-01-20 00:39:26', '0000-00-00 00:00:00', '0', '0'),
-(67, 45, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-01-20 13:25:22', '2024-01-20 13:25:30', '4', '0'),
-(71, 47, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-20 14:01:15', '2024-01-20 14:01:45', '1', '0'),
-(72, 46, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-20 15:55:21', '2024-01-20 15:56:22', '1', '0'),
-(73, 46, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-20 15:55:50', '2024-01-20 15:56:22', '1', '0'),
-(74, 46, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-20 15:55:51', '2024-01-20 15:56:22', '1', '0'),
-(75, 46, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-20 15:55:51', '2024-01-20 15:56:22', '1', '0'),
-(76, 46, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-20 15:55:52', '2024-01-20 15:56:22', '1', '0'),
-(77, 49, '1', '1', 'KIOSCO', 1, 35, '2', '1800', 0, 'C', '2024-01-20 16:03:46', '2024-01-28 17:06:58', '1', '0'),
-(79, 49, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-01-20 16:04:12', '2024-01-28 17:06:58', '1', '0'),
-(80, 49, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-20 16:04:25', '2024-01-28 17:06:58', '1', '0'),
-(81, 49, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-20 16:04:26', '2024-01-28 17:06:58', '1', '0'),
-(82, 49, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-20 16:04:28', '2024-01-28 17:06:58', '1', '0'),
-(83, 49, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-20 16:04:28', '2024-01-28 17:06:58', '1', '0'),
-(84, 49, '1', '1', 'KIOSCO', 1, 50, '1', '250', 0, 'C', '2024-01-20 16:04:54', '2024-01-28 17:06:58', '1', '0'),
-(85, 49, '1', '1', 'KIOSCO', 1, 50, '1', '250', 0, 'C', '2024-01-20 16:04:54', '2024-01-28 17:06:58', '1', '0'),
-(86, 49, '1', '1', 'KIOSCO', 1, 8, '1', '1000', 0, 'C', '2024-01-20 16:05:02', '2024-01-28 17:06:58', '1', '0'),
-(87, 50, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-20 16:12:19', '2024-01-20 16:12:33', '1', '0'),
-(88, 50, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-20 16:12:19', '2024-01-20 16:12:33', '1', '0'),
-(89, 51, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 16:30:59', '2024-01-20 16:31:39', '1', '0'),
-(90, 51, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 16:31:00', '2024-01-20 16:31:39', '1', '0'),
-(91, 51, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 16:31:01', '2024-01-20 16:31:39', '1', '0'),
-(92, 51, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 16:31:01', '2024-01-20 16:31:39', '1', '0'),
-(93, 51, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 16:31:02', '2024-01-20 16:31:39', '1', '0'),
-(94, 51, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 16:31:02', '2024-01-20 16:31:39', '1', '0'),
-(95, 51, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 16:31:15', '2024-01-20 16:31:39', '1', '0'),
-(96, 51, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 16:31:15', '2024-01-20 16:31:39', '1', '0'),
-(97, 52, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 16:32:28', '2024-01-20 16:32:49', '1', '0'),
-(98, 52, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 16:32:29', '2024-01-20 16:32:49', '1', '0'),
-(99, 52, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 16:32:30', '2024-01-20 16:32:49', '1', '0'),
-(100, 52, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 16:32:36', '2024-01-20 16:32:49', '1', '0'),
-(101, 52, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 16:32:39', '2024-01-20 16:32:49', '1', '0'),
-(102, 53, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 16:54:56', '2024-01-20 16:55:21', '1', '0'),
-(103, 53, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 16:54:57', '2024-01-20 16:55:21', '1', '0'),
-(104, 53, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 16:54:58', '2024-01-20 16:55:21', '1', '0'),
-(105, 53, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 16:54:58', '2024-01-20 16:55:21', '1', '0'),
-(106, 54, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 17:27:24', '2024-01-20 17:27:51', '1', '0'),
-(107, 54, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 17:27:25', '2024-01-20 17:27:51', '1', '0'),
-(108, 54, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 17:27:26', '2024-01-20 17:27:51', '1', '0'),
-(109, 54, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 17:27:26', '2024-01-20 17:27:51', '1', '0'),
-(110, 55, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-20 18:55:15', '2024-01-20 18:57:30', '1', '0'),
-(111, 55, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-20 18:55:21', '2024-01-20 18:57:30', '1', '0'),
-(112, 55, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-20 18:55:21', '2024-01-20 18:57:30', '1', '0'),
-(113, 55, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-20 18:55:22', '2024-01-20 18:57:30', '1', '0'),
-(114, 55, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-20 18:55:22', '2024-01-20 18:57:30', '1', '0'),
-(115, 55, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-20 18:55:23', '2024-01-20 18:57:30', '1', '0'),
-(116, 56, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 19:26:35', '2024-01-20 19:27:08', '1', '0'),
-(117, 56, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 19:26:39', '2024-01-20 19:27:08', '1', '0'),
-(118, 56, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 19:26:40', '2024-01-20 19:27:08', '1', '0'),
-(119, 56, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-20 19:26:41', '2024-01-20 19:27:08', '1', '0'),
-(120, 57, '1', '1', 'KIOSCO', 1, 77, '1', '1000', 0, 'C', '2024-01-20 19:29:19', '2024-01-20 19:29:39', '1', '0'),
-(121, 57, '1', '1', 'KIOSCO', 1, 1653, '1', '0', 0, 'A', '2024-01-20 19:45:00', '0000-00-00 00:00:00', '0', '0'),
-(122, 58, '1', '1', 'KIOSCO', 1, 1653, '1', '0', 0, 'C', '2024-01-20 19:45:10', '2024-01-20 19:52:13', '1', '0'),
-(123, 58, '1', '1', 'KIOSCO', 1, 16, '1', '1500', 0, 'N', '2024-01-20 19:45:28', '0000-00-00 00:00:00', '0', '0'),
-(124, 58, '1', '1', 'KIOSCO', 1, 53, '1', '1200', 0, 'C', '2024-01-20 19:52:02', '2024-01-20 19:52:13', '1', '0'),
-(125, 59, '1', '1', 'KIOSCO', 1, 19, '1', '2000', 0, 'C', '2024-01-20 19:54:04', '2024-01-20 19:54:53', '1', '0'),
-(126, 60, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-01-20 20:02:16', '2024-01-20 20:06:04', '1', '0'),
-(127, 61, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 20:06:46', '2024-01-20 20:08:39', '1', '0'),
-(128, 61, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 20:06:46', '2024-01-20 20:08:39', '1', '0'),
-(129, 61, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 20:06:47', '2024-01-20 20:08:39', '1', '0'),
-(130, 61, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 20:06:47', '2024-01-20 20:08:39', '1', '0'),
-(131, 62, '1', '1', 'KIOSCO', 1, 26, '1', '5000', 0, 'C', '2024-01-20 20:09:04', '2024-01-20 20:09:31', '1', '0'),
-(132, 63, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-01-20 20:17:24', '2024-01-20 20:18:29', '1', '0'),
-(133, 63, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-01-20 20:17:24', '2024-01-20 20:18:29', '1', '0'),
-(134, 64, '1', '1', 'KIOSCO', 1, 26, '1', '5000', 0, 'C', '2024-01-20 20:19:37', '2024-01-20 20:28:51', '1', '0'),
-(135, 65, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 20:29:06', '2024-01-20 20:29:54', '1', '0'),
-(136, 65, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 20:29:07', '2024-01-20 20:29:54', '1', '0'),
-(137, 66, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-20 20:30:10', '2024-01-20 20:30:33', '1', '0'),
-(138, 67, '1', '1', 'KIOSCO', 1, 26, '1', '5000', 0, 'C', '2024-01-21 21:09:08', '2024-01-20 21:09:25', '1', '0'),
-(139, 68, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-21 21:13:19', '2024-01-20 21:17:37', '1', '0'),
-(140, 68, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-21 21:13:20', '2024-01-20 21:17:37', '1', '0'),
-(141, 68, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-21 21:13:25', '2024-01-20 21:17:37', '1', '0'),
-(142, 68, '1', '1', 'KIOSCO', 1, 5, '1', '250', 0, 'C', '2024-01-21 21:13:25', '2024-01-20 21:17:37', '1', '0'),
-(143, 68, '1', '1', 'KIOSCO', 1, 78, '1', '1000', 0, 'C', '2024-01-21 21:15:32', '2024-01-20 21:17:37', '1', '0'),
-(144, 68, '1', '1', 'KIOSCO', 1, 78, '1', '1000', 0, 'C', '2024-01-21 21:15:40', '2024-01-20 21:17:37', '1', '0'),
-(145, 69, '1', '1', 'KIOSCO', 1, 32, '1', '700', 0, 'C', '2024-01-21 21:18:00', '2024-01-20 21:29:56', '1', '0'),
-(146, 69, '1', '1', 'KIOSCO', 1, 36, '1', '900', 0, 'C', '2024-01-21 21:18:10', '2024-01-20 21:29:56', '1', '0'),
-(147, 70, '1', '1', 'KIOSCO', 1, 71, '12', '3000', 0, 'C', '2024-01-21 21:38:52', '2024-01-20 21:39:22', '1', '0'),
-(148, 71, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-01-21 21:54:32', '2024-01-20 21:54:50', '1', '0'),
-(149, 75, '1', '1', 'KIOSCO', 1, 62, '1', '500', 0, 'C', '2024-01-21 21:58:49', '2024-01-20 21:59:18', '1', '0'),
-(150, 76, '1', '1', 'KIOSCO', 1, 79, '1', '2000', 0, 'C', '2024-01-21 22:42:30', '2024-01-20 22:49:22', '1', '0'),
-(151, 77, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-01-21 22:50:03', '2024-01-20 22:52:38', '1', '0'),
-(152, 77, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-01-21 22:50:10', '2024-01-20 22:52:38', '1', '0'),
-(153, 78, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-21 22:53:06', '2024-01-20 23:53:39', '1', '0'),
-(154, 78, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-21 22:53:07', '2024-01-20 23:53:39', '1', '0'),
-(155, 78, '1', '1', 'KIOSCO', 1, 63, '1', '400', 0, 'C', '2024-01-21 22:53:07', '2024-01-20 23:53:39', '1', '0'),
-(156, 79, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-21 12:54:58', '2024-01-21 12:56:27', '1', '0'),
-(157, 80, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-21 13:02:07', '2024-01-21 13:02:18', '1', '0'),
-(158, 80, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-21 13:02:08', '2024-01-21 13:02:18', '1', '0'),
-(159, 81, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 0, 'C', '2024-01-21 13:48:03', '2024-01-21 13:49:05', '1', '0'),
-(160, 81, '1', '1', 'KIOSCO', 1, 7, '1', '700', 0, 'C', '2024-01-21 13:48:27', '2024-01-21 13:49:05', '1', '0'),
-(161, 82, '1', '1', 'KIOSCO', 1, 32, '10', '7000', 0, 'C', '2024-01-21 14:35:54', '2024-01-21 14:36:12', '1', '0'),
-(162, 83, '1', '1', 'KIOSCO', 1, 37, '1', '800', 0, 'C', '2024-01-21 14:56:42', '2024-01-21 14:57:31', '1', '0'),
-(163, 84, '1', '1', 'KIOSCO', 1, 34, '10', '8000', 0, 'C', '2024-01-21 14:57:48', '2024-01-21 14:58:07', '1', '0'),
-(164, 84, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'N', '2024-01-21 14:57:50', '0000-00-00 00:00:00', '0', '0'),
-(165, 85, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-21 15:01:32', '2024-01-21 15:01:45', '1', '0'),
-(166, 85, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-21 15:01:33', '2024-01-21 15:01:45', '1', '0'),
-(167, 85, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-21 15:01:33', '2024-01-21 15:01:45', '1', '0'),
-(168, 85, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-21 15:01:34', '2024-01-21 15:01:45', '1', '0'),
-(169, 85, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-21 15:01:35', '2024-01-21 15:01:45', '1', '0'),
-(170, 85, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-21 15:01:35', '2024-01-21 15:01:45', '1', '0'),
-(171, 85, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-21 15:01:35', '2024-01-21 15:01:45', '1', '0'),
-(172, 85, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-21 15:01:36', '2024-01-21 15:01:45', '1', '0'),
-(173, 85, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-21 15:01:36', '2024-01-21 15:01:45', '1', '0'),
-(174, 86, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-21 15:02:25', '2024-01-21 15:03:06', '1', '0'),
-(175, 86, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'C', '2024-01-21 15:02:26', '2024-01-21 15:03:06', '1', '0'),
-(176, 86, '1', '1', 'KIOSCO', 1, 56, '1', '800', 0, 'C', '2024-01-21 15:02:37', '2024-01-21 15:03:06', '1', '0'),
-(177, 86, '1', '1', 'KIOSCO', 1, 56, '1', '800', 0, 'N', '2024-01-21 15:02:37', '0000-00-00 00:00:00', '0', '0'),
-(178, 87, '1', '1', 'KIOSCO', 1, 36, '1', '900', 0, 'C', '2024-01-21 15:33:02', '2024-01-21 15:33:30', '1', '0'),
-(179, 88, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-21 16:01:05', '2024-01-21 16:01:36', '1', '0'),
-(180, 88, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-21 16:01:06', '2024-01-21 16:01:36', '1', '0'),
-(181, 88, '1', '1', 'KIOSCO', 1, 36, '1', '900', 0, 'C', '2024-01-21 16:01:29', '2024-01-21 16:01:36', '1', '0'),
-(182, 89, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-01-21 16:10:36', '2024-01-21 16:10:55', '1', '0'),
-(183, 89, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-01-21 16:10:47', '2024-01-21 16:10:55', '1', '0'),
-(184, 90, '1', '1', 'KIOSCO', 1, 55, '1', '800', 0, 'C', '2024-01-21 16:16:49', '2024-01-21 16:18:50', '1', '0'),
-(185, 90, '1', '1', 'KIOSCO', 1, 55, '1', '800', 0, 'C', '2024-01-21 16:16:49', '2024-01-21 16:18:50', '1', '0'),
-(186, 90, '1', '1', 'KIOSCO', 1, 55, '1', '800', 0, 'C', '2024-01-21 16:16:49', '2024-01-21 16:18:50', '1', '0'),
-(187, 90, '1', '1', 'KIOSCO', 1, 55, '1', '800', 0, 'C', '2024-01-21 16:16:50', '2024-01-21 16:18:50', '1', '0'),
-(188, 90, '1', '1', 'KIOSCO', 1, 55, '1', '800', 0, 'C', '2024-01-21 16:16:50', '2024-01-21 16:18:50', '1', '0'),
-(189, 90, '1', '1', 'KIOSCO', 1, 55, '1', '800', 0, 'C', '2024-01-21 16:16:50', '2024-01-21 16:18:50', '1', '0'),
-(190, 90, '1', '1', 'KIOSCO', 1, 55, '1', '800', 0, 'C', '2024-01-21 16:16:51', '2024-01-21 16:18:50', '1', '0'),
-(191, 91, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-21 16:53:23', '2024-01-21 16:53:41', '1', '0'),
-(192, 91, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-21 16:53:24', '2024-01-21 16:53:41', '1', '0'),
-(193, 91, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-21 16:53:24', '2024-01-21 16:53:41', '1', '0'),
-(194, 91, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-21 16:53:25', '2024-01-21 16:53:41', '1', '0'),
-(195, 91, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-21 16:53:25', '2024-01-21 16:53:41', '1', '0'),
-(196, 91, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-21 16:53:26', '2024-01-21 16:53:41', '1', '0'),
-(197, 91, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-21 16:53:27', '2024-01-21 16:53:41', '1', '0'),
-(198, 91, '1', '1', 'KIOSCO', 1, 71, '1', '250', 0, 'C', '2024-01-21 16:53:28', '2024-01-21 16:53:41', '1', '0'),
-(199, 92, '1', '1', 'KIOSCO', 1, 36, '1', '900', 0, 'C', '2024-01-21 17:20:39', '2024-01-21 17:21:28', '1', '0'),
-(200, 93, '1', '1', 'KIOSCO', 1, 80, '1', '1000', 0, 'C', '2024-01-21 17:33:22', '2024-01-21 17:33:31', '1', '0'),
-(201, 94, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'N', '2024-01-22 19:44:27', '0000-00-00 00:00:00', '0', '0'),
-(202, 95, '1', '1', 'KIOSCO', 1, 26, '2', '10000', 0, 'C', '2024-01-22 19:55:14', '2024-01-22 19:55:19', '1', '0'),
-(203, 96, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'N', '2024-01-23 19:54:19', '0000-00-00 00:00:00', '0', '0'),
-(204, 96, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'N', '2024-01-24 17:30:55', '0000-00-00 00:00:00', '0', '0'),
-(205, 96, '1', '1', 'KIOSCO', 1, 3, '1', '2000', 0, 'C', '2024-01-24 17:37:59', '2024-01-24 17:47:28', '1', '0'),
-(206, 98, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-24 17:47:50', '2024-01-24 17:49:04', '1', '0'),
-(207, 98, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-24 17:47:52', '2024-01-24 17:49:04', '1', '0'),
-(208, 98, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-24 17:47:53', '2024-01-24 17:49:04', '1', '0'),
-(209, 99, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-24 17:49:18', '2024-01-24 17:49:26', '1', '0'),
-(210, 99, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-24 17:49:18', '2024-01-24 17:49:26', '1', '0'),
-(211, 100, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-24 18:27:37', '2024-01-24 18:30:09', '4', '0'),
-(212, 101, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-24 18:31:18', '2024-01-24 18:31:26', '1', '0'),
-(213, 101, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-24 18:31:19', '2024-01-24 18:31:26', '1', '0'),
-(214, 101, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-24 18:31:20', '2024-01-24 18:31:26', '1', '0'),
-(215, 102, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-24 18:37:12', '2024-01-24 18:37:20', '1', '0'),
-(216, 102, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-24 18:37:12', '2024-01-24 18:37:20', '1', '0'),
-(217, 103, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-24 18:38:39', '2024-01-24 18:38:53', '1', '0'),
-(218, 104, '1', '1', 'KIOSCO', 1, 3, '1', '2000', 0, 'C', '2024-01-24 18:42:50', '2024-01-24 18:43:00', '1', '0'),
-(219, 104, '1', '1', 'KIOSCO', 1, 3, '1', '2000', 0, 'C', '2024-01-24 18:42:52', '2024-01-24 18:43:00', '1', '0'),
-(220, 105, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-24 18:43:46', '2024-01-24 18:43:54', '1', '0'),
-(221, 105, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-24 18:43:47', '2024-01-24 18:43:54', '1', '0'),
-(222, 106, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-24 18:45:07', '2024-01-24 18:45:13', '4', '0'),
-(223, 107, '1', '1', 'KIOSCO', 1, 7, '1', '700', 0, 'C', '2024-01-24 18:47:41', '2024-01-24 18:48:28', '1', '0'),
-(224, 107, '1', '1', 'KIOSCO', 1, 7, '1', '700', 0, 'C', '2024-01-24 18:47:42', '2024-01-24 18:48:28', '1', '0'),
-(225, 107, '1', '1', 'KIOSCO', 1, 7, '1', '700', 0, 'C', '2024-01-24 18:47:43', '2024-01-24 18:48:28', '1', '0'),
-(226, 107, '1', '1', 'KIOSCO', 1, 7, '1', '700', 0, 'C', '2024-01-24 18:47:43', '2024-01-24 18:48:28', '1', '0'),
-(227, 49, '1', '1', 'KIOSCO', 1, 50, '1', '700', 0, 'C', '2024-01-20 16:04:54', '2024-01-28 17:06:58', '1', '0'),
-(228, 108, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 13:14:22', '2024-01-25 13:14:40', '2', '0'),
-(229, 109, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 13:43:09', '2024-01-25 13:43:19', '1', '0'),
-(230, 109, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 13:43:11', '2024-01-25 13:43:19', '1', '0'),
-(231, 110, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:29:26', '2024-01-25 16:31:22', '1', '0'),
-(232, 111, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'N', '2024-01-25 16:31:58', '0000-00-00 00:00:00', '0', '0'),
-(233, 111, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:31:58', '2024-01-25 16:32:15', '1', '0'),
-(234, 111, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:32:07', '2024-01-25 16:32:15', '1', '0'),
-(235, 112, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:34:14', '2024-01-25 16:34:32', '1', '0'),
-(236, 112, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:34:16', '2024-01-25 16:34:32', '1', '0'),
-(237, 112, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:34:17', '2024-01-25 16:34:32', '1', '0'),
-(238, 112, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:34:19', '2024-01-25 16:34:32', '1', '0'),
-(239, 112, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:34:20', '2024-01-25 16:34:32', '1', '0'),
-(240, 113, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:36:10', '2024-01-25 16:39:57', '1', '0'),
-(241, 113, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:36:10', '2024-01-25 16:39:57', '1', '0'),
-(242, 113, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:36:11', '2024-01-25 16:39:57', '1', '0'),
-(243, 113, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:36:11', '2024-01-25 16:39:57', '1', '0'),
-(244, 113, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:36:11', '2024-01-25 16:39:57', '1', '0'),
-(245, 113, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:36:11', '2024-01-25 16:39:57', '1', '0'),
-(246, 113, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:36:12', '2024-01-25 16:39:57', '1', '0'),
-(247, 113, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:36:16', '2024-01-25 16:39:57', '1', '0'),
-(248, 113, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:36:16', '2024-01-25 16:39:57', '1', '0'),
-(249, 113, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:36:17', '2024-01-25 16:39:57', '1', '0'),
-(250, 114, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-25 16:40:57', '2024-01-25 16:41:09', '1', '0'),
-(251, 114, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-25 16:40:58', '2024-01-25 16:41:09', '1', '0'),
-(252, 114, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-25 16:40:58', '2024-01-25 16:41:09', '1', '0'),
-(253, 114, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-25 16:40:58', '2024-01-25 16:41:09', '1', '0'),
-(254, 115, '1', '1', 'KIOSCO', 1, 3, '1', '2000', 0, 'C', '2024-01-25 16:41:51', '2024-01-25 16:42:18', '1', '0'),
-(255, 116, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:44:05', '2024-01-25 16:44:16', '1', '0'),
-(256, 116, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:44:05', '2024-01-25 16:44:16', '1', '0'),
-(257, 116, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:44:05', '2024-01-25 16:44:16', '1', '0'),
-(258, 116, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:44:06', '2024-01-25 16:44:16', '1', '0'),
-(259, 116, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:44:06', '2024-01-25 16:44:16', '1', '0'),
-(260, 116, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:44:06', '2024-01-25 16:44:16', '1', '0'),
-(261, 116, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:44:06', '2024-01-25 16:44:16', '1', '0'),
-(262, 116, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:44:07', '2024-01-25 16:44:16', '1', '0'),
-(263, 116, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:44:07', '2024-01-25 16:44:16', '1', '0'),
-(264, 116, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'C', '2024-01-25 16:44:07', '2024-01-25 16:44:16', '1', '0'),
-(265, 117, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 0, 'C', '2024-01-25 17:20:56', '2024-01-25 17:21:06', '1', '0'),
-(266, 117, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 0, 'C', '2024-01-25 17:20:57', '2024-01-25 17:21:06', '1', '0'),
-(267, 117, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 0, 'C', '2024-01-25 17:20:58', '2024-01-25 17:21:06', '1', '0'),
-(268, 117, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 0, 'C', '2024-01-25 17:20:59', '2024-01-25 17:21:06', '1', '0'),
-(269, 118, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 0, 'C', '2024-01-25 18:05:16', '2024-01-25 18:05:26', '2', '0'),
-(270, 118, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 0, 'C', '2024-01-25 18:05:17', '2024-01-25 18:05:26', '2', '0'),
-(271, 118, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 0, 'C', '2024-01-25 18:05:17', '2024-01-25 18:05:26', '2', '0'),
-(272, 118, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 0, 'C', '2024-01-25 18:05:18', '2024-01-25 18:05:26', '2', '0'),
-(273, 119, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 0, 'C', '2024-01-27 21:06:23', '2024-01-26 21:06:33', '1', '0'),
-(274, 119, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 0, 'C', '2024-01-27 21:06:24', '2024-01-26 21:06:33', '1', '0'),
-(275, 119, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 0, 'C', '2024-01-27 21:06:25', '2024-01-26 21:06:33', '1', '0'),
-(276, 119, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 0, 'C', '2024-01-27 21:06:26', '2024-01-26 21:06:33', '1', '0'),
-(277, 120, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 0, 'A', '2024-01-27 21:07:09', '0000-00-00 00:00:00', '0', '0'),
-(278, 120, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 0, 'A', '2024-01-27 21:07:09', '0000-00-00 00:00:00', '0', '0'),
-(279, 120, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 0, 'A', '2024-01-27 21:07:09', '0000-00-00 00:00:00', '0', '0'),
-(280, 120, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 0, 'A', '2024-01-27 21:07:09', '0000-00-00 00:00:00', '0', '0'),
-(281, 121, '1', '1', 'KIOSCO', 1, 56, '1', '800', 0, 'C', '2024-01-27 21:22:08', '2024-01-26 21:23:37', '1', '0'),
-(282, 121, '1', '1', 'KIOSCO', 1, 48, '1', '2000', 0, 'C', '2024-01-27 21:22:18', '2024-01-26 21:23:37', '1', '0'),
-(283, 121, '1', '1', 'KIOSCO', 1, 26, '3', '15000', 0, 'C', '2024-01-27 21:22:35', '2024-01-26 21:23:37', '1', '0'),
-(284, 121, '1', '1', 'KIOSCO', 1, 74, '2', '10000', 0, 'C', '2024-01-27 21:22:52', '2024-01-26 21:23:37', '1', '0'),
-(285, 121, '1', '1', 'KIOSCO', 1, 58, '5', '500', 0, 'C', '2024-01-27 21:23:25', '2024-01-26 21:23:37', '1', '0'),
-(286, 122, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-27 21:25:59', '2024-01-26 21:26:23', '1', '0'),
-(287, 122, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-27 21:26:00', '2024-01-26 21:26:23', '1', '0'),
-(288, 122, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-27 21:26:00', '2024-01-26 21:26:23', '1', '0'),
-(289, 123, '1', '1', 'KIOSCO', 1, 58, '5', '500', 0, 'N', '2024-01-27 21:26:58', '0000-00-00 00:00:00', '0', '0'),
-(290, 123, '1', '1', 'KIOSCO', 1, 58, '5', '500', 0, 'N', '2024-01-27 21:26:59', '0000-00-00 00:00:00', '0', '0'),
-(291, 123, '1', '1', 'KIOSCO', 1, 58, '5', '500', 0, 'N', '2024-01-27 21:26:59', '0000-00-00 00:00:00', '0', '0'),
-(292, 123, '1', '1', 'KIOSCO', 1, 58, '5', '500', 0, 'N', '2024-01-27 21:26:59', '0000-00-00 00:00:00', '0', '0'),
-(293, 123, '1', '1', 'KIOSCO', 1, 58, '5', '500', 0, 'N', '2024-01-27 21:27:00', '0000-00-00 00:00:00', '0', '0'),
-(294, 123, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-27 21:27:23', '2024-01-26 21:27:38', '1', '0'),
-(295, 123, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-27 21:27:23', '2024-01-26 21:27:38', '1', '0'),
-(296, 123, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-27 21:27:24', '2024-01-26 21:27:38', '1', '0'),
-(297, 123, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-27 21:27:24', '2024-01-26 21:27:38', '1', '0'),
-(298, 123, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-27 21:27:24', '2024-01-26 21:27:38', '1', '0'),
-(299, 123, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'N', '2024-01-27 21:28:30', '0000-00-00 00:00:00', '0', '0'),
-(300, 123, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'N', '2024-01-27 21:28:30', '0000-00-00 00:00:00', '0', '0'),
-(301, 123, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'N', '2024-01-27 21:28:31', '0000-00-00 00:00:00', '0', '0'),
-(302, 123, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'N', '2024-01-27 21:28:31', '0000-00-00 00:00:00', '0', '0'),
-(303, 123, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'N', '2024-01-27 21:28:31', '0000-00-00 00:00:00', '0', '0'),
-(304, 124, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-27 21:28:50', '2024-01-26 21:29:00', '1', '0'),
-(305, 124, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-27 21:28:51', '2024-01-26 21:29:00', '1', '0'),
-(306, 124, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-27 21:28:51', '2024-01-26 21:29:00', '1', '0'),
-(307, 124, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-27 21:28:51', '2024-01-26 21:29:00', '1', '0'),
-(308, 124, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-27 21:28:51', '2024-01-26 21:29:00', '1', '0'),
-(309, 125, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-27 22:03:20', '2024-01-26 22:03:26', '1', '0'),
-(310, 125, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-27 22:03:21', '2024-01-26 22:03:26', '1', '0'),
-(311, 126, '1', '1', 'KIOSCO', 1, 26, '1', '5000', 0, 'N', '2024-01-27 13:55:49', '2024-01-27 13:58:30', '0', '0'),
-(312, 127, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'N', '2024-01-27 14:14:55', '2024-01-27 14:41:47', '0', '0'),
-(313, 128, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-01-27 14:42:14', '2024-01-27 14:42:23', '1', '0'),
-(314, 129, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'N', '2024-01-27 16:59:10', '0000-00-00 00:00:00', '0', '0'),
-(315, 129, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'N', '2024-01-27 17:07:25', '0000-00-00 00:00:00', '0', '0'),
-(316, 129, '1', '1', 'KIOSCO', 1, 40, '1', '1150', 0, 'N', '2024-01-27 17:34:10', '0000-00-00 00:00:00', '0', '0'),
-(317, 129, '1', '1', 'KIOSCO', 1, 40, '1', '1150', 0, 'C', '2024-01-27 17:34:11', '2024-01-27 17:36:36', '1', '0'),
-(318, 129, '1', '1', 'KIOSCO', 1, 40, '1', '1150', 0, 'C', '2024-01-27 17:34:11', '2024-01-27 17:36:36', '1', '0'),
-(319, 129, '1', '1', 'KIOSCO', 1, 40, '1', '1150', 0, 'C', '2024-01-27 17:34:11', '2024-01-27 17:36:36', '1', '0'),
-(320, 129, '1', '1', 'KIOSCO', 1, 40, '1', '1150', 0, 'C', '2024-01-27 17:34:12', '2024-01-27 17:36:36', '1', '0'),
-(321, 129, '1', '1', 'KIOSCO', 1, 14, '1', '1700', 0, 'C', '2024-01-27 17:34:40', '2024-01-27 17:36:36', '1', '0'),
-(322, 129, '1', '1', 'KIOSCO', 1, 14, '1', '1700', 0, 'C', '2024-01-27 17:35:40', '2024-01-27 17:36:36', '1', '0'),
-(323, 129, '1', '1', 'KIOSCO', 1, 68, '1', '1000', 0, 'N', '2024-01-27 17:41:21', '0000-00-00 00:00:00', '0', '0'),
-(324, 130, '1', '1', 'KIOSCO', 1, 37, '1', '800', 0, 'C', '2024-01-27 18:23:56', '2024-01-28 17:08:16', '1', '0'),
-(325, 131, '1', '1', 'KIOSCO', 1, 37, '1', '800', 0, 'C', '2024-01-27 18:24:33', '2024-01-28 17:12:00', '1', '0'),
-(326, 132, '1', '1', 'KIOSCO', 1, 34, '1', '800', 0, 'N', '2024-01-27 18:25:35', '2024-01-28 00:38:36', '0', '0'),
-(327, 133, '1', '1', 'KIOSCO', 1, 86, '1', '300', 0, 'C', '2024-01-27 18:44:35', '2024-01-27 18:45:03', '1', '0'),
-(328, 133, '1', '1', 'KIOSCO', 1, 84, '1', '400', 0, 'C', '2024-01-27 18:44:43', '2024-01-27 18:45:03', '1', '0'),
-(329, 134, '1', '1', 'KIOSCO', 1, 58, '5', '500', 0, 'C', '2024-01-27 18:46:35', '2024-01-27 18:47:34', '1', '0'),
-(330, 134, '1', '1', 'KIOSCO', 1, 59, '5', '500', 0, 'C', '2024-01-27 18:47:02', '2024-01-27 18:47:34', '1', '0'),
-(331, 133, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'N', '2024-01-27 19:40:25', '0000-00-00 00:00:00', '0', '0'),
-(332, 135, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-01-27 19:40:37', '2024-01-27 19:40:43', '1', '0'),
-(333, 136, '1', '1', 'KIOSCO', 1, 75, '3', '4500', 0, 'C', '2024-01-28 21:54:02', '2024-01-27 21:56:42', '1', '0'),
-(334, 137, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-01-28 00:42:31', '2024-01-28 00:42:38', '1', '0'),
-(335, 138, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-28 00:56:54', '2024-01-28 00:57:01', '1', '0'),
-(336, 138, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-28 00:56:54', '2024-01-28 00:57:01', '1', '0'),
-(337, 138, '1', '1', 'KIOSCO', 1, 2, '1', '1000', 0, 'C', '2024-01-28 00:56:58', '2024-01-28 00:57:01', '1', '0'),
-(338, 139, '1', '1', 'KIOSCO', 1, 26, '1', '5000', 0, 'C', '2024-01-28 12:31:57', '2024-01-28 12:55:06', '1', '0'),
-(339, 140, '1', '1', 'KIOSCO', 1, 19, '1', '2000', 0, 'C', '2024-01-28 13:00:42', '2024-01-28 13:02:03', '1', '0'),
-(340, 141, '1', '1', 'KIOSCO', 1, 89, '1', '400', 0, 'C', '2024-01-28 13:07:18', '2024-01-28 13:08:07', '1', '0'),
-(341, 141, '1', '1', 'KIOSCO', 1, 89, '1', '400', 0, 'C', '2024-01-28 13:07:18', '2024-01-28 13:08:07', '1', '0'),
-(342, 142, '1', '1', 'KIOSCO', 1, 32, '1', '700', 0, 'C', '2024-01-28 14:50:00', '2024-01-28 14:50:53', '1', '0'),
-(343, 142, '1', '1', 'KIOSCO', 1, 31, '1', '700', 0, 'C', '2024-01-28 14:50:09', '2024-01-28 14:50:53', '1', '0'),
-(344, 142, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-28 14:50:21', '2024-01-28 14:50:53', '1', '0'),
-(345, 142, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-28 14:50:22', '2024-01-28 14:50:53', '1', '0'),
-(346, 143, '1', '1', 'KIOSCO', 1, 61, '1', '1000', 0, 'C', '2024-01-28 14:51:52', '2024-01-28 14:52:01', '1', '0'),
-(347, 144, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-01-28 15:04:32', '2024-01-28 15:04:44', '1', '0'),
-(348, 144, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-01-28 15:04:33', '2024-01-28 15:04:44', '1', '0'),
-(349, 144, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-01-28 15:04:33', '2024-01-28 15:04:44', '1', '0'),
-(350, 145, '1', '1', 'KIOSCO', 1, 90, '1', '2000', 0, 'C', '2024-01-28 17:40:35', '2024-01-28 17:40:43', '1', '0'),
-(351, 146, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-28 18:09:02', '2024-01-28 18:09:12', '1', '0'),
-(352, 146, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-01-28 18:09:03', '2024-01-28 18:09:12', '1', '0'),
-(353, 146, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-28 18:09:04', '2024-01-28 18:09:12', '1', '0'),
-(354, 146, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-01-28 18:09:04', '2024-01-28 18:09:12', '1', '0'),
-(355, 147, '1', '1', 'KIOSCO', 1, 5, '20', '5000', 0, 'C', '2024-01-29 12:11:48', '2024-01-29 12:22:24', '1', '0'),
-(356, 147, '1', '1', 'KIOSCO', 1, 73, '1', '9000', 0, 'C', '2024-01-29 12:12:18', '2024-01-29 12:22:24', '1', '0'),
-(357, 147, '1', '1', 'KIOSCO', 1, 69, '1', '8000', 0, 'C', '2024-01-29 12:12:40', '2024-01-29 12:22:24', '1', '0'),
-(358, 147, '1', '1', 'KIOSCO', 1, 42, '2', '2300', 0, 'C', '2024-01-29 12:13:29', '2024-01-29 12:22:24', '1', '0'),
-(359, 147, '1', '1', 'KIOSCO', 1, 35, '3', '2700', 0, 'C', '2024-01-29 12:13:45', '2024-01-29 12:22:24', '1', '0'),
-(360, 147, '1', '1', 'KIOSCO', 1, 34, '3', '2400', 0, 'C', '2024-01-29 12:13:56', '2024-01-29 12:22:24', '1', '0'),
-(361, 147, '1', '1', 'KIOSCO', 1, 8, '1', '1000', 0, 'C', '2024-01-29 12:17:15', '2024-01-29 12:22:24', '1', '0'),
-(362, 148, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-01-30 11:17:02', '2024-01-30 11:17:31', '1', '0'),
-(363, 148, '1', '1', 'KIOSCO', 1, 26, '1', '5000', 0, 'C', '2024-01-30 11:17:11', '2024-01-30 11:17:31', '1', '0'),
-(364, 148, '1', '1', 'KIOSCO', 1, 75, '2', '3000', 0, 'C', '2024-01-30 11:17:20', '2024-01-30 11:17:31', '1', '0'),
-(365, 149, '1', '1', 'KIOSCO', 1, 33, '6', '1800', 0, 'A', '2024-01-30 13:11:47', '2024-02-03 15:17:32', '0', '0'),
-(366, 149, '1', '1', 'KIOSCO', 1, 32, '7', '4900', 0, 'A', '2024-01-30 13:12:09', '2024-02-03 15:17:32', '0', '0'),
-(367, 149, '1', '1', 'KIOSCO', 1, 31, '6', '4200', 0, 'A', '2024-01-30 13:12:18', '2024-02-03 15:17:32', '0', '0'),
-(368, 149, '1', '1', 'KIOSCO', 1, 36, '2', '1800', 0, 'A', '2024-01-30 13:12:31', '2024-02-03 15:17:32', '0', '0'),
-(369, 149, '1', '1', 'KIOSCO', 1, 30, '6', '4200', 0, 'A', '2024-01-30 13:13:00', '2024-02-03 15:17:32', '0', '0'),
-(370, 150, '1', '1', 'KIOSCO', 1, 26, '1', '5000', 0, 'C', '2024-01-31 23:07:46', '2024-01-30 23:07:53', '1', '0'),
-(371, 151, '1', '1', 'KIOSCO', 1, 61, '1', '1000', 0, 'C', '2024-01-31 17:18:34', '2024-01-31 17:19:14', '1', '0'),
-(372, 151, '1', '1', 'KIOSCO', 1, 62, '1', '500', 0, 'C', '2024-01-31 17:18:43', '2024-01-31 17:19:14', '1', '0'),
-(373, 151, '1', '1', 'KIOSCO', 1, 48, '1', '2000', 0, 'C', '2024-01-31 17:19:05', '2024-01-31 17:19:14', '1', '0'),
-(374, 152, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-02-01 14:42:12', '2024-02-01 14:42:18', '1', '0'),
-(375, 153, '1', '1', 'KIOSCO', 1, 75, '2', '3000', 0, 'C', '2024-02-01 17:30:53', '2024-02-01 17:31:07', '1', '0'),
-(376, 154, '1', '1', 'KIOSCO', 1, 62, '1', '500', 0, 'N', '2024-02-01 18:35:43', '0000-00-00 00:00:00', '0', '0'),
-(377, 154, '1', '1', 'KIOSCO', 1, 62, '1', '500', 0, 'C', '2024-02-01 18:35:46', '2024-02-01 18:37:11', '1', '0'),
-(378, 154, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-02-01 18:37:03', '2024-02-01 18:37:11', '1', '0'),
-(379, 155, '1', '1', 'KIOSCO', 1, 58, '5', '500', 0, 'N', '2024-02-01 18:54:53', '0000-00-00 00:00:00', '0', '0'),
-(380, 155, '1', '1', 'KIOSCO', 1, 58, '5', '500', 0, 'C', '2024-02-01 18:55:41', '2024-02-01 18:55:51', '1', '0'),
-(381, 156, '1', '1', 'KIOSCO', 1, 58, '5', '500', 0, 'C', '2024-02-01 19:11:39', '2024-02-01 19:11:44', '1', '0'),
-(382, 157, '1', '1', 'KIOSCO', 1, 90, '1', '2000', 0, 'C', '2024-02-01 20:39:54', '2024-02-02 00:03:55', '1', '0'),
-(383, 158, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'N', '2024-02-02 00:05:36', '0000-00-00 00:00:00', '0', '0'),
-(384, 158, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'N', '2024-02-02 00:06:56', '0000-00-00 00:00:00', '0', '0'),
-(385, 158, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'N', '2024-02-02 00:07:02', '0000-00-00 00:00:00', '0', '0'),
-(386, 158, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'N', '2024-02-02 00:09:56', '0000-00-00 00:00:00', '0', '0'),
-(387, 158, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-02-02 00:13:54', '2024-02-02 00:16:26', '1', '0'),
-(388, 158, '1', '1', 'KIOSCO', 1, 26, '1', '5000', 0, 'C', '2024-02-02 00:14:03', '2024-02-02 00:16:26', '1', '0'),
-(389, 158, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-02-02 00:14:13', '2024-02-02 00:16:26', '1', '0'),
-(390, 159, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-02-02 17:45:16', '2024-02-02 17:45:57', '1', '0'),
-(391, 159, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-02-02 17:45:17', '2024-02-02 17:45:57', '1', '0'),
-(392, 159, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-02-02 17:45:17', '2024-02-02 17:45:57', '1', '0'),
-(393, 159, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-02-02 17:45:17', '2024-02-02 17:45:57', '1', '0'),
-(394, 160, '1', '1', 'KIOSCO', 1, 91, '1', '5000', 0, 'C', '2024-02-03 21:45:41', '2024-02-02 21:45:47', '1', '0'),
-(422, 161, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 25, 'N', '2024-02-03 12:37:25', '0000-00-00 00:00:00', '0', '0'),
-(423, 161, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 25, 'N', '2024-02-03 12:37:36', '0000-00-00 00:00:00', '0', '0.2'),
-(424, 161, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 25, 'N', '2024-02-03 12:37:48', '0000-00-00 00:00:00', '0', '0.2'),
-(425, 161, '1', '1', 'KIOSCO', 1, 4, '1', '2000', 25, 'N', '2024-02-03 12:38:03', '0000-00-00 00:00:00', '0', '0.25'),
-(426, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:39:03', '0000-00-00 00:00:00', '0', '0'),
-(427, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:39:16', '0000-00-00 00:00:00', '0', '0.25'),
-(428, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:39:22', '0000-00-00 00:00:00', '0', '0.25'),
-(429, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:39:24', '0000-00-00 00:00:00', '0', '0.25'),
-(430, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:40:06', '0000-00-00 00:00:00', '0', '0'),
-(431, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:40:09', '0000-00-00 00:00:00', '0', '0'),
-(432, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:40:49', '0000-00-00 00:00:00', '0', '0'),
-(433, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:52:25', '0000-00-00 00:00:00', '0', '0'),
-(434, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:53:51', '0000-00-00 00:00:00', '0', '0'),
-(435, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:53:54', '0000-00-00 00:00:00', '0', '0'),
-(436, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:53:55', '0000-00-00 00:00:00', '0', '0'),
-(437, 161, '1', '1', 'KIOSCO', 1, 6, '1', '1000', 25, 'N', '2024-02-03 12:53:56', '0000-00-00 00:00:00', '0', '0'),
-(438, 161, '1', '1', 'KIOSCO', 1, 6, '10', '10000', 25, 'N', '2024-02-03 12:54:19', '0000-00-00 00:00:00', '0', '0'),
-(439, 161, '1', '1', 'KIOSCO', 1, 33, '3', '900', 0, 'C', '2024-02-03 14:59:33', '2024-02-03 15:03:23', '4', '0'),
-(440, 161, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'N', '2024-02-03 14:59:34', '0000-00-00 00:00:00', '0', '0'),
-(441, 161, '1', '1', 'KIOSCO', 1, 51, '1', '1500', 0, 'C', '2024-02-03 15:02:49', '2024-02-03 15:03:23', '4', '0'),
-(442, 162, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 15:17:48', '2024-02-03 15:18:35', '1', '0'),
-(443, 162, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 15:17:49', '2024-02-03 15:18:35', '1', '0'),
-(444, 162, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 15:17:50', '2024-02-03 15:18:35', '1', '0'),
-(445, 162, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 15:17:54', '2024-02-03 15:18:35', '1', '0'),
-(446, 162, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 15:17:58', '2024-02-03 15:18:35', '1', '0'),
-(447, 162, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'N', '2024-02-03 15:18:01', '0000-00-00 00:00:00', '0', '0'),
-(448, 163, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-02-03 18:30:14', '2024-02-03 18:30:20', '1', '0'),
-(449, 164, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 15, 'N', '2024-02-03 18:38:05', '0000-00-00 00:00:00', '0', '0'),
-(450, 164, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 180, 'N', '2024-02-03 18:38:56', '0000-00-00 00:00:00', '0', '0.15'),
-(451, 164, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-02-03 18:40:25', '2024-02-03 18:42:33', '1', '0'),
-(452, 164, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-02-03 18:40:26', '2024-02-03 18:42:33', '1', '0'),
-(453, 164, '1', '1', 'KIOSCO', 1, 15, '1', '1700', 0, 'C', '2024-02-03 18:41:39', '2024-02-03 18:42:33', '1', '0'),
-(454, 165, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-02-03 19:27:33', '2024-02-03 19:27:43', '1', '0'),
-(455, 166, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 19:48:56', '2024-02-03 19:49:20', '1', '0'),
-(456, 166, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 19:48:57', '2024-02-03 19:49:20', '1', '0'),
-(457, 166, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 19:48:57', '2024-02-03 19:49:20', '1', '0'),
-(458, 166, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 19:48:57', '2024-02-03 19:49:20', '1', '0'),
-(459, 166, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 19:48:58', '2024-02-03 19:49:20', '1', '0'),
-(460, 167, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 19:51:33', '2024-02-03 19:59:48', '1', '0'),
-(461, 167, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 19:51:33', '2024-02-03 19:59:48', '1', '0'),
-(462, 167, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 19:51:34', '2024-02-03 19:59:48', '1', '0'),
-(463, 167, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 19:51:34', '2024-02-03 19:59:48', '1', '0'),
-(464, 167, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 19:51:34', '2024-02-03 19:59:48', '1', '0'),
-(465, 167, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-02-03 19:51:36', '2024-02-03 19:59:48', '1', '0'),
-(466, 167, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-02-03 19:51:37', '2024-02-03 19:59:48', '1', '0'),
-(467, 167, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-02-03 19:51:37', '2024-02-03 19:59:48', '1', '0'),
-(468, 167, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-02-03 19:51:37', '2024-02-03 19:59:48', '1', '0'),
-(469, 167, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-02-03 19:51:38', '2024-02-03 19:59:48', '1', '0'),
-(470, 167, '1', '1', 'KIOSCO', 1, 36, '1', '900', 0, 'C', '2024-02-03 19:53:32', '2024-02-03 19:59:48', '1', '0'),
-(471, 167, '1', '1', 'KIOSCO', 1, 36, '1', '900', 0, 'C', '2024-02-03 19:53:36', '2024-02-03 19:59:48', '1', '0'),
-(472, 167, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-02-03 19:53:47', '2024-02-03 19:59:48', '1', '0'),
-(473, 168, '1', '1', 'KIOSCO', 1, 35, '1', '900', 0, 'N', '2024-02-03 20:02:33', '0000-00-00 00:00:00', '0', '0'),
-(474, 168, '1', '1', 'KIOSCO', 1, 35, '1', '900', 0, 'C', '2024-02-03 20:03:05', '2024-02-03 20:03:13', '1', '0'),
-(475, 168, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'N', '2024-02-03 20:05:41', '0000-00-00 00:00:00', '0', '0'),
-(476, 168, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'N', '2024-02-03 20:05:41', '0000-00-00 00:00:00', '0', '0'),
-(477, 169, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 20:05:56', '2024-02-03 20:06:06', '1', '0'),
-(478, 169, '1', '1', 'KIOSCO', 1, 58, '1', '100', 0, 'C', '2024-02-03 20:05:56', '2024-02-03 20:06:06', '1', '0'),
-(479, 170, '1', '1', 'KIOSCO', 1, 91, '1', '5000', 0, 'C', '2024-02-03 20:35:52', '2024-02-03 20:35:57', '1', '0'),
-(480, 171, '1', '1', 'KIOSCO', 1, 80, '1', '1000', 0, 'C', '2024-02-04 21:04:19', '2024-02-03 21:04:28', '1', '0');
-INSERT INTO `ventas` (`id`, `id_venta`, `id_cl`, `id_caja`, `nom_caja`, `usuario`, `producto`, `cantidad`, `valor`, `descto`, `estado`, `fecha`, `fecha_pago`, `forma_pago`, `des`) VALUES
-(481, 171, '1', '1', 'KIOSCO', 1, 36, '3', '2700', 0, 'N', '2024-02-04 21:29:32', '0000-00-00 00:00:00', '0', '0'),
-(482, 172, '1', '1', 'KIOSCO', 1, 36, '3', '2700', 0, 'C', '2024-02-04 21:29:41', '2024-02-03 21:30:57', '1', '0'),
-(483, 172, '1', '1', 'KIOSCO', 1, 68, '1', '1000', 0, 'C', '2024-02-04 21:29:53', '2024-02-03 21:30:57', '1', '0'),
-(484, 172, '1', '1', 'KIOSCO', 1, 65, '1', '2000', 0, 'C', '2024-02-04 21:30:14', '2024-02-03 21:30:57', '1', '0'),
-(485, 173, '1', '1', 'KIOSCO', 1, 95, '1', '500', 0, 'C', '2024-02-04 21:47:24', '2024-02-03 21:49:53', '4', '0'),
-(486, 173, '1', '1', 'KIOSCO', 1, 88, '1', '2500', 0, 'C', '2024-02-04 21:47:30', '2024-02-03 21:49:53', '4', '0'),
-(487, 174, '1', '1', 'KIOSCO', 1, 40, '1', '1150', 0, 'C', '2024-02-04 22:36:11', '2024-02-03 22:39:09', '1', '0'),
-(488, 174, '1', '1', 'KIOSCO', 1, 96, '1', '3000', 0, 'C', '2024-02-04 22:36:15', '2024-02-03 22:39:09', '1', '0'),
-(489, 174, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-02-04 22:36:28', '2024-02-03 22:39:09', '1', '0'),
-(490, 175, '1', '1', 'KIOSCO', 1, 88, '1', '2500', 0, 'C', '2024-02-04 22:40:50', '2024-02-03 23:15:08', '1', '0'),
-(491, 175, '1', '1', 'KIOSCO', 1, 95, '1', '500', 0, 'C', '2024-02-04 22:41:01', '2024-02-03 23:15:08', '1', '0'),
-(492, 175, '1', '1', 'KIOSCO', 1, 1, '2', '2400', 0, 'N', '2024-02-04 23:09:39', '0000-00-00 00:00:00', '0', '0'),
-(493, 176, '1', '1', 'KIOSCO', 1, 91, '1', '5000', 0, 'C', '2024-02-04 12:29:40', '2024-02-04 12:29:50', '1', '0'),
-(494, 177, '1', '1', 'KIOSCO', 1, 40, '4', '4600', 0, 'C', '2024-02-04 12:35:20', '2024-02-04 12:36:08', '1', '0'),
-(495, 178, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-02-04 12:49:21', '2024-02-04 12:49:49', '1', '0'),
-(496, 178, '1', '1', 'KIOSCO', 1, 58, '5', '500', 0, 'C', '2024-02-04 12:49:33', '2024-02-04 12:49:49', '1', '0'),
-(497, 178, '1', '1', 'KIOSCO', 1, 59, '5', '500', 0, 'C', '2024-02-04 12:49:39', '2024-02-04 12:49:49', '1', '0'),
-(498, 179, '1', '1', 'KIOSCO', 1, 35, '1', '900', 0, 'C', '2024-02-04 12:51:48', '2024-02-04 12:52:42', '1', '0'),
-(499, 179, '1', '1', 'KIOSCO', 1, 35, '1', '900', 0, 'C', '2024-02-04 12:51:51', '2024-02-04 12:52:42', '1', '0'),
-(500, 179, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-02-04 12:51:55', '2024-02-04 12:52:42', '1', '0'),
-(501, 180, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-02-04 12:53:16', '2024-02-04 12:53:31', '1', '0'),
-(502, 181, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-02-04 12:56:09', '2024-02-04 12:56:17', '1', '0'),
-(503, 181, '1', '1', 'KIOSCO', 1, 59, '1', '100', 0, 'C', '2024-02-04 12:56:09', '2024-02-04 12:56:17', '1', '0'),
-(504, 182, '1', '1', 'KIOSCO', 1, 97, '1', '3000', 0, 'C', '2024-02-04 16:08:49', '2024-02-04 16:09:10', '1', '0'),
-(514, 183, '1', '1', 'KIOSCO', 1, 1, '1', '1200', 0, 'N', '2024-02-04 16:13:48', '0000-00-00 00:00:00', '0', '0'),
-(515, 183, '1', '1', 'KIOSCO', 1, 97, '1', '2000', 0, 'C', '2024-02-04 16:14:03', '2024-02-04 16:22:22', '1', '0'),
-(516, 183, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'C', '2024-02-04 16:14:37', '2024-02-04 16:22:22', '1', '0'),
-(527, 183, '1', '1', 'KIOSCO', 1, 47, '1', '2800', 0, 'N', '2024-02-04 16:20:56', '0000-00-00 00:00:00', '0', '0'),
-(528, 184, '1', '1', 'KIOSCO', 1, 14, '1', '1700', 0, 'C', '2024-02-04 19:09:59', '2024-02-04 19:13:54', '1', '0'),
-(529, 184, '1', '1', 'KIOSCO', 1, 42, '1', '1200', 0, 'C', '2024-02-04 19:10:18', '2024-02-04 19:13:54', '1', '0'),
-(530, 184, '1', '1', 'KIOSCO', 1, 89, '1', '400', 0, 'N', '2024-02-04 19:12:23', '0000-00-00 00:00:00', '0', '0'),
-(531, 184, '1', '1', 'KIOSCO', 1, 89, '1', '400', 0, 'N', '2024-02-04 19:12:23', '0000-00-00 00:00:00', '0', '0'),
-(532, 184, '1', '1', 'KIOSCO', 1, 89, '2', '800', 0, 'N', '2024-02-04 19:14:21', '0000-00-00 00:00:00', '0', '0'),
-(533, 185, '1', '1', 'KIOSCO', 1, 89, '2', '800', 0, 'C', '2024-02-04 19:14:34', '2024-02-04 19:14:41', '1', '0'),
-(534, 186, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-02-04 19:19:06', '2024-02-04 19:19:57', '1', '0'),
-(535, 187, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-02-04 19:55:30', '2024-02-04 19:55:35', '1', '0'),
-(536, 188, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-02-05 22:28:57', '2024-02-04 22:29:05', '1', '0'),
-(537, 189, '1', '1', 'KIOSCO', 1, 1, '2', '2400', 0, 'N', '2024-02-05 13:57:19', '0000-00-00 00:00:00', '0', '0'),
-(538, 191, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-02-09 22:02:41', '2024-02-08 22:02:47', '1', '0'),
-(539, 192, '1', '1', 'KIOSCO', 1, 35, '3', '2700', 0, 'P', '2024-02-09 22:33:47', '0000-00-00 00:00:00', '0', '0'),
-(540, 192, '1', '1', 'KIOSCO', 1, 70, '6', '6000', 0, 'P', '2024-02-09 22:34:00', '0000-00-00 00:00:00', '0', '0'),
-(541, 192, '1', '1', 'KIOSCO', 1, 58, '3', '300', 0, 'P', '2024-02-09 22:34:27', '0000-00-00 00:00:00', '0', '0'),
-(542, 192, '1', '1', 'KIOSCO', 1, 102, '2', '800', 0, 'P', '2024-02-09 22:34:58', '0000-00-00 00:00:00', '0', '0'),
-(543, 192, '1', '1', 'KIOSCO', 1, 63, '1', '500', 0, 'P', '2024-02-09 22:35:09', '0000-00-00 00:00:00', '0', '0'),
-(544, 192, '1', '1', 'KIOSCO', 1, 39, '3', '3600', 0, 'P', '2024-02-09 22:35:36', '0000-00-00 00:00:00', '0', '0'),
-(545, 192, '1', '1', 'KIOSCO', 1, 37, '3', '2400', 0, 'P', '2024-02-09 22:35:52', '0000-00-00 00:00:00', '0', '0'),
-(546, 192, '1', '1', 'KIOSCO', 1, 71, '2', '500', 0, 'P', '2024-02-09 22:36:02', '0000-00-00 00:00:00', '0', '0'),
-(547, 192, '1', '1', 'KIOSCO', 1, 56, '3', '2400', 0, 'P', '2024-02-09 22:36:13', '0000-00-00 00:00:00', '0', '0'),
-(548, 192, '1', '1', 'KIOSCO', 1, 23, '2', '1400', 0, 'N', '2024-02-09 22:36:40', '0000-00-00 00:00:00', '0', '0'),
-(549, 192, '1', '1', 'KIOSCO', 1, 55, '2', '1600', 0, 'P', '2024-02-09 22:37:00', '0000-00-00 00:00:00', '0', '0'),
-(550, 192, '1', '1', 'KIOSCO', 1, 102, '2', '800', 0, 'P', '2024-02-09 22:38:30', '0000-00-00 00:00:00', '0', '0'),
-(551, 192, '1', '1', 'KIOSCO', 1, 5, '5', '2000', 0, 'P', '2024-02-09 22:38:52', '0000-00-00 00:00:00', '0', '0'),
-(552, 192, '1', '1', 'KIOSCO', 1, 8, '5', '5000', 0, 'P', '2024-02-09 22:39:13', '0000-00-00 00:00:00', '0', '0'),
-(553, 194, '1', '1', 'KIOSCO', 1, 96, '1', '3000', 0, 'C', '2024-02-09 12:57:04', '2024-02-09 12:58:35', '1', '0'),
-(554, 194, '1', '1', 'KIOSCO', 1, 51, '1', '1500', 0, 'N', '2024-02-09 13:48:15', '0000-00-00 00:00:00', '0', '0'),
-(555, 195, '1', '1', 'KIOSCO', 1, 51, '1', '1500', 0, 'C', '2024-02-09 13:48:21', '2024-02-09 13:48:50', '1', '0'),
-(556, 196, '1', '1', 'KIOSCO', 1, 42, '1', '1200', 0, 'C', '2024-02-09 16:13:23', '2024-02-09 16:14:16', '1', '0'),
-(557, 196, '1', '1', 'KIOSCO', 1, 40, '1', '1200', 0, 'C', '2024-02-09 16:13:27', '2024-02-09 16:14:16', '1', '0'),
-(558, 196, '1', '1', 'KIOSCO', 1, 65, '1', '2000', 0, 'C', '2024-02-09 16:13:44', '2024-02-09 16:14:16', '1', '0'),
-(559, 197, '1', '1', 'KIOSCO', 1, 72, '1', '2000', 0, 'C', '2024-02-09 16:14:55', '2024-02-09 17:21:30', '1', '0'),
-(560, 197, '1', '1', 'KIOSCO', 1, 40, '1', '1200', 0, 'C', '2024-02-09 16:15:05', '2024-02-09 17:21:30', '1', '0'),
-(561, 198, '1', '1', 'KIOSCO', 1, 65, '1', '2000', 0, 'C', '2024-02-09 17:38:42', '2024-02-09 17:41:08', '1', '0'),
-(562, 198, '1', '1', 'KIOSCO', 1, 103, '1', '1600', 0, 'C', '2024-02-09 17:39:33', '2024-02-09 17:41:08', '1', '0'),
-(563, 199, '1', '1', 'KIOSCO', 1, 36, '1', '900', 0, 'C', '2024-02-09 18:15:53', '2024-02-09 18:17:04', '1', '0'),
-(564, 199, '1', '1', 'KIOSCO', 1, 103, '1', '1600', 0, 'C', '2024-02-09 18:16:07', '2024-02-09 18:17:04', '1', '0'),
-(565, 200, '1', '1', 'KIOSCO', 1, 78, '1', '1000', 0, 'C', '2024-02-09 19:06:50', '2024-02-09 19:07:15', '1', '0'),
-(566, 201, '1', '1', 'KIOSCO', 1, 39, '2', '2400', 0, 'C', '2024-02-09 20:25:23', '2024-02-09 21:44:38', '4', '0'),
-(567, 202, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-02-10 21:45:40', '2024-02-09 21:45:53', '1', '0'),
-(568, 202, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-02-10 21:45:44', '2024-02-09 21:45:53', '1', '0'),
-(569, 202, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'N', '2024-02-10 21:51:54', '0000-00-00 00:00:00', '0', '0'),
-(570, 203, '1', '1', 'KIOSCO', 1, 74, '1', '5000', 0, 'C', '2024-02-10 21:52:05', '2024-02-09 21:53:50', '1', '0'),
-(571, 204, '1', '1', 'KIOSCO', 1, 8, '1', '1000', 0, 'C', '2024-02-10 21:57:30', '2024-02-09 21:57:58', '1', '0'),
-(572, 204, '1', '1', 'KIOSCO', 1, 80, '1', '1000', 0, 'C', '2024-02-10 21:57:35', '2024-02-09 21:57:58', '1', '0'),
-(573, 205, '1', '1', 'KIOSCO', 1, 107, '1', '3000', 0, 'C', '2024-02-10 13:52:01', '2024-02-10 13:56:55', '1', '0'),
-(574, 205, '1', '1', 'KIOSCO', 1, 55, '1', '700', 0, 'C', '2024-02-10 13:54:40', '2024-02-10 13:56:55', '1', '0'),
-(575, 205, '1', '1', 'KIOSCO', 1, 78, '2', '2000', 0, 'C', '2024-02-10 13:56:07', '2024-02-10 13:56:55', '1', '0'),
-(576, 205, '1', '1', 'KIOSCO', 1, 56, '1', '800', 0, 'C', '2024-02-10 13:56:17', '2024-02-10 13:56:55', '1', '0'),
-(577, 205, '1', '1', 'KIOSCO', 1, 61, '1', '1000', 0, 'C', '2024-02-10 13:56:30', '2024-02-10 13:56:55', '1', '0'),
-(578, 205, '1', '1', 'KIOSCO', 1, 14, '1', '1700', 0, 'C', '2024-02-10 13:56:42', '2024-02-10 13:56:55', '1', '0'),
-(579, 206, '1', '1', 'KIOSCO', 1, 40, '1', '1200', 0, 'C', '2024-02-10 17:26:28', '2024-02-10 17:27:02', '1', '0'),
-(580, 206, '1', '1', 'KIOSCO', 1, 40, '1', '1200', 0, 'C', '2024-02-10 17:26:28', '2024-02-10 17:27:02', '1', '0'),
-(581, 206, '1', '1', 'KIOSCO', 1, 91, '1', '5000', 0, 'C', '2024-02-10 17:26:41', '2024-02-10 17:27:02', '1', '0'),
-(582, 206, '1', '1', 'KIOSCO', 1, 91, '1', '5000', 0, 'C', '2024-02-10 17:26:42', '2024-02-10 17:27:02', '1', '0'),
-(583, 206, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-02-10 17:26:55', '2024-02-10 17:27:02', '1', '0'),
-(584, 207, '1', '1', 'KIOSCO', 1, 30, '1', '700', 0, 'N', '2024-02-10 17:31:21', '0000-00-00 00:00:00', '0', '0'),
-(585, 207, '1', '1', 'KIOSCO', 1, 30, '3', '2100', 0, 'C', '2024-02-10 17:31:56', '2024-02-10 17:36:13', '1', '0'),
-(586, 208, '1', '1', 'KIOSCO', 1, 56, '1', '800', 0, 'C', '2024-02-10 17:36:53', '2024-02-10 17:37:11', '1', '0'),
-(587, 209, '1', '1', 'KIOSCO', 1, 30, '3', '2100', 0, 'C', '2024-02-10 17:38:14', '2024-02-10 17:40:58', '1', '0'),
-(588, 209, '1', '1', 'KIOSCO', 1, 75, '1', '1500', 0, 'C', '2024-02-10 17:38:34', '2024-02-10 17:40:58', '1', '0'),
-(589, 210, '1', '1', 'KIOSCO', 1, 33, '1', '300', 0, 'C', '2024-02-10 17:46:59', '2024-02-10 17:47:43', '1', '0'),
-(590, 210, '1', '1', 'KIOSCO', 1, 68, '1', '1000', 0, 'C', '2024-02-10 17:47:06', '2024-02-10 17:47:43', '1', '0'),
-(591, 211, '1', '1', 'KIOSCO', 1, 56, '1', '800', 0, 'C', '2024-02-10 18:06:21', '2024-02-10 18:06:58', '1', '0'),
-(592, 211, '1', '1', 'KIOSCO', 1, 56, '1', '800', 0, 'C', '2024-02-10 18:06:33', '2024-02-10 18:06:58', '1', '0');
+INSERT INTO `ventas` (`id`, `id_venta`, `id_cl`, `id_caja`, `usuario`, `producto`, `cantidad`, `valor`, `descto`, `valorDescto`, `estado`, `fecha`, `fecha_pago`, `forma_pago`) VALUES
+(1, 1, '1', '1', 1, 20, '1', '400', 0, 0, 'C', '2024-06-28 12:44:42', '2024-06-28 12:45:34', '1'),
+(2, 1, '1', '1', 1, 20, '1', '400', 0, 0, 'C', '2024-06-28 12:44:43', '2024-06-28 12:45:34', '1'),
+(3, 1, '1', '1', 1, 20, '1', '400', 0, 0, 'C', '2024-06-28 12:44:44', '2024-06-28 12:45:34', '1'),
+(4, 2, '1', '1', 1, 20, '1', '400', 0, 0, 'C', '2024-06-28 12:47:14', '2024-06-28 13:17:30', '1'),
+(5, 2, '1', '1', 1, 20, '1', '400', 0, 0, 'C', '2024-06-28 12:47:16', '2024-06-28 13:17:30', '1'),
+(6, 2, '1', '1', 1, 20, '1', '400', 0, 0, 'C', '2024-06-28 12:47:18', '2024-06-28 13:17:30', '1'),
+(7, 2, '1', '1', 1, 20, '1', '400', 0, 0, 'C', '2024-06-28 12:47:21', '2024-06-28 13:17:30', '1'),
+(8, 2, '1', '1', 1, 20, '1', '400', 0, 0, 'C', '2024-06-28 12:47:23', '2024-06-28 13:17:30', '1'),
+(9, 5, '1', '1', 1, 51, '1', '1500', 0, 0, 'C', '2024-06-28 12:52:52', '2024-06-28 13:17:30', '1'),
+(10, 5, '1', '1', 1, 51, '1', '1500', 0, 0, 'C', '2024-06-28 12:52:54', '2024-06-28 13:17:30', '1'),
+(11, 4, '1', '1', 1, 53, '1', '1200', 0, 0, 'C', '2024-06-28 13:20:00', '2024-06-28 14:06:40', '1'),
+(12, 4, '1', '1', 1, 70, '1', '1000', 0, 0, 'C', '2024-06-28 13:20:12', '2024-06-28 14:06:40', '1'),
+(13, 3, '1', '1', 1, 54, '1', '1200', 0, 0, 'C', '2024-06-28 14:06:51', '2024-06-28 14:31:07', '2'),
+(14, 3, '1', '1', 1, 54, '1', '1200', 0, 0, 'C', '2024-06-28 14:06:53', '2024-06-28 14:31:07', '2'),
+(15, 3, '1', '1', 1, 54, '1', '1200', 0, 0, 'C', '2024-06-28 14:06:55', '2024-06-28 14:31:07', '2'),
+(16, 3, '1', '1', 1, 54, '1', '1200', 0, 0, 'C', '2024-06-28 14:06:56', '2024-06-28 14:31:07', '2'),
+(17, 6, '1', '1', 1, 53, '1', '1200', 0, 0, 'C', '2024-06-28 14:32:20', '2024-06-28 14:32:48', '1'),
+(18, 6, '1', '1', 1, 53, '1', '1200', 0, 0, 'C', '2024-06-28 14:32:23', '2024-06-28 14:32:48', '1'),
+(19, 6, '1', '1', 1, 53, '1', '1200', 0, 0, 'C', '2024-06-28 14:32:24', '2024-06-28 14:32:48', '1'),
+(20, 7, '1', '1', 1, 99, '1', '1200', 0, 0, 'C', '2024-06-28 14:38:47', '2024-06-28 20:13:58', '1'),
+(21, 7, '1', '1', 1, 99, '1', '1200', 0, 0, 'C', '2024-06-28 14:38:48', '2024-06-28 20:13:58', '1'),
+(22, 7, '1', '1', 1, 99, '1', '1200', 0, 0, 'C', '2024-06-28 14:38:49', '2024-06-28 20:13:58', '1'),
+(23, 7, '1', '1', 1, 99, '1', '1200', 0, 0, 'C', '2024-06-28 14:38:50', '2024-06-28 20:13:58', '1'),
+(24, 8, '1', '1', 1, 83, '1', '400', 0, 0, 'C', '2024-06-28 14:41:03', '2024-06-28 20:13:58', '1'),
+(25, 8, '1', '1', 1, 83, '1', '400', 0, 0, 'C', '2024-06-28 14:41:04', '2024-06-28 20:13:58', '1'),
+(26, 8, '1', '1', 1, 83, '1', '400', 0, 0, 'C', '2024-06-28 14:41:04', '2024-06-28 20:13:58', '1'),
+(27, 8, '1', '1', 1, 83, '1', '400', 0, 0, 'C', '2024-06-28 14:41:05', '2024-06-28 20:13:58', '1'),
+(28, 8, '1', '1', 1, 83, '1', '400', 0, 0, 'C', '2024-06-28 14:41:05', '2024-06-28 20:13:58', '1'),
+(29, 8, '1', '1', 1, 83, '1', '400', 0, 0, 'C', '2024-06-28 14:41:05', '2024-06-28 20:13:58', '1'),
+(30, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:48', '0000-00-00 00:00:00', '0'),
+(31, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:48', '0000-00-00 00:00:00', '0'),
+(32, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:49', '0000-00-00 00:00:00', '0'),
+(33, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:49', '0000-00-00 00:00:00', '0'),
+(34, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:49', '0000-00-00 00:00:00', '0'),
+(35, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:49', '0000-00-00 00:00:00', '0'),
+(36, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:49', '0000-00-00 00:00:00', '0'),
+(37, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:50', '0000-00-00 00:00:00', '0'),
+(38, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:50', '0000-00-00 00:00:00', '0'),
+(39, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:50', '0000-00-00 00:00:00', '0'),
+(40, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:50', '0000-00-00 00:00:00', '0'),
+(41, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:50', '0000-00-00 00:00:00', '0'),
+(42, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:50', '0000-00-00 00:00:00', '0'),
+(43, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:51', '0000-00-00 00:00:00', '0'),
+(44, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:51', '0000-00-00 00:00:00', '0'),
+(45, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:51', '0000-00-00 00:00:00', '0'),
+(46, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:51', '0000-00-00 00:00:00', '0'),
+(47, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:51', '0000-00-00 00:00:00', '0'),
+(48, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:52', '0000-00-00 00:00:00', '0'),
+(49, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:52', '0000-00-00 00:00:00', '0'),
+(50, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:53', '0000-00-00 00:00:00', '0'),
+(51, 9, '1', '1', 1, 50, '1', '250', 0, 0, 'N', '2024-06-29 20:14:53', '0000-00-00 00:00:00', '0'),
+(52, 9, '1', '1', 1, 50, '1', '250', 0, 250, 'C', '2024-06-29 20:14:54', '2024-06-28 20:20:06', '2'),
+(53, 9, '1', '1', 1, 50, '1', '250', 0, 250, 'C', '2024-06-29 20:14:54', '2024-06-28 20:20:06', '2'),
+(54, 9, '1', '1', 1, 102, '1', '400', 0, 400, 'C', '2024-06-29 20:18:59', '2024-06-28 20:20:06', '2'),
+(55, 10, '1', '1', 1, 102, '1', '400', 0, 0, 'C', '2024-06-29 20:20:23', '2024-06-28 21:05:50', '1'),
+(56, 10, '1', '1', 1, 102, '1', '400', 0, 0, 'C', '2024-06-29 20:20:26', '2024-06-28 21:05:50', '1'),
+(57, 10, '1', '1', 1, 102, '1', '400', 0, 0, 'C', '2024-06-29 20:20:28', '2024-06-28 21:05:50', '1'),
+(58, 10, '1', '1', 1, 99, '1', '1200', 0, 0, 'C', '2024-06-29 20:20:42', '2024-06-28 21:05:50', '1'),
+(59, 11, '1', '1', 1, 99, '1', '1200', 0, 0, 'C', '2024-06-29 20:21:00', '2024-06-28 21:05:50', '1'),
+(60, 11, '1', '1', 1, 99, '1', '1200', 0, 0, 'C', '2024-06-29 20:21:04', '2024-06-28 21:05:50', '1'),
+(61, 11, '1', '1', 1, 70, '1', '1000', 0, 0, 'C', '2024-06-29 20:21:50', '2024-06-28 21:05:50', '1'),
+(62, 12, '1', '1', 1, 70, '1', '1000', 0, 0, 'C', '2024-06-29 20:21:59', '2024-06-28 21:07:02', '1'),
+(63, 12, '1', '1', 1, 78, '1', '1000', 0, 0, 'C', '2024-06-29 20:22:06', '2024-06-28 21:07:02', '1'),
+(64, 12, '1', '1', 1, 70, '1', '1000', 0, 0, 'C', '2024-06-29 20:22:09', '2024-06-28 21:07:02', '1'),
+(65, 12, '1', '1', 1, 70, '1', '1000', 0, 0, 'C', '2024-06-29 20:22:13', '2024-06-28 21:07:02', '1');
 
 --
--- Restricciones para tablas volcadas
+-- Índices para tablas volcadas
 --
 
 --
--- Filtros para la tabla `anula_categoria`
+-- Indices de la tabla `anula_categoria`
 --
 ALTER TABLE `anula_categoria`
-  ADD CONSTRAINT `fk_anula_categoria` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `anula_productos`
+-- Indices de la tabla `anula_productos`
 --
 ALTER TABLE `anula_productos`
-  ADD CONSTRAINT `fk_anula_productos` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `anula_proveedor`
+-- Indices de la tabla `anula_proveedor`
 --
 ALTER TABLE `anula_proveedor`
-  ADD CONSTRAINT `fk_anula_proveedor` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `anula_turnos`
+-- Indices de la tabla `anula_turnos`
 --
 ALTER TABLE `anula_turnos`
-  ADD CONSTRAINT `fk_anula_turnos` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `anula_ventas`
+-- Indices de la tabla `anula_ventas`
 --
 ALTER TABLE `anula_ventas`
-  ADD CONSTRAINT `fk_anula_ventas` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `cajas`
+-- Indices de la tabla `autorizacion`
+--
+ALTER TABLE `autorizacion`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_cl` (`id_cl`);
+
+--
+-- Indices de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  ADD CONSTRAINT `fk_cajas` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `categorias`
+-- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  ADD CONSTRAINT `fk_categorias` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `cierre_caja`
+-- Indices de la tabla `cierre_caja`
 --
 ALTER TABLE `cierre_caja`
-  ADD CONSTRAINT `fk_cierre_caja` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `clientes_negocio`
+-- Indices de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `clientes_negocio`
 --
 ALTER TABLE `clientes_negocio`
-  ADD CONSTRAINT `fk_clientes_negocio` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `correlativo`
+-- Indices de la tabla `correlativo`
 --
 ALTER TABLE `correlativo`
-  ADD CONSTRAINT `fk_correlativo` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `cuentas_corrientes`
+-- Indices de la tabla `cuentas_corrientes`
 --
 ALTER TABLE `cuentas_corrientes`
-  ADD CONSTRAINT `fk_cuentas_corrientes` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `pedidos`
+-- Indices de la tabla `cuenta_corriente`
+--
+ALTER TABLE `cuenta_corriente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `giros`
+--
+ALTER TABLE `giros`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `margen_ganancia`
+--
+ALTER TABLE `margen_ganancia`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `metodo_pago`
+--
+ALTER TABLE `metodo_pago`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `monto_caja`
+--
+ALTER TABLE `monto_caja`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `motivo_mov_monto_caja`
+--
+ALTER TABLE `motivo_mov_monto_caja`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `pago_cliente`
+--
+ALTER TABLE `pago_cliente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `pass_provisoria`
+--
+ALTER TABLE `pass_provisoria`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD CONSTRAINT `fk_pedidos_detalle` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `proveedores`
+-- Indices de la tabla `pedidos_detalle`
+--
+ALTER TABLE `pedidos_detalle`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `planes`
+--
+ALTER TABLE `planes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id_prod`);
+
+--
+-- Indices de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-  ADD CONSTRAINT `fk_proveedores` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `stock_minimo_producto`
+-- Indices de la tabla `stock_minimo_producto`
 --
 ALTER TABLE `stock_minimo_producto`
-  ADD CONSTRAINT `fk_stock_minimo_producto` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Filtros para la tabla `usuarios`
+-- Indices de la tabla `tipo_pago_cliente`
+--
+ALTER TABLE `tipo_pago_cliente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `unidades_medida`
+--
+ALTER TABLE `unidades_medida`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_usuarios` FOREIGN KEY (`id_cl`) REFERENCES `cliente` (`id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `anula_categoria`
+--
+ALTER TABLE `anula_categoria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `anula_productos`
+--
+ALTER TABLE `anula_productos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `anula_proveedor`
+--
+ALTER TABLE `anula_proveedor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `anula_turnos`
+--
+ALTER TABLE `anula_turnos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `anula_ventas`
+--
+ALTER TABLE `anula_ventas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `autorizacion`
+--
+ALTER TABLE `autorizacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `cajas`
+--
+ALTER TABLE `cajas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `cierre_caja`
+--
+ALTER TABLE `cierre_caja`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `clientes_negocio`
+--
+ALTER TABLE `clientes_negocio`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `correlativo`
+--
+ALTER TABLE `correlativo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de la tabla `cuenta_corriente`
+--
+ALTER TABLE `cuenta_corriente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `margen_ganancia`
+--
+ALTER TABLE `margen_ganancia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `metodo_pago`
+--
+ALTER TABLE `metodo_pago`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `monto_caja`
+--
+ALTER TABLE `monto_caja`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+
+--
+-- AUTO_INCREMENT de la tabla `motivo_mov_monto_caja`
+--
+ALTER TABLE `motivo_mov_monto_caja`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `pago_cliente`
+--
+ALTER TABLE `pago_cliente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `pass_provisoria`
+--
+ALTER TABLE `pass_provisoria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidos_detalle`
+--
+ALTER TABLE `pedidos_detalle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
+--
+-- AUTO_INCREMENT de la tabla `planes`
+--
+ALTER TABLE `planes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `stock_minimo_producto`
+--
+ALTER TABLE `stock_minimo_producto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `unidades_medida`
+--
+ALTER TABLE `unidades_medida`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
