@@ -1,11 +1,13 @@
 <?php
 
-session_start();
+  session_start();
 
 
   $id_us = $_SESSION['user']['id'];
   $nombre = $_SESSION['user']["nombre"];
   $id_cl = $_SESSION['user']["id_cl"];
+
+
   $id_pedido = $_POST["id_pedido"];
 
 
@@ -13,15 +15,16 @@ session_start();
 
 	//query
 	$sql = 
-  "SELECT fac_con_iva
-  FROM pedidos 
+  "SELECT COUNT(id) AS id 
+  FROM pedidos_detalle 
   WHERE id_cl = $id_cl 
-  AND id = $id_pedido";
+  AND id_pedido = $id_pedido
+  AND estado!='N'";
   $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
     while ($row = $resultado->fetch_array())
     {
-      echo $row["fac_con_iva"];
+      echo $row["id"];
     }
   }
 

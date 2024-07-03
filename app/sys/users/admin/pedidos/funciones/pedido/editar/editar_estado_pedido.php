@@ -14,20 +14,13 @@
 	$id_cl = $_SESSION['user']["id_cl"];
 	
 	$estado = $_POST["estado"]; 
-	$id_pedido = $_POST["id"]; 
+	$id_pedido = $_POST["id_pedido"]; 
 
 	//editar detalle pedido
 	$sql = 
 		"UPDATE pedidos SET `estado` = '$estado' WHERE (`id` = '$id_pedido');";
 		$res = $conexion->query($sql);;
-		if($res)
-		{
-			echo "Detalle modificado correctamente.";
-		}
-		else 
-		{
-			die("Error al modificar detalle: ". mysqli_error($conexion));
-		}
+		echo $res;
 
 
 ?>

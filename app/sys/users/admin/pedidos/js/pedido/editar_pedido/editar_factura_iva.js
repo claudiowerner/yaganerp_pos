@@ -2,9 +2,8 @@
 
 //editar proveedor del pedido
 
-function editarFacturaConIva(e_fac)
+function editarFacturaConIva(id_pedido, e_fac)
 {
-    let id_pedido = $("#idPedido").text();
     let datos = {
         "id_pedido": id_pedido,
         "estado_factura": e_fac
@@ -30,5 +29,24 @@ $("#swFacturaConIvaRegistrar").on("click", function(e)
     {
         e_fac = "N";
     }
-    editarFacturaConIva(e_fac);
+    let id_pedido = $("#idPedido").text();
+    editarFacturaConIva(id_pedido, e_fac);
+})
+
+
+
+//editar estado del pago desde el modal editar
+$("#swFacturaConIva").on("click", function(e)
+{
+    if(e.target.checked)
+    {
+        e_fac = "S";
+    }
+    else
+    {
+        e_fac = "N";
+    }
+    let id_pedido = $("#idModal").text();
+    editarFacturaConIva(id_pedido, e_fac);
+    calcular_valor(id_pedido);
 })

@@ -8,6 +8,8 @@ function descargarProveedores()
   }).responseText;
 }
 
+
+//rellenar proveedores para registrar nuevo pedido
 function imprimirProveedores()
 {
   let descarga = descargarProveedores();
@@ -17,8 +19,24 @@ function imprimirProveedores()
   {
     template += `<option value='${j.id}'>${j.nombre_proveedor}</option>`;
   })
+
   $("#slctProveedor").html(template);
-  $("#slctProveedorEditar").html(template);
 
   $("#slctProveedor").select2();
+}
+
+//rellenar proveedores para editar un pedido
+function imprimirProveedoresEditar()
+{
+  let descarga = descargarProveedores();
+  let json = JSON.parse(descarga);
+  let template = "";
+  json.forEach(j=>
+  {
+    template += `<option value='${j.id}'>${j.nombre_proveedor}</option>`;
+  })
+
+  $("#slctProveedorEditar").html(template);
+
+  $("#slctProveedorEditar").select2();
 }

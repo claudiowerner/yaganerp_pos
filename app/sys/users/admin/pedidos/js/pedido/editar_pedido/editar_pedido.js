@@ -45,21 +45,64 @@ function editarValor(id)
         async: false
     }).responseText;
 }
-
-//funcion que elimina un detalle específico de un pedido
-function eliminarDetallePedido(id, item)
+//Funcion que elimina el detalle de un pedido en la BD
+function accionEliminarDetallePedidoBD(id)
 {
-    let response = $.ajax({
+    return $.ajax({
         url:"funciones/pedido/editar/eliminar_detalle_pedido.php",
         data: {"id":id},
         type: "POST",
         async: false
     }).responseText;
+}
+/*funcion que elimina un detalle específico de un pedido.*/
+function eliminarDetallePedido(id)
+{
+    let response = accionEliminarDetallePedidoBD(id)
 
     if(response==1)
     {
         idPedido = $("#idPedido").text();
         let template = imprimirDetallePedido(idPedido);
         $("#bodyPedidos").html(template);
+    }
+}
+/*funcion que elimina un detalle específico de un pedido en el modal de editar.*/
+function eliminarDetallePedidoEditar(id)
+{
+    let response = accionEliminarDetallePedidoBD(id)
+
+    if(response==1)
+    {
+        idPedido = $("#idModal").text();
+        let template = imprimirDetallePedidoEditar(idPedido);
+        $("#bodyPedidosEditar").html(template);
+    }
+}
+
+/*funcion que elimina un detalle específico de un pedido cuando se está registrando.*/
+function eliminarDetallePedido(id)
+{
+    let response = accionEliminarDetallePedidoBD(id);
+
+    if(response==1)
+    {
+        idPedido = $("#idPedido").text();
+        let template = imprimirDetallePedido(idPedido);
+        $("#bodyPedidos").html(template);
+    }
+}
+/*funcion que elimina un detalle específico de un pedido cuando se está editando.*/
+function eliminarDetallePedidoEditar(id)
+{
+    let response = accionEliminarDetallePedidoBD(id);
+
+    if(response==1)
+    {
+        idPedido = $("#idModal").text();
+        let template = imprimirDetallePedidoEditar(idPedido);
+        $("#bodyPedidosEditar").html(template);
+        let num_productos = obtenerNumeroProductos(idPedido);
+        $("#prodSolic").html(num_productos);
     }
 }

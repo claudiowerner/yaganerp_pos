@@ -75,13 +75,13 @@
   function modalEditar()
   {
     return"<div class='modal fade' id='modalEditar' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
-        <div class='modal-dialog' role='document'>
+        <div class='modal-dialog modal-lg' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
-              <h5 class='modal-title'>Editando pedido <strong id='idModal'>ID</strong></h5>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
+              <h5 class='modal-title'>Editando pedido <strong id='idModal'>ID</strong></h5>
             </div>
               <div class='modal-body'>
                 <table id='contenido' width='100%'>
@@ -91,8 +91,6 @@
                       <select name='slctProveedorEditar' id='slctProveedorEditar' class='form form-control select2' onChange='cambiarProveedor()'>
                       </select>
                     </td>
-                  </tr>
-                  <tr align='left'>
                     <td >
                       <div class=button align='right'>
                         <label name='swEstadoPedido' align='center'>Estado del pedido:</label>
@@ -104,8 +102,6 @@
                         <label id='lblEstadoPedido' for='swEstadoPedido' style='color:white' class='switch'></label>
                       </div>
                     </td>
-                  </tr>
-                  <tr align='left'>
                     <td >
                       <div class=button align='right'>
                         <label name='swEstadoPedido' align='center'>Estado del pago:</label>
@@ -117,8 +113,7 @@
                         <label id='lblEstadoPago' for='swEstadoPago' style='color:white' class='switch'></label>
                       </div>
                     </td>
-                  </tr>
-                  <tr align='left'>
+                  
                     <td >
                       <div class=button align='right'>
                         <label name='swFacturaConIva' align='center'>Factura con IVA</label>
@@ -138,15 +133,19 @@
                 <br>
                 <table id='tblPedidos' class='table'>
                   <tr>
+                    <th>ID</th>
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Valor</th>
                     <th>Acción</th>
                   </tr>
                   <tbody id='bodyPedidosEditar'>
-                    //
                   </tbody>
                 </table>
+                <br>
+                <div>
+                  <button id='btnAgregarProductoEditar2' class='btn btn-success'>+</button>
+                </div>
               </div>
               <div class='modal-footer'>
                 <table width='100%' align='center' class='table'>
@@ -168,8 +167,11 @@
                   </tr>
                 </table>
               </div>
+              <div class='modal-footer'>
+                <button id='btnFinalizarPedidoEditar' class='btn btn-primary'>Finalizar edición</button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>";
+        </div>";
   }
 ?>

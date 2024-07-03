@@ -49,12 +49,9 @@ var table;
         {"data":"valor"},
         {"data":"estado_pago"},
         {
-          "defaultContent": '<button type="submit" id="btnEditar" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" ><img src="../img/edit.png" width="15"></button>'
-        },
-        {
           "data": null,
           "render": function (data, type, row) {
-            return "<button type='submit' id='btnImprimir' data-id='"+data.id+"' class='btn btn-primary'><img src='../img/impresora.png' width='15'></button>";
+            return "<button type='submit' id='btnEditar' class='btn btn-primary' onClick='abrirModalEditar("+data.id+")'><img src='../img/edit.png' width='15'></button>";
           }
         }
       ],
@@ -76,56 +73,3 @@ var table;
         }
       }
     });
-
-  
-$("#pedidos").on('click', 'tr', function(e)
-{
-  e.preventDefault();
-  var cat = $('#pedidos').DataTable();
-  var datos = cat.row(this).data();
-  let id = datos.id;
-  $("#idModal").html(id);
-
-
-  //cargar ID del proveedor para preseleccionar dicha opción
-  $.ajax({
-    url:"funciones/read_id_proveedor.php",
-    data: {"id_pedido": id},
-    type: "POST",
-    success: function(e)
-    {
-      $("#slctProveedorEditar").select(e);
-    }
-  })
-  .fail(function(e)
-  {
-    msjes_swal("Error",e,"error");
-  })
-  
-  cargarEstadoPedido(id);
-  cargarEstadoPagoPedido(id);
-  cargarFacturaConIva(id);
-  cargarPedido();
-})
-
-function getHora()
-{
-  var hoy = new Date();
-  var h = hoy.getHours();
-  var min = hoy.getMinutes();
-  var sec = hoy.getSeconds();
-  if(hora<10)
-  {
-    h = '0'+h;
-  }
-  if(min<10)
-  {
-    min = '0'+min;
-  }
-  if(sec<10)
-  {
-    sec = '0'+sec;
-  }
-  var hora = h+":"+min+":"+sec;
-  return hora;
-}

@@ -13,15 +13,16 @@ session_start();
 
 	//query
 	$sql = 
-  "SELECT fac_con_iva
-  FROM pedidos 
-  WHERE id_cl = $id_cl 
-  AND id = $id_pedido";
+  "SELECT SUM(cantidad*valor) AS valor
+  FROM pedidos_detalle 
+  WHERE id_pedido = $id_pedido 
+  AND id_cl = $id_cl
+  AND estado = 'S'";
   $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
     while ($row = $resultado->fetch_array())
     {
-      echo $row["fac_con_iva"];
+      echo $row["valor"];
     }
   }
 

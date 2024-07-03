@@ -84,8 +84,7 @@
                                                         <td>Fecha</td>
                                                         <td>Valor</td>
                                                         <td>Pagado</td>
-                                                        <td>Editar</td>
-                                                        <td>Imprimir</td>
+                                                        <td>Acciones</td>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -132,9 +131,14 @@
     <script src="js/pedido/detalle_pedido/detalle_pedido.js"></script>
     <script src="js/pedido/cant_pedido/cant_pedido.js"></script>
     <script src="js/pedido/editar_pedido/editar_pedido.js"></script>
+    <script src="js/pedido/editar_pedido/editar_estado_pedido.js"></script>
     <script src="js/pedido/editar_pedido/editar_proveedor.js"></script>
     <script src="js/pedido/editar_pedido/editar_estado_pago.js"></script>
     <script src="js/pedido/editar_pedido/editar_factura_iva.js"></script>
+    <script src="js/pedido/editar_pedido/abrir_pedido_a_editar.js"></script>
+    <script src="js/pedido/leer/obtener_valor_pedido.js"></script>
+    <script src="js/pedido/leer/obtener_numero_productos.js"></script>
+    <script src="js/pedido/calculo/calcular_valor.js"></script>
     <script src="js/proveedores/cargar_proveedores.js"></script>
 </body>
 
