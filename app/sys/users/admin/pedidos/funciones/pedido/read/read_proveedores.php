@@ -10,7 +10,7 @@ session_start();
   $piso = 1;
 
 
-  require_once '../../../../../conexion.php';
+	require_once '../../../../../../conexion.php';
 
 	//query
 	$sql = 

@@ -36,7 +36,7 @@ function cargarPedido()
 
                     valorxCantidad = parseInt(j.valor) * parseInt(j.cantidad);
                     valorPedido = parseInt(valorPedido) + parseInt(valorxCantidad);
-                    
+                    alert("' "+j.producto)
                     body = body+
                     `<tr>
                         <td id="id_detalle_pedido" style='display: none'>${j.id}</td>

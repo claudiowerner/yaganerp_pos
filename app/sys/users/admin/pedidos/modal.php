@@ -5,21 +5,19 @@
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
-              <h5 class='modal-title' id='titulo'>Agregando</h5>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
+              <h5 class='modal-title' id='titulo'>Pedido <strong id='idPedido'>cargando</strong></h5>
             </div>
             <div class='modal-body'>
               <table id='contenido'>
                 <tr>
                   <td><label name='proveedor'>Proveedor</label></td>
                   <td>
-                    <select name='slctProveedor' id='slctProveedor' class='form form-control select2'>
+                    <select name='slctProveedor' id='slctProveedor' class='form form-control select2' onchange='editarProveedor()'>
                     </select>
                   </td>
-                </tr>
-                <tr align='left'>
                   <td >
                     <div class=button align='right'>
                       <label name='swEstadoPagoRegistrar' align='center'>Estado del pago:</label>
@@ -31,9 +29,7 @@
                       <label id='lblFacturaConIva' for='swEstadoPagoRegistrar' style='color:white' class='switch'></label>
                     </div>
                   </td>
-                </tr>
-                <tr align='left'>
-                  <td >
+                  <td>
                     <div class=button align='right'>
                       <label name='swFacturaConIvaRegistrar' align='center'>Factura con IVA</label>
                     </div>
@@ -46,6 +42,9 @@
                   </td>
                 </tr>
               </table>
+              <div>
+                Nota: los cambios en el pedido se almacenan automáticamente
+              </div>
               <div>
                 <button id='btnAgregarProducto' class='btn btn-success'>+</button>
               </div>
@@ -66,8 +65,7 @@
               </div>
             </div>
             <div class='modal-footer'>
-              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-              <button type='submit' id='btnGuardar' class='btn btn-primary'>Guardar</button>
+              <button id='btnFinalizarPedido' class='btn btn-primary'>Finalizar pedido</button>
             </div>
         </div>
       </div>

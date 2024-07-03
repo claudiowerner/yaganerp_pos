@@ -9,11 +9,11 @@ session_start();
   $id_pedido = $_POST["id_pedido"];
 
 
-  require_once '../../../../../conexion.php';
+	require_once '../../../../../../conexion.php';
 
 	//query
 	$sql = 
-  "SELECT fac_con_iva
+  "SELECT estado 
   FROM pedidos 
   WHERE id_cl = $id_cl 
   AND id = $id_pedido";
@@ -21,7 +21,7 @@ session_start();
   if ($resultado->num_rows > 0){
     while ($row = $resultado->fetch_array())
     {
-      echo $row["fac_con_iva"];
+      echo $row["estado"];
     }
   }
 

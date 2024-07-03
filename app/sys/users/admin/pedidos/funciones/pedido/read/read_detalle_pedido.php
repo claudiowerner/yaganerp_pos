@@ -11,10 +11,10 @@ session_start();
   $id_pedido = $_POST["id_pedido"];
 
 
-  require_once '../../../../../conexion.php';
+	require_once '../../../../../../conexion.php';
 
 	//query
-	$sql = 
+	  $sql = 
   "SELECT prov.id AS id_proveedor, pd.id, pd.producto, pd.cantidad, pd.valor
   FROM proveedores prov
   JOIN pedidos ped
@@ -22,20 +22,22 @@ session_start();
   JOIN pedidos_detalle pd
   ON ped.id = pd.id_pedido
   WHERE pd.id_cl = $id_cl
-  AND pd.id_pedido = $id_pedido";
-  $resultado = $conexion->query($sql);;
-  if ($resultado->num_rows > 0){
+  AND pd.id_pedido = $id_pedido
+  AND pd.estado='S'";
+  $resultado = $conexion->query($sql);
   $json = array();
-  while ($row = $resultado->fetch_array())
+  if ($resultado->num_rows > 0)
   {
-    $json[] =array(
-         'id_proveedor' => $row['id_proveedor'],
-         'id' => $row['id'],
-         'producto' => $row['producto'],
-         'cantidad' => $row['cantidad'],
-         'valor' => $row['valor']
-     );
-  }
+    while ($row = $resultado->fetch_array())
+    {
+      $json[] =array(
+        'id_proveedor' => $row['id_proveedor'],
+        'id' => $row['id'],
+        'producto' => $row['producto'],
+        'cantidad' => $row['cantidad'],
+        'valor' => $row['valor']
+      );
+    }
   echo json_encode($json);
  }
 

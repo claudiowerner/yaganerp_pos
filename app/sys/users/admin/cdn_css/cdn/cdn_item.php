@@ -17,6 +17,7 @@
     <script type='text/javascript' src='../../../js/tab/jquery.newsTicker.js'></script>
     <script type='text/javascript' src='../../../js/tab/app.ticker.js'></script>
     <script type='text/javascript' src='../../../js/select2.js'></script>
+    <script type='text/javascript' src='../../../js/get_fecha_hora.js'></script>
 
 
     <script type='text/javascript' src='../../../js/vegas/jquery.vegas.js'></script>

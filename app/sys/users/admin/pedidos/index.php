@@ -70,7 +70,7 @@
 
                                         <div align=left>
                                             <h1>Pedidos</h1>
-                                            <button type="button" class="btn btn-success" id="btnAgregarCategoria" data-toggle="modal" data-target="#modalRegistro">Agregar pedido</button>
+                                            <button type="button" class="btn btn-success" id="btnAgregarPedido">Agregar pedido</button>
                                             <div align=right>
                                                 Monto total en pedidos HECHOS: <strong id='montoPedido'>CARGANDO...</strong>
                                             </div>
@@ -117,16 +117,25 @@
 
 
     <!--llamada a pedidos-->
+    <script src="js/pedido/detalle_pedido/cargar_detalle_pedido.js"></script>
     <script src="js/cargarPedidoSolicitado.js"></script>
-    <script src="js/agregarPedido.js"></script>
-    <script src="js/cargar_proveedores.js"></script>
     <script src="js/pedidos.js"></script>
     <script src="js/imprimir_pedido.js"></script>
-    <script src="js/cambiarIdProveedor.js"></script>
     <script src="js/cargarMontoTotalPedidos.js"></script>
     <script src="js/cargarEstadoPedido.js"></script>
     <script src="js/cargarEstadoPagoPedido.js"></script>
     <script src="js/cargarFacturaConIva.js"></script>
+    <script src="js/pedido/registro_pedido/agregarPedido.js"></script>
+    <script src="js/pedido/registro_pedido/finalizar_pedido.js"></script>
+    <script src="js/pedido/detalle_pedido/agregar_detalle.js"></script>
+    <script src="js/pedido/detalle_pedido/cargar_detalle_pedido.js"></script>
+    <script src="js/pedido/detalle_pedido/detalle_pedido.js"></script>
+    <script src="js/pedido/cant_pedido/cant_pedido.js"></script>
+    <script src="js/pedido/editar_pedido/editar_pedido.js"></script>
+    <script src="js/pedido/editar_pedido/editar_proveedor.js"></script>
+    <script src="js/pedido/editar_pedido/editar_estado_pago.js"></script>
+    <script src="js/pedido/editar_pedido/editar_factura_iva.js"></script>
+    <script src="js/proveedores/cargar_proveedores.js"></script>
 </body>
 
 </html>
