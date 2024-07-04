@@ -58,6 +58,7 @@ function cerrarEdicionPedido(id_pedido)
 
 $("#btnAgregarPedido").on("click", function(e)
 {
+    debugger;
     //rellenar select con proveedores
     imprimirProveedores()
     let idPedido;

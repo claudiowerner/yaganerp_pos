@@ -88,7 +88,7 @@
                   <tr align='right'>
                     <td><label name='proveedor'>Proveedor</label></td>
                     <td>
-                      <select name='slctProveedorEditar' id='slctProveedorEditar' class='form form-control select2' onChange='cambiarProveedor()'>
+                      <select name='slctProveedorEditar' id='slctProveedorEditar' class='form form-control select2' onChange='editarProveedorEditar()'>
                       </select>
                     </td>
                     <td >

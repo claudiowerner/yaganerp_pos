@@ -19,7 +19,8 @@
   FROM pedidos_detalle 
   WHERE id_cl = $id_cl 
   AND id_pedido = $id_pedido
-  AND estado!='N'";
+  AND estado!='N'
+  AND producto!=''";
   $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
     while ($row = $resultado->fetch_array())

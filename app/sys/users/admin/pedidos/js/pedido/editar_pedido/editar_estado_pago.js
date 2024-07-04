@@ -31,6 +31,7 @@ $("#swEstadoPagoRegistrar").on("click", function(e)
     }
     let id_pedido = $("#idPedido").text();
     let estado_pago = editarEstadoPago(id_pedido, e_pago);
+    imprimirMontoTotalPedido();
 })
 
 
@@ -47,4 +48,5 @@ $("#swEstadoPago").on("click", function(e)
     }
     let id_pedido = $("#idModal").text();
     let estado_pago = editarEstadoPago(id_pedido, e_pago);
+    imprimirMontoTotalPedido();
 })

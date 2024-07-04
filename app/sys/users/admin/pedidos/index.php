@@ -117,19 +117,17 @@
 
     <!--llamada a pedidos-->
     <script src="js/pedido/detalle_pedido/cargar_detalle_pedido.js"></script>
-    <script src="js/cargarPedidoSolicitado.js"></script>
-    <script src="js/pedidos.js"></script>
-    <script src="js/imprimir_pedido.js"></script>
-    <script src="js/cargarMontoTotalPedidos.js"></script>
-    <script src="js/cargarEstadoPedido.js"></script>
-    <script src="js/cargarEstadoPagoPedido.js"></script>
-    <script src="js/cargarFacturaConIva.js"></script>
+    <script src="js/pedido/leer/pedidos.js"></script>
+    <script src="js/pedido/imprimir/imprimir_pedido.js"></script>
+    <script src="js/pedido/leer/cargarMontoTotalPedidos.js"></script>
+    <script src="js/pedido/leer/cargarEstadoPedido.js"></script>
+    <script src="js/pedido/leer/cargarEstadoPagoPedido.js"></script>
+    <script src="js/pedido/leer/cargarFacturaConIva.js"></script>
     <script src="js/pedido/registro_pedido/agregarPedido.js"></script>
     <script src="js/pedido/registro_pedido/finalizar_pedido.js"></script>
     <script src="js/pedido/detalle_pedido/agregar_detalle.js"></script>
     <script src="js/pedido/detalle_pedido/cargar_detalle_pedido.js"></script>
     <script src="js/pedido/detalle_pedido/detalle_pedido.js"></script>
-    <script src="js/pedido/cant_pedido/cant_pedido.js"></script>
     <script src="js/pedido/editar_pedido/editar_pedido.js"></script>
     <script src="js/pedido/editar_pedido/editar_estado_pedido.js"></script>
     <script src="js/pedido/editar_pedido/editar_proveedor.js"></script>
