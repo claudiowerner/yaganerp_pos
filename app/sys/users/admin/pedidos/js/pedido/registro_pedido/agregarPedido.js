@@ -10,18 +10,6 @@ function crearPedido()
     }).responseText
 }
 
-
-
-//funcion que obtiene si hay un pedido que esté en edición
-function pedidoEnEdicion()
-{
-    return $.ajax({
-        url:"funciones/pedido/read/cargar_pedido_en_edicion.php",
-        type: "POST",
-        async: false
-    }).responseText
-}
-
 //funcion que carga el ID de un pedido
 function obtenerIDPedido()
 {
@@ -58,40 +46,18 @@ function cerrarEdicionPedido(id_pedido)
 
 $("#btnAgregarPedido").on("click", function(e)
 {
-    debugger;
     //rellenar select con proveedores
     imprimirProveedores()
     let idPedido;
     //obtener la fecha
     let fecha = getFecha()
-    /*se valida si existe un pedido en edición o no. Si no existen, retornará valor 0 y se creará un pedido*/
-    let edicion = parseInt(pedidoEnEdicion());
     
-    if(edicion!=0)
-    {
-        $("#idPedido").html(edicion);
-    }
-    else
-    {
-        crearPedido();
-        idPedido = parseInt(obtenerIDPedido());
-        $("#idPedido").html(idPedido);
-    }
+    
+    crearPedido();
+    idPedido = parseInt(obtenerIDPedido());
+    $("#idPedido").html(idPedido);
 
-    /* Se valida si el pedido está vacío (obviamente lo está) y según eso se muestran los campos de texto 
-    para poner el primer detalle */
-    let detallePedido = parseInt(comprobarPedidoVacio(edicion));
-    if(detallePedido==0)
-    {
-        let registrarPedido = agregarDetallePedido(idPedido, fecha)
-        let jsonRes = JSON.parse(registrarPedido);
-        if(jsonRes.registro)
-        {
-            //acá se cierra la edición del pedido para que cuando se quiera crear otro, no siga apareciendo el mismo anterior
-            let cerrarEdicion = cerrarEdicionPedido(idPedido)
-            jsonRes = JSON.parse(cerrarEdicion);
-        }
-    }
+    let registrarPedido = agregarDetallePedido(idPedido, fecha)
     
     let pedidos = imprimirDetallePedido($("#idPedido").text());
     $("#bodyPedidos").html(pedidos);

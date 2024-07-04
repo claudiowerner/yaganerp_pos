@@ -87,7 +87,7 @@ function eliminarDetallePedido(id)
 
     if(response==1)
     {
-        idPedido = $("#idPedido").text();
+        let idPedido = $("#idPedido").text();
         let template = imprimirDetallePedido(idPedido);
         $("#bodyPedidos").html(template);
     }

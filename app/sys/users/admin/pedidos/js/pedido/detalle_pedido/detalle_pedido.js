@@ -5,12 +5,14 @@ function agregarDetallePedido(id_pedido, fecha_reg)
        "id_pedido" : id_pedido,
        "fecha_reg" : fecha_reg,    
     }
-    return $.ajax({
+    let respuesta = $.ajax({
         url: "funciones/pedido/crear/crear_detalle_pedido.php",
         data: datos,
         type: "POST",
         async: false
     }).responseText;
+    
+    return respuesta;
 }
 
 

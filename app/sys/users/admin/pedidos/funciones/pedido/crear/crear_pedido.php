@@ -28,8 +28,7 @@
 	'A',
 	'A',
 	'$id_us', 
-	'$fecha',
-	'S');";
+	'$fecha');";
 	$res = $conexion->query($sql);
 
 	$json = array("registro"=>$res);

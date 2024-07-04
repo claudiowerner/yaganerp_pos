@@ -11,6 +11,12 @@
               <h5 class='modal-title' id='titulo'>Pedido <strong id='idPedido'>cargando</strong></h5>
             </div>
             <div class='modal-body'>
+              <table>
+                <tr>
+                  <td><label>Nombre del pedido:</label></td>
+                  <td><input type=text id='txtNombrePedido' class='form-control' onkeyup='editarNombrePedido'></td>
+                </tr>
+              </table>
               <table id='contenido'>
                 <tr>
                   <td><label name='proveedor'>Proveedor</label></td>

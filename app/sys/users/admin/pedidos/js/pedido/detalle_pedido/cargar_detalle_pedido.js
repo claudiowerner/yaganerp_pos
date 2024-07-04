@@ -1,12 +1,13 @@
 //funcion que descarga los pedidos según el ID
 function cargarDetallePedido(id_pedido)
 {
-    return $.ajax({
+    let respuesta = $.ajax({
         url: "funciones/pedido/read/read_detalle_pedido.php",
         data: {"id_pedido": id_pedido},
         type: "POST",
         async: false
     }).responseText;
+    return respuesta;
 }
 
 

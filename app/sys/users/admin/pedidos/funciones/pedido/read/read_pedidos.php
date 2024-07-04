@@ -27,7 +27,8 @@ session_start();
   $sql =
   "SELECT id 
   FROM pedidos 
-  WHERE id_cl = $id_cl";
+  WHERE id_cl = $id_cl
+  AND estado != 'N'";
   $res = $conexion->query($sql);
 
   if($res->num_rows>0)

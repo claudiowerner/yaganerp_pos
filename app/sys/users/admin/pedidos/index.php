@@ -137,6 +137,7 @@
     <script src="js/pedido/leer/obtener_valor_pedido.js"></script>
     <script src="js/pedido/leer/obtener_numero_productos.js"></script>
     <script src="js/pedido/calculo/calcular_valor.js"></script>
+    <script src="js/pedido/eliminar/eliminar_pedido.js"></script>
     <script src="js/proveedores/cargar_proveedores.js"></script>
 </body>
 

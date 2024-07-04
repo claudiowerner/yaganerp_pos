@@ -1,0 +1,48 @@
+<?php
+
+
+session_start();
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+
+	error_reporting(E_ALL);
+	
+	require_once '../../../../../../conexion.php';
+
+	$id_us = $_SESSION['user']['id'];
+	$nombre = $_SESSION['user']["nombre"];
+	$id_cl = $_SESSION['user']["id_cl"];
+
+	$id = $_POST["id_pedido"];
+
+    $json = array();
+
+	//editar detalle pedido
+	$sql = 
+	"UPDATE pedidos
+	SET estado = 'N' 
+	WHERE id = '$id';";
+	$res = $conexion->query($sql);
+
+    if($res)
+    {
+        $json = array(
+            "titulo" => "Excelente",
+            "mensaje" => "Pedido eliminado correctamente",
+            "icono" => "success"
+        );
+    }
+    else
+    {
+        $json = array(
+            "titulo" => "Error",
+            "mensaje" => "Ha ocurrido un error al eliminar el pedido: ".$conexion->error(),
+            "icono" => "error"
+        );
+    }
+
+    echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+
+
+
+?>
