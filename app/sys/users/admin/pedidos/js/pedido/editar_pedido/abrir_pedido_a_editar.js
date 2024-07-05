@@ -16,6 +16,10 @@ function obtenerIDProveedor(id)
 //accion al abrir modal de editar
 function abrirModalEditar(id)
 {
+    //abrir modal
+    $("#modalEditar").modal("show");
+
+    
     imprimirProveedoresEditar();
     let idProveedor = obtenerIDProveedor(id);
     $("#slctProveedorEditar").select(idProveedor);
@@ -24,8 +28,9 @@ function abrirModalEditar(id)
     let respuesta = imprimirDetallePedidoEditar(id);
     $("#bodyPedidosEditar").html(respuesta);
 
-    //abrir modal
-    $("#modalEditar").modal("show");
+    //imprimir nombre del pedido
+    let nombrePedido = obtenerNombrePedido(id);
+    $("#txtNombrePedidoEditar").val(nombrePedido)
 
     
     $("#idModal").html(id);

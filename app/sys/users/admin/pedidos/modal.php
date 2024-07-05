@@ -11,10 +11,10 @@
               <h5 class='modal-title' id='titulo'>Pedido <strong id='idPedido'>cargando</strong></h5>
             </div>
             <div class='modal-body'>
-              <table>
+              <table width=100%>
                 <tr>
                   <td><label>Nombre del pedido:</label></td>
-                  <td><input type=text id='txtNombrePedido' class='form-control' onkeyup='editarNombrePedido'></td>
+                  <td><input type=text id='txtNombrePedido' class='form-control' onkeyup=editarNombrePedido('') value='Pedido sin nombre'></td>
                 </tr>
               </table>
               <table id='contenido'>
@@ -90,6 +90,12 @@
               <h5 class='modal-title'>Editando pedido <strong id='idModal'>ID</strong></h5>
             </div>
               <div class='modal-body'>
+                <table width=100%>
+                  <tr>
+                    <td><label>Nombre del pedido:</label></td>
+                    <td><input type=text id='txtNombrePedidoEditar' class='form-control' onkeyup='editarNombrePedidoEditar()' value='Pedido sin nombre'></td>
+                  </tr>
+                </table>
                 <table id='contenido' width='100%'>
                   <tr align='right'>
                     <td><label name='proveedor'>Proveedor</label></td>

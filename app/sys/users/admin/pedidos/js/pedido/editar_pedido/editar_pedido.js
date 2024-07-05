@@ -1,3 +1,43 @@
+//conexión BD para edición de nombre de pedido
+function conexionBDEdicion(datos)
+{
+    return $.ajax({
+        url: "funciones/pedido/editar/editar_nombre_pedido.php",
+        data: datos,
+        type: "POST",
+        async: false
+    }).responseText;
+}
+
+
+
+//editar el nombre del pedido
+function editarNombrePedido()
+{
+    let nombre = $("#txtNombrePedido").val();
+    let id_pedido = $("#idPedido").text();
+
+    let datos = {
+        "nombre_pedido": nombre,
+        "id_pedido": id_pedido
+    }
+
+    return conexionBDEdicion(datos);
+}
+//editar el nombre del pedido desde el modal EDITAR
+function editarNombrePedidoEditar()
+{
+    let nombre = $("#txtNombrePedidoEditar").val();
+    let id_pedido = $("#idModal").text();
+
+    let datos = {
+        "nombre_pedido": nombre,
+        "id_pedido": id_pedido
+    }
+
+    return conexionBDEdicion(datos);
+}
+
 //editar nombre del producto en el detalle del pedido
 function editarNombre(id)
 {

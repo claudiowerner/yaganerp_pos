@@ -13,28 +13,23 @@
 	$nombre = $_SESSION['user']["nombre"];
 	$id_cl = $_SESSION['user']["id_cl"];
 
-	$fecha = $_POST['fecha'];
-
-	$json = array();
-
-	//insertar pedido
+	
+	$id_pedido = $_POST["id_pedido"];
+	$nombre_pedido = $_POST["nombre_pedido"];
+	//editar detalle pedido
 	$sql = 
-	"INSERT INTO pedidos
-	VALUES 
-	(null, 
-	'$id_cl', 
-	'Pedido sin nombre',
-	'1', 
-	'A', 
-	'A',
-	'A',
-	'$id_us', 
-	'$fecha');";
+	"UPDATE pedidos 
+	SET nombre_pedido = '$nombre_pedido' 
+	WHERE id = '$id_pedido'
+	AND id_cl = $id_cl";
 	$res = $conexion->query($sql);
 
-	$json = array("registro"=>$res);
+	$json = array(
+		"edicion"=>$res
+	);
 
 	echo json_encode($json);
+
 
 
 ?>

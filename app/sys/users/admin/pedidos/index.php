@@ -128,6 +128,7 @@
     <script src="js/pedido/detalle_pedido/agregar_detalle.js"></script>
     <script src="js/pedido/detalle_pedido/cargar_detalle_pedido.js"></script>
     <script src="js/pedido/detalle_pedido/detalle_pedido.js"></script>
+    <script src="js/pedido/detalle_pedido/cargar_nombre_pedido.js"></script>
     <script src="js/pedido/editar_pedido/editar_pedido.js"></script>
     <script src="js/pedido/editar_pedido/editar_estado_pedido.js"></script>
     <script src="js/pedido/editar_pedido/editar_proveedor.js"></script>
