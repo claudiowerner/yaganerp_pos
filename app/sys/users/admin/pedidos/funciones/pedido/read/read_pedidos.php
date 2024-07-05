@@ -19,6 +19,7 @@ session_start();
   $arrayFechaRegistro = array();
   $arrayEstadoPago = array();
   $arrayValor = array();
+  $arrayNombrePedido = array();
 
   //array que se va a imprimir con los resultados
   $json = array();
@@ -46,7 +47,8 @@ session_start();
     {
       $id = $arrayId[$i];
       $sql = 
-      "SELECT pr.nombre_proveedor, ped.estado, us.nombre, ped.fecha_registro, ped.estado_pago
+      "SELECT pr.nombre_proveedor, ped.nombre_pedido, ped.estado, us.nombre, 
+      DATE_FORMAT(ped.fecha_registro, '%d-%m-%Y') AS fecha_registro, ped.estado_pago
       FROM pedidos ped
       JOIN proveedores PR
       ON pr.id = ped.id_proveedor
@@ -80,6 +82,7 @@ session_start();
         }
         
         $arrayNombreProveedor[] = $row["nombre_proveedor"];
+        $arrayNombrePedido[] = $row["nombre_pedido"];
         $arrayEstado[] = $estado;
         $arrayNombreUsuario[] = $row["nombre"];
         $arrayFechaRegistro[] = $row["fecha_registro"];
@@ -110,7 +113,9 @@ session_start();
     for($i=0; $i<$length; $i++)
     {
       $json[] =array(
+        'item' => ($i+1),
         'id' => $arrayId[$i],
+        'nombre_pedido' => $arrayNombrePedido[$i],
         'nombre_proveedor' => $arrayNombreProveedor[$i],
         'estado' => $arrayEstado[$i],
         'nombre' => $arrayNombreUsuario[$i],

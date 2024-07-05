@@ -15,7 +15,7 @@ var table;
     },
     "columnDefs": [
       {
-          "targets": 5, // Índice de la columna que deseas formatear
+          "targets": 6, // Índice de la columna que deseas formatear
           "render": function (data, type, row, meta) {
               // Formatear el número en miles y en moneda
               return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(data);
@@ -29,7 +29,8 @@ var table;
       },
       //columnas
       "columns":[
-        {"data":"id"},
+        {"data":"item"},
+        {"data":"nombre_pedido"},
         {"data":"nombre_proveedor"},
         {"data":"estado"},
         {"data":"nombre"},

@@ -77,14 +77,15 @@
                                             <table id="pedidos" class="table table-bordered table-hover dt-resposive display nowrap">
                                                 <thead>
                                                     <tr>
-                                                        <td>ID</td>
-                                                        <td>Proveedor</td>
-                                                        <td>Estado</td>
-                                                        <td>Creado por</td>
-                                                        <td>Fecha</td>
-                                                        <td>Valor</td>
-                                                        <td>Pagado</td>
-                                                        <td>Acciones</td>
+                                                        <th>#</th>
+                                                        <th>Nombre pedido</th>
+                                                        <th>Proveedor</th>
+                                                        <th>Estado</th>
+                                                        <th>Creado por</th>
+                                                        <th>Fecha</th>
+                                                        <th>Valor</th>
+                                                        <th>Pagado</th>
+                                                        <th>Acciones</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
