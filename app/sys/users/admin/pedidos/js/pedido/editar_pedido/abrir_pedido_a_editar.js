@@ -2,7 +2,7 @@
 function obtenerIDProveedor(id)
 {
     return $.ajax({
-        url:"funciones/pedido/read/read_id_proveedor.php",
+        url:"funciones/pedido/read/proveedores/read_id_proveedor.php",
         data: {"id_pedido": id},
         type: "POST",
         async: false
@@ -31,6 +31,7 @@ function abrirModalEditar(id)
     //imprimir nombre del pedido
     let nombrePedido = obtenerNombrePedido(id);
     $("#txtNombrePedidoEditar").val(nombrePedido)
+    $("#nombrePedidoEditar").html(nombrePedido)
 
     
     $("#idModal").html(id);

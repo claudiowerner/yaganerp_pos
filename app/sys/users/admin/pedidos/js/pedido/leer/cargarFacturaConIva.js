@@ -2,7 +2,7 @@
 function cargarFacturaConIva(id)
 {
     $.ajax({
-        url:"funciones/pedido/read/pedido/read_factura_con_iva.php",
+        url:"funciones/pedido/read/factura/read_factura_con_iva.php",
         data: {"id_pedido": id},
         type: "POST",
         success: function(e)
@@ -24,7 +24,7 @@ function cargarFacturaConIva(id)
 function cargarFacturaConIvaCalculo(id)
 {
     return $.ajax({
-        url:"funciones/pedido/read/read_factura_con_iva.php",
+        url:"funciones/pedido/read/factura/read_factura_con_iva.php",
         data: {"id_pedido": id},
         type: "POST",
         async: false

@@ -8,7 +8,7 @@
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
-              <h5 class='modal-title' id='titulo'>Pedido <strong id='idPedido'>cargando</strong></h5>
+              <h5 class='modal-title' id='titulo'><strong id='nombrePedido'>Nuevo pedido sin nombre</strong><strong id='idPedido' style='display: none'>cargando</strong></h5>
             </div>
             <div class='modal-body'>
               <table width=100%>
@@ -87,7 +87,7 @@
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
-              <h5 class='modal-title'>Editando pedido <strong id='idModal'>ID</strong></h5>
+              <h5 class='modal-title'><strong id='idModal' style= 'display: none'>ID</strong><strong id='nombrePedidoEditar'>Pedido sin nombre</strong></h5>
             </div>
               <div class='modal-body'>
                 <table width=100%>

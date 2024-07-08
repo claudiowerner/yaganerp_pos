@@ -14,7 +14,7 @@ function crearPedido()
 function obtenerIDPedido()
 {
     return $.ajax({
-        url:"funciones/pedido/read/cargar_id_pedido_nuevo.php",
+        url:"funciones/pedido/read/pedido/cargar_id_pedido_nuevo.php",
         type: "POST",
         async: false
     }).responseText
@@ -57,10 +57,14 @@ $("#btnAgregarPedido").on("click", function(e)
     idPedido = parseInt(obtenerIDPedido());
     $("#idPedido").html(idPedido);
 
-    let registrarPedido = agregarDetallePedido(idPedido, fecha)
+    let registrarPedido = agregarDetallePedido(idPedido, fecha);
+    
     
     let pedidos = imprimirDetallePedido($("#idPedido").text());
     $("#bodyPedidos").html(pedidos);
     $("#modalRegistro").modal("show");
+
+    
+    $('#pedidos').DataTable().ajax.reload();
 
 });

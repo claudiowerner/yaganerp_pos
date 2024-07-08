@@ -22,6 +22,7 @@ function editarNombrePedido()
         "id_pedido": id_pedido
     }
 
+    $("#nombrePedido").html(nombre);
     return conexionBDEdicion(datos);
 }
 //editar el nombre del pedido desde el modal EDITAR
@@ -35,6 +36,7 @@ function editarNombrePedidoEditar()
         "id_pedido": id_pedido
     }
 
+    $("#nombrePedido").html(nombre);
     return conexionBDEdicion(datos);
 }
 
