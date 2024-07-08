@@ -61,7 +61,7 @@
                         <div class="plan">
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
-                                    <div class="card-header">
+                                    <div class="card-header" align="left">
                                         <?php
                                             require "modal.php";
                                             echo modalRegistro();
@@ -80,10 +80,9 @@
                                                     <tr>
                                                     <th>Id</th>
                                                     <th>Nombre</th>
-                                                    <th>Estado</th>
                                                     <th>Creado por</th>
                                                     <th>Fecha</th>
-                                                    <th>Editar</th>
+                                                    <th>Acciones</th>
                                                     </tr>
                                                 </thead>
                                             </table>
@@ -113,5 +112,7 @@
     <script src="script_js/cargar_cajas_activas.js"></script>
     <script src="script_js/cargar_cajas_permitidas.js"></script>
     <script src="script_js/caja.js"></script>
+    <script src="script_js/editar_caja.js"></script>
+    <script src="script_js/crear_caja.js"></script>
 
 </html>

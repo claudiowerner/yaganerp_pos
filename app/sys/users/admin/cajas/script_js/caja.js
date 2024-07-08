@@ -1,6 +1,5 @@
 
-$(document).on("ready", function(e)
-{
+
   cargarCajasActivas();
   cargarCajasPermitidas();
   validarCajasActivas();
@@ -45,11 +44,14 @@ $(document).on("ready", function(e)
           "columns":[
             {"data":"id"},
             {"data":"nombre"},
-            {"data":"estado"},
             {"data":"creado_por"},
             {"data":"fecha_reg"},
             {
-                "defaultContent": '<button type="submit" class="btn btn-primary editar" id="btnEditar"><img src="../img/edit.png" width="15"></button>'
+              "data": null,
+              "render": function (data, type, row) {
+                return `<button type='submit' id='btnEditar' class='btn btn-primary' onClick='abrirModalEditar(${data.id},"${data.nombre}")'><i class='fa fa-edit' aria-hidden='true'></i></button>
+                <button type='submit' id='btnEliminar' class='btn btn-danger' onClick='eliminarCaja(${data.id})'><i class='fa fa-trash-o' aria-hidden='true'></i></span></button>`;
+              }
             }
           ],
 
@@ -72,151 +74,3 @@ $(document).on("ready", function(e)
         });
 
 
-
-  $("#producto").on("click", "tr", function(e)
-  {
-    e.preventDefault();
-    var cat = $("#producto").DataTable();
-    var datos = cat.row(this).data();
-    var estado = "";
-    $("#idPiso").html(datos.id);
-    $("#nomPisoEditar").val(datos.nombre);
-    
-    if(datos.estado == "ACTIVO")
-    {
-      $("#swEditarPiso").prop("checked", true);
-      ep = "S";
-      $("#modalEditar").modal('show'); 
-    }
-    if(datos.estado == "INACTIVO")
-    {
-      $("#swEditarPiso").prop("checked", false);
-      ep = "N";
-      $("#modalEditar").modal('show'); 
-    }
-    if(datos.estado == "OCUPADO")
-    {
-      msjes_swal("Aviso", "Caja en proceso de ventas. No se puede editar.", "warning")
-    }
-  });
-
-  $("#btnGuardar").on("click", function(e)
-  {
-    let nombre = $("#nomPiso").val();
-    if(nombre!="")
-    {
-      let fecha = getFecha();
-      e.preventDefault();
-      $.ajax({
-        url:"script_php/crear_caja.php?nomCaja="+nombre+"&fecha="+fecha,
-        type: "POST",
-        success: function(e)
-        {
-          $("#errNomPiso").html("");
-          if(e.match("correctamente"))
-          {
-            msjes_swal("Excelente", e, "success");
-            cargarCajasActivas();
-          }
-          if(e.match("Error")||e.match("error"))
-          {
-            msjes_swal("Error al crear caja", e, "error");
-          }
-          $('#producto').DataTable().ajax.reload();
-          $("#modalRegistro").modal("hide");
-        }
-      })
-      .fail(function(e)
-      {
-        console.log(e.responseText);
-      })
-    }
-    else
-    {
-      
-      $("#errNomPiso").html("Debe rellenar este campo");
-    }
-
-  });
-
-  $("#btnModificar").on("click", function(e)
-  {
-    let nombre = $("#nomPisoEditar").val();
-    let idCaja = $("#idPiso").text();
-    let datos = {
-      "nomCaja": nombre,
-      "estado": ep,
-      "idCaja": idCaja
-    }
-    if(nombre!="")
-    {
-      if(ep=="S")
-      {
-        modificar(datos);
-      }
-      if(ep=="N")
-      {
-        modificar(datos);
-      }
-      $("#errNomPisoEditar").html("");
-      
-      e.preventDefault();
-    }
-    else
-    {
-      $("#errNomPisoEditar").html("Debe rellenar este campo");
-    }
-  });
-})
-
-function modificar(datos)
-{
-  $.ajax({
-    url:"script_php/editar_caja.php",
-    data:datos,
-    type: "POST",
-    success: function(e)
-    {
-      if(e.match("correctamente"))
-      {
-        msjes_swal("Excelente", e, "success");
-      }
-      if(e.match("No se puede desactivar la caja porque existen ventas activas asociadas"))
-      {
-        msjes_swal("Aviso", e, "warning");
-      }
-      if(e.match("Error")||e.match("error"))
-      {
-        msjes_swal("Error al modificar", e, "error");
-      }
-      $('#producto').DataTable().ajax.reload();
-      $("#modalEditar").modal("hide");
-      cargarCajasActivas();
-      validarCajasActivas();
-    }
-  })
-  .fail(function(e)
-  {
-    console.log(e.responseText);
-  })
-}
-
-function getFecha ()
-{
-  var hoy = new Date();
-  //fecha
-  let dia = hoy.getDate();
-  let mes = hoy.getMonth()+1;
-  let ano = hoy.getFullYear();
-
-  if(dia<10)
-  {
-    dia = "0"+hoy.getDate();
-  }
-  if(mes<10)
-  {
-    mes = "0"+hoy.getMonth();
-  }
-  var fecha = ano+"-"+mes+"-"+dia;
-  return fecha;
-}

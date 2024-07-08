@@ -18,7 +18,7 @@
                     <label name='nombrePiso'>Nombre</label>
                   </td>
                   <td>
-                    <input type='text' name='nomProd' id='nomPiso' class='form-control' required>
+                    <input type='text' name='nomProd' id='nomCaja' class='form-control' required>
                     <strong id='errNomPiso' style='color:red'></strong>
                   </td>
                 </tr>
@@ -43,30 +43,21 @@
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
-              <h5 class='modal-title' id='exampleModalLongTitle'>Editando piso id <strong id=idPiso>ID</strong></h5>
+              <h5 class='modal-title' id='exampleModalLongTitle'>Editando caja <strong id='idCaja'>ID</strong></h5>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
             </div>
             <div class='modal-body'>
-              <table>
+              <table width=100%>
                 <tr>
                   <td>
                     <label name='nombrePiso'>Nombre</label>
                   </td>
                   <td>
-                    <input type='text' name='nomProd' id='nomPisoEditar' class='form-control' required>
+                    <input type='text' name='nomProd' id='nomCajaEditar' class='form-control' required>
                     <strong id='errNomPisoEditar' style='color:red'></strong>
                     </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label name='estadoPiso'>Estado</label>
-                  </td>
-                  <td>
-                    <input type='checkbox' id='swEditarPiso'/>
-                    <label for='swEditarPiso' class='switch'></label>
-                  </td>
                 </tr>
               </table>
             </tr>

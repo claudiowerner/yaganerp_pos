@@ -2,15 +2,8 @@
 
 
 	session_start();
-	if(isset($_SESSION['user'])){
-      	$tipo = $_SESSION['user']['tipo_usuario'];
-     	if($tipo == 1){
-       	    //header('Location: ../');
-     	}
-     	    }else{
-    	    header('Location: ../../../../index.php');
-     	}
-		 require_once '../../../../conexion.php';
+	
+	require_once '../../../../conexion.php';
 
 
 	ini_set('display_errors', 1);
@@ -19,10 +12,11 @@
     $id_us = $_SESSION['user']['id'];
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
-    $piso = 1;
 
-    $nom = $_GET['nomCaja'];
-    $fecha = $_GET['fecha'];
+	$json = array();
+
+    $nom = $_POST['nomCaja'];
+    $fecha = $_POST['fecha'];
 
 	$sql = "INSERT INTO cajas VALUES 
 	(NULL, '$id_cl','$nom', 'S', '$id_us', '$fecha');";
@@ -30,10 +24,20 @@
 
 	if($resultado)
 	{
-		echo "Caja agregada correctamente";
+		$json = array(
+			"titulo" => "Excelente",
+			"mensaje" => "Caja creada correctamente",
+			"icono" => "success"
+		);
 	}
 	else
 	{
-		die("Error al agregar caja: ". mysqli_error($conexion));
+		$json = array(
+			"titulo" => "Error",
+			"mensaje" => "Ha ocurrido un error al crear la caja: ".$conexion->error,
+			"icono" => "error"
+		);
 	}
+
+	echo json_encode($json)
 ?>
