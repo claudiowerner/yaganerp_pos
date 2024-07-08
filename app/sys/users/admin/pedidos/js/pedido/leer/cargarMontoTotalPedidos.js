@@ -2,7 +2,7 @@
 function cargarMontoTotalPedidos()
 {
   return $.ajax({
-    url:"funciones/pedido/read/read_monto_pedido.php",
+    url:"funciones/pedido/read/pedido/read_monto_pedido.php",
     type: "POST",
     async: false
     

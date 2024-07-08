@@ -2,7 +2,7 @@
 function cargarDetallePedido(id_pedido)
 {
     let respuesta = $.ajax({
-        url: "funciones/pedido/read/read_detalle_pedido.php",
+        url: "funciones/pedido/read/pedido/read_detalle_pedido.php",
         data: {"id_pedido": id_pedido},
         type: "POST",
         async: false

@@ -23,7 +23,7 @@ var table;
       }],
 
       "ajax":{
-        "url":"funciones/pedido/read/read_pedidos.php",
+        "url":"funciones/pedido/read/pedido/read_pedidos.php",
         "type":"GET",
         "dataSrc":""
       },

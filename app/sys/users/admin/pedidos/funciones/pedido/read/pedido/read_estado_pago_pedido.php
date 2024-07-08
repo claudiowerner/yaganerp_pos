@@ -9,7 +9,7 @@ session_start();
   $id_pedido = $_POST["id_pedido"];
 
 
-	require_once '../../../../../../conexion.php';
+	require_once '../../../../../../../conexion.php';
 
 	//query
 	$sql = 

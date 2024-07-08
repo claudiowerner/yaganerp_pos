@@ -71,6 +71,7 @@
                                         <div align=left>
                                             <h1>Pedidos</h1>
                                             <button type="button" class="btn btn-success" id="btnAgregarPedido">Agregar pedido</button>
+                                            <button type="button" class="btn btn-primary" id="btnResumenPedidos">Ver resúmen de pedidos</button>
                                             <div align=right>
                                                 Monto total en pedidos HECHOS: <strong id='montoPedido'>CARGANDO...</strong>
                                             </div>
@@ -141,6 +142,7 @@
     <script src="js/pedido/calculo/calcular_valor.js"></script>
     <script src="js/pedido/eliminar/eliminar_pedido.js"></script>
     <script src="js/proveedores/cargar_proveedores.js"></script>
+    <script src="js/pedido/leer/obtener_resumen_pedidos.js"></script>
 </body>
 
 </html>

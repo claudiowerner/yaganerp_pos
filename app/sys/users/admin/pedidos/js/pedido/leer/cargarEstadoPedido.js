@@ -2,7 +2,7 @@
 function cargarEstadoPedido(id)
 {
     $.ajax({
-        url:"funciones/pedido/read/read_estado_pedido.php",
+        url:"funciones/pedido/read/pedido/read_estado_pedido.php",
         data: {"id_pedido": id},
         type: "POST",
         success: function(e)

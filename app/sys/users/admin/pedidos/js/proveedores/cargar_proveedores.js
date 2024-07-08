@@ -2,7 +2,7 @@
 function descargarProveedores()
 {
   return $.ajax({
-    url:"funciones/pedido/read/read_proveedores.php",
+    url:"funciones/pedido/read/proveedores/read_proveedores.php",
     type: "POST",
     async: false
   }).responseText;
