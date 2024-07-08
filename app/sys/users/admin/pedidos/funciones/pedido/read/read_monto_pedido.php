@@ -13,13 +13,13 @@ session_start();
 
 	//query
 	$sql = 
-  "SELECT SUM(valor*cantidad) AS valor	
+  "SELECT SUM(pd.valor*pd.cantidad) AS valor	
   FROM pedidos_detalle pd
   JOIN pedidos p 
   ON p.id = pd.id_pedido
   WHERE pd.id_cl = $id_cl
-  AND p.estado = 'C'
-  AND pd.estado = 'S'";
+  AND p.estado_pago = 'C'
+  AND p.estado = 'C'";
 
   $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){

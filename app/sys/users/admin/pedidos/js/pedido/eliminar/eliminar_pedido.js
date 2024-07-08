@@ -26,6 +26,7 @@ function eliminarPedido(id)
 
             msjes_swal(j.titulo, j.mensaje, j.icono);
             $('#pedidos').DataTable().ajax.reload();
+            imprimirMontoTotalPedido()
         } 
         else 
         {
