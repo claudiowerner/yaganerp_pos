@@ -26,13 +26,6 @@
       var idCat = 0;
       table = $('#producto').DataTable({
         "createdRow": function( row, data, dataIndex){
-          if( data.estado ==  `ACTIVO`){
-            $(row).addClass('ACTIVO');
-          }
-          else
-          {
-            $(row).addClass('INACTIVO');
-          }
         },
 
           "ajax":{

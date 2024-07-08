@@ -19,32 +19,18 @@ if(isset($_SESSION['user'])){
     $sql =
     "SELECT c.id, c.nom_caja, 
     u.nombre AS nom_usuario,
-    c.estado, c.fecha_reg 
+    DATE_FORMAT(c.fecha_reg, '%d-%m-%Y') AS fecha_reg
     FROM cajas c 
     JOIN usuarios u ON u.id=c.creado_por 
     WHERE c.id_cl = '$id_cl'";
-    $resultado = $conexion->query($sql);;
+    $resultado = $conexion->query($sql);
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())
       {
-        $estado = $row['estado'];
-        if($estado=="S")
-        {
-          $estado = "ACTIVO";
-        }
-        if($estado=="N")
-        {
-          $estado = "INACTIVO";
-        }
-        if($estado=="A")
-        {
-          $estado = "OCUPADO";
-        }
         $json[] =array(
           'id' => $row['id'],
           'nombre' => $row['nom_caja'],
-          'estado' => $estado,
           'creado_por' => $row['nom_usuario'],
           'fecha_reg' => $row['fecha_reg']
         );
