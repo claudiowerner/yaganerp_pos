@@ -49,7 +49,6 @@ $("#swEstadoPago").on("click", function(e)
     }
     let id_pedido = $("#idModal").text();
     let estado_pago = editarEstadoPago(id_pedido, e_pago);
-    console.log(estado_pago);
     imprimirMontoTotalPedido();
     $('#pedidos').DataTable().ajax.reload();
 })

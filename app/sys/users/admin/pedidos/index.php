@@ -142,7 +142,6 @@
     <script src="js/pedido/calculo/calcular_valor.js"></script>
     <script src="js/pedido/eliminar/eliminar_pedido.js"></script>
     <script src="js/proveedores/cargar_proveedores.js"></script>
-    <script src="js/pedido/leer/obtener_resumen_pedidos.js"></script>
 </body>
 
 </html>
