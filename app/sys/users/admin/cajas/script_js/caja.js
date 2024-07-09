@@ -3,29 +3,19 @@
   cargarCajasActivas();
   cargarCajasPermitidas();
   validarCajasActivas();
-  $("#btnAgregarCaja").on("click", function(e)
-  {
-    $("#modalRegistro").modal("show");
-  })
-
-  ep = ""; //almacena el estado del piso
-  $("#swEditarPiso").on("click", function(e)
-  {
-    if(e.target.checked)
-    {
-      ep = "S";
-    }
-    else
-    {
-      ep = "N";
-    }
-  })
   var table;
 
       //Datatable
       var idCat = 0;
       table = $('#producto').DataTable({
         "createdRow": function( row, data, dataIndex){
+          if( data.estado ==  `S`){
+            $(row).addClass('ACTIVO');
+          }
+          if( data.estado ==  `A`)
+            {
+            $(row).addClass('INACTIVO');
+          }
         },
 
           "ajax":{
@@ -35,7 +25,7 @@
           },
           //columnas
           "columns":[
-            {"data":"id"},
+            {"data":"item"},
             {"data":"nombre"},
             {"data":"creado_por"},
             {"data":"fecha_reg"},
@@ -43,7 +33,7 @@
               "data": null,
               "render": function (data, type, row) {
                 return `<button type='submit' id='btnEditar' class='btn btn-primary' onClick='abrirModalEditar(${data.id},"${data.nombre}")'><i class='fa fa-edit' aria-hidden='true'></i></button>
-                <button type='submit' id='btnEliminar' class='btn btn-danger' onClick='eliminarCaja(${data.id})'><i class='fa fa-trash-o' aria-hidden='true'></i></span></button>`;
+                <button type='submit' id='btnEliminar' class='btn btn-danger' onClick='eliminarCaja(${data.id},"${data.nombre}")'><i class='fa fa-trash-o' aria-hidden='true'></i></span></button>`;
               }
             }
           ],

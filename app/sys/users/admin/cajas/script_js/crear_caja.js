@@ -14,12 +14,15 @@ function crearCaja(nombre, fecha)
 }
 
 
+$("#btnAgregarCaja").on("click", function(e)
+{
+  $("#modalRegistro").modal("show");
+});
 
 
 
 $("#btnGuardar").on("click", function(e)
 {
-    debugger;
     let nombre = $("#nomCaja").val();
     if(nombre!="")
     {
@@ -28,6 +31,7 @@ $("#btnGuardar").on("click", function(e)
       let json = JSON.parse(respuestaCrearCaja);
 
       msjes_swal(json.titulo, json.mensaje, json.icono);
+      cargarCajasActivas();
       $('#producto').DataTable().ajax.reload();
       $("#modalRegistro").modal("hide");
       $("#errNomPiso").html("");
