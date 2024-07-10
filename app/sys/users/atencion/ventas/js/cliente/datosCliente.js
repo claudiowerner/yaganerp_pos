@@ -28,31 +28,36 @@ function parseoDatosCliente(rut)
     {
         let descarga = descargarDatosCliente(rut)
         json = JSON.parse(descarga);
+        console.log(json);
         if(Array.isArray(json))
         {
-            json.forEach
-            (c=>
-                {
-                    template = template+
-                    `<tr>
-                        <td>${c.rut}</td>
-                        <td>${c.nombre}</td>
-                        <td>${c.apellido}</td>
-                        <td>
-                            <button class="btn btn-success" onClick=registrarCuenta('${c.rut}')>Seleccionar</button>
-                        </td>
-                    <tr>`;
-                }
-            );
-            $("#btnAgregarCliente").prop("disabled", true);
-        }
-        else
-        {
-            template = 
-            `<tr>
-                <td colspan=4>Sin resultados</td>
-            </tr>`;
-            $("#btnAgregarCliente").prop("disabled", false);
+            length = json.length;
+            if(length>0)
+            {
+                $("#btnAgregarCliente").prop("disabled", true);
+                json.forEach
+                (c=>
+                    {
+                        template = template+
+                        `<tr>
+                            <td>${c.rut}</td>
+                            <td>${c.nombre}</td>
+                            <td>${c.apellido}</td>
+                            <td>
+                                <button class="btn btn-success" onClick=registrarCuenta('${c.rut}')>Seleccionar</button>
+                            </td>
+                        <tr>`;
+                    }
+                );
+            }
+            else
+            {
+                template = 
+                `<tr>
+                    <td colspan=4>Sin resultados</td>
+                </tr>`;
+                $("#btnAgregarCliente").prop("disabled", false);
+            }
         }
     }
     $("#datosCliente").html(template);

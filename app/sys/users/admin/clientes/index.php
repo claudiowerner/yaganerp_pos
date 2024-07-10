@@ -114,5 +114,8 @@
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
     <script src="javascript/clientes.js"></script>
     <script src="javascript/datatable_cliente.js"></script>
+    <script src="javascript/validar_rut_en_bd.js"></script>
+    <script src="javascript/crear_cliente.js"></script>
+    <script src="../../../js/validarRut.js"></script>
 
 </html>

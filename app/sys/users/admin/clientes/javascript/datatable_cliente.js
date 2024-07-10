@@ -45,8 +45,9 @@ var table;
                   {
                     disabled = "disabled";
                   }
-                  return `<button type="submit" id="btnEditar" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" ><img src="../img/edit.png" width="15"></button>
-                  <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick=btnVerCuentas('`+value.rut+`') `+disabled+`>Ver cuentas (`+cuentas+`)</button>`;
+                  return `<button type="submit" id="btnEditar" class="btn btn-primary" onClick=btnEditarCliente('${value.rut}') ><i class='fa fa-edit' aria-hidden='true'></i></button>
+                  <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick=btnVerCuentas('${value.rut}') ${disabled}><i class='fa fa-folder-open' aria-hidden='true'></i>(${cuentas})</button>
+                  <button type="submit" id="btnEliminar" class="btn btn-danger" onClick=btnEliminarCliente('${value.rut}')><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
                 }
             }
           ],

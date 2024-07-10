@@ -18,60 +18,7 @@ function btnVerCuentas(rut)
   location.href = "cuentas/index.php?rut="+rut;
 }
 
-$("#formRegistroCliente").submit(function(e)
-{
-  e.preventDefault();
-  let rut = $("#txtRutClte").val();
-  let nombre =$("#txtNombreClte").val();
-  let apellido =$("#txtApellido").val();
-  
-  $.ajax({
-    url:"funciones/validar_rut.php",
-    data: {"rut":rut},
-    type: "POST",
-    success: function(e)
-    {
-      if(e!=0)
-      {
-        msjes_swal("Aviso", "Ya existe un cliente con el rut "+rut, "error");
-      }
-      else
-      {
-        datos = 
-        {
-          "rut": rut,
-          "nombre": nombre,
-          "apellido": apellido,
-          "fecha": getFechaBD()
-        }
-        $.ajax(
-          {
-            url:"funciones/crear_cliente.php",
-            data: datos,
-            type: "POST",
-            success: function(e)
-            {
-              if(e.match("correctamente"))
-              {
-                msjes_swal("Excelente", e, "success");
-              }
-              $("#modalRegistro").modal("hide");
-              $("#formRegistroCliente").trigger("reset");
-              $("#producto").DataTable().ajax.reload();
-            }
-          })
-          .fail(function(e)
-          {
-            msjes_swal("Error", "Ocurrió un error al intentar registrar el producto: "+e.responseText, "error");
-          })
-      }
-    }
-  })
-  .fail(function(e)
-  {
-    console.log("Ocurrió un error al intentar registrar el producto: "+e.responseText);
-  })
-});
+
 
 //editar producto
 

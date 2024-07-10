@@ -36,14 +36,28 @@
 	"INSERT INTO clientes_negocio 
 	VALUES (null, '$id_cl', '$rut', '$nombre', '$apellido', 'S', '$id_us', '$fecha');
 	";
-	$resultado = $conexion->query($sql);
+	$res = $conexion->query($sql);
 
-	if($resultado)
+	$json = array();
+
+	if($res)
 	{
-		echo "Cliente agregado correctamente";
+		$json = array(
+			"registro" => true,
+			"titulo" => "Excelente",
+			"mensaje" => "Cliente creado excelentemente",
+			"icono" => "success"
+		);
 	}
 	else
 	{
-		die("Error al agregar categoría: ". mysqli_error($conexion));
+		$json = array(
+			"registro" => false,
+			"titulo" => "Error",
+			"mensaje" => "Ha ocurrido un error al registrar el cliente: ".$conexion->error,
+			"icono" => "error"
+		);
 	}
+	
+	echo json_encode($json);
 ?>

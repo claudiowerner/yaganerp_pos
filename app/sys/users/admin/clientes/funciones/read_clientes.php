@@ -62,7 +62,8 @@ if(isset($_SESSION['user'])){
     for($i=0; $i<$largo_array_id; $i++)
     {
       $id = $arrId[$i];
-      $sql = "SELECT cln.rut, cln.nombre, cln.apellido, cln.estado, us.nombre AS nombre_usuario, fecha_registro
+      $sql = "SELECT cln.rut, cln.nombre, cln.apellido, cln.estado, us.nombre AS nombre_usuario, 
+      DATE_FORMAT(cln.fecha_registro, '%d-%m-%Y') AS fecha_registro
       FROM clientes_negocio cln 
       JOIN usuarios us 
       ON cln.creado_por = us.id
