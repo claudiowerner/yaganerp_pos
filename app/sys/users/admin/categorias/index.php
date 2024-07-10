@@ -76,7 +76,6 @@
                                                     <tr>
                                                         <td>ID</td>
                                                         <td>Nombre</td>
-                                                        <td>Estado</td>
                                                         <td>Creado por</td>
                                                         <td>Fecha</td>
                                                         <td>Acción</td>

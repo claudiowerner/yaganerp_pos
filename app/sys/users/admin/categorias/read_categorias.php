@@ -15,25 +15,19 @@ if(isset($_SESSION['user'])){
   require_once '../../../conexion.php';
   
 	//query
-	$sql = "SELECT * FROM categorias WHERE id_cl = $id_cl ";
-  $resultado = $conexion->query($sql);;
+	$sql = "SELECT id, nombre_cat, creado_por, fecha_reg 
+  FROM categorias 
+  WHERE id_cl = $id_cl";
+  $resultado = $conexion->query($sql);
+  $i = 0;
   if ($resultado->num_rows > 0){
     $json = array();
     while ($row = $resultado->fetch_array())
     {
-      $estado = "";
-      if($row['estado']=="S")
-      {
-        $estado = "ACTIVO";
-      }
-      else
-      {
-        $estado = "INACTIVO";
-      }
       $json[] =array(
+          "item" => $i++,
           'id' => $row['id'],
           'nombre_cat' => $row['nombre_cat'],
-          'estado' => $estado,
           'creado_por' => $row['creado_por'],
           'fecha_reg' => $row['fecha_reg']
       );

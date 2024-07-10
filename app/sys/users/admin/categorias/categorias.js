@@ -16,13 +16,6 @@ var table;
   //Datatable
   table = $('#categoria').DataTable({
     "createdRow": function( row, data, dataIndex){
-      if( data.estado ==  `ACTIVO`){
-        $(row).addClass('ACTIVO');
-      }
-      else
-      {
-        $(row).addClass('INACTIVO');
-      }
     },
 
       "ajax":{
@@ -32,9 +25,8 @@ var table;
       },
       //columnas
       "columns":[
-        {"data":"id"},
+        {"data":"item"},
         {"data":"nombre_cat"},
-        {"data":"estado"},
         {"data":"creado_por"},
         {"data":"fecha_reg"},
         {
