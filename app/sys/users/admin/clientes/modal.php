@@ -5,7 +5,7 @@
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
-              <h5 class='modal-title' id='exampleModalLongTitle'>Agregando</h5>
+              <h5 class='modal-title' id='exampleModalLongTitle'>Editando </h5><span id='idCliente' style='display: none'></span>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
@@ -52,7 +52,7 @@
 
   function modalEditar()
   {
-    return "<div class='modal fade' id='modalEditar' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+    return "<div class='modal fade' id='modalEditar' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
@@ -61,7 +61,6 @@
               </button>
               <h5 class='modal-title' id='exampleModalLongTitle'>Agregando</h5>
             </div>
-            <form id='formRegistroCliente'>
               <div class='modal-body'>
                 <table id='productos2' class='table'>
                   <tr>
@@ -97,7 +96,6 @@
                 <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
                 <button type='submit' id='btnEditar' class='btn btn-primary'>Guardar</button>
               </div>
-            </form>
           </div>
         </div>
       </div>";

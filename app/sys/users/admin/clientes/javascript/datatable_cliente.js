@@ -45,9 +45,9 @@ var table;
                   {
                     disabled = "disabled";
                   }
-                  return `<button type="submit" id="btnEditar" class="btn btn-primary" onClick=btnEditarCliente('${value.rut}') ><i class='fa fa-edit' aria-hidden='true'></i></button>
-                  <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick=btnVerCuentas('${value.rut}') ${disabled}><i class='fa fa-folder-open' aria-hidden='true'></i>(${cuentas})</button>
-                  <button type="submit" id="btnEliminar" class="btn btn-danger" onClick=btnEliminarCliente('${value.rut}')><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
+                  return `<button type="submit" id="btnEditar" class="btn btn-primary" onClick="editarCliente('${value.id}','${value.rut}','${value.nombre}','${value.apellido}')" ><i class='fa fa-edit' aria-hidden='true'></i></button>
+                  <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick=verCuentas('${value.rut}') ${disabled}><i class='fa fa-folder-open' aria-hidden='true'></i>(${cuentas})</button>
+                  <button type="submit" id="btnEliminar" class="btn btn-danger" onClick=eliminarCliente('${value.rut}')><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
                 }
             }
           ],

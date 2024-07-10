@@ -13,63 +13,12 @@ $("#txtBusqueda").on("keyup", function(e)
   cargarDatosCliente(busqueda);
 })
 
-function btnVerCuentas(rut)
+function verCuentas(rut)
 {
   location.href = "cuentas/index.php?rut="+rut;
 }
 
 
-
-//editar producto
-
-
-$("#formEditarProducto").submit(function(e)
-{
-  e.preventDefault();
-  var id = $("#tituloModalEditar").text();
-  var np = $("#nomProdEditar").val();
-  var cod_barra = $("#codBarraEditar").val();
-  var lc = $("#listCatEditar").val();
-  var can = $("#cantidadEditar").val();
-  var vn = $("#valorNetoEditar").val();
-  var vv = $("#valorVentaEditar").val();
-  var unid = $("#slctUnidadEditar").val();
-  var pesaje = "";
-
-  //hora
-  let hora = getHora();
-  $.ajax(
-    {
-      url:"funciones/editar_producto_exe.php?codigo_barra="+cod_barra+"&id="+id+"&nomProd="+np+"&cat="+lc+"&can="+can+"&vv="+vv+"&vn="+vn+"&estado="+ep+"&hora="+hora+"&medida="+unid+"&pesaje="+rpEditar,
-      type: "GET",
-      success: function(e)
-      {
-        if(e.match("correctamente"))
-        {
-          swal({
-            title: "Excelente",
-            text: e,
-            icon: "success",
-          });
-        }
-        if(e.match("No se puede desactivar"))
-        {
-          msjes_swal("Aviso", e, "warning");
-        }
-        if(e.match("Error")||e.match("error"))
-        {
-          msjes_swal("Error al modificar", e, "error");
-        }
-        $('#producto').DataTable().ajax.reload();
-        $("#formRegistro").trigger('reset');
-        $("#modalEditar").modal("hide");
-      }
-    })
-    .fail(function(e)
-    {
-      console.log(e.responseText);
-    })
-});
 
 function getHora()
 {

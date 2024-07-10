@@ -116,6 +116,7 @@
     <script src="javascript/datatable_cliente.js"></script>
     <script src="javascript/validar_rut_en_bd.js"></script>
     <script src="javascript/crear_cliente.js"></script>
+    <script src="javascript/editar_cliente.js"></script>
     <script src="../../../js/validarRut.js"></script>
 
 </html>
