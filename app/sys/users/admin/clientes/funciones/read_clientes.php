@@ -62,7 +62,7 @@ if(isset($_SESSION['user'])){
     for($i=0; $i<$largo_array_id; $i++)
     {
       $id = $arrId[$i];
-      $sql = "SELECT cln.rut, cln.nombre, cln.apellido, cln.estado, us.nombre AS nombre_usuario, 
+      $sql = "SELECT cln.rut, cln.nombre, cln.apellido, us.nombre AS nombre_usuario, 
       DATE_FORMAT(cln.fecha_registro, '%d-%m-%Y') AS fecha_registro
       FROM clientes_negocio cln 
       JOIN usuarios us 
@@ -73,20 +73,10 @@ if(isset($_SESSION['user'])){
       $res = $conexion->query($sql);;
       if($res->num_rows>0)
       {
-        $estado = "";
         while($row = $res->fetch_array())
         {
-          if($row["estado"]=="S")
-          {
-            $estado = "ACTIVO";
-          }
-          else
-          {
-            $estado = "INACTIVO";
-          }
           $arrNombre[] = $row["nombre"];
           $arrApellido[] = $row["apellido"];
-          $arrEstado[] = $estado;
           $arrNombreUsuario[] = $row["nombre_usuario"];
           $arrFechaRegistro[] = $row["fecha_registro"];
           
@@ -127,7 +117,6 @@ if(isset($_SESSION['user'])){
           "rut" => $arrRut[$i],
           "nombre" => $arrNombre[$i],
           "apellido" => $arrApellido[$i],
-          "estado" => $arrEstado[$i],
           "nombre_usuario" => $arrNombreUsuario[$i],
           "fecha_registro" => $arrFechaRegistro[$i],
           "total_cuentas" => $arrTotalCuentas[$i]

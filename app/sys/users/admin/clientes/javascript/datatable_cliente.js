@@ -4,13 +4,6 @@ var table;
       var idCat = 0;
       table = $('#producto').DataTable({
         "createdRow": function( row, data, dataIndex){
-          if( data.estado ==  `ACTIVO`){
-            $(row).addClass('ACTIVO');
-          }
-          else
-          {
-            $(row).addClass('INACTIVO');
-          }
         },
 
           "ajax":{
@@ -24,7 +17,6 @@ var table;
             {"data":"rut"},
             {"data":"nombre"},
             {"data":"apellido"},
-            {"data":"estado"},
             {"data":"nombre_usuario"},
             {"data":"fecha_registro"},
             {
