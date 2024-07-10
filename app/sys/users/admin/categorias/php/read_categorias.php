@@ -9,17 +9,17 @@ if(isset($_SESSION['user'])){
   $id_us = $_SESSION['user']['id'];
   $nombre = $_SESSION['user']["nombre"];
   $id_cl = $_SESSION['user']["id_cl"];
-  $piso = 1;
+  
 
 
-  require_once '../../../conexion.php';
+  require_once '../../../../conexion.php';
   
 	//query
-	$sql = "SELECT id, nombre_cat, creado_por, fecha_reg 
+	$sql = "SELECT id, nombre_cat, creado_por, DATE_FORMAT(fecha_reg, '%d-%m-%Y') AS fecha_reg
   FROM categorias 
   WHERE id_cl = $id_cl";
   $resultado = $conexion->query($sql);
-  $i = 0;
+  $i = 1;
   if ($resultado->num_rows > 0){
     $json = array();
     while ($row = $resultado->fetch_array())

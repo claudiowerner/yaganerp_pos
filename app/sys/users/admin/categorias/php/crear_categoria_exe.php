@@ -14,12 +14,12 @@
      	    }else{
     	    header('Location: ../../../../index.php');
      	}
-     	require_once '../../../conexion.php';
+     	require_once '../../../../conexion.php';
 
 	    $id_us = $_SESSION['user']['id'];
 	    $nombre = $_SESSION['user']["nombre"];
 	    $id_cl = $_SESSION['user']["id_cl"];
-	    $piso = 1;
+	    
 
 		if(isset($_POST['nomCat']))
 		{

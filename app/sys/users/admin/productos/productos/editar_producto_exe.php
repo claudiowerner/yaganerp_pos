@@ -18,7 +18,7 @@
     $id_us = $_SESSION['user']['id'];
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
-    $piso = 1;
+    
 
     $id = $_POST['id'];
     $nom = $_POST['nomProd'];

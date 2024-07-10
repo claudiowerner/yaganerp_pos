@@ -21,7 +21,7 @@ ini_set('display_errors', 1);
 	$id_us = $_SESSION['user']['id'];
 	$nombre = $_SESSION['user']["nombre"];
 	$id_cl = $_SESSION['user']["id_cl"];
-	$piso = 1;
+	
 	$id_venta = $_GET['id_venta'];
 
 	$sql = "SELECT COUNT(id) AS ventas_cerradas FROM ventas WHERE id_cl = '$id_cl' AND id_venta = $id_venta AND estado = 'A'";

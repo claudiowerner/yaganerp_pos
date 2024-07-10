@@ -19,7 +19,7 @@ var table;
     },
 
       "ajax":{
-        "url":"read_categorias.php",
+        "url":"php/read_categorias.php",
         "type":"GET",
         "dataSrc":""
       },

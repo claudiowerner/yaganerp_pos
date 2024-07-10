@@ -19,7 +19,7 @@
     $id_us = $_SESSION['user']['id'];
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
-    $piso = 1;
+    
 
     $nombre = $_POST['nombre'];
 	$user = $_POST['user'];

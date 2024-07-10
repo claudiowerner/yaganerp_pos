@@ -17,7 +17,7 @@
 
   $id_us = $_SESSION['user']['id'];
   $nombre = $_SESSION['user']["nombre"];
-  $piso = 1;
+  
   */
 
 ?>

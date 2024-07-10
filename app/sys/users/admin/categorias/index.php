@@ -19,7 +19,7 @@
   $id_us = $_SESSION['user']['id'];
   $nombre = $_SESSION['user']["nombre"];
   $id_cl = $_SESSION['user']["id_cl"];
-  $piso = 1;
+  
 
 ?>
 
@@ -110,7 +110,7 @@
 
 
     <!--llamada a categorias-->
-    <script src="categorias.js"></script>
+    <script src="js/categorias.js"></script>
 </body>
 
 </html>

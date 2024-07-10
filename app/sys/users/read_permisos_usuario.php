@@ -12,7 +12,7 @@ if(isset($_SESSION['user'])){
   $tipo = $_SESSION['user']['tipo_usuario'];
   $nombre = $_SESSION['user']["nombre"];
   $id_cl = $_SESSION['user']["id_cl"];
-  $piso = 1;
+  
   $id_usu = $_POST["id_usu"];
 
   require_once '../conexion.php';

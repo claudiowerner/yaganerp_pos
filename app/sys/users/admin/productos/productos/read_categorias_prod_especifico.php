@@ -16,7 +16,7 @@ if(isset($_SESSION['user'])){
   $nombre = $_SESSION['user']["nombre"];
   $id_cl = $_SESSION['user']["id_cl"];
   $nomCat = $_POST['nomCat'];
-  $piso = 1;
+  
 
   require_once '../../../../../conexion.php';
 	//query
