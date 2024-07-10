@@ -19,7 +19,6 @@ if(isset($_SESSION['user'])){
     $arrRut = array();
     $arrNombre = array();
     $arrApellido = array();
-    $arrEstado = array();
     $arrNombreUsuario = array();
     $arrFechaRegistro = array();
     $arrTotalCuentas = array();
@@ -28,6 +27,7 @@ if(isset($_SESSION['user'])){
     $sql = "SELECT id 
     FROM clientes_negocio 
     WHERE id_cl = $id_cl 
+    AND estado!='N'
     GROUP BY id";
     $res = $conexion->query($sql);;
     if($res->num_rows>0)
@@ -92,7 +92,8 @@ if(isset($_SESSION['user'])){
       $sql = "SELECT COUNT(id) AS total_cuentas 
       FROM cuenta_corriente 
       WHERE rut = '$rut' 
-      AND id_cl = $id_cl";
+      AND id_cl = $id_cl
+      AND estado != 'N'";
 
       $res = $conexion->query($sql);;
       if($res->num_rows>0)
@@ -113,6 +114,7 @@ if(isset($_SESSION['user'])){
       for($i=0; $i<$largo_array_id; $i++)
       {
         $json[] = array(
+          "item" => ($i+1),
           "id" => $arrId[$i],
           "rut" => $arrRut[$i],
           "nombre" => $arrNombre[$i],

@@ -13,7 +13,7 @@ var table;
           },
           //columnas
           "columns":[
-            {"data":"id"},
+            {"data":"item"},
             {"data":"rut"},
             {"data":"nombre"},
             {"data":"apellido"},
@@ -26,10 +26,9 @@ var table;
 
                   //habilitar o deshabilitar botón VerCuentas si el total de cuentas del cliente es mayor a 0
                   let disabled;
-                  let cuentas = value.total_cuentas;
 
                   //se agregará "disabled" a la etiqueta del botón en caso de cumplirse la condición
-                  if(cuentas>0)
+                  if(value.total_cuentas>0)
                   {
                     disabled = "";
                   }
@@ -38,8 +37,8 @@ var table;
                     disabled = "disabled";
                   }
                   return `<button type="submit" id="btnEditar" class="btn btn-primary" onClick="editarCliente('${value.id}','${value.rut}','${value.nombre}','${value.apellido}')" ><i class='fa fa-edit' aria-hidden='true'></i></button>
-                  <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick=verCuentas('${value.rut}') ${disabled}><i class='fa fa-folder-open' aria-hidden='true'></i>(${cuentas})</button>
-                  <button type="submit" id="btnEliminar" class="btn btn-danger" onClick=eliminarCliente('${value.rut}')><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
+                  <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick=verCuentas('${value.rut}') ${disabled}><i class='fa fa-folder-open' aria-hidden='true'></i>(${value.total_cuentas})</button>
+                  <button type="submit" id="btnEliminar" class="btn btn-danger" onClick="eliminarCliente('${value.rut}','${value.nombre}','${value.total_cuentas}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
                 }
             }
           ],

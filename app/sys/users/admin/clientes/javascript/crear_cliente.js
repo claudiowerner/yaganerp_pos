@@ -7,7 +7,7 @@ function crearCliente(rut, nombre, apellido)
         "rut": rut,
         "nombre": nombre,
         "apellido": apellido,
-        "fecha": getFechaBD()
+        "fecha": getFecha()
     }
     return $.ajax({
         url:"funciones/crear_cliente.php",
@@ -21,6 +21,14 @@ function crearCliente(rut, nombre, apellido)
 
 
 
+$("#btnAgregarCliente").on("click", function(e)
+{
+  $("#modalRegistro").modal("show");
+  $("#txtRutClte").val("");
+  $("#txtNombreClte").val("");
+  $("#txtApellido").val("");
+  
+});
 
 
 //Acción de botón guardar

@@ -18,7 +18,8 @@ if(isset($_SESSION['user'])){
     $sql = 
     "SELECT * FROM clientes_negocio
     WHERE id_cl = $id_cl
-    AND rut = '$rut'";
+    AND rut = '$rut'
+    AND estado!='N'";
     $resultado = $conexion->query($sql);;
 
     echo $resultado->num_rows;

@@ -21,7 +21,8 @@ if(isset($_SESSION['user'])){
     "SELECT rut, nombre, apellido 
     FROM clientes_negocio
     WHERE id_cl = $id_cl
-    AND rut LIKE '%$rut%'";
+    AND rut LIKE '%$rut%'
+    AND estado ='S'";
     $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0)
     {

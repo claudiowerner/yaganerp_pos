@@ -45,7 +45,7 @@
 		$json = array(
 			"registro" => true,
 			"titulo" => "Excelente",
-			"mensaje" => "Cliente creado excelentemente",
+			"mensaje" => "Cliente creado correctamente",
 			"icono" => "success"
 		);
 	}
