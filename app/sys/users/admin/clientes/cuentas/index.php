@@ -123,7 +123,7 @@
     <!-- Main jQuery Plugins -->
     <?php require "../../cdn_css/cdn/cdn_sub_item.php";?></body>
 
-    <script type="text/javascript" src="../../../datatables/datatables.js"></script>
     <script src="cuentas.js"></script>
+    <script src="../../../../js/numberFormat.js"></script>
 
 </html>

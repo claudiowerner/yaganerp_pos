@@ -108,9 +108,8 @@
     <!-- 
     ================================================== -->
     <!-- Main jQuery Plugins -->
-    <?php require "../cdn_css/cdn/cdn_item.php";?></body>
+    <?php require "../cdn_css/cdn/cdn_sub_item.php";?></body>
 
-    <script type="text/javascript" src="../../../datatables/datatables.js"></script>
     <script src="javascript/clientes.js"></script>
     <script src="javascript/datatable_cliente.js"></script>
     <script src="javascript/validar_rut_en_bd.js"></script>

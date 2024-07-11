@@ -13,7 +13,7 @@ if(isset($_SESSION['user'])){
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
     
-    $rut = $_POST["rut"];
+    $rut = $_GET["rut"];
     
 
     $sql = 
@@ -27,6 +27,7 @@ if(isset($_SESSION['user'])){
       WHERE ccr.id_cl = $id_cl
       AND rut = '$rut'
       AND v.estado!='N'
+      AND ccr.estado !='N'
       GROUP BY corr.correlativo";
     $resultado = $conexion->query($sql);;
     $json= array();
