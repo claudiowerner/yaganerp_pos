@@ -108,7 +108,7 @@
     <!-- 
     ================================================== -->
     <!-- Main jQuery Plugins -->
-    <?php require "../cdn_css/cdn/cdn_sub_item.php";?></body>
+    <?php require "../cdn_css/cdn/cdn_item.php";?></body>
 
     <script src="javascript/clientes.js"></script>
     <script src="javascript/datatable_cliente.js"></script>

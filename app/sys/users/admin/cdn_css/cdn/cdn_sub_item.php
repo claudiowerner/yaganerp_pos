@@ -1,5 +1,4 @@
 <?php
-echo "<script>alert('')</script>";
     echo 
     "<script type='text/javascript' src='../../../../js/jquery.js'></script>
 
