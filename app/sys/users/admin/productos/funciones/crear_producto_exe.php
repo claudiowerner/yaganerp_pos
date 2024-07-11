@@ -10,7 +10,7 @@
      	    }else{
     	    header('Location: ../../../../index.php');
      	}
-     	require_once '../../../../../conexion.php';
+     	require_once '../../../../conexion.php';
 
 
 	ini_set('display_errors', 1);
@@ -62,14 +62,27 @@
 	'$id_us', 
 	'$fecha');
 	";
-	$resultado = $conexion->query($sql);
+	$res = $conexion->query($sql);
+	$json = array();
 
-	if($resultado)
+	if($res)
 	{
-		echo "Producto agregado correctamente";
+		$json = array(
+			"registro" => true,
+			"titulo" => "Excelente",
+			"mensaje" => "Producto creado correctamente",
+			"icono" => "success"
+		);
 	}
 	else
 	{
-		die("Error al agregar categoría: ". mysqli_error($conexion));
+		$json = array(
+			"registro" => false,
+			"titulo" => "Error",
+			"mensaje" => "Ha ocurrido un error al registrar el producto: ".$conexion->error,
+			"icono" => "error"
+		);
 	}
+	
+	echo json_encode($json);
 ?>

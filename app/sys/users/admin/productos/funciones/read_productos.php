@@ -13,14 +13,14 @@ if(isset($_SESSION['user'])){
     $id_cl = $_SESSION['user']["id_cl"];
     
 
-    require_once '../../../../../conexion.php';
+    require_once '../../../../conexion.php';
 
     //query
     $sql = 
     "SELECT p.id_prod, p.codigo_barra, p.nombre_prod, prov.nombre_proveedor, p.categoria, p.cantidad, 
     smp.estado AS estado_stock, 
     p.valor_neto, p.valor_venta, p.margen_ganancia, p.monto_ganancia, p.descuento, u.nombre AS creado_por, 
-    p.estado, DATE_FORMAT(p.fecha_reg, '%d-%m-%Y') AS fecha_reg, c.nombre_cat 
+    DATE_FORMAT(p.fecha_reg, '%d-%m-%Y') AS fecha_reg, c.nombre_cat 
     FROM productos p 
     JOIN usuarios u 
     ON u.id = p.creado_por
@@ -37,16 +37,6 @@ if(isset($_SESSION['user'])){
       $json = array();
       while ($row = $resultado->fetch_array())
       {
-
-        $estado = $row['estado'];
-        if($estado == "S")
-        {
-          $estado="ACTIVO";
-        }
-        if($estado == "N")
-        {
-          $estado="INACTIVO";
-        };
 
         if($row["estado_stock"]=="S")
         {
@@ -69,7 +59,6 @@ if(isset($_SESSION['user'])){
           'monto_ganancia' => $row['monto_ganancia'],
           'valor_venta' => $row['valor_venta'],
           'descuento' => $row['descuento']."%",
-          'estado' => $estado,
           'creado_por' => $row['creado_por'],
           'fecha_reg' => $row['fecha_reg']
         );

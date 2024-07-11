@@ -13,7 +13,7 @@ if(isset($_SESSION['user'])){
     $id_cl = $_SESSION['user']["id_cl"];
     $id_prod = $_POST["id_prod"];
 
-    require_once '../../../../../conexion.php';
+    require_once '../../../../conexion.php';
 
     //query
     $sql = 

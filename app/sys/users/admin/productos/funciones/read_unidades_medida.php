@@ -2,6 +2,14 @@
 
 session_start();
 
+if(isset($_SESSION['user'])){
+  $tipo = $_SESSION['user']['tipo_usuario'];
+ if($tipo == 3){
+   header('Location: ../');
+ }
+ }else{
+ header('Location: ../');
+ }
 
 
   $id_us = $_SESSION['user']['id'];
@@ -10,17 +18,17 @@ session_start();
   
 
 
-  require_once '../../../../../conexion.php';
+  require_once '../../../../conexion.php';
 
 	//query
-	$sql = "SELECT * FROM proveedores WHERE id_cl = $id_cl;";
+	$sql = "SELECT * FROM unidades_medida;";
   $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
   $json = array();
    while ($row = $resultado->fetch_array()) {
      $json[] =array(
          'id' => $row['id'],
-         'nombre_proveedor' => $row['nombre_proveedor']
+         'nombre_medida' => $row['nombre_medida']
      );
    };
    echo json_encode($json);

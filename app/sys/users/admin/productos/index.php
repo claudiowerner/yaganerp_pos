@@ -83,7 +83,7 @@
                                         <div class="tab-content">
                                             <div id="productos" class="tab-pane fade">
                                                 <br>
-                                                <button type="button" class="btn btn-success" id="btnAgregarCategoria" data-toggle="modal" data-target="#modalRegistro">Agregar producto</button>
+                                                <button type="button" class="btn btn-success" id="btnAgregarCategoria">Agregar producto</button>
                                                 <property name="characterEncoding" value="UTF-8">
 
                                                     <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
@@ -100,10 +100,9 @@
                                                             <th>Monto ganancia</th>
                                                             <th>Valor venta</th>
                                                             <th>Descto(%)</th>
-                                                            <th>Estado</th>
                                                             <th>Creado por</th>
                                                             <th>Fecha</th>
-                                                            <th>Editar</th>
+                                                            <th>Acciones</th>
                                                             </tr>
                                                         </thead>
                                                     </table>
@@ -137,8 +136,16 @@
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
 
     <script src="../../../datatables/datatables.js"></script>
-    <script src="productos/calcular_ganancia.js"></script>
-    <script src="productos/producto.js"></script>
-    <script src="productos/proveedores.js"></script>
+    <script src="js/calcular_ganancia.js"></script>
+    <script src="js/proveedores.js"></script>
+    <script src="js/unidades.js"></script>
+    <script src="js/categorias.js"></script>
+    <script src="js/medida_producto_especifico.js"></script>
+    <script src="js/categoria_producto_especifico.js"></script>
+    <script src="js/seleccionar_producto_especifico.js"></script>
+    <script src="js/producto.js"></script>
+    <script src="js/crear_producto.js"></script>
+    <script src="js/validar_existencia_producto.js"></script>
+    <script src="js/editar_productos.js"></script>
 
 </html>

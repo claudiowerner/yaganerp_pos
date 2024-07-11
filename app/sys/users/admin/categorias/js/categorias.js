@@ -32,8 +32,6 @@ var table;
         {
           'data' : null,
           'render': function (data, type, row, meta) {
-          var prueba = "idCategoria";
-          table = $('#categoria').DataTable();
           var arr = table
             .column()
             .data()
