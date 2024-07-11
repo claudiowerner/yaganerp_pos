@@ -21,28 +21,36 @@
 	    $id_cl = $_SESSION['user']["id_cl"];
 	    
 
-		if(isset($_POST['nomCat']))
-		{
 			$nom = $_POST['nomCat'];
 		    //obtener fecha
 		    $hoy = getdate();
 		    $fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
-		    $sql = "INSERT INTO categorias VALUES (null,'$id_cl','$nom','S', '$nombre','$fecha')";
-			$resultado = $conexion->query($sql);
+		    $sql = "INSERT INTO categorias VALUES (null,'$id_cl','$nom','S', '$id_us','$fecha')";
+			$res = $conexion->query($sql);
 
-			if($resultado)
+			$json = array();
+
+			if($res)
 			{
-				echo "Categoría agregada correctamente";
+				$json = array(
+					"registro" => true,
+					"titulo" => "Excelente",
+					"mensaje" => "Categoría creada correctamente",
+					"icono" => "success"
+				);
 			}
 			else
 			{
-				die("Error al agregar categoría: ". mysqli_error($conexion));
+				$json = array(
+					"registro" => false,
+					"titulo" => "Error",
+					"mensaje" => "Ha ocurrido un error al registrar la categoría: ".$conexion->error,
+					"icono" => "error"
+				);
 			}
-		}
-		else
-		{
-			echo "Error al recibir nombre de piso y su estado";
-		}
+			
+			echo json_encode($json);
+		
 
 
 ?>

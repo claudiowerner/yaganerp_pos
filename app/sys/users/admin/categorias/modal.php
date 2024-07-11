@@ -10,7 +10,6 @@
                 <span aria-hidden='true'>&times;</span>
               </button>
             </div>
-            <form id='formRegistro'>
               <div class='modal-body'>
                 <table id='contenido'>
                   <tr>
@@ -26,7 +25,6 @@
                 <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
                 <button type='submit' id='btnGuardar' class='btn btn-primary'>Guardar</button>
               </div>
-            </form>
           </div>
         </div>
       </div>";

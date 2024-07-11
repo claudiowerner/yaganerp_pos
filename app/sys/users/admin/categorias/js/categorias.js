@@ -63,47 +63,6 @@ var table;
     });
 
 
-$("#formRegistro").submit(function(e)
-{
-  e.preventDefault();
-  let nombre = $("#nomCat").val();
-  if(nombre=='')
-  {
-    $("#lblNombre").html("<span style='color:red'>Campo requerido</span>");
-    $("#nomCat").focus();
-  }
-  else
-  {
-    $.ajax({
-      url:"crear_categoria_exe.php",
-      type: "POST",
-      data: {"nomCat":nombre},
-      success: function(e)
-      {
-        if(e.match("correctamente"))
-        {
-          swal({
-            title: "Excelente",
-            text: e,
-            icon: "success",
-          });
-        }
-        
-        if(e.match("Error")||e.match("error"))
-        {
-          swal({
-            title: "Error al modificar",
-            text: e,
-            icon: "error",
-          });
-        }
-        $("#categoria").DataTable().ajax.reload();
-        $("#formRegistro").trigger('reset');
-        $("#modalRegistro").modal("hide");
-      }
-    })
-  }
-});
 
 
 $("#categoria").on('click', 'tr', function(e)

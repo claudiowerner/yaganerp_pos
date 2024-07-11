@@ -70,7 +70,7 @@
 
                                         <div align=left>
                                             <h1>Categorías</h1>
-                                            <button type="button" class="btn btn-success" id="btnAgregarCategoria" data-toggle="modal" data-target="#modalRegistro">Agregar categoría</button>
+                                            <button type="button" class="btn btn-success" id="btnAgregarCategoria">Agregar categoría</button>
                                             <table id="categoria" class="table table-bordered table-hover dt-resposive display nowrap">
                                                 <thead>
                                                     <tr>
@@ -111,6 +111,9 @@
 
     <!--llamada a categorias-->
     <script src="js/categorias.js"></script>
+    <script src="js/crear_categoria.js"></script>
+    <script src="js/validar_registro_repetido.js"></script>
+    
 </body>
 
 </html>
