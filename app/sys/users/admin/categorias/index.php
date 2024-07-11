@@ -74,11 +74,11 @@
                                             <table id="categoria" class="table table-bordered table-hover dt-resposive display nowrap">
                                                 <thead>
                                                     <tr>
-                                                        <td>ID</td>
-                                                        <td>Nombre</td>
-                                                        <td>Creado por</td>
-                                                        <td>Fecha</td>
-                                                        <td>Acción</td>
+                                                        <th>ID</th>
+                                                        <th>Nombre</th>
+                                                        <th>Creado por</th>
+                                                        <th>Fecha</th>
+                                                        <th>Acción</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -114,6 +114,7 @@
     <script src="js/crear_categoria.js"></script>
     <script src="js/validar_registro_repetido.js"></script>
     <script src="js/editar_categoria.js"></script>
+    <script src="js/eliminar_categoria.js"></script>
     
 </body>
 

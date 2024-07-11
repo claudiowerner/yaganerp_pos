@@ -39,7 +39,7 @@ var table;
             .data()
             .toArray();
             return `<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" id="btnEditar"><i class='fa fa-edit' aria-hidden='true'></i></button>
-            <button id='btnEliminar' class='btn btn-danger' onClick='eliminarCategoria(${data.id})'><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
+            <button id='btnEliminar' class='btn btn-danger' onClick="eliminarCategoria(${data.id}, '${data.nombre_cat}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
         }
       }
     ],

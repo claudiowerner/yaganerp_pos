@@ -19,7 +19,8 @@ if(isset($_SESSION['user'])){
   FROM categorias c
   JOIN usuarios u 
   ON c.creado_por = u.id
-  WHERE c.id_cl = $id_cl";
+  WHERE c.id_cl = $id_cl
+  AND c.estado!='N'";
   $resultado = $conexion->query($sql);
   $i = 1;
   if ($resultado->num_rows > 0){
