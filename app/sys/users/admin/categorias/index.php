@@ -113,6 +113,7 @@
     <script src="js/categorias.js"></script>
     <script src="js/crear_categoria.js"></script>
     <script src="js/validar_registro_repetido.js"></script>
+    <script src="js/editar_categoria.js"></script>
     
 </body>
 

@@ -11,70 +11,36 @@
 	    $id_us = $_SESSION['user']['id'];
 	    $nombre = $_SESSION['user']["nombre"];
 	    $id_cl = $_SESSION['user']["id_cl"];
+
+		$nom = $_POST["nombre"];
+		$id = $_POST["id"];
 	    
+		$sql = "UPDATE categorias set nombre_cat ='$nom'
+		WHERE id = '$id' 
+		AND id_cl = '$id_cl'";
+		$res = $conexion->query($sql);
 
-		if(isset($_POST['nomCat'])&&isset($_POST['estadoCat'])&&isset($_POST['id']))
+		$json = array();
+
+		if($res)
 		{
-			$nom = $_POST['nomCat'];
-			$estado = $_POST['estadoCat'];
-
-			$id = $_POST['id'];
-			$hora = $_POST['hora'];
-
-			$r_estado = '';
-
-			$hoy = getdate();
-			$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hora;
-	
-			if($estado=='N')
-			{
-				$sql = "SELECT * FROM categorias c JOIN productos p ON c.id = p.categoria WHERE c.id = $id AND p.estado = 'S'";
-				$r_estado = $conexion->query($sql);
-				if($r_estado->num_rows>0)
-				{
-					echo "No se puede desactivar la categoría $nom debido a que existen productos activos asociados a esta categoría";
-				}
-				else
-				{
-					//obtener fecha
-					$sql = "INSERT INTO anula_categoria VALUES (null, '$id_cl', '$id', '$nombre', '$fecha');";
-					$r_estado = $conexion->query($sql);
-
-					$sql = "UPDATE categorias set nombre_cat ='$nom', estado = '$estado' where id = '$id' and id_cl = '$id_cl'";
-					$resultado = $conexion->query($sql);
-
-					if($resultado||$r_estado)
-					{
-						echo "Categoría modificada correctamente";
-					}
-					else
-					{
-						die("Error al agregar categoría: ". mysqli_error($conexion));
-					}
-				}
-			}
-			else
-			{
-				$sql = "INSERT INTO anula_categoria VALUES (null, '$id_cl', '$id', '$nombre', '$fecha');";
-				$r_estado = $conexion->query($sql);
-
-				$sql = "UPDATE categorias set nombre_cat ='$nom', estado = '$estado' where id = '$id' and id_cl = '$id_cl'";
-				$resultado = $conexion->query($sql);
-
-				if($resultado||$r_estado)
-				{
-					echo "Categoría modificada correctamente";
-				}
-				else
-				{
-					die("Error al agregar categoría: ". mysqli_error($conexion));
-				}
-			}
+			$json = array(
+				"edicion" => true,
+				"titulo" => "Excelente",
+				"mensaje" => "Categoría editada correctamente",
+				"icono" => "success"
+			);
 		}
 		else
 		{
-			echo "Error al recibir nombre y estado de categoría";
+			$json = array(
+				"edicion" => false,
+				"titulo" => "Error",
+				"mensaje" => "Ha ocurrido un error al editar la categoría: ".$conexion->error,
+				"icono" => "error"
+			);
 		}
+		echo json_encode($json);
 	}
 
 

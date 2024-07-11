@@ -38,8 +38,8 @@ var table;
             .column()
             .data()
             .toArray();
-            return `<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" id="btnEditar"><img src="../img/edit.png" width="15"></button>`;
-            //<button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modalDesact" id="btnDesact"><img src="../img/shutdown.png" width="15"></button>`;
+            return `<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" id="btnEditar"><i class='fa fa-edit' aria-hidden='true'></i></button>
+            <button id='btnEliminar' class='btn btn-danger' onClick='eliminarCategoria(${data.id})'><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
         }
       }
     ],
@@ -65,69 +65,7 @@ var table;
 
 
 
-$("#categoria").on('click', 'tr', function(e)
-{
-  var cat = $('#categoria').DataTable();
-  var datos = cat.row(this).data();
-  $("#nomCatEditar").val(datos.nombre_cat);
-  $("#idModal").html(datos.id);
-  
-  if(datos.estado == "ACTIVO")
-  {
-    $("#swEditarCategoria").prop("checked", true);
-    ec = "S";
-  }
-  else
-  {
-    $("#swEditarCategoria").prop("checked", false);
-    ec = "N";
-  }
-});
 
-$("#btnGuardarCambios").on('click', function(resp)
-{
-  var nc = $("#nomCatEditar").val();
-  var id = $("#idModal").text();
-  var hora = getHora();
-  
-  $.ajax(
-        {
-            url:"editar_categoria_exe.php",
-    type: "POST",
-    data: {"nomCat":nc, "estadoCat":ec, "id":id, "hora":hora},
-    success: function(e)
-    {
-      if(e.match("correctamente"))
-        {
-          swal({
-            title: "Excelente",
-            text: e,
-            icon: "success",
-          });
-        }
-        if(e.match("No se puede desactivar"))
-        {
-          swal({
-            title: "Aviso",
-            text: e,
-            icon: "warning",
-          });
-        }
-        if(e.match("Error")||e.match("error"))
-        {
-          swal({
-            title: "Error al modificar",
-            text: e,
-            icon: "error",
-          });
-        }
-      $("#lblMsj").html("<span style='color:green'>"+e+"</span>");
-      $('#categoria').DataTable().ajax.reload();
-      $("#formRegistro").trigger('reset');
-      $("#modalEditar").modal("hide");
-    }
-  })
-});
 
 function getHora()
 {
