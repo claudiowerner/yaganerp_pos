@@ -103,19 +103,12 @@ $.ajax({
         
         //columnas
         "columns":[
-          {"data":"id"},
           {"data":"codigo_barra"},
           {"data":"nombre_prod"},
           {"data":"nombre_proveedor"},
           {"data":"nombre_cat"},
           {"data":"cantidad"},
-          {"data":"valor_neto", render: DataTable.render.number(null, null, "", "$", "") },
-          {"data":"margen_ganancia", render: DataTable.render.number(null, null, "", "", "%") },
-          {"data":"monto_ganancia", render: DataTable.render.number(null, null, "", "$", "") },
           {"data":"valor_venta", render: DataTable.render.number(null, null, "", "$", "") },
-          {"data":"descuento"},
-          {"data":"creado_por"},
-          {"data":"fecha_reg"},
           {
             'data' : null,
             'render': function (data, type, row, meta) {

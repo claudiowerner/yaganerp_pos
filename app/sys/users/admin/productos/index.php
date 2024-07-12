@@ -73,48 +73,25 @@
 
                                         <!--TABLAS O PESTAÑAS-->
 
-                                        <h1>Productos y promociones</h1>
-
-                                        <ul id="pestanas" class="nav nav-tabs">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" href="#productos" data-toggle="tab">Productos</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#promociones" data-toggle="tab">Promociones</a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content">
-                                            <div id="productos" class="tab-pane fade">
-                                                <br>
-                                                <button type="button" class="btn btn-success" id="btnAgregarCategoria">Agregar producto</button>
+                                        <h1 align='left'>Productos y promociones</h1>
+                                        <div align='left' class="tab-content">
+                                            <button align='left' type="button" class="btn btn-success" id="btnAgregarCategoria">Agregar producto</button>
                                                 <property name="characterEncoding" value="UTF-8">
 
                                                     <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
                                                         <thead>
                                                             <tr>
-                                                            <th>ID</th>
-                                                            <th>Cód. de barra</th>
-                                                            <th>Nombre</th>
-                                                            <th>Proveedor</th>
-                                                            <th>Categoría</th>
-                                                            <th>Cantidad</th>
-                                                            <th>Valor neto</th>
-                                                            <th>Margen ganancia</th>
-                                                            <th>Monto ganancia</th>
-                                                            <th>Valor venta</th>
-                                                            <th>Descto(%)</th>
-                                                            <th>Creado por</th>
-                                                            <th>Fecha</th>
-                                                            <th>Acciones</th>
+                                                                <th>Cód. de barra</th>
+                                                                <th>Nombre</th>
+                                                                <th>Proveedor</th>
+                                                                <th>Categoría</th>
+                                                                <th>Cantidad</th>
+                                                                <th>Valor venta</th>
+                                                                <th>Acciones</th>
                                                             </tr>
                                                         </thead>
                                                     </table>
                                                 </property>
-                                            </div>
-                                            
-                                            <div id="promociones" class="tab-pane fade">
-                                                sos
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
