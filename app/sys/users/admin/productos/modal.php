@@ -109,16 +109,16 @@
 
   function modalEditar()
   {
-    return "<div class='modal fade' id='modalEditar' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+    return "<div class='modal fade' id='modalEditar' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
-              <h5 class='modal-title' id='tituloModalEditar'></h5>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
+              <h5 class='modal-title' id='tituloModalEditar'></h5>
+              <h5 class='modal-title' id='idProductoEditar' style='display: none'></h5>
             </div>
-            <form id='formEditarProducto'>
               <div class='modal-body'>
                 <table id='productos2' class='table'>
                   <tr>
@@ -137,7 +137,7 @@
                   <tr>
                     <td><label name='nombreCat'>Proveedor</label></td>
                     <td>
-                      <select name='slctProveedorEditar' id='slctProveedorEditar' class='form-control'></select>
+                      <select name='slctProveedorEditar' id='slctProveedorProductoEditar' class='form-control' width='100%'></select>
                     </td>
                   </tr>
                   
@@ -200,13 +200,6 @@
                       <input type='number' name='cantidad' id='porcDesctoEditar' class='form-control'></td>
                     </td>
                   </tr>
-                  <tr>
-                    <td><label name='cat'>Estado</label></td>
-                    <td>
-                      <input type='checkbox' id='swEditarProducto'/>
-                      <label for='swEditarProducto' class='switch'></label>
-                    </td>
-                  </tr>
                 </tr>
               </table>
             <div>
@@ -215,9 +208,8 @@
         </div>
           <div class='modal-footer'>
             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-            <button type='submit' id='btnGuardar' class='btn btn-primary'>Guardar</button>
+            <button type='submit' id='btnEditarProducto' class='btn btn-primary'>Guardar</button>
           </div>
-        </form>
       </div>
     </div>
   </div>";

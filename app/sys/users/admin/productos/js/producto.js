@@ -1,6 +1,9 @@
 //SELECCIONAR PESTAÑA AL CARGAR LA PÁGINA
 $('a[href="#productos"]').click();
 
+$("#slctProveedorProductoEditar").select2();     
+$("#listCatEditar").select2();
+
 
 ep = "S"; //almacena el estado del piso
 
@@ -90,13 +93,6 @@ $.ajax({
     var idCat = 0;
     table = $('#producto').DataTable({
       "createdRow": function( row, data, dataIndex){
-        if( data.estado ==  `ACTIVO`){
-          $(row).addClass('ACTIVO');
-        }
-        else
-        {
-          $(row).addClass('INACTIVO');
-        }
       },
 
         "ajax":{
@@ -114,7 +110,7 @@ $.ajax({
           {"data":"nombre_cat"},
           {"data":"cantidad"},
           {"data":"valor_neto", render: DataTable.render.number(null, null, "", "$", "") },
-          {"data":"margen_ganancia"},
+          {"data":"margen_ganancia", render: DataTable.render.number(null, null, "", "", "%") },
           {"data":"monto_ganancia", render: DataTable.render.number(null, null, "", "$", "") },
           {"data":"valor_venta", render: DataTable.render.number(null, null, "", "$", "") },
           {"data":"descuento"},
@@ -123,11 +119,21 @@ $.ajax({
           {
             'data' : null,
             'render': function (data, type, row, meta) {
-            var arr = table
-              .column()
-              .data()
-              .toArray();
-              return `<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" id="btnEditar"><i class='fa fa-edit' aria-hidden='true'></i></button>
+              let pesaje =  data.pesaje;
+              let id =  data.id;
+              let codigo_barra =  data.codigo_barra;
+              let nombre_prod =  data.nombre_prod;
+              let id_proveedor =  data.id_proveedor;
+              let id_categoria =  data.id_categoria;
+              let cantidad =  data.cantidad;
+              let valor_neto =  data.valor_neto;
+              let margen_ganancia =  data.margen_ganancia;
+              let monto_ganancia =  data.monto_ganancia;
+              let valor_venta =  data.valor_venta;
+              let descuento =  data.descuento;
+              let creado_por =  data.creado_por;
+              let fecha_reg =  data.fecha_reg;
+              return `<button type="submit" id="btnEditar" class="btn btn-primary" onClick="abrirModalEditar(${pesaje},'${id}','${codigo_barra}','${nombre_prod}', '${id_categoria}', '${id_proveedor}', '${cantidad}', '${valor_neto}', '${margen_ganancia}', '${monto_ganancia}','${valor_venta}','${descuento}', '${creado_por}', '${fecha_reg}')"><i class='fa fa-edit' aria-hidden='true'></i></button>
               <button id='btnEliminar' class='btn btn-danger' onClick="eliminarProducto(${data.id}, '${data.nombre_cat}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
             }
           }
@@ -150,48 +156,6 @@ $.ajax({
           }
         }
       });
-
-
-$("#producto").on('click', 'tr', function(e)
-{
-  console.log(e)
-  e.preventDefault();
-  var cat = $('#producto').DataTable();
-  var datos = cat.row(this).data();
-  let id = datos.id;
-  
-
-  cargarUnidadEspecifica(id);
-  obtenerID(datos.nombre_cat);
-  abrirProductoEspecifico(id);
-
-  //eliminar signo $ de los valores
-  let vn = datos.valor_neto;
-  let vt = datos.valor_venta;
-  let mg = datos.monto_ganancia;
-  let valor_neto = vn.slice(1);
-  let valor_venta = vt.slice(1);
-  let monto_ganancia = mg.slice(1);
-  let porc = datos.margen_ganancia;
-  let porcentaje = porc.slice(0, porc.length - 1);
-
-  
-  let porcDescto = datos.descuento;//variable que captura el % de descuento indicado en la tabla 
-  let txtDescto = porcDescto.slice(0, porcDescto.length - 1);//valor que se pondrá en el txtDescuento para ser editado
-
-  $("#nomProdEditar").val(datos.nombre_prod);
-  $("#txtCodBarraEditar").val(datos.codigo_barra);
-  $("#margenGananciaEditar").val(porcentaje);
-  $("#valorNetoEditar").val(valor_neto);
-  $("#montoGananciaEditar").val(monto_ganancia);
-  $("#valorVentaEditar").val(valor_venta);
-  $("#txtCantidadEditar").val(datos.cantidad);
-  $("#porcDesctoEditar").val(txtDescto);
-  
-  $("#tituloModalEditar").html(datos.id);
-
-});
-
 
 
 

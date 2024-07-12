@@ -2,14 +2,6 @@
 
 session_start();
 
-if(isset($_SESSION['user'])){
-  $tipo = $_SESSION['user']['tipo_usuario'];
- if($tipo == 3){
-   header('Location: ../');
- }
- }else{
- header('Location: ../');
- }
 
 
   $id_us = $_SESSION['user']['id'];
@@ -20,15 +12,17 @@ if(isset($_SESSION['user'])){
 
   require_once '../../../../conexion.php';
 	//query
-	$sql = "SELECT id FROM categorias WHERE id_cl = $id_cl and nombre_cat = '$nomCat'";
+  $sql = "SELECT id FROM categorias 
+  WHERE id_cl = $id_cl 
+  AND nombre_cat = '$nomCat'";
   $resultado = $conexion->query($sql);;
   if ($resultado->num_rows > 0){
-  $json = array();
-   while ($row = $resultado->fetch_array()) {
-     $json[] =array(
-         'id' => $row['id']
-       );
-   };
+    $json = array();
+    while ($row = $resultado->fetch_array()) {
+      $json[] =array(
+        'id' => $row['id']
+      );
+    };
    echo json_encode($json);
  }
 

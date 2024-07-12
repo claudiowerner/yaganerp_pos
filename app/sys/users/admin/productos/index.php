@@ -146,6 +146,7 @@
     <script src="js/producto.js"></script>
     <script src="js/crear_producto.js"></script>
     <script src="js/validar_existencia_producto.js"></script>
-    <script src="js/editar_productos.js"></script>
+    <script src="js/editar_producto.js"></script>
+    <script src="js/validar_pesaje.js"></script>
 
 </html>

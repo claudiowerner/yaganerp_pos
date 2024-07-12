@@ -17,7 +17,6 @@ function cargarUnidadEspecifica(id)
     debugger
     let descarga = cargarUnidadEspecificaBD(id);
         let json = JSON.parse(descarga);
-            console.log(json);
             json.forEach(e=>{
                 if(e.pesaje=="N")
                 {

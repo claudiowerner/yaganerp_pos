@@ -17,7 +17,8 @@ if(isset($_SESSION['user'])){
 
     //query
     $sql = 
-    "SELECT p.id_prod, p.codigo_barra, p.nombre_prod, prov.nombre_proveedor, p.categoria, p.cantidad, 
+    "SELECT p.pesaje, p.id_prod, p.codigo_barra, p.nombre_prod, prov.id AS id_proveedor, 
+    c.id AS id_categoria, prov.nombre_proveedor, p.categoria, p.cantidad, 
     smp.estado AS estado_stock, 
     p.valor_neto, p.valor_venta, p.margen_ganancia, p.monto_ganancia, p.descuento, u.nombre AS creado_por, 
     DATE_FORMAT(p.fecha_reg, '%d-%m-%Y') AS fecha_reg, c.nombre_cat 
@@ -37,7 +38,15 @@ if(isset($_SESSION['user'])){
       $json = array();
       while ($row = $resultado->fetch_array())
       {
-
+        $pesaje;
+        if($row['pesaje']=="N")
+        {
+          $pesaje = false;
+        }
+        else
+        {
+          $pesaje = true;
+        }
         if($row["estado_stock"]=="S")
         {
           $estado_stock = $row["cantidad"];
@@ -49,18 +58,21 @@ if(isset($_SESSION['user'])){
 
         $json[] =array(
           'id' => $row['id_prod'],
+          'id_proveedor' => ($row['id_proveedor']),
+          'id_categoria' => ($row['id_categoria']),
           'codigo_barra' => ($row['codigo_barra']),
           'nombre_prod' => $row['nombre_prod'],
           'nombre_proveedor' => $row['nombre_proveedor'],
           'nombre_cat' => $row['nombre_cat'],
           'cantidad' => $estado_stock,
           'valor_neto' => $row['valor_neto'],
-          'margen_ganancia' => $row['margen_ganancia']."%",
+          'margen_ganancia' => $row['margen_ganancia'],
           'monto_ganancia' => $row['monto_ganancia'],
           'valor_venta' => $row['valor_venta'],
           'descuento' => $row['descuento']."%",
           'creado_por' => $row['creado_por'],
-          'fecha_reg' => $row['fecha_reg']
+          'fecha_reg' => $row['fecha_reg'],
+          'pesaje' => $pesaje
         );
       };
       echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);

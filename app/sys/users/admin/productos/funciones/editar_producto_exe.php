@@ -10,7 +10,7 @@
      	    }else{
     	    header('Location: ../../../../index.php');
      	}
-     	require_once '../../../../../conexion.php';
+     	require_once '../../../../conexion.php';
 
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
@@ -23,11 +23,7 @@
     $id = $_POST['id'];
     $nom = $_POST['nomProd'];
     $cat = $_POST['cat'];
-    $can = 0;
-	if($_POST['can']!=0||$_POST['can']!=null||$_POST['can']!="")
-	{
-		$can = $_POST['can'];
-	}
+	$can = $_POST['can'];
     $vn = $_POST['vn'];
     $vv = $_POST['vv'];
     $estado = $_POST['estado'];
@@ -44,9 +40,9 @@
 	$hoy = getdate();
 	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
 	$sql = "";
-	if($pesaje === "N")
-	{
-		$sql = 
+	
+	
+	$sql = 
 		"UPDATE productos SET 
 		codigo_barra = '$codigo_barra', 
 		nombre_prod = '$nom',
@@ -55,51 +51,32 @@
 		valor_neto = '$vn', 
 		valor_venta = '$vv',
 		pesaje = '$pesaje',
-		estado = '$estado',
 		margen_ganancia = '$marGan',
 		monto_ganancia = '$monGan',
 		proveedor = '$proveedor',
 		descuento = '$descuento'
-		WHERE id_prod = '$id';
-		";
+		WHERE id_prod = '$id'
+		AND id_cl = $id_cl";
+	$res = $conexion->query($sql);
+
+	if($res)
+	{
+		$json = array(
+			"edicion" => true,
+			"titulo" => "Excelente",
+			"mensaje" => "Producto editado correctamente",
+			"icono" => "success"
+		);
 	}
 	else
 	{
-		$sql = 
-		"UPDATE productos SET 
-		codigo_barra = '$codigo_barra', 
-		nombre_prod = '$nom',
-		categoria = '$cat', 
-		cantidad = '$can', 
-		valor_neto = '$vn', 
-		valor_venta = '$vv',
-		pesaje = '$pesaje',
-		unidad_medida = '$medida',
-		estado = '$estado',
-		margen_ganancia = '$marGan',
-		monto_ganancia = '$monGan',
-		proveedor = '$proveedor'
-		WHERE id_prod = '$id';
-		";
+		$json = array(
+			"edicion" => false,
+			"titulo" => "Error",
+			"mensaje" => "Ha ocurrido un error al editar el producto: ".$conexion->error,
+			"icono" => "error"
+		);
 	}
-	$resultado = $conexion->query($sql);
-
-	if($estado=='N')
-	{
-		//obtener fecha
-		$hoy = getdate();
-		$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hora;
-
-		$sql = "INSERT INTO anula_productos (`id`, `id_cl`, `id_producto`, `anulado_por`, `fecha`) VALUES (null, '$id_cl', '$id', '$nombre', '$fecha');
-";
-		$resultado = $conexion->query($sql);
-	}
-	if($resultado)
-	{
-		echo "Producto editado correctamente";
-	}
-	else
-	{
-		echo die("Error al modificar producto: ". mysqli_error($conexion));
-	}
+	
+	echo json_encode($json);
 ?>

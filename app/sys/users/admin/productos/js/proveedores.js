@@ -19,7 +19,7 @@ function cargarProveedores()
   let template = "";
   let json = JSON.parse(descargar);
   json.forEach(j=>{
-    template =+ `<option value='${j.id}'>${j.nombre_proveedor}</option>`;
+    template = template + `<option value='${j.id}'>${j.nombre_proveedor}</option>`;
   });
   return template
 }
