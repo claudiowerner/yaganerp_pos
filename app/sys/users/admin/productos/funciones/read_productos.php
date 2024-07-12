@@ -32,6 +32,7 @@ if(isset($_SESSION['user'])){
     JOIN proveedores prov 
     ON prov.id = p.proveedor
     WHERE p.id_cl = '$id_cl'
+    AND p.estado != 'N'
     GROUP BY id_prod";
     $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){

@@ -134,7 +134,7 @@ $.ajax({
               let creado_por =  data.creado_por;
               let fecha_reg =  data.fecha_reg;
               return `<button type="submit" id="btnEditar" class="btn btn-primary" onClick="abrirModalEditar(${pesaje},'${id}','${codigo_barra}','${nombre_prod}', '${id_categoria}', '${id_proveedor}', '${cantidad}', '${valor_neto}', '${margen_ganancia}', '${monto_ganancia}','${valor_venta}','${descuento}', '${creado_por}', '${fecha_reg}')"><i class='fa fa-edit' aria-hidden='true'></i></button>
-              <button id='btnEliminar' class='btn btn-danger' onClick="eliminarProducto(${data.id}, '${data.nombre_cat}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
+              <button id='btnEliminar' class='btn btn-danger' onClick="eliminarProducto(${data.id}, '${nombre_prod}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
             }
           }
         ],
