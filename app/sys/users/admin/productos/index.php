@@ -63,9 +63,12 @@
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
                                         <?php
-                                            require "modal.php";
+                                            require "modals/modal_abrir_detalles.php";
+                                            require "modals/modal_editar.php";
+                                            require "modals/modal_registro.php";
                                             echo modalRegistro();
                                             echo modalEditar();
+                                            echo modalAbrirDetalles();
                                         ?>
 
                                         <!--TABLAS O PESTAÑAS-->
@@ -149,5 +152,6 @@
     <script src="js/editar_producto.js"></script>
     <script src="js/validar_pesaje.js"></script>
     <script src="js/eliminar_producto.js"></script>
+    <script src="js/abrir_detalles.js"></script>
 
 </html>
