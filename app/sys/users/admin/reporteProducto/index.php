@@ -63,18 +63,55 @@
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
                                         <h1>Productos más vendidos</h1>
-                                        <table id="cierreCaja" class="table table-bordered table-hover dt-resposive display nowrap">
-                                            <thead>
-                                                <tr>
-                                                    <th>Categoría</th>
-                                                    <th>Nombre producto</th>
-                                                    <th>Cantidad</th>
-                                                    <th>Valor generado</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="bodyProductoVendido">
-                                            </tbody>
-                                        </table>
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" aria-current="page" href="#datos_graficados" data-toggle="tab">Datos graficados</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#tabla" data-toggle="tab">Datos tabulados</a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="tab-content">
+                                            <div id="datos_graficados" class="tab-pane fade">
+                                                <div id="radioButton">
+                                                    <div class="col-lg-6 form-check">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            Gráfico de tarta
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-6 form-check">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            Gráfico de barra
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div id="graficos" class="row">
+                                                    <div id="graficoCategorias" class="col-lg-6">
+                                                        hola
+                                                    </div>
+                                                    <div id="graficoProductos" class="col-lg-6">
+                                                        cmo estas
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="tabla" class="tab-pane fade">
+                                                <table id="cierreCaja" class="table table-bordered table-hover dt-resposive display nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Categoría</th>
+                                                            <th>Nombre producto</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Valor generado</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="bodyProductoVendido">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +134,11 @@
     <?php require "../cdn_css/cdn/cdn_item.php";?>
     <!--Datatables-->
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
-    <script src="productoVendido.js"></script>
+    <script src="js/productoVendido.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/graficos/graficos_tarta/grafico_productos.js"></script>
+    <script src="js/graficos/graficos_tarta/grafico_categorias.js"></script>
+    <script src="js/graficos/cargar_graficos.js"></script>
 </body>
 
 </html>

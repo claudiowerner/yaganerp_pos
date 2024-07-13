@@ -13,7 +13,7 @@ session_start();
   $id_cl = $_SESSION['user']["id_cl"];
   
 
-  require_once '../../../conexion.php';
+  require_once '../../../../conexion.php';
 
 	//query
 	$sql = 

@@ -4,7 +4,7 @@ function obtenerProducto()
 {
   $.ajax(
   {
-    url: 'read_producto_vendido.php',
+    url: 'funciones_php/read_producto_vendido.php',
     type: 'GET',
     success: function(response)
     {
