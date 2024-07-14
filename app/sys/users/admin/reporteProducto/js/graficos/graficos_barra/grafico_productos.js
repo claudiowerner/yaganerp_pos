@@ -1,4 +1,4 @@
-function descargarInfoGraficoTartaProductos()
+function descargarInfoGraficoBarraProductos()
 {
     return $.ajax({
         url: "funciones_php/read_cant_productos_vendidos.php",
@@ -12,7 +12,7 @@ function descargarInfoGraficoTartaProductos()
 
 
 
-function graficoTartaProductos()
+function graficoBarraProductos()
 {
     google.charts.load('current', {'packages':['corechart']});
 
@@ -25,15 +25,15 @@ function graficoTartaProductos()
         data.addColumn('number', 'Value');
 
         //descarga de datos desde la BD
-        let descarga = descargarInfoGraficoTartaProductos();
+        let descarga = descargarInfoGraficoBarraProductos();
         let json = JSON.parse(descarga);
         json.forEach(j=>{
                 let cantidad = parseInt(j.cantidad);
                 data.addRows([[`${j.nombre_producto}`, cantidad]]);
             })
             var options = {'title':'Ventas de productos',
-                width: graficoWidthTarta(),
-                height: graficoHeightTarta(),
+                width: graficoWidthBarra(),
+                height: graficoHeightBarra(),
                 chartArea: {
                     'width': '100%'
                 },
@@ -46,7 +46,7 @@ function graficoTartaProductos()
     
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById("graficoProductos"));
+        var chart = new google.visualization.ColumnChart(document.getElementById("graficoProductos"));
         chart.draw(data, options);
     }
 }

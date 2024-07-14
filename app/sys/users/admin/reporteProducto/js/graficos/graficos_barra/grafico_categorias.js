@@ -1,4 +1,4 @@
-function descargarInfoGraficoTartaCategorias()
+function descargarInfoGraficoBarraCategorias()
 {
     return $.ajax({
         url: "funciones_php/read_ventas_por_categoria.php",
@@ -11,7 +11,7 @@ function descargarInfoGraficoTartaCategorias()
 
 
 
-function graficoTartaCategorias()
+function graficoBarraCategorias()
 {
     google.charts.load('current', {'packages':['corechart']});
 
@@ -24,7 +24,7 @@ function graficoTartaCategorias()
         data.addColumn('number', 'Value');
 
         //descarga de datos desde la BD
-        let descarga = descargarInfoGraficoTartaCategorias();
+        let descarga = descargarInfoGraficoBarraCategorias();
         let json = JSON.parse(descarga);
         json.forEach(j=>{
                 let cantidad = parseInt(j.cantidad);
@@ -32,8 +32,8 @@ function graficoTartaCategorias()
             })
 
         var options = {'title':'Ventas por categorías',
-            width: graficoWidthTarta(),
-            height: graficoHeightTarta(),
+            width: graficoWidthBarra(),
+            height: graficoHeightBarra(),
             chartArea: {
                 'width': '100%'
             },
@@ -45,7 +45,7 @@ function graficoTartaCategorias()
             },};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById("graficoCategorias"));
+        var chart = new google.visualization.ColumnChart(document.getElementById("graficoCategorias"));
         chart.draw(data, options);
     }
 }

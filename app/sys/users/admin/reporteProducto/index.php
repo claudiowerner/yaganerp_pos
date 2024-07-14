@@ -76,25 +76,23 @@
                                             <div id="datos_graficados" class="tab-pane fade">
                                                 <div id="radioButton">
                                                     <div class="col-lg-6 form-check">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioGraficoTarta">
                                                         <label class="form-check-label" for="flexRadioDefault1">
                                                             Gráfico de tarta
                                                         </label>
                                                     </div>
                                                     <div class="col-lg-6 form-check">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioGraficoBarra" checked>
                                                         <label class="form-check-label" for="flexRadioDefault2">
                                                             Gráfico de barra
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div id="graficos" class="row">
-                                                    <div id="graficoCategorias" class="col-lg-6">
-                                                        hola
-                                                    </div>
-                                                    <div id="graficoProductos" class="col-lg-6">
-                                                        cmo estas
-                                                    </div>
+                                                <div id="graficoCategorias" align='center' class="col-lg-12">
+                                                    hola
+                                                </div>
+                                                <div id="graficoProductos" align='center' class="col-lg-12">
+                                                    cmo estas
                                                 </div>
                                             </div>
                                             <div id="tabla" class="tab-pane fade">
@@ -136,9 +134,14 @@
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
     <script src="js/productoVendido.js"></script>
     <script src="js/loader.js"></script>
+    <script src="js/graficos/cargar_graficos.js"></script>
+    <script src="js/graficos/seleccionar_grafico.js"></script>
     <script src="js/graficos/graficos_tarta/grafico_productos.js"></script>
     <script src="js/graficos/graficos_tarta/grafico_categorias.js"></script>
-    <script src="js/graficos/cargar_graficos.js"></script>
+    <script src="js/graficos/graficos_tarta/tamano_grafico.js"></script>
+    <script src="js/graficos/graficos_barra/grafico_productos.js"></script>
+    <script src="js/graficos/graficos_barra/grafico_categorias.js"></script>
+    <script src="js/graficos/graficos_barra/tamano_grafico.js"></script>
 </body>
 
 </html>

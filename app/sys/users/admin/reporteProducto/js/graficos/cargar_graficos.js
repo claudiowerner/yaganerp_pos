@@ -1,2 +1,2 @@
-graficoCategorias();
-graficoProductos();
+graficoTartaCategorias();
+graficoTartaProductos();
