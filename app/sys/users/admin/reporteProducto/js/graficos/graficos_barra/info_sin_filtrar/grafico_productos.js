@@ -1,13 +1,3 @@
-function descargarInfoGraficoBarraProductosSinFiltrar()
-{
-    return $.ajax({
-        url: "funciones_php/graficos/info_sin_filtrar/read_producto_vendido.php",
-        type: "POST",
-        async: false
-    }).responseText;
-}
-
-
 
 
 

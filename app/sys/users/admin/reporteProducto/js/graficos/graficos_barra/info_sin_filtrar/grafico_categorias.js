@@ -1,14 +1,3 @@
-function descargarInfoGraficoBarraCategoriasSinFiltrar()
-{
-    return $.ajax({
-        url: "funciones_php/graficos/info_sin_filtrar/read_ventas_por_categoria.php",
-        type: "POST",
-        async: false
-    }).responseText;
-}
-
-
-
 
 
 function graficoBarraCategoriasSinFiltrar()

@@ -1,18 +1,3 @@
-function descargarInfoGraficoBarraCategorias(fecha_inicio, fecha_fin)
-{
-    let datos = {
-        "fecha_inicio": fecha_inicio,
-        "fecha_fin": fecha_fin,
-    };
-    return $.ajax({
-        url: "funciones_php/graficos/info_filtrada/read_ventas_por_categoria.php",
-        data: datos, 
-        type: "POST",
-        async: false
-    }).responseText;
-}
-
-
 
 
 

@@ -1,20 +1,3 @@
-function descargarInfoGraficoBarraProductos(fecha_inicio, fecha_fin)
-{
-    let datos = {
-        "fecha_inicio": fecha_inicio,
-        "fecha_fin": fecha_fin,
-    };
-    return $.ajax({
-        url: "funciones_php/graficos/info_filtrada/read_cant_productos_vendidos.php",
-        data: datos,
-        type: "POST",
-        async: false
-    }).responseText;
-}
-
-
-
-
 
 
 function graficoBarraProductos(fecha_inicio, fecha_fin)

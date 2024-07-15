@@ -1,19 +1,3 @@
-function descargarInfoGraficoTartaProductos(fecha_inicio, fecha_fin)
-{
-    let datos = {
-        "fecha_inicio": fecha_inicio,
-        "fecha_fin": fecha_fin,
-    };
-    return $.ajax({
-        url: "funciones_php/graficos/info_sin_filtrar/read_producto_vendido.php",
-        data: datos,
-        type: "POST",
-        async: false
-    }).responseText;
-}
-
-
-
 
 
 

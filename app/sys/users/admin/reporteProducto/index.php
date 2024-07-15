@@ -166,6 +166,7 @@
     <script src="js/graficos/graficos_barra/info_sin_filtrar/tamano_grafico.js"></script>
     <script src="js/filtro_informacion/obtener_primer_año_venta.js"></script>
     <script src="js/filtro_informacion/filtrar_informacion.js"></script>
+    <script src="js/filtro_informacion/descargar_informacion_ajax.js"></script>
     <script src="js/graficos/cargar_graficos.js"></script>
 </body>
 

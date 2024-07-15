@@ -1,17 +1,3 @@
-function descargarInfoGraficoTartaProductosSinFiltrar()
-{
-    return $.ajax({
-        url: "funciones_php/graficos/info_sin_filtrar/read_producto_vendido.php",
-        type: "POST",
-        async: false
-    }).responseText;
-}
-
-
-
-
-
-
 function graficoTartaProductosSinFiltrar()
 {
     google.charts.load('current', {'packages':['corechart']});
