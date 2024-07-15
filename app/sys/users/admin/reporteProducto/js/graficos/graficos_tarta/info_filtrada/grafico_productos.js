@@ -1,7 +1,12 @@
-function descargarInfoGraficoBarraProductos()
+function descargarInfoGraficoTartaProductos(fecha_inicio, fecha_fin)
 {
+    let datos = {
+        "fecha_inicio": fecha_inicio,
+        "fecha_fin": fecha_fin,
+    };
     return $.ajax({
-        url: "funciones_php/read_cant_productos_vendidos.php",
+        url: "funciones_php/graficos/info_sin_filtrar/read_producto_vendido.php",
+        data: datos,
         type: "POST",
         async: false
     }).responseText;
@@ -12,7 +17,7 @@ function descargarInfoGraficoBarraProductos()
 
 
 
-function graficoBarraProductos()
+function graficoTartaProductos(fecha_inicio, fecha_fin)
 {
     google.charts.load('current', {'packages':['corechart']});
 
@@ -25,15 +30,15 @@ function graficoBarraProductos()
         data.addColumn('number', 'Value');
 
         //descarga de datos desde la BD
-        let descarga = descargarInfoGraficoBarraProductos();
+        let descarga = descargarInfoGraficoTartaProductos(fecha_inicio, fecha_fin);
         let json = JSON.parse(descarga);
         json.forEach(j=>{
                 let cantidad = parseInt(j.cantidad);
                 data.addRows([[`${j.nombre_producto}`, cantidad]]);
             })
             var options = {'title':'Ventas de productos',
-                width: graficoWidthBarra(),
-                height: graficoHeightBarra(),
+                width: graficoWidthTarta(),
+                height: graficoHeightTarta(),
                 chartArea: {
                     'width': '100%'
                 },
@@ -46,7 +51,7 @@ function graficoBarraProductos()
     
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.ColumnChart(document.getElementById("graficoProductos"));
+        var chart = new google.visualization.PieChart(document.getElementById("graficoTartaProductos"));
         chart.draw(data, options);
     }
 }

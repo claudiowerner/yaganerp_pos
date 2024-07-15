@@ -1,12 +1,24 @@
+$("#graficoTartaCategorias").hide();  
+$("#graficoTartaProductos").hide();  
+$("#graficoBarraCategorias").show();  
+$("#graficoBarraProductos").show();  
+
+
+
 $("#radioGraficoTarta").on("click", function(e)
 {
-    graficoTartaCategorias()
-    graficoTartaProductos();   
+    $("#graficoTartaCategorias").show();  
+    $("#graficoTartaProductos").show();  
+    $("#graficoBarraCategorias").hide();  
+    $("#graficoBarraProductos").hide();  
+    
 });
 
 
 $("#radioGraficoBarra").on("click", function(e)
 {
-    graficoBarraCategorias()
-    graficoBarraProductos();
+    $("#graficoTartaCategorias").hide();  
+    $("#graficoTartaProductos").hide();  
+    $("#graficoBarraCategorias").show();  
+    $("#graficoBarraProductos").show();  
 });

@@ -13,7 +13,8 @@ session_start();
   $id_cl = $_SESSION['user']["id_cl"];
   
 
-  require_once '../../../../conexion.php';
+  
+  require_once '../../../../../../conexion.php';
   
   //rellenar array de id de producto
   $arrId = array();
@@ -67,7 +68,12 @@ session_start();
         $res = $conexion->query($sql);
         while($row = $res->fetch_array())
         {
-          $arrCantidad[] = $row["cantidad"];
+          $cantidad = 0;
+          if($row["cantidad"]!=""||$row["cantidad"]!=null)
+          {
+            $cantidad = $row["cantidad"];
+          }
+          $arrCantidad[] = $cantidad;
         }
       }
 

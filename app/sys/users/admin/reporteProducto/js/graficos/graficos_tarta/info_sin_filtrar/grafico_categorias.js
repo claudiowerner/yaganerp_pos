@@ -1,7 +1,7 @@
-function descargarInfoGraficoTartaCategorias()
+function descargarInfoGraficoTartaCategoriasSinFiltrar()
 {
     return $.ajax({
-        url: "funciones_php/read_ventas_por_categoria.php",
+        url: "funciones_php/graficos/info_sin_filtrar/read_ventas_por_categoria.php",
         type: "POST",
         async: false
     }).responseText;
@@ -11,7 +11,7 @@ function descargarInfoGraficoTartaCategorias()
 
 
 
-function graficoTartaCategorias()
+function graficoTartaCategoriasSinFiltrar()
 {
     google.charts.load('current', {'packages':['corechart']});
 
@@ -24,7 +24,8 @@ function graficoTartaCategorias()
         data.addColumn('number', 'Value');
 
         //descarga de datos desde la BD
-        let descarga = descargarInfoGraficoTartaCategorias();
+        let descarga = descargarInfoGraficoTartaCategoriasSinFiltrar();
+        console.log(descarga)
         let json = JSON.parse(descarga);
         json.forEach(j=>{
                 let cantidad = parseInt(j.cantidad);
@@ -45,7 +46,7 @@ function graficoTartaCategorias()
             },};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById("graficoCategorias"));
+        var chart = new google.visualization.PieChart(document.getElementById("graficoTartaCategorias"));
         chart.draw(data, options);
     }
 }

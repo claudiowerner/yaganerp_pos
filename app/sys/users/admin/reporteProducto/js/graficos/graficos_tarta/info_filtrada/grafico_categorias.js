@@ -1,7 +1,12 @@
-function descargarInfoGraficoBarraCategorias()
+function descargarInfoGraficoTartaCategorias(fecha_inicio, fecha_fin)
 {
+    let datos = {
+        "fecha_inicio": fecha_inicio,
+        "fecha_fin": fecha_fin,
+    };
     return $.ajax({
-        url: "funciones_php/read_ventas_por_categoria.php",
+        url: "funciones_php/graficos/info_filtrada/read_ventas_por_categoria.php",
+        data: datos,
         type: "POST",
         async: false
     }).responseText;
@@ -11,7 +16,7 @@ function descargarInfoGraficoBarraCategorias()
 
 
 
-function graficoBarraCategorias()
+function graficoTartaCategorias(fecha_inicio, fecha_fin)
 {
     google.charts.load('current', {'packages':['corechart']});
 
@@ -24,7 +29,8 @@ function graficoBarraCategorias()
         data.addColumn('number', 'Value');
 
         //descarga de datos desde la BD
-        let descarga = descargarInfoGraficoBarraCategorias();
+        let descarga = descargarInfoGraficoTartaCategorias(fecha_inicio, fecha_fin);
+        console.log(descarga)
         let json = JSON.parse(descarga);
         json.forEach(j=>{
                 let cantidad = parseInt(j.cantidad);
@@ -32,8 +38,8 @@ function graficoBarraCategorias()
             })
 
         var options = {'title':'Ventas por categorías',
-            width: graficoWidthBarra(),
-            height: graficoHeightBarra(),
+            width: graficoWidthTarta(),
+            height: graficoHeightTarta(),
             chartArea: {
                 'width': '100%'
             },
@@ -45,7 +51,7 @@ function graficoBarraCategorias()
             },};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.ColumnChart(document.getElementById("graficoCategorias"));
+        var chart = new google.visualization.PieChart(document.getElementById("graficoTartaCategorias"));
         chart.draw(data, options);
     }
 }

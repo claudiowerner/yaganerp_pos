@@ -63,6 +63,16 @@
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
                                         <h1>Productos más vendidos</h1>
+                                        <div align="center">
+                                            <table>
+                                                <tr>
+                                                    <td><label>Desde</label></td>
+                                                    <td><input type="date" id="fecha_inicio" class="form-control" onkeyup="filtrarInformacion()" onchange="filtrarInformacion()"></td>
+                                                    <td><label>Hasta</label></td>
+                                                    <td><input type="date" id="fecha_fin" class="form-control" onkeyup="filtrarInformacion()" onchange="filtrarInformacion()"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item">
                                                 <a class="nav-link active" aria-current="page" href="#datos_graficados" data-toggle="tab">Datos graficados</a>
@@ -75,24 +85,30 @@
                                         <div class="tab-content">
                                             <div id="datos_graficados" class="tab-pane fade">
                                                 <div id="radioButton">
+                                                    <div class="col-lg-6">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioGraficoBarra" checked>
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            Gráfico de barra
+                                                        </label>
+                                                    </div>
                                                     <div class="col-lg-6 form-check">
                                                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioGraficoTarta">
                                                         <label class="form-check-label" for="flexRadioDefault1">
                                                             Gráfico de tarta
                                                         </label>
                                                     </div>
-                                                    <div class="col-lg-6 form-check">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioGraficoBarra" checked>
-                                                        <label class="form-check-label" for="flexRadioDefault2">
-                                                            Gráfico de barra
-                                                        </label>
-                                                    </div>
                                                 </div>
-                                                <div id="graficoCategorias" align='center' class="col-lg-12">
-                                                    hola
+                                                <div id="graficoTartaCategorias" align='center' class="col-lg-12">
+                                                    Cargando...
                                                 </div>
-                                                <div id="graficoProductos" align='center' class="col-lg-12">
-                                                    cmo estas
+                                                <div id="graficoTartaProductos" align='center' class="col-lg-12">
+                                                    Cargando...
+                                                </div>
+                                                <div id="graficoBarraCategorias" align='center' class="col-lg-12">
+                                                    Cargando...
+                                                </div>
+                                                <div id="graficoBarraProductos" align='center' class="col-lg-12">
+                                                    Cargando...
                                                 </div>
                                             </div>
                                             <div id="tabla" class="tab-pane fade">
@@ -132,16 +148,25 @@
     <?php require "../cdn_css/cdn/cdn_item.php";?>
     <!--Datatables-->
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
+    <script src="../../../js/moment/moment.js"></script>
     <script src="js/productoVendido.js"></script>
     <script src="js/loader.js"></script>
-    <script src="js/graficos/cargar_graficos.js"></script>
     <script src="js/graficos/seleccionar_grafico.js"></script>
-    <script src="js/graficos/graficos_tarta/grafico_productos.js"></script>
-    <script src="js/graficos/graficos_tarta/grafico_categorias.js"></script>
-    <script src="js/graficos/graficos_tarta/tamano_grafico.js"></script>
-    <script src="js/graficos/graficos_barra/grafico_productos.js"></script>
-    <script src="js/graficos/graficos_barra/grafico_categorias.js"></script>
-    <script src="js/graficos/graficos_barra/tamano_grafico.js"></script>
+    <script src="js/graficos/graficos_tarta/info_filtrada/grafico_productos.js"></script>
+    <script src="js/graficos/graficos_tarta/info_filtrada/grafico_categorias.js"></script>
+    <script src="js/graficos/graficos_tarta/info_filtrada/tamano_grafico.js"></script>
+    <script src="js/graficos/graficos_tarta/info_sin_filtrar/grafico_productos.js"></script>
+    <script src="js/graficos/graficos_tarta/info_sin_filtrar/grafico_categorias.js"></script>
+    <script src="js/graficos/graficos_tarta/info_sin_filtrar/tamano_grafico.js"></script>
+    <script src="js/graficos/graficos_barra/info_filtrada/grafico_productos.js"></script>
+    <script src="js/graficos/graficos_barra/info_filtrada/grafico_categorias.js"></script>
+    <script src="js/graficos/graficos_barra/info_filtrada/tamano_grafico.js"></script>
+    <script src="js/graficos/graficos_barra/info_sin_filtrar/grafico_productos.js"></script>
+    <script src="js/graficos/graficos_barra/info_sin_filtrar/grafico_categorias.js"></script>
+    <script src="js/graficos/graficos_barra/info_sin_filtrar/tamano_grafico.js"></script>
+    <script src="js/filtro_informacion/obtener_primer_año_venta.js"></script>
+    <script src="js/filtro_informacion/filtrar_informacion.js"></script>
+    <script src="js/graficos/cargar_graficos.js"></script>
 </body>
 
 </html>
