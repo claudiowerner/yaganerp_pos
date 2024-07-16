@@ -21,18 +21,27 @@ $("#formRegistroProveedor").submit(function(e)
 {
   e.preventDefault();
   let rut = $("#txtRutProveedor").val();
-  let nombre = $("#txtNombreProveedor").val();
+  let registro_repetido = validarExistenciaProveedor(rut)
 
-
-  let respuesta = registrarProveedor(rut, nombre);
-  let json = JSON.parse(respuesta);
-  msjes_swal(json.titulo, json.mensaje, json.icono);
-
-  if(json.registro)
+  if(registro_repetido==0)
   {
-    $("#producto").DataTable().ajax.reload();
-    $("#formRegistroProveedor").trigger('reset');
-    $("#modalRegistro").modal("hide");
+    let nombre = $("#txtNombreProveedor").val();
+
+
+    let respuesta = registrarProveedor(rut, nombre);
+    let json = JSON.parse(respuesta);
+    msjes_swal(json.titulo, json.mensaje, json.icono);
+
+    if(json.registro)
+    {
+      $("#producto").DataTable().ajax.reload();
+      $("#formRegistroProveedor").trigger('reset');
+      $("#modalRegistro").modal("hide");
+    }
+  }
+  else
+  {
+    msjes_swal("Aviso", "Ya existe un proveedor con rut '"+rut+"'.", "warning");
   }
 
 });

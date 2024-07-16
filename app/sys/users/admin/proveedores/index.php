@@ -106,7 +106,7 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
 
-    <script type="text/javascript" src="../../../datatables/datatables.js"></script>
+    <script src="js/validar_existencia_proveedor.js"></script>
     <script src="js/proveedores.js"></script>
     <script src="js/crear_proveedor.js"></script>
     <script src="js/validarVariableRut.js"></script>
