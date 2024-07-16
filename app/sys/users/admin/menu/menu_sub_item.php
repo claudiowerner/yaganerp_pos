@@ -1,7 +1,7 @@
 <?php
 
   echo '<div id="skin-select">
-  <span id="opcion">1</span>
+  <span id="opcion" style="display: none">1</span>
   <a id="toggle">
       <span class="fa icon-menu"></span>
   </a>
