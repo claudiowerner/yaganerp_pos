@@ -15,7 +15,6 @@ function graficoTartaCategorias(fecha_inicio, fecha_fin)
 
         //descarga de datos desde la BD
         let descarga = descargarInfoGraficoTartaCategorias(fecha_inicio, fecha_fin);
-        console.log(descarga)
         let json = JSON.parse(descarga);
         json.forEach(j=>{
                 let cantidad = parseInt(j.cantidad);

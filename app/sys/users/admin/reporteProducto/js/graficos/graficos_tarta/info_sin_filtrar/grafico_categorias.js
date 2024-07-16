@@ -12,7 +12,6 @@ function graficoTartaCategoriasSinFiltrar()
 
         //descarga de datos desde la BD
         let descarga = descargarInfoGraficoTartaCategoriasSinFiltrar();
-        console.log(descarga)
         let json = JSON.parse(descarga);
         json.forEach(j=>{
                 let cantidad = parseInt(j.cantidad);

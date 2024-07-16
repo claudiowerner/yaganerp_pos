@@ -14,7 +14,6 @@ function graficoBarraProductos(fecha_inicio, fecha_fin)
 
         //descarga de datos desde la BD
         let descarga = descargarInfoGraficoBarraProductos(fecha_inicio, fecha_fin);
-        console.log("Grafico productos: "+descarga);
         let json = JSON.parse(descarga);
         json.forEach(j=>{
                 let cantidad = parseInt(j.cantidad);

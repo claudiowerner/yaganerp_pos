@@ -74,10 +74,10 @@
                                             </table>
                                         </div>
                                         <ul class="nav nav-tabs">
-                                            <li class="nav-item">
+                                            <li id="graficos"class="nav-item">
                                                 <a class="nav-link active" aria-current="page" href="#datos_graficados" data-toggle="tab">Datos graficados</a>
                                             </li>
-                                            <li class="nav-item">
+                                            <li id="tablas" class="nav-item">
                                                 <a class="nav-link" href="#tabla" data-toggle="tab">Datos tabulados</a>
                                             </li>
                                         </ul>

@@ -1,7 +1,5 @@
 
 
-
-
 function graficoBarraProductosSinFiltrar()
 {
     google.charts.load('current', {'packages':['corechart']});
@@ -16,7 +14,6 @@ function graficoBarraProductosSinFiltrar()
 
         //descarga de datos desde la BD
         let descarga = descargarInfoGraficoBarraProductosSinFiltrar();
-        console.log(descarga);
         let json = JSON.parse(descarga);
         json.forEach(j=>{
                 let cantidad = parseInt(j.cantidad);
