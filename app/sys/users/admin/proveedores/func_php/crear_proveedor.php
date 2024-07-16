@@ -10,7 +10,7 @@
      	    }else{
     	    header('Location: ../../../../index.php');
      	}
-     	require_once '../../../conexion.php';
+     	require_once '../../../../conexion.php';
 
 
 	ini_set('display_errors', 1);
@@ -23,8 +23,9 @@
 	$rut = $_POST["rut"];
 	$nombre = $_POST["nombre"];
 	$fecha = $_POST["fecha"];
-    
 
+
+	$json = array();
 
     //obtener fecha
 	$hoy = getdate();
@@ -37,10 +38,22 @@
 
 	if($resultado)
 	{
-		echo "Proveedor agregado correctamente";
+		$json = array(
+			"registro" => true,
+			"titulo" => "Excelente",
+			"mensaje" => "Proveedor creado correctamente.",
+			"icono" => "success"
+		);
 	}
 	else
 	{
-		die("Error al agregar proveedor: ". mysqli_error($conexion));
+		$json = array(
+			"registro" => false,
+			"titulo" => "Error",
+			"mensaje" => "Ocurrió un error al registrar el proveedor: ". $conexion->error,
+			"icono" => "error"
+		);
 	}
+
+	echo json_encode($json);
 ?>

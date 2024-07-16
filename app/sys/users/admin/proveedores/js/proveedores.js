@@ -78,7 +78,6 @@ $("#txtNombreProveedor").on("keyup", function(e)
 
 $("#producto").on('click', 'tr', function(e)
 {
-  console.log(e)
   e.preventDefault();
   var cat = $('#producto').DataTable();
   var datos = cat.row(this).data();
@@ -104,36 +103,7 @@ $("#producto").on('click', 'tr', function(e)
   $("#txtNombreProveedorEditar").val(nombre);
 
 });
-$("#formRegistroProveedor").submit(function(e)
-{
-  e.preventDefault();
-  let rut = $("#txtRutProveedor").val();
-  let nombre = $("#txtNombreProveedor").val();
 
-  let datos ={
-    "rut": rut,
-    "nombre": nombre,
-    "fecha" : getFechaBD()
-  }
-
-  $.ajax({
-    url: "crear_proveedor.php",
-    data: datos,
-    type: "POST",
-    success: function(e)
-    {
-      msjes_swal("Excelente", e, "success");
-      $("#producto").DataTable().ajax.reload();
-      $("#formRegistroProveedor").trigger('reset');
-      $("#modalRegistro").modal("hide");
-    }
-  })
-  .fail(function(e)
-  {
-    msjes_swal("Error", e.responseText, "error");
-  })
-
-});
 
 //editar producto
 

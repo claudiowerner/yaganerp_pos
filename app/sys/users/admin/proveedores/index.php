@@ -108,6 +108,7 @@
 
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
     <script src="js/proveedores.js"></script>
+    <script src="js/crear_proveedor.js"></script>
     <script src="js/validarVariableRut.js"></script>
     <script src="js/validarTextBoxs.js"></script>
     <script src="../../../js/validarRut.js"></script>
