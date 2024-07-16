@@ -35,6 +35,7 @@ session_start();
   ON v.producto = p.id_prod
   WHERE c.id_cl = $id_cl
   AND v.fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'
+  AND v.estado = 'C'
   GROUP BY c.id";
     $res = $conexion->query($sql);
 

@@ -37,7 +37,7 @@ function graficoBarraProductosSinFiltrar()
     
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.ColumnChart(document.getElementById("graficoBarraProductos"));
+        var chart = new google.visualization.BarChart(document.getElementById("graficoBarraProductos"));
         chart.draw(data, options);
     }
 }

@@ -19,7 +19,6 @@ function graficoBarraCategoriasSinFiltrar()
                 let cantidad = parseInt(j.cantidad);
                 data.addRows([[`${j.nombre_categoria}`, cantidad]]);
             })
-
         var options = {'title':'Ventas por categorías',
             width: graficoWidthBarra(),
             height: graficoHeightBarra(),
@@ -30,11 +29,11 @@ function graficoBarraCategoriasSinFiltrar()
                 groupWidth: "100%"
             },
             legend: {
-                position: "none"
+                position: "top"
             },};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.ColumnChart(document.getElementById("graficoBarraCategorias"));
+        var chart = new google.visualization.BarChart(document.getElementById("graficoBarraCategorias"));
         chart.draw(data, options);
     }
 }

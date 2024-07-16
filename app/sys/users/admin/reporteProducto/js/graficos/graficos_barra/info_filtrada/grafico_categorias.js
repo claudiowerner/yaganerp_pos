@@ -35,7 +35,7 @@ function graficoBarraCategorias(fecha_inicio, fecha_fin)
             },};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.ColumnChart(document.getElementById("graficoBarraCategorias"));
+        var chart = new google.visualization.BarChart(document.getElementById("graficoBarraCategorias"));
         chart.draw(data, options);
     }
 }

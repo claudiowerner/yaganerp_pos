@@ -29,7 +29,7 @@ session_start();
     ON v.producto = p.id_prod
     WHERE p.id_cl = $id_cl
     AND p.estado != 'N'
-    AND v.estado != 'N'
+    AND v.estado='C'
     GROUP BY p.id_prod";
     $res = $conexion->query($sql);
 
@@ -47,7 +47,7 @@ session_start();
         $id = $arrId[$i];
         $sql = "SELECT p.nombre_prod FROM productos p
         WHERE p.id_cl = $id_cl
-        AND p.estado != 'N'
+        AND p.estado = 'S'
         AND p.id_prod = $id
         GROUP BY p.id_prod";
         $res = $conexion->query($sql);

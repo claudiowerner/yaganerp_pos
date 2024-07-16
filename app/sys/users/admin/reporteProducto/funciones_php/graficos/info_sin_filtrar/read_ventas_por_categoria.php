@@ -46,7 +46,7 @@ session_start();
         JOIN ventas v 
         ON p.id_prod = v.producto
         WHERE p.categoria = $id
-        AND v.estado!='N'
+        AND v.estado='C'
         AND p.id_cl = $id_cl";
         $res = $conexion->query($sql);
         while($row = $res->fetch_array())

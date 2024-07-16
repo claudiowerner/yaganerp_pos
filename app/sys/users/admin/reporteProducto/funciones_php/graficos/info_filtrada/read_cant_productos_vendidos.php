@@ -30,7 +30,7 @@ session_start();
     ON v.producto = p.id_prod
     WHERE p.id_cl = $id_cl
     AND p.estado != 'N'
-    AND v.estado != 'N'
+    AND v.estado='C'
     AND v.fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'
     GROUP BY p.id_prod";
     $res = $conexion->query($sql);
