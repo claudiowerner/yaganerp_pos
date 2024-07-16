@@ -191,6 +191,8 @@
     <script src="js/graficos/cargar_graficos.js"></script>
     <script src="js/tabla/tablas_sin_filtrar/categorias_sin_filtrar.js"></script>
     <script src="js/tabla/tablas_sin_filtrar/productos_sin_filtrar.js"></script>
+    <script src="js/tabla/tablas_filtradas/categorias_filtradas.js"></script>
+    <script src="js/tabla/tablas_filtradas/productos_filtrados.js"></script>
     <script src="js/tabla/cargar_tablas.js"></script>
 </body>
 

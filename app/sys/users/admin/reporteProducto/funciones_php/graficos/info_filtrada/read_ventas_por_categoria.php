@@ -27,9 +27,15 @@ session_start();
   
 
 	//query
-	$sql = "SELECT id, nombre_cat 
-  FROM categorias 
-  WHERE id_cl = $id_cl";
+	$sql = "SELECT c.id, c.nombre_cat 
+  FROM categorias c
+  JOIN productos p 
+  ON c.id = p.categoria
+  JOIN ventas v
+  ON v.producto = p.id_prod
+  WHERE c.id_cl = $id_cl
+  AND v.fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'
+  GROUP BY c.id";
     $res = $conexion->query($sql);
 
     if($res->num_rows>0)

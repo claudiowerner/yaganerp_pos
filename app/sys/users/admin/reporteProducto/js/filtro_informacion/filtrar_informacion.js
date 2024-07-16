@@ -49,13 +49,13 @@ function filtrarInformacion()
                 if(inicio>fin)
                 {
                     msjes_swal("Aviso", "La fecha de inicio debe ser menor a la fecha final", "warning");
-                    imprimirGraficos(fecha_inicio, fecha_fin)
-                    imprimirTablas();
+                    imprimirGraficos(fecha_inicio, fecha_fin);
+                    imprimirTablas(fecha_inicio, fecha_fin);
                 }
                 else
                 {
                     imprimirGraficos(fecha_inicio, fecha_fin)
-                    imprimirTablas();
+                    imprimirTablas(fecha_inicio, fecha_fin);
                 }
             }
         }
@@ -64,7 +64,8 @@ function filtrarInformacion()
     else
     {
         //se imprime la información sin filtro de fechas
-        imprimirGraficos(fecha_inicio, fecha_fin)
+        imprimirGraficos(fecha_inicio, fecha_fin);
+        imprimirTablas(fecha_inicio, fecha_fin);
     }
 }
 
@@ -76,7 +77,8 @@ function imprimirGraficos(fecha_inicio, fecha_fin)
     graficoBarraProductos(fecha_inicio, fecha_fin);
 }
 
-function imprimirTablas()
+function imprimirTablas(fecha_inicio, fecha_fin)
 {
-    cargarTablaCategoriasSinFiltrar();
+    cargarTablaCategoriasFiltradas(fecha_inicio, fecha_fin);
+    cargarTablaProductosFiltrados(fecha_inicio, fecha_fin);
 }
