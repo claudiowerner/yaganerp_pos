@@ -11,35 +11,40 @@ session_start();
   $id_us = $_SESSION['user']['id'];
   $nombre = $_SESSION['user']["nombre"];
   $id_cl = $_SESSION['user']["id_cl"];
-  
+
+
   $fecha_inicio = $_POST["fecha_inicio"];
   $fecha_fin = $_POST["fecha_fin"];
-
-  require_once '../../../../../../conexion.php';
+  
+  
+  require_once '../../../../../../../conexion.php';
   
   //rellenar array de id de producto
   $arrId = array();
   $arrNombre = array();
   $arrCantidad = array();
-  $arrayValor = array();
   $json = array();
+  
 
 	//query
-	$sql = "SELECT p.id_prod FROM productos p
-    JOIN ventas v 
-    ON v.producto = p.id_prod
-    WHERE p.id_cl = $id_cl
-    AND p.estado != 'N'
-    AND v.estado='C'
-    AND v.fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'
-    GROUP BY p.id_prod";
+	$sql = "SELECT c.id, c.nombre_cat 
+  FROM categorias c
+  JOIN productos p 
+  ON c.id = p.categoria
+  JOIN ventas v
+  ON v.producto = p.id_prod
+  WHERE c.id_cl = $id_cl
+  AND v.fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'
+  AND v.estado = 'C'
+  GROUP BY c.id";
     $res = $conexion->query($sql);
 
     if($res->num_rows>0)
     {
       while ($row = $res->fetch_array())
       {
-        $arrId[] = $row["id_prod"];
+        $arrId[] = $row["id"];
+        $arrNombre[] = $row["nombre_cat"];
       };
 
       $length = count($arrId);
@@ -47,19 +52,22 @@ session_start();
       for($i=0;$i<$length;$i++)
       {
         $id = $arrId[$i];
-        $sql = "SELECT p.nombre_prod FROM productos p
-        WHERE p.id_cl = $id_cl
-        AND p.estado != 'N'
-        AND p.id_prod = $id
-        GROUP BY p.id_prod";
+        $sql = "SELECT COUNT(v.cantidad) AS cantidad
+        FROM productos p
+        JOIN ventas v 
+        ON p.id_prod = v.producto
+        WHERE p.categoria = $id
+        AND v.estado!='N'
+        AND p.id_cl = $id_cl
+        AND v.fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'";
         $res = $conexion->query($sql);
         while($row = $res->fetch_array())
         {
-          $arrNombre[] = $row["nombre_prod"];
+          $arrCantidad[] = $row["cantidad"];
         }
       }
 
-
+      
       //rellenar array cantidad 
       for($i=0;$i<$length;$i++)
       {
@@ -67,8 +75,7 @@ session_start();
         $sql = "SELECT SUM(cantidad) AS cantidad 
         FROM ventas 
         WHERE id_cl = $id_cl 
-        AND producto = $id
-        AND fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'";
+        AND producto = $id";
         $res = $conexion->query($sql);
         while($row = $res->fetch_array())
         {
@@ -80,37 +87,12 @@ session_start();
           $arrCantidad[] = $cantidad;
         }
       }
-
-      //rellenar array con valor en dinero generado por producto
-      for($i=0;$i<$length;$i++)
-      {
-        $id = $arrId[$i];
-        $sql = "SELECT SUM(valor) AS valor
-        FROM ventas 
-        WHERE id_cl = $id_cl
-        AND producto = $id
-        AND estado = 'C'
-        AND fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'";
-        $res = $conexion->query($sql);
-        while($row = $res->fetch_array())
-        {
-          $valor = 0;
-          if($row["valor"]!=""||$row["valor"]!=null)
-          {
-            $valor = $row["valor"];
-          }
-          $arrayValor[] = $valor;
-        }
-      }
-
-
-      //rellenar JSON que se va a usar para mostrar los datos en pantalla
+      
       for($i=0;$i<$length;$i++)
       {
         $json[] = array(
-          "nombre_producto" => $arrNombre[$i],
-          "cantidad" => $arrCantidad[$i],
-          "valor" => $arrayValor[$i]
+          "nombre_categoria" => $arrNombre[$i],
+          "cantidad" => $arrCantidad[$i]
         );
       }
       

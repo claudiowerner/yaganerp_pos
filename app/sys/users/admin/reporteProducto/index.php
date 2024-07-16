@@ -187,7 +187,8 @@
     <script src="js/graficos/graficos_barra/info_sin_filtrar/tamano_grafico.js"></script>
     <script src="js/filtro_informacion/obtener_primer_año_venta.js"></script>
     <script src="js/filtro_informacion/filtrar_informacion.js"></script>
-    <script src="js/filtro_informacion/descargar_informacion_ajax.js"></script>
+    <script src="js/filtro_informacion/descargar_informacion_grafico_ajax.js"></script>
+    <script src="js/filtro_informacion/descargar_informacion_tabla_ajax.js"></script>
     <script src="js/graficos/cargar_graficos.js"></script>
     <script src="js/tabla/tablas_sin_filtrar/categorias_sin_filtrar.js"></script>
     <script src="js/tabla/tablas_sin_filtrar/productos_sin_filtrar.js"></script>

@@ -17,7 +17,7 @@ session_start();
   $fecha_fin = $_POST["fecha_fin"];
   
   
-  require_once '../../../../../../conexion.php';
+  require_once '../../../../../../../conexion.php';
   
   //rellenar array de id de producto
   $arrId = array();
@@ -29,13 +29,7 @@ session_start();
 	//query
 	$sql = "SELECT c.id, c.nombre_cat 
   FROM categorias c
-  JOIN productos p 
-  ON c.id = p.categoria
-  JOIN ventas v
-  ON v.producto = p.id_prod
   WHERE c.id_cl = $id_cl
-  AND v.fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'
-  AND v.estado = 'C'
   GROUP BY c.id";
     $res = $conexion->query($sql);
 

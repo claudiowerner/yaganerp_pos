@@ -1,40 +1,40 @@
-/* --------------------------------------- DESCARGAR INFORMACION FILTRADA -----------------------------*/
-function descargarInfoGraficoBarraCategorias(fecha_inicio, fecha_fin)
+/* --------------------------------------- DESCARGAR INFORMACION FILTRADA ----------------------------- */
+function descargarInfoTablaCategorias(fecha_inicio, fecha_fin)
 {
     let datos = {
         "fecha_inicio": fecha_inicio,
         "fecha_fin": fecha_fin,
     };
     return $.ajax({
-        url: "funciones_php/graficos/info_filtrada/read_ventas_por_categoria.php",
+        url: "funciones_php/graficos/info_filtrada/tablas/read_ventas_por_categoria.php",
         data: datos, 
         type: "POST",
         async: false
     }).responseText;
 }
 
-function descargarInfoGraficoBarraProductos(fecha_inicio, fecha_fin)
+function descargarInfoTablaProductos(fecha_inicio, fecha_fin)
 {
     let datos = {
         "fecha_inicio": fecha_inicio,
         "fecha_fin": fecha_fin,
     };
     return $.ajax({
-        url: "funciones_php/graficos/info_filtrada/read_cant_productos_vendidos.php",
+        url: "funciones_php/graficos/info_filtrada/tablas/read_cant_productos_vendidos.php",
         data: datos,
         type: "POST",
         async: false
     }).responseText;
 }
 
-function descargarInfoGraficoTartaCategorias(fecha_inicio, fecha_fin)
+function descargarInfoTablaCategorias(fecha_inicio, fecha_fin)
 {
     let datos = {
         "fecha_inicio": fecha_inicio,
         "fecha_fin": fecha_fin,
     };
     return $.ajax({
-        url: "funciones_php/graficos/info_filtrada/read_ventas_por_categoria.php",
+        url: "funciones_php/graficos/info_filtrada/tablas/read_ventas_por_categoria.php",
         data: datos,
         type: "POST",
         async: false
@@ -42,14 +42,14 @@ function descargarInfoGraficoTartaCategorias(fecha_inicio, fecha_fin)
 }
 
 
-function descargarInfoGraficoTartaProductos(fecha_inicio, fecha_fin)
+function descargarInfoTablaProductos(fecha_inicio, fecha_fin)
 {
     let datos = {
         "fecha_inicio": fecha_inicio,
         "fecha_fin": fecha_fin,
     };
     return $.ajax({
-        url: "funciones_php/graficos/info_sin_filtrar/read_cant_productos_vendidos.php",
+        url: "funciones_php/graficos/info_filtrada/tablas/read_cant_productos_vendidos.php",
         data: datos,
         type: "POST",
         async: false
@@ -67,7 +67,7 @@ function descargarInfoGraficoTartaProductos(fecha_inicio, fecha_fin)
 
 /* ----------------------------------------- DESCARGAR INFO SIN FILTRAR -------------------------------*/
 
-function descargarInfoGraficoBarraCategoriasSinFiltrar()
+function descargarInfoTablaCategoriasSinFiltrar()
 {
     return $.ajax({
         url: "funciones_php/graficos/info_sin_filtrar/read_ventas_por_categoria.php",
@@ -78,7 +78,7 @@ function descargarInfoGraficoBarraCategoriasSinFiltrar()
 
 
 
-function descargarInfoGraficoBarraProductosSinFiltrar()
+function descargarInfoTablaProductosSinFiltrar()
 {
     return $.ajax({
         url: "funciones_php/graficos/info_sin_filtrar/read_cant_productos_vendidos.php",
@@ -88,7 +88,7 @@ function descargarInfoGraficoBarraProductosSinFiltrar()
 }
 
 
-function descargarInfoGraficoTartaCategoriasSinFiltrar()
+function descargarInfoTablaCategoriasSinFiltrar()
 {
     return $.ajax({
         url: "funciones_php/graficos/info_sin_filtrar/read_ventas_por_categoria.php",
@@ -97,7 +97,7 @@ function descargarInfoGraficoTartaCategoriasSinFiltrar()
     }).responseText;
 }
 
-function descargarInfoGraficoTartaProductosSinFiltrar()
+function descargarInfoTablaProductosSinFiltrar()
 {
     return $.ajax({
         url: "funciones_php/graficos/info_sin_filtrar/read_cant_productos_vendidos.php",
