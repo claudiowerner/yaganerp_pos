@@ -1,10 +1,25 @@
 
 /* ---------------------------------------- GRAFICO DE BARRAS -------------------------------------- */
-//cargar gráfico de barras sin filtro de fechas
+cargarGraficosBarraSinFiltrar()
+/* ---------------------------------------- GRAFICO DE TARTA ---------------------------------------- */
+cargarGraficosTartaSinFiltrar();
+
+
+
+function cargarGraficosBarraSinFiltrar()
+{
+    //cargar gráfico de barras sin filtro de fechas
 graficoBarraCategoriasSinFiltrar()
 graficoBarraProductosSinFiltrar();
 
-/* ---------------------------------------- GRAFICO DE TARTA ---------------------------------------- */
-//cargar gráfico de tarta sin filtro de fechas
+}
+
+
+function cargarGraficosTartaSinFiltrar()
+{
+    //cargar gráfico de tarta sin filtro de fechas
 graficoTartaCategoriasSinFiltrar()
 graficoTartaProductosSinFiltrar();
+
+
+}

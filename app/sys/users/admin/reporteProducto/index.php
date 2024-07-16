@@ -70,6 +70,7 @@
                                                     <td><input type="date" id="fecha_inicio" class="form-control" onkeyup="filtrarInformacion()" onchange="filtrarInformacion()"></td>
                                                     <td><label>Hasta</label></td>
                                                     <td><input type="date" id="fecha_fin" class="form-control" onkeyup="filtrarInformacion()" onchange="filtrarInformacion()"></td>
+                                                    <td><button id="btnEliminarFiltros" class="btn btn-success">Borrar filtros</button></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -189,12 +190,13 @@
     <script src="js/filtro_informacion/filtrar_informacion.js"></script>
     <script src="js/filtro_informacion/descargar_informacion_grafico_ajax.js"></script>
     <script src="js/filtro_informacion/descargar_informacion_tabla_ajax.js"></script>
-    <script src="js/graficos/cargar_graficos.js"></script>
     <script src="js/tabla/tablas_sin_filtrar/categorias_sin_filtrar.js"></script>
     <script src="js/tabla/tablas_sin_filtrar/productos_sin_filtrar.js"></script>
     <script src="js/tabla/tablas_filtradas/categorias_filtradas.js"></script>
     <script src="js/tabla/tablas_filtradas/productos_filtrados.js"></script>
+    <script src="js/filtro_informacion/eliminar_filtros.js"></script>
     <script src="js/tabla/cargar_tablas.js"></script>
+    <script src="js/graficos/cargar_graficos.js"></script>
 </body>
 
 </html>
