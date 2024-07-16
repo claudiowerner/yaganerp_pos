@@ -21,6 +21,7 @@ session_start();
   $arrId = array();
   $arrNombre = array();
   $arrCantidad = array();
+  $arrayValor = array();
   $json = array();
 
 	//query
@@ -79,11 +80,36 @@ session_start();
         }
       }
 
+      //rellenar array con valor en dinero generado por producto
+      for($i=0;$i<$length;$i++)
+      {
+        $id = $arrId[$i];
+        $sql = "SELECT SUM(valor) AS valor
+        FROM ventas 
+        WHERE id_cl = $id_cl
+        AND producto = $id
+        AND estado = 'C'
+        AND fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'";
+        $res = $conexion->query($sql);
+        while($row = $res->fetch_array())
+        {
+          $valor = 0;
+          if($row["valor"]!=""||$row["valor"]!=null)
+          {
+            $valor = $row["valor"];
+          }
+          $arrayValor[] = $valor;
+        }
+      }
+
+
+      //rellenar JSON que se va a usar para mostrar los datos en pantalla
       for($i=0;$i<$length;$i++)
       {
         $json[] = array(
           "nombre_producto" => $arrNombre[$i],
-          "cantidad" => $arrCantidad[$i]
+          "cantidad" => $arrCantidad[$i],
+          "valor" => $arrayValor[$i]
         );
       }
       

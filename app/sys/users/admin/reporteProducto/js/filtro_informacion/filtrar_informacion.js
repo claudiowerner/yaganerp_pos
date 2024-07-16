@@ -50,10 +50,12 @@ function filtrarInformacion()
                 {
                     msjes_swal("Aviso", "La fecha de inicio debe ser menor a la fecha final", "warning");
                     imprimirGraficos(fecha_inicio, fecha_fin)
+                    imprimirTablas();
                 }
                 else
                 {
                     imprimirGraficos(fecha_inicio, fecha_fin)
+                    imprimirTablas();
                 }
             }
         }
@@ -72,4 +74,9 @@ function imprimirGraficos(fecha_inicio, fecha_fin)
     graficoTartaProductos(fecha_inicio, fecha_fin);
     graficoBarraCategorias(fecha_inicio, fecha_fin);
     graficoBarraProductos(fecha_inicio, fecha_fin);
+}
+
+function imprimirTablas()
+{
+    cargarTablaCategoriasSinFiltrar();
 }

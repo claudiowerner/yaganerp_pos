@@ -112,18 +112,38 @@
                                                 </div>
                                             </div>
                                             <div id="tabla" class="tab-pane fade">
-                                                <table id="cierreCaja" class="table table-bordered table-hover dt-resposive display nowrap">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Categoría</th>
-                                                            <th>Nombre producto</th>
-                                                            <th>Cantidad</th>
-                                                            <th>Valor generado</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="bodyProductoVendido">
-                                                    </tbody>
-                                                </table>
+                                                <div id="divTablaCategorias" class="col-lg-6">
+                                                    <div class="col-lg-11">
+                                                        <table class="table" border=1>
+                                                            <tr align="center">
+                                                                <th colspan=2><span>Ventas por categorías</span></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Categoría</th>
+                                                                <th>Valor</th>
+                                                            </tr>
+                                                            <tbody id="tbodyCategorias">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <div id="divTablaProductos" class="col-lg-6">
+                                                    <div class="col-lg-11">
+                                                        <table class="table" border=1>
+                                                            <tr align="center">
+                                                                <th colspan=3><span>Ventas por productos</span></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Producto</th>
+                                                                <th>Número de ventas</th>
+                                                                <th>Valor generado</th>
+                                                            </tr>
+                                                            <tbody id="tbodyProductos">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -149,6 +169,7 @@
     <!--Datatables-->
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
     <script src="../../../js/moment/moment.js"></script>
+    <script src="../../../js/numberFormat.js"></script>
     <script src="js/productoVendido.js"></script>
     <script src="js/loader.js"></script>
     <script src="js/graficos/seleccionar_grafico.js"></script>
@@ -168,6 +189,9 @@
     <script src="js/filtro_informacion/filtrar_informacion.js"></script>
     <script src="js/filtro_informacion/descargar_informacion_ajax.js"></script>
     <script src="js/graficos/cargar_graficos.js"></script>
+    <script src="js/tabla/tablas_sin_filtrar/categorias_sin_filtrar.js"></script>
+    <script src="js/tabla/tablas_sin_filtrar/productos_sin_filtrar.js"></script>
+    <script src="js/tabla/cargar_tablas.js"></script>
 </body>
 
 </html>
