@@ -72,17 +72,6 @@
                       <input type='text' id='txtNombreProveedorEditar' class='form-control' >
                     </td>
                   </tr>
-                  <td margin=auto>
-                    <div class=button>
-                      <label name='swEstado'>Estado</label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class=boton>                    
-                      <input type='checkbox' id='swEstado'/>
-                      <label for='swEstado' class='switch'></label>
-                    </div>
-                  </td>
                 </table>
                 <div>
                   <label id='lblMsj'></label>
