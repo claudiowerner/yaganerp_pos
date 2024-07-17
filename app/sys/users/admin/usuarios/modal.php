@@ -86,39 +86,27 @@
               <tr>
                 <td align=right margin=auto>
                   <div class=button>
-                    <label name="pass">Pagar mesa</label>
+                    <label name="pass">Administrar sistema</label>
                   </div>
                 </td>
                 <td>
                   <div class=boton>                    
-                    <input type="checkbox" id="pagarMesa"/>
-                    <label for="pagarMesa" class="switch"></label>
+                    <input type="checkbox" id="swAdministrar"/>
+                    <label for="swAdministrar" class="switch"></label>
                   </div>
                 </td>
               </tr>
+              
               <tr>
                 <td align=right margin=auto>
                   <div class=button>
-                    <label name="pass">Anular venta</label>
+                    <label name="pass">Vender</label>
                   </div>
                 </td>
                 <td>
                   <div class=boton>                    
-                    <input type="checkbox" id="anularVenta"/>
-                    <label for="anularVenta" class="switch"></label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td align=right margin=auto>
-                  <div class=button>
-                    <label name="pass">Cambiar mesa</label>
-                  </div>
-                </td>
-                <td>
-                  <div class=boton>                    
-                    <input type="checkbox" id="cambiarMesa"/>
-                    <label for="cambiarMesa" class="switch"></label>
+                    <input type="checkbox" id="swVender"/>
+                    <label for="swVender" class="switch"></label>
                   </div>
                 </td>
               </tr>
