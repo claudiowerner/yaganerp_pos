@@ -15,6 +15,7 @@
 	$nombre = $_POST["nombre"];
 	$fecha = $_POST["fecha"];
 
+	require_once '../../../../conexion.php';
 
 	$json = array();
 
