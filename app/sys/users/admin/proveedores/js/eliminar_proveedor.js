@@ -14,6 +14,9 @@ function eliminarProveedorAjax(id)
     }).responseText;
 }
 
+
+/* ----------------------------------------  -------------------------------------- */
+
 function eliminarProveedor(id, nombre)
 {
     swal({
