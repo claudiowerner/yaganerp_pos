@@ -13,20 +13,23 @@ if(isset($_SESSION['user'])){
     $id_cl = $_SESSION['user']["id_cl"];
     
 
-    require_once '../../../conexion.php';
+    require_once '../../../../conexion.php';
 
     //query
     $sql = 
     "SELECT id, nombre_proveedor, rut, estado, 
     DATE_FORMAT(fecha_registro, '%d-%m-%Y') AS fecha_registro
     FROM proveedores 
-    WHERE id_cl = $id_cl";
-    $resultado = $conexion->query($sql);;
+    WHERE id_cl = $id_cl
+    AND estado != 'N'";
+    $resultado = $conexion->query($sql);
+
+    $item = 0;
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())
       {
-
+        $item++;
         $estado = $row['estado'];
         if($estado == "S")
         {
@@ -38,6 +41,7 @@ if(isset($_SESSION['user'])){
         };
 
         $json[] =array(
+          "item" => $item,
           'id' => $row['id'],
           'nombre_proveedor' => ($row['nombre_proveedor']),
           'rut' => $row['rut'],

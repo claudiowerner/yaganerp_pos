@@ -111,6 +111,8 @@
     <script src="js/editar_proveedor.js"></script>
     <script src="js/validarVariableRut.js"></script>
     <script src="js/validarTextBoxs.js"></script>
+    <script src="js/comprobar_pedidos_proveedor.js"></script>
+    <script src="js/eliminar_proveedor.js"></script>
     <script src="../../../js/validarRut.js"></script>
 
 </html>
