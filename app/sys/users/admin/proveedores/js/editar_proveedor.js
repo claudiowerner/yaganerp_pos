@@ -1,7 +1,7 @@
 /* ----------------------------------------- FUNCION AJAX -------------------------------------------- */
 function editarProveedorAjax(id, rut, nombre)
 {
-    datos = {
+    let datos = {
         "id": id,
         "rut": rut,
         "nombre": nombre,
@@ -34,19 +34,26 @@ function abrirModalEditarProveedor(id, rut, nombre)
 $("#btnEditar").on("click",function(e)
 {
     e.preventDefault();
-    let id = $("#idProv").val();
+    let id = $("#idProv").text();
     let rut = $("#txtRutProveedorEditar").val();
     let nombre = $("#txtNombreProveedorEditar").val();
 
-    let respuesta = editarProveedorAjax(id, rut, nombre)
-    let json = JSON.parse(respuesta);
-
-    msjes_swal(json.titulo, json.mensaje, json.icono);
-
-    if(json.edicion)
+    if(rut==""||nombre=="")
     {
-        $('#producto').DataTable().ajax.reload();
-        $("#modalEditar").modal("hide");
+        msjes_swal("Aviso", "Debe rellenar todos los campos", "warning");
+    }
+    else
+    {
+        let respuesta = editarProveedorAjax(id, rut, nombre)
+        let json = JSON.parse(respuesta);
+
+        msjes_swal(json.titulo, json.mensaje, json.icono);
+
+        if(json.edicion)
+        {
+            $('#producto').DataTable().ajax.reload();
+            $("#modalEditar").modal("hide");
+        }   
     }
 
 });
