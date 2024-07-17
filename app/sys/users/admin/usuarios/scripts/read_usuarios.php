@@ -21,8 +21,10 @@ if(isset($_SESSION['user'])){
     if ($resultado->num_rows > 0){
       $json = array();
       $permisos = array();
+      $contador = 0;
       while ($row = $resultado->fetch_array())
       {
+        $contador++;
         $estado = $row['estado'];
 
         if($estado=="S")
@@ -53,22 +55,15 @@ if(isset($_SESSION['user'])){
         $mostrar_permisos = "";
         if(in_array("1", $permisos))
         {
-          $mostrar_permisos = $mostrar_permisos."Vender, ";
+          $mostrar_permisos = $mostrar_permisos."Administrar, ";
         }
         if(in_array("2", $permisos))
         {
-          $mostrar_permisos = $mostrar_permisos."Pagar mesa, ";
-        }
-        if(in_array("3", $permisos))
-        {
-          $mostrar_permisos = $mostrar_permisos."Anular venta, ";
-        }
-        if(in_array("4", $permisos))
-        {
-          $mostrar_permisos = $mostrar_permisos."Cambiar mesa ";
+          $mostrar_permisos = $mostrar_permisos."Vender, ";
         }
 
         $json[] =array(
+          'item' => $contador,
           'id' => $row['id'],
           'nombre' => $row['nombre'],
           'user' => $row['user'],

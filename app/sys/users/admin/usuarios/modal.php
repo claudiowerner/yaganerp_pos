@@ -57,10 +57,9 @@
                   <label name="pass">Tipo de usuario</label>
                 </td>
                 <td>
-                  <select id="slctTipoUsuario" class="form-control">
+                  <select id="slctTipoUsuario" class="form-control" onchange="activarPermisoAdministrar()">
                     <option value="1">ADMINISTRADOR</option> 
-                    <option value="2">CAJERO</option>
-                    <option value="3">GARZÓN</option>
+                    <option value="2">VENDEDOR</option>
                   </select>
                 </td>
               </tr>
@@ -111,9 +110,6 @@
                 </td>
               </tr>
             </table>
-            <div>
-              <label id="lblMsj"></label>
-            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -177,24 +173,12 @@
             </tr>
             <tr>
               <td>
-                Estado
-              </td>
-              <td>
-                <select id="slctEstado" class="form-control">
-                  <option value="S">ACTIVADO</option>
-                  <option value="N">DESACTIVADO</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
                 <label name="pass">Tipo de usuario</label>
               </td>
               <td>
                 <select id="slctTipoUsuarioEditar" class="form-control">
-                  <option value="ADMINISTRADOR">ADMINISTRADOR</option> 
-                  <option value="CAJERO">CAJERO</option>
-                  <option value="GARZÓN">GARZÓN</option>
+                  <option value="1">ADMINISTRADOR</option> 
+                  <option value="2">CAJERO</option>
                 </select>
               </td>
             </tr>

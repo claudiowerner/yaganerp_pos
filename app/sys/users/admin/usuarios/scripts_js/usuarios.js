@@ -6,7 +6,7 @@ table = $('#producto').DataTable({
     },
     //columnas
     "columns":[
-      {"data":"id"},
+      {"data":"item"},
       {"data":"nombre"},
       {"data":"user"},
       {"data":"tipo_usuario"},
