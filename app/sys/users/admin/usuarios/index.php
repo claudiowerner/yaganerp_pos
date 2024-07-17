@@ -116,6 +116,8 @@
     <script src="scripts_js/cargar_usuarios_activos.js"></script>
     <script src="scripts_js/cargar_usuarios_permitidos.js"></script>
     <script src="scripts_js/usuarios.js"></script>
+    <script src="scripts_js/crear_usuario.js"></script>
+    <script src="scripts_js/validar_usuario_existente.js"></script>
 
 </body>
 

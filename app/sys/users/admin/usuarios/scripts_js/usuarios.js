@@ -237,56 +237,7 @@ $(document).on("ready", function(e)
     permisos.sort();
   })
 
-  $("#btnGuardar").on("click", function(e)
-  {
-    let nomUser = $("#nomUser").val();
-    let user = $("#user").val();
-    let pass = $("#pass").val();
-    let cPass = $("#cPass").val();
-    let tipoUsuario = $("#slctTipoUsuario").val();
-
-    //conversión del array permisos a string
-    permisos = permisos.toString();
-    let datos = {
-      "nombre":nomUser,
-      "user":user,
-      "pass":pass,
-      "tu": tipoUsuario,
-      "permisos":permisos
-    }
-    e.preventDefault();
-    if(pass==cPass)
-    {
-        $.ajax({
-          url:"scripts/crear_usuario.php",
-          data:datos,
-          type: "POST",
-          success: function(e)
-          {
-            if(e==0)
-            {
-              user = $("#user").val();
-              msjes_swal("Aviso", "El usuario ("+user+") ya se encuentra registrado", "warning");
-            }
-            if(e==1)
-            {
-              msjes_swal("Excelente", "Usuario ("+user+") registrado exitosamente.", "success");
-                
-              
-              $('#producto').DataTable().ajax.reload();
-              $("#modalRegistro").modal("hide");
-              cargarUsuariosActivos();
-            }
-          }
-        })
-        .fail(function(e)
-        {
-          console.log(e.responseText);
-        })
-      }
-      $("#lblMsj").html("<strong></strong>");
-  });
-
+  
   $("#btnModificar").on("click", function(e)
   {
     let user = $("#usuario").text();//nickname de usuario antiguo
