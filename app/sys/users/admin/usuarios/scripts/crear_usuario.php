@@ -2,15 +2,8 @@
 
 
 	session_start();
-	if(isset($_SESSION['user'])){
-      	$tipo = $_SESSION['user']['tipo_usuario'];
-     	if($tipo == 1){
-       	    //header('Location: ../');
-     	}
-     	    }else{
-    	    header('Location: ../../../../index.php');
-     	}
-     	require_once '../../../../../conexion.php';
+		
+		require_once '../../../../conexion.php';
 
 
 	ini_set('display_errors', 1);
