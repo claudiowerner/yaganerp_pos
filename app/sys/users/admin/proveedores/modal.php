@@ -1,7 +1,7 @@
 <?php
   function modalRegistro()
   {
-    return "<div class='modal fade' id='modalRegistro' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+    return "<div class='modal fade' id='modalRegistro' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
@@ -18,7 +18,7 @@
                       <label>R.U.T. Proveedor: </label>
                     </td>
                     <td>
-                      <input type='text' id='txtRutProveedor' class='form-control' placeholder='xxxxxxxx-x' required>
+                      <input type='text' id='txtRutProveedor' class='form-control' placeholder='xxxxxxxx-x' >
                     </td>
                   </tr>
                   <tr>
@@ -26,7 +26,7 @@
                       <label>Nombre: </label>
                     </td>
                     <td>
-                      <input type='text' id='txtNombreProveedor' class='form-control' placeholder='xxxxxxxx-x' required>
+                      <input type='text' id='txtNombreProveedor' class='form-control' >
                     </td>
                   </tr>
                 </table>
@@ -44,14 +44,14 @@
 
   function modalEditar()
   {
-    return "<div class='modal fade' id='modalEditar' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+    return "<div class='modal fade' id='modalEditar' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
-              <h5 class='modal-title' id='tituloModalEditar'>Editar proveedor<strong id='idProv' style='display:none'></strong></h5>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
+              <h5 class='modal-title' id='tituloModalEditar'>Editar proveedor<strong id='idProv' style='display:none'></strong></h5>
             </div>
             <form id='formEditarProducto'>
               <div class='modal-body'>
@@ -61,7 +61,7 @@
                       <label>R.U.T. Proveedor: </label>
                     </td>
                     <td>
-                      <input type='text' id='txtRutProveedorEditar' class='form-control' placeholder='xxxxxxxx-x' required>
+                      <input type='text' id='txtRutProveedorEditar' class='form-control' placeholder='xxxxxxxx-x' >
                     </td>
                   </tr>
                   <tr>
@@ -69,7 +69,7 @@
                       <label>Nombre: </label>
                     </td>
                     <td>
-                      <input type='text' id='txtNombreProveedorEditar' class='form-control' placeholder='xxxxxxxx-x' required>
+                      <input type='text' id='txtNombreProveedorEditar' class='form-control' >
                     </td>
                   </tr>
                   <td margin=auto>
@@ -90,7 +90,7 @@
               </div>
               <div class='modal-footer'>
                 <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-                <button type='submit' id='btnGuardar' class='btn btn-primary'>Guardar</button>
+                <button type='submit' id='btnEditar' class='btn btn-primary'>Guardar</button>
               </div>
             </form>
           </div>

@@ -2,19 +2,7 @@
 
 
 	session_start();
-	if(isset($_SESSION['user']))
-	{
-      	$tipo = $_SESSION['user']['tipo_usuario'];
-     	if($tipo == 1)
-		{
-       	    //header('Location: ../');
-     	}
-	}
-	else
-	{
-		header('Location: ../../../../index.php');
-	}
-	require_once '../../../conexion.php';
+	require_once '../../../../conexion.php';
 
 
 	ini_set('display_errors', 1);
@@ -28,36 +16,37 @@
 	//declaracion variables que provienen desde proveedores.js
 	$rut = $_POST["rut"];
 	$nombre = $_POST["nombre"];
-	$estado = $_POST["estado"];
 	$hora = $_POST["hora"];
 	$id = $_POST["id"];
 
+	$json = array();
 
     $sql =
 	"UPDATE proveedores 
 	SET rut = '$rut',
-	nombre_proveedor = '$nombre',
-	estado = '$estado'
+	nombre_proveedor = '$nombre'
 	WHERE id = '$id'";
-	$resultado = $conexion->query($sql);
+	$res = $conexion->query($sql);
 
-	if($estado=='N')
+	if($res)
 	{
-		//obtener fecha
-		$hoy = getdate();
-		$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hora;
-
-		$sql = 
-		"INSERT INTO anula_proveedor
-		 VALUES (null, '$id_cl', '$id', '$id_us', '$fecha');";
-		$resultado = $conexion->query($sql);
-	}
-	if($resultado)
-	{
-		echo "Proveedor editado correctamente";
+		$json = array(
+			"edicion" => true,
+			"titulo" => "Excelente",
+			"mensaje" => "Proveedor editado correctamente",
+			"icono" => "success"
+		);
 	}
 	else
 	{
-		echo die("Error al modificar Proveedor: ". mysqli_error($conexion));
+		$json = array(
+			"edicion" => false,
+			"titulo" => "Error",
+			"mensaje" => "Ha ocurrido un error al editar el proveedor: ".$conexion->error,
+			"icono" => "error"
+		);
 	}
+
+
+	echo json_encode($json);
 ?>

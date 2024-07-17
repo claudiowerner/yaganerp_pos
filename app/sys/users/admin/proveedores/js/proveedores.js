@@ -17,13 +17,6 @@ $("#swEstado").on("click", function(e)
 var idCat = 0;
 table = $('#producto').DataTable({
   "createdRow": function( row, data, dataIndex){
-    if( data.estado ==  `ACTIVO`){
-      $(row).addClass('ACTIVO');
-    }
-    else
-    {
-      $(row).addClass('INACTIVO');
-    }
   },
   "ajax":{
   "url":"read_proveedores.php",
@@ -38,7 +31,11 @@ table = $('#producto').DataTable({
       {"data":"estado"},
       {"data":"fecha_registro"},
       {
-        "defaultContent": '<button type="submit" id="btnEditar" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" ><img src="../img/edit.png" width="15"></button>'
+        "data": null,
+          "render": function (data, type, row) {
+            return `<button type='submit' id='btnEditar' class='btn btn-primary' onClick="abrirModalEditarProveedor('${data.id}', '${data.rut}', '${data.nombre_proveedor}')"><i class='fa fa-edit' aria-hidden='true'></i></button>
+            <button type='submit' id='btnEliminar' class='btn btn-danger' onClick='eliminarPedido("+data.id+")'><i class='fa fa-trash-o' aria-hidden='true'></i></span></button>`;
+          }
       }
     ],
     //Configuración de Datatable
@@ -73,85 +70,6 @@ $("#txtNombreProveedor").on("keyup", function(e)
 {
   validarTextBoxs();
   
-});
-
-
-$("#producto").on('click', 'tr', function(e)
-{
-  e.preventDefault();
-  var cat = $('#producto').DataTable();
-  var datos = cat.row(this).data();
-
-  console.log(datos);
-
-  let id = datos.id;
-  let rut = datos.rut;
-  let nombre = datos.nombre_proveedor;
-  let estado = datos.estado;
-
-  if(estado=="ACTIVO")
-  {
-    $("#swEstado").prop("checked", true)
-  }
-  else
-  {
-    $("#swEstado").prop("checked", false)
-  }
-
-  $("#idProv").val(id);
-  $("#txtRutProveedorEditar").val(rut);
-  $("#txtNombreProveedorEditar").val(nombre);
-
-});
-
-
-//editar producto
-
-
-$("#formEditarProducto").submit(function(e)
-{
-  e.preventDefault();
-  let id = $("#idProv").val();
-  let rut = $("#txtRutProveedorEditar").val();
-  let nombre = $("#txtNombreProveedorEditar").val();
-  
-  datos = {
-    "id": id,
-    "rut": rut,
-    "nombre": nombre,
-    "estado": epr,
-    "hora": getHora()
-  }
-
-
-  $.ajax(
-    {
-      url:"editar_proveedor.php",
-      data: datos,
-      type: "POST",
-      success: function(e)
-      {
-        if(e.match("correctamente"))
-        {
-          msjes_swal("Excelente", e, "success");
-        }
-        if(e.match("No se puede desactivar"))
-        {
-          msjes_swal("Aviso", e, "warning");
-        }
-        if(e.match("Error")||e.match("error"))
-        {
-          msjes_swal("Error al modificar", e, "error");
-        }
-        $('#producto').DataTable().ajax.reload();
-        $("#formRegistro").trigger('reset');
-        $("#modalEditar").modal("hide");
-      }
-    })
-    .fail(function(e)
-    {
-      console.log(e.responseText);
-    })
 });
 
 function getHora()

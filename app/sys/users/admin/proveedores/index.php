@@ -109,6 +109,7 @@
     <script src="js/validar_existencia_proveedor.js"></script>
     <script src="js/proveedores.js"></script>
     <script src="js/crear_proveedor.js"></script>
+    <script src="js/editar_proveedor.js"></script>
     <script src="js/validarVariableRut.js"></script>
     <script src="js/validarTextBoxs.js"></script>
     <script src="../../../js/validarRut.js"></script>
