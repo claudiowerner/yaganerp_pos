@@ -78,7 +78,6 @@
                                                         <th>ID</th>
                                                         <th>R.U.T.</th>
                                                         <th>Nombre proveedor</th>
-                                                        <th>Estado</th>
                                                         <th>Fecha registro</th>
                                                         <th>Acción</th>
                                                     </tr>

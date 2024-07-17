@@ -28,7 +28,6 @@ table = $('#producto').DataTable({
       {"data":"id"},
       {"data":"rut"},
       {"data":"nombre_proveedor"},
-      {"data":"estado"},
       {"data":"fecha_registro"},
       {
         "data": null,
