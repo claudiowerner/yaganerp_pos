@@ -16,7 +16,10 @@ if(isset($_SESSION['user'])){
     require_once '../../../../conexion.php';
 
     //query
-    $sql = "SELECT id, nombre, user, tipo_usuario, estado, permisos FROM usuarios WHERE id_cl = $id_cl";
+    $sql = "SELECT id, nombre, user, tipo_usuario, estado, permisos, fecha_reg 
+    FROM usuarios 
+    WHERE id_cl = $id_cl
+    AND estado = 'S'";
     $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
       $json = array();
@@ -56,6 +59,7 @@ if(isset($_SESSION['user'])){
           'user' => $row['user'],
           'tipo_usuario' => $tipo_usuario,
           'id_tipo_usuario' => $row["tipo_usuario"],
+          'fecha_reg' => $row["fecha_reg"],
           'estado' => $estado,
           'permisos' => $mostrar_permisos,
           "permisos_separados" => $row["permisos"]

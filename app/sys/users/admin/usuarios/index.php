@@ -80,8 +80,8 @@
                                                     <th>Nombre</th>
                                                     <th>User</th>
                                                     <th>Tipo usuario</th>
-                                                    <th>Estado</th>
                                                     <th>Permisos</th>
+                                                    <th>Fecha de registro</th>
                                                     <th>Acción</th>
                                                 </tr>
                                             </thead>

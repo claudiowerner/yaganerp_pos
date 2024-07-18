@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-07-2024 a las 18:03:09
+-- Tiempo de generación: 18-07-2024 a las 18:13:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -106,6 +106,20 @@ CREATE TABLE `anula_turnos` (
   `anulado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `anula_usuario`
+--
+
+CREATE TABLE `anula_usuario` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `anulado_por` int(11) DEFAULT NULL,
+  `fecha` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1748,8 +1762,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `user`, `pass`, `tipo_usuario`, `id_cl`, `estado`, `permisos`, `fecha_reg`) VALUES
-(1, 'Admin', 'admin1', '$2y$10$hH.e2CNF7S3q6AuN6Yn1NuJL/04O4QzMXoBbjvdsw71XQ1/axlkeG', 1, 1, '', '1,2', NULL),
-(12, 'Claudio', 'claudio3111', '$2y$10$fxPORzARO.wsBLJehr6CJuKbnk4hegGZD6ekJZXAwEArjyhoLTDHa', 2, 1, 'S', '2', NULL);
+(1, 'Admin', 'admin1', '$2y$10$hH.e2CNF7S3q6AuN6Yn1NuJL/04O4QzMXoBbjvdsw71XQ1/axlkeG', 1, 1, '', '1,2', '0000-00-00 00:00:00'),
+(12, 'Claudio', 'claudio3111', '$2y$10$fxPORzARO.wsBLJehr6CJuKbnk4hegGZD6ekJZXAwEArjyhoLTDHa', 2, 1, 'S', '2', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1939,6 +1953,12 @@ ALTER TABLE `anula_proveedor`
 -- Indices de la tabla `anula_turnos`
 --
 ALTER TABLE `anula_turnos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `anula_usuario`
+--
+ALTER TABLE `anula_usuario`
   ADD PRIMARY KEY (`id`);
 
 --

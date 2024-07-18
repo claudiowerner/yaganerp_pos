@@ -10,8 +10,8 @@ table = $('#producto').DataTable({
       {"data":"nombre"},
       {"data":"user"},
       {"data":"tipo_usuario"},
-      {"data":"estado"},
       {"data":"permisos"},
+      {"data":"fecha_reg"},
       {
         "data": null,
           "render": function (data, type, row) {
