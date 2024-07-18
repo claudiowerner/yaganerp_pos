@@ -14,38 +14,30 @@
     $id_cl = $_SESSION['user']["id_cl"];
     
 
+	$id = $_POST["id"];
 	$nombre = $_POST["nombre"];
-	$user = $_POST["user"];//nombre de usuario antiguo
 	$user_n = $_POST["user_n"];//nombre de usuario nuevo
-	$pass = password_hash($_POST["pass"], PASSWORD_DEFAULT);
+	$pass = "";
+	if($_POST["pass"]=="")
+	{
+		$pass = "";
+	}
+	else
+	{
+		$pass = password_hash($_POST["pass"], PASSWORD_DEFAULT);
+	}
 	$tipo_usuario = $_POST["tu"];//tipo de usuario
-	$estado = $_POST["estado"]; 
 	$permisos = $_POST["permisos"];
-
-	$tu = 0;//Conversión del tipo de usuario a número
-
-	if($tipo_usuario == "ADMINISTRADOR")
-	{
-		$tu = 1;
-	}
-	if($tipo_usuario == "CAJERO")
-	{
-		$tu = 2;
-	}
-	if($tipo_usuario == "GARZÓN")
-	{	
-		$tu = 3;
-	}
 
 	$sql = '';
 
 	if($pass=="")
 	{
-		$sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', tipo_usuario = '$tu', estado = '$estado', permisos='$permisos' WHERE id_cl = $id_cl AND user = '$user';";
+		echo $sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', tipo_usuario = '$tipo_usuario', permisos='$permisos' WHERE id_cl = $id_cl AND id = '$id';";
 	}
 	if($pass!="")
 	{
-		$sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', pass = '$pass', tipo_usuario = '$tu', estado = '$estado', permisos='$permisos' WHERE id_cl = $id_cl AND user = '$user';";
+		echo $sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', pass = '$pass', tipo_usuario = '$tipo_usuario', permisos='$permisos' WHERE id_cl = $id_cl AND id = '$id';";
 	}
 	$resultado = $conexion->query($sql);
 

@@ -51,6 +51,20 @@
     left: 23px; 
 }
 
+#swAdministrarEditar
+{
+    display: none;
+}
+#swAdministrarEditar:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swAdministrarEditar:checked~ .switch:after
+{
+    left: 23px; 
+}
+
 /* --------------------------------------------- SWITCH VENDER -----------------------------------------*/
 #swVender
 {
@@ -62,6 +76,19 @@
     transition:0.3s;
 }
 #swVender:checked~ .switch:after
+{
+    left: 23px; 
+}
+#swVenderEditar
+{
+    display: none;
+}
+#swVenderEditar:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swVenderEditar:checked~ .switch:after
 {
     left: 23px; 
 }

@@ -1,7 +1,7 @@
 <?php
     //modal registro de usuario
     echo '<!--Modal registro-->
-    <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal fade" id="modalRegistro" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -120,14 +120,14 @@
     </div>';
 
     //modal edición de usuario
-    echo '<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    echo '<div class="modal fade" id="modalEditar" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Editando usuario <strong id="usuario">ID_USUARIO</strong></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+          <h5 class="modal-title" id="exampleModalLongTitle">Editando usuario <strong id="usuario">ID_USUARIO</strong><span id="idUsuarioEditar" style="display: none"></span></h5>
         </div>
         <div class="modal-body" align="center">
           <table class=table>
@@ -168,7 +168,7 @@
             </tr>
             <tr>
               <td colspan="2">
-                <label id="lblMsjEditar"></label>
+                No indique la contraseña si no la desea cambiar.
               </td>
             </tr>
             <tr>
@@ -176,9 +176,9 @@
                 <label name="pass">Tipo de usuario</label>
               </td>
               <td>
-                <select id="slctTipoUsuarioEditar" class="form-control">
+                <select id="slctTipoUsuarioEditar" class="form-control" onchange="activarPermisoAdministrarEditar()">
                   <option value="1">ADMINISTRADOR</option> 
-                  <option value="2">CAJERO</option>
+                  <option value="2">VENDEDOR</option>
                 </select>
               </td>
             </tr>
@@ -190,52 +190,26 @@
             <tr>
               <td align=right margin=auto>
                 <div class=button>
+                  <label name="pass">Administrar</label>
+                </div>
+              </td>
+              <td>
+                <div class=boton>                    
+                  <input type="checkbox" id="swAdministrarEditar"/>
+                  <label for="swAdministrarEditar" class="switch"></label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td align=right margin=auto>
+                <div class=button>
                   <label name="pass">Vender</label>
                 </div>
               </td>
               <td>
                 <div class=boton>                    
-                  <input type="checkbox" id="venderEditar"/>
-                  <label for="venderEditar" class="switch"></label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td align=right margin=auto>
-                <div class=button>
-                  <label name="pass">Pagar mesa</label>
-                </div>
-              </td>
-              <td>
-                <div class=boton>                    
-                  <input type="checkbox" id="pagarMesaEditar"/>
-                  <label for="pagarMesaEditar" class="switch"></label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td align=right margin=auto>
-                <div class=button>
-                  <label name="pass">Anular venta</label>
-                </div>
-              </td>
-              <td>
-                <div class=boton>                    
-                  <input type="checkbox" id="anularVentaEditar"/>
-                  <label for="anularVentaEditar" class="switch"></label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td align=right margin=auto>
-                <div class=button>
-                  <label name="pass">Cambiar mesa</label>
-                </div>
-              </td>
-              <td>
-                <div class=boton>                    
-                  <input type="checkbox" id="cambiarMesaEditar"/>
-                  <label for="cambiarMesaEditar" class="switch"></label>
+                  <input type="checkbox" id="swVenderEditar"/>
+                  <label for="swVenderEditar" class="switch"></label>
                 </div>
               </td>
             </tr>

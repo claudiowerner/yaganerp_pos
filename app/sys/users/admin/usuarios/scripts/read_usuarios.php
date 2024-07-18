@@ -27,15 +27,6 @@ if(isset($_SESSION['user'])){
         $contador++;
         $estado = $row['estado'];
 
-        if($estado=="S")
-        {
-          $estado = "ACTIVADO";
-        }
-        if($estado=="N")
-        {
-          $estado = "DESACTIVADO";
-        }
-
         $tipo_usuario = $row['tipo_usuario'];
         if($tipo_usuario=="1")
         {
@@ -43,11 +34,7 @@ if(isset($_SESSION['user'])){
         };
         if($tipo_usuario=="2")
         {
-          $tipo_usuario = "CAJERO";
-        };
-        if($tipo_usuario=="3")
-        {
-          $tipo_usuario = "GARZÓN";
+          $tipo_usuario = "VENDEDOR";
         };
 
         //permisos
@@ -68,8 +55,10 @@ if(isset($_SESSION['user'])){
           'nombre' => $row['nombre'],
           'user' => $row['user'],
           'tipo_usuario' => $tipo_usuario,
+          'id_tipo_usuario' => $row["tipo_usuario"],
           'estado' => $estado,
-          'permisos' => $mostrar_permisos
+          'permisos' => $mostrar_permisos,
+          "permisos_separados" => $row["permisos"]
         );
       };
       echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);

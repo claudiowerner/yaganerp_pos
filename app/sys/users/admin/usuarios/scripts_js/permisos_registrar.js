@@ -1,6 +1,5 @@
 //permisos de usuario
 let permisos = Array();
-let permisosEditar = Array();
 
 function activarPermisoAdministrar()
 {

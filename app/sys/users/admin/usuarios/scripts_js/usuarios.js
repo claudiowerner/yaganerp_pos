@@ -13,7 +13,11 @@ table = $('#producto').DataTable({
       {"data":"estado"},
       {"data":"permisos"},
       {
-        "defaultContent": '<button type="submit" class="btn btn-primary editar" id="btnEditar"><img src="../img/edit.png" width="15"></button>'
+        "data": null,
+          "render": function (data, type, row) {
+            return `<button type='submit' id='btnEditar' class='btn btn-primary' onClick="abrirModalEditarUsuario('${data.id}','${data.nombre}', '${data.user}', '${data.id_tipo_usuario}', '${data.permisos_separados}')"><i class='fa fa-edit' aria-hidden='true'></i></button>
+            <button type='submit' id='btnEliminar' class='btn btn-danger' onClick="eliminarUsuario(${data.id})"><i class='fa fa-trash-o' aria-hidden='true'></i></span></button>`;
+          }
       }
     ],
     
@@ -48,205 +52,13 @@ $(document).on("ready", function(e)
 
   
 
-  $("#producto").on("click", "tr", function(e)
-  {
-    e.preventDefault();
-    var usuarios = $("#producto").DataTable();
-    var datos = usuarios.row(this).data();
-    let id = datos.id;
-    permisosEditar = Array();
-
-    //proceso de checkeo de checkbox de permisos
-    $.ajax(
-      {
-        url:"scripts/../../read_permisos_usuario.php",
-        data:{"id_usu":id},
-        type:"POST",
-        success: function(e)
-        {
-          if(e.match(/1/))
-          {
-            $("#venderEditar").prop("checked", true);
-            permisosEditar.push(1);
-          }
-          else
-          {
-            $("#venderEditar").prop("checked", false);
-          }
-          if(e.match(/2/))
-          {
-            $("#pagarMesaEditar").prop("checked", true);
-            permisosEditar.push(2);
-          }
-          else
-          {
-            $("#pagarMesaEditar").prop("checked", false);
-          }
-          if(e.match(/3/))
-          {
-            $("#anularVentaEditar").prop("checked", true);
-            permisosEditar.push(3);
-          }
-          else
-          {
-            $("#anularVentaEditar").prop("checked", false);
-          }
-          if(e.match(/4/))
-          {
-            $("#cambiarMesaEditar").prop("checked", true);
-            permisosEditar.push(4);
-          }
-          else
-          {
-            $("#cambiarMesaEditar").prop("checked", false);
-          }
-        }
-      }
-    )
-
-    $("#modalEditar").modal('show'); 
-    $("#nomUserEditar").val(datos.nombre);
-    $("#userEditar").val(datos.user);
-    $("#slctTipoUsuarioEditar").val(datos.tipo_usuario);
-    if(datos.estado=="ACTIVADO")
-    {
-      $("#slctEstado").val("S");
-    }
-    else
-    {
-      $("#slctEstado").val("N");
-    }
-    
-    $("#usuario").html(datos.user);
-
-  });
-
-  //cambiar permisos para editar
-
-
-  $("#venderEditar").on("click", function(e)
-  {
-    if(e.target.checked)
-    {
-      permisosEditar.push(1);
-    }
-    else
-    {
-      permisosEditar = permisosEditar.filter(user => user != 1)
-    }
-    permisosEditar.sort();
-    
-    
-  })
-
-  $("#pagarMesaEditar").on("click", function(e)
-  {
-    if(e.target.checked)
-    {
-      permisosEditar.push(2);
-    }
-    else
-    {
-      permisosEditar = permisosEditar.filter(user => user != 2)
-    }
-    permisosEditar.sort();
-  })
-
-  $("#anularVentaEditar").on("click", function(e)
-  {
-    if(e.target.checked)
-    {
-      permisosEditar.push(3);
-    }
-    else
-    {
-      permisosEditar = permisosEditar.filter(user => user != 3)
-    }
-    permisosEditar.sort();
-  })
-
-  $("#cambiarMesaEditar").on("click", function(e)
-  {
-    if(e.target.checked)
-    {
-      permisosEditar.push(4);
-    }
-    else
-    {
-      permisosEditar = permisosEditar.filter(user => user != 4)
-    }
-    permisosEditar.sort();
-    permisos.sort();
-  })
+  
 
   
-  $("#btnModificar").on("click", function(e)
-  {
-    let user = $("#usuario").text();//nickname de usuario antiguo
-    let user_n = $("#userEditar").val();//nickname de usuario nuevo
-    let nombre = $("#nomUserEditar").val();//nombre de usuario
-    let pass = $("#passEditar").val();
-    let cPass = $("#cPassEditar").val();
-    let estado = $("#slctEstado").val();
-    let tu = $("#slctTipoUsuarioEditar").val();
-    permisosEditar = permisosEditar.toString();
-
-    if(pass!=cPass)
-    {
-      $("#lblMsjEditar").html("<strong style='color: red'>Las contraseñas ingresadas no coinciden entre sí.</strong>");
-      $("#passEditar").val("");
-      $("#cPassEditar").val("");
-      $("#passEditar").focus();
-    }
-    else
-    {
-      $("#lblMsjEditar").html("");
-      let datos = {
-        "user":user,
-        "user_n":user_n,
-        "nombre":nombre,
-        "pass":pass, 
-        "estado":estado,
-        "tu":tu,
-        "permisos":permisosEditar
-      }
-      //validar si se excede de la cuota de usuarios permitidos o no
-      estado = $("#slctEstado").val();
-
-      if(estado=="S")
-      {
-        validarUsuariosActivos();
-        modificar(datos);
-      }
-      if(estado=="N")
-      {
-        modificar(datos);
-      }
-    }
-  });
+  
 
 })
-function modificar(datos)
-{
-  $.ajax(
-    {
-      url:"scripts/editar_usuario.php",
-      data:datos,
-      type:"POST",
-      success: function(e)
-      {
-        msjes_swal("Excelente", e, "success");
-        $("#modalEditar").modal("hide");
-        $('#producto').DataTable().ajax.reload();
-        cargarUsuariosActivos();
-        validarUsuariosActivos();
-      }
-    })
-    .fail(function(e)
-    {
-      msjes_swal("Error",e,"error")
-    })
-}
+
 
 function getFecha ()
 {
