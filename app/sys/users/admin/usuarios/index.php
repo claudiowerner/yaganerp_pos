@@ -120,8 +120,8 @@
     <script src="scripts_js/validar_usuario_existente.js"></script>
     <script src="scripts_js/permisos_registrar.js"></script>
     <script src="scripts_js/permisos_editar.js"></script>
-    <script src="scripts_js/obtener_permisos_usuario.js"></script>
     <script src="scripts_js/editar_usuario.js"></script>
+    <script src="scripts_js/validar_usuarios.js"></script>
 
 </body>
 

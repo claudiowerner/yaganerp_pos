@@ -1,18 +1,21 @@
-function cargarUsuariosPermitidos()
+/* -------------------------------------------- FUNCIONES AJAX --------------------------------------- */
+function cargarUsuariosPermitidosAjax()
 {
-  $.ajax(
+  return $.ajax(
     {
       url: "scripts/read_usuarios_permitidos.php",
       type: "POST",
-      async: false, 
-      success: function(e)
-      {
-        $("#us_permitidos").html(e)
-      }
+      async: false
     }
-  )
-  .fail(function(e)
-  {
-    msjes_swal("Error",e,"error")
-  })
+  ).responseText;
+}
+
+
+
+/* -------------------------------------------- FUNCIONES DOM ---------------------------------------- */
+function cargarUsuariosPermitidos()
+{
+  let usuarios_permitidos = cargarUsuariosPermitidosAjax();
+  alert(usuarios_permitidos)
+  $("#us_permitidos").html(usuarios_permitidos)
 }

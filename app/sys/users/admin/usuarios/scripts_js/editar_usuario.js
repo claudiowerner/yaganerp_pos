@@ -74,11 +74,15 @@ $("#btnModificar").on("click", function(e)
             "permisos":permisosEditar
         }
         let respuesta = modificarUsuarioAjax(datos);
-        alert(respuesta)
+        let json = JSON.parse(respuesta)
         $('#producto').DataTable().ajax.reload();
-        cargarUsuariosActivos();
-        validarUsuariosActivos();
-        msjes_swal("Excelente", e, "success");
+        
+        msjes_swal(json.titulo, json.mensaje, json.icono);
         $("#modalEditar").modal("hide");
+
+        
+        cargarUsuariosActivos()
+        cargarUsuariosPermitidos()
+        validarUsuariosActivos()
     }
 });

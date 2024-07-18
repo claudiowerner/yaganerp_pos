@@ -28,8 +28,13 @@
 	$tu = $_POST['tu']; //tipo usuario
 	$permisos = $_POST["permisos"];
 
+
+	//Fecha
 	
-	$sql = "INSERT INTO usuarios VALUES (null, '$nombre', '$user$id_cl', '$pass', '$tu', '$id_cl', 'S','$permisos')";
+	date_default_timezone_set('America/Santiago');
+
+	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
+	$sql = "INSERT INTO usuarios VALUES (null, '$nombre', '$user$id_cl', '$pass', '$tu', '$id_cl', 'S','$permisos','$fecha_hora')";
 	$resultado = $conexion->query($sql);
 
 	$json = array();

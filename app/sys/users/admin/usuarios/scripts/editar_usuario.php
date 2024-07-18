@@ -18,6 +18,8 @@
 	$nombre = $_POST["nombre"];
 	$user_n = $_POST["user_n"];//nombre de usuario nuevo
 	$pass = "";
+
+	$json = array();
 	if($_POST["pass"]=="")
 	{
 		$pass = "";
@@ -33,25 +35,39 @@
 
 	if($pass=="")
 	{
-		echo $sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', tipo_usuario = '$tipo_usuario', permisos='$permisos' WHERE id_cl = $id_cl AND id = '$id';";
+		$sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', tipo_usuario = '$tipo_usuario', permisos='$permisos' WHERE id_cl = $id_cl AND id = '$id';";
 	}
 	if($pass!="")
 	{
-		echo $sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', pass = '$pass', tipo_usuario = '$tipo_usuario', permisos='$permisos' WHERE id_cl = $id_cl AND id = '$id';";
+		$sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', pass = '$pass', tipo_usuario = '$tipo_usuario', permisos='$permisos' WHERE id_cl = $id_cl AND id = '$id';";
 	}
 	$resultado = $conexion->query($sql);
 
+
 	if($resultado)
 	{
-		echo "Usuario editado correctamente";
+		$json = array(
+			"edicion" => true,
+			"titulo" => "Excelente",
+			"mensaje" => "Usuario editado correctamente",
+			"icono" => "success"
+		);
 	}
 	else
 	{
-		die("Error al modificar usuario: ". mysqli_error($conexion));
+		$json = array(
+			"edicion" => false,
+			"titulo" => "Error",
+			"mensaje" => "Ha ocurrido un error al editar el usuario: ".$conexion->error,
+			"icono" => "error"
+		);
 	}
 
 	//codigo que elimina la clave provisoria en caso de existir
 	$sql = 
 	"DELETE FROM pass_provisoria WHERE id_cl = '$id_cl'";
-	$conexion->query($sql);;
+	$conexion->query($sql);
+
+
+	echo json_encode($json);
 ?>

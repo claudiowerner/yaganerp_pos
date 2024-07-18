@@ -35,7 +35,7 @@ $("#btnGuardar").on("click", function(e){
         let usuario_existente = parseInt(validarUsuarioExistente(user));
         if(usuario_existente == 0)
         {
-            let respuesta = crearUsuario(nomUser, user, pass, tipoUsuario, permisos)
+            let respuesta = crearUsuario(nomUser, user, pass, tipoUsuario, permisos)    
             let json = JSON.parse(respuesta);
     
             msjes_swal(json.titulo, json.mensaje, json.icono);
@@ -44,8 +44,9 @@ $("#btnGuardar").on("click", function(e){
             {
                 $('#producto').DataTable().ajax.reload();
                 $("#modalRegistro").modal("hide");
-                cargarUsuariosActivos();
-                validarUsuariosActivos();
+                cargarUsuariosActivos()
+                cargarUsuariosPermitidos()
+                validarUsuariosActivos()
             }
         }
         else

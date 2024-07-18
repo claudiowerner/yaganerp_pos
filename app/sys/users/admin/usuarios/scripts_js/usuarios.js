@@ -1,3 +1,6 @@
+cargarUsuariosActivos()
+cargarUsuariosPermitidos()
+validarUsuariosActivos()
 table = $('#producto').DataTable({
   "ajax":{
     "url":"scripts/read_usuarios.php",

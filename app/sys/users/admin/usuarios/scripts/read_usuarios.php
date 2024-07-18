@@ -16,7 +16,7 @@ if(isset($_SESSION['user'])){
     require_once '../../../../conexion.php';
 
     //query
-    $sql = "SELECT id, nombre, user, tipo_usuario, estado, permisos, fecha_reg 
+    $sql = "SELECT id, nombre, user, tipo_usuario, estado, permisos, DATE_FORMAT(fecha_reg, '%d-%m-%Y %H:%i:%S') AS fecha_reg
     FROM usuarios 
     WHERE id_cl = $id_cl
     AND estado = 'S'";

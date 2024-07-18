@@ -1,18 +1,19 @@
-function cargarUsuariosActivos()
+/* ---------------------------------------- FUNCIONES AJAX ---------------------------------------------*/
+function cargarUsuariosActivosAjax()
 {
-  $.ajax(
+  return $.ajax(
     {
       url: "scripts/read_usuarios_activos.php",
       type: "POST",
       async: false,
-      success: function(e)
-      {
-        $("#us_creados").html(e);
-      }
     }
-  )
-  .fail(function(e)
-  {
-    msjes_swal("Error",e,"error")
-  })
+  ).responseText;
+}
+
+/* ----------------------------------------- FUNCIONES DOM ---------------------------------------------*/
+function cargarUsuariosActivos()
+{
+  let usuarios_activos = cargarUsuariosActivosAjax();
+  alert(usuarios_activos);
+  $("#us_creados").html(usuarios_activos);  
 }
