@@ -124,10 +124,10 @@ echo '<div class="modal fade" id="modalConfGanancia" role="dialog" aria-labelled
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="tipoVenta">Configurar información de las cuentas de ventas</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <h5 class="modal-title" id="tipoVenta">Configurar información de las cuentas de ventas</h5>
       </div>
       <div class="modal-body" align="center">
       <table width="100%">

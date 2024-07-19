@@ -169,6 +169,12 @@
     <script src="js/info_cuentas/actualizar_datos_cuenta.js"></script>
 
     
+    <!--ARCHIVOS RELACIONADOS CON LA CONFIGURACIÓN DE MARGEN DE GANANCIA-->
+    <script src="js/margen_ganancia/margen_ganancia.js"></script>
+    <script src="js/margen_ganancia/cargar_margen_ganancia.js"></script>
+    <script src="js/margen_ganancia/crear_margen_ganancia.js"></script>
+
+    
 
 </body>
 

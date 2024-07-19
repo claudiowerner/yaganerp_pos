@@ -26,11 +26,23 @@
   $resultado = $conexion->query($sql);
   if($resultado)
   {
-    echo "Cambios guardados exitosamente";
+    $json = array(
+      "margen" => true,
+      "titulo" => "Excelente",
+      "mensaje" => "Margen de ganancia editado correctamente.",
+      "icono" => "success"
+    );
   }
   else
   {
-    die("Error al modificar margen de ganancia: ". mysqli_error($conexion));
+    $json = array(
+      "margen" => false,
+      "titulo" => "Error",
+      "mensaje" => "Ha ocurrido un error al editar el margen de ganancia: ".$conexion->error,
+      "icono" => "error"
+    );
   }
+
+  echo json_encode($json);
 
 ?>
