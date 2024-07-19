@@ -179,6 +179,8 @@
     <script src="js/producto/cargarProducto.js"></script>
     <script src="js/venta/cargarVentasCaja.js"></script>
     <script src="js/venta/clave_aut/clave_aut.js"></script>
+    <script src="js/venta/eliminar_venta_ajax.js"></script>
+    <script src="js/venta/eliminar_venta_autorizacion.js"></script>
     <script src="js/venta/eliminarVenta.js"></script>
     <script src="js/imprimir/primera_impresion/imprCtaGeneral.js"></script>
     <script src="js/cantidad/modificarCant.js"></script>

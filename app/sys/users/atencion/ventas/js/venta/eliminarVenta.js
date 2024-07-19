@@ -1,18 +1,9 @@
-//Procesos en la BD
-function eliminarVenta(id)
-{
-    return $.ajax({
-        url: "func_php/venta/elim_venta_exe.php",
-        data: {"id_venta":id},
-        type: "POST",
-        async: false
-    }).responseText;
-}
 
 
 //Accion al intentar eliminar venta
-async function accionEliminarVenta(id)
+function accionEliminarVenta(id)
 {
+    debugger;
     $("#anVenta").text(id);
     let configClave = leerConfigClave()
     
@@ -25,7 +16,7 @@ async function accionEliminarVenta(id)
         let descargarRespuesta = eliminarVenta(id);
         let jsonRes = JSON.parse(descargarRespuesta);
 
-        if(jsonRes.eliminarVenta)
+        if(jsonRes.eliminar_venta)
         {
             cargarVentasCaja();
             $('#solicClaveAut').modal('hide');
@@ -36,6 +27,4 @@ async function accionEliminarVenta(id)
             console.error(jsonRes.error);
         }
     }
-   
-
 }

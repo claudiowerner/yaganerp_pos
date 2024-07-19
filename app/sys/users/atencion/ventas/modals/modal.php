@@ -65,7 +65,7 @@ function modalDescuento()
         </div>
         <div class='modal-footer'>
           <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-          <button class='btn btn-success' id='btnEliminarVenta'>Confirmar</button>
+          <button class='btn btn-success' id='btnConfirmarEliminarVenta'>Confirmar</button>
         </div>
       </div>
     </div>

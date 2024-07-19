@@ -30,14 +30,19 @@
 		if($res2)
 		{
 			$json = array(
-				"eliminar_venta" => true
+				"eliminar_venta" => true,
+				"titulo" => "Excelente",
+				"mensaje" => "Venta eliminada correctamente.",
+				"icono" => "success"
 			);
 		}
 		else
 		{
 			$json = array(
-				"eliminar_venta" => false,
-				"error" => "Error al eliminar venta: ".$conexion->error()
+				"eliminar_venta" => true,
+				"titulo" => "Error",
+				"mensaje" => "Error al eliminar venta: ".$conexion->error,
+				"icono" => "error"
 			);
 		}
 		echo json_encode($json);
