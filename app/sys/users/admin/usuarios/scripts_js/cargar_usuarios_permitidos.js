@@ -16,6 +16,5 @@ function cargarUsuariosPermitidosAjax()
 function cargarUsuariosPermitidos()
 {
   let usuarios_permitidos = cargarUsuariosPermitidosAjax();
-  alert(usuarios_permitidos)
   $("#us_permitidos").html(usuarios_permitidos)
 }

@@ -19,7 +19,7 @@ table = $('#producto').DataTable({
         "data": null,
           "render": function (data, type, row) {
             return `<button type='submit' id='btnEditar' class='btn btn-primary' onClick="abrirModalEditarUsuario('${data.id}','${data.nombre}', '${data.user}', '${data.id_tipo_usuario}', '${data.permisos_separados}')"><i class='fa fa-edit' aria-hidden='true'></i></button>
-            <button type='submit' id='btnEliminar' class='btn btn-danger' onClick="eliminarUsuario(${data.id})"><i class='fa fa-trash-o' aria-hidden='true'></i></span></button>`;
+            <button type='submit' id='btnEliminar' class='btn btn-danger' onClick="eliminarUsuario(${data.id}, ${data.id_tipo_usuario}, '${data.user}')"><i class='fa fa-trash-o' aria-hidden='true'></i></span></button>`;
           }
       }
     ],

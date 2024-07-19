@@ -14,6 +14,5 @@ function cargarUsuariosActivosAjax()
 function cargarUsuariosActivos()
 {
   let usuarios_activos = cargarUsuariosActivosAjax();
-  alert(usuarios_activos);
   $("#us_creados").html(usuarios_activos);  
 }

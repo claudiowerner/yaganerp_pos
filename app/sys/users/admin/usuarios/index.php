@@ -122,6 +122,8 @@
     <script src="scripts_js/permisos_editar.js"></script>
     <script src="scripts_js/editar_usuario.js"></script>
     <script src="scripts_js/validar_usuarios.js"></script>
+    <script src="scripts_js/eliminar_usuario.js"></script>
+    <script src="scripts_js/validar_existencia_usuarios_admin.js"></script>
 
 </body>
 

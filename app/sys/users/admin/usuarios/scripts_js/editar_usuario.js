@@ -25,6 +25,8 @@ function abrirModalEditarUsuario(id, nombre, user, tipo_usuario, permisos)
     $("#usuario").html(user);
     $("#userEditar").val(user);
     $("#slctTipoUsuarioEditar").val(tipo_usuario);
+    $("#passEditar").val("");
+    $("#cPassEditar").val("");
 
     if(permisos.match(/1/))
     {
@@ -52,8 +54,6 @@ $("#btnModificar").on("click", function(e)
     let estado = $("#slctEstado").val();
     let tu = $("#slctTipoUsuarioEditar").val();
     permisosEditar = permisosEditar.toString();
-
-    alert("Tipo de usuario: "+tu);
 
     if(pass!=cPass)
     {
