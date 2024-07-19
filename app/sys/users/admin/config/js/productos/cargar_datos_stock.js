@@ -14,15 +14,17 @@ function cargarConfiguracionProductosAjax()
 function cargarConfiguracionProductos()
 {
     let descarga = cargarConfiguracionProductosAjax();
-    let json = JSON.parse(descarga)
+    let json = JSON.parse(descarga);
     json.forEach(s=>{
         if(s.estado == "S")
         {
+            estado = "S";
             $("#swStockProductos").prop("checked",true);
             $("#txtNumMinimoStock").attr("disabled",false);
         }
         else
         {
+            estado = "N";
             $("#swStockProductos").prop("checked",false);
             $("#txtNumMinimoStock").attr("disabled",true);
         }
