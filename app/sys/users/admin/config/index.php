@@ -173,6 +173,12 @@
     <script src="js/margen_ganancia/margen_ganancia.js"></script>
     <script src="js/margen_ganancia/cargar_margen_ganancia.js"></script>
     <script src="js/margen_ganancia/crear_margen_ganancia.js"></script>
+    
+    <!--ARCHIVOS RELACIONADO CON LA CONFIGURACIÓN DE STOCK DE PRODUCTOS-->
+    <script src="js/productos/productos.js"></script>
+    <script src="js/productos/cargar_datos_stock.js"></script>
+    <script src="js/productos/estado_stock_productos.js"></script>
+    <script src="js/productos/crear_stock.js"></script>
 
     
 

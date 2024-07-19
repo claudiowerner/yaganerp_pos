@@ -29,11 +29,23 @@
   $resultado = $conexion->query($sql);
   if($resultado)
   {
-    echo "Cambios guardados exitosamente";
+    $json = array(
+      "edicion_stock" => true,
+      "titulo" => "Excelente",
+      "mensaje" => "Configuración de stock mínimo modificada correctamente.",
+      "icono" => "success"
+    );
   }
   else
   {
-    die("Error al modificar clave: ". mysqli_error($conexion));
+    $json = array(
+      "edicion_stock" => false,
+      "titulo" => "Error",
+      "mensaje" => "Ha ocurrido un error al editar la configuración de stock: ".$conexion->error,
+      "icono" => "error"
+    );
   }
+
+  echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 
 ?>

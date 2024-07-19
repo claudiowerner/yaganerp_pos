@@ -1,10 +1,6 @@
 
 
 $("#slctGiros").select2();
-$("#configProducto").on("click", function(e)
-{
-  $("#modalConfProd").modal("show");
-});
 
 $("#configConvenio").on("click", function(e)
 {

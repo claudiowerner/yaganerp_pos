@@ -54,3 +54,20 @@
 }
 
 
+
+/* ------------------------------------------- PRODUCTOS -----------------------------------------*/
+#swStockProductos
+{
+    display: none;
+}
+#swStockProductos:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swStockProductos:checked~ .switch:after
+{
+    left: 23px; 
+}
+
+
