@@ -152,14 +152,14 @@ echo '<div class="modal fade" id="modalConfGanancia" role="dialog" aria-labelled
 
 //modal config de info del stock de productos
 
-echo '<div class="modal fade" id="modalConfProd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+echo '<div class="modal fade" id="modalConfProd" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="tipoVenta">Configuración de stock de productos</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
+      <h5 class="modal-title" id="tipoVenta">Configuración de stock de productos</h5>
     </div>
     <div class="modal-body" align="center">
     <table width="100%">
@@ -192,7 +192,7 @@ echo '<div class="modal fade" id="modalConfProd" tabindex="-1" role="dialog" ari
 //modal config de info del stock de productos
 
 echo '
-<div class="modal fade" id="modalConfConvenio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="modalConfConvenio" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -223,21 +223,20 @@ echo '
 </div>';
 
 echo '
-  <div class="modal fade" id="modalPlanContratado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal fade" id="modalPlanContratado" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="tipoVenta">Configuración de convenios</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+          <h5 class="modal-title" id="tipoVenta">Plan contratado</h5>
         </div>
       <div class="modal-body" align="center">
         <strong id="nombrePlan"></strong>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button id="btnGuardarConvenio" class="btn btn-success">Guardar</button>
       </div>
     </div>
   </div>

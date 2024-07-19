@@ -180,6 +180,9 @@
     <script src="js/productos/estado_stock_productos.js"></script>
     <script src="js/productos/crear_stock.js"></script>
 
+    <!--ARCHIVOS RELACIONADOS CON EL PLAN CONTRATADO-->
+    <script src="js/plan_contratado/cargarPlanContratado.js"></script>
+
     
 
 </body>
