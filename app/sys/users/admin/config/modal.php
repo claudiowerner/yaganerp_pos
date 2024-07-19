@@ -1,15 +1,16 @@
 <?php
   //modal crear clave
-  echo '<div class="modal fade" id="crearClave" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  echo '<div class="modal fade" id="crearClave" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="tipoVenta">Crear clave de autorizaciones</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <h5 class="modal-title" id="tipoVenta">Crear clave de autorizaciones</h5>
       </div>
       <div class="modal-body" align="center">
+      Nota: indique la clave solamente si desea actualizarla. De lo contrario, deje el espacio en blanco.
         <form id="formClave">
           <table>
             <tr>

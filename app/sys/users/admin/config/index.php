@@ -149,7 +149,9 @@
 
 
     <!--llamada a los archivos .js-->
-    <script src="js/clave.js"></script>
+    <script src="js/clave/estado_clave.js"></script>
+    <script src="js/clave/clave.js"></script>
+    <script src="js/clave/crear_clave.js"></script>
     <script src="js/config.js"></script>
     <script src="js/cuentas.js"></script>
     <script src="js/productos.js"></script>

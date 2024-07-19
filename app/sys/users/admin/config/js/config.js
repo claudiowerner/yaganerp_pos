@@ -1,7 +1,3 @@
-$("#claveAutorizaciones").on("click", function(e)
-{
-  $("#crearClave").modal("show");
-});
 
 $("#configCuentas").on("click", function(e)
 {
