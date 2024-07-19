@@ -20,7 +20,8 @@
     $sql =
 	"SELECT * FROM pedidos 
 	WHERE id_cl = $id_cl 
-	AND id_proveedor = $id";
+	AND id_proveedor = $id
+	AND estado = 'S'";
 	$res = $conexion->query($sql);
 
 	echo $res->num_rows;

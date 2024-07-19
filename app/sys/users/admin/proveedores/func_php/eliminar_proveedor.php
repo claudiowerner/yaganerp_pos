@@ -24,12 +24,14 @@
 	WHERE id = '$id'";
 	$res = $conexion->query($sql);
 
+	/* ------------------------------------ REGISTRO EN TABLA ANULAR_CLIENTE --------------------------- */
+	//Fecha
 	
-	$hoy = getdate();
-	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
-	//inserción en anula_proveedores
+	date_default_timezone_set('America/Santiago');
+
+	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
 	$sql = "INSERT INTO anula_proveedor 
-	VALUES (null, '$id_cl', '$id', '$id_us', '$fecha $hora')";
+	VALUES (null, '$id_cl', '$id', '$id_us', '$fecha_hora')";
 	$res2 = $conexion->query($sql);
 
 	if($res&&$res2)

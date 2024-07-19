@@ -22,13 +22,27 @@
 
 	$idCaja = $_POST["idCaja"];
 
-	//Actualizar nombre
+	//eliminar caja
 	$res = "";
 	$sql = "UPDATE cajas SET estado = 'N' WHERE id = $idCaja;";
 	$res = $conexion->query($sql);
 
+
+	/* ------------------------------------ REGISTRO EN TABLA ANULAR_CAJA --------------------------- */
+	//Fecha
+	
+	date_default_timezone_set('America/Santiago');
+
+	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
+	$sql = "INSERT INTO anula_cajas VALUES 
+	(null, '$id_cl', '$idCaja', '$id_us', '$fecha_hora');";
+
+	$res2 = $conexion->query($sql);
+
+
+
 	$json = array();
-	if($res)
+	if($res&&$res2)
 	{
 		$json = array(
 			"titulo" => "Excelente",

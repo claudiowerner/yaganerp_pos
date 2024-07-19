@@ -18,7 +18,8 @@ if(isset($_SESSION['user'])){
 	//query
 	$sql = "SELECT * FROM productos 
   WHERE id_cl = $id_cl 
-  AND categoria = $categoria";
+  AND categoria = $categoria
+  AND estado = 'S'";
   $res = $conexion->query($sql);
 
   echo $res->num_rows;

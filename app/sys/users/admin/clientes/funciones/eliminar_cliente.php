@@ -20,7 +20,20 @@
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
 
+
     $rut = $_POST['rut'];
+	/* OBTENER ID DEL CLIENTE SEGÚN RUT */
+	$id = "";
+
+	$sql = "SELECT id FROM clientes_negocio 
+	WHERE id_cl = $id_cl 
+	AND rut = '$rut' 
+	AND estado = 'S'";
+	$res = $conexion->query($sql);
+	while($row = $res->fetch_array())
+	{
+		$id = $row["id"];
+	}
 
 	$sql = "UPDATE clientes_negocio 
 	SET estado = 'N'
@@ -33,6 +46,17 @@
 	SET estado = 'N'
 	WHERE id_cl = $id_cl
 	AND rut = '$rut'";
+
+	$res2 = $conexion->query($sql);
+
+		/* ------------------------------------ REGISTRO EN TABLA ANULAR_CLIENTE --------------------------- */
+	//Fecha
+	
+	date_default_timezone_set('America/Santiago');
+
+	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
+	$sql = "INSERT INTO anula_clientes VALUES 
+	(null, '$id_cl', '$id', '$id_us', '$fecha_hora');";
 
 	$res2 = $conexion->query($sql);
 

@@ -26,8 +26,18 @@
 	SET estado = 'N'
 	WHERE id_cl = $id_cl
 	AND id = $id";
-
 	$res1 = $conexion->query($sql);
+
+	/* ------------------------------------ REGISTRO EN TABLA ANULAR_USUARIO --------------------------- */
+	//Fecha
+	
+	date_default_timezone_set('America/Santiago');
+
+	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
+	$sql = "INSERT INTO anula_categoria VALUES 
+	(null, '$id_cl', '$id', '$id_us', '$fecha_hora');";
+
+	$res2 = $conexion->query($sql);
 
 	$json = array();
 

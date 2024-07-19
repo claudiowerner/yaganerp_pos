@@ -1,9 +1,8 @@
 /* ----------------------------------------- FUNCIONES AJAX ---------------------------------------- */
-function eliminaProductoAjax(id, fecha)
+function eliminaProductoAjax(id)
 {
     let datos = {
         "id": id,
-        "fecha": fecha
     };
     return $.ajax({
         url: "funciones/eliminar_producto.php",
@@ -28,9 +27,8 @@ function eliminarProducto(id, nombre)
       })
       .then((pagar) => {
         if (pagar)
-        {
-            let fecha_hora = getFechaBD()+" "+getHora();    
-            let respuesta = eliminaProductoAjax(id, fecha_hora);
+        { 
+            let respuesta = eliminaProductoAjax(id);
             let json = JSON.parse(respuesta);
 
             msjes_swal(json.titulo, json.mensaje, json.icono);

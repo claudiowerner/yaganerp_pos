@@ -24,7 +24,18 @@ session_start();
 	WHERE id = '$id';";
 	$res = $conexion->query($sql);
 
-    if($res)
+    /* ------------------------------------ REGISTRO EN TABLA ANULAR_PEDIDO --------------------------- */
+	//Fecha
+	
+	date_default_timezone_set('America/Santiago');
+
+	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
+	$sql = "INSERT INTO anula_pedidos VALUES 
+	(null, '$id_cl', '$id', '$id_us', '$fecha_hora');";
+
+	$res2 = $conexion->query($sql);
+
+    if($res&&$res2)
     {
         $json = array(
             "titulo" => "Excelente",

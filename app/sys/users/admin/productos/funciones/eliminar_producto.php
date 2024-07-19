@@ -2,6 +2,7 @@
 
 
 	session_start();
+	date_default_timezone_set('America/Santiago');
 	if(isset($_SESSION['user'])){
       	$tipo = $_SESSION['user']['tipo_usuario'];
      	if($tipo == 1){
@@ -21,7 +22,9 @@
     
 
     $id = $_POST['id'];
-    $fecha = $_POST['fecha'];
+	
+
+	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
     
 	
 	/* -------------------------------- ACTUALIZACIÓN TABLA PRODUCTOS --------------------------------- */
@@ -33,7 +36,7 @@
 	$res1 = $conexion->query($sql);
 	/* -------------------------------- ACTUALIZACIÓN TABLA PRODUCTOS --------------------------------- */
 	$sql = 
-	"INSERT INTO anula_productos  VALUES (null, '$id_cl', '$id', '$id_us', '$fecha');";
+	"INSERT INTO anula_productos  VALUES (null, '$id_cl', '$id', '$id_us', '$fecha_hora');";
 	$res1 = $conexion->query($sql);
 
 	if($res1)
