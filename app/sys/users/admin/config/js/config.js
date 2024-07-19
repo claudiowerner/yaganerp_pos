@@ -1,9 +1,6 @@
 
-$("#configCuentas").on("click", function(e)
-{
-  $("#modalConfCuenta").modal("show");
-});
 
+$("#slctGiros").select2();
 $("#configProducto").on("click", function(e)
 {
   $("#modalConfProd").modal("show");

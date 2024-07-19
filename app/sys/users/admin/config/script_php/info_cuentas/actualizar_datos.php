@@ -22,13 +22,25 @@
                                     WHERE id = '$id_cl'";
     $resultado = $conexion->query($sql);
 
+    $json = array();
     if($resultado)
     {
-        echo "Datos guardados correctamente";
+        $json = array(
+            "editar_datos" => true, 
+            "titulo" => "Excelente", 
+            "mensaje" => "Datos modificados correctamente.",
+            "icono" => "success"
+        );
     }
     else
     {
-        die("Error al modificar datos: ". mysqli_error($conexion));
+        $json = array(
+            "editar_datos" => false, 
+            "titulo" => "Error", 
+            "mensaje" => "Ha ocurrido un error al editar los datos: ".$conexion->error,
+            "icono" => "error"
+        );
     }
 
+    echo json_encode($json);
 ?>

@@ -149,17 +149,27 @@
 
 
     <!--llamada a los archivos .js-->
+
+    <!-- ARCHIVOS RELACIONADOS LA PANTALLA INICIAL DE CONFIGURACIÓN-->
+     
+    <script src="js/config.js"></script>
+    <script src="js/cargarGiros.js"></script>
+    
+
+    <!--ARCHIVOS RELACIONADOS CON LAS CLAVES DE AUTORIZACION-->
     <script src="js/clave/estado_clave.js"></script>
     <script src="js/clave/clave.js"></script>
     <script src="js/clave/crear_clave.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/cuentas.js"></script>
-    <script src="js/productos.js"></script>
-    <script src="js/convenio.js"></script>
-    <script src="js/margen_ganancia.js"></script>
-    <script src="js/cargarGiros.js"></script>
-    <script src="js/cargarPlanContratado.js"></script>
+
+    <!--ARCHIVOS RELACIONADOS CON LAS CUENTAS-->
+    <script src="js/info_cuentas/cuentas.js"></script>
+    <script src="js/info_cuentas/cargar_datos_cuenta.js"></script>
+    <script src="js/info_cuentas/validar_correo.js"></script>
+    <script src="js/info_cuentas/validar_telefono.js"></script>
+    <script src="js/info_cuentas/actualizar_datos_cuenta.js"></script>
+
     
+
 </body>
 
 </html>
