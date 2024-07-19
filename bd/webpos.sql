@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-07-2024 a las 18:13:01
+-- Tiempo de generación: 20-07-2024 a las 00:46:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `anula_cajas`
+--
+
+CREATE TABLE `anula_cajas` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_caja` int(11) NOT NULL,
+  `anulado_por` int(11) NOT NULL,
+  `fecha` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `anula_cajas`
+--
+
+INSERT INTO `anula_cajas` (`id`, `id_cl`, `id_caja`, `anulado_por`, `fecha`) VALUES
+(1, 1, 9, 1, '2024-07-19 18:15:56');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `anula_categoria`
 --
 
@@ -34,6 +55,55 @@ CREATE TABLE `anula_categoria` (
   `anulado_por` int(11) NOT NULL,
   `fecha` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `anula_categoria`
+--
+
+INSERT INTO `anula_categoria` (`id`, `id_cl`, `id_categoria`, `anulado_por`, `fecha`) VALUES
+(1, 1, 8, 1, '2024-07-19 18:21:26');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `anula_clientes`
+--
+
+CREATE TABLE `anula_clientes` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `anulado_por` int(11) NOT NULL,
+  `fecha` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `anula_clientes`
+--
+
+INSERT INTO `anula_clientes` (`id`, `id_cl`, `id_cliente`, `anulado_por`, `fecha`) VALUES
+(1, 1, 11, 1, '2024-07-19 18:36:20');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `anula_pedidos`
+--
+
+CREATE TABLE `anula_pedidos` (
+  `id` int(11) NOT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL,
+  `anulado_por` int(11) NOT NULL,
+  `fecha` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `anula_pedidos`
+--
+
+INSERT INTO `anula_pedidos` (`id`, `id_cl`, `id_pedido`, `anulado_por`, `fecha`) VALUES
+(1, 1, 1, 1, '2024-07-19 18:39:44');
 
 -- --------------------------------------------------------
 
@@ -61,7 +131,22 @@ INSERT INTO `anula_productos` (`id`, `id_cl`, `id_producto`, `anulado_por`, `fec
 (5, 1, 7, '1', '2024-07-12 00:00:00'),
 (6, 1, 8, '1', '2024-07-12 16:57:43'),
 (7, 1, 9, '1', '2024-07-12 16:59:29'),
-(8, 1, 11, '1', '2024-07-12 17:49:40');
+(8, 1, 11, '1', '2024-07-12 17:49:40'),
+(9, 1, 64, '1', '2024-07-19 18:18:35'),
+(10, 1, 40, '1', '2024-07-19 18:18:47'),
+(11, 1, 41, '1', '2024-07-19 18:18:50'),
+(12, 1, 42, '1', '2024-07-19 18:18:56'),
+(13, 1, 43, '1', '2024-07-19 18:19:00'),
+(14, 1, 107, '1', '2024-07-19 18:19:09'),
+(15, 1, 45, '1', '2024-07-19 18:19:16'),
+(16, 1, 44, '1', '2024-07-19 18:19:21'),
+(17, 1, 76, '1', '2024-07-19 18:19:23'),
+(18, 1, 100, '1', '2024-07-19 18:19:25'),
+(19, 1, 101, '1', '2024-07-19 18:19:28'),
+(20, 1, 90, '1', '2024-07-19 18:19:31'),
+(21, 1, 47, '1', '2024-07-19 18:19:33'),
+(22, 1, 46, '1', '2024-07-19 18:19:37'),
+(23, 1, 63, '1', '2024-07-19 18:24:07');
 
 -- --------------------------------------------------------
 
@@ -91,7 +176,8 @@ INSERT INTO `anula_proveedor` (`id`, `id_cl`, `id_proveedor`, `anulado_por`, `fe
 (7, 1, 9, '1', '2024-07-17 00:00:00'),
 (8, 1, 7, '1', '2024-07-17 00:00:00'),
 (9, 1, 6, '1', '2024-07-17 00:00:00'),
-(10, 1, 8, '1', '2024-07-17 21:42:13');
+(10, 1, 8, '1', '2024-07-17 21:42:13'),
+(11, 1, 1, '1', '2024-07-19 18:41:39');
 
 -- --------------------------------------------------------
 
@@ -115,11 +201,22 @@ CREATE TABLE `anula_turnos` (
 
 CREATE TABLE `anula_usuario` (
   `id` int(11) NOT NULL,
-  `id_cl` int(11) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  `anulado_por` int(11) DEFAULT NULL,
+  `id_cl` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `anulado_por` int(11) NOT NULL,
   `fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `anula_usuario`
+--
+
+INSERT INTO `anula_usuario` (`id`, `id_cl`, `id_usuario`, `anulado_por`, `fecha`) VALUES
+(1, 1, 14, 1, '2024-07-19'),
+(2, 1, 15, 1, '2024-07-19'),
+(3, 1, 16, 1, '2024-07-19'),
+(4, 1, 17, 1, '2024-07-19'),
+(5, 1, 18, 1, '2024-07-19');
 
 -- --------------------------------------------------------
 
@@ -190,7 +287,7 @@ CREATE TABLE `autorizacion` (
 --
 
 INSERT INTO `autorizacion` (`id`, `id_cl`, `clave`, `estado`) VALUES
-(1, '1', '12345', 'N');
+(1, '1', '123', 'N');
 
 -- --------------------------------------------------------
 
@@ -212,14 +309,15 @@ CREATE TABLE `cajas` (
 --
 
 INSERT INTO `cajas` (`id`, `id_cl`, `nom_caja`, `estado`, `creado_por`, `fecha_reg`) VALUES
-(1, 1, 'Caja 01', 'S', '1', '2024-05-14'),
+(1, 1, 'Caja 01', 'N', '1', '2024-05-14'),
 (2, 1, 'N', 'N', '1', '2024-06-08'),
 (3, 1, 'Caja 03', 'N', '1', '2024-06-08'),
 (4, 1, 'Caja 04', 'N', '1', '2024-06-08'),
 (5, 1, 'Caja 5', 'N', '1', '2024-06-08'),
 (6, 1, 'Caja 02', 'N', '1', '2024-07-08'),
 (7, 1, 'Caja 03', 'N', '1', '2024-07-08'),
-(8, 1, 'Caja 02', 'A', '1', '2024-07-14');
+(8, 1, 'Caja 02', 'A', '1', '2024-07-14'),
+(9, 1, 'caja 022', 'N', '1', '2024-07-19');
 
 -- --------------------------------------------------------
 
@@ -247,7 +345,9 @@ INSERT INTO `categorias` (`id`, `id_cl`, `nombre_cat`, `estado`, `creado_por`, `
 (4, 1, '10', 'N', '1', '2024-07-11'),
 (5, 1, '105', 'N', '1', '2024-07-11'),
 (6, 1, 'Cassette', 'S', '1', '2024-07-11'),
-(7, 1, 'Videojuegos', 'S', '1', '2024-07-14');
+(7, 1, 'Videojuegos', 'S', '1', '2024-07-14'),
+(8, 1, 'Categoria de prueba', 'N', '1', '2024-07-20'),
+(9, 1, 'asasdasdasdasd', 'S', '1', '2024-07-20');
 
 -- --------------------------------------------------------
 
@@ -337,7 +437,8 @@ INSERT INTO `clientes_negocio` (`id`, `id_cl`, `rut`, `nombre`, `apellido`, `est
 (7, 1, '7367889-7', 'María Cecilia', 'Neira Gomez', 'N', 1, '2024-07-10'),
 (8, 1, '19150634-0', 'Claudio Francisco', 'Werner Neira', 'N', 1, '2024-07-10'),
 (9, 1, '19150634-0', 'Claudio Francisco', 'Werner Neira', 'S', 1, '2024-07-11'),
-(10, 1, '19833559-2', 'Jose', 'Cárdenas', 'S', 1, '2024-07-14');
+(10, 1, '19833559-2', 'Jose', 'Cárdenas', 'N', 1, '2024-07-14'),
+(11, 1, '18752880-1', 'Constanza Sabina', 'Werner Neira', 'N', 1, '2024-07-19');
 
 -- --------------------------------------------------------
 
@@ -415,7 +516,17 @@ INSERT INTO `correlativo` (`id`, `correlativo`, `id_cl`, `caja`, `usuario`, `bol
 (48, 47, 1, '1', '1', '2', 0, 0, '2', 'N', '2024-07-11 13:14:57', '2024-07-14 20:08:23'),
 (49, 48, 1, '1', '1', '2', 0, 0, '2', 'N', '2024-07-14 14:07:58', '2024-07-14 20:08:23'),
 (50, 49, 1, '8', '1', '2', 2800, 1, '4', 'C', '2024-07-14 14:12:05', '2024-07-14 14:15:05'),
-(51, 50, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-14 14:12:06', '0000-00-00 00:00:00');
+(51, 50, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-14 14:12:06', '0000-00-00 00:00:00'),
+(52, 51, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-19 14:11:50', '0000-00-00 00:00:00'),
+(53, 52, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-19 14:18:22', '0000-00-00 00:00:00'),
+(54, 53, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-19 14:24:36', '0000-00-00 00:00:00'),
+(55, 54, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-19 14:25:26', '0000-00-00 00:00:00'),
+(56, 55, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-19 14:26:47', '0000-00-00 00:00:00'),
+(57, 56, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-19 14:27:59', '0000-00-00 00:00:00'),
+(58, 57, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-19 14:32:30', '0000-00-00 00:00:00'),
+(59, 58, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-19 14:34:00', '0000-00-00 00:00:00'),
+(60, 59, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-19 14:34:50', '0000-00-00 00:00:00'),
+(61, 60, 1, '8', '1', '2', 0, 0, '4', 'A', '2024-07-19 14:36:09', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -440,7 +551,7 @@ INSERT INTO `cuenta_corriente` (`id`, `id_cl`, `rut`, `id_venta`, `estado`, `fec
 (1, 1, '4494605-k', 43, 'C', '2024-07-09'),
 (2, 1, '19150634-0', 45, 'N', '2024-07-10'),
 (3, 1, '19150634-0', 46, 'A', '2024-07-11'),
-(4, 1, '19833559-2', 49, 'C', '2024-07-14');
+(4, 1, '19833559-2', 49, 'N', '2024-07-14');
 
 -- --------------------------------------------------------
 
@@ -1448,9 +1559,9 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id`, `id_cl`, `nombre_pedido`, `id_proveedor`, `estado`, `estado_pago`, `fac_con_iva`, `creado_por`, `fecha_registro`) VALUES
-(1, 1, 'Nombre de pedido', 1, 'C', 'C', 'A', 1, '2024-07-08'),
-(2, 1, 'Nombre pedido 2', 1, 'C', 'C', 'A', 1, '2024-07-08'),
-(3, 1, 'Pedido Final Fantasy', 4, 'A', 'A', 'A', 1, '2024-07-14');
+(1, 1, 'Nombre de pedido', 1, 'N', 'C', 'A', 1, '2024-07-08'),
+(2, 1, 'Nombre pedido 2', 1, 'N', 'C', 'A', 1, '2024-07-08'),
+(3, 1, 'Pedido Final Fantasy', 4, 'N', 'A', 'A', 1, '2024-07-14');
 
 -- --------------------------------------------------------
 
@@ -1574,14 +1685,14 @@ INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `pro
 (37, '1', '78006140', 'Helado Crocanty', '1', '12', 15, 'N', 1, '589', 36, 211, '800', 0, 'S', '1', '2023-12-30'),
 (38, '1', '7801610676356', 'Six pack Fanta Zero 350cc', '3', '9', 1, 'N', 1, '4782', 44, 2118, '6900', 0, 'S', '1', '2023-12-31'),
 (39, '1', '7801610671016', 'Fanta Zero Lata 350cc', '3', '9', 3, 'N', 1, '797', 51, 403, '1200', 0, 'S', '1', '2023-12-31'),
-(40, '1', '7801610001196', 'Coca Cola lata 350cc', '3', '8', 10, 'N', 1, '797', 51, 403, '1200', 0, 'S', '1', '2023-12-31'),
-(41, '1', '7801610001202', 'Six pack Coca Cola 350cc', '1', '8', 2, 'N', 1, '4782', 44, 2118, '6900', 0, 'S', '1', '2023-12-31'),
-(42, '1', '7801610223192', 'Sprite Zero lata 350cc', '3', '8', 6, 'N', 1, '797', 51, 403, '1200', 0, 'S', '1', '2023-12-31'),
-(43, '1', '7801610223208', 'Six pack Sprite 350cc', '1', '8', 1, 'N', 1, '4782', 44, 2118, '6900', 0, 'S', '1', '2023-12-31'),
-(44, '1', '7801610484661', 'Schweppes lata 350cc', '3', '8', 1, 'N', 1, '4782', 44, 2118, '6900', 0, 'S', '1', '2023-12-31'),
-(45, '1', '7801610483602', 'Schweppes lata 350cc 2', '3', '8', 6, 'N', 1, '797', 51, 403, '1200', 0, 'S', '1', '2023-12-31'),
-(46, '1', '7802820600100', 'Vital 600cc', '3', '8', 0, 'N', 1, '671', 49, 329, '1000', 0, 'S', '1', '2023-12-31'),
-(47, '1', '7801620853204', 'Crush Zero 1.5lts', '3', '8', 10, 'N', 1, '1924', 4, 76, '2000', 0, 'S', '1', '2023-12-31'),
+(40, '1', '7801610001196', 'Coca Cola lata 350cc', '3', '8', 10, 'N', 1, '797', 51, 403, '1200', 0, 'N', '1', '2023-12-31'),
+(41, '1', '7801610001202', 'Six pack Coca Cola 350cc', '1', '8', 2, 'N', 1, '4782', 44, 2118, '6900', 0, 'N', '1', '2023-12-31'),
+(42, '1', '7801610223192', 'Sprite Zero lata 350cc', '3', '8', 6, 'N', 1, '797', 51, 403, '1200', 0, 'N', '1', '2023-12-31'),
+(43, '1', '7801610223208', 'Six pack Sprite 350cc', '1', '8', 1, 'N', 1, '4782', 44, 2118, '6900', 0, 'N', '1', '2023-12-31'),
+(44, '1', '7801610484661', 'Schweppes lata 350cc', '3', '8', 1, 'N', 1, '4782', 44, 2118, '6900', 0, 'N', '1', '2023-12-31'),
+(45, '1', '7801610483602', 'Schweppes lata 350cc 2', '3', '8', 6, 'N', 1, '797', 51, 403, '1200', 0, 'N', '1', '2023-12-31'),
+(46, '1', '7802820600100', 'Vital 600cc', '3', '8', 0, 'N', 1, '671', 49, 329, '1000', 0, 'N', '1', '2023-12-31'),
+(47, '1', '7801620853204', 'Crush Zero 1.5lts', '3', '8', 10, 'N', 1, '1924', 4, 76, '2000', 0, 'N', '1', '2023-12-31'),
 (48, '1', 'Quitasoles', 'Quitasol ', '1', '12', 99983, 'N', 1, '1000', 100, 1000, '2000', 0, 'S', '1', '2024-01-01'),
 (49, '1', '78023994', 'Bon o bon amarillo', '1', '1', -49, 'N', 1, '125', 100, 125, '250', 0, 'S', '1', '2024-01-01'),
 (50, '1', '78024106', 'Bon o bon blanco', '2', '1', -8, 'N', 1, '125', 100, 125, '250', 0, 'S', '1', '2024-01-01'),
@@ -1597,8 +1708,8 @@ INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `pro
 (60, '1', '7806500221128', 'Servilleta Elite', '5', '13', 4, 'N', 1, '610', 64, 390, '1000', 0, 'S', '1', '2024-01-12'),
 (61, '1', 'confort', 'Confort /unidad', '5', '13', 4, 'N', 1, '548', 82, 452, '1000', 0, 'S', '1', '2024-01-12'),
 (62, '1', 'fosforos', 'Fosforos', '5', '13', 10, 'N', 1, '250', 100, 250, '500', 0, 'S', '1', '2024-01-12'),
-(63, '1', '7613030612339', 'Super8 Normal', '6', '6', 47, 'N', 1, '192', 160, 308, '500', 0, 'S', '1', '2024-01-13'),
-(64, '1', '7613033567773', 'Svelty Huesos', '6', '8', 2, 'N', 1, '5576', 43, 2424, '8000', 0, 'S', '1', '2024-01-13'),
+(63, '1', '7613030612339', 'Super8 Normal', '6', '6', 47, 'N', 1, '192', 160, 308, '500', 0, 'N', '1', '2024-01-13'),
+(64, '1', '7613033567773', 'Svelty Huesos', '6', '8', 2, 'N', 1, '5576', 43, 2424, '8000', 0, 'N', '1', '2024-01-13'),
 (65, '1', '7613035835986', 'Kuky Chipchipers Blanco', '6', '1', 5, 'N', 1, '1107', 81, 893, '2000', 0, 'S', '1', '2024-01-13'),
 (66, '1', '7802950012316', 'Salsa tomate Tuco', '6', '13', 4, 'N', 1, '1176', 70, 824, '2000', 0, 'S', '1', '2024-01-13'),
 (67, '1', '7613039589069', 'Tritón Mini Limón', '6', '1', 5, 'N', 1, '302', 32, 98, '400', 0, 'S', '1', '2024-01-13'),
@@ -1610,7 +1721,7 @@ INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `pro
 (73, '1', '8445290262646', 'Leche Nido Polvo', '6', '13', 2, 'N', 1, '6067', 48, 2933, '9000', 0, 'S', '1', '2024-01-13'),
 (74, '1', 'leqa', 'Saco de leña', '7', '14', 6, 'N', 1, '3333', 50, 1667, '5000', 0, 'S', '1', '2024-01-13'),
 (75, '1', 'hielo', 'Hielo', '7', '12', 1000, 'N', 1, '800', 88, 700, '1500', 0, 'S', '1', '2024-01-13'),
-(76, '1', '7801620009694', 'Agua Cachantún 600cc', '4', '8', 100, 'N', 1, '300', 233, 700, '1000', 0, 'S', '1', '2024-01-14'),
+(76, '1', '7801620009694', 'Agua Cachantún 600cc', '4', '8', 100, 'N', 1, '300', 233, 700, '1000', 0, 'N', '1', '2024-01-14'),
 (77, '1', '78098152', 'Sal Lobos', '2', '13', 10, 'N', 1, '500', 100, 500, '1000', 0, 'S', '1', '2024-01-20'),
 (78, '1', '7802230086969', 'Tritón chocolate', '2', '1', -3, 'N', 1, '600', 67, 400, '1000', 0, 'S', '1', '2024-01-21'),
 (79, '1', '7500435237895', 'Magistral lavaloza', '2', '13', 10, 'N', 1, '1590', 26, 410, '2000', 0, 'S', '1', '2024-01-21'),
@@ -1624,7 +1735,7 @@ INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `pro
 (87, '1', '7509546076300', 'Lady Speed Stick', '2', '13', 2, 'N', 1, '2000', 75, 1500, '3500', 0, 'S', '1', '2024-01-26'),
 (88, '1', '7791290794054', 'CIF lavalozas limón', '2', '16', 5, 'N', 1, '1500', 67, 1000, '2500', 0, 'S', '1', '2024-01-26'),
 (89, '1', '7806500174110', 'Pañuelos Elite', '2', '13', 6, 'N', 1, '181', 121, 219, '400', 0, 'S', '1', '2024-01-28'),
-(90, '1', '7801620852955', 'Agua Cachantún  1.6L', '2', '8', 2, 'N', 1, '600', 233, 1400, '2000', 0, 'S', '1', '2024-01-28'),
+(90, '1', '7801620852955', 'Agua Cachantún  1.6L', '2', '8', 2, 'N', 1, '600', 233, 1400, '2000', 0, 'N', '1', '2024-01-28'),
 (91, '1', '7809583500302', 'Carbón Quincho', '2', '14', 10, 'N', 1, '1690', 196, 3310, '5000', 0, 'S', '1', '2024-02-01'),
 (92, '1', '7802215511615', 'Galletas Soda', '5', '1', 3, 'N', 1, '500', 50, 250, '750', 0, 'S', '1', '2024-02-03'),
 (93, '1', '7803200804132', 'Mayonesa Hellmanns', '3', '13', 2, 'N', 1, '2177', 130, 2823, '5000', 0, 'S', '1', '2024-02-03'),
@@ -1633,14 +1744,14 @@ INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `pro
 (96, '1', '7801610005521', 'Sprite 2.5lts', '2', '9', 2, 'N', 1, '2000', 50, 1000, '3000', 0, 'S', '1', '2024-02-04'),
 (97, '1', '7702026180287', 'Toallitas Nosotras', '2', '13', 1, 'N', 1, '1490', 101, 1510, '3000', 0, 'S', '1', '2024-02-04'),
 (99, '1', '7801620852689', 'Pepsi Lata 350cc', '1', '1', 0, 'N', 1, '800', 50, 400, '1200', 0, 'S', '1', '2024-02-04'),
-(100, '1', '7801620300203', 'Bebida PAP 350cc', '2', '8', 6, 'N', 1, '600', 100, 600, '1200', 0, 'S', '1', '2024-02-08'),
-(101, '1', '7801620360153', 'Canada Dry Ginger Ale 350cc', '2', '8', 6, 'N', 1, '600', 100, 600, '1200', 0, 'S', '1', '2024-02-08'),
+(100, '1', '7801620300203', 'Bebida PAP 350cc', '2', '8', 6, 'N', 1, '600', 100, 600, '1200', 0, 'N', '1', '2024-02-08'),
+(101, '1', '7801620360153', 'Canada Dry Ginger Ale 350cc', '2', '8', 6, 'N', 1, '600', 100, 600, '1200', 0, 'N', '1', '2024-02-08'),
 (102, '1', '7613032443221', 'McKay Mini Morocha', '2', '1', -2, 'N', 1, '240', 67, 160, '400', 0, 'S', '1', '2024-02-09'),
 (103, '1', '7613035760561', 'Mini Sahnenuss Helado', '2', '12', 5, 'N', 1, '1029', 55, 571, '1600', 0, 'S', '1', '2024-02-09'),
 (104, '1', '7613287171726', 'Mini KitKat helado', '1', '12', 10, 'N', 1, '1040', 54, 560, '1600', 0, 'S', '1', '2024-02-09'),
 (105, '1', '7702026177669', 'Toallitas Húmedas Nosotras', '2', '13', 10, 'N', 1, '1890', 59, 1110, '3000', 0, 'S', '1', '2024-02-09'),
 (106, '1', '7804676650582', 'Toallas Húm Baby Sequitos', '1', '13', 1, 'N', 1, '1000', 200, 2000, '3000', 0, 'S', '1', '2024-02-09'),
-(107, '1', '7801610323236', 'Coca Cola 3LTS', '2', '8', 3, 'N', 1, '2350', 28, 650, '3000', 0, 'S', '1', '2024-02-10'),
+(107, '1', '7801610323236', 'Coca Cola 3LTS', '2', '8', 3, 'N', 1, '2350', 28, 650, '3000', 0, 'N', '1', '2024-02-10'),
 (108, '1', '7801875000588', 'Caja 01', '', '1', 10, 'N', 1, '9500', 100, 9500, '19000', 0, 'S', '1', '2024-07-11'),
 (109, '1', '7801875000589', 'Caja 01', '', '1', 10, 'N', 1, '9500', 100, 9500, '19000', 0, 'S', '1', '2024-07-11'),
 (110, '1', '844529091233', 'Final Fantasy', '4', '7', 10, 'N', 1, '9500', 742, 70500, '80000', 0, 'S', '1', '2024-07-14');
@@ -1665,7 +1776,7 @@ CREATE TABLE `proveedores` (
 --
 
 INSERT INTO `proveedores` (`id`, `id_cl`, `nombre_proveedor`, `rut`, `estado`, `fecha_registro`) VALUES
-(1, 1, 'Sony Music', '19150634-0', 'S', '2024-06-14'),
+(1, 1, 'Sony Music', '19150634-0', 'N', '2024-06-14'),
 (2, 1, 'Plaza Independencia SpA.', '18752880-1', 'N', '2024-07-03'),
 (3, 1, 'DiscoGS', '19150634-0', 'N', '2024-07-05'),
 (4, 1, 'Angel Sepúlveda', '19150634-0', 'S', '2024-07-14'),
@@ -1693,7 +1804,7 @@ CREATE TABLE `stock_minimo_producto` (
 --
 
 INSERT INTO `stock_minimo_producto` (`id`, `id_cl`, `estado`, `stock_minimo`) VALUES
-(3, 1, 'S', 5);
+(3, 1, 'S', 50);
 
 -- --------------------------------------------------------
 
@@ -1763,7 +1874,13 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `user`, `pass`, `tipo_usuario`, `id_cl`, `estado`, `permisos`, `fecha_reg`) VALUES
 (1, 'Admin', 'admin1', '$2y$10$hH.e2CNF7S3q6AuN6Yn1NuJL/04O4QzMXoBbjvdsw71XQ1/axlkeG', 1, 1, '', '1,2', '0000-00-00 00:00:00'),
-(12, 'Claudio', 'claudio3111', '$2y$10$fxPORzARO.wsBLJehr6CJuKbnk4hegGZD6ekJZXAwEArjyhoLTDHa', 2, 1, 'S', '2', '0000-00-00 00:00:00');
+(12, 'Admin', 'admin1', '$2y$10$VbU7YUru0XW./5ZKh0k9wO6qCXw944HeyVFhi5N8vcX06KDANheOG', 1, 1, 'S', '1,2', '0000-00-00 00:00:00'),
+(13, 'Claudio', 'claudio1', '$2y$10$PhZl2jd3t4LfRYS1nVy/..liaDaJCDc1I.cdrE1Wa9FmjcCu96rRi', 2, 1, 'N', '2', '2024-07-18 12:32:39'),
+(14, 'Claudio', 'claudio31', '$2y$10$Q0W6EEEPXroKWc4XruuOzuOA7lp5.Ymg5N5ZRrLsnL676CISBjgP6', 2, 1, 'N', '2', '0000-00-00 00:00:00'),
+(15, 'Claudio', 'claudio321', '$2y$10$BOub1uPaoqw1HgIAl3Z6oeMJS94138ezC0wdA/0Ns8.vF1SB9h.wq', 2, 1, 'N', '2', '2024-07-18 12:34:08'),
+(16, 'Claudio', 'claudio3211', '$2y$10$I0waDD22BTVRXBk2GYlLVueJrBGIEDRfxmSS/eODwJMEtMqko8Moe', 2, 1, 'N', '2', '2024-07-18 12:35:35'),
+(17, 'Claudio', 'ventas11', '$2y$10$WfD24og0o10I3bcTngyfZOhl3mBYmQNpDdcIuGecUGBMVzjz68sSK', 2, 1, 'N', '2', '2024-07-19 13:42:36'),
+(18, 'Claudio', 'admin11', '$2y$10$7ifDknDFnXeMrIH2k2R9we0B0YswTy2wEhJ3eNLOADI9h6WemkkNa', 2, 1, 'N', '2', '2024-07-19 13:44:10');
 
 -- --------------------------------------------------------
 
@@ -1925,16 +2042,45 @@ INSERT INTO `ventas` (`id`, `id_venta`, `id_cl`, `id_caja`, `usuario`, `producto
 (130, 46, '1', '1', 1, 7, '1', '700', 0, 0, 'P', '2024-07-11 13:15:13', '0000-00-00 00:00:00', '0'),
 (131, 46, '1', '1', 1, 7, '1', '700', 0, 0, 'P', '2024-07-11 13:15:13', '0000-00-00 00:00:00', '0'),
 (132, 46, '1', '1', 1, 7, '1', '700', 0, 0, 'P', '2024-07-11 13:15:14', '0000-00-00 00:00:00', '0'),
-(133, 49, '1', '8', 1, 17, '4', '2800', 0, 0, 'C', '2024-07-14 14:13:03', '2024-07-14 14:15:05', '1');
+(133, 49, '1', '8', 1, 17, '4', '2800', 0, 0, 'C', '2024-07-14 14:13:03', '2024-07-14 14:15:05', '1'),
+(134, 50, '1', '8', 1, 17, '1', '700', 0, 0, 'N', '2024-07-19 14:11:54', '0000-00-00 00:00:00', '0'),
+(135, 51, '1', '8', 1, 17, '1', '700', 0, 0, 'A', '2024-07-19 14:18:54', '0000-00-00 00:00:00', '0'),
+(136, 52, '1', '8', 1, 17, '1', '700', 0, 0, 'A', '2024-07-19 14:24:41', '0000-00-00 00:00:00', '0'),
+(137, 53, '1', '8', 1, 17, '1', '700', 0, 0, 'A', '2024-07-19 14:25:29', '0000-00-00 00:00:00', '0'),
+(138, 54, '1', '8', 1, 17, '1', '700', 0, 0, 'A', '2024-07-19 14:26:51', '0000-00-00 00:00:00', '0'),
+(139, 55, '1', '8', 1, 17, '1', '700', 0, 0, 'N', '2024-07-19 14:28:03', '0000-00-00 00:00:00', '0'),
+(140, 56, '1', '8', 1, 17, '1', '700', 0, 0, 'N', '2024-07-19 14:32:44', '0000-00-00 00:00:00', '0'),
+(141, 56, '1', '8', 1, 17, '1', '700', 0, 0, 'N', '2024-07-19 14:33:22', '0000-00-00 00:00:00', '0'),
+(142, 57, '1', '8', 1, 17, '1', '700', 0, 0, 'N', '2024-07-19 14:34:03', '0000-00-00 00:00:00', '0'),
+(143, 58, '1', '8', 1, 17, '1', '700', 0, 0, 'N', '2024-07-19 14:34:52', '0000-00-00 00:00:00', '0'),
+(144, 59, '1', '8', 1, 17, '1', '700', 0, 0, 'N', '2024-07-19 14:36:12', '0000-00-00 00:00:00', '0');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `anula_cajas`
+--
+ALTER TABLE `anula_cajas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `anula_categoria`
 --
 ALTER TABLE `anula_categoria`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `anula_clientes`
+--
+ALTER TABLE `anula_clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `anula_pedidos`
+--
+ALTER TABLE `anula_pedidos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2123,28 +2269,52 @@ ALTER TABLE `ventas`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `anula_cajas`
+--
+ALTER TABLE `anula_cajas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `anula_categoria`
 --
 ALTER TABLE `anula_categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `anula_clientes`
+--
+ALTER TABLE `anula_clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `anula_pedidos`
+--
+ALTER TABLE `anula_pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `anula_productos`
 --
 ALTER TABLE `anula_productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `anula_proveedor`
 --
 ALTER TABLE `anula_proveedor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `anula_turnos`
 --
 ALTER TABLE `anula_turnos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `anula_usuario`
+--
+ALTER TABLE `anula_usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `anula_ventas`
@@ -2162,13 +2332,13 @@ ALTER TABLE `autorizacion`
 -- AUTO_INCREMENT de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `cierre_caja`
@@ -2186,13 +2356,13 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `clientes_negocio`
 --
 ALTER TABLE `clientes_negocio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `correlativo`
 --
 ALTER TABLE `correlativo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `cuenta_corriente`
@@ -2282,13 +2452,13 @@ ALTER TABLE `unidades_medida`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
