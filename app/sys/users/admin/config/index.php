@@ -36,6 +36,8 @@
 
     <title>.:WebPOS Administrador:.</title>
 
+    <link rel="stylesheet" href="switch.css">
+
     <?php require "../cdn_css/css/css_item.php";?>
 
 
