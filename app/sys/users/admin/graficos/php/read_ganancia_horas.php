@@ -13,7 +13,7 @@ if(isset($_SESSION['user'])){
     $id_cl = $_SESSION['user']["id_cl"];
     
 
-    require_once '../../../conexion.php';
+    require_once '../../../../conexion.php';
 
     $datos = array();//acá se guardan los datos emanados desde la base de datos
     $fecha = $_GET['fecha'];
@@ -26,7 +26,7 @@ if(isset($_SESSION['user'])){
       WHERE id_cl = $id_cl 
       AND fecha_pago BETWEEN '$fecha $i:00:00' AND '$fecha $hf:00:00'
       AND estado = 'C'";
-      $res = $conexion->query($sql);;
+      $res = $conexion->query($sql);
       while($row=$res->fetch_array())
       {
         $contenido = $row["valor"];

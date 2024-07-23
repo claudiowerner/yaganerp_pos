@@ -22,7 +22,7 @@
   
 
 
-  require_once '../../../conexion.php';
+  require_once '../../../../conexion.php';
 
 
 
@@ -32,6 +32,7 @@
   date_format(fecha_cierre, '%Y-%m-%d') AS fecha_formato_sql
   FROM correlativo 
   WHERE estado = 'C' 
+  AND id_cl = $id_cl
   AND fecha_cierre!='0000-00-00'
   GROUP BY(date_format(fecha_cierre, '%d/%m/%Y')) 
   ORDER BY (date_format(fecha_cierre, '%m')) ASC";

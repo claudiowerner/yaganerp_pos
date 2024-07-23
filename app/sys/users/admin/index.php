@@ -100,8 +100,12 @@
     ================================================== -->
     <!-- Main jQuery Plugins -->
     <?php require "cdn_css/cdn/cdn_index.php";?>
-    <script src="graficos/loader.js"></script>
-    <script src='graficos/graficos.js'></script>
+    <script src="graficos/js/loader.js"></script>
+    <script src='graficos/js/cargar_fechas.js'></script>
+    <script src='graficos/js/grafico_anual.js'></script>
+    <script src='graficos/js/grafico_ventas_hora.js'></script>
+    <script src='graficos/js/cargar_años.js'></script>
+    <script src='graficos/js/graficos.js'></script>
 
 
 
