@@ -3,7 +3,6 @@
 //Accion al intentar eliminar venta
 function accionEliminarVenta(id)
 {
-    debugger;
     $("#anVenta").text(id);
     let configClave = leerConfigClave()
     

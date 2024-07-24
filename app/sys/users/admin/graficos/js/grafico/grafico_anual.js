@@ -6,7 +6,7 @@ function descargarInfoGraficoAnual()
     var año = fecha.getFullYear();
     var añoSelect = $("#añoVenta").val();
     var url = "";
-    if(añoSelect==null)
+    if(añoSelect=="")
     {
         url = "graficos/php/read_ventas_mensuales.php?ano="+año;
     }

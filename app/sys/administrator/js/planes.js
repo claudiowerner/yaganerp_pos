@@ -96,7 +96,6 @@ $("#planes").on("click", "tr", function(e)
   $("#modalEditarPlan").modal('show'); 
 
 
-  console.log(datos);
   $("#nomPlanEditar").val(datos.nombre);
   $("#numUsuariosEditar").val(datos.usuarios);
   $("#numCajasEditar").val(datos.cajas);

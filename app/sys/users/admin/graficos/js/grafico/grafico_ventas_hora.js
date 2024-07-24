@@ -13,31 +13,12 @@ function descargarDatosVentasHora(fecha)
 
 
 /* ------------------------------------------------- FUNCTION DOM ------------------------------------- */
-function crearGraficoVentaHora()
+function crearGraficoVentaHora(fecha)
 {
-    let fecha = "";
-    if($("#ventasPorDia").val()==null)
-    {
-        let hoy = new Date();
-        let año = hoy.getFullYear();
-        let mes = parseInt(hoy.getMonth()) + parseInt(1);
-        let dia = hoy.getDate();
-        if(mes<10)
-        {
-            mes = "0" + mes;
-        }
-        if(dia<10)
-        {
-            dia = "0" + dia;
-        }
-        
-        fecha = año+"-"+mes+"-"+dia;
-    }
-    else
-    {
-        fecha = $("#ventasPorDia").val();
-    }
-    
+    //la fecha que se va a mostrar en el gráfico
+    let fecha_split = fecha.split("-");
+    let f_imp = fecha_split[2]+"/"+fecha_split[1]+"/"+fecha_split[0];
+    $("#modalDiaVenta").modal("hide");
     var descarga = descargarDatosVentasHora(fecha);
     let hora = JSON.parse(descarga);
             
@@ -65,7 +46,7 @@ function crearGraficoVentaHora()
         )
 
         // Set chart options
-        var options = {'title':'Ventas por hora',
+        var options = {'title':'Ventas por hora al día '+f_imp,
                         'width':1000,
                         'height':300};
         // Instantiate and draw our chart, passing in some options.

@@ -21,7 +21,6 @@ function editarProveedor()
 
 function editarProveedorEditar()
 {
-    debugger
     let id_pedido = $("#idModal").text();
     let id_proveedor = $("#slctProveedorEditar").val();
     let datos = {

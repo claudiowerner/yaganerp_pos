@@ -14,7 +14,6 @@ function cargarUnidadEspecificaBD(id)
 /* ---------------------------------------- FUNCIONES DEL DOM---------------------------------------- */
 function cargarUnidadEspecifica(id)
 {
-    debugger
     let descarga = cargarUnidadEspecificaBD(id);
         let json = JSON.parse(descarga);
             json.forEach(e=>{

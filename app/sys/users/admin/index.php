@@ -42,7 +42,14 @@
 </head>
 
 <body role="document">
-
+    <?php 
+        require "modals/grafico/año.php";
+        require "modals/grafico/mes.php";
+        require "modals/grafico/dia.php";
+        modalAñoVenta();
+        modalMesVenta();
+        modalDiaVenta();
+    ?>
     <span id=opcion style="display: none">1</span>
 
     <?php require "menu/sesion_index.php"; ?>
@@ -76,9 +83,10 @@
                                         <div class="card-body" id="grafico">
                                         <span align="center">
                                             Ventas por día
-                                            <select id="ventasPorDia" class="form-control" onChange="cambioFecha()">
-                                            </select>
                                         </span>
+                                        <div>
+                                            <button id="btnCalendario" class="btn btn-primary">Calendario de ventas</button>
+                                        </div>
                                         <div id="gananciaHora"></div>
                                     </div>
                                 </div>
@@ -100,12 +108,19 @@
     ================================================== -->
     <!-- Main jQuery Plugins -->
     <?php require "cdn_css/cdn/cdn_index.php";?>
-    <script src="graficos/js/loader.js"></script>
-    <script src='graficos/js/cargar_fechas.js'></script>
-    <script src='graficos/js/grafico_anual.js'></script>
-    <script src='graficos/js/grafico_ventas_hora.js'></script>
-    <script src='graficos/js/cargar_años.js'></script>
-    <script src='graficos/js/graficos.js'></script>
+    <script src="graficos/js/grafico/loader.js"></script>
+    <script src='graficos/js/grafico/cargar_fechas.js'></script>
+    <script src='graficos/js/grafico/grafico_anual.js'></script>
+    <script src='graficos/js/grafico/grafico_ventas_hora.js'></script>
+    <script src='graficos/js/grafico/cargar_años.js'></script>
+    <script src='graficos/js/grafico/graficos.js'></script>
+
+
+    <!--Calendario de ventas-->
+    <script src='graficos/js/calendario/cargar_año_venta.js'></script>
+    <script src='graficos/js/calendario/cargar_mes_venta.js'></script>
+    <script src='graficos/js/calendario/cargar_dias_venta.js'></script>
+    <script src='graficos/js/calendario/calendario.js'></script>
 
 
 
