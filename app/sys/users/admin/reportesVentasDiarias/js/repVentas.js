@@ -356,7 +356,7 @@ function cierreCaja()
         else
         {
           msjes_swal("Excelente", e, "success");
-          imprimirResumenVenta("../../",idCierre);
+          //imprimirResumenVenta("../../",idCierre);
         }
         obtenerCierresCaja();
       }
