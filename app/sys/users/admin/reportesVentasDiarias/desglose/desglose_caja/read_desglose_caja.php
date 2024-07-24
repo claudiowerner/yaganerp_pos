@@ -35,7 +35,6 @@
     cc.nombre, 
     u.nombre 
     AS creado_por,
-    corr.nom_caja,
     DATE_FORMAT(v.fecha, '%d-%m-%Y %H:%i:%s') AS fecha,
     DATE_FORMAT(v.fecha_pago, '%d-%m-%Y %H:%i:%s') AS fecha_pago ,
     mp.nombre_metodo_pago, 
@@ -92,7 +91,6 @@
               'id_venta' => $row['id_venta'],
               'nombre' => $row['nombre'],
               'creado_por' => $row['creado_por'],
-              'nom_caja' => $row['nom_caja'],
               'hasta' => $row['fecha_pago'],
               'estado' => $estado,
               'valor_total' => $valor_total,

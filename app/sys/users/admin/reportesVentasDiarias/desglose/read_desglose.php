@@ -19,7 +19,7 @@
   $horaDesde = $_GET["horaDesde"];
   $horaHasta = $_GET["horaHasta"];  
 
-  require_once '../../../../../conexion.php';
+  require_once './../../../../conexion.php';
 
 
   
@@ -108,26 +108,34 @@
     AND c.caja = $id
     AND v.estado = 'C'";
     $valorGenerado = 0;
-    $res = $conexion->query($sql);;
-    while($row = $res->fetch_assoc())
+    $res = $conexion->query($sql);
+    if($res->num_rows!=0)
     {
-      if($row["valor"]!="")
+      while($row = $res->fetch_assoc())
       {
-        $valor = $row["valor"];
-        $descto = $row["descto"];
-        $valorDescto = ($valor*$descto)/100;
-        $valorTotal = $valor-$valorDescto;
-        $valorGenerado = $valorGenerado + $valorTotal;
+        if($row["valor"]!="")
+        {
+          $valor = $row["valor"];
+          $descto = $row["descto"];
+          $valorDescto = ($valor*$descto)/100;
+          $valorTotal = $valor-$valorDescto;
+          $valorGenerado = $valorGenerado + $valorTotal;
 
-      }
-      else
-      {
-        $valorGenerado = 0;
+        }
+        else
+        {
+          $valorGenerado = 0;
+        }
+        $arrayValorGenerado[] = round($valorGenerado);
       }
     }
+    else
+    {
+      $arrayValorGenerado[] = round($valorGenerado);
+    }
+
   }
   
-  $arrayValorGenerado[] = round($valorGenerado);
 
   $json = array();
 
