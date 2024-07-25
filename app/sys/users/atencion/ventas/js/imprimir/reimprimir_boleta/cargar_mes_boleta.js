@@ -35,7 +35,7 @@ function mesesVenta(año)
                     {
                         mes_actual = "btn btn-secondary";
                     }
-                    template += `<button class='${mes_actual}'onClick=calendario(${año},${j.nro_mes})><h1>${j.mes}</h1></button>`;
+                    template += `<button class='${mes_actual}' style="margin-right: 5px;margin-bottom: 5px" onClick=calendario(${año},${j.nro_mes})><h1>${j.mes}</h1></button>`;
                 }
             )
         };

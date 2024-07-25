@@ -37,7 +37,7 @@
 
     <?php require "../cdn_css/css/css_item.php";?>
     
-    <link rel='stylesheet' href='css/ventas.css'>
+    <link rel='stylesheet' href='css.css'>
 
 
 </head>

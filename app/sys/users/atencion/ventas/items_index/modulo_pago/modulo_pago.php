@@ -41,14 +41,14 @@
                                                 </table>
                                                 <table width="100%">
                                                     <tr>
-                                                        <td><button id="btnAnularVenta" class="btn btn-warning anularVenta" style="width: 100%">Anular venta</button></td>
-                                                        <td><button id="btnAñadirCuenta" class="btn btn-success" id="btnPagar" disabled="true" style="width: 100%">Añadir a la cuenta</button></td>
+                                                        <td><button id="btnAnularVenta" class="btn btn-warning anularVenta" style="width: 90%; margin-bottom: 5px ">Anular venta</button></td>
+                                                        <td><button id="btnAñadirCuenta" class="btn btn-success" id="btnPagar" disabled="true" style="width: 90%; margin-bottom: 5px ">Añadir a la cuenta</button></td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan=2><button id="btnAplicarDescto" class="btn btn-success" style="width: 100%">Aplicar descuento</button></td>
+                                                        <td colspan=2><button id="btnAplicarDescto" class="btn btn-success" style="width: 95%; margin-bottom: 5px ">Aplicar descuento</button></td>
                                                     </tr>
                                                     <tr>
-                                                    <td colspan=2><button id="pagarVenta" class="btn btn-success" disabled="true" style="width: 100%">Pagar</button></td>
+                                                        <td colspan=2><button id="pagarVenta" class="btn btn-success" disabled="true" style="width: 95% ">Pagar</button></td>
                                                     </tr>
                                                 </table>
                                             </div>

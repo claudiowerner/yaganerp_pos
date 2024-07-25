@@ -106,7 +106,7 @@ function semana(template, dia_semana, dia_mes,  mes, año)
         dia_mes--;
         template += 
         `<td >
-            <button id='${año}-${mes}-${(fecha)}' class='btn btn-primary' onClick='cargarVentasPorDia(${año},${mes},${(fecha)})' disabled>
+            <button id='${año}-${mes}-${(fecha)}' class='btn btn-primary' style="width: 100%; margin-right: 2px;margin-bottom: 5px" onClick='cargarVentasPorDia(${año},${mes},${(fecha)})' disabled>
                 <h3>${(fecha)}</h3>
             </button>
         </td>`;

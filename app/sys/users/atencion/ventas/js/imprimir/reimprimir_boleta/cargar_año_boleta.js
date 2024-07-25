@@ -30,7 +30,7 @@ function parseoImpresion()
                 {
                     clase_año_en_curso = "btn btn-secondary";
                 }
-                template += `<button class='${clase_año_en_curso}'onClick=mesesVenta(${j.año})><h1>${j.año}</h1></button>`;
+                template += `<button class='${clase_año_en_curso}' style="margin-right: 2px;margin-bottom: 5px" onClick=mesesVenta(${j.año})><h1>${j.año}</h1></button>`;
             }
         )
     };
