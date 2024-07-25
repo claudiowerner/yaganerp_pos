@@ -256,24 +256,24 @@ function obtenerCierresCaja()
             if(c.estado=="C")
             {
               estado = "CERRADO";
-              button1 = "<button type='button' class='btn btn-danger' disabled=true id='btnCerrar'>Cerrar</button>";
-              buttonEditar = `<button type='button' class='btn btn-primary' disabled=true>Editar</button>`;
+              button1 = "<button type='button' class='btn btn-danger' style='margin: 2px' disabled=true id='btnCerrar'>Cerrar</button>";
+              buttonEditar = `<button type='button' class='btn btn-primary' style='margin: 2px' disabled=true>Editar</button>`;
               if(c.valor_total==0)
               {
-                button2 = "<button type='button' class='btn btn-success' disabled=true id='btnVerDetalle'>Ir</button>";
+                button2 = "<button type='button' class='btn btn-success' style='margin: 2px' disabled=true id='btnVerDetalle'>Ir</button>";
               }
               else
               {
-                button2 = "<button type='button' class='btn btn-success' id='btnCerrar'>Ir</button>";
+                button2 = "<button type='button' class='btn btn-success' id='btnCerrar' style='margin: 2px' >Ir</button>";
               }
               fecha_cierre = c.hasta;
             }
             else
             {
               estado="EN-CURSO";
-              button1 = "<button type='button' class='btn btn-danger' id='btnCerrar'>Cerrar</button>";
-              button2 = "<button type='button' class='btn btn-success' id='btnVerDetalle'>Ir</button>";
-              buttonEditar = `<button type='button' class='btn btn-primary' idCierre='${c.id}' nomCaja='${c.nombre}'>Editar</button>`;
+              button1 = "<button type='button' style='margin: 2px' class='btn btn-danger' id='btnCerrar'>Cerrar</button>";
+              button2 = "<button type='button' style='margin: 2px' class='btn btn-success' id='btnVerDetalle'>Ir</button>";
+              buttonEditar = `<button type='button' style='margin: 2px' class='btn btn-primary' idCierre='${c.id}' nomCaja='${c.nombre}'>Editar</button>`;
               fecha_cierre = "-";
             }
             valor_formateado = formatearNumero("P",c.valor_total);

@@ -21,7 +21,7 @@ $( document ).ready(function() {
       let tasks = JSON.parse(response);
       let template = '';
       tasks.forEach(c=>{
-        button = "<button type='button' id='btnDetalleCaja' idCaja='"+c.id+"' nomCaja='"+c.nom_caja+"' class='detalle btn btn-success' onClick='btnDetalle(this)'>Detalle</button>";
+        button = "<button type='button' id='btnDetalleCaja'  style='margin: 2px' idCaja='"+c.id+"' nomCaja='"+c.nom_caja+"' class='detalle btn btn-success' onClick='btnDetalle(this)'>Detalle</button>";
         estado = c.estado;
         if(estado == "S")
         {

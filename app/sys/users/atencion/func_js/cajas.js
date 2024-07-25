@@ -57,7 +57,7 @@
               clase = "btn-danger";
             }
             template+=
-            `<button class='btn ${clase}' nroCaja=${task.id} nomCaja=${task.nombre}><h1>${task.nombre}</h1></button>`;
+            `<button class='btn ${clase}'  style='margin: 2px'  nroCaja=${task.id} nomCaja=${task.nombre}><h1>${task.nombre}</h1></button>`;
           });
         }
         $("#cajas").html(template);

@@ -44,7 +44,7 @@ function parseoDatosCliente(rut)
                             <td>${c.nombre}</td>
                             <td>${c.apellido}</td>
                             <td>
-                                <button class="btn btn-success" onClick=registrarCuenta('${c.rut}')>Seleccionar</button>
+                                <button class="btn btn-success"  style='margin: 2px' onClick=registrarCuenta('${c.rut}')>Seleccionar</button>
                             </td>
                         <tr>`;
                     }

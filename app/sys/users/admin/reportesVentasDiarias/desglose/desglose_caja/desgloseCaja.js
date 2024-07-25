@@ -46,7 +46,7 @@ function cargarDesglose()
         tasks.forEach(c=>{
 
           let valor_total_formateado = formatearNumero("P",c.valor_total);
-          button = "<button type='button' class='btn btn-success' id='btnDetalleVenta'>Detalle</button>";
+          button = "<button type='button' class='btn btn-success'  style='margin: 2px' id='btnDetalleVenta'>Detalle</button>";
           estado = "";
           if(c.estado == "CERRADO")
           {
