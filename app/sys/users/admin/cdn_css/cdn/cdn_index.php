@@ -16,6 +16,7 @@
     <script type='text/javascript' src='../../js/donut-chart/jquery.drawDoughnutChart.js'></script>
     <script type='text/javascript' src='../../js/tab/jquery.newsTicker.js'></script>
     <script type='text/javascript' src='../../js/tab/app.ticker.js'></script>
+    <script type='text/javascript' src='../../js/moment/moment.js'></script>
 
 
     <script type='text/javascript' src='../../js/vegas/jquery.vegas.js'></script>

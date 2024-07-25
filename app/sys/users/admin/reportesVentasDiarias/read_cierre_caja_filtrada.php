@@ -21,6 +21,10 @@ else
   $id_cl = $_SESSION['user']["id_cl"];
   
 
+  //variables para filtrar resultados de cierre de caja
+  $desde = $_GET['desde'];
+  $hasta = $_GET['hasta'];
+
 
   require_once '../../../conexion.php';
   //arrays
@@ -42,8 +46,9 @@ else
   JOIN usuarios u 
   ON cc.creado_por = u.id 
   WHERE cc.id_cl = '$id_cl'
+  AND cc.hasta BETWEEN '$desde 00:00:00' AND '$hasta 00:00:00'
   ORDER BY id DESC";
-  $res = $conexion->query($sql);;
+  $res = $conexion->query($sql);
   while($row = $res->fetch_array())
   {
     $arrId[] = $row["id"];

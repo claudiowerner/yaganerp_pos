@@ -41,6 +41,7 @@ function cargarDesglose()
     type: 'GET',
     success: function(response)
     {
+      let desglose_formateado;
       let tasks = JSON.parse(response);
       let template = '';
         tasks.forEach(c=>{

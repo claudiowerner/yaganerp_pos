@@ -98,7 +98,7 @@
     $valorTotal = 0;
     $id = $arrayCaja[$i];
     $sql =
-    "SELECT v.valor,
+    "SELECT SUM(v.valor) AS valor,
     v.descto
     FROM ventas v 
     JOIN correlativo c 

@@ -70,9 +70,9 @@
                                             <table>
                                                 <tr>
                                                     <td><strong>Desde</strong></td>
-                                                    <td><input type="calendar" name="fechaDesde" id="fechaDesde" class="form-control" placeholder="DD-MM-AAAA"></td>
+                                                    <td><input type="date" name="fechaDesde" id="fechaDesde" class="form-control" placeholder="DD-MM-AAAA"></td>
                                                     <td><strong>Hasta</strong></td>
-                                                    <td><input type="text" name="fechaHasta" id="fechaHasta" class="form-control" placeholder="DD-MM-AAAA"></td>
+                                                    <td><input type="date" name="fechaHasta" id="fechaHasta" class="form-control" placeholder="DD-MM-AAAA"></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -114,6 +114,7 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
+    <script src="js/cargar_cierres_caja.js"></script>
     <script src="js/id_usuario.js"></script>
     <script src="js/repVentas.js"></script>
     <script src="js/imprimir.js"></script>
