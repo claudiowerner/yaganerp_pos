@@ -16,8 +16,15 @@ function rellenarSelectAño()
     let template = '';
     let resp = descargarSelectAñoAjax();
     let año = JSON.parse(resp);
-    año.forEach(a=>{
-        template += `<option value='${a.ano}'>${a.ano}</option>`;
-    });
+    if(Array.isArray(año))
+    {
+        año.forEach(a=>{
+            template += `<option value='${a.ano}'>${a.ano}</option>`;
+        });
+    }
+    else
+    {
+        template += `<option value='${año.ano}'>${año.ano}</option>`;
+    }
     $("#añoVenta").html(template);
 }

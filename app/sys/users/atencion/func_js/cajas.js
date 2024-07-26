@@ -47,7 +47,6 @@
         if(Array.isArray(tasks))
         {
           tasks.forEach(task=>{
-            alert()
             clase = "";
             if(task.estado=="S")
             {

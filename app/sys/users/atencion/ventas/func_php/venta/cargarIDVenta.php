@@ -22,11 +22,18 @@
         AND estado = 'A'
         AND caja = $nCaja";
         $mostrar = "";
-        $res = $conexion->query($sql);;
+        $res = $conexion->query($sql);
         
-        while($row=$res->fetch_array())
+        if($res->num_rows!=0)
         {
-            $mostrar = $row["corr"];
+            while($row=$res->fetch_array())
+            {
+                $mostrar = $row["corr"];
+            }
+        }
+        else
+        {
+            $mostrar = 1;
         }
         echo $mostrar;
     }

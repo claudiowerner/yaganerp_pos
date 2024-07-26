@@ -18,11 +18,20 @@ if(isset($_SESSION['user'])){
     $datos = array();//acá se guardan los datos emanados desde la base de datos
 
     $sql = "SELECT year(fecha) as ano FROM correlativo WHERE id_cl = $id_cl GROUP BY year(fecha)";
-    $res = $conexion->query($sql);;
-    while($row=$res->fetch_array())
+    $res = $conexion->query($sql);
+    if($res->num_rows!=0)
     {
-      $datos[] = array(
-        "ano"=>$row["ano"]
+      while($row=$res->fetch_array())
+      {
+        $datos[] = array(
+          "ano"=>$row["ano"]
+        );
+      }
+    }
+    else
+    {
+      $datos = array(
+        "ano"=>"SIN VENTAS"
       );
     }
     echo json_encode($datos);

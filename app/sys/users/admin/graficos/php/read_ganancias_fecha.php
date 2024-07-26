@@ -36,10 +36,10 @@
   AND fecha_cierre!='0000-00-00'
   GROUP BY(date_format(fecha_cierre, '%d/%m/%Y')) 
   ORDER BY (date_format(fecha_cierre, '%m')) ASC";
-  $resultado = $conexion->query($sql);;
+  $resultado = $conexion->query($sql);
+  $json = array();
   if ($resultado->num_rows > 0)
   {
-    $json = array();
     while ($row = $resultado->fetch_array()) 
     {
       $json[] =array(
@@ -47,7 +47,15 @@
         'fecha_formato_sql' => $row['fecha_formato_sql']
       );
     }
-    echo json_encode($json);
  }
+ else
+ {
+  $json = array(
+    "fecha" => "SIN VENTAS",
+    "fecha_formato_sql" => "0"
+  );
+ }
+ 
+ echo json_encode($json);
 
 ?>

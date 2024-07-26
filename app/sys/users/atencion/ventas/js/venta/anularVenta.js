@@ -11,7 +11,6 @@ $(".anularVenta").on("click", function(e)
       success: function(e)
       {
         msjes_swal("Excelente", e, "success");
-        cargarCorrelativo();
         cargarIDVentaCaja();
         cargarVentasCaja();
       }
