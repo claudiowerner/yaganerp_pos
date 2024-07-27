@@ -1,18 +1,20 @@
 <?php
 
-	session_start();
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
+		session_start();
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
 
-	error_reporting(E_ALL);
-	if(isset($_SESSION['user'])){
-		$tipo = $_SESSION['user']['tipo_usuario'];
-     	if($tipo == 1){
-       	    //header('Location: ../');
-     	}
-     	    }else{
-    	    header('Location: ../../../../index.php');
-     	}
+		error_reporting(E_ALL);
+		if(isset($_SESSION['user'])){
+			$tipo = $_SESSION['user']['tipo_usuario'];
+			if($tipo == 1){
+				//header('Location: ../');
+			}
+		}
+		else
+		{
+			header('Location: ../../../../index.php');
+		}
      	require_once '../../../conexion.php';
 
 	    $id_us = $_SESSION['user']['id'];

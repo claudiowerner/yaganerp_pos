@@ -11,7 +11,8 @@ function correlativo()
             {
                 if(e==1)
                 {
-                    cargarIDVentaCaja();
+                    let id = cargarIDVentaCaja(idCaja);
+                    $("#id_venta").html(id);
                 }
             }
         }
