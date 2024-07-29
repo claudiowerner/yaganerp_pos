@@ -66,6 +66,7 @@
                                             require "modal.php";
                                             echo modalRegistro();
                                             echo modalEditar();
+                                            echo modalResumenPedidos();
                                         ?>
 
                                         <div align=left>
@@ -139,9 +140,11 @@
     <script src="js/pedido/editar_pedido/abrir_pedido_a_editar.js"></script>
     <script src="js/pedido/leer/obtener_valor_pedido.js"></script>
     <script src="js/pedido/leer/obtener_numero_productos.js"></script>
+    <script src="js/pedido/leer/resumen_pedidos.js"></script>
     <script src="js/pedido/calculo/calcular_valor.js"></script>
     <script src="js/pedido/eliminar/eliminar_pedido.js"></script>
     <script src="js/proveedores/cargar_proveedores.js"></script>
+    <script src="../../../js/numberFormat.js"></script>
 </body>
 
 </html>

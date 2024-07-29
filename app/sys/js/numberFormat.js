@@ -1,6 +1,8 @@
 /*La variable formato, nos debe indicar qué formato queremos darle al número, por ejemplo, si es un precio,
 debería mostrarse algo como $xxx.xxx.xxx, y si no, se muestra el número formateado sin $. 
 Para indicar formato precio, debe recibir una "P" como valor, o si no, una "V"*/
+alert("");
+
 function formatearNumero(formato, valor)
 {
     let precioFormateado = "";
