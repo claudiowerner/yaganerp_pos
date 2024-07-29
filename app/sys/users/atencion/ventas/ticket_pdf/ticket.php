@@ -30,7 +30,9 @@
     "SELECT DATE_FORMAT(fecha, '%d-%m-%Y %H:%i:%s') AS fecha,
     descto, valor
     FROM ventas 
-    WHERE id_venta = $ids AND id_cl = $id_cl AND estado!='N'";
+    WHERE id_venta = $ids 
+    AND id_cl = $id_cl 
+    AND estado!='N'";
 
     $res = $conexion->query($sql);;
     $cont = 0;
@@ -79,7 +81,7 @@
         }
     }
     //descarga de datos de supermercado (nombre de fantasía, etc)
-    $sql = 
+    echo $sql = 
     "SELECT c.rut, c.nom_fantasia, c.razon_social, 
     c.direccion, c.correo, c.telefono, 
     g.nombre AS nombre_giro, 

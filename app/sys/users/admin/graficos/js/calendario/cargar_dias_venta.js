@@ -3,7 +3,7 @@ function descargarDiaCompra(mes, año)
 {
     return $.ajax(
         {
-            url: "graficos/php/calendario/dia_venta/dia_mes_boleta.php",
+            url: "graficos/php/calendario/dia_venta/dia_venta.php",
             data: {"mes_actual": mes, "año_actual": año},
             type: "POST",
             async: false
