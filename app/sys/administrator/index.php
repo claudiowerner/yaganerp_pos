@@ -63,6 +63,7 @@
                                             echo modalRegistrarPlan();
                                             echo modalEditarPlan();
                                             echo modalComprobantesPago();
+                                            echo modalInfoClientes();
                                         ?>
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item">
@@ -86,8 +87,6 @@
                                                                 <th>Nombre</th>
                                                                 <th>Rut</th>
                                                                 <th>Estado</th>
-                                                                <th>Correo</th>
-                                                                <th>Telefono</th>
                                                                 <th>Plan comprado</th>
                                                                 <th>Fecha registro</th>
                                                                 <th>Paga desde</th>
@@ -142,6 +141,7 @@
     <?php require "cdn_css/cdn/cdn_index.php";?></body>
     <script src = "js/cliente/editar_cliente.js"></script>
     <script src = "js/cliente/crear_cliente.js"></script>
+    <script src = "js/cliente/mostrar_info_cliente.js"></script>
     <script type="text/javascript" src="../datatables/datatables.js"></script>
     <script src="js/cargarPlanes.js"></script>
     <script src="js/planes.js"></script>

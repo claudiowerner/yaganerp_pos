@@ -61,8 +61,6 @@ table = $('#producto').DataTable({
     {"data":"nombre"},
     {"data":"rut"},
     {"data":"estado"},
-    {"data":"correo"},
-    {"data":"telefono"},
     {"data":"plan_comprado"},
     {"data":"fecha_registro"},
     {"data":"fecha_desde"},
@@ -72,7 +70,7 @@ table = $('#producto').DataTable({
       'data' : null,
       'render': function (data, type, row, meta) {
           return `<button type="submit" class="btn btn-primary" onclick="abrirModalEditar(${data.id})"><i class='fa fa-edit' aria-hidden='true'></i></button>
-          <button id='btnEliminar' class='btn btn-danger' onClick="eliminarCategoria(${data.id}, '${data.nombre_cat}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
+          <button class='btn btn-secondary' onClick="mostrarInfo(${data.id})"><i class='fa fa-expand' aria-hidden='true'></i></button>`;
       }
     }
   ],
