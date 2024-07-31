@@ -51,13 +51,12 @@
                   </tr>
                   <tr>
                     <td>
-                      <label name='nombrePiso'>Direccion</label>
+                      <label name='nombrePiso'>Dirección</label>
                     </td>
                     <td>
                       <input type='text' name='direccion' id='direccion' class='form-control' required>
                     </td>
                   </tr>
-                  
                 </table>
                 <div align='center'>
                   <h6>---Datos de la empresa---</h6>
@@ -142,10 +141,10 @@
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
-              <h5 class='modal-title' id='exampleModalLongTitle'>Editando cliente <strong id='idCliente'></strong></h5>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
+              <h5 class='modal-title' id='exampleModalLongTitle'>Editando cliente <strong id='idCliente'></strong></h5>
             </div>
             <div class='modal-body'>
               <form id='frmRegistro'>
@@ -199,6 +198,17 @@
                     </td>
                   </tr>
                   
+                  <td margin=auto>
+                    <div class=button>
+                      <label name='swEstadoCliente'>Estado del pago</label>
+                    </div>
+                  </td>
+                  <td>
+                    <div class=boton>                    
+                      <input type='checkbox' id='swEstadoCliente'/>
+                      <label for='swEstadoCliente' class='switch'></label>
+                    </div>
+                  </td>
                 </table>
                 <div align='center'>
                   <h6>---Datos de la empresa---</h6>
@@ -297,10 +307,10 @@
         <div class='modal-dialog modal-lg' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
-              <h5 class='modal-title' id='exampleModalLongTitle'>Comprobantes de pago <strong id='idCliente'></strong></h5>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
+              <h5 class='modal-title' id='exampleModalLongTitle'>Comprobantes de pago <strong id='idCliente'></strong></h5>
             </div>
             <div class='modal-body'>
               <form action='' id='subirArchivo' method='post'>
@@ -341,10 +351,10 @@
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
-              <h5 class='modal-title' id='exampleModalLongTitle'>Agregando</h5>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
+              <h5 class='modal-title' id='exampleModalLongTitle'>Agregando</h5>
             </div>
             <table width='100%'>
               <tr>
@@ -399,10 +409,10 @@
     <div class='modal-dialog' role='document'>
     <div class='modal-content'>
       <div class='modal-header'>
-        <h5 class='modal-title' id='exampleModalLongTitle'>Editando plan <strong id='idPlan'></strong></h5>
         <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
           <span aria-hidden='true'>&times;</span>
         </button>
+        <h5 class='modal-title' id='exampleModalLongTitle'>Editando plan <strong id='idPlan'></strong></h5>
       </div>
       <table width='100%'>
       <tr>

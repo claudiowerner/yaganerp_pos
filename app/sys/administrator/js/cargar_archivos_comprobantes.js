@@ -1,3 +1,5 @@
+
+
 function cargarArchivosComprobantes()
 {
     let idCliente = $("#idCliente").text();
@@ -9,7 +11,6 @@ function cargarArchivosComprobantes()
             data: {"id_cl": idCliente},
             success: function(e)
             {
-                alert(e);
                 template = "";
                 json = JSON.parse(e);
                 json.forEach(j=>
@@ -20,7 +21,7 @@ function cargarArchivosComprobantes()
                         </tr>`;
                     }
                 );
-                $("#").html();
+                $("#bodyComprobantes").html();
             }
         }
     )

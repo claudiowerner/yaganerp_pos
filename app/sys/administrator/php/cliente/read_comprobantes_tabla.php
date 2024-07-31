@@ -10,7 +10,7 @@
   //query
   $sql =
   "SELECT * FROM comprobantes WHERE id_cl = '$id_cl'";
-  $resultado = $conexion->query($sql);;
+  $resultado = $conexion->query($sql);
   if ($resultado->num_rows > 0){
     $json = array();
     while ($row = $resultado->fetch_array())

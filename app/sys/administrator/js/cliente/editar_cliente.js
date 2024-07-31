@@ -1,0 +1,140 @@
+/* --------------------------------------------- FUNCIONES AJAX ------------------------------------- */
+
+//descargar info del cliente seleccionado
+function descargarInfoCliente(id)
+{
+    return $.ajax({
+        url: "php/cliente/read_cliente_seleccionado.php",
+        data: {"id":id},
+        type: "POST",
+        async: false
+    }).responseText;
+}
+
+
+function guardarEdicion(datos)
+{
+    return $.ajax({
+        url:"php/cliente/editar_cliente.php",
+        data: datos, 
+        type: "POST",
+        async: false
+    }).responseText;
+}
+
+
+/* ---------------------------------------------- FUNCIONES DOM ------------------------------------- */
+let ec;
+let ep;
+
+$("#swEstadoCliente").on("click", function(e)
+{
+    if(e.target.checked)
+    {
+        ec = "S";
+    }
+    else
+    {
+        ec = "N";
+    }
+});
+
+$("#swEstadoPago").on("click", function(e)
+{
+    if(e.target.checked)
+    {
+        ep = "S";
+    }
+    else
+    {
+        ep = "N";
+    }
+});
+
+
+
+function abrirModalEditar(id)
+{
+    let descargar = descargarInfoCliente(id);
+    let datos = JSON.parse(descargar);
+    $("#idCliente").html(id);
+    $("#nomClienteEditar").val(datos.nombre);
+    $("#rutEditar").val(datos.rut);
+    $("#correoEditar").val(datos.correo);
+    $("#telefonoEditar").val(datos.telefono);
+    $("#direccionEditar").val(datos.direccion);
+    $("#slctPlanEditar").val(datos.plan_comprado);
+    $("#fechaPagoEditar").val(datos.fecha_pago);
+    $("#nomFantasiaEditar").val(datos.nom_fantasia);
+    $("#razonSocialEditar").val(datos.razon_social);
+    $("#fechaDesdeEditar").val(datos.fecha_desde);
+    $("#fechaHastaEditar").val(datos.fecha_hasta);
+    $("#slctGirosEditar").select(datos.giro);
+
+    let estado = datos.estado;
+    let estado_pago = datos.estado_pago;
+
+    $("#swEstadoCliente").prop("checked", estado);
+    $("#swEstadoPago").prop("checked", estado_pago);
+    
+    $("#modalEditar").modal("show");
+}
+
+
+$("#btnModificar").on("click", function()
+{
+    let id = $("#idCliente").text();
+    let nombre = $("#nomClienteEditar").val();
+    let rut = $("#rutEditar").val();
+    let correo = $("#correoEditar").val();
+    let telefono = $("#telefonoEditar").val();
+    let direccion = $("#direccionEditar").val();
+    let plan = $("#slctPlanEditar").val();
+    let nomFantasia = $("#nomFantasiaEditar").val();
+    let razonSocial = $("#razonSocialEditar").val();
+    let fechaDesde = $("#fechaDesdeEditar").val();
+    let fechaHasta = $("#fechaHastaEditar").val();
+    let metodo_pago = $("#tipoPagoEditar").val();
+    let giro = $("#slctGirosEditar").val();
+    if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||fechaDesde==""||fechaHasta==""||nomFantasia==""||razonSocial=="")
+    {
+        msjes_swal("Aviso", "Debe rellenar todos los campos", "warning");
+    }
+    else
+    {
+        let datos = {
+            "id": id,
+            "nombre": nombre,
+            "estado": ec,
+            "rut":rut,
+            "correo":correo,
+            "telefono":telefono,
+            "direccion":direccion,
+            "plan":plan,
+            "nomFantasia":nomFantasia,
+            "razonSocial":razonSocial,
+            "estado": ec,
+            "fechaDesde":fechaDesde,
+            "fechaHasta":fechaHasta,
+            "metodo_pago":metodo_pago,
+            "estado_pago":ep,
+            "giro":giro
+        }
+        let editar = guardarEdicion(datos);
+        try
+        {
+            let json = JSON.parse(editar);
+
+            msjes_swal(json.titulo, json.mensaje, json.icono);
+            if(json.edicion)
+            {
+                $("#modalEditar").modal("hide");
+                $('#producto').DataTable().ajax.reload();
+            }
+        }
+        catch(e)
+        {
+            msjes_swal("Error", e, "error");
+        }
+    }
+});

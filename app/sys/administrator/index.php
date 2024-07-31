@@ -140,6 +140,8 @@
     ================================================== -->
     <!-- Main jQuery Plugins -->
     <?php require "cdn_css/cdn/cdn_index.php";?></body>
+    <script src = "js/cliente/editar_cliente.js"></script>
+    <script src = "js/cliente/crear_cliente.js"></script>
     <script type="text/javascript" src="../datatables/datatables.js"></script>
     <script src="js/cargarPlanes.js"></script>
     <script src="js/planes.js"></script>

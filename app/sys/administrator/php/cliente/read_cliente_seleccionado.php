@@ -14,8 +14,9 @@ session_start();
     FROM cliente c
     JOIN pago_cliente pg 
     ON c.id = pg.id_cl
-    WHERE c.id = $id;";
-    $resultado = $conexion->query($sql);;
+    WHERE c.id = $id
+    GROUP BY c.id";
+    $resultado = $conexion->query($sql);
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())
@@ -23,13 +24,24 @@ session_start();
         $estado = $row['estado'];
         if($estado=="S")
         {
-          $estado = "ACTIVO";
+          $estado = true;
         }
         else
         {
-          $estado = "INACTIVO";
+          $estado = false;
         }
-        $json[] =array(
+        $estado_pago = $row['estado_pago'];
+        if($estado_pago=="S")
+        {
+          $estado_pago = true;
+        }
+        else
+        {
+          $estado_pago = false;
+        }
+        
+
+        $json = array(
           'id' => $row['id'],
           'nombre' => $row['nombre'],
           'rut' => $row['rut'],
@@ -42,7 +54,7 @@ session_start();
           'direccion' => $row['direccion'],
           'fecha_desde' => $row['fecha_desde'],
           'fecha_hasta' => $row['fecha_hasta'],
-          'estado_pago' => $row['estado_pago'],
+          'estado_pago' => $estado_pago,
           'giro' => $row['giro']
         );
       };

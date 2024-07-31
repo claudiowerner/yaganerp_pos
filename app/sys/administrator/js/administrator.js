@@ -69,7 +69,11 @@ table = $('#producto').DataTable({
     {"data":"fecha_hasta"},
     {"data":"estado_pago"},
     {
-      "defaultContent": '<button type="submit" class="btn btn-primary editar" id="btnEditar"><img src="../img/edit.png" width="15"></button>'
+      'data' : null,
+      'render': function (data, type, row, meta) {
+          return `<button type="submit" class="btn btn-primary" onclick="abrirModalEditar(${data.id})"><i class='fa fa-edit' aria-hidden='true'></i></button>
+          <button id='btnEliminar' class='btn btn-danger' onClick="eliminarCategoria(${data.id}, '${data.nombre_cat}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
+      }
     }
   ],
 
@@ -103,124 +107,8 @@ $("#swEstadoPago").on("click", function(e)
   {
     estado_pago = "N";
   }
-})
-$("#producto").on("click", "tr", function(e)
-{
-  e.preventDefault();
-  var cat = $("#producto").DataTable();
-  var datos = cat.row(this).data();
-  $("#modalEditar").modal('show'); 
-  $("#idCliente").html(datos.id);
-  
-  $.ajax({
-    url: "php/cliente/read_cliente_seleccionado.php",
-    data: {"id": datos.id},
-    type: "POST",
-    success: function(e)
-    {
-      json = JSON.parse(e);
-      json.forEach(datos=>
-        {
-          $("#nomClienteEditar").val(datos.nombre);
-          $("#rutEditar").val(datos.rut);
-          $("#correoEditar").val(datos.correo);
-          $("#telefonoEditar").val(datos.telefono);
-          $("#direccionEditar").val(datos.direccion);
-          $("#slctPlanEditar").val(datos.plan_comprado);
-          $("#fechaPagoEditar").val(datos.fecha_pago);
-          $("#nomFantasiaEditar").val(datos.nom_fantasia);
-          $("#razonSocialEditar").val(datos.razon_social);
-          $("#fechaDesdeEditar").val(datos.fecha_desde);
-          $("#fechaHastaEditar").val(datos.fecha_hasta);
-          $("#slctGirosEditar").val(datos.giro);
-          if(datos.estado_pago=='S')
-          {
-            $("#swEstadoPago").prop("checked",true);
-          }
-          else
-          {
-            $("#swEstadoPago").prop("checked",false);
-          }
-        })
-    }
-  })
-  
-  if(datos.estado == "ACTIVO")
-  {
-    $("#swEstadoCliente").prop("checked", true);
-    ec = "S";
-  }
-  else
-  {
-    $("#swEstadoCliente").prop("checked", false);
-    ec = "N";
-  }
-  
 });
 
-$("#btnGuardar").on("click", function(e)
-{
-  e.preventDefault();
-  let nombre = $("#nomCliente").val();
-  let rut = $("#rut").val();
-  let correo = $("#correo").val();
-  let telefono = $("#telefono").val();
-  let direccion = $("#direccion").val();
-  let plan = $("#slctPlan").val();
-  let fechaRegistro = getFecha();
-  let fechaDesde = $("#fechaDesde").val();
-  let fechaHasta = $("#fechaDesde").val();
-  let nomFantasia = $("#nomFantasia").val();
-  let razonSocial = $("#razonSocial").val();
-  let tipoPago = $("#tipoPago").val();
-  let giro = $("#slctGiros").val();
-  if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||fechaDesde==""||fechaHasta==""||nomFantasia==""||razonSocial=="")
-  {
-    msjes_swal("Aviso", "Debe rellenar todos los campos", "warning");
-  }
-  else
-  {
-    datos = {
-      "nombre": nombre,
-      "rut":rut,
-      "correo":correo,
-      "telefono":telefono,
-      "direccion":direccion,
-      "plan":plan,
-      "fechaRegistro":fechaRegistro,
-      "fechaHasta":fechaHasta,
-      "fechaDesde":fechaDesde,
-      "nomFantasia":nomFantasia,
-      "razonSocial":razonSocial,
-      "giro":giro,
-      "tipoPago":tipoPago,
-      "fecha_pago":fechaDesde
-    }
-    console.log(datos)
-    $.ajax({
-      url:"php/cliente/crear_cliente.php",
-      data: datos,
-      type: "POST",
-      success: function(e)
-      {
-        if(e.match("correctamente"))
-        {
-          msjes_swal("Excelente", e, "success");
-        }
-        if(e.match("Error")||e.match("error"))
-        {
-          msjes_swal("Error al modificar", e, "error");
-        }
-        $('#producto').DataTable().ajax.reload();
-        $("#modalRegistro").modal("hide");
-      }
-    })
-    .fail(function(e)
-    {
-      console.log(e.responseText);
-    })
-  }
-});
 
 $("#btnVerComprobantes").on("click", function(e)
 {
@@ -234,84 +122,6 @@ $("#btnVolver").on("click", function(e)
   $("#modalEditar").modal("show");
 });
 
-$("#swEstadoCliente").on("click", function(e)
-{
-  if(e.target.checked)
-  {
-    ec = "S";
-  }
-  else
-  {
-    ec = "N";
-  }
-})
-$("#btnModificar").on("click", function(e)
-{
-  let id = $("#idCliente").text();
-  let nombre = $("#nomClienteEditar").val();
-  let rut = $("#rutEditar").val();
-  let correo = $("#correoEditar").val();
-  let telefono = $("#telefonoEditar").val();
-  let direccion = $("#direccionEditar").val();
-  let plan = $("#slctPlanEditar").val();
-  let nomFantasia = $("#nomFantasiaEditar").val();
-  let razonSocial = $("#razonSocialEditar").val();
-  let fechaDesde = $("#fechaDesdeEditar").val();
-  let fechaHasta = $("#fechaHastaEditar").val();
-  let metodo_pago = $("#tipoPagoEditar").val();
-  let giro = $("#slctGirosEditar").val();
-  if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||fechaDesde==""||fechaHasta==""||nomFantasia==""||razonSocial=="")
-  {
-    msjes_swal("Aviso", "Debe rellenar todos los campos", "warning");
-  }
-  else
-  {
-    datos = {
-      "id": id,
-      "nombre": nombre,
-      "rut":rut,
-      "correo":correo,
-      "telefono":telefono,
-      "direccion":direccion,
-      "plan":plan,
-      "nomFantasia":nomFantasia,
-      "razonSocial":razonSocial,
-      "estado": ec,
-      "fechaDesde":fechaDesde,
-      "fechaHasta":fechaHasta,
-      "metodo_pago":metodo_pago,
-      "estado_pago":estado_pago,
-      "giro":giro
-    }
-    e.preventDefault();
-    $.ajax({
-      url:"php/cliente/editar_cliente.php",
-      data: datos, 
-      type: "POST",
-      success: function(e)
-      {
-        if(e.match("correctamente"))
-        {
-          msjes_swal("Excelente", e, "success");
-        }
-        if(e.match("No se puede desactivar la caja porque existen ventas activas asociadas"))
-        {
-          msjes_swal("Aviso", e, "warning");
-        }
-        if(e.match("Error")||e.match("error"))
-        {
-          msjes_swal("Error al modificar", e, "error");
-        }
-        $('#producto').DataTable().ajax.reload();
-        $("#modalEditar").modal("hide");
-      }
-    })
-    .fail(function(e)
-    {
-      console.log(e.responseText);
-    })
-  }
-});
 function getFecha ()
 {
   var hoy = new Date();

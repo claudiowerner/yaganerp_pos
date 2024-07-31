@@ -28,7 +28,7 @@
 	$sql = 
 	"UPDATE cliente c
 	JOIN pago_cliente pg SET 
-	c.nombre = '$nombre', 
+	c.nombre = '$nombre',
 	c.rut = '$rut', 
 	c.nom_fantasia = '$nom_fantasia', 
 	c.razon_social = '$razon_social', 
@@ -47,16 +47,30 @@
 	WHERE c.id = $id
 	AND pg.id_cl = $id;
 	";
-	$resultado = $conexion->query($sql);
+	$res = $conexion->query($sql);
 
-	if($resultado)
+	$json = array();
+	
+	if($res)
 	{
-		echo "Cliente modificado correctamente";
+		$json = array(
+			"edicion" => true,
+			"titulo" => "Excelente",
+			"mensaje" => "Cliente editado correctamente.",
+			"icono" => "success"
+		);
 	}
 	else
 	{
-		echo die("Error al modificar cliente: ". mysqli_error($conexion));
+		$json = array(
+			"edicion" => false,
+			"titulo" => "Error",
+			"mensaje" => "Ha ocurrido un error al editar el cliente: ".$conexion->error,
+			"icono" => "error"
+		);
 	}
+
+	echo json_encode($json);
 	
 	
 

@@ -10,8 +10,6 @@ $("#btnCargarArchivo").on("click", function(e)
     let dir_archivo;
     var archivo = $('#archivo').prop('files')[0];
 
-    console.log(archivo);
-
     if(archivo != undefined) {
         var form_data = new FormData();
                       

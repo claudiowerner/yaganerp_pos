@@ -17,7 +17,8 @@ require_once '../../../conexion.php';
     JOIN planes pl
     ON pl.id = c.plan_comprado
     JOIN pago_cliente pc
-    ON c.id = pc.id_cl";
+    ON c.id = pc.id_cl
+    GROUP BY c.id";
     $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
       $json = array();
