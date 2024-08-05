@@ -1,3 +1,19 @@
+/* ------------------------------------------ FUNCIONES AJAX ---------------------------------------- */
+function cargarArchivos(form_data)
+{
+    return $.ajax({
+        type: 'POST',
+        url: 'php/cliente/comprobante/cargarArchivos.php',
+        contentType: false,
+        processData: false,
+        data: form_data,
+        async: false
+    }).responseText;
+}
+
+
+
+/* ------------------------------------------- ACCIONES DOM ----------------------------------------- */
 $("#btnCargarArchivo").on("click", function(e)
 {
     e.preventDefault();
@@ -6,6 +22,8 @@ $("#btnCargarArchivo").on("click", function(e)
     //El método prop() nos sirve para poder modificar las propiedades nativas de Javascript 
     //de los elementos de una página, Ejemplo $('#checkbox1').prop("checked", true);
     
+    let id_cl = $("#idCliente").text();
+    let fecha_carga = getFecha();
     //subir archivos
     let dir_archivo;
     var archivo = $('#archivo').prop('files')[0];
@@ -14,22 +32,12 @@ $("#btnCargarArchivo").on("click", function(e)
         var form_data = new FormData();
                       
         form_data.append('file', archivo);
-        console.log(form_data);
-        $.ajax({
-            type: 'POST',
-            url: 'php/cliente/cargarArchivos.php',
-            contentType: false,
-            processData: false,
-            data: form_data,
-            async: false,
-            success:function(e) {
-                dir_archivo = e;
-            }
-        });
+        let respuesta = cargarArchivos(form_data);
+        let json = JSON.parse(respuesta);
+        
+        dir_archivo = json.url;
     }
     
-    let id_cl = $("#idCliente").text();
-    let fecha_carga = getFecha();
 
     let datos = 
     {
@@ -41,12 +49,13 @@ $("#btnCargarArchivo").on("click", function(e)
     //registro de archivo en la BD
     $.ajax(
         {
-            url: "php/cliente/registrarArchivoBD.php",
+            url: "php/cliente/comprobante/registrarArchivoBD.php",
             data: datos,
             type: "POST",
             success: function(e)
             {
                 msjes_swal("Excelente",e,"success");
+                cargarArchivosComprobantes(id_cl);
             }
         }
     )
@@ -54,8 +63,6 @@ $("#btnCargarArchivo").on("click", function(e)
     {
         msjes_swal("Error",e.responseText,"error");
     })
-
-    cargarArchivosComprobantes();
 
 });
 

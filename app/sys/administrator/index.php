@@ -64,6 +64,8 @@
                                             echo modalEditarPlan();
                                             echo modalComprobantesPago();
                                             echo modalInfoClientes();
+                                            echo modalComprobanteSeleccionado();
+                                            echo modalCargarNuevoComprobante();
                                         ?>
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item">
@@ -83,11 +85,9 @@
                                                     <table id="producto" width="100%" class="table table-bordered table-hover dt-resposive display nowrap">
                                                         <thead>
                                                             <tr>
-                                                                <th>Id</th>
                                                                 <th>Nombre</th>
                                                                 <th>Rut</th>
                                                                 <th>Estado</th>
-                                                                <th>Plan comprado</th>
                                                                 <th>Fecha registro</th>
                                                                 <th>Paga desde</th>
                                                                 <th>Paga hasta</th>
@@ -142,6 +142,13 @@
     <script src = "js/cliente/editar_cliente.js"></script>
     <script src = "js/cliente/crear_cliente.js"></script>
     <script src = "js/cliente/mostrar_info_cliente.js"></script>
+    <script src = "js/cliente/comprobante/pagos_cliente.js"></script>
+    <script src = "js/cliente/comprobante/cargar_archivos_comprobantes.js"></script>
+    <script src = "js/cliente/comprobante/cargar_comprobante_seleccionado.js"></script>
+    <script src = "js/cliente/comprobante/cambiar_comprobante.js"></script>
+    <script src = "js/cliente/comprobante/cargar_archivos.js"></script>
+    <script src = "js/cliente/comprobante/cargar_archivos_nuevo_comprobante.js"></script>
+    <script src = "js/cliente/comprobante/cargar_nuevo_comprobante.js"></script>
     <script type="text/javascript" src="../datatables/datatables.js"></script>
     <script src="js/cargarPlanes.js"></script>
     <script src="js/planes.js"></script>
@@ -149,8 +156,6 @@
     <script src="js/crearEnviarUsuario.js"></script>
     <script src="js/cargarTipoPago.js"></script>
     <script src="../js/validarRut.js"></script>
-    <script src="js/cargarArchivos.js"></script>
-    <script src="js/cargar_archivos_comprobantes.js"></script>
     <script src="js/cargarGiros.js"></script>
     
 

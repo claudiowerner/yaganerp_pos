@@ -321,17 +321,15 @@
                     <td><button id='btnCargarArchivo' class='btn btn-success'>Cargar archivo</button></td>
                   </tr>
                 </table>
-                <h6>---Tabla de comprobantes---</h6>
+              </form>
+              <h6>---Tabla de comprobantes---</h6>
                 <table class='table'>
-                  <th>
-                    <td>ID</td>
-                    <td>Nombre archivo</td>
-                    <td>Fecha de carga</td>
-                  </th>
+                  <th>ID</th>
+                  <th>Nombre archivo</th>
+                  <th>Fecha de carga</th>
                   <tbody id='bodyComprobantes'>
                   </tbody>
                 </table>
-              </form>
               <button class='btn btn-primary' id='btnVolver'><- Volver</button>
             </div>
             <div class='modal-footer'>
@@ -342,6 +340,72 @@
         </div>
       </div>";
 	}
+
+
+  
+  function modalComprobanteSeleccionado()
+	{
+		return "<div class='modal fade' id='modalComprobanteSeleccionado' role='dialog' style='overflow-y: scroll;' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+        <div class='modal-dialog modal-dialog-scrollable modal-lg' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+              <h5 class='modal-title' id='exampleModalLongTitle'>
+                <span id='idClienteInfo' style='display: none'></span>
+                Detalles de <strong id='tituloCliente'></strong>
+              </h5>
+              <span id='idComprobante' style='display: none'></span>
+            </div>
+            <div class='modal-body'>
+              <span id='url' style='display: none'></span>
+              <button id='cambiarComprobante' class='btn btn-primary' ><i class='fa fa-edit' aria-hidden='true'></i>Cambiar archivo</i></button>
+              <div id='archivoComprobante'>
+              </div>
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+              <button type='submit' id='btnModificar' class='btn btn-primary'>Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>";
+	}
+  
+  function modalCargarNuevoComprobante()
+	{
+		return "<div class='modal fade' id='modalCargarNuevoComprobante' role='dialog' style='overflow-y: scroll;' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+        <div class='modal-dialog modal-lg' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+              <h5 class='modal-title' id='exampleModalLongTitle'>
+                <strong>Cargar nuevo comprobante: </strong>
+              </h5>
+            </div>
+            <div class='modal-body'>
+              <div class='row'>
+                <div class='col-lg-10'>
+                  <input type='file' id='archivos2' name='archivos2' accept='.jpg, .jpeg, .pdf' />
+                </div>
+                <div class='col-lg-2'>
+                  <button id='btnCargarArchivoNuevo' class='btn btn-success'>Cargar archivo</button>
+                </div>
+              </div>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>";
+	}
+
+
+
+
   function modalInfoClientes()
 	{
 		return "<div class='modal fade' id='modalInfoClientes' role='dialog' style='overflow-y: scroll;' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
@@ -353,7 +417,7 @@
               </button>
               <h5 class='modal-title' id='exampleModalLongTitle'>
                 <span id='idClienteInfo' style='display: none'></span>
-                Detalles de <strong id='tituloCliente'></strong
+                Detalles de <strong id='tituloCliente'></strong>
               </h5>
             </div>
             <div class='modal-body'>

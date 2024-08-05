@@ -1,6 +1,6 @@
  <?php
  
-    require_once '../../../conexion.php';
+    require_once '../../../../conexion.php';
     
     $id_cl = $_POST["id_cl"];
     $dir_archivo = $_POST["dir_archivo"];
