@@ -4,22 +4,19 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 session_start();
-require_once '../../../conexion.php';
-
+require_once '../../../../conexion.php';
+    $id = $_POST["id"];
     //query
     $sql =
-    "SELECT c.id, c.nombre, c.rut, c.estado, c.correo, c.telefono, pl.nombre AS plan_comprado, 
-    DATE_FORMAT(fecha_registro, '%d-%m-%Y') AS fecha_registro,
-    DATE_FORMAT(pc.fecha_desde, '%d-%m-%Y') AS fecha_desde,
-    DATE_FORMAT(pc.fecha_hasta, '%d-%m-%Y') AS fecha_hasta,
-    pc.estado AS estado_pago
+    "SELECT c.id, c.nombre, c.rut, c.estado, c.nom_fantasia, 
+    c.razon_social, c.direccion, c.correo, c.telefono, 
+    c.plan_comprado, pg.fecha_desde, pg.fecha_hasta, pg.estado AS estado_pago, c.giro
     FROM cliente c
-    JOIN planes pl
-    ON pl.id = c.plan_comprado
-    JOIN pago_cliente pc
-    ON c.id = pc.id_cl
+    JOIN pago_cliente pg 
+    ON c.id = pg.id_cl
+    WHERE c.id = $id
     GROUP BY c.id";
-    $resultado = $conexion->query($sql);;
+    $resultado = $conexion->query($sql);
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())
@@ -27,23 +24,24 @@ require_once '../../../conexion.php';
         $estado = $row['estado'];
         if($estado=="S")
         {
-          $estado = "ACTIVO";
+          $estado = true;
         }
         else
         {
-          $estado = "INACTIVO";
+          $estado = false;
         }
-
         $estado_pago = $row['estado_pago'];
         if($estado_pago=="S")
         {
-          $ep = "PAGADO";
+          $estado_pago = true;
         }
         else
         {
-          $ep = "SIN PAGAR";
+          $estado_pago = false;
         }
-        $json[] =array(
+        
+
+        $json = array(
           'id' => $row['id'],
           'nombre' => $row['nombre'],
           'rut' => $row['rut'],
@@ -51,16 +49,19 @@ require_once '../../../conexion.php';
           'correo' => $row['correo'],
           'telefono' => $row['telefono'],
           'plan_comprado' => $row['plan_comprado'],
-          'fecha_registro' => $row['fecha_registro'],
+          'nom_fantasia' => $row['nom_fantasia'],
+          'razon_social' => $row['razon_social'],
+          'direccion' => $row['direccion'],
           'fecha_desde' => $row['fecha_desde'],
           'fecha_hasta' => $row['fecha_hasta'],
-          'estado_pago' => $ep
+          'estado_pago' => $estado_pago,
+          'giro' => $row['giro']
         );
       };
       echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
     }
     else
     {
-      echo die("Error al agregar categoría: ". $conexion->error);
+      echo die("Error al agregar categoría: ". mysqli_error($conexion));
     }
 ?>

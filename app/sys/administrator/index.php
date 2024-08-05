@@ -139,9 +139,12 @@
     ================================================== -->
     <!-- Main jQuery Plugins -->
     <?php require "cdn_css/cdn/cdn_index.php";?></body>
-    <script src = "js/cliente/editar_cliente.js"></script>
-    <script src = "js/cliente/crear_cliente.js"></script>
-    <script src = "js/cliente/mostrar_info_cliente.js"></script>
+    <script type="text/javascript" src="../datatables/datatables.js"></script>
+    <script src = "js/planes/cargar_select_planes.js"></script>
+    <script src = "js/planes/planes.js"></script>
+    <script src = "js/cliente/cliente/editar_cliente.js"></script>
+    <script src = "js/cliente/cliente/crear_cliente.js"></script>
+    <script src = "js/cliente/cliente/mostrar_info_cliente.js"></script>
     <script src = "js/cliente/comprobante/pagos_cliente.js"></script>
     <script src = "js/cliente/comprobante/cargar_archivos_comprobantes.js"></script>
     <script src = "js/cliente/comprobante/cargar_comprobante_seleccionado.js"></script>
@@ -149,14 +152,11 @@
     <script src = "js/cliente/comprobante/cargar_archivos.js"></script>
     <script src = "js/cliente/comprobante/cargar_archivos_nuevo_comprobante.js"></script>
     <script src = "js/cliente/comprobante/cargar_nuevo_comprobante.js"></script>
-    <script type="text/javascript" src="../datatables/datatables.js"></script>
-    <script src="js/cargarPlanes.js"></script>
-    <script src="js/planes.js"></script>
-    <script src="js/administrator.js"></script>
-    <script src="js/crearEnviarUsuario.js"></script>
-    <script src="js/cargarTipoPago.js"></script>
-    <script src="../js/validarRut.js"></script>
-    <script src="js/cargarGiros.js"></script>
+    <script src = "js/cliente/cliente/read_clientes.js"></script>
+    <script src = "js/crearEnviarUsuario.js"></script>
+    <script src = "js/cargarTipoPago.js"></script>
+    <script src = "../js/validarRut.js"></script>
+    <script src = "js/cargarGiros.js"></script>
     
 
 </html>

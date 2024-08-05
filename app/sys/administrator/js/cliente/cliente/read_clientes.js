@@ -1,21 +1,5 @@
 cargarPlan();
 
-
-//validar rut de cliente nuevo
-$("#rut").on("keyup", function(e)
-{
-  let rut = $("#rut").val();
-  validarRut = fnValidarRut.validaRut(rut);
-  if(validarRut)
-  {
-    $("#btnGuardar").attr("disabled", false);
-  }
-  else
-  {
-    $("#btnGuardar").attr("disabled", true);
-  }
-})
-
 $("#rutEditar").on("keyup", function(e)
 {
   let rut = $("#rut").val();
@@ -51,7 +35,7 @@ table = $('#producto').DataTable({
     }
   },
   "ajax":{
-    "url":"php/cliente/read_cliente.php",
+    "url":"php/cliente/clientes/read_cliente.php",
     "type":"GET",
     "dataSrc":""
   },
