@@ -22,7 +22,7 @@ function cargarArchivosComprobantes(idCliente)
         json.forEach(j=>{
             template = template+
             `<tr>
-                <td>${j.id}</td>
+                <td>${j.nro_fila}</td>
                 <td style="cursor:pointer;" onclick="abrirComprobantePago('${j.id}','${j.dir_archivo}')">${j.nombre_archivo}</td>
                 <td>${j.fecha_carga}</td>
             </tr>`;

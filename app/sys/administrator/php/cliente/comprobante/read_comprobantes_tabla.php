@@ -15,12 +15,15 @@
   WHERE id_cl = '$id_cl'";
   $res = $conexion->query($sql);
   $filas = $res->num_rows;
+  $nro_fila = 0;
   if ($filas > 0){
     $json = array();
     while ($row = $res->fetch_array())
     {
+      $nro_fila++;
       $json[] =array(
         "resultados" => $filas,
+        "nro_fila" => $nro_fila,
         'id' => $row['id'],
         'nombre_archivo' => $row['nombre_archivo'],
         'dir_archivo' => $row['dir_archivo'],
