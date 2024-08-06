@@ -1,0 +1,45 @@
+
+
+<?php
+
+function modalComprobantesPago()
+{
+    return "<div class='modal fade' id='modalComprobantesPago' role='dialog' style='overflow-y: scroll;' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+    <div class='modal-dialog modal-dialog-scrollable  modal-lg' role='document'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+          <h5 class='modal-title' id='exampleModalLongTitle'>Comprobantes de pago <strong id='idCliente'></strong></h5>
+        </div>
+        <div class='modal-body'>
+          <form action='' id='subirArchivo' method='post'>
+            <table width='100%'>
+              <tr>
+                <td><label>Cargar archivo: </label></td>
+                <td><input type='file' id='archivo' class='form form-control'accept='.jpg, .jpeg, .pdf'></td>
+                <td><button id='btnCargarArchivo' class='btn btn-success'>Cargar archivo</button></td>
+              </tr>
+            </table>
+          </form>
+          <h6>---Tabla de comprobantes---</h6>
+            <table class='table'>
+              <th>ID</th>
+              <th>Nombre archivo</th>
+              <th>Fecha de carga</th>
+              <tbody id='bodyComprobantes'>
+              </tbody>
+            </table>
+          <button class='btn btn-primary' id='btnVolver'><- Volver</button>
+        </div>
+        <div class='modal-footer'>
+          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+          <button type='submit' id='btnModificar' class='btn btn-primary'>Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>";
+}
+
+?>

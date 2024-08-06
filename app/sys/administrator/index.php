@@ -57,7 +57,19 @@
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
                                         <?php
-                                            require "modal.php";
+                                            //cliente
+                                            require "modals/cliente/cliente/registro.php";
+                                            require "modals/cliente/cliente/editar.php";
+                                            require "modals/cliente/cliente/info_clientes.php";
+
+                                            //pagos
+                                            require "modals/cliente/pago/comprobantes_pago.php";
+                                            require "modals/cliente/pago/comprobante_seleccionado.php";
+                                            require "modals/cliente/pago/cargar_nuevo_comprobante.php";
+
+                                            //plan
+                                            require "modals/plan/registrar_plan.php";
+                                            require "modals/plan/editar_plan.php";
                                             echo modalRegistroCliente();
                                             echo modalEditarCliente();
                                             echo modalRegistrarPlan();
@@ -142,8 +154,10 @@
     <script type="text/javascript" src="../datatables/datatables.js"></script>
     <script src = "js/planes/cargar_select_planes.js"></script>
     <script src = "js/planes/planes.js"></script>
+    
+    <!--Clientes-->
     <script src = "js/cliente/cliente/editar_cliente.js"></script>
-    <script src = "js/cliente/cliente/crear_cliente.js"></script>
+    <script src = "js/cliente/cliente/crear_cliente/crear_cliente.js"></script>
     <script src = "js/cliente/cliente/mostrar_info_cliente.js"></script>
     <script src = "js/cliente/comprobante/pagos_cliente.js"></script>
     <script src = "js/cliente/comprobante/cargar_archivos_comprobantes.js"></script>
@@ -153,6 +167,11 @@
     <script src = "js/cliente/comprobante/cargar_archivos_nuevo_comprobante.js"></script>
     <script src = "js/cliente/comprobante/cargar_nuevo_comprobante.js"></script>
     <script src = "js/cliente/cliente/read_clientes.js"></script>
+
+    <!--Plazo de pago-->
+    <script src = "js/cliente/plazo_pago/cargar_plazo_pago.js"></script>
+
+
     <script src = "js/crearEnviarUsuario.js"></script>
     <script src = "js/cargarTipoPago.js"></script>
     <script src = "../js/validarRut.js"></script>
