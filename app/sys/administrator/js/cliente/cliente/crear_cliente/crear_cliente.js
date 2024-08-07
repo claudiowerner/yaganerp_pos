@@ -11,6 +11,15 @@ function registrarCliente(datos)
   }).responseText;
 }
 
+function registrarPago(datos)
+{
+  return $.ajax({
+    url: "php/cliente/pagos/crear_pago.php",
+    data: datos,
+    type: "POST",
+    async: false
+  }).responseText;
+}
 /* -------------------------------------------- FUNCIONES DOM --------------------------------------- */
 $("#btnGuardar").on("click", function(e)
 {
@@ -21,13 +30,11 @@ $("#btnGuardar").on("click", function(e)
   let telefono = $("#telefono").val();
   let direccion = $("#direccion").val();
   let plan = $("#slctPlan").val();
-  let fechaRegistro = getFecha();
-  let fechaDesde = $("#fechaDesde").val();
-  let fechaHasta = $("#fechaDesde").val();
   let nomFantasia = $("#nomFantasia").val();
   let razonSocial = $("#razonSocial").val();
   let tipoPago = $("#tipoPago").val();
   let giro = $("#slctGiros").val();
+  let plazo = $("#slctPlazoPago").val();
 
   if(
     rut == "" ||
@@ -36,9 +43,6 @@ $("#btnGuardar").on("click", function(e)
     telefono == "" ||
     direccion == "" ||
     plan == "" ||
-    fechaRegistro == "" ||
-    fechaDesde == "" ||
-    fechaHasta == "" ||
     nomFantasia == "" ||
     razonSocial == "" ||
     tipoPago == "" ||
@@ -52,37 +56,57 @@ $("#btnGuardar").on("click", function(e)
     if(rut_valido)
     {
       
-      if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||fechaDesde==""||fechaHasta==""||nomFantasia==""||razonSocial=="")
+      if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||nomFantasia==""||razonSocial=="")
       {
         msjes_swal("Aviso", "Debe rellenar todos los campos", "warning");
       }
       else
       {
-        let datos = {
-          "nombre": nombre,
-          "rut":rut,
-          "correo":correo,
-          "telefono":telefono,
-          "direccion":direccion,
-          "plan":plan,
-          "fechaRegistro":fechaRegistro,
-          "fechaHasta":fechaHasta,
-          "fechaDesde":fechaDesde,
-          "nomFantasia":nomFantasia,
-          "razonSocial":razonSocial,
-          "giro":giro,
-          "tipoPago":tipoPago,
-          "fecha_pago":fechaDesde
+        let rutRepetido = validarRut(rut)
+        if(rutRepetido>0)
+        {
+          msjes_swal("Aviso", "El rut ingresado ya existe", "warning")
         }
-        
-        let respuesta = registrarCliente(datos);
-        let json = JSON.parse(respuesta);
+        else
+        {
+          let datos = {
+            "nombre": nombre,
+            "rut":rut,
+            "nomFantasia":nomFantasia,
+            "razonSocial":razonSocial,
+            "giro":giro,
+            "direccion":direccion,
+            "correo":correo,
+            "telefono":telefono,
+            "plan":plan,
+            "plazo":plazo
+          }
+          //registro cliente
+          let regCliente = registrarCliente(datos);
+          let cliente = JSON.parse(regCliente);
 
-        alert(respuesta);
+          //registro pago
+          let datosPago = {
+            "rut": rut,
+            "plazo": plazo,
+            "plan": plan,
+            "tipoPago": tipoPago
+          }
 
-        
-        $('#producto').DataTable().ajax.reload();
-        $("#modalRegistro").modal("hide");
+          let respPago = registrarPago(datosPago);
+          let pago = JSON.parse(respPago)
+
+          if(cliente.registro&&pago.registro)
+          {
+            msjes_swal("Excelente", "Cliente registrado correctamente", "success");
+            $('#producto').DataTable().ajax.reload();
+            $("#modalRegistro").modal("hide");
+          }
+          else
+          {
+            msjes_swal("Error", "Error al registrar cliente", "error");
+          }
+        }
       }
 
     }

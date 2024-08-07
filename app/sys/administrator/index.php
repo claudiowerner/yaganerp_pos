@@ -158,6 +158,7 @@
     <!--Clientes-->
     <script src = "js/cliente/cliente/editar_cliente.js"></script>
     <script src = "js/cliente/cliente/crear_cliente/crear_cliente.js"></script>
+    <script src = "js/cliente/cliente/crear_cliente/validar_rut.js"></script>
     <script src = "js/cliente/cliente/mostrar_info_cliente.js"></script>
     <script src = "js/cliente/comprobante/pagos_cliente.js"></script>
     <script src = "js/cliente/comprobante/cargar_archivos_comprobantes.js"></script>
@@ -170,11 +171,15 @@
 
     <!--Plazo de pago-->
     <script src = "js/cliente/plazo_pago/cargar_plazo_pago.js"></script>
+    
+    <!--Resumen de pago-->
+    <script src = "js/cliente/resumen_pago/resumen_pago.js"></script>
 
 
     <script src = "js/crearEnviarUsuario.js"></script>
     <script src = "js/cargarTipoPago.js"></script>
     <script src = "../js/validarRut.js"></script>
+    <script src = "../js/numberFormat.js"></script>
     <script src = "js/cargarGiros.js"></script>
     
 

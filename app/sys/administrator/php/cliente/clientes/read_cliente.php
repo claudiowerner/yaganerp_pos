@@ -1,10 +1,10 @@
 <?php
 
 
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
-session_start();
-require_once '../../../../conexion.php';
+    error_reporting(E_ALL);
+    ini_set('display_errors', 'On');
+    session_start();
+    require_once '../../../../conexion.php';
 
     //query
     $sql =
@@ -18,7 +18,8 @@ require_once '../../../../conexion.php';
     ON pl.id = c.plan_comprado
     JOIN pago_cliente pc
     ON c.id = pc.id_cl
-    GROUP BY c.id";
+    GROUP BY c.id
+    ORDER BY c.id ASC";
     $resultado = $conexion->query($sql);;
     if ($resultado->num_rows > 0){
       $json = array();

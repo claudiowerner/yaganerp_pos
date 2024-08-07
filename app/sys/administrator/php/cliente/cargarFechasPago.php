@@ -1,12 +1,12 @@
 <?php
 
 
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
-session_start();
-require_once '../../../conexion.php';
+  error_reporting(E_ALL);
+  ini_set('display_errors', 'On');
+  session_start();
+  require_once '../../../conexion.php';
 
-$id_cl = $_POST["id"];
+  $id_cl = $_POST["id"];
     //query
     $sql =
     "SELECT fecha_desde, fecha_hasta FROM pago_cliente WHERE id_cl = $id_cl";
