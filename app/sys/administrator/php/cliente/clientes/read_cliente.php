@@ -58,15 +58,16 @@
           'estado_pago' => $ep
         );
       };
-      echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
     }
     else
     {
-      echo '{
-        "sEcho": 1,
-        "iTotalRecords": "0",
-        "iTotalDisplayRecords": "0",
-        "aaData": []
-        }';
+      $json = array(
+        "sEcho"=> 1,
+        "iTotalRecords"=>"0",
+        "iTotalDisplayRecords"=>"0",
+        "aaData"=>[] 
+      );
     }
-?>
+    echo json_encode($json);  
+    
+  ?>
