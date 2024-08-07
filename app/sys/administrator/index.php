@@ -155,6 +155,8 @@
     <script src = "js/planes/cargar_select_planes.js"></script>
     <script src = "js/planes/planes.js"></script>
     
+    
+    <script src = "js/pestañas.js"></script>
     <!--Clientes-->
     <script src = "js/cliente/cliente/editar_cliente.js"></script>
     <script src = "js/cliente/cliente/crear_cliente/crear_cliente.js"></script>
