@@ -156,12 +156,14 @@
     <script src = "js/planes/planes.js"></script>
     
     
+    <script src = "../js/numberFormat.js"></script>
     <script src = "js/pestañas.js"></script>
     <!--Clientes-->
     <script src = "js/cliente/cliente/editar_cliente.js"></script>
     <script src = "js/cliente/cliente/crear_cliente/crear_cliente.js"></script>
     <script src = "js/cliente/cliente/crear_cliente/validar_rut.js"></script>
-    <script src = "js/cliente/cliente/mostrar_info_cliente.js"></script>
+    <script src = "js/cliente/cliente/read_clientes/mostrar_info_cliente.js"></script>
+    <script src = "js/cliente/cliente/read_clientes/read_clientes.js"></script>
     <script src = "js/cliente/comprobante/pagos_cliente.js"></script>
     <script src = "js/cliente/comprobante/cargar_archivos_comprobantes.js"></script>
     <script src = "js/cliente/comprobante/cargar_comprobante_seleccionado.js"></script>
@@ -169,7 +171,6 @@
     <script src = "js/cliente/comprobante/cargar_archivos.js"></script>
     <script src = "js/cliente/comprobante/cargar_archivos_nuevo_comprobante.js"></script>
     <script src = "js/cliente/comprobante/cargar_nuevo_comprobante.js"></script>
-    <script src = "js/cliente/cliente/read_clientes.js"></script>
 
     <!--Plazo de pago-->
     <script src = "js/cliente/plazo_pago/cargar_plazo_pago.js"></script>
@@ -181,7 +182,6 @@
     <script src = "js/crearEnviarUsuario.js"></script>
     <script src = "js/cargarTipoPago.js"></script>
     <script src = "../js/validarRut.js"></script>
-    <script src = "../js/numberFormat.js"></script>
     <script src = "js/cargarGiros.js"></script>
     
 

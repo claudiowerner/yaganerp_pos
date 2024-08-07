@@ -31,11 +31,6 @@ function modalComprobantesPago()
               <tbody id='bodyComprobantes'>
               </tbody>
             </table>
-          <button class='btn btn-primary' id='btnVolver'><- Volver</button>
-        </div>
-        <div class='modal-footer'>
-          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-          <button type='submit' id='btnModificar' class='btn btn-primary'>Guardar</button>
         </div>
       </div>
     </div>

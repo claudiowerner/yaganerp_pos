@@ -21,10 +21,6 @@ function modalComprobanteSeleccionado()
               <div id='archivoComprobante'>
               </div>
             </div>
-            <div class='modal-footer'>
-              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
-              <button type='submit' id='btnModificar' class='btn btn-primary'>Guardar</button>
-            </div>
           </div>
         </div>
       </div>";

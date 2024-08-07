@@ -24,7 +24,7 @@ function modalRegistroCliente()
                     <label name='nombrePiso'>Nombre</label>
                   </td>
                   <td>
-                    <input type='text' name='nomCliente' id='nomCliente' class='form-control' required>
+                    <input type='text' style='width: 100%'  name='nomCliente' id='nomCliente' class='form-control' required>
                   </td>
                 </tr>
                 <tr>
@@ -32,7 +32,7 @@ function modalRegistroCliente()
                     <label name='nombrePiso'>Rut</label>
                   </td>
                   <td>
-                    <input type='text' name='rut' id='rut' class='form-control' required>
+                    <input type='text' style='width: 100%'  name='rut' id='rut' class='form-control' required>
                   </td>
                 </tr>
                 <tr>
@@ -40,7 +40,7 @@ function modalRegistroCliente()
                     <label name='nombrePiso'>Correo</label>
                   </td>
                   <td>
-                    <input type='text' name='correo' id='correo' class='form-control' required>
+                    <input type='text' style='width: 100%'  name='correo' id='correo' class='form-control' required>
                   </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@ function modalRegistroCliente()
                     <label name='nombrePiso'>Dirección</label>
                   </td>
                   <td>
-                    <input type='text' name='direccion' id='direccion' class='form-control' required>
+                    <input type='text' style='width: 100%'  name='direccion' id='direccion' class='form-control' required>
                   </td>
                 </tr>
               </table>
@@ -64,12 +64,12 @@ function modalRegistroCliente()
                 <h6>---Datos de la empresa---</h6>
               </div>
               <table width='100%'>
-                <tr>
+                <tr width='25%'>
                   <td>
                     <label name='nombrePiso'>Nombre de fantasía</label>
                   </td>
                   <td>
-                    <input type='text' name='nomFantasia' id='nomFantasia' class='form-control' align='center' style='width: 50%' required>
+                    <input type='text' style='width: 100%'  name='nomFantasia' id='nomFantasia' class='form-control' align='center' style='width: 50%' required>
                   </td>
                 </tr>
                 <tr>
@@ -77,7 +77,7 @@ function modalRegistroCliente()
                     <label name='nombrePiso'>Razón social</label>
                   </td>
                   <td>
-                    <input type='text' name='razonSocial' id='razonSocial' class='form-control' align='center' style='width: 50%' required>
+                    <input type='text' style='width: 100%'  name='razonSocial' id='razonSocial' class='form-control' align='center' style='width: 50%' required>
                   </td>
                 </tr>
                 <tr>
