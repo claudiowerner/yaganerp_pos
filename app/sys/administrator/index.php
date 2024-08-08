@@ -70,6 +70,10 @@
                                             //plan
                                             require "modals/plan/registrar_plan.php";
                                             require "modals/plan/editar_plan.php";
+
+                                            //correo
+                                            require "modals/correo/modalCorreo.php";
+                                            
                                             echo modalRegistroCliente();
                                             echo modalEditarCliente();
                                             echo modalRegistrarPlan();
@@ -78,6 +82,7 @@
                                             echo modalInfoClientes();
                                             echo modalComprobanteSeleccionado();
                                             echo modalCargarNuevoComprobante();
+                                            echo modalEnviarCorreo();
                                         ?>
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item">
@@ -177,6 +182,10 @@
     
     <!--Resumen de pago-->
     <script src = "js/cliente/resumen_pago/resumen_pago.js"></script>
+
+    <!--Correo-->
+    <script src = "js/cliente/cliente/correo/correo_registro.js"></script>
+
 
 
     <script src = "js/crearEnviarUsuario.js"></script>

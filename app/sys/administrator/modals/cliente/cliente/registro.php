@@ -1,6 +1,6 @@
 <?php
-function modalRegistroCliente()
-{
+  function modalRegistroCliente()
+  {
     return 
     "<div class='modal fade' id='modalRegistro' role='dialog' style='overflow-y: scroll;' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
     <div class='modal-dialog modal-lg modal-dialog-scrollable ' role='document'>

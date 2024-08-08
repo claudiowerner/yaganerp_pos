@@ -17,7 +17,6 @@ function calcularPago()
     let meses = $("#slctPlazoPago").val();
     let valor_plan = cargarValorPlan(plan_comprado)
     let valor_plan_formateado = formatearNumero("P", valor_plan);
-    alert(valor_plan)
     let valor_total = valor_plan * meses;
     let valor_total_formateado = formatearNumero("P", valor_total);
 

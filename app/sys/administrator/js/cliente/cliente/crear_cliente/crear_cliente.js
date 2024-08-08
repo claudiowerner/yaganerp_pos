@@ -99,6 +99,14 @@ $("#btnGuardar").on("click", function(e)
           if(cliente.registro&&pago.registro)
           {
             msjes_swal("Excelente", "Cliente registrado correctamente", "success");
+
+            //envío de correo de registro
+            let datosCorreo = {
+              "correo": correo, 
+              "nombre": nombre
+            }
+            let enviar_correo = enviarCorreoRegistro(datosCorreo);
+            alert(enviar_correo);
             $('#producto').DataTable().ajax.reload();
             $("#modalRegistro").modal("hide");
           }
