@@ -26,7 +26,8 @@
     "mike42/escpos-php": "^2.2",
     "phpmailer/phpmailer": "^6.9",
     "fullcalendar/fullcalendar": "^3.10",
-    "composer/composer": "^2.2"
+    "composer/composer": "^2.2",
+    "composer": "*"
   },
   "config": {
     "allow-plugins": {

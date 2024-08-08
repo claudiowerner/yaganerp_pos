@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "01b18710b9ad41e92748cd0e2632e666",
+    "content-hash": "fe30dee2d87d35583771d6bb34a9c693",
     "packages": [
         {
             "name": "components/jquery",
@@ -2292,7 +2292,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "composer": "*"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }
