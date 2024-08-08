@@ -105,8 +105,9 @@ $("#btnGuardar").on("click", function(e)
               "correo": correo, 
               "nombre": nombre
             }
+            $("#modalEnviarCorreo").modal("show");
             let enviar_correo = enviarCorreoRegistro(datosCorreo);
-            alert(enviar_correo);
+            $("#modalEnviarCorreo").modal("hide")
             $('#producto').DataTable().ajax.reload();
             $("#modalRegistro").modal("hide");
           }
