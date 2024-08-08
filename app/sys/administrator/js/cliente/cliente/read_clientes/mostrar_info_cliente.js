@@ -2,7 +2,7 @@
 function descargarInfoCliente(id)
 {
     return $.ajax({
-        url: "php/cliente/read_info_cliente_seleccionado.php",
+        url: "php/cliente/clientes/read_info_cliente_seleccionado.php",
         data: {"id":id},
         type: "POST",
         async: false
