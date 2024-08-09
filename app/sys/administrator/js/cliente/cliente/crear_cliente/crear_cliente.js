@@ -21,6 +21,11 @@ function registrarPago(datos)
   }).responseText;
 }
 /* -------------------------------------------- FUNCIONES DOM --------------------------------------- */
+$("#btnAgregarCliente").on("click", function(e)
+{
+  $("#modalRegistro").modal("show");
+})
+
 $("#btnGuardar").on("click", function(e)
 {
   
@@ -107,6 +112,7 @@ $("#btnGuardar").on("click", function(e)
             }
             $("#modalEnviarCorreo").modal("show");
             let enviar_correo = enviarCorreoRegistro(datosCorreo);
+            alert(enviar_correo);
             $("#modalEnviarCorreo").modal("hide")
             $('#producto').DataTable().ajax.reload();
             $("#modalRegistro").modal("hide");

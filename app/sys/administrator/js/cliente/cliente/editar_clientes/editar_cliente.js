@@ -4,7 +4,7 @@
 function descargarInfoCliente(id)
 {
     return $.ajax({
-        url: "php/cliente/read_cliente_seleccionado.php",
+        url: "php/cliente/clientes/read_cliente_seleccionado.php",
         data: {"id":id},
         type: "POST",
         async: false
@@ -57,6 +57,7 @@ function abrirModalEditar(id)
 {
     let descargar = descargarInfoCliente(id);
     let datos = JSON.parse(descargar);
+
     $("#idCliente").html(id);
     $("#nomClienteEditar").val(datos.nombre);
     $("#rutEditar").val(datos.rut);
@@ -67,9 +68,8 @@ function abrirModalEditar(id)
     $("#fechaPagoEditar").val(datos.fecha_pago);
     $("#nomFantasiaEditar").val(datos.nom_fantasia);
     $("#razonSocialEditar").val(datos.razon_social);
-    $("#fechaDesdeEditar").val(datos.fecha_desde);
-    $("#fechaHastaEditar").val(datos.fecha_hasta);
     $("#slctGirosEditar").select(datos.giro);
+    $("#slctPlazoPagoEditar").select(datos.plazo_pago);
 
     let estado = datos.estado;
     let estado_pago = datos.estado_pago;
@@ -78,6 +78,8 @@ function abrirModalEditar(id)
     $("#swEstadoPago").prop("checked", estado_pago);
     
     $("#modalEditar").modal("show");
+
+    calcularPagoEditar();
 }
 
 

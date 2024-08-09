@@ -1,5 +1,5 @@
 /* ----------------------------------------------- FUNCION AJAX ------------------------------------------ */
-function descargarInfoCliente(id)
+function descargarInfoClienteAjax(id)
 {
     return $.ajax({
         url: "php/cliente/clientes/read_info_cliente_seleccionado.php",
@@ -15,7 +15,7 @@ function mostrarInfo(id)
     $("#modalInfoClientes").modal("show");
 
     //accion de descarga de info
-    let descargar = descargarInfoCliente(id);
+    let descargar = descargarInfoClienteAjax(id);
     try
     {
         let json = JSON.parse(descargar);
@@ -38,7 +38,8 @@ function mostrarInfo(id)
         $("#fecha_desdeInfoCliente").html(json.fecha_desde);
         $("#fecha_hastaInfoCliente").html(json.fecha_hasta);
         $("#estado_pagoInfoCliente").html(estado_pago);
-        $("#giroInfoCliente").html(json.giro);
+        $("#giroInfoCliente").html(json.nombre_giro);
+        $("#plazo_pagoInfoCliente").html(json.nombre_plazo);
     }
     catch(e)
     {

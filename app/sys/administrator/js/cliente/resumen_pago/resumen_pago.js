@@ -25,3 +25,18 @@ function calcularPago()
     $("#mesesSeleccionados").html(meses);
     $("#valorTotal").html(valor_total_formateado);
 }
+
+function calcularPagoEditar()
+{
+    let plan_comprado = $("#slctPlanEditar").val();
+    let meses = $("#slctPlazoPagoEditar").val();
+    let valor_plan = cargarValorPlan(plan_comprado)
+    let valor_plan_formateado = formatearNumero("P", valor_plan);
+    let valor_total = valor_plan * meses;
+    let valor_total_formateado = formatearNumero("P", valor_total);
+
+
+    $("#valorPlanEditar").html(valor_plan_formateado);
+    $("#mesesSeleccionadosEditar").html(meses);
+    $("#valorTotalEditar").html(valor_total_formateado);
+}

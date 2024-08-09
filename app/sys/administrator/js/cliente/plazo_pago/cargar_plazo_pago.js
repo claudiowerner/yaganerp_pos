@@ -28,4 +28,5 @@ function cargarPlazosPago()
         template += `<option value=${j.meses}>${j.nombre_plazo}</option>`;
     }
     $("#slctPlazoPago").html(template);
+    $("#slctPlazoPagoEditar").html(template);
 }

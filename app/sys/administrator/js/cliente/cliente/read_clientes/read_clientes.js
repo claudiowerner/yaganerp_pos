@@ -14,10 +14,6 @@ $("#rutEditar").on("keyup", function(e)
   }
 })
 
-$("#btnAgregarCaja").on("click", function(e)
-{
-  $("#modalRegistro").modal("show");
-})
 
 ec = ""; //almacena el estado del cliente (switch)
 var table;
@@ -51,7 +47,7 @@ table = $('#producto').DataTable({
     {
       'data' : null,
       'render': function (data, type, row, meta) {
-          return `<button type="submit" class="btn btn-primary" onclick="abrirModalEditar(${data.id})"><i class='fa fa-edit' aria-hidden='true'></i></button>
+          return `<button type="submit" class="btn btn-primary" onclick="abrirModalEditar(${data.id}, ${data.id_plan}, ${data.plazo_pago}, ${data.giro})"><i class='fa fa-edit' aria-hidden='true'></i></button>
           <button class='btn btn-secondary' onClick="mostrarInfo(${data.id})"><i class='fa fa-expand' aria-hidden='true'></i></button>
           <button class='btn btn-success' onClick="abrirModalPagos(${data.id})"><i class='fa fa-dollar' aria-hidden='true'></i></button>`;
       }

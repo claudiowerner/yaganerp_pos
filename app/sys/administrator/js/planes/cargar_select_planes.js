@@ -1,5 +1,6 @@
 
 $("#slctPlan").select2();
+$("#slctPlanEditar").select2();
 function cargarPlan()
 {
   $.ajax({

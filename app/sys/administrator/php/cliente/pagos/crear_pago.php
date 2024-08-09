@@ -57,7 +57,7 @@
 
 	//registrar pago cliente
 	$sql = "INSERT INTO pago_cliente VALUES
-	(null, $id_cl, $tipoPago, '$fechaRegistro', '$fechaHasta', 'N')";
+	(null, $id_cl, $tipoPago, '$fechaRegistro', '$fechaHasta', 'S', 'N')";
 	$r1 = $conexion->query($sql);
 
 	$json = array();

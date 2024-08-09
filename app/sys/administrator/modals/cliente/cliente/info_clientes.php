@@ -73,6 +73,10 @@ function modalInfoClientes()
                   <td><span id='plan_compradoInfoCliente'></span></td>
                 </tr>
                 <tr>
+                  <td><label>Plazo de pago:</label></td>
+                  <td><span id='plazo_pagoInfoCliente'></span></td>
+                </tr>
+                <tr>
                   <td><label>Fecha registro:</label></td>
                   <td><span id='fechaRegistroInfoCliente'></span></td>
                 </tr>

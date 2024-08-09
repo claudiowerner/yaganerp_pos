@@ -96,7 +96,7 @@
                                         <div class="tab-content">
                                             <div id="clientes" class="tab-pane fade">
                                                 <h1>Clientes</h1>
-                                                <button type="button" class="btn btn-success" id="btnAgregarCaja">Agregar cliente</button>
+                                                <button type="button" id="btnAgregarCliente" class="btn btn-success">Agregar cliente</button>
                                                 <property name="characterEncoding" value="UTF-8">
 
                                                     <table id="producto" width="100%" class="table table-bordered table-hover dt-resposive display nowrap">
@@ -164,9 +164,9 @@
     <script src = "../js/numberFormat.js"></script>
     <script src = "js/pestañas.js"></script>
     <!--Clientes-->
-    <script src = "js/cliente/cliente/editar_cliente.js"></script>
     <script src = "js/cliente/cliente/crear_cliente/crear_cliente.js"></script>
     <script src = "js/cliente/cliente/crear_cliente/validar_rut.js"></script>
+    <script src = "js/cliente/cliente/editar_clientes/editar_cliente.js"></script>
     <script src = "js/cliente/cliente/read_clientes/mostrar_info_cliente.js"></script>
     <script src = "js/cliente/cliente/read_clientes/read_clientes.js"></script>
     <script src = "js/cliente/comprobante/pagos_cliente.js"></script>
@@ -186,10 +186,10 @@
     <!--Correo-->
     <script src = "js/cliente/cliente/correo/correo_registro.js"></script>
 
-
+    <!--Pago-->
+    <script src = "js/cliente/pago/cargarTipoPago.js"></script>
 
     <script src = "js/crearEnviarUsuario.js"></script>
-    <script src = "js/cargarTipoPago.js"></script>
     <script src = "../js/validarRut.js"></script>
     <script src = "js/cargarGiros.js"></script>
     
