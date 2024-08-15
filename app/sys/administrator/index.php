@@ -110,6 +110,7 @@
                                                                 <th>Paga hasta</th>
                                                                 <th>Estado pago</th>
                                                                 <th>Acción</th>
+                                                                <th>Claves</th>
                                                             </tr>
                                                         </thead>
                                                     </table>
@@ -189,7 +190,9 @@
     <!--Pago-->
     <script src = "js/cliente/pago/cargarTipoPago.js"></script>
 
-    <script src = "js/crearEnviarUsuario.js"></script>
+    <!--Usuario-->
+    <script src = "js/cliente/cliente/usuarios/crear_usuario_admin.js"></script>
+
     <script src = "../js/validarRut.js"></script>
     <script src = "js/cargarGiros.js"></script>
     

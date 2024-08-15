@@ -51,6 +51,24 @@ table = $('#producto').DataTable({
           <button class='btn btn-secondary' onClick="mostrarInfo(${data.id})"><i class='fa fa-expand' aria-hidden='true'></i></button>
           <button class='btn btn-success' onClick="abrirModalPagos(${data.id})"><i class='fa fa-dollar' aria-hidden='true'></i></button>`;
       }
+    },
+    {
+      'data' : null,
+      'render': function (data, type, row, meta) {
+        let disabled = "";
+        if(data.num_usuario_admin>0)
+        {
+          disabled = "disabled";
+        }
+        else
+        {
+          disabled = "";
+        }
+        return `<button type="submit" id="credencialCliente${data.id}" class="btn btn-primary" onclick="crearUsuarioAdmin(${data.id}, '${data.nombre}', '${data.correo}')" ${disabled}>
+          <i id='creandoUsuario' class='fa fa-user' aria-hidden='true'></i>
+          <i id='errorUsuario' class='fa' aria-hidden='true'></i>
+        </button>`;
+      }
     }
   ],
 

@@ -6,6 +6,20 @@
     session_start();
     require_once '../../../../conexion.php';
 
+
+    //arrays
+    $idArray = array();
+    $nombreArray = array();
+    $rutArray = array();
+    $estadoArray = array();
+    $correoArray = array();
+    $telefonoArray = array();
+    $plan_compradoArray = array();
+    $fecha_registroArray = array();
+    $fecha_desdeArray = array();
+    $fecha_hastaArray = array();
+    $estado_pagoArray = array();
+    $numUsuarioAdminArray = array();
     //query
     $sql =
     "SELECT c.id, c.nombre, c.rut, c.estado, c.correo, c.telefono, pl.nombre AS plan_comprado, 
@@ -20,10 +34,10 @@
     ON c.id = pc.id_cl
     GROUP BY c.id
     ORDER BY c.id ASC";
-    $resultado = $conexion->query($sql);;
-    if ($resultado->num_rows > 0){
+    $res = $conexion->query($sql);
+    if ($res->num_rows > 0){
       $json = array();
-      while ($row = $resultado->fetch_array())
+      while ($row = $res->fetch_array())
       {
         $estado = $row['estado'];
         if($estado=="S")
@@ -44,20 +58,51 @@
         {
           $ep = "SIN PAGAR";
         }
-        $json[] =array(
-          'id' => $row['id'],
-          'nombre' => $row['nombre'],
-          'rut' => $row['rut'],
-          'estado' => $estado,
-          'correo' => $row['correo'],
-          'telefono' => $row['telefono'],
-          'plan_comprado' => $row['plan_comprado'],
-          'fecha_registro' => $row['fecha_registro'],
-          'fecha_desde' => $row['fecha_desde'],
-          'fecha_hasta' => $row['fecha_hasta'],
-          'estado_pago' => $ep
-        );
+        $idArray[] = $row["id"]; 
+        $nombreArray[] = $row["nombre"]; 
+        $rutArray[] = $row["rut"]; 
+        $estadoArray[] = $estado; 
+        $correoArray[] = $row["correo"]; 
+        $telefonoArray[] = $row["telefono"]; 
+        $plan_compradoArray[] = $row["plan_comprado"]; 
+        $fecha_registroArray[] = $row["fecha_registro"]; 
+        $fecha_desdeArray[] = $row["fecha_desde"]; 
+        $fecha_hastaArray[] = $row["fecha_hasta"]; 
+        $estado_pagoArray[] = $ep; 
       };
+
+
+      $filas = $res->num_rows;
+      //verificar si el cliente tiene un usuario admin
+      for($i=0; $i<$filas; $i++)
+      {
+        $id_cl = $idArray[$i];
+        $sql = "SELECT COUNT(id) AS num_admin FROM usuarios WHERE id_cl = $id_cl AND tipo_usuario = 1";
+        $res = $conexion->query($sql);
+        while($row = $res->fetch_array())
+        {
+          $numUsuarioAdminArray = $row["num_admin"];
+        }
+      }
+      
+      for($i=0; $i<$filas; $i++)
+      {
+        $json[] = array(
+          "id" => $idArray[$i],
+          "nombre" => $nombreArray[$i],
+          "rut" => $rutArray[$i],
+          "estado" => $estadoArray[$i],
+          "correo" => $correoArray[$i],
+          "telefono" => $telefonoArray[$i],
+          "plan_comprado" => $plan_compradoArray[$i],
+          "fecha_registro" => $fecha_registroArray[$i],
+          "fecha_desde" => $fecha_desdeArray[$i],
+          "fecha_hasta" => $fecha_hastaArray[$i],
+          "estado_pago" => $estado_pagoArray[$i],
+          "num_usuario_admin" => $numUsuarioAdminArray[$i],
+          "estado_pago" => $ep,
+        );
+      }
     }
     else
     {
