@@ -3,7 +3,7 @@ function crearUsuarioAjax(datos)
 {
     id = datos.id;
     $("#credencialCliente"+id).prop("disabled", true)
-    $("#creandoUsuario").toggleClass('fa-user').toggleClass("fa-spinner");
+    $("#creandoUsuario"+id).toggleClass('fa-user').toggleClass("fontello-arrows-cw");
     $.ajax({
         url: "php/cliente/usuarios/crear_usuario_admin.php",
         data: datos,
@@ -33,7 +33,7 @@ function crearUsuarioAjax(datos)
             }
                     
             $("#credencialCliente"+id).prop("disabled", false)
-            $("#creandoUsuario").toggleClass("fa-spinner").toggleClass('fa-user');
+            $("#creandoUsuario"+id).toggleClass("fontello-arrows-cw").toggleClass('fa-user');
         }
     })
     .fail(function(e)

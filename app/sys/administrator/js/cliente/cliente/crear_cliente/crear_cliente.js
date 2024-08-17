@@ -28,7 +28,7 @@ $("#btnAgregarCliente").on("click", function(e)
 
 $("#btnGuardar").on("click", function(e)
 {
-  
+  debugger;
   let rut = $("#rut").val();
   let nombre = $("#nomCliente").val();
   let correo = $("#correo").val();
@@ -103,7 +103,6 @@ $("#btnGuardar").on("click", function(e)
 
           if(cliente.registro&&pago.registro)
           {
-            msjes_swal("Excelente", "Cliente registrado correctamente", "success");
 
             //envío de correo de registro
             let datosCorreo = {
@@ -111,11 +110,28 @@ $("#btnGuardar").on("click", function(e)
               "nombre": nombre
             }
             $("#modalEnviarCorreo").modal("show");
-            let enviar_correo = enviarCorreoRegistro(datosCorreo);
-            alert(enviar_correo);
-            $("#modalEnviarCorreo").modal("hide")
-            $('#producto').DataTable().ajax.reload();
-            $("#modalRegistro").modal("hide");
+            
+            $.ajax({
+              url: "php/cliente/correo/correo_registro.php",
+              data: datosCorreo,
+              type: "POST",
+              success: function(e)
+              {
+                $("#modalEnviarCorreo").modal("hide");
+                $('#producto').DataTable().ajax.reload();
+                $("#modalRegistro").modal("hide");
+                msjes_swal("Excelente", "Cliente registrado correctamente", "success");
+
+                
+              }
+            })
+            .fail(function(e){
+              
+              $("#modalEnviarCorreo").modal("hide")
+              $('#producto').DataTable().ajax.reload();
+              $("#modalRegistro").modal("hide");
+            });
+
           }
           else
           {

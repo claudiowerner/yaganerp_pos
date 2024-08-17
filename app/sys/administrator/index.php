@@ -192,6 +192,7 @@
 
     <!--Usuario-->
     <script src = "js/cliente/cliente/usuarios/crear_usuario_admin.js"></script>
+    <script src = "js/cliente/cliente/usuarios/cambiar_contraseña.js"></script>
 
     <script src = "../js/validarRut.js"></script>
     <script src = "js/cargarGiros.js"></script>

@@ -56,17 +56,23 @@ table = $('#producto').DataTable({
       'data' : null,
       'render': function (data, type, row, meta) {
         let disabled = "";
+        let disabledPassNueva = "";
         if(data.num_usuario_admin>0)
         {
           disabled = "disabled";
+          disabledPassNueva = "";
         }
         else
         {
           disabled = "";
+          disabledPassNueva = "disabled";
         }
         return `<button type="submit" id="credencialCliente${data.id}" class="btn btn-primary" onclick="crearUsuarioAdmin(${data.id}, '${data.nombre}', '${data.correo}')" ${disabled}>
-          <i id='creandoUsuario' class='fa fa-user' aria-hidden='true'></i>
-          <i id='errorUsuario' class='fa' aria-hidden='true'></i>
+          <i id='creandoUsuario${data.id}' class='fa fa-user' aria-hidden='true'></i>
+        </button>
+        <button type="submit" id="passNueva${data.id}" class="btn btn-primary" onclick="enviarNuevaContraseña(${data.id}, '${data.nombre}', '${data.correo}')" ${disabledPassNueva}>
+          <i id='creandoUsuario${data.id}' class='fa fa-key' aria-hidden='true'></i>
+          <i id='creandoPassNueva${data.id}' class='fontello-paper-plane' aria-hidden='true'></i>
         </button>`;
       }
     }

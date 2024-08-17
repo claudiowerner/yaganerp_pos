@@ -77,12 +77,12 @@
       for($i=0; $i<$filas; $i++)
       {
         $id_cl = $idArray[$i];
-        $sql = "SELECT COUNT(id) AS num_admin FROM usuarios WHERE id_cl = $id_cl AND tipo_usuario = 1";
+        
+        $sql = "SELECT * FROM usuarios WHERE id_cl = $id_cl AND tipo_usuario = 1";
+        
         $res = $conexion->query($sql);
-        while($row = $res->fetch_array())
-        {
-          $numUsuarioAdminArray = $row["num_admin"];
-        }
+        $numUsuarioAdminArray[] = $res->num_rows;
+        
       }
       
       for($i=0; $i<$filas; $i++)
