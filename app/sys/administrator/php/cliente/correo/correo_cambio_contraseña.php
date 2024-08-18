@@ -1,5 +1,4 @@
 <?php
-	date_default_timezone_set('America/Santiago');
 
     ini_set('display_errors', '1');
 

@@ -39,5 +39,11 @@
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
     <script src='../../js/flot/jquery.flot.categories.min.js' type='text/javascript'></script>
     
-    <script src='../../js/chart.js'></script>";
+    <script src='../../js/chart.js'></script>
+
+
+    <!--Aviso de pago-->
+    <script src='aviso_pago/dom/bloqueo_sistema.js'></script>
+    <script src='aviso_pago/dom/aviso_pago.js'></script>
+    <script>advertenciaSistema('aviso_pago/server/aviso_pago.php')</script>";
 ?>

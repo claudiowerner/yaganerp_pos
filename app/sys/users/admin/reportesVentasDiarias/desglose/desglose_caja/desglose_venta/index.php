@@ -40,7 +40,7 @@
             <div class="wrap-fluid" id="paper-bg">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="plan">
+                        <div id="pantallaPrincipal" class="plan">
                             <div class="col-md-12">
                                 <div class="card card-warning" align="left">
                                     <div class="card-header">

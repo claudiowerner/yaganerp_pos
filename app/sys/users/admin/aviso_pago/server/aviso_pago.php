@@ -55,11 +55,22 @@
     $fecha_actual = date_create($fecha_actual_str);
     $fecha_final = date_create($fecha_final_str);
 
-    $dias_restantes = date_diff($fecha_actual, $fecha_final);
-    $num_dias = $dias_restantes -> format("%d");
+    $num_dias = 0;
     $mostrar_dias = "";
 
-    if($num_dias>1)
+    if($fecha_actual>$fecha_final)
+    {
+        $num_dias = 0;
+    }
+    else
+    {
+        $dias_restantes = date_diff($fecha_actual, $fecha_final);
+        $num_dias = $dias_restantes -> format("%d");
+    }
+
+    
+
+    if($num_dias>1||$num_dias==0)
     {
         $mostrar_dias = "$num_dias días";
     }

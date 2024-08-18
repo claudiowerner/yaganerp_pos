@@ -65,11 +65,11 @@
             <!-- CONTENT -->
             <div class="wrap-fluid" id="paper-bg">
                 <div class="row">
-                    <div class="col-lg-12">
                         <?php
                             require "aviso_pago/dom/alert.php";
                         ?>
-                        <div class="plan">
+                    <div class="col-lg-12">
+                        <div id="pantallaPrincipal" class="plan">
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
@@ -125,8 +125,6 @@
     <script src='graficos/js/calendario/cargar_dias_venta.js'></script>
     <script src='graficos/js/calendario/calendario.js'></script>
 
-    <!--Aviso de pago-->
-    <script src='aviso_pago/dom/aviso_pago.js'></script>
 
 
 

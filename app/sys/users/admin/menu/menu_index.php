@@ -7,7 +7,7 @@
       <span class="fa icon-menu"></span>
   </a>
 
-  <div class="skin-part">
+  <div id="menu_sistema" class="skin-part">
       <div id="tree-wrap">
           <div class="side-bar">
               <ul id="menu-showhide" class="topnav">

@@ -1,6 +1,6 @@
 <div id="divPagar" class="col-sm-3 item-fijado">
                             <h1>Pagar</h1>
-                            <div class="plan">
+                            <div id="pantallaPrincipal" class="plan">
                                 <div class="col-md-12">
                                     <div class="card card-warning">
                                         <div class="card-header">Anular</div>

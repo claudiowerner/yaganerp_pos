@@ -74,7 +74,7 @@
                             <div class="row">
                                 
                                 <div class="col-lg-12">
-                                    <div class="plan">
+                                    <div id="pantallaPrincipal" class="plan">
                                         <div class="col-md-12" id="div_ventas">
                                             <div class="card card-warning">
                                                 <div>
@@ -90,7 +90,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="plan">
+                                    <div id="pantallaPrincipal" class="plan">
                                         <div class="col-md-12">
                                             <div class="card card-warning">
                                                 <div class="card-header" style="align:left;">

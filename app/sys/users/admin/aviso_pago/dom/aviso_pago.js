@@ -1,9 +1,9 @@
 
 /* ---------------------------------------------- FUNCION AJAX ----------------------------------------------- */
-function descargarDiasPagoAjax()
+function descargarDiasPagoAjax(url)
 {
     return $.ajax({
-        url: "aviso_pago/server/aviso_pago.php",
+        url: url,
         type: "POST",
         async: false
     }).responseText;
@@ -11,24 +11,27 @@ function descargarDiasPagoAjax()
 
 
 /* ----------------------------------------------- FUNCION DOM ----------------------------------------------- */
-
-//descargar número de días previos al vencimiento del pago
-let dias = descargarDiasPagoAjax();
-let j = JSON.parse(dias);
-if(j.dias_restantes<=7)
+function advertenciaSistema(url)
 {
-    $("#advertenciaSuscripcion").show();
-    $("#diasPago").html(j.mostrar_dias)
-    $("#diaLimite").html(j.fecha_final);
-}
-if(j.dias_restantes<=3)
-{
-    $("#advertenciaSuscripcion").show();
-    $("#diasPago").html(j.mostrar_dias)
-    $("#diaLimite").html(j.fecha_final);
-    $("#advertenciaSuscripcion").toggleClass('alert-warning').toggleClass("alert-danger");
-}
-else
-{
-    $("#advertenciaSuscripcion").hide();
+    debugger
+    //descargar número de días previos al vencimiento del pago
+    let dias = descargarDiasPagoAjax(url);
+    let j = JSON.parse(dias);
+    if(j.dias_restantes<=7&&j.dias_restantes>=3)
+    {
+        $("#advertenciaSuscripcion").show();
+        $("#diasPago").html(j.mostrar_dias)
+        $("#diaLimite").html(j.fecha_final);
+    }
+    if(j.dias_restantes>=1&&j.dias_restantes<=3)
+    {
+        $("#corteProximo").show();
+        $("#diasPago").html(j.mostrar_dias)
+        $("#diaLimiteCorte").html(j.fecha_final);
+    }
+    if(j.dias_restantes<=0)
+    {
+        bloquearSistema();
+        $("#sistemaBloqueado").show();
+    }
 }
