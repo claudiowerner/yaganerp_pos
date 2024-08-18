@@ -19,7 +19,6 @@ function enviarNuevaContraseña(id, nombre)
                 type: "POST",
                 success: function(e)
                 {
-                    alert(e)
                     $("#passNueva"+id).prop("disabled", false)
                     $("#creandoPassNueva"+id).toggleClass("fontello-arrows-cw").toggleClass('fontello-paper-plane');
                     let json = JSON.parse(e);

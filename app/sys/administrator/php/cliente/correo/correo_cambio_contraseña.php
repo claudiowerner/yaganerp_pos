@@ -58,7 +58,7 @@
 
 
 	//seleccionar nombre de usuario
-	echo $sql = "SELECT cl.nombre, us.user, cl.correo 
+	$sql = "SELECT cl.nombre, us.user, cl.correo 
 	FROM cliente cl 
 	JOIN usuarios us 
 	ON us.id_cl = cl.id
