@@ -37,6 +37,7 @@ $("#btnCargarArchivo").on("click", function(e)
     //subir archivos
     let dir_archivo;
     var archivo = $('#archivo').prop('files')[0];
+    console.log($('#archivo').prop('files')["name"])
 
     if(archivo != undefined) {
         var form_data = new FormData();
@@ -46,26 +47,32 @@ $("#btnCargarArchivo").on("click", function(e)
         let json = JSON.parse(respuesta);
         
         dir_archivo = json.url;
+        
+        //registro de archivo en la BD
+        let datos = 
+        {
+            "id_cl": id_cl, 
+            "dir_archivo": dir_archivo,
+            "fecha_carga": fecha_carga
+        }
+        respuesta = registrarArchivoBD(datos);
+        try
+        {
+            let j = JSON.parse(respuesta);
+            msjes_swal(j.titulo, j.mensaje, j.icono);
+        }
+        catch(e)
+        {
+            msjes_swal(respuesta);
+        }
+    }
+    else
+    {
+        msjes_swal("Aviso", "Debe seleccionar un archivo", "warning");
     }
     
 
-    //registro de archivo en la BD
-    let datos = 
-    {
-        "id_cl": id_cl, 
-        "dir_archivo": dir_archivo,
-        "fecha_carga": fecha_carga
-    }
-    let respuesta = registrarArchivoBD(datos);
-    try
-    {
-        let j = JSON.parse(respuesta);
-        msjes_swal(j.titulo, j.mensaje, j.icono);
-    }
-    catch(e)
-    {
-        msjes_swal(respuesta);
-    }
+    
 
 
 
