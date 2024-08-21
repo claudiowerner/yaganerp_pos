@@ -85,7 +85,7 @@ $("#btnCargarArchivoNuevo").on("click", function(e)
                     $("#modalCargarNuevoComprobante").modal("hide");    
                     let id = $("#idComprobante").html();
                     cargarNuevoComprobante(id, direccion);
-                    cargarArchivosComprobantes(id_cl);
+                    cargarArchivosComprobantes(id_cl, tablaComprobantes);
                 }
             }
             

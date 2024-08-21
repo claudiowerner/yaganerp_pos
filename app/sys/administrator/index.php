@@ -63,9 +63,9 @@
                                             require "modals/cliente/cliente/info_clientes.php";
 
                                             //pagos
-                                            require "modals/cliente/pago/comprobantes_pago.php";
-                                            require "modals/cliente/pago/comprobante_seleccionado.php";
-                                            require "modals/cliente/pago/cargar_nuevo_comprobante.php";
+                                            require "modals/cliente/pago/comprobantes/comprobantes_pago.php";
+                                            require "modals/cliente/pago/comprobantes/comprobante_seleccionado.php";
+                                            require "modals/cliente/pago/comprobantes/cargar_nuevo_comprobante.php";
 
                                             //plan
                                             require "modals/plan/registrar_plan.php";
@@ -189,6 +189,7 @@
 
     <!--Pago-->
     <script src = "js/cliente/pago/cargarTipoPago.js"></script>
+    <script src = "js/cliente/pago/crear_nuevo_pago.js"></script>
 
     <!--Usuario-->
     <script src = "js/cliente/cliente/usuarios/crear_usuario_admin.js"></script>

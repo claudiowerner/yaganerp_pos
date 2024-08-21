@@ -1,6 +1,6 @@
 $.ajax(
     {
-        url:"php/cliente/cargarTipoPago.php",
+        url: "php/cliente/cargarTipoPago.php",
         type: "POST",
         success: function(e)
         {

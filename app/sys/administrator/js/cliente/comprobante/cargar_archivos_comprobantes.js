@@ -18,10 +18,14 @@ function cargarArchivosComprobantesAjax(idCliente)
 
 
 
-function cargarArchivosComprobantes(idCliente)
+function cargarArchivosComprobantes(idCliente, tablaComprobantes)
 {
-    table.destroy();
-    table = $('#tablaComprobantes').DataTable({
+    //destrucción de la datatable si es que ya se ha inicializado
+    if ( $.fn.DataTable.isDataTable('#tablaComprobantes')) 
+    {
+        $('#tablaComprobantes').DataTable().destroy();
+    }
+    tablaComprobantes = $('#tablaComprobantes').DataTable({
         "createdRow": function( row, data, dataIndex){
         },
         "ajax":{
@@ -55,6 +59,7 @@ function cargarArchivosComprobantes(idCliente)
             }
         }
     });
+    
 }
 
 //Acciones al clickear una fila de la tabla

@@ -37,8 +37,6 @@ $("#btnCargarArchivo").on("click", function(e)
     //subir archivos
     let dir_archivo;
     var archivo = $('#archivo').prop('files')[0];
-    console.log($('#archivo').prop('files')["name"])
-
     if(archivo != undefined) {
         var form_data = new FormData();
                       
@@ -60,6 +58,7 @@ $("#btnCargarArchivo").on("click", function(e)
         {
             let j = JSON.parse(respuesta);
             msjes_swal(j.titulo, j.mensaje, j.icono);
+            $('#tablaComprobantes').DataTable().ajax.reload();
         }
         catch(e)
         {
