@@ -11,6 +11,16 @@ function cargarArchivos(form_data)
     }).responseText;
 }
 
+function registrarArchivoBD(datos)
+{
+    return $.ajax({
+        url: "php/cliente/comprobante/registrarArchivoBD.php",
+        data: datos,
+        type: "POST",
+        async: false
+    }).responseText;
+}
+
 
 
 /* ------------------------------------------- ACCIONES DOM ----------------------------------------- */
@@ -39,30 +49,27 @@ $("#btnCargarArchivo").on("click", function(e)
     }
     
 
+    //registro de archivo en la BD
     let datos = 
     {
         "id_cl": id_cl, 
         "dir_archivo": dir_archivo,
         "fecha_carga": fecha_carga
     }
-
-    //registro de archivo en la BD
-    $.ajax(
-        {
-            url: "php/cliente/comprobante/registrarArchivoBD.php",
-            data: datos,
-            type: "POST",
-            success: function(e)
-            {
-                msjes_swal("Excelente",e,"success");
-                cargarArchivosComprobantes(id_cl);
-            }
-        }
-    )
-    .fail(function(e)
+    let respuesta = registrarArchivoBD(datos);
+    try
     {
-        msjes_swal("Error",e.responseText,"error");
-    })
+        let j = JSON.parse(respuesta);
+        msjes_swal(j.titulo, j.mensaje, j.icono);
+    }
+    catch(e)
+    {
+        msjes_swal(respuesta);
+    }
+
+
+
+    //
 
 });
 

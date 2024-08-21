@@ -1,4 +1,6 @@
 <?php
+
+    date_default_timezone_set('America/Santiago');
     /* ----------------------------------------- CARGA DE ARCHIVO --------------------------------------- */
     if (!file_exists('../../../../../files/comprobantes/'))
     {

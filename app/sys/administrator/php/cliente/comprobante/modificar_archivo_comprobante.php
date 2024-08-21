@@ -1,5 +1,6 @@
 <?php
     require_once '../../../../conexion.php';
+    date_default_timezone_set('America/Santiago');
     
     $id_cl = $_POST["id_cl"];
     $dir_archivo = $_POST["dir_archivo"];

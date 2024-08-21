@@ -1,6 +1,7 @@
 <?php
 
     /* Script que elimina un archivo seleccionado */
+    date_default_timezone_set('America/Santiago');
 
     $nombre_archivo = "".$_POST["nombre_archivo"];
 

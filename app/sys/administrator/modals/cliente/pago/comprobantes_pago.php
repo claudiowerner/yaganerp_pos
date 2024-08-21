@@ -24,12 +24,10 @@ function modalComprobantesPago()
             </table>
           </form>
           <h6>---Tabla de comprobantes---</h6>
-            <table class='table'>
+            <table id=tablaComprobantes width='100%' class='table table-bordered table-hover dt-resposive display nowrap'>
               <th>ID</th>
               <th>Nombre archivo</th>
               <th>Fecha de carga</th>
-              <tbody id='bodyComprobantes'>
-              </tbody>
             </table>
         </div>
       </div>

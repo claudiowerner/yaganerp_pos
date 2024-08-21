@@ -13,7 +13,6 @@ function descargarDiasPagoAjax(url)
 /* ----------------------------------------------- FUNCION DOM ----------------------------------------------- */
 function advertenciaSistema(url)
 {
-    debugger
     //descargar número de días previos al vencimiento del pago
     let dias = descargarDiasPagoAjax(url);
     let j = JSON.parse(dias);
@@ -23,15 +22,13 @@ function advertenciaSistema(url)
         $("#diasPago").html(j.mostrar_dias)
         $("#diaLimite").html(j.fecha_final);
     }
-    if(j.dias_restantes>=1&&j.dias_restantes<=3)
+    if(j.dias_restantes<=2)
     {
-        $("#corteProximo").show();
+        $("#advertenciaSuscripcion").show();
+        $("#advertenciaSuscripción").removeClass(".alert-warning");
+        $("#advertenciaSuscripción").addClass(".alert-danger");
         $("#diasPago").html(j.mostrar_dias)
-        $("#diaLimiteCorte").html(j.fecha_final);
+        $("#diaLimite").html(j.fecha_final);
     }
-    if(j.dias_restantes<=0)
-    {
-        bloquearSistema();
-        $("#sistemaBloqueado").show();
-    }
+    
 }

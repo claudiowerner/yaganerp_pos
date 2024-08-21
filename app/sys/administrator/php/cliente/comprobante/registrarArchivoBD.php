@@ -1,4 +1,5 @@
  <?php
+	date_default_timezone_set('America/Santiago');
  
     require_once '../../../../conexion.php';
     
@@ -18,14 +19,29 @@
     (null, '$id_cl','Comprobante $id', '$dir_archivo', '$fecha_carga')";
     $res = $conexion->query($sql);
 
+    $json = array();
+    
+
     if($res)
     {
-        echo "Comprobante cargado/registrado correctamente";
+        $json = array(
+            "registro_archivo" => true,
+            "titulo" => "Excelente",
+            "mensaje" => "Archivo comprobante registrado correctamente",
+            "icono" => "success",
+        );
     }
     else
     {
-        echo "Error al registrar comprobante: ".mysqli_error($conexion);
+        $json = array(
+            "registro_archivo" => false,
+            "titulo" => "Error",
+            "mensaje" => "Error al registrar archivo: ".$conexion->error,
+            "icono" => "error"
+        );
     }
+
+    echo json_encode($json);
 
 
  
