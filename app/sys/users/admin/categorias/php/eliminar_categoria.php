@@ -2,6 +2,7 @@
 
 
 	session_start();
+	date_default_timezone_set('America/Santiago');
 	if(isset($_SESSION['user'])){
       	$tipo = $_SESSION['user']['tipo_usuario'];
      	if($tipo == 1){
@@ -31,7 +32,7 @@
 	/* ------------------------------------ REGISTRO EN TABLA ANULAR_USUARIO --------------------------- */
 	//Fecha
 	
-	date_default_timezone_set('America/Santiago');
+	
 
 	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
 	$sql = "INSERT INTO anula_categoria VALUES 

@@ -4,7 +4,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 session_start();
-date_default_timezone_set('America/Santiago');
+    date_default_timezone_set('America/Santiago');
 require_once '../../../../conexion.php';
     $id = $_POST["id"];
     //query

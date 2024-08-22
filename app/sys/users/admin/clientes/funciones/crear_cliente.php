@@ -2,6 +2,7 @@
 
 
 	session_start();
+	date_default_timezone_set('America/Santiago');
 	if(isset($_SESSION['user']))
 	{
       	$tipo = $_SESSION['user']['tipo_usuario'];

@@ -2,7 +2,7 @@
 
 
 	session_start();
-		
+	date_default_timezone_set('America/Santiago');	
 		require_once '../../../../conexion.php';
 
 

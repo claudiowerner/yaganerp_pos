@@ -3,7 +3,7 @@
 
 /* -------------------------------------------- FUNCIONES DOM ------------------------------------------ */
 
-function abrirModalPagos(id)
+function abrirModalComprobantes(id)
 {
     $("#idCliente").html(id);
     $("#modalComprobantesPago").modal("show");

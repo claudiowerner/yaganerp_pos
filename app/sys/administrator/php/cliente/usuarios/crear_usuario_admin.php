@@ -5,7 +5,7 @@
 	require_once 'crear_pass_provisoria.php';
 	require_once '../correo/correo_envio_credenciales.php';
 	//require_once '../correo.php';
-
+	date_default_timezone_set('America/Santiago');
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);

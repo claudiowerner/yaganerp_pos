@@ -13,7 +13,7 @@
         "INSERT INTO pass_provisoria 
         VALUES(null, $id_cl, '$pass', '$fecha')";
 
-        return $conexion->query($sql);;
+        return $conexion->query($sql);
     }
 
 

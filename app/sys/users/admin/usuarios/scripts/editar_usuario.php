@@ -2,7 +2,7 @@
 
 
 	session_start();
-	
+	date_default_timezone_set('America/Santiago');
 	require_once '../../../../conexion.php';
 
 
@@ -35,11 +35,11 @@
 
 	if($pass=="")
 	{
-		$sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n$id_cl', tipo_usuario = '$tipo_usuario', permisos='$permisos' WHERE id_cl = $id_cl AND id = '$id';";
+		$sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', tipo_usuario = '$tipo_usuario', permisos='$permisos' WHERE id_cl = $id_cl AND id = '$id';";
 	}
 	if($pass!="")
 	{
-		$sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n$id_cl', pass = '$pass', tipo_usuario = '$tipo_usuario', permisos='$permisos' WHERE id_cl = $id_cl AND id = '$id';";
+		$sql = "UPDATE usuarios  SET nombre = '$nombre', user = '$user_n', pass = '$pass', tipo_usuario = '$tipo_usuario', permisos='$permisos' WHERE id_cl = $id_cl AND id = '$id';";
 	}
 	$resultado = $conexion->query($sql);
 

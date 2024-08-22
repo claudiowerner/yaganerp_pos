@@ -29,4 +29,5 @@ function cargarPlazosPago()
     }
     $("#slctPlazoPago").html(template);
     $("#slctPlazoPagoEditar").html(template);
+    $("#slctPeriodoPago").html(template);
 }

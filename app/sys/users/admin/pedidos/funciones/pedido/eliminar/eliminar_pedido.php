@@ -1,9 +1,10 @@
 <?php
 
 
-session_start();
-	ini_set('display_errors', 1);
+	session_start();
+	date_default_timezone_set('America/Santiago');ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
+	
 
 	error_reporting(E_ALL);
 	
@@ -27,7 +28,7 @@ session_start();
     /* ------------------------------------ REGISTRO EN TABLA ANULAR_PEDIDO --------------------------- */
 	//Fecha
 	
-	date_default_timezone_set('America/Santiago');
+	
 
 	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
 	$sql = "INSERT INTO anula_pedidos VALUES 

@@ -6,6 +6,7 @@
   session_start();
   require_once '../../../conexion.php';
 
+	date_default_timezone_set('America/Santiago');
   $id_cl = $_POST["id"];
     //query
     $sql =

@@ -1,6 +1,7 @@
 <?php
 
   session_start();
+	date_default_timezone_set('America/Santiago');
 
 
   $id_us = $_SESSION['user']['id'];

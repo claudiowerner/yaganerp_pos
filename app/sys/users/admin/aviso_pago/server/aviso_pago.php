@@ -2,7 +2,7 @@
     
 	session_start();
     setlocale (LC_TIME, "es_CL.UTF-8");
-	date_default_timezone_set('America/Santiago');
+	
 	
 	require_once '../../../../conexion.php';
     

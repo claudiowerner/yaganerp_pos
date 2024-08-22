@@ -14,11 +14,13 @@
     $dia = $f["mday"];
     $fecha_usuario = "$año-$mes-$dia";
 	
-	$id = $_GET["id"];
-	$tipoPago = $_GET["tipoPago"];
+	$id = $_POST["id_cl"];
+	$tipoPago = $_POST["metodo"];
+	$plazo = $_POST["periodo"];
+	$plan = $_POST["plan"];
 
 	/* -------------------------------------- ACTUALIZAR PAGO CLIENTE ------------------------------------- */
-	$sql = 
+	echo $sql = 
 	"UPDATE pago_cliente 
 	SET periodo_actual = 'N',
 	estado = 'S'
@@ -44,7 +46,6 @@
 	$fechaDesde = "$año-$mes-".($dia+1);
 
 	//calcular fecha de próximo pago
-	$plazo = $_GET["plazo"];
 	$mes_plazo = $mes + $plazo;
 	$fechaHasta = "";
 	//Si el resultado del calculo del mes de plazo es de + de 12 meses

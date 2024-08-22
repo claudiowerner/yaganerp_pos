@@ -6,6 +6,7 @@ ini_set('display_errors', 'On');
 session_start();
 require_once '../../../conexion.php';
 
+date_default_timezone_set('America/Santiago');
     //query
     $sql =
     "SELECT * FROM tipo_pago_cliente";

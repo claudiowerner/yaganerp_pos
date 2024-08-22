@@ -49,7 +49,8 @@ table = $('#producto').DataTable({
       'render': function (data, type, row, meta) {
           return `<button type="submit" class="btn btn-primary" onclick="abrirModalEditar(${data.id}, ${data.id_plan}, ${data.plazo_pago}, ${data.giro})"><i class='fa fa-edit' aria-hidden='true'></i></button>
           <button class='btn btn-secondary' onClick="mostrarInfo(${data.id})"><i class='fa fa-expand' aria-hidden='true'></i></button>
-          <button class='btn btn-success' onClick="abrirModalPagos(${data.id})"><i class='fa fa-dollar' aria-hidden='true'></i></button>`;
+          <button class='btn btn-success' onClick="abrirModalComprobantes(${data.id})"><i class='fa fa-ticket' aria-hidden='true'></i></button>
+          <button class='btn btn-success' onClick="abrirModalPagos(${data.id})"><i class='fa icon-plus' aria-hidden='true'></i><i class='fa fa-dollar' aria-hidden='true'></i></button>`;
       }
     },
     {

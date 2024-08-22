@@ -1,6 +1,6 @@
 <?php
 
 	session_start();
-	echo json_encode($_SESSION['user']['id']);
+	date_default_timezone_set('America/Santiago');echo json_encode($_SESSION['user']['id']);
 
 ?>

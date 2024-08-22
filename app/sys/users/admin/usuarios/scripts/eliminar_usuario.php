@@ -2,7 +2,7 @@
 
 
 	session_start();
-	
+	date_default_timezone_set('America/Santiago');
 	require_once '../../../../conexion.php';
 
 
@@ -26,7 +26,7 @@
 	/* ------------------------------------ REGISTRO EN TABLA ANULAR_USUARIO --------------------------- */
 	//Fecha
 	
-	date_default_timezone_set('America/Santiago');
+	
 
 	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
 	$sql = "INSERT INTO anula_usuario

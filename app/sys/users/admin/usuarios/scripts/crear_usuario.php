@@ -2,7 +2,7 @@
 
 
 	session_start();
-	if(isset($_SESSION['user'])){
+	date_default_timezone_set('America/Santiago');if(isset($_SESSION['user'])){
       	$tipo = $_SESSION['user']['tipo_usuario'];
      	if($tipo == 1){
        	    //header('Location: ../');
@@ -31,7 +31,7 @@
 
 	//Fecha
 	
-	date_default_timezone_set('America/Santiago');
+	
 
 	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
 	$sql = "INSERT INTO usuarios VALUES (null, '$nombre', '$user$id_cl', '$pass', '$tu', '$id_cl', 'S','$permisos','$fecha_hora')";

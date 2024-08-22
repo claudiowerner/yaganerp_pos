@@ -34,7 +34,7 @@ if(isset($_SESSION['user'])){
     WHERE p.id_cl = '$id_cl'
     AND p.estado != 'N'
     GROUP BY id_prod";
-    $resultado = $conexion->query($sql);;
+    $resultado = $conexion->query($sql);
     if ($resultado->num_rows > 0){
       $json = array();
       while ($row = $resultado->fetch_array())

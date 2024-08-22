@@ -13,6 +13,7 @@ $.ajax(
                 });
             $("#tipoPago").html(template);
             $("#tipoPagoEditar").html(template);
+            $("#slctMetodoPago").html(template);
         }
     }
 )

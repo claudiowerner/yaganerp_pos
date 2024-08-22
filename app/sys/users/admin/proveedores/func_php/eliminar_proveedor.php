@@ -2,7 +2,7 @@
 
 
 	session_start();
-	require_once '../../../../conexion.php';
+	date_default_timezone_set('America/Santiago');require_once '../../../../conexion.php';
 
 
 	ini_set('display_errors', 1);
@@ -27,7 +27,7 @@
 	/* ------------------------------------ REGISTRO EN TABLA ANULAR_CLIENTE --------------------------- */
 	//Fecha
 	
-	date_default_timezone_set('America/Santiago');
+	
 
 	$fecha_hora = date("Y-m-d")." ".date("H:i:s");
 	$sql = "INSERT INTO anula_proveedor 

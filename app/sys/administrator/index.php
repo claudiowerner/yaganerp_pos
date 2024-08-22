@@ -62,10 +62,13 @@
                                             require "modals/cliente/cliente/editar.php";
                                             require "modals/cliente/cliente/info_clientes.php";
 
-                                            //pagos
+                                            //comprobante
                                             require "modals/cliente/pago/comprobantes/comprobantes_pago.php";
                                             require "modals/cliente/pago/comprobantes/comprobante_seleccionado.php";
                                             require "modals/cliente/pago/comprobantes/cargar_nuevo_comprobante.php";
+
+                                            //pagos
+                                            require "modals/cliente/pago/pagos/modal_pago.php";
 
                                             //plan
                                             require "modals/plan/registrar_plan.php";
@@ -83,6 +86,7 @@
                                             echo modalComprobanteSeleccionado();
                                             echo modalCargarNuevoComprobante();
                                             echo modalEnviarCorreo();
+                                            echo modalPagos();
                                         ?>
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item">
@@ -190,6 +194,8 @@
     <!--Pago-->
     <script src = "js/cliente/pago/cargarTipoPago.js"></script>
     <script src = "js/cliente/pago/crear_nuevo_pago.js"></script>
+    <script src = "js/cliente/pago/abrir_modal_pagos.js"></script>
+    <script src = "js/cliente/pago/calcular_precio_nuevo_pago.js"></script>
 
     <!--Usuario-->
     <script src = "js/cliente/cliente/usuarios/crear_usuario_admin.js"></script>

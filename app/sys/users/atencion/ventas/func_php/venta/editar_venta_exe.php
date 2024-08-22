@@ -6,7 +6,7 @@
 	error_reporting(E_ALL);
 
 	session_start();
-	if(isset($_SESSION['user']))
+	date_default_timezone_set('America/Santiago');if(isset($_SESSION['user']))
 	{
       	$tipo = $_SESSION['user']['tipo_usuario'];
      	if($tipo == 1){

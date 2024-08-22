@@ -1,6 +1,7 @@
 <?php
 
   session_start();
+  
 
 
   $id_us = $_SESSION['user']['id'];

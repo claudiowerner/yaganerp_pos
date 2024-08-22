@@ -1,9 +1,29 @@
 
 /* --------------------------------------------------- FUNCION AJAX ----------------------------------------------- */
-function crearNuevoPago()
+function crearNuevoPago(datos)
 {
     return $.ajax({
         url: "php/cliente/pagos/crear_nuevo_pago.php",
-        type: "POST"
+        data: datos,
+        type: "POST",
+        async: false
     }).responseText;
 }
+
+/* ---------------------------------------------------- FUNCION DOM ------------------------------------------------ */
+$("#btnRegistrarPago").on("click", function(e)
+{
+    let metodoPago = $("#slctMetodoPago").val();
+    let periodoPago = $("#slctPeriodoPago").val();
+    let id_cl = $("#idClientePago").text();
+    
+    let datos = {
+        "id_cl": id_cl,
+        "metodo": metodoPago,
+        "periodo": periodoPago
+    }
+
+    let respuesta = crearNuevoPago(datos);
+    alert(respuesta)
+    
+})
