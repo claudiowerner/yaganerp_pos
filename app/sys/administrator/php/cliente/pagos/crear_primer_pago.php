@@ -53,10 +53,16 @@
 	$res = $conexion->query($sql);
 	$resp = $res->fetch_assoc();
 	$id_cl = $resp["id"];
+	//seleccionar el plan del cliente
+
+	$sql = "SELECT plan_comprado FROM cliente WHERE id = $id_cl";
+	$res = $conexion->query($sql);
+	$resp = $res->fetch_assoc();
+	$plan_comprado = $resp["plan_comprado"];
 
 	//registrar pago cliente
 	$sql = "INSERT INTO pago_cliente VALUES
-	(null, $id_cl, $tipoPago, '$fechaRegistro', '$fechaHasta', 'S', 'N')";
+	(null, '$id_cl', '$plan_comprado', '$tipoPago', '$fechaRegistro', '$fechaHasta', 'S', 'N')";
 	$r1 = $conexion->query($sql);
 
 	$json = array();

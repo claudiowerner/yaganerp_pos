@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../../../conexion.php';
+	require_once '../../../../conexion.php';
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
     date_default_timezone_set('America/Santiago');

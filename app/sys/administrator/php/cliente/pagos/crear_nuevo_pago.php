@@ -20,7 +20,7 @@
 	$plan = $_POST["plan"];
 
 	/* -------------------------------------- ACTUALIZAR PAGO CLIENTE ------------------------------------- */
-	echo $sql = 
+	$sql = 
 	"UPDATE pago_cliente 
 	SET periodo_actual = 'N',
 	estado = 'S'

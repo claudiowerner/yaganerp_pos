@@ -27,14 +27,27 @@
 	$fechaRegistro = "$año-$mes-$dia";
 
 
-	/* -------------------------------------- REGISTRO EN TABLA CLIENTES -------------------------------- */
+	/* -------------------------------------- REGISTRO EN TABLA CLIENTES ------------------------------------------ */
 
 	$sql = "INSERT INTO cliente VALUES 
 	(null,'$nombre', '$rut', 'S','$nomFantasia', '$razonSocial',  $giro, '$direccion', '$correo','$telefono', '$plan', '$plazo', '$fechaRegistro');";
 	$r1 = $conexion->query($sql);
+
+	/* ------------------------------- REGISTRO EN TABLA stock_minimo_producto ------------------------------------*/
+	//Seleccionar ID del cliente a traves del rut
+	$sql = "SELECT id FROM cliente WHERE rut = '$rut';";
+	$res = $conexion->query($sql);
+	$array = $res->fetch_array();
+	$id = $array["id"];
+	
+	//insertar en la tabla stock_minimo_producto
+	$sql = "INSERT INTO stock_minimo_producto VALUES
+	(null, $id, 'N', '0')";
+	
+	$r2 = $conexion->query($sql);
 	
 
-	if($r1)
+	if($r1&&$r2)
 	{
 		$json = array(
 			"registro" => true,

@@ -99,6 +99,7 @@ $("#btnGuardar").on("click", function(e)
           }
 
           let respPago = registrarPago(datosPago);
+          alert(respPago)
           let pago = JSON.parse(respPago)
 
           if(cliente.registro&&pago.registro)

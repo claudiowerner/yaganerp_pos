@@ -15,7 +15,7 @@ function descargarInfoCliente(id)
 function guardarEdicion(datos)
 {
     return $.ajax({
-        url:"php/cliente/editar_cliente.php",
+        url:"php/cliente/clientes/editar_cliente.php",
         data: datos, 
         type: "POST",
         async: false
@@ -123,6 +123,7 @@ $("#btnModificar").on("click", function()
             "giro":giro
         }
         let editar = guardarEdicion(datos);
+        console.log();
         try
         {
             let json = JSON.parse(editar);
@@ -136,7 +137,8 @@ $("#btnModificar").on("click", function()
         }
         catch(e)
         {
-            msjes_swal("Error", e, "error");
+            console.log(e);
+            msjes_swal("Error", e.responseText, "error");
         }
     }
 });
