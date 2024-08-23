@@ -19,7 +19,6 @@
         "SELECT correlativo AS corr 
         FROM correlativo 
         WHERE id_cl = $id_cl 
-        AND estado = 'A'
         AND caja = $nCaja";
         $mostrar = "";
         $res = $conexion->query($sql);
@@ -35,7 +34,7 @@
         {
             $mostrar = 1;
         }
-        echo $mostrar;
+        echo $mostrar+1;
     }
     else
     {

@@ -28,7 +28,6 @@ $("#btnAgregarCliente").on("click", function(e)
 
 $("#btnGuardar").on("click", function(e)
 {
-  debugger;
   let rut = $("#rut").val();
   let nombre = $("#nomCliente").val();
   let correo = $("#correo").val();
@@ -99,7 +98,6 @@ $("#btnGuardar").on("click", function(e)
           }
 
           let respPago = registrarPago(datosPago);
-          alert(respPago)
           let pago = JSON.parse(respPago)
 
           if(cliente.registro&&pago.registro)

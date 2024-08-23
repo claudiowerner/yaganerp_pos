@@ -26,7 +26,6 @@
 	$dia = $f["mday"];
 	$fechaRegistro = "$año-$mes-$dia";
 
-
 	/* -------------------------------------- REGISTRO EN TABLA CLIENTES ------------------------------------------ */
 
 	$sql = "INSERT INTO cliente VALUES 

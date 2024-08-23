@@ -25,6 +25,13 @@
     $total = 0;
     $valorVenta = 0;//total sin iva
 
+    //obtener fecha
+    $f = getdate();
+    $año = $f["year"];
+    $mes = $f["mon"];
+    $dia = $f["mday"];
+    $fecha = "$dia-$mes-$año";
+
     # descargar datos de la venta
     $sql = 
     "SELECT DATE_FORMAT(fecha, '%d-%m-%Y %H:%i:%s') AS fecha,
@@ -70,18 +77,18 @@
     $cantidad = array();
     $valor = array();
 
-    $id_cl = "";
+    $id_cliente = "";
     if ($result->num_rows>0){
         while ($row = $result->fetch_array()){
             $id[] = $row['id'];
             $id_prod[] = $row['id_prod'];
             $cantidad[] = $row['cantidad'];
             $valor[] = $row['valor'];
-            $id_cl = $row["id_cl"];
+            $id_cliente = $row["id_cl"];
         }
     }
     //descarga de datos de supermercado (nombre de fantasía, etc)
-    echo $sql = 
+    $sql = 
     "SELECT c.rut, c.nom_fantasia, c.razon_social, 
     c.direccion, c.correo, c.telefono, 
     g.nombre AS nombre_giro, 
