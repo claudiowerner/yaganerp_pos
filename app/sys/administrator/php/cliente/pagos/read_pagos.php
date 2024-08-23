@@ -17,10 +17,10 @@
 	pl.nombre, mp.nombre_metodo_pago, pl.valor, pc.periodo_actual
 	FROM pago_cliente pc
 	JOIN planes pl 
-	ON pl.id = pc.plan_contratado
+	ON pl.id = pc.plan
 	JOIN metodo_pago mp
 	ON mp.id = pc.metodo_pago
-	WHERE id_cl = $id
+	WHERE pc.id_cl = $id
 	ORDER BY pc.id DESC;";
 
 	$res = $conexion->query($sql);

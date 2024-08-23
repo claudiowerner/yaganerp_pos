@@ -130,7 +130,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
                         <?php require_once 'items_index/modulo_pago/modulo_pago.php'?>
                     </div>
@@ -150,7 +149,6 @@
     <!--Formatear número-->
     <script src="../../../js/numberFormat.js"></script>
 
-    
     <!--Datatables-->
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
 

@@ -15,12 +15,14 @@ $("#btnRegistrarPago").on("click", function(e)
 {
     let metodoPago = $("#slctMetodoPago").val();
     let periodoPago = $("#slctPeriodoPago").val();
+    let planContratado = $("#slctPlanContratado").val();
     let id_cl = $("#idClientePago").text();
     
     let datos = {
         "id_cl": id_cl,
         "metodo": metodoPago,
-        "periodo": periodoPago
+        "periodo": periodoPago,
+        "plan": planContratado
     }
 
     let respuesta = crearNuevoPago(datos);

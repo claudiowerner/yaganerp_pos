@@ -64,10 +64,6 @@
 			$mes_plazo = 2;
 		}
 	}
-	else
-	{
-		$dia = $dia-1;
-	}
 	if($dia<10)
 	{
 		$dia = "0$dia";
@@ -82,8 +78,30 @@
 
 	/* --------------------------------------------- REGISTRO EN PAGO CLIENTE -------------------------------- */
 	$sql = "INSERT INTO pago_cliente VALUES
-	(null, $id, $tipoPago, '$fechaDesde', '$fechaHasta', 'S', 'N')";
+	(null, $id, $plan, $tipoPago, '$fechaDesde', '$fechaHasta', 'S', 'N')";
 
 	$res = $conexion -> query($sql);
+
+	$json = array();
+	if($res)
+	{
+		$json = array(
+			"registro_pago" => true,
+			"titulo" => "Excelente",
+			"mensaje" => "Pago registrado correctamente",
+			"icono" => "success"
+		);
+	}
+	else
+	{
+		$json = array(
+			"registro_pago" => true,
+			"titulo" => "Excelente",
+			"mensaje" => "Pago registrado correctamente",
+			"icono" => "success"
+		);
+	}
+
+	echo json_encode($json);
 	
 ?>

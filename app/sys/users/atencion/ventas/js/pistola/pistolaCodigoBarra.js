@@ -30,7 +30,7 @@ $("#txtCodBarra").on("keyup", function(enter)
     if(enter.keyCode==13)
         {
             codigo = $("#txtCodBarra").val();
-
+            alert(codigo);
             //se descarga el ID del producto seleccionado según codigo de barra
             let descarga = descargarID(codigo);
             let producto = JSON.parse(descarga);

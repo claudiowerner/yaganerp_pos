@@ -4,7 +4,7 @@ $.ajax(
         type: "POST",
         success: function(e)
         {
-            template = "";
+            template = "<option value=0>SELECCIONE UNA OPCIÓN</option>";
             json = JSON.parse(e)
             json.forEach(j=>
                 {

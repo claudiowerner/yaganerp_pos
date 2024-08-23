@@ -34,7 +34,7 @@
         {
             $mostrar = 1;
         }
-        echo $mostrar+1;
+        echo $mostrar;
     }
     else
     {
