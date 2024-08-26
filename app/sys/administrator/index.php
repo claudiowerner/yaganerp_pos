@@ -196,6 +196,7 @@
     <script src = "js/cliente/pago/crear_nuevo_pago.js"></script>
     <script src = "js/cliente/pago/abrir_modal_pagos.js"></script>
     <script src = "js/cliente/pago/calcular_precio_nuevo_pago.js"></script>
+    <script src = "js/cliente/pago/pagar_periodo_independiente.js"></script>
 
     <!--Usuario-->
     <script src = "js/cliente/cliente/usuarios/crear_usuario_admin.js"></script>

@@ -24,7 +24,7 @@ function modalPagos()
                         <td width='14%'><select id='slctPeriodoPago'  class='form-control' onchange='calcularPrecioNuevoPago()'></select></td>
                         <td width='14%'><label>Plan contratado:</label></td>
                         <td width='14%'><select id='slctPlanContratado'  class='form-control' onchange='calcularPrecioNuevoPago()'></select></td>
-                        <td width='14%'><button id='btnRegistrarPago' class='btn btn-success'>Registrar pago</button></td>
+                        <td width='14%'><button id='btnRegistrarPago' class='btn btn-success' style='margin: 2px'>Registrar nuevo periodo</button></td>
                     </tr>
                 </table>
             </div>
@@ -35,9 +35,9 @@ function modalPagos()
                         <td width='16%'><label>Valor plan: </label></td>
                         <td width='16%'><label id='lblValorPlan'>Cargando...</label></td>
                         <td width='16%'><label>Meses seleccionados:</label></td>
-                        <td width='16%'><label id='lblMesSeleccionado'>Cargado...</label></td>
+                        <td width='16%'><label id='lblMesSeleccionado'>Cargando...</label></td>
                         <td width='16%'><label>Precio total:</label></td>
-                        <td width='16%'><label id='lblPrecioTotal'>Cargado...</label></td>
+                        <td width='16%'><label id='lblPrecioTotal'>Cargando...</label></td>
                     </tr>
                 </table>
             </div>
@@ -53,6 +53,7 @@ function modalPagos()
                             <th>Método de pago</th>
                             <th>Monto</th>
                             <th>Periodo actual</th>
+                            <th>Pagado</th>
                         </tr>
                     </thead>
                 </table>

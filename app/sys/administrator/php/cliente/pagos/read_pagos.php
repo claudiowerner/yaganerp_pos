@@ -12,9 +12,9 @@
 	$json = array();
 
 	$sql = 
-	"SELECT DATE_FORMAT(pc.fecha_desde,'%d-%m-%Y') AS fecha_desde, 
+	"SELECT pc.id, DATE_FORMAT(pc.fecha_desde,'%d-%m-%Y') AS fecha_desde, 
 	DATE_FORMAT(pc.fecha_hasta,'%d-%m-%Y') AS fecha_hasta, 
-	pl.nombre, mp.nombre_metodo_pago, pl.valor, pc.periodo_actual
+	pl.nombre, mp.nombre_metodo_pago, pl.valor, pc.periodo_actual, pc.estado
 	FROM pago_cliente pc
 	JOIN planes pl 
 	ON pl.id = pc.plan
@@ -39,6 +39,7 @@
 				$periodo_actual = "No";
 			}
 			$json[] = array(
+				"id" => $row["id"],
 				"numero_registro" => $contador,
 				"fecha_desde" => $row["fecha_desde"],
 				"fecha_hasta" => $row["fecha_hasta"],
@@ -46,6 +47,7 @@
 				"nombre_metodo_pago" => $row["nombre_metodo_pago"],
 				"valor" => $row["valor"],
 				"periodo_actual" => $periodo_actual,
+				"estado_pago" => $row["estado"],
 			);
 		}
 	}

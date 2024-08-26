@@ -33,6 +33,22 @@ function abrirModalPagos(id)
                 render: DataTable.render.number(null, null, "", "$", "")
             },
             {"data":"periodo_actual"},
+            {
+                'data' : null,
+                'render': function (data, type, row, meta) {
+                    console.log(data);
+                    let retorno = "";
+                    if(data.estado_pago=='S')
+                    {
+                        retorno = `Si`;
+                    }
+                    else
+                    {
+                        retorno = `<button class='btn btn-success' onclick='pagarPeriodo(${data.id})'>Pagar</button>`;
+                    }
+                    return retorno;
+                }
+            }
         ],
     
       //Configuración de Datatable
