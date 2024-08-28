@@ -76,6 +76,12 @@ table = $('#producto').DataTable({
           <i id='creandoPassNueva${data.id}' class='fontello-paper-plane' aria-hidden='true'></i>
         </button>`;
       }
+    },
+    {
+      'data' : null,
+      'render': function (data, type, row, meta) {
+          return `<button type="submit" class="btn btn-danger" onclick="eliminarCliente(${data.id}, '${data.nombre}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
+      }
     }
   ],
 

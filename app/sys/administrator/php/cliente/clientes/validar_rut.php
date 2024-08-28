@@ -8,7 +8,7 @@
 
     $rut = $_POST["rut"];
     //query
-    $sql = "SELECT * FROM cliente WHERE rut = $rut";
+    $sql = "SELECT * FROM cliente WHERE rut = $rut AND estado = 'S'";
     $res = $conexion->query($sql);
 
     echo $res->num_rows;

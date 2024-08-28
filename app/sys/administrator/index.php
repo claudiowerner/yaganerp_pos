@@ -115,6 +115,7 @@
                                                                 <th>Estado pago</th>
                                                                 <th>Acción</th>
                                                                 <th>Claves</th>
+                                                                <th>Eliminar</th>
                                                             </tr>
                                                         </thead>
                                                     </table>
@@ -174,6 +175,7 @@
     <script src = "js/cliente/cliente/editar_clientes/editar_cliente.js"></script>
     <script src = "js/cliente/cliente/read_clientes/mostrar_info_cliente.js"></script>
     <script src = "js/cliente/cliente/read_clientes/read_clientes.js"></script>
+    <script src = "js/cliente/cliente/eliminar_cliente/eliminar_cliente.js"></script>
     <script src = "js/cliente/comprobante/pagos_cliente.js"></script>
     <script src = "js/cliente/comprobante/cargar_archivos_comprobantes.js"></script>
     <script src = "js/cliente/comprobante/cargar_comprobante_seleccionado.js"></script>

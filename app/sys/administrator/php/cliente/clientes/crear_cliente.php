@@ -34,7 +34,7 @@
 
 	/* ------------------------------- REGISTRO EN TABLA stock_minimo_producto ------------------------------------*/
 	//Seleccionar ID del cliente a traves del rut
-	$sql = "SELECT id FROM cliente WHERE rut = '$rut';";
+	$sql = "SELECT id FROM cliente WHERE rut = '$rut' AND estado = 'S';";
 	$res = $conexion->query($sql);
 	$array = $res->fetch_array();
 	$id = $array["id"];

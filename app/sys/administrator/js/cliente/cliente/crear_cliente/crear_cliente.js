@@ -52,6 +52,10 @@ $("#btnGuardar").on("click", function(e)
   let giro = $("#slctGiros").val();
   let plazo = $("#slctPlazoPago").val();
 
+  if(plan==0||giro==0||plazo==0)
+  {
+    msjes_swal("Aviso", "El método de pago, Periodo de pago o Plan contratado, debe ser una opción válida.", "warning");
+  }
   if(
     rut == "" ||
     nombre == "" ||

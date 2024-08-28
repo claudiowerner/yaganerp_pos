@@ -35,6 +35,7 @@
     ON pl.id = c.plan_comprado
     JOIN pago_cliente pc
     ON c.id = pc.id_cl
+    WHERE c.estado = 'S'
     GROUP BY c.id
     ORDER BY c.id ASC";
     $res = $conexion->query($sql);

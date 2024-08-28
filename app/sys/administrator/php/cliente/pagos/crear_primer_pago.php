@@ -49,7 +49,7 @@
 	
 	//seleccionar el ID del cliente
 
-	$sql = "SELECT id FROM cliente WHERE rut = '$rut'";
+	$sql = "SELECT id FROM cliente WHERE rut = '$rut' AND estado = 'S'";
 	$res = $conexion->query($sql);
 	$resp = $res->fetch_assoc();
 	$id_cl = $resp["id"];
