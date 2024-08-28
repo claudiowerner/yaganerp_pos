@@ -19,13 +19,7 @@
 	$plazo = $_POST["periodo"];
 	$plan = $_POST["plan"];
 
-	/* -------------------------------------- ACTUALIZAR PAGO CLIENTE ------------------------------------- */
-	$sql = 
-	"UPDATE pago_cliente 
-	SET periodo_actual = 'N',
-	estado = 'S'
-	WHERE id_cl = $id";
-	$res = $conexion -> query($sql);
+	
 	/* ----------------------------------------- OBTENER FECHAS BD ---------------------------------------- */
 	
 
@@ -34,12 +28,21 @@
 	MONTH(fecha_hasta) AS mes, 
 	DAY(fecha_hasta) AS dia 
 	FROM pago_cliente 
-	WHERE id_cl = $id";
+	WHERE id_cl = $id
+	AND periodo_actual = 'S'";
 	$res = $conexion->query($sql);
 	$resp = $res->fetch_array();
 	$año = $resp["año"];
 	$mes = $resp["mes"];
 	$dia = $resp["dia"];
+
+	/* -------------------------------------- ACTUALIZAR PAGO CLIENTE ------------------------------------- */
+	$sql = 
+	"UPDATE pago_cliente 
+	SET periodo_actual = 'N',
+	estado = 'S'
+	WHERE id_cl = $id";
+	$res = $conexion -> query($sql);
 
 	/* ---------------------------------------- CALCULO DE FECHA --------------------------------- */
 	//calcular fecha inicio de proximo pago
