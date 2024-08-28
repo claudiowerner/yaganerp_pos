@@ -16,9 +16,23 @@ function calcularPago()
     let plan_comprado = $("#slctPlan").val();
     let meses = $("#slctPlazoPago").val();
     let valor_plan = cargarValorPlan(plan_comprado)
-    let valor_plan_formateado = formatearNumero("P", valor_plan);
     let valor_total = valor_plan * meses;
-    let valor_total_formateado = formatearNumero("P", valor_total);
+
+
+    let valor_plan_formateado = 0;
+    let valor_total_formateado = 0;
+
+    if(isNaN(valor_plan)||isNaN(valor_total))
+    {
+        valor_plan_formateado = "$0";
+        valor_total_formateado = "$0";
+    }
+    else
+    {
+        valor_plan_formateado = formatearNumero("P", valor_plan);
+        valor_total_formateado = formatearNumero("P", valor_total);
+    }
+    
 
 
     $("#valorPlan").html(valor_plan_formateado);

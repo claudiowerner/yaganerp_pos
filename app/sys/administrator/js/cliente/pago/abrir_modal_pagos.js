@@ -36,7 +36,6 @@ function abrirModalPagos(id)
             {
                 'data' : null,
                 'render': function (data, type, row, meta) {
-                    console.log(data);
                     let retorno = "";
                     if(data.estado_pago=='S')
                     {

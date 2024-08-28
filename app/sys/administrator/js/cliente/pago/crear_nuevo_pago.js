@@ -38,6 +38,7 @@ $("#btnRegistrarPago").on("click", function(e)
         if(j.registro_pago)
         {
             $('#tablaPagos').DataTable().ajax.reload();
+            $('#producto').DataTable().ajax.reload();
         }
     }
     

@@ -24,6 +24,18 @@ function registrarPago(datos)
 $("#btnAgregarCliente").on("click", function(e)
 {
   $("#modalRegistro").modal("show");
+  $("#nomCliente").val("");
+  $("#rut").val("");
+  $("#telefono").val("");
+  $("#direccion").val("");
+  $("#correo").val("");
+  $("#nomFantasia").val("");
+  $("#razonSocial").val("");
+  $("#slctPlazoPago").val(0);
+  $("#tipoPago").val(0);
+  $("#mesesSeleccionados").html("Ninguno");
+  $("#valorPlan").html("$0");
+  $("#valorTotal").html("$0");
 })
 
 $("#btnGuardar").on("click", function(e)
