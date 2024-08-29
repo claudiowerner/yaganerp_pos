@@ -21,9 +21,9 @@ function modalEditarPagos()
                         <td width='16%'><label>Método de pago:</label></td>
                         <td width='16%'><select id='slctMetodoPagoEditar'  class='form-control'></select></td>
                         <td width='16%'><label>Periodo de pago:</label></td>
-                        <td width='16%'><select id='slctPeriodoPagoEditar'  class='form-control' onchange='calcularPrecioNuevoPagoEditar()'></select></td>
+                        <td width='16%'><select id='slctPeriodoPagoEditar'  class='form-control' onchange='calcularPrecioPagoEditado()'></select></td>
                         <td width='16%'><label>Plan contratado:</label></td>
-                        <td width='16%'><select id='slctPlanContratadoEditar'  class='form-control' onchange='calcularPrecioNuevoPagoEditar()'></select></td>
+                        <td width='16%'><select id='slctPlanContratadoEditar'  class='form-control' onchange='calcularPrecioPagoEditado()'></select></td>
                     </tr>
                 </table>
             </div>
