@@ -1,8 +1,8 @@
 
-function abrirModalPagos(id)
+function abrirTablaPagos(id)
 {
     $("#idClientePago").html(id);
-    $("#modalPagos").modal("show");
+    $("#modalTablaPagos").modal("show");
 
     //destrucción de la datatable si es que ya se ha inicializado
     if ( $.fn.DataTable.isDataTable('#tablaPagos')) 
@@ -36,16 +36,21 @@ function abrirModalPagos(id)
             {
                 'data' : null,
                 'render': function (data, type, row, meta) {
-                    let retorno = "";
+                    let disabled = "";
+                    
+                    let id_plan = data.id_plan;
+                    let id_metodo = data.id_metodo;
+                    let plazo_pago = data.plazo_pago;
                     if(data.estado_pago=='S')
                     {
-                        retorno = `Si`;
+                        disabled = "disabled";
                     }
                     else
                     {
-                        retorno = `<button class='btn btn-success' onclick='pagarPeriodo(${data.id})'>Pagar</button>`;
+                        disabled = "";
                     }
-                    return retorno;
+                    return `<button class='btn btn-primary' onclick='abrirModalEditarPago(${data.id}, ${data.id_cl}, ${id_plan}, ${id_metodo}, ${plazo_pago})'><i class='fa fa-edit' aria-hidden='true'></i></button>
+                    <button class='btn btn-success' onclick='pagarPeriodo(${data.id})' ${disabled}><i class='fa fa-dollar' aria-hidden='true'></i></button>`;
                 }
             }
         ],

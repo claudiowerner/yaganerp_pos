@@ -68,7 +68,9 @@
                                             require "modals/cliente/pago/comprobantes/cargar_nuevo_comprobante.php";
 
                                             //pagos
+                                            require "modals/cliente/pago/pagos/modal_editar_pago.php";
                                             require "modals/cliente/pago/pagos/modal_pago.php";
+                                            require "modals/cliente/pago/pagos/modal_registrar_pago.php";
 
                                             //plan
                                             require "modals/plan/registrar_plan.php";
@@ -87,6 +89,8 @@
                                             echo modalCargarNuevoComprobante();
                                             echo modalEnviarCorreo();
                                             echo modalPagos();
+                                            echo modalRegistroPagos();
+                                            echo modalEditarPagos();
                                         ?>
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item">
@@ -194,11 +198,14 @@
     <script src = "js/cliente/cliente/correo/correo_registro.js"></script>
 
     <!--Pago-->
-    <script src = "js/cliente/pago/cargarTipoPago.js"></script>
-    <script src = "js/cliente/pago/crear_nuevo_pago.js"></script>
-    <script src = "js/cliente/pago/abrir_modal_pagos.js"></script>
-    <script src = "js/cliente/pago/calcular_precio_nuevo_pago.js"></script>
-    <script src = "js/cliente/pago/pagar_periodo_independiente.js"></script>
+    <script src = "js/cliente/pago/leer_pagos/cargarTipoPago.js"></script>
+    <script src = "js/cliente/pago/crear_pago/crear_nuevo_pago.js"></script>
+    <script src = "js/cliente/pago/crear_pago/abrir_modal_registro_pago.js"></script>
+    <script src = "js/cliente/pago/crear_pago/pagar_periodo_independiente.js"></script>
+    <script src = "js/cliente/pago/leer_pagos/abrir_modal_tabla_pagos.js"></script>
+    <script src = "js/cliente/pago/calculo/calcular_precio_nuevo_pago.js"></script>
+    <script src = "js/cliente/pago/editar_pago/abrir_modal_editar_pago.js"></script>
+    <script src = "js/cliente/pago/editar_pago/editar_pago.js"></script>
 
     <!--Usuario-->
     <script src = "js/cliente/cliente/usuarios/crear_usuario_admin.js"></script>

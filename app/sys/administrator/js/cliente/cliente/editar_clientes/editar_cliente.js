@@ -24,40 +24,12 @@ function guardarEdicion(datos)
 
 
 /* ---------------------------------------------- FUNCIONES DOM ------------------------------------- */
-let ec;
-let ep;
-
-$("#swEstadoCliente").on("click", function(e)
-{
-    if(e.target.checked)
-    {
-        ec = "S";
-    }
-    else
-    {
-        ec = "N";
-    }
-});
-
-$("#swEstadoPago").on("click", function(e)
-{
-    if(e.target.checked)
-    {
-        ep = "S";
-    }
-    else
-    {
-        ep = "N";
-    }
-});
-
-
-
 function abrirModalEditar(id)
 {
     let descargar = descargarInfoCliente(id);
     let datos = JSON.parse(descargar);
 
+    $("#tituloClienteEditar").html(datos.nombre);
     $("#idCliente").html(id);
     $("#nomClienteEditar").val(datos.nombre);
     $("#rutEditar").val(datos.rut);
@@ -91,41 +63,39 @@ $("#btnModificar").on("click", function()
     let correo = $("#correoEditar").val();
     let telefono = $("#telefonoEditar").val();
     let direccion = $("#direccionEditar").val();
-    let plan = $("#slctPlanEditar").val();
     let nomFantasia = $("#nomFantasiaEditar").val();
     let razonSocial = $("#razonSocialEditar").val();
     let fechaDesde = $("#fechaDesdeEditar").val();
     let fechaHasta = $("#fechaHastaEditar").val();
-    let metodo_pago = $("#tipoPagoEditar").val();
     let giro = $("#slctGirosEditar").val();
+    let plazo_pago = $("#slctPlazoPagoEditar").val();
+    let plan = $("#slctPlanEditar").val();
+    let metodo_pago = $("#tipoPagoEditar").val();
     if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||fechaDesde==""||fechaHasta==""||nomFantasia==""||razonSocial=="")
     {
         msjes_swal("Aviso", "Debe rellenar todos los campos", "warning");
     }
     else
     {
-        let datos = {
-            "id": id,
-            "nombre": nombre,
-            "estado": ec,
-            "rut":rut,
-            "correo":correo,
-            "telefono":telefono,
-            "direccion":direccion,
-            "plan":plan,
-            "nomFantasia":nomFantasia,
-            "razonSocial":razonSocial,
-            "estado": ec,
-            "fechaDesde":fechaDesde,
-            "fechaHasta":fechaHasta,
-            "metodo_pago":metodo_pago,
-            "estado_pago":ep,
-            "giro":giro
-        }
-        let editar = guardarEdicion(datos);
-        console.log();
-        try
+        //validar si el tipo de pago, plazo de pago y método de pago es válido o no
+        if(plazo_pago==0||plan==0||metodo_pago==0)
         {
+            msjes_swal("Aviso", "El método de pago, Periodo de pago o Plan contratado, debe ser una opción válida.", "warning");
+        }
+        else
+        {
+            let datos = {
+                "id": id,
+                "nombre": nombre,
+                "rut":rut,
+                "correo":correo,
+                "telefono":telefono,
+                "direccion":direccion,
+                "nomFantasia":nomFantasia,
+                "razonSocial":razonSocial,
+                "giro":giro
+            }
+            let editar = guardarEdicion(datos);
             let json = JSON.parse(editar);
 
             msjes_swal(json.titulo, json.mensaje, json.icono);
@@ -134,11 +104,22 @@ $("#btnModificar").on("click", function()
                 $("#modalEditar").modal("hide");
                 $('#producto').DataTable().ajax.reload();
             }
-        }
-        catch(e)
-        {
-            console.log(e);
-            msjes_swal("Error", e.responseText, "error");
+            /*try
+            {
+                let json = JSON.parse(editar);
+
+                msjes_swal(json.titulo, json.mensaje, json.icono);
+                if(json.edicion)
+                {
+                    $("#modalEditar").modal("hide");
+                    $('#producto').DataTable().ajax.reload();
+                }
+            }
+            catch(e)
+            {
+                console.log(e);
+                msjes_swal("Error", e.responseText, "error");
+            }*/
         }
     }
 });

@@ -56,109 +56,112 @@ $("#btnGuardar").on("click", function(e)
   {
     msjes_swal("Aviso", "El método de pago, Periodo de pago o Plan contratado, debe ser una opción válida.", "warning");
   }
-  if(
-    rut == "" ||
-    nombre == "" ||
-    correo == "" ||
-    telefono == "" ||
-    direccion == "" ||
-    plan == "" ||
-    nomFantasia == "" ||
-    razonSocial == "" ||
-    tipoPago == "" ||
-     giro == "")
-  {
-    msjes_swal("Aviso", "Debe rellenar todos los campos", "warning")
-  }
   else
   {
-    let rut_valido = fnValidarRut.validaRut(rut)
-    if(rut_valido)
+    if(
+      rut == "" ||
+      nombre == "" ||
+      correo == "" ||
+      telefono == "" ||
+      direccion == "" ||
+      plan == "" ||
+      nomFantasia == "" ||
+      razonSocial == "" ||
+      tipoPago == "" ||
+      giro == "")
     {
-      
-      if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||nomFantasia==""||razonSocial=="")
-      {
-        msjes_swal("Aviso", "Debe rellenar todos los campos", "warning");
-      }
-      else
-      {
-        let rutRepetido = validarRut(rut)
-        if(rutRepetido>0)
-        {
-          msjes_swal("Aviso", "El rut ingresado ya existe", "warning")
-        }
-        else
-        {
-          let datos = {
-            "nombre": nombre,
-            "rut":rut,
-            "nomFantasia":nomFantasia,
-            "razonSocial":razonSocial,
-            "giro":giro,
-            "direccion":direccion,
-            "correo":correo,
-            "telefono":telefono,
-            "plan":plan,
-            "plazo":plazo
-          }
-          //registro cliente
-          let regCliente = registrarCliente(datos);
-          let cliente = JSON.parse(regCliente);
-
-          //registro pago
-          let datosPago = {
-            "rut": rut,
-            "plazo": plazo,
-            "plan": plan,
-            "tipoPago": tipoPago
-          }
-
-          let respPago = registrarPago(datosPago);
-          let pago = JSON.parse(respPago)
-
-          if(cliente.registro&&pago.registro)
-          {
-
-            //envío de correo de registro
-            let datosCorreo = {
-              "correo": correo, 
-              "nombre": nombre
-            }
-            $("#modalEnviarCorreo").modal("show");
-            
-            $.ajax({
-              url: "php/cliente/correo/correo_registro.php",
-              data: datosCorreo,
-              type: "POST",
-              success: function(e)
-              {
-                $("#modalEnviarCorreo").modal("hide");
-                $('#producto').DataTable().ajax.reload();
-                $("#modalRegistro").modal("hide");
-                msjes_swal("Excelente", "Cliente registrado correctamente", "success");
-
-                
-              }
-            })
-            .fail(function(e){
-              
-              $("#modalEnviarCorreo").modal("hide")
-              $('#producto').DataTable().ajax.reload();
-              $("#modalRegistro").modal("hide");
-            });
-
-          }
-          else
-          {
-            msjes_swal("Error", "Error al registrar cliente", "error");
-          }
-        }
-      }
-
+      msjes_swal("Aviso", "Debe rellenar todos los campos", "warning")
     }
     else
     {
-      msjes_swal("Aviso", "El formato del R.U.T. es inválido. Debe ser: xxxxxxxx-x", "warning");
+      let rut_valido = fnValidarRut.validaRut(rut)
+      if(rut_valido)
+      {
+        
+        if(nombre==""||rut==""||correo==""||telefono==""||direccion==""||plan==""||nomFantasia==""||razonSocial=="")
+        {
+          msjes_swal("Aviso", "Debe rellenar todos los campos", "warning");
+        }
+        else
+        {
+          let rutRepetido = validarRut(rut)
+          if(rutRepetido>0)
+          {
+            msjes_swal("Aviso", "El rut ingresado ya existe", "warning")
+          }
+          else
+          {
+            let datos = {
+              "nombre": nombre,
+              "rut":rut,
+              "nomFantasia":nomFantasia,
+              "razonSocial":razonSocial,
+              "giro":giro,
+              "direccion":direccion,
+              "correo":correo,
+              "telefono":telefono,
+              "plan":plan,
+              "plazo":plazo
+            }
+            //registro cliente
+            let regCliente = registrarCliente(datos);
+            let cliente = JSON.parse(regCliente);
+
+            //registro pago
+            let datosPago = {
+              "rut": rut,
+              "plazo": plazo,
+              "plan": plan,
+              "tipoPago": tipoPago
+            }
+
+            let respPago = registrarPago(datosPago);
+            let pago = JSON.parse(respPago)
+
+            if(cliente.registro&&pago.registro)
+            {
+
+              //envío de correo de registro
+              let datosCorreo = {
+                "correo": correo, 
+                "nombre": nombre
+              }
+              $("#modalEnviarCorreo").modal("show");
+              
+              $.ajax({
+                url: "php/cliente/correo/correo_registro.php",
+                data: datosCorreo,
+                type: "POST",
+                success: function(e)
+                {
+                  $("#modalEnviarCorreo").modal("hide");
+                  $('#producto').DataTable().ajax.reload();
+                  $("#modalRegistro").modal("hide");
+                  msjes_swal("Excelente", "Cliente registrado correctamente", "success");
+
+                  
+                }
+              })
+              .fail(function(e){
+                
+                $("#modalEnviarCorreo").modal("hide")
+                $('#producto').DataTable().ajax.reload();
+                $("#modalRegistro").modal("hide");
+              });
+
+            }
+            else
+            {
+              msjes_swal("Error", "Error al registrar cliente", "error");
+            }
+          }
+        }
+
+      }
+      else
+      {
+        msjes_swal("Aviso", "El formato del R.U.T. es inválido. Debe ser: xxxxxxxx-x", "warning");
+      }
     }
   }
 

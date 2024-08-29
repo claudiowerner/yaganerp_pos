@@ -14,28 +14,20 @@
     $dia = $f["mday"];
     $fecha_usuario = "$año-$mes-$dia";
 	
-	/*$id = $_POST["id_cl"];
+	$id = $_POST["id_cl"];
 	$tipoPago = $_POST["metodo"];
 	$plazo = $_POST["periodo"];
-	$plan = $_POST["plan"];*/
-
-	$id = 1;
-	$tipoPago = 1;
-	$plazo = 1;
-	$plan = 1;
-
-	
+	$plan = $_POST["plan"];
 	/* ----------------------------------------- OBTENER FECHAS BD ---------------------------------------- */
 	
 
-	echo $sql = 
+	$sql = 
 	"SELECT YEAR(fecha_hasta) AS año, 
 	MONTH(fecha_hasta) AS mes, 
 	DAY(fecha_hasta) AS dia 
 	FROM pago_cliente 
 	WHERE id_cl = $id
 	AND periodo_actual = 'S'";
-	echo "<br>";
 	$res = $conexion->query($sql);
 	$resp = $res->fetch_array();
 	$año = $resp["año"];
@@ -43,13 +35,11 @@
 	$dia = $resp["dia"];
 
 	/* -------------------------------------- ACTUALIZAR PAGO CLIENTE ------------------------------------- */
-	echo $sql = 
+	$sql = 
 	"UPDATE pago_cliente 
-	SET periodo_actual = 'N',
-	estado = 'S'
+	SET periodo_actual = 'N'
 	WHERE id_cl = $id";
 	$res = $conexion -> query($sql);
-	echo "<br>";
 
 	/* ---------------------------------------- CALCULO DE FECHA --------------------------------- */
 	//calcular fecha inicio de proximo pago
@@ -87,9 +77,8 @@
 	$fechaHasta = "$año-$mes_plazo-$dia";
 
 	/* --------------------------------------------- REGISTRO EN PAGO CLIENTE -------------------------------- */
-	echo $sql = "INSERT INTO pago_cliente VALUES
+	$sql = "INSERT INTO pago_cliente VALUES
 	(null, $id, $plan, $tipoPago, '$fechaDesde', '$fechaHasta', 'S', 'N')";
-	echo "<br>";
 
 	$res = $conexion -> query($sql);
 

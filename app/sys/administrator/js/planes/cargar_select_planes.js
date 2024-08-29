@@ -18,6 +18,7 @@ function cargarPlan()
         $("#slctPlan").html(template);
         $("#slctPlanEditar").html(template);
         $("#slctPlanContratado").html(template);
+        $("#slctPlanContratadoEditar").html(template);
     }
   })
 }
