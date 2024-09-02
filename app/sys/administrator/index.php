@@ -180,6 +180,7 @@
     <script src = "js/cliente/cliente/read_clientes/mostrar_info_cliente.js"></script>
     <script src = "js/cliente/cliente/read_clientes/read_clientes.js"></script>
     <script src = "js/cliente/cliente/eliminar_cliente/eliminar_cliente.js"></script>
+    <script src = "js/cliente/comprobante/abrir_comprobante_seleccionado.js"></script>
     <script src = "js/cliente/comprobante/pagos_cliente.js"></script>
     <script src = "js/cliente/comprobante/cargar_archivos_comprobantes.js"></script>
     <script src = "js/cliente/comprobante/cargar_comprobante_seleccionado.js"></script>
@@ -188,6 +189,7 @@
     <script src = "js/cliente/comprobante/cargar_archivos_nuevo_comprobante.js"></script>
     <script src = "js/cliente/comprobante/cargar_nuevo_comprobante.js"></script>
     <script src = "js/cliente/comprobante/cargar_periodo_comprobante.js"></script>
+    <script src = "js/cliente/comprobante/editar_periodo.js"></script>
 
     <!--Plazo de pago-->
     <script src = "js/cliente/plazo_pago/cargar_plazo_pago.js"></script>

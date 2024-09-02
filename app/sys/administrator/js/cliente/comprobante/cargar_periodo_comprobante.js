@@ -27,7 +27,7 @@ function cargarPeriodosComprobante(id)
     }
     else
     {
-        template = `<option value=${j.id}>${j.periodos}</option>`;
+        template = `<option value=0>Sin periodos disponibles</option>`;
     }
     $("#slctPeriodoComprobante").html(template);
 }

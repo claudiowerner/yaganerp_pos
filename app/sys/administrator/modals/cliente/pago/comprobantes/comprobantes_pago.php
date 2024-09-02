@@ -5,7 +5,7 @@
 function modalComprobantesPago()
 {
     return "<div class='modal fade' id='modalComprobantesPago' overflow-y: scroll;' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
-    <div class='modal-dialog modal-dialog-scrollable  modal-lg' role='document'>
+    <div class='modal-dialog modal-dialog-scrollable modal-lg' role='document'>
       <div class='modal-content'>
         <div class='modal-header'>
           <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -32,6 +32,7 @@ function modalComprobantesPago()
                 <th>Periodo</th>
                 <th>Nombre archivo</th>
                 <th>Fecha de carga</th>
+                <th>Editar</th>
               </thead>
             </table>
         </div>

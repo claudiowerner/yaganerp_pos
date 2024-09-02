@@ -13,6 +13,7 @@
   "SELECT c.id,
   DATE_FORMAT(pc.fecha_desde, '%d-%m-%Y') AS fecha_desde,
   DATE_FORMAT(pc.fecha_hasta, '%d-%m-%Y') AS fecha_hasta,
+  c.id_pago,
   c.nombre_archivo, c.dir_archivo, 
   DATE_FORMAT(c.fecha_carga, '%d-%m-%Y') AS fecha_carga
   FROM comprobantes c
@@ -30,6 +31,7 @@
       $json[] =array(
         "resultados" => $filas,
         "nro_fila" => $nro_fila,
+        'id_pago' => $row['id_pago'],
         'id' => $row['id'],
         'nombre_archivo' => $row['nombre_archivo'],
         'periodo' => $row["fecha_desde"]."<->".$row["fecha_hasta"],

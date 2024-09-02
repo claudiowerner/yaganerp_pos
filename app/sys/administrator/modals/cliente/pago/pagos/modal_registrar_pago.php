@@ -13,7 +13,7 @@ function modalRegistroPagos()
                 <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span>
                 </button>
-                <h5 class='modal-title' id='exampleModalLongTitle'>Comprobantes de pago <strong id='idClientePago'></strong></h5>
+                <h5 class='modal-title' id='exampleModalLongTitle'><label>Registro de pagos </label><strong id='idClientePago'></strong></h5>
             </div>
             <div class='modal-body'>
                 <table width='100%'>

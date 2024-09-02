@@ -72,7 +72,7 @@
         $sql = 
         "SELECT 
         DATE_FORMAT(fecha_desde, '%d-%m-%Y') AS fecha_desde, 
-        DATE_FORMAT(fecha_hasta-1, '%d-%m-%Y') AS fecha_hasta,
+        DATE_FORMAT(fecha_hasta, '%d-%m-%Y') AS fecha_hasta,
         estado
         FROM pago_cliente 
         WHERE id_cl = $id_cl

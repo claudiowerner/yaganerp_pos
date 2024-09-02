@@ -39,8 +39,22 @@ function cargarArchivosComprobantes(idCliente, tablaComprobantes)
         "columns":[
             {"data":"id"},
             {"data":"periodo"},
-            {"data":"nombre_archivo"},
+            {
+                'data' : null,
+                'render': function (data, type, row, meta) {
+                    let nombre = data.nombre_archivo;
+                    let url = data.dir_archivo;
+                    let id_pago = data.id_pago;
+                    return `<button class="btn btn-primary" onclick="abrirComprobantePago(${id_pago},'${url}')"><i class='fa fa-folder-open-o' aria-hidden='true'></i> ${nombre}</button>`;
+                }
+            },
             {"data":"fecha_carga"},
+            {
+                'data' : null,
+                'render': function (data, type, row, meta) {
+                    return `<button class="btn btn-primary" onclick="editarPeriodo(${data.id_pago})"><i class='fa fa-edit' aria-hidden='true'></i></button>`;
+                }
+            },
         ],
     
       //Configuración de Datatable
@@ -62,14 +76,3 @@ function cargarArchivosComprobantes(idCliente, tablaComprobantes)
     });
     
 }
-
-//Acciones al clickear una fila de la tabla
-$("#tablaComprobantes").on('click', 'tr', function(e)
-{
-    let comprobantes = $("#tablaComprobantes").DataTable();
-    var datos = comprobantes.row(this).data();
-
-    let id = datos.id;
-    let url = datos.dir_archivo;
-    abrirComprobantePago(id, url);
-});
