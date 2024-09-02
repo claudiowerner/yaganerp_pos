@@ -8,6 +8,7 @@
     if(isset($_POST["id_cl"])||isset($_POST["dir_archivo"]))
     {
         $id_cl = $_POST["id_cl"];
+        $periodo_pago = $_POST["periodo_plazo"];
         $dir_archivo = $_POST["dir_archivo"];
         //definicion de fecha
         $f = getdate();
@@ -25,9 +26,13 @@
 
         $sql = 
         "INSERT INTO comprobantes VALUES
-        (null, '$id_cl','Comprobante $id', '$dir_archivo', '$fecha_carga')";
+        (null, '$id_cl', '$periodo_pago','Comprobante $id', '$dir_archivo', '$fecha_carga')";
         $res = $conexion->query($sql);
 
+
+        //actualizar estado de comprobante en la tabla 
+        $sql = "UPDATE pago_cliente SET comprobante = 'S' WHERE id = $periodo_pago";
+        $res = $conexion->query($sql);
         
 
         if($res)

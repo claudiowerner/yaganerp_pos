@@ -38,6 +38,7 @@ function cargarArchivosComprobantes(idCliente, tablaComprobantes)
         //columnas
         "columns":[
             {"data":"id"},
+            {"data":"periodo"},
             {"data":"nombre_archivo"},
             {"data":"fecha_carga"},
         ],

@@ -20,7 +20,6 @@ function abrirTablaPagos(id)
           "type":"POST",
           "dataSrc":""
         },
-        //<td>${j.fecha_carga}</td>
         //columnas
         "columns":[
             {"data":"numero_registro"},

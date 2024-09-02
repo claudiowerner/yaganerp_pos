@@ -41,7 +41,7 @@
 	WHERE id_cl = $id";
 	$res = $conexion -> query($sql);
 
-	/* ---------------------------------------- CALCULO DE FECHA --------------------------------- */
+	/* ---------------------------------------- CALCULO DE FECHA ----------------------------------------- */
 	//calcular fecha inicio de proximo pago
 	$fechaDesde = "$año-$mes-".($dia+1);
 
@@ -78,7 +78,7 @@
 
 	/* --------------------------------------------- REGISTRO EN PAGO CLIENTE -------------------------------- */
 	$sql = "INSERT INTO pago_cliente VALUES
-	(null, $id, $plan, $tipoPago, '$fechaDesde', '$fechaHasta', 'S', 'N')";
+	(null, $id, $plan, $tipoPago, '$fechaDesde', '$fechaHasta', 'S', 'N', 'N')";
 
 	$res = $conexion -> query($sql);
 

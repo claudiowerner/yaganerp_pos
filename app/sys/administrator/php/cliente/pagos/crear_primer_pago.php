@@ -43,6 +43,7 @@
 	}
 	else
 	{
+		$dia = $dia-1;
 		$fechaHasta = "$año-$mes_plazo-$dia";
 	}
 	

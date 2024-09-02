@@ -34,10 +34,11 @@ $("#btnCargarArchivo").on("click", function(e)
     
     let id_cl = $("#idCliente").text();
     let fecha_carga = getFecha();
+    let periodo_plazo = $("#slctPeriodoComprobante").val();
     //subir archivos
     let dir_archivo;
     var archivo = $('#archivo').prop('files')[0];
-    if(archivo != undefined) {
+    if(archivo != undefined && periodo_plazo != 0) {
         var form_data = new FormData();
                       
         form_data.append('file', archivo);
@@ -51,7 +52,8 @@ $("#btnCargarArchivo").on("click", function(e)
         {
             "id_cl": id_cl, 
             "dir_archivo": dir_archivo,
-            "fecha_carga": fecha_carga
+            "fecha_carga": fecha_carga,
+            "periodo_plazo": periodo_plazo
         }
         respuesta = registrarArchivoBD(datos);
         try
@@ -59,6 +61,7 @@ $("#btnCargarArchivo").on("click", function(e)
             let j = JSON.parse(respuesta);
             msjes_swal(j.titulo, j.mensaje, j.icono);
             $('#tablaComprobantes').DataTable().ajax.reload();
+            cargarPeriodosComprobante(id_cl);
         }
         catch(e)
         {
@@ -67,16 +70,8 @@ $("#btnCargarArchivo").on("click", function(e)
     }
     else
     {
-        msjes_swal("Aviso", "Debe seleccionar un archivo", "warning");
+        msjes_swal("Aviso", "El archivo y/o el periodo de pago seleccionado deben ser válidos", "warning");
     }
-    
-
-    
-
-
-
-    //
-
 });
 
 function getFecha ()

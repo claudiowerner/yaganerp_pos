@@ -187,6 +187,7 @@
     <script src = "js/cliente/comprobante/cargar_archivos.js"></script>
     <script src = "js/cliente/comprobante/cargar_archivos_nuevo_comprobante.js"></script>
     <script src = "js/cliente/comprobante/cargar_nuevo_comprobante.js"></script>
+    <script src = "js/cliente/comprobante/cargar_periodo_comprobante.js"></script>
 
     <!--Plazo de pago-->
     <script src = "js/cliente/plazo_pago/cargar_plazo_pago.js"></script>

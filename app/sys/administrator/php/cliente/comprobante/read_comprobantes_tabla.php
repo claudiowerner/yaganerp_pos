@@ -10,10 +10,15 @@
   
   //query
   $sql =
-  "SELECT id, nombre_archivo, dir_archivo, 
-  DATE_FORMAT(fecha_carga, '%d-%m-%Y') AS fecha_carga
-  FROM comprobantes 
-  WHERE id_cl = '$id_cl'";
+  "SELECT c.id,
+  DATE_FORMAT(pc.fecha_desde, '%d-%m-%Y') AS fecha_desde,
+  DATE_FORMAT(pc.fecha_hasta, '%d-%m-%Y') AS fecha_hasta,
+  c.nombre_archivo, c.dir_archivo, 
+  DATE_FORMAT(c.fecha_carga, '%d-%m-%Y') AS fecha_carga
+  FROM comprobantes c
+  JOIN pago_cliente pc
+  ON pc.id = c.id_pago
+  WHERE c.id_cl = '$id_cl'";
   $res = $conexion->query($sql);
   $filas = $res->num_rows;
   $nro_fila = 0;
@@ -27,6 +32,7 @@
         "nro_fila" => $nro_fila,
         'id' => $row['id'],
         'nombre_archivo' => $row['nombre_archivo'],
+        'periodo' => $row["fecha_desde"]."<->".$row["fecha_hasta"],
         'dir_archivo' => $row['dir_archivo'],
         'fecha_carga' => $row['fecha_carga']
       );
