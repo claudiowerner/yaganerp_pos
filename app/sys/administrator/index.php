@@ -66,6 +66,7 @@
                                             require "modals/cliente/pago/comprobantes/comprobantes_pago.php";
                                             require "modals/cliente/pago/comprobantes/comprobante_seleccionado.php";
                                             require "modals/cliente/pago/comprobantes/cargar_nuevo_comprobante.php";
+                                            require "modals/cliente/pago/comprobantes/editar_periodo_comprobante.php";
 
                                             //pagos
                                             require "modals/cliente/pago/pagos/modal_editar_pago.php";
@@ -91,6 +92,7 @@
                                             echo modalPagos();
                                             echo modalRegistroPagos();
                                             echo modalEditarPagos();
+                                            echo modalEditarPeriodoComprobante();
                                         ?>
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item">
@@ -190,6 +192,7 @@
     <script src = "js/cliente/comprobante/cargar_nuevo_comprobante.js"></script>
     <script src = "js/cliente/comprobante/cargar_periodo_comprobante.js"></script>
     <script src = "js/cliente/comprobante/editar_periodo.js"></script>
+    <script src = "js/cliente/comprobante/validar_pago_en_uso.js"></script>
 
     <!--Plazo de pago-->
     <script src = "js/cliente/plazo_pago/cargar_plazo_pago.js"></script>

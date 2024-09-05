@@ -11,7 +11,8 @@ function modalComprobanteSeleccionado()
               </button>
               <h5 class='modal-title' id='exampleModalLongTitle'>
                 <span id='idClienteInfo' style='display: none'></span>
-                Detalles de <strong id='tituloCliente'></strong>
+                <strong>Comprobante</strong>
+                <strong id='tituloCliente'></strong>
               </h5>
               <span id='idComprobante' style='display: none'></span>
             </div>

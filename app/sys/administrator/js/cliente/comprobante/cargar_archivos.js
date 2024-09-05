@@ -32,7 +32,7 @@ $("#btnCargarArchivo").on("click", function(e)
     //El método prop() nos sirve para poder modificar las propiedades nativas de Javascript 
     //de los elementos de una página, Ejemplo $('#checkbox1').prop("checked", true);
     
-    let id_cl = $("#idCliente").text();
+    let id_cl = $("#idClientePagar").text();
     let fecha_carga = getFecha();
     let periodo_plazo = $("#slctPeriodoComprobante").val();
     //subir archivos

@@ -36,8 +36,7 @@ $("#btnRegistrarPago").on("click", function(e)
         
         msjes_swal(j.titulo, j.mensaje, j.icono);
         if(j.registro_pago)
-        {
-            $('#tablaPagos').DataTable().ajax.reload();
+        {   
             $('#producto').DataTable().ajax.reload();
         }
     }

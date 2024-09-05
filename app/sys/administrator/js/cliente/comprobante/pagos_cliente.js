@@ -5,7 +5,7 @@
 
 function abrirModalComprobantes(id)
 {
-    $("#idCliente").html(id);
+    $("#idClientePagar").html(id);
     $("#modalComprobantesPago").modal("show");
     cargarArchivosComprobantes(id);
     cargarPeriodosComprobante(id);

@@ -11,7 +11,7 @@ function modalComprobantesPago()
           <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
             <span aria-hidden='true'>&times;</span>
           </button>
-          <h5 class='modal-title' id='exampleModalLongTitle'>Comprobantes de pago <strong id='idCliente'></strong></h5>
+          <h5 class='modal-title' id='exampleModalLongTitle'>Comprobantes de pago <strong id='idClientePagar'>ID</strong></h5>
         </div>
         <div class='modal-body'>
           <form action='' id='subirArchivo' method='post'>

@@ -40,7 +40,7 @@ function modificarArchivoEnBD(datos)
 $("#btnCargarArchivoNuevo").on("click", function(e)
 {
     e.preventDefault();
-    let id_cl = $("#idCliente").text();
+    let id_cl = $("#idClientePagar").text();
     let dir_archivo_eliminar = $("#url").text();
     let url_tokenizer = dir_archivo_eliminar.split("/")
     let archivo_eliminar = url_tokenizer[4];

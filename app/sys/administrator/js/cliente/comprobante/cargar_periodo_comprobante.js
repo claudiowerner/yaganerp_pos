@@ -10,6 +10,15 @@ function cargarPeriodosComprobanteAjax(id)
         async: false
     }).responseText;
 }
+function cargarPeriodosComprobanteEditarAjax(id)
+{
+    return $.ajax({
+        url: "php/cliente/comprobante/cargar_periodo_comprobante_editar.php",
+        data: {"id_cl": id},
+        type: "POST", 
+        async: false
+    }).responseText;
+}
 
 
 /* --------------------------------------------- FUNCTION DOM ------------------------------------------------------ */
@@ -30,4 +39,24 @@ function cargarPeriodosComprobante(id)
         template = `<option value=0>Sin periodos disponibles</option>`;
     }
     $("#slctPeriodoComprobante").html(template);
+}
+
+
+function cargarPeriodosEditarComprobante(id)
+{
+    let template = "<option value=0>SELECCIONE UNA OPCIÓN</option>";
+    let periodos = cargarPeriodosComprobanteEditarAjax(id);
+    let j = JSON.parse(periodos);
+
+    if(Array.isArray(j))
+    {
+        j.forEach(j=>{
+            template += `<option value=${j.id}>${j.periodos}</option>`;
+        });
+    }
+    else
+    {
+        template = `<option value=${j.id}>${j.periodos}</option>`;
+    }
+    $("#slctPeriodoComprobanteEditar").html(template);
 }

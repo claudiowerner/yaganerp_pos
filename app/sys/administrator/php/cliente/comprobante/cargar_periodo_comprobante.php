@@ -2,8 +2,7 @@
 
     date_default_timezone_set('America/Santiago');
     require_once '../../../../conexion.php';
-    //$id_cl = $_GET["id_cl"];
-    $id_cl = 1;
+    $id_cl = $_POST["id_cl"];
 
 
     $json = array();

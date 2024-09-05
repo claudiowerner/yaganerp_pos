@@ -20,6 +20,7 @@ function cargarArchivosComprobantesAjax(idCliente)
 
 function cargarArchivosComprobantes(idCliente, tablaComprobantes)
 {
+    
     //destrucción de la datatable si es que ya se ha inicializado
     if ( $.fn.DataTable.isDataTable('#tablaComprobantes')) 
     {
@@ -37,7 +38,7 @@ function cargarArchivosComprobantes(idCliente, tablaComprobantes)
         //<td>${j.fecha_carga}</td>
         //columnas
         "columns":[
-            {"data":"id"},
+            {"data":"nro_fila"},
             {"data":"periodo"},
             {
                 'data' : null,
@@ -52,7 +53,8 @@ function cargarArchivosComprobantes(idCliente, tablaComprobantes)
             {
                 'data' : null,
                 'render': function (data, type, row, meta) {
-                    return `<button class="btn btn-primary" onclick="editarPeriodo(${data.id_pago})"><i class='fa fa-edit' aria-hidden='true'></i></button>`;
+                    let idc = data.id_comprobante;
+                    return `<button class="btn btn-primary" onclick="editarPeriodo(${idc})"><i class='fa fa-edit' aria-hidden='true'></i></button>`;
                 }
             },
         ],
