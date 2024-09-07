@@ -56,36 +56,6 @@ table = $('#planes').DataTable({
   }
 });
 
-$("#btnGuardarPlan").on("click", function(e)
-{
-  let nomPlan = $("#nomPlan").val();
-  let numUsuarios = $("#numUsuarios").val();
-  let numCajas = $("#numCajas").val();
-  let valorPlan = $("#valorPlan").val();
-
-  datos = {
-    "nombre": nomPlan,
-    "usuarios": numUsuarios,
-    "cajas": numCajas,
-    "valor": valorPlan
-  }
-
-  $.ajax(
-    {
-      url: "php/planes/crear_plan.php",
-      data: datos,
-      type: "POST",
-      success: function(e)
-      {
-        msjes_swal("Excelente", e, "success");
-        $('#planes').DataTable().ajax.reload();
-        cargarPlan();
-      }
-    }
-  )
-})
-
-
 
 //modificar plan
 $("#planes").on("click", "tr", function(e)

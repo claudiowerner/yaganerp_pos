@@ -43,7 +43,7 @@ function modalRegistrarPlan()
               <label name='nombrePiso'>Valor</label>
             </td>
             <td>
-              <input type='number' name='valorPlan' id='valorPlan' class='form-control' required>
+              <input type='number' name='valorPlan' id='txtValorPlan' class='form-control' required>
             </td>
           </tr>
         </table>

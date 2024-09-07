@@ -7,20 +7,36 @@
 	error_reporting(E_ALL);
 	date_default_timezone_set('America/Santiago');
 
+	$json = array();
+
 	$nombre = $_POST["nombre"];
 	$usuarios = $_POST["usuarios"];
 	$cajas = $_POST["cajas"];
 	$valor = $_POST["valor"];
 	$sql = "INSERT INTO planes VALUES 
 	(null,'$nombre', 'S', '$usuarios', '$cajas', '$valor');";
-	$resultado = $conexion->query($sql);
+	$res = $conexion->query($sql);
 
-	if($resultado)
+
+	if($res)
 	{
-		echo "Plan agregado correctamente";
+		$json = array(
+			"registrar_plan" => true, 
+			"titulo" => "Excelente",
+			"mensaje" => "Plan registrado correctamente.",
+			"icono" => "success"
+		);
 	}
 	else
 	{
-		die("Error al agregar plan: ". mysqli_error($conexion));
+		$error = $conexion->error;
+		$json = array(
+			"registrar_plan" => false, 
+			"titulo" => "Excelente",
+			"mensaje" => "Error al agregar plan: $error",
+			"icono" => "success"
+		);
 	}
+
+	echo json_encode($json);
 ?>
