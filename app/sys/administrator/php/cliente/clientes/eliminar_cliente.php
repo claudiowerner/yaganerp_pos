@@ -10,28 +10,46 @@
 
 	$id = $_POST["id"];
 
-	/* -------------------------------------- ELIMINACIÓN DE CLIENTE ------------------------------------------ */
-
-	$sql = "UPDATE cliente SET estado = 'N' WHERE id = $id";
+	/* ------------------------------------------ VERIFICAR DEUDAS IMPAGAS ---------------------------------------------- */
+	$sql = "SELECT * FROM pago_cliente WHERE estado = 'N' AND id_cl = '$id'";
 	$res = $conexion->query($sql);
 
-	$json = array();
+	$deudas = $res -> num_rows;
 
-	if($res)
+	/* ------------------------------------------- ELIMINACIÓN DE CLIENTE ----------------------------------------------- */
+	
+	$json = array();
+	
+	if($deudas==0)
 	{
-		$json = array(
-			"eliminacion" => true, 
-			"titulo" => "Excelente", 
-			"mensaje" => "Cliente eliminado correctamente", 
-			"icono" => "success"
-		);
+		$sql = "UPDATE cliente SET estado = 'N' WHERE id = $id";
+		$res = $conexion->query($sql);
+		if($res)
+		{
+			$json = array(
+				"eliminacion" => true, 
+				"titulo" => "Excelente", 
+				"mensaje" => "Cliente eliminado correctamente", 
+				"icono" => "success"
+			);
+		}
+		else
+		{
+			$json = array(
+				"eliminacion" => false, 
+				"titulo" => "Error ", 
+				"mensaje" => "Error#1 al eliminar cliente", 
+				"icono" => "error"
+			);
+		}
+		
 	}
 	else
 	{
 		$json = array(
 			"eliminacion" => false, 
 			"titulo" => "Error", 
-			"mensaje" => "Error al eliminar cliente", 
+			"mensaje" => "Error#2 al eliminar cliente: El cliente posee deudas por pagar", 
 			"icono" => "error"
 		);
 	}
