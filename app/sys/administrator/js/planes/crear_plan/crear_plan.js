@@ -35,12 +35,4 @@ $("#btnGuardarPlan").on("click", function(e)
         $("#modalRegistrarPlan").modal("hide");
         cargarPlan();
     }
-
-    /*
-
-    success: function(e)
-        {
-            msjes_swal("Excelente", e, "success");
-            
-        }*/
 })
