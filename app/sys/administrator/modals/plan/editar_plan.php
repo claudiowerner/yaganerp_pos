@@ -9,22 +9,9 @@ function modalEditarPlan()
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
-              <h5 class='modal-title' id='exampleModalLongTitle'>Editando plan <strong id='idPlan'></strong></h5>
+              <h5 class='modal-title' id='exampleModalLongTitle'>Editando plan <strong id='idPlanEditar'></strong></h5>
             </div>
             <table width='100%'>
-            <tr>
-              <td margin=auto>
-                <div class=button>
-                  <label name='swEstadoPlan'>Estado del cliente</label>
-                </div>
-              </td>
-              <td>
-                <div class=boton>                    
-                  <input type='checkbox' id='swEstadoPlan'/>
-                  <label for='swEstadoPlan' class='switch'></label>
-                </div>
-              </td>
-            </tr>
               <tr>
                 <td>
                   <label name='nombrePiso'>Nombre</label>

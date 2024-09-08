@@ -220,6 +220,8 @@
     <!--Planes-->
     <script src = "js/planes/crear_plan/crear_plan.js"></script>
     <script src = "js/planes/leer_planes/leer_planes.js"></script>
+    <script src = "js/planes/editar_plan/editar_plan.js"></script>
+    <script src = "js/planes/eliminar_plan/eliminar_plan.js"></script>
 
 
     <script src = "../js/validarRut.js"></script>

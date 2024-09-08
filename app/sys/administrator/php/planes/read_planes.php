@@ -29,7 +29,7 @@ date_default_timezone_set('America/Santiago');
           'estado' => $estado,
           'usuarios' => $row['usuarios'],
           'cajas' => $row['cajas'],
-          'valor' => "$".$row['valor']
+          'valor' => $row['valor']
         );
       };
       echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
