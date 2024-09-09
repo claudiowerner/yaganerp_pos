@@ -137,7 +137,6 @@
                                                             <tr>
                                                                 <th>Id</th>
                                                                 <th>Nombre</th>
-                                                                <th>Estado</th>
                                                                 <th>Usuarios</th>
                                                                 <th>Cajas</th>
                                                                 <th>Valor</th>
@@ -222,6 +221,7 @@
     <script src = "js/planes/leer_planes/leer_planes.js"></script>
     <script src = "js/planes/editar_plan/editar_plan.js"></script>
     <script src = "js/planes/eliminar_plan/eliminar_plan.js"></script>
+    <script src = "js/planes/eliminar_plan/validar_uso_plan.js"></script>
 
 
     <script src = "../js/validarRut.js"></script>

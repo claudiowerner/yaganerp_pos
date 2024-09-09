@@ -1,14 +1,7 @@
 //Datatable
 var idCat = 0;
 table = $('#planes').DataTable({
-    "createdRow": function( row, data, dataIndex){
-        if( data.estado ==  `ACTIVO`){
-        $(row).addClass('ACTIVO');
-        }
-        else
-        {
-        $(row).addClass('INACTIVO');
-        }
+    "createdRow": function(row, data, dataIndex){
     },
     "ajax":{
         "url":"php/planes/read_planes.php",
@@ -17,22 +10,21 @@ table = $('#planes').DataTable({
     },
     //columnas
     "columns":[
-        {"data":"id"},
+        {"data":"numero_fila"},
         {"data":"nombre"},
-        {"data":"estado"},
         {"data":"usuarios"},
         {"data":"cajas"},
         {"data": "valor", render: $.fn.dataTable.render.number( '.', '.', 0, '$', '' )},
         {
-            'data' : null,
-            'render': function (data, type, row, meta) {
+            "data" : null,
+            "render": function (data, type, row, meta) {
                 let id = data.id;
                 let nombre = data.nombre;
                 let usuarios = data.usuarios;
                 let cajas = data.cajas;
                 let valor = data.valor; 
                 return `<button type="submit" class="btn btn-primary editar" id="btnEditar" onclick="modalEditarPlan(${id}, '${nombre}', ${usuarios}, ${cajas}, ${valor})"><i class='fa fa-edit' aria-hidden='true'></i></button>
-                <button type="submit" class="btn btn-danger" id="btnEliminar" onclick="eliminarPlan(${id})"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`
+                <button type="submit" class="btn btn-danger" id="btnEliminar" onclick="eliminarPlan(${id}, '${nombre}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`
             }
         }
   ],
