@@ -17,6 +17,13 @@ function crearPlan(nomPlan, numUsuarios, numCajas, valorPlan)
 
 
 /* ----------------------------------------------------- FUNCION DOM ------------------------------------------------ */
+
+
+$("#btnAgregarPlan").on("click", function(e)
+{
+    $("#modalRegistrarPlan").modal("show");
+});
+
 $("#btnGuardarPlan").on("click", function(e)
 {
     let nomPlan = $("#nomPlan").val();

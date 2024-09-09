@@ -168,12 +168,12 @@
     <!-- Main jQuery Plugins -->
     <?php require "cdn_css/cdn/cdn_index.php";?></body>
     <script type="text/javascript" src="../datatables/datatables.js"></script>
-    <script src = "js/planes/cargar_select_planes.js"></script>
-    <script src = "js/planes/planes.js"></script>
+    <script src = "js/planes/leer_planes/cargar_select_planes.js"></script>
     
     
     <script src = "../js/numberFormat.js"></script>
-    <script src = "js/pestañas.js"></script>
+    <script src = "js/pestañas/pestañas.js"></script>
+    <script src = "js/giros/cargarGiros.js"></script>
     <!--Clientes-->
     <script src = "js/cliente/cliente/crear_cliente/crear_cliente.js"></script>
     <script src = "js/cliente/cliente/crear_cliente/validar_rut.js"></script>
@@ -225,7 +225,6 @@
 
 
     <script src = "../js/validarRut.js"></script>
-    <script src = "js/cargarGiros.js"></script>
     
 
 </html>
