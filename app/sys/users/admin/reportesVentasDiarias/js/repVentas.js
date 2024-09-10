@@ -144,7 +144,8 @@ $("#cierreCaja").on('click', 'button.btn-danger', function(e)
   $("#nomCaja").html(nomCaja);
   $("#nCaja").html(id);
   $("#idCierre").html(id);
-  let solicitar = validarSolicitudClave();//valida si se solicita la clave de autorizacion para cerrar caja o no
+  //valida si se solicita la clave de autorizacion para cerrar caja o no
+  let solicitar = validarSolicitudClave();
   
   swal({
     title: "¿Seguro?",

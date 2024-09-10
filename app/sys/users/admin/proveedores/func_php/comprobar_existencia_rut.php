@@ -29,7 +29,7 @@
 	$hoy = getdate();
 	$sql = 
 	"SELECT * FROM proveedores 
-    WHERE id_cl = 1 
+    WHERE id_cl = $id_cl 
     AND rut = '$rut' 
     AND estado = 'S'";
 	$resultado = $conexion->query($sql);

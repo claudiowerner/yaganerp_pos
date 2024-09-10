@@ -84,7 +84,7 @@ function obtenerCierresCaja()
         valor_formateado = formatearNumero("P",c.valor_total);
         template+=
             `<tr idCierre=`+c.id+` nomCaja="`+c.nombre+`" class='${estado}' nomCaja='${c.nombre}'>
-                <td>${c.id}</td>
+                <td>${c.num_fila}</td>
                 <td>${c.nombre}</td>
                 <td>${c.creado_por}</td>
                 <td>${c.desde}</td>

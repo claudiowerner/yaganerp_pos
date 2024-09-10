@@ -31,6 +31,7 @@ else
   $arrFechaHasta = array();
   $arrEstado = array();
   $arrValor = array();
+  $arrNumFila = array();
   $json = array();
 
 	//relleno de arrays con información
@@ -43,9 +44,13 @@ else
   ON cc.creado_por = u.id 
   WHERE cc.id_cl = '$id_cl'
   ORDER BY id DESC";
-  $res = $conexion->query($sql);;
+  $res = $conexion->query($sql);
+  //contador de filas de registros
+  $cont = 0;
   while($row = $res->fetch_array())
   {
+    $cont++;
+    $arrNumFila[] = $cont;
     $arrId[] = $row["id"];
     $arrNombreCaja[] = $row["nombre"];
     $arrNombreUsuario[] = $row["nombre_usuario"];
@@ -82,6 +87,7 @@ else
   {
     $json[] = array(
       "id"=> $arrId[$i],
+      "num_fila"=> $arrNumFila[$i],
       "nombre"=> $arrNombreCaja[$i],
       "creado_por"=> $arrNombreUsuario[$i],
       "desde"=> $arrFechaDesde[$i],

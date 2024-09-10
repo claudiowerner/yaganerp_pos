@@ -49,8 +49,6 @@
 
     $num_dias = 30;//inicializado en 30 para que no salte el aviso de pago o no se bloquee el sistema
     $mostrar_dias = "0";
-    $fecha_final_str = "0000-00-00";
-    $fecha_final_formateada = "00-00-0000";
     $res->num_rows;
     if($res -> num_rows>0)
     {
@@ -63,23 +61,12 @@
         $fecha_actual = strtotime($fecha_actual_str)/86400;
         $fecha_final = strtotime($fecha_final_str)/86400;
         $num_dias = $fecha_final - $fecha_actual;
-
-        if($num_dias>1||$num_dias==0||$num_dias<0)
-        {
-            $mostrar_dias = "$num_dias días";
-        }
-        else
-        {
-            $mostrar_dias = "$num_dias día";
-        }
     }
 
 
 
     $json = array(
         "dias_restantes" => $num_dias,
-        "mostrar_dias" => $mostrar_dias,
-        "fecha_final" => $fecha_final_formateada,
     );
     echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 

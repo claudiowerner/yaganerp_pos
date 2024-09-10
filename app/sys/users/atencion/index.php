@@ -52,46 +52,57 @@
                 require "menu/top_menu.php";
             ?>
             <!-- CONTENT -->
-                <div class="wrap-fluid" id="paper-bg">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <h3 class="card-title"></h3>
-                        <div id="pantallaPrincipal" class="plan">
-                          <div class="col-md-12">
-                            <div class="card card-warning"">
-                              <div class="card-header">
-                                <h1>Cajas</h1>
-                              </div>
-                              <div class="card-body" id=cajas>
-                                Cargando cajas...
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            <!-- #/paper bg -->
-          </div>
-        <!-- ./wrap-sidebar-content -->
-
-        <!-- / END OF CONTENT -->
-
+			<div class="wrap-fluid" id="paper-bg">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="sistemaBloqueado" class="alert alert-danger" style="display: none">
+							<span class="entypo-cancel-circled"></span>
+							<strong>Aviso!</strong>&nbsp;&nbsp;El sistema se encuentra bloqueado. Para desbloquearlo, comuníquese con el administrador.
+						</div>
+						<div id='sistSinTurnos' class="alert alert-danger" style="display: none">
+							<div class="card-header">
+								<h3 align="center" class="card-title"><strong>EL SISTEMA SE BLOQUEÓ</strong></h3>
+							</div>
+							<div class="card-body">
+								Esto se debe a que no existe ninguna apertura de caja activa, o bien, la caja correspondiente a la fecha <span id="fecha"></span>/<span id="hora"></span> no se creó correctamente.<br> Para poder continuar, <strong>solicite al administrador de sistema que cree otra apertura de caja o modifique la caja creada</strong> y así, poder operar con normalidad.
+							</div>
+							<!-- /.card-body -->
+						</div>
+						<h3 class="card-title"></h3>
+						<div id="pantallaPrincipal" class="plan">
+							<div class="col-md-12">
+								<div class="card card-warning">
+									<div class="card-header">
+										<h1>Cajas</h1>
+									</div>
+									<div class="card-body" id=cajas>
+										Cargando cajas...
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+          	</div>
+        </div>
+        <!-- #/paper bg -->
+        </div>
     </div>
-    <!-- Container -->
-
-    <!-- 
-    ================================================== -->
-    <!-- Main jQuery Plugins -->
+    
+	
     <?php require "cdn_css/cdn/cdn_index.php";?>
 
     <!--llamada a Select2-->
     <script src="../../js/select2.js"></script>
 
     <!--llamada a restaurant.js-->
+    <script src="func_js/turnos.js"></script>
     <script src="func_js/cajas.js"></script>
+    <script src="func_js/abrir_caja_ventas.js"></script>
 
+    <!--Llamada a aviso_pago-->
+    <script src="aviso_pago/dom/aviso_pago.js"></script>
+	
 
 
 </body>
