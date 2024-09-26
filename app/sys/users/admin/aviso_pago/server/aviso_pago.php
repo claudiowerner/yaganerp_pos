@@ -24,7 +24,7 @@
     $mes = $f["mon"];
     $dia = $f["mday"];
     $fecha_usuario = "$año-$mes-$dia";
-
+    
     if($mes<10)
     {
         $mes = "0$mes";
@@ -34,13 +34,13 @@
         $dia = "0$dia";
     }
     $fecha_actual_str = "$año-$mes-$dia";
-
+    
     //set locale mysql
     $sql = "SET lc_time_names = 'es_CL';";
     $res = $conexion->query($sql);
     
-    $sql = "SELECT fecha_hasta, 
-    DAYNAME(fecha_hasta) AS nombre_dia,
+    $sql = "SELECT (fecha_hasta-1) AS fecha_hasta, 
+    DAYNAME(fecha_hasta-1) AS nombre_dia,
     DATE_FORMAT(fecha_hasta-1, '%d-%m-%Y') AS fecha_hasta_formateada
     FROM pago_cliente 
     WHERE id_cl = $id_cl
@@ -60,23 +60,13 @@
         $fecha_final_formateada = $nombre_dia." ".$res_bd["fecha_hasta_formateada"];
 
         //conversión de fechas de string a date
-        $fecha_actual = date_create($fecha_actual_str);
-        $fecha_final = date_create($fecha_final_str);
-
-
-        if($fecha_actual>$fecha_final)
-        {
-            $num_dias = 0;
-        }
-        else
-        {
-            $dias_restantes = date_diff($fecha_actual, $fecha_final);
-            $num_dias = $dias_restantes -> format("%d");
-        }
+        $fecha_actual = strtotime($fecha_actual_str)/86400;
+        $fecha_final = strtotime($fecha_final_str)/86400;
+        $num_dias = $fecha_final - $fecha_actual;
 
         
 
-        if($num_dias>1||$num_dias==0)
+        if($num_dias>1||$num_dias==0||$num_dias<0)
         {
             $mostrar_dias = "$num_dias días";
         }

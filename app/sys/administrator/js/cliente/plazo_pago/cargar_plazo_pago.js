@@ -16,7 +16,7 @@ function cargarPlazosPago()
 {
     let descarga = descargarPlazosPagoAjax();
     let json = JSON.parse(descarga);
-    let template = "";
+    let template = "<option value=0>SELECCIONE UNA OPCIÓN</option>";
     if(Array.isArray(json))
     {
         json.forEach(j=>{

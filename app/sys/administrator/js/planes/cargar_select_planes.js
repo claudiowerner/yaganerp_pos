@@ -9,7 +9,7 @@ function cargarPlan()
     success: function(e)
     {
       json = JSON.parse(e)
-      template = "";
+      template = "<option value=0>SELECCIONE UNA OPCIÓN</option>";
       json.forEach(d=>
         {
             template = template + 

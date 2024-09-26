@@ -23,6 +23,7 @@ function abrirModalPagos(id)
         //<td>${j.fecha_carga}</td>
         //columnas
         "columns":[
+            {"data":"numero_registro"},
             {"data":"fecha_desde"},
             {"data":"fecha_hasta"},
             {"data":"nombre"},

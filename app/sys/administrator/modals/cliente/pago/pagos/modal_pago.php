@@ -46,6 +46,7 @@ function modalPagos()
                 <table id='tablaPagos' width='100%' class='table table-bordered table-hover dt-resposive display nowrap'>
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Válido desde</th>
                             <th>Válido hasta</th>
                             <th>Plan contratado</th>

@@ -20,15 +20,15 @@
 	ON pl.id = pc.plan
 	JOIN metodo_pago mp
 	ON mp.id = pc.metodo_pago
-	WHERE pc.id_cl = $id
-	ORDER BY pc.id DESC;";
+	WHERE pc.id_cl = $id;";
 
 	$res = $conexion->query($sql);
-
 	if($res->num_rows!=0)
 	{
+		$contador = 0;
 		while($row = $res->fetch_array())
 		{
+			$contador++;
 			$periodo_actual = "";
 			if($row["periodo_actual"]=="S")
 			{
@@ -39,6 +39,7 @@
 				$periodo_actual = "No";
 			}
 			$json[] = array(
+				"numero_registro" => $contador,
 				"fecha_desde" => $row["fecha_desde"],
 				"fecha_hasta" => $row["fecha_hasta"],
 				"nombre" => $row["nombre"],
