@@ -131,7 +131,7 @@ $("#btnConfirmarPaga").on('click', function(e)
       let formaPago = $("#metodoPagoGral").val();
       confirmarPaga("ticket.php",id, formaPago);
       cargarCorrelativo();
-      cargarVentasCaja();
+      cargarVentasCaja(descProd);
       llenarSelectProducto();
     } 
     else 
@@ -142,11 +142,7 @@ $("#btnConfirmarPaga").on('click', function(e)
 });  
 
 
-$("#btnCrearVenta").on("click", function(e)
-{
-  cargarCorrelativo();
-  cargarVentasCaja();
-})
+
 
 
 

@@ -1,6 +1,5 @@
 <?php
-
-		session_start();
+	session_start();
 	date_default_timezone_set('America/Santiago');	ini_set('display_errors', 1);
 		ini_set('display_startup_errors', 1);
 
@@ -21,13 +20,13 @@
 	    $nombre = $_SESSION['user']["nombre"];
 	    $id_cl = $_SESSION['user']["id_cl"];
 	    
-	    $idCaja = $_GET['idCaja'];
-		$hora = $_GET['hora'];
 
 		//obtener fecha
 		$hoy = getdate();
+		$hora = $hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"];
 		$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hora;
 
+	    $idCaja = $_GET['idCaja'];
 
 		//obtener ID venta
 		$sql = "SELECT MAX(id+1) as id FROM ventas WHERE id_cl='$id_cl'";

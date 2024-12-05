@@ -2,6 +2,7 @@
 function cargarVentasCaja()
 {
   
+  let descProd = new Array();
   let nCaja = parseInt($("#nCaja").text());
   let id_venta = parseInt($("#id_venta").text());
   let template_1 = '';

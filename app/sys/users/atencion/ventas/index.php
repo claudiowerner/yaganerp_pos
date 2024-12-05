@@ -186,6 +186,7 @@
     <script src="js/cantidad/comprobarCantidad.js"></script>
     <script src="js/venta/verificar_id_crear_venta.js"></script>
     <script src="js/venta/ventas.js"></script>
+    <script src="js/venta/crear_nueva_venta.js"></script>
     <script src="js/pistola/pistolaCodigoBarra.js"></script>
     <script src="js/venta/registrarVenta.js"></script>
     <script src="js/stock/cargarNumeroStockMinimo.js"></script>
