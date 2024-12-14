@@ -12,14 +12,15 @@ function valor_con_iva(id)
 //Calculo de valor sin iva
 function valor_sin_iva(id)
 {
+    debugger;
     let valorPedido = obtenerValorPedido(id);
     let iva = valorPedido*0.19;
+    let valor_formateado = formatearNumero("P", valorPedido);
     let iva_formateado = formatearNumero("P", iva);
-    let valor_sin_iva = parseInt(valorPedido) - parseInt(iva);
-    let valor_sin_iva_formateado = formatearNumero("P", valor_sin_iva);
-    $("#valorPedidoFormateado").html(valor_sin_iva_formateado);
+    let valor_con_iva =parseInt(valorPedido) +parseInt(iva);
+    $("#valorPedidoFormateado").html(valor_formateado);
     $("#valorIvaFormateado").html(iva_formateado)
-    let valor_pedido_formateado = formatearNumero("P", valorPedido);
+    let valor_pedido_formateado = formatearNumero("P", valor_con_iva);
     $("#totalPedidoFormateado").html(valor_pedido_formateado);
 }
 

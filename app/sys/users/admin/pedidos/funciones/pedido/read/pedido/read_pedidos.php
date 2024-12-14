@@ -19,6 +19,7 @@
   $arrayFechaRegistro = array();
   $arrayEstadoPago = array();
   $arrayValor = array();
+  $arrayIva = array();
   $arrayNombrePedido = array();
 
   //array que se va a imprimir con los resultados
@@ -42,6 +43,19 @@
     $length = count($arrayId);
     
 
+    //Seleccionar si un pedido tiene factura o no
+    //rellenar array de proveedores, nombre de usuario, estado pago y estado de pedido
+    for($i=0;$i<$length;$i++)
+    {
+      $id = $arrayId[$i];
+      $sql = "SELECT fac_con_iva FROM pedidos WHERE id = $id";
+      $res = $conexion->query($sql);
+      
+      while($row = $res->fetch_array())
+      {
+        $arrayIva[$i] = $row["fac_con_iva"];
+      }
+    }
     //rellenar array de proveedores, nombre de usuario, estado pago y estado de pedido
     for($i=0;$i<$length;$i++)
     {
@@ -105,7 +119,16 @@
 
       while($row = $res->fetch_array())
       {
-        $arrayValor[] = $row["valor"];;
+        $valorConIva = 0;
+        if($arrayIva[$i]=="S")
+        {
+          $valorConIva = $row["valor"]*1.19;
+        }
+        else
+        {
+          $valorConIva = $row["valor"];
+        }
+        $arrayValor[$i] = $valorConIva;
       }
     }
     
