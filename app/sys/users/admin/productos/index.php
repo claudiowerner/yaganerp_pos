@@ -80,22 +80,22 @@
                                         <h1 align='left'>Productos y promociones</h1>
                                         <div align='left' class="tab-content">
                                             <button align='left' type="button" class="btn btn-success" id="btnAgregarCategoria">Agregar producto</button>
-                                                <property name="characterEncoding" value="UTF-8">
-
-                                                    <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Cód. de barra</th>
-                                                                <th>Nombre</th>
-                                                                <th>Proveedor</th>
-                                                                <th>Categoría</th>
-                                                                <th>Cantidad</th>
-                                                                <th>Valor venta</th>
-                                                                <th>Acciones</th>
-                                                            </tr>
-                                                        </thead>
-                                                    </table>
-                                                </property>
+                                            <button align='left' type="button" class="btn btn-success" id="imprimirPrecios">Imprimir precios</button>
+                                            <property name="characterEncoding" value="UTF-8">
+                                                <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Cód. de barra</th>
+                                                            <th>Nombre</th>
+                                                            <th>Proveedor</th>
+                                                            <th>Categoría</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Valor venta</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </property>
                                         </div>
                                     </div>
                                 </div>
@@ -134,5 +134,5 @@
     <script src="js/validar_pesaje.js"></script>
     <script src="js/eliminar_producto.js"></script>
     <script src="js/abrir_detalles.js"></script>
-
+    <script src="js/imprimir_precios.js"></script>
 </html>

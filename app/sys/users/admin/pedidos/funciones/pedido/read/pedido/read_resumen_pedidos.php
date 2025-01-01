@@ -63,6 +63,7 @@
 
 /* --------------------------------- SELECCIONAR MONTO PAGADO Y POR PAGAR ------------------------------ */
   //monto pagado
+  $monto_pagado = 0;
   $sql = "SELECT SUM(pd.valor*pd.cantidad) AS valor
   FROM pedidos_detalle pd
   JOIN pedidos p
@@ -80,7 +81,9 @@
   }
 
   //monto por pagar
-  $sql = "SELECT SUM(pd.valor*pd.cantidad) AS valor
+
+  $monto_por_pagar = 0;
+  $sql = "SELECT SUM(pd.valor*pd.cantidad) AS valor, p.fac_con_iva
   FROM pedidos_detalle pd
   JOIN pedidos p
   ON p.id = pd.id_pedido
@@ -91,10 +94,16 @@
 
   if($res->num_rows!=0)
   {
-    $resultado = $res->fetch_array();
-    if($resultado["valor"]!=""||$resultado["valor"]!=null)
+    while($row = $res->fetch_array())
     {
-      $monto_por_pagar = $resultado["valor"];
+      if($resultado["valor"]!=""||$resultado["valor"]!=null)
+      {
+        $monto_por_pagar = $monto_por_pagar + $row["valor"];
+      }
+      if($row["fac_con_iva"]=="S")
+      {
+        $monto_por_pagar = $monto_por_pagar + $row["valor"]*1.19;
+      }
     }
     
   }
