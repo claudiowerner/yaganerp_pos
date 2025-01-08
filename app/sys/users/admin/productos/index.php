@@ -55,6 +55,7 @@
                 require "../menu/top_menu_item.php";
             ?>
             <!-- CONTENT -->
+             
             <div class="wrap-fluid" id="paper-bg">
                 <div class="row">
                     <?php
@@ -62,41 +63,34 @@
                     ?>
                     <div class="col-lg-12">
                         <div id="pantallaPrincipal" class="plan">
-                            
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
                                         <?php
-                                            require "modals/modal_abrir_detalles.php";
-                                            require "modals/modal_editar.php";
-                                            require "modals/modal_registro.php";
+                                            require "productos/modals/modal_abrir_detalles.php";
+                                            require "productos/modals/modal_editar.php";
+                                            require "productos/modals/modal_registro.php";
                                             echo modalRegistro();
                                             echo modalEditar();
                                             echo modalAbrirDetalles();
                                         ?>
 
                                         <!--TABLAS O PESTAÑAS-->
-
-                                        <h1 align='left'>Productos y promociones</h1>
-                                        <div align='left' class="tab-content">
-                                            <button align='left' type="button" class="btn btn-success" id="btnAgregarCategoria">Agregar producto</button>
-                                            <button align='left' type="button" class="btn btn-success" id="imprimirPrecios">Imprimir precios</button>
-                                            <property name="characterEncoding" value="UTF-8">
-                                                <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Cód. de barra</th>
-                                                            <th>Nombre</th>
-                                                            <th>Proveedor</th>
-                                                            <th>Categoría</th>
-                                                            <th>Cantidad</th>
-                                                            <th>Valor venta</th>
-                                                            <th>Acciones</th>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
-                                            </property>
+                                        <div id="pestañas">
+                                            <ul class="nav nav-tabs">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#productos" data-toggle="tab">Clientes</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#promociones" data-toggle="tab">Planes</a>
+                                                </li>
+                                            </ul>
                                         </div>
+                                    </div>
+                                    <div class="tab-content">
+                                        <!--Contenido pestañas-->
+                                        <?php require "index/productos.php";?>
+                                        <?php require "index/promociones.php";?>
                                     </div>
                                 </div>
                             </div>
@@ -120,19 +114,25 @@
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
 
     <script src="../../../datatables/datatables.js"></script>
-    <script src="js/calcular_ganancia.js"></script>
-    <script src="js/proveedores.js"></script>
-    <script src="js/unidades.js"></script>
-    <script src="js/categorias.js"></script>
-    <script src="js/medida_producto_especifico.js"></script>
-    <script src="js/categoria_producto_especifico.js"></script>
-    <script src="js/seleccionar_producto_especifico.js"></script>
-    <script src="js/producto.js"></script>
-    <script src="js/crear_producto.js"></script>
-    <script src="js/validar_existencia_producto.js"></script>
-    <script src="js/editar_producto.js"></script>
-    <script src="js/validar_pesaje.js"></script>
-    <script src="js/eliminar_producto.js"></script>
-    <script src="js/abrir_detalles.js"></script>
-    <script src="js/imprimir_precios.js"></script>
+
+
+    <!--SCRIPTS DE PRODUCTOS-->
+    <script src="productos/js/crear/crear_producto.js"></script>
+    <script src="productos/js/editar/editar_producto.js"></script>
+    <script src="productos/js/eliminar/eliminar_producto.js"></script>
+    <script src="productos/js/leer/abrir_detalles.js"></script>
+    <script src="productos/js/leer/calcular_ganancia.js"></script>
+    <script src="productos/js/leer/categoria_producto_especifico.js"></script>
+    <script src="productos/js/leer/categorias.js"></script>
+    <script src="productos/js/leer/imprimir_precios.js"></script>
+    <script src="productos/js/leer/medida_producto_especifico.js"></script>
+    <script src="productos/js/leer/producto.js"></script>
+    <script src="productos/js/leer/proveedores.js"></script>
+    <script src="productos/js/leer/seleccionar_producto_especifico.js"></script>
+    <script src="productos/js/leer/unidades.js"></script>
+    <script src="productos/js/leer/validar_existencia_producto.js"></script>
+    <script src="productos/js/leer/validar_pesaje.js"></script>
+    <script src="productos/js/leer/configuracion_productos.js"></script>
+    <script src="productos/js/switches/switch_pesaje_editar.js"></script>
+    <script src="productos/js/switches/switch_pesaje.js"></script>
 </html>
