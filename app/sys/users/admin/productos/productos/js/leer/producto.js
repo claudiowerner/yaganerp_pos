@@ -13,9 +13,7 @@ var table;
 //Datatable
 var idCat = 0;
 table = $('#producto').DataTable({
-	"createdRow": function( row, data, dataIndex){
-
-	},
+	"createdRow": function( row, data, dataIndex){},
 	"ajax":{
 		"url":"productos/funciones/leer/read_productos.php",
 		"type":"GET",
@@ -23,15 +21,15 @@ table = $('#producto').DataTable({
 	},
 	//columnas
 	"columns":[
-        {"data":"codigo_barra"},
-        {"data":"nombre_prod"},
-        {"data":"nombre_proveedor"},
-        {"data":"nombre_cat"},
-        {"data":"cantidad"},
-        {"data":"valor_venta", render: DataTable.render.number(null, null, "", "$", "") },
-        {
-            'data' : null,
-            'render': function (data, type, row, meta) {
+		{"data":"codigo_barra"},
+		{"data":"nombre_prod"},
+		{"data":"nombre_proveedor"},
+		{"data":"nombre_cat"},
+		{"data":"cantidad"},
+		{"data":"valor_venta", render: DataTable.render.number(null, null, "", "$", "") },
+		{
+			'data' : null,
+			'render': function (data, type, row, meta) {
 				let pesaje =  data.pesaje;
 				let id =  data.id;
 				let codigo_barra =  data.codigo_barra;
@@ -56,17 +54,17 @@ table = $('#producto').DataTable({
 	//Configuración de Datatable
 	"iDisplayLength": 10,
 	"language": {
-        "lenghtMenu":"Mostrar _MENU_ registros",
-        "zeroRecords": "No se encontraron resultados.",
-        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-        "sSearch":"Buscar",
+		"lenghtMenu":"Mostrar _MENU_ registros",
+        	"zeroRecords": "No se encontraron resultados.",
+        	"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        	"infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        	"infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        	"sSearch":"Buscar",
 		"oPaginate":{
 			"sFirst":"Primero",
-            "sLast":"Último",
-            "sNext":"Siguiente",
-            "sPrevious":"Anterior"
+			"sLast":"Último",
+			"sNext":"Siguiente",
+			"sPrevious":"Anterior"
 		}
 	}
 });

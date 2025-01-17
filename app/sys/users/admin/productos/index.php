@@ -55,7 +55,7 @@
                 require "../menu/top_menu_item.php";
             ?>
             <!-- CONTENT -->
-             
+            
             <div class="wrap-fluid" id="paper-bg">
                 <div class="row">
                     <?php
@@ -70,8 +70,9 @@
                                             require "productos/modals/modal_abrir_detalles.php";
                                             require "productos/modals/modal_editar.php";
                                             require "productos/modals/modal_registro.php";
+                                            require "promociones/modal/modal_registrar_promocion.php";
+                                            require "promociones/modal/modal_editar_promocion.php";
                                             echo modalRegistro();
-                                            echo modalEditar();
                                             echo modalAbrirDetalles();
                                         ?>
 
@@ -79,10 +80,10 @@
                                         <div id="pestañas">
                                             <ul class="nav nav-tabs">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" href="#productos" data-toggle="tab">Clientes</a>
+                                                    <a class="nav-link active" href="#productos" data-toggle="tab">Productos</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#promociones" data-toggle="tab">Planes</a>
+                                                    <a class="nav-link" href="#promociones" data-toggle="tab">Promociones</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -135,4 +136,22 @@
     <script src="productos/js/leer/configuracion_productos.js"></script>
     <script src="productos/js/switches/switch_pesaje_editar.js"></script>
     <script src="productos/js/switches/switch_pesaje.js"></script>
+
+
+
+    <!--SCRIPT DE PROMOCIONES-->
+    <script src="promociones/js/crear/abrir_modal_registrar.js"></script>
+    <script src="promociones/js/crear/crear_promocion.js"></script>
+    <script src="promociones/js/crear/crear_nombre_promocion.js"></script>
+    <script src="promociones/js/crear/crear_producto_promocion.js"></script>
+    <script src="promociones/js/crear/crear_unidades_promocion.js"></script>
+    <script src="promociones/js/crear/crear_precio_promocion.js"></script>
+    <script src="promociones/js/leer/cargar_promociones.js"></script>
+    <script src="promociones/js/leer/cargar_productos.js"></script>
+    <script src="promociones/js/leer/cargar_promocion_seleccionada.js"></script>
+    <script src="promociones/js/editar/editar_nombre_promocion.js"></script>
+    <script src="promociones/js/editar/editar_producto_promocion.js"></script>
+    <script src="promociones/js/editar/editar_unidades_promocion.js"></script>
+    <script src="promociones/js/editar/editar_precio_promocion.js"></script>
+    <script src="promociones/js/eliminar/eliminar_promocion.js"></script>
 </html>
