@@ -4,7 +4,6 @@ function crearProductoPromocion()
 {
     id = $("#slctProductoPromocion").val();
     id_promo  = $("#idPromocion").text();
-
     
     let datos = {
         "id_prod": id, 
