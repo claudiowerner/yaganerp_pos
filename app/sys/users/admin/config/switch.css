@@ -71,3 +71,18 @@
 }
 
 
+/* ------------------------------------------- PROMOCIONES -------------------------------------------*/
+
+#swPromociones
+{
+    display: none;
+}
+#swPromociones:checked~ .switch
+{
+    background: #61a0ff;
+    transition:0.3s;
+}
+#swPromociones:checked~ .switch:after
+{
+    left: 23px; 
+}
