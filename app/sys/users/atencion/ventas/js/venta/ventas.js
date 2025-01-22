@@ -1,6 +1,6 @@
 $(document).on("ready", function(e)
 {
-  cargarVentasCaja();
+	cargarVentasCaja();
 });
 
 //se compara si está habilitado el conteo de stock mínimo dentro de la base de datos o no
@@ -29,116 +29,116 @@ let nCaja = $("#nCaja").html();
 //se verifica si la opcion seleccionada de la venta de productos es válida o no
 function productoValido()
 {
-  let valor = $("#prod").val();
-  if(valor=="N")
-  {
-    $("#venta").attr("disabled", true);
-  }
-  else
-  {
-    $("#venta").attr("disabled", false);
-  }
+	let valor = $("#prod").val();
+	if(valor=="N")
+	{
+		$("#venta").attr("disabled", true);
+	}
+	else
+	{
+		$("#venta").attr("disabled", false);
+	}
 }
 
 $("#venta").on('click', function(e)
 {
-  let id_venta = $("#id_venta").text();
-  let idProd = $("#prod").val();
-  let cantProd = parseInt($("#cantProd").text());
-  let idCaja = $("#nCaja").text();
-  let nomCaja = $("#nomCaja").text();
-  //capturar hora
-  let hora = getHora();
+	let id_venta = $("#id_venta").text();
+	let idProd = $("#prod").val();
+	let cantProd = parseInt($("#cantProd").text());
+	let idCaja = $("#nCaja").text();
+	let nomCaja = $("#nomCaja").text();
+	//capturar hora
+	let hora = getHora();
 
-  if(obs==''||obs==null)
-  {
-    obs = 'Sin obs.';
-  }
-  registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora);
+	if(obs==''||obs==null)
+	{
+		obs = 'Sin obs.';
+	}
+	registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora);
 })
 
 
 
 $("#pagarVenta").on("click", function(e)
 {
-  $("#modalMetodoPago").modal("show");
+	$("#modalMetodoPago").modal("show");
 });
 
 
 //aplicar descuento
 $("#btnAplicarDescto").on("click", function(e)
 {
-  $("#modalDescuento").modal("show");
+	$("#modalDescuento").modal("show");
 });
 
 $("#btnConfirmarDescto").on("click", function(e)
 {
-  swal({
-    title: "¿Está seguro?",
-    text: "¿Desea aplicar descuento?",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  })
-  .then((pagar) => {
-    if (pagar)
-    {
-      aplicarDescto();
-      cargarDescto();
-    } 
-    else 
-    {
-      swal("Sin descuentos aplicados");
-    }
-  });
+	swal({
+		title: "¿Está seguro?",
+		text: "¿Desea aplicar descuento?",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	})
+	.then((pagar) => {
+		if (pagar)
+		{
+			aplicarDescto();
+			cargarDescto();
+		} 
+		else 
+		{
+			swal("Sin descuentos aplicados");
+		}
+	});
 })
 
 
 $("#btnAñadirCuenta").on("click", function(e)
 {
-  $("#modalAñadirCuenta").modal("show");
+	$("#modalAñadirCuenta").modal("show");
 });
 
 $("#btnAgregarCliente").on("click", function(e)
 {
-  //entregar rut previamente escrito desde modalAñadirCuenta al modalAgregarCuenta
-  let rutAñadir = $("#txtRut").val();
-  $("#txtRutGuardar").val(rutAñadir);
+	//entregar rut previamente escrito desde modalAñadirCuenta al modalAgregarCuenta
+	let rutAñadir = $("#txtRut").val();
+	$("#txtRutGuardar").val(rutAñadir);
 
-  
-  let valRut = fnValidarRut.validaRut(rutAñadir);
+	
+	let valRut = fnValidarRut.validaRut(rutAñadir);
 
-  lblRutValido(valRut);
+	lblRutValido(valRut);
 
-  //mostrar modals
-  $("#modalAgregarCliente").modal("show");
-  $("#modalAñadirCuenta").modal("hide");
+	//mostrar modals
+	$("#modalAgregarCliente").modal("show");
+	$("#modalAñadirCuenta").modal("hide");
 })
 
 $("#btnConfirmarPaga").on('click', function(e)
 {
-  swal({
-    title: "¿Está seguro?",
-    text: "¿Desea registrar el pago completo?",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  })
-  .then((pagar) => {
-    if (pagar)
-    {
-      let id = $("#id_venta").text();
-      let formaPago = $("#metodoPagoGral").val();
-      confirmarPaga("ticket.php",id, formaPago);
-      cargarCorrelativo();
-      cargarVentasCaja(descProd);
-      llenarSelectProducto();
-    } 
-    else 
-    {
-      swal("Operación cancelada");
-    }
-  });
+	swal({
+		title: "¿Está seguro?",
+		text: "¿Desea registrar el pago completo?",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	})
+	.then((pagar) => {
+		if (pagar)
+		{
+			let id = $("#id_venta").text();
+			let formaPago = $("#metodoPagoGral").val();
+			confirmarPaga("ticket.php",id, formaPago);
+			cargarCorrelativo();
+			cargarVentasCaja(descProd);
+			llenarSelectProducto();
+		} 
+		else 
+		{
+			swal("Operación cancelada");
+		}
+	});
 });  
 
 

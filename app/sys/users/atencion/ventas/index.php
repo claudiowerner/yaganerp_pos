@@ -162,6 +162,7 @@
     <script src='../../../js/fullcalendar/dist/fullcalendar.js' type='text/javascript'></script>;
 
     <!--llamada a ventas-->
+    <script src="js/promociones/promociones_activas.js"></script>
     <script src="js/descuento/cargarDescuento.js"></script>
     <script src="js/descuento/aplicarDescto.js"></script>
     <script src="../../../js/validarRut.js"></script>

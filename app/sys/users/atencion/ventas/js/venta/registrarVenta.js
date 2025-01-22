@@ -62,6 +62,8 @@ function accionGuardarVenta(idCaja, id_venta, idProd, hora, cantProd, nomCaja)
             type: "GET",
             success: function(r)
             {
+                let promo_activa = promocionActiva();
+                alert(promo_activa)
                 cargarVentasCaja();
             }
         }
