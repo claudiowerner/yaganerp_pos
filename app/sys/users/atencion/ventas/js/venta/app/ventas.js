@@ -71,28 +71,6 @@ $("#btnAplicarDescto").on("click", function(e)
 	$("#modalDescuento").modal("show");
 });
 
-$("#btnConfirmarDescto").on("click", function(e)
-{
-	swal({
-		title: "¿Está seguro?",
-		text: "¿Desea aplicar descuento?",
-		icon: "warning",
-		buttons: true,
-		dangerMode: true,
-	})
-	.then((pagar) => {
-		if (pagar)
-		{
-			aplicarDescto();
-			cargarDescto();
-		} 
-		else 
-		{
-			swal("Sin descuentos aplicados");
-		}
-	});
-})
-
 
 $("#btnAñadirCuenta").on("click", function(e)
 {
@@ -114,38 +92,6 @@ $("#btnAgregarCliente").on("click", function(e)
 	$("#modalAgregarCliente").modal("show");
 	$("#modalAñadirCuenta").modal("hide");
 })
-
-$("#btnConfirmarPaga").on('click', function(e)
-{
-	swal({
-		title: "¿Está seguro?",
-		text: "¿Desea registrar el pago completo?",
-		icon: "warning",
-		buttons: true,
-		dangerMode: true,
-	})
-	.then((pagar) => {
-		if (pagar)
-		{
-			let id = $("#id_venta").text();
-			let formaPago = $("#metodoPagoGral").val();
-			confirmarPaga("ticket.php",id, formaPago);
-			cargarCorrelativo();
-			cargarVentasCaja(descProd);
-			llenarSelectProducto();
-		} 
-		else 
-		{
-			swal("Operación cancelada");
-		}
-	});
-});  
-
-
-
-
-
-
 
 var ventaInd = 0;
 
@@ -170,25 +116,4 @@ function checkSeleccionado(checkbox)
   {
     check--;
   }
-}
-//obtener número de ventas seleccionadas a pagar 
-function contadorVentas(id_venta)
-{
-  $.ajax(
-  {
-    url:"func_php/contador_ventas_pagadas.php?id_venta="+id_venta,
-    type:"GET",
-    success: function(e)
-    {
-      let resp = parseInt(e);
-      if(resp==ventasCheckeadas||resp==0)
-      {
-        pagarVenta(true);
-      }
-    }
-  })
-  .fail(function(e)
-  {
-    msjes_swal("Error", e, "error");
-  })
 }

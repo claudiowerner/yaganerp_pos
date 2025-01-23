@@ -162,34 +162,36 @@
     <script src='../../../js/fullcalendar/dist/fullcalendar.js' type='text/javascript'></script>;
 
     <!--llamada a ventas-->
-    <script src="js/promociones/promociones_activas.js"></script>
+    <script src="js/promociones/leer/cargar_estado_promocion.js"></script>
     <script src="js/descuento/cargarDescuento.js"></script>
     <script src="js/descuento/aplicarDescto.js"></script>
     <script src="../../../js/validarRut.js"></script>
-    <script src="js/venta/anularVenta.js"></script>
+    <script src="js/venta/editar/anularVenta.js"></script>
     <script src="js/correlativo/correlativo.js"></script>
     <script src="js/caja_atencion/cerrarCaja.js"></script>
-    <script src="js/venta/cargarIDVenta.js"></script>
+    <script src="js/venta/leer/cargarIDVenta.js"></script>
     <script src="js/fecha_hora/getFechaHora.js"></script>
     <script src="js/stock/comprobar_estado_stock_minimo.js"></script>
     <script src="js/turno/cargarNombreIdCajaAbierta.js"></script>
     <script src="js/metodoPago/cargarMetodoPago.js"></script>
     <script src="js/producto/cargarProducto.js"></script>
-    <script src="js/venta/cargarVentasCaja.js"></script>
+    <script src="js/venta/leer/cargarVentasCaja.js"></script>
     <script src="js/venta/clave_aut/clave_aut.js"></script>
-    <script src="js/venta/eliminar_venta_ajax.js"></script>
-    <script src="js/venta/eliminar_venta_autorizacion.js"></script>
-    <script src="js/venta/eliminarVenta.js"></script>
+    <script src="js/venta/eliminar/eliminar_venta_ajax.js"></script>
+    <script src="js/venta/eliminar/eliminar_venta_autorizacion.js"></script>
+    <script src="js/venta/eliminar/eliminarVenta.js"></script>
     <script src="js/imprimir/primera_impresion/imprCtaGeneral.js"></script>
     <script src="js/cantidad/modificarCant.js"></script>
     <script src="js/metodoPago/validarMetodoPago.js"></script>
     <script src="js/permisos/permisos.js"></script>
     <script src="js/cantidad/comprobarCantidad.js"></script>
-    <script src="js/venta/verificar_id_crear_venta.js"></script>
-    <script src="js/venta/ventas.js"></script>
-    <script src="js/venta/crear_nueva_venta.js"></script>
+    <script src="js/venta/leer/verificar_id_crear_venta.js"></script>
+    <script src="js/venta/app/ventas.js"></script>
+    <script src="js/venta/crear/crear_nueva_venta.js"></script>
+    <script src="js/venta/crear/registrar_pago.js"></script>
+    <script src="js/venta/crear/aplicar_descuento.js"></script>
     <script src="js/pistola/pistolaCodigoBarra.js"></script>
-    <script src="js/venta/registrarVenta.js"></script>
+    <script src="js/venta/crear/registrarVenta.js"></script>
     <script src="js/stock/cargarNumeroStockMinimo.js"></script>
     <script src="js/imprimir/primera_impresion/imprimir.js"></script>
     <script src="js/cliente/datosCliente.js"></script>
@@ -202,7 +204,8 @@
     <script src="js/vuelto/calcularVuelto.js"></script>
     <script src="js/caja_atencion/resumenCaja.js"></script>
     <script src="js/precio/consultarPrecio.js"></script>
-    <script src="js/venta/comprobarPrimeraVenta.js"></script>
+    <script src="js/venta/leer/comprobarPrimeraVenta.js"></script>
+    <script src="js/venta/leer/contador_ventas.js"></script>
     <script src="js/caja_dinero/confirmarMontoInicialCaja.js"></script>
     <script src="js/caja_atencion/movimientoCaja.js"></script>
     <script src="js/producto/descontar_producto.js"></script>
