@@ -140,7 +140,7 @@
 
 
     <!--SCRIPT DE PROMOCIONES-->
-    <script src="promociones/js/crear/abrir_modal_registrar.js"></script>
+    <script src="promociones/js/leer/cargar_estado_promociones.js"></script>
     <script src="promociones/js/crear/crear_promocion.js"></script>
     <script src="promociones/js/crear/crear_nombre_promocion.js"></script>
     <script src="promociones/js/crear/crear_producto_promocion.js"></script>
