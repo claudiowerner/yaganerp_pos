@@ -1,104 +1,122 @@
 <?php
 
-session_start();
+	session_start();
 
-if(isset($_SESSION['user']))
-{
-  $tipo = $_SESSION['user']['tipo_usuario'];
-  if($tipo == 3)
-  {
-    header('Location: ../');
-  }
-}
-else
-{
-  header('Location: ../');
-}
-
-
-  $id_us = $_SESSION['user']['id'];
-  $nombre = $_SESSION['user']["nombre"];
-  $id_cl = $_SESSION['user']["id_cl"];
-  
+	if(isset($_SESSION['user']))
+	{
+		$tipo = $_SESSION['user']['tipo_usuario'];
+		if($tipo == 3)
+		{
+			header('Location: ../');
+		}
+	}
+	else
+	{
+		header('Location: ../');
+	}
 
 
-  require_once '../../../conexion.php';
-  //arrays
-  $arrId = array();
-  $arrNombreCaja = array();
-  $arrNombreUsuario = array();
-  $arrFechaDesde = array();
-  $arrFechaHasta = array();
-  $arrEstado = array();
-  $arrValor = array();
-  $arrNumFila = array();
-  $json = array();
+	$id_us = $_SESSION['user']['id'];
+	$nombre = $_SESSION['user']["nombre"];
+	$id_cl = $_SESSION['user']["id_cl"];
+	
 
+
+	require_once '../../../conexion.php';
+	//arrays
+	$arrId = array();
+	$arrNombreCaja = array();
+	$arrNombreUsuario = array();
+	$arrFechaDesde = array();
+	$arrFechaHasta = array();
+	$arrEstado = array();
+	$arrValor = array();
+	$arrNumFila = array();
+	$arrCorrelativo = array();
+	$arrayValor = array();
+	$arrGanancia = array();
+	$json = array();
+	
+	
 	//relleno de arrays con información
-  $sql = "SELECT cc.id, cc.nombre, u.nombre AS nombre_usuario,
-  DATE_FORMAT(cc.desde, '%d-%m-%Y %H:%i:%s') AS desde, 
-  DATE_FORMAT(cc.hasta, '%d-%m-%Y %H:%i:%s') AS hasta, 
-  cc.estado AS estado
-  FROM cierre_caja cc 
-  JOIN usuarios u 
-  ON cc.creado_por = u.id 
-  WHERE cc.id_cl = '$id_cl'
-  ORDER BY id DESC";
-  $res = $conexion->query($sql);
-  //contador de filas de registros
-  $cont = 0;
-  while($row = $res->fetch_array())
-  {
-    $cont++;
-    $arrNumFila[] = $cont;
-    $arrId[] = $row["id"];
-    $arrNombreCaja[] = $row["nombre"];
-    $arrNombreUsuario[] = $row["nombre_usuario"];
-    $arrFechaDesde[] = $row["desde"];
-    $arrFechaHasta[] = $row["hasta"];
-    $arrEstado[] = $row["estado"];
-  }
+	$sql = "SELECT cc.id, cc.nombre, u.nombre AS nombre_usuario,
+	DATE_FORMAT(cc.desde, '%d-%m-%Y %H:%i:%s') AS desde, 
+	DATE_FORMAT(cc.hasta, '%d-%m-%Y %H:%i:%s') AS hasta, 
+	cc.estado AS estado
+	FROM cierre_caja cc 
+	JOIN usuarios u 
+	ON cc.creado_por = u.id 
+	WHERE cc.id_cl = '$id_cl'
+	ORDER BY id DESC";
+	$res = $conexion->query($sql);
+	//contador de filas de registros
+	$cont = 0;
+	while($row = $res->fetch_array())
+	{
+		$cont++;
+		$arrNumFila[] = $cont;
+		$arrId[] = $row["id"];
+		$arrNombreCaja[] = $row["nombre"];
+		$arrNombreUsuario[] = $row["nombre_usuario"];
+		$arrFechaDesde[] = $row["desde"];
+		$arrFechaHasta[] = $row["hasta"];
+		$arrEstado[] = $row["estado"];
+	}
 
-  //consultar por valor de turno
-  $contador = count($arrId);
-  
-  for($i=0;$i<$contador;$i++)
-  {
-    $id = $arrId[$i];
-    $sql = "SELECT SUM(v.valor-((v.valor*v.descto)/100)) AS valor FROM correlativo corr 
-    JOIN ventas v
-    ON v.id_venta = corr.correlativo
-    WHERE corr.id_cierre = $id
-    AND v.estado = 'C'";
-    $res = $conexion->query($sql);
-    while($row = $res->fetch_array())
-    {
-      if($row["valor"]=="")
-      {
-        $arrValor[] = 0;
-      }
-      else
-      {
-        $arrValor[] = $row["valor"];
-      }
-    }
-  }
-  for($i=0;$i<$contador;$i++)
-  {
-    $json[] = array(
-      "id"=> $arrId[$i],
-      "num_fila"=> $arrNumFila[$i],
-      "nombre"=> $arrNombreCaja[$i],
-      "creado_por"=> $arrNombreUsuario[$i],
-      "desde"=> $arrFechaDesde[$i],
-      "hasta"=> $arrFechaHasta[$i],
-      "estado"=> $arrEstado[$i],
-      "valor_total"=> $arrValor[$i]
-    );
-  }
+	//consultar por valor de turno
+	$contador = count($arrId);
+	
+	//seleccionar ID de venta
+	for($i=0;$i<$contador;$i++)
+	{
+		$id = $arrId[$i];
+		$sql = "SELECT correlativo 
+		FROM correlativo
+		WHERE id_cierre = $id
+		AND estado!='P'";
+		$res = $conexion -> query($sql);
+		while($row = $res -> fetch_array())
+		{
+			$arrCorrelativo[] = $row["correlativo"];
+		}
+	}
+
+	$cont = count($arrCorrelativo);
+
+	
+	//Obtener valor de ganancia
+	for($i=0;$i<$contador;$i++)
+	{
+		$id_cierre = $arrId[$i];
+		$sql = "SELECT SUM(v.valor - v.valorDescto) AS valor 
+		FROM ventas v
+		JOIN correlativo corr
+		ON corr.correlativo = v.id_venta 
+		WHERE v.estado!='N'
+		AND v.estado!='P'
+		AND corr.id_cierre = '$id_cierre'";
+		$res = $conexion -> query($sql);
+		$ganancia = 0;
+		while($row = $res->fetch_array())
+		{
+			$arrGanancia[] = $row["valor"];
+		}
+	}
+	for($i=0;$i<$contador;$i++)
+	{
+		$json[] = array(
+		"id"=> $arrId[$i],
+		"num_fila"=> $arrNumFila[$i],
+		"nombre"=> $arrNombreCaja[$i],
+		"creado_por"=> $arrNombreUsuario[$i],
+		"desde"=> $arrFechaDesde[$i],
+		"hasta"=> $arrFechaHasta[$i],
+		"estado"=> $arrEstado[$i],
+		"valor_total"=> $arrGanancia[$i]);
+	}
 
 
-  echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+	echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 
 
 
