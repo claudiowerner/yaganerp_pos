@@ -65,17 +65,16 @@
 
 	//consultar por valor de turno
 	$contador = count($arrId);
-	
 	//seleccionar ID de venta
 	for($i=0;$i<$contador;$i++)
 	{
 		$id = $arrId[$i];
 		$sql = "SELECT correlativo 
-		FROM correlativo
+		FROM correlativo 
 		WHERE id_cierre = $id
 		AND estado!='P'";
 		$res = $conexion -> query($sql);
-		while($row = $res -> fetch_array())
+		while($row = $res->fetch_array())
 		{
 			$arrCorrelativo[] = $row["correlativo"];
 		}
@@ -88,12 +87,11 @@
 	for($i=0;$i<$contador;$i++)
 	{
 		$id_cierre = $arrId[$i];
-		$sql = "SELECT SUM(v.valor - v.valorDescto) AS valor 
+		$sql = "SELECT SUM((v.valor - v.valorDescto)*v.cantidad) AS valor 
 		FROM ventas v
 		JOIN correlativo corr
 		ON corr.correlativo = v.id_venta 
 		WHERE v.estado!='N'
-		AND v.estado!='P'
 		AND corr.id_cierre = '$id_cierre'";
 		$res = $conexion -> query($sql);
 		$ganancia = 0;

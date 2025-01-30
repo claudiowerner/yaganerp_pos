@@ -38,7 +38,7 @@
     DATE_FORMAT(v.fecha, '%d-%m-%Y %H:%i:%s') AS fecha,
     DATE_FORMAT(v.fecha_pago, '%d-%m-%Y %H:%i:%s') AS fecha_pago ,
     mp.nombre_metodo_pago, 
-    v.estado, SUM(v.valor) AS valor,
+    v.estado, SUM(v.valor*cantidad) AS valor,
     v.descto
     FROM cierre_caja cc 
     JOIN correlativo corr ON cc.id = corr.id_cierre

@@ -23,7 +23,7 @@
     u.nombre, p.id_prod, p.nombre_prod, v.id_venta,
     cat.nombre_cat, p.pesaje, um.nombre_medida,
     v.cantidad, 
-    (p.valor_venta*v.cantidad) AS valor_venta, 
+    (v.valor*v.cantidad) AS valor_venta, 
     (v.valor*p.descuento)/100 AS descto, 
     p.descuento,
     v.estado, v.fecha

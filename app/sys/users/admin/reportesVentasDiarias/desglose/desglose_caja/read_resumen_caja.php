@@ -36,7 +36,7 @@
     {
       $id = $arrId[$i];
       $sql = 
-      "SELECT SUM(v.valor-((v.valor*v.descto)/100)) AS valor
+      "SELECT SUM((v.valor-((v.valor*v.descto)/100))*v.cantidad) AS valor
       FROM ventas v
       JOIN correlativo corr
       ON corr.correlativo = v.id_venta

@@ -21,7 +21,7 @@
   "SELECT us.nombre, p.nombre_prod, caja.nom_caja, 
   SUM(v.cantidad) AS cantidad,
   mp.nombre_metodo_pago, 
-  SUM(v.valor) AS valor, 
+  SUM(v.valor*v.cantidad) AS valor, 
   c.estado AS estado_venta,
   v.estado AS estado_prod, 
   v.descto,
@@ -88,20 +88,20 @@
         }
     
     $json[] =array(
-              'nombre' => ($row['nombre']),
-              'nom_caja' => $row['nom_caja'],
-              'nombre_prod' => ($row['nombre_prod']),
-              'cantidad' => $row['cantidad'],
-              'valor' => round($valor*0.81),
-              'iva' => round($row['valor']*0.19),
-              'valor_descuento' => $valorDescto,
-              'valor_total' => $valor_total,
-              'descto' => $descto,
-              'estado_prod' => $estado_prod,
-              'estado_venta' => $estado_venta,
-              'metodo_pago' => $row['nombre_metodo_pago'],
-              'fecha' => $row['fecha']
-            );
+      'nombre' => ($row['nombre']),
+      'nom_caja' => $row['nom_caja'],
+      'nombre_prod' => ($row['nombre_prod']),
+      'cantidad' => $row['cantidad'],
+      'valor' => round($valor*0.81),
+      'iva' => round($row['valor']*0.19),
+      'valor_descuento' => $valorDescto,
+      'valor_total' => $valor_total,
+      'descto' => $descto,
+      'estado_prod' => $estado_prod,
+      'estado_venta' => $estado_venta,
+      'metodo_pago' => $row['nombre_metodo_pago'],
+      'fecha' => $row['fecha']
+    );
   }
 	echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 ?>
