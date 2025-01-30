@@ -98,7 +98,8 @@
             fecha_pago= '$fecha',
             forma_pago= '$formaPago'
             WHERE id_cl = $id_cl
-            AND id_venta = $id";
+            AND id_venta = $id
+            AND estado!='N'";
             $res3 = $conexion->query($sql);
 
         }

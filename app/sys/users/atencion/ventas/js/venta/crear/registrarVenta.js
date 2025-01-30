@@ -56,22 +56,24 @@ function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
 
 function accionGuardarVenta(idCaja, id_venta, idProd, hora, cantProd, nomCaja)
 {
-    $.ajax(
+    $.ajax({
+        url: "func_php/venta/crear_venta_exe.php?idCaja="+idCaja+"&id_venta="+id_venta+"&idProd="+idProd+"&cantProd="+cantProd+"&nomCaja="+nomCaja+"&hora="+hora,
+        type: "GET",
+        success: function(r)
         {
-            url:"func_php/venta/crear_venta_exe.php?idCaja="+idCaja+"&id_venta="+id_venta+"&idProd="+idProd+"&cantProd="+cantProd+"&nomCaja="+nomCaja+"&hora="+hora,
-            type: "GET",
-            success: function(r)
+            let promo = promocionActiva();
+            let j = JSON.parse(promo);
+            if(j.activado)
             {
-                let promo_activa = promocionActiva();
-                alert(promo_activa)
-                cargarVentasCaja();
+                aplicarPromo(idProd, id_venta, j.activado);
             }
+            cargarVentasCaja();
         }
-    )
+    })
     .fail( function(e) 
     {
-        console.log( 'Error productos!!'+e.responseText );}
-    );
+        console.log( 'Error productos!!'+e.responseText );
+    });
 
     $("#cantProd").html("1");
     

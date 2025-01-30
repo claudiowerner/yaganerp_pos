@@ -1,0 +1,32 @@
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 'On');
+    session_start();
+
+
+    if(isset($_SESSION['user'])){
+        $tipo = $_SESSION['user']['tipo_usuario'];
+        $id_us = $_SESSION['user']['id'];
+        $nombre = $_SESSION['user']["nombre"];
+        $id_cl = $_SESSION['user']["id_cl"];
+
+        $id_prod = $_POST["id_prod"];
+        $id_venta = $_POST["id_venta"];
+        $valor = $_POST["valor"];
+        
+
+        require_once '../../../../../conexion.php';
+
+        //query
+        echo $sql = "UPDATE ventas 
+        SET valor = $valor
+        WHERE id_venta = '$id_venta' 
+        AND producto = '$id_prod'
+        AND id_cl = $id_cl";
+        $res = $conexion->query($sql);
+    }
+    else
+    {
+        header('Location: ../');
+    }
+?>

@@ -162,7 +162,11 @@
     <script src='../../../js/fullcalendar/dist/fullcalendar.js' type='text/javascript'></script>;
 
     <!--llamada a ventas-->
-    <script src="js/promociones/leer/cargar_estado_promocion.js"></script>
+    <script src="js/promociones/cargar_estado_promocion.js"></script>
+    <script src="js/promociones/leer_numero_unids_producto_venta.js"></script>
+    <script src="js/promociones/leer_numero_unids_producto.js"></script>
+    <script src="js/promociones/leer_precio_promo.js"></script>
+    <script src="js/promociones/aplicar_promo.js"></script>
     <script src="js/descuento/cargarDescuento.js"></script>
     <script src="js/descuento/aplicarDescto.js"></script>
     <script src="../../../js/validarRut.js"></script>
@@ -206,6 +210,7 @@
     <script src="js/precio/consultarPrecio.js"></script>
     <script src="js/venta/leer/comprobarPrimeraVenta.js"></script>
     <script src="js/venta/leer/contador_ventas.js"></script>
+    <script src="js/venta/leer/obtener_precio_producto.js"></script>
     <script src="js/caja_dinero/confirmarMontoInicialCaja.js"></script>
     <script src="js/caja_atencion/movimientoCaja.js"></script>
     <script src="js/producto/descontar_producto.js"></script>

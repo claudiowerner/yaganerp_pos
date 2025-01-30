@@ -27,6 +27,7 @@
 	$idProd = $_GET['idProd'];
 	$id = $_GET['id'];
 	$cantProd = $_GET["cant"];
+	$estado_promo = $_GET["estado_promo"];
 
 	//obtener valor precio del producto
 	$valor = 0;
@@ -42,7 +43,7 @@
 	}
 
 	$sql = 
-	"UPDATE ventas SET cantidad = $cantProd, valor=$valor*$cantProd 
+	"UPDATE ventas SET cantidad = $cantProd, valor=$valor
 	WHERE id_cl = '$id_cl' AND id = '$id';";
 	$resultado = $conexion->query($sql);
 

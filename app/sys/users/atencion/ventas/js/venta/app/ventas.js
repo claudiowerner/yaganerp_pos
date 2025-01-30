@@ -108,12 +108,12 @@ let arrayCuentaIndividual = new Array();
 let check = 0;
 function checkSeleccionado(checkbox)
 {
-  if(checkbox.checked)
-  {
-    check++;
-  }
-  else
-  {
-    check--;
-  }
+	if(checkbox.checked)
+	{
+		check++;
+	}
+	else
+	{
+		check--;
+	}
 }
