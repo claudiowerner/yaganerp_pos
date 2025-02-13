@@ -1,232 +1,407 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 28-08-2024 a las 03:27:42
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: 127.0.0.1    Database: webpos
+-- ------------------------------------------------------
+-- Server version	5.5.5-10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Base de datos: `webpos`
+-- Table structure for table `anula_cajas`
 --
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `anula_cajas`
---
-
+DROP TABLE IF EXISTS `anula_cajas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `anula_cajas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `id_caja` int(11) NOT NULL,
   `anulado_por` int(11) NOT NULL,
-  `fecha` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+  `fecha` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `anula_categoria`
+-- Dumping data for table `anula_cajas`
 --
 
+LOCK TABLES `anula_cajas` WRITE;
+/*!40000 ALTER TABLE `anula_cajas` DISABLE KEYS */;
+INSERT INTO `anula_cajas` VALUES (1,1,1,1,'2024-10-16 15:31:21');
+/*!40000 ALTER TABLE `anula_cajas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `anula_categoria`
+--
+
+DROP TABLE IF EXISTS `anula_categoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `anula_categoria` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `anulado_por` int(11) NOT NULL,
-  `fecha` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
+  `fecha` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `anula_clientes`
+-- Dumping data for table `anula_categoria`
 --
 
+LOCK TABLES `anula_categoria` WRITE;
+/*!40000 ALTER TABLE `anula_categoria` DISABLE KEYS */;
+INSERT INTO `anula_categoria` VALUES (1,1,1,1,'2024-12-04 20:55:35'),(2,1,7,1,'2024-12-04 22:09:25');
+/*!40000 ALTER TABLE `anula_categoria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `anula_clientes`
+--
+
+DROP TABLE IF EXISTS `anula_clientes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `anula_clientes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `anulado_por` int(11) NOT NULL,
-  `fecha` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+  `fecha` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `anula_pedidos`
+-- Dumping data for table `anula_clientes`
 --
 
+LOCK TABLES `anula_clientes` WRITE;
+/*!40000 ALTER TABLE `anula_clientes` DISABLE KEYS */;
+INSERT INTO `anula_clientes` VALUES (1,1,1,1,'2024-10-16 15:34:09');
+/*!40000 ALTER TABLE `anula_clientes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `anula_pedidos`
+--
+
+DROP TABLE IF EXISTS `anula_pedidos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `anula_pedidos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `id_pedido` int(11) NOT NULL,
   `anulado_por` int(11) NOT NULL,
-  `fecha` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+  `fecha` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `anula_productos`
+-- Dumping data for table `anula_pedidos`
 --
 
+LOCK TABLES `anula_pedidos` WRITE;
+/*!40000 ALTER TABLE `anula_pedidos` DISABLE KEYS */;
+INSERT INTO `anula_pedidos` VALUES (1,1,1,1,'2024-10-16 15:36:45'),(2,1,2,1,'2024-10-16 15:36:48'),(3,1,3,1,'2024-10-16 15:39:33'),(4,1,4,1,'2024-10-16 15:40:37'),(5,1,5,1,'2024-12-04 20:06:33'),(6,1,6,1,'2024-12-04 20:10:34'),(7,1,9,1,'2024-12-14 15:02:42'),(8,1,10,1,'2024-12-14 15:02:48'),(9,1,14,1,'2024-12-28 21:21:39'),(10,1,16,1,'2025-01-04 19:03:53'),(11,1,17,1,'2025-01-04 19:05:00'),(12,1,21,1,'2025-01-11 20:21:34'),(13,1,23,1,'2025-01-11 21:16:52'),(14,1,24,1,'2025-01-11 21:17:06'),(15,1,25,1,'2025-01-17 13:45:06'),(16,1,27,1,'2025-01-22 18:26:28'),(17,1,30,1,'2025-01-28 23:37:11'),(18,1,32,1,'2025-02-01 19:10:33'),(19,1,33,1,'2025-02-01 19:46:11');
+/*!40000 ALTER TABLE `anula_pedidos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `anula_productos`
+--
+
+DROP TABLE IF EXISTS `anula_productos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `anula_productos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `anulado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `fecha` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
+  `fecha` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `anula_proveedor`
+-- Dumping data for table `anula_productos`
 --
 
+LOCK TABLES `anula_productos` WRITE;
+/*!40000 ALTER TABLE `anula_productos` DISABLE KEYS */;
+INSERT INTO `anula_productos` VALUES (1,1,1,'1','2024-10-16 15:47:43'),(2,1,2,'1','2024-12-04 20:55:23'),(3,1,100,'1','2025-01-08 18:13:59');
+/*!40000 ALTER TABLE `anula_productos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `anula_proveedor`
+--
+
+DROP TABLE IF EXISTS `anula_proveedor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `anula_proveedor` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `id_proveedor` int(11) NOT NULL,
   `anulado_por` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fecha` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
+  `fecha` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `anula_turnos`
+-- Dumping data for table `anula_proveedor`
 --
 
+LOCK TABLES `anula_proveedor` WRITE;
+/*!40000 ALTER TABLE `anula_proveedor` DISABLE KEYS */;
+INSERT INTO `anula_proveedor` VALUES (1,1,1,'1','2024-10-16 15:39:20'),(2,1,3,'1','2024-12-04 19:57:51'),(3,1,2,'1','2024-12-04 19:57:54');
+/*!40000 ALTER TABLE `anula_proveedor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `anula_turnos`
+--
+
+DROP TABLE IF EXISTS `anula_turnos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `anula_turnos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `id_turno` int(11) NOT NULL,
   `anulado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `fecha` date DEFAULT NULL
+  `fecha` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `anula_usuario`
+-- Dumping data for table `anula_turnos`
 --
 
+LOCK TABLES `anula_turnos` WRITE;
+/*!40000 ALTER TABLE `anula_turnos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `anula_turnos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `anula_usuario`
+--
+
+DROP TABLE IF EXISTS `anula_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `anula_usuario` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `anulado_por` int(11) NOT NULL,
-  `fecha` date DEFAULT NULL
+  `fecha` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `anula_ventas`
+-- Dumping data for table `anula_usuario`
 --
 
+LOCK TABLES `anula_usuario` WRITE;
+/*!40000 ALTER TABLE `anula_usuario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `anula_usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `anula_ventas`
+--
+
+DROP TABLE IF EXISTS `anula_ventas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `anula_ventas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `id_venta` int(11) NOT NULL,
   `anulado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `fecha` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `anula_ventas`
+-- Dumping data for table `anula_ventas`
 --
 
-INSERT INTO `anula_ventas` (`id`, `id_cl`, `id_venta`, `anulado_por`, `fecha`) VALUES
-(1, 1, 1, 'Admin', '2024-08-22 18:49:00'),
-(2, 1, 4, 'Admin', '2024-08-22 20:58:09'),
-(3, 1, 5, 'Admin', '2024-08-22 20:58:12'),
-(4, 1, 6, 'Admin', '2024-08-22 21:00:08'),
-(5, 1, 7, 'Admin', '2024-08-22 21:11:52'),
-(6, 1, 8, 'Admin', '2024-08-23 17:29:35'),
-(7, 1, 8, 'Admin', '2024-08-23 17:34:44'),
-(8, 1, 9, 'Admin', '2024-08-23 17:35:18'),
-(9, 1, 10, 'Admin', '2024-08-23 17:36:09');
-
--- --------------------------------------------------------
+LOCK TABLES `anula_ventas` WRITE;
+/*!40000 ALTER TABLE `anula_ventas` DISABLE KEYS */;
+INSERT INTO `anula_ventas` VALUES (1,1,2,'Admin','2024-12-04 23:25:28'),(2,1,7,'Admin','2024-12-07 18:28:17'),(3,1,28,'Admin','2024-12-22 19:15:35'),(4,1,127,'Admin','2025-01-05 14:30:49'),(5,1,200,'Admin','2025-01-11 21:46:46'),(6,1,236,'Admin','2025-01-22 23:22:25'),(7,1,237,'Admin','2025-01-22 23:22:32'),(8,1,293,'Admin','2025-01-30 16:12:50');
+/*!40000 ALTER TABLE `anula_ventas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `autorizacion`
+-- Table structure for table `autorizacion`
 --
 
+DROP TABLE IF EXISTS `autorizacion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `autorizacion` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `clave` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
+  `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_cl` (`id_cl`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `cajas`
+-- Dumping data for table `autorizacion`
 --
 
+LOCK TABLES `autorizacion` WRITE;
+/*!40000 ALTER TABLE `autorizacion` DISABLE KEYS */;
+INSERT INTO `autorizacion` VALUES (1,'1','12345','N');
+/*!40000 ALTER TABLE `autorizacion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cajas`
+--
+
+DROP TABLE IF EXISTS `cajas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cajas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `nom_caja` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `creado_por` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `fecha_reg` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha_reg` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `cajas`
+-- Dumping data for table `cajas`
 --
 
-INSERT INTO `cajas` (`id`, `id_cl`, `nom_caja`, `estado`, `creado_por`, `fecha_reg`) VALUES
-(1, 1, 'Caja 01', 'A', '1', '2024-08-22');
-
--- --------------------------------------------------------
+LOCK TABLES `cajas` WRITE;
+/*!40000 ALTER TABLE `cajas` DISABLE KEYS */;
+INSERT INTO `cajas` VALUES (1,1,'Caja de prueba EDITADA','N','1','2024-10-16'),(2,1,'Caja 01','A','1','2024-10-16');
+/*!40000 ALTER TABLE `cajas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `categorias`
+-- Table structure for table `cambio_periodo`
 --
 
+DROP TABLE IF EXISTS `cambio_periodo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cambio_periodo` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `id_cl` int(5) NOT NULL,
+  `plazo_antiguo` int(5) NOT NULL,
+  `plazo_nuevo` int(5) NOT NULL,
+  `estado_cambio` varchar(5) NOT NULL,
+  `fecha_cambio` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cambio_periodo`
+--
+
+LOCK TABLES `cambio_periodo` WRITE;
+/*!40000 ALTER TABLE `cambio_periodo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cambio_periodo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cambio_plan`
+--
+
+DROP TABLE IF EXISTS `cambio_plan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cambio_plan` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `id_cl` int(5) NOT NULL,
+  `plan_antiguo` int(5) NOT NULL,
+  `plan_nuevo` int(5) NOT NULL,
+  `estado_cambio` varchar(5) NOT NULL,
+  `fecha_cambio` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cambio_plan`
+--
+
+LOCK TABLES `cambio_plan` WRITE;
+/*!40000 ALTER TABLE `cambio_plan` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cambio_plan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `categorias`
+--
+
+DROP TABLE IF EXISTS `categorias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categorias` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `nombre_cat` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `creado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `fecha_reg` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha_reg` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `categorias`
+-- Dumping data for table `categorias`
 --
 
-INSERT INTO `categorias` (`id`, `id_cl`, `nombre_cat`, `estado`, `creado_por`, `fecha_reg`) VALUES
-(1, 1, 'CDs', 'S', '1', '2024-08-22');
-
--- --------------------------------------------------------
+LOCK TABLES `categorias` WRITE;
+/*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` VALUES (1,1,'CD','N','1','2024-10-16'),(2,1,'Galletas','S','1','2024-12-04'),(3,1,'Golosinas','S','1','2024-12-04'),(4,1,'Chicles','S','1','2024-12-04'),(5,1,'Bebestibles','S','1','2024-12-04'),(6,1,'Abarrotes','S','1','2024-12-04'),(7,1,'SIN PROVEEDOR','N','1','2024-12-04'),(8,1,'Helados','S','1','2024-12-07'),(9,1,'Parrilla','S','1','2024-12-07');
+/*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `cierre_caja`
+-- Table structure for table `cierre_caja`
 --
 
+DROP TABLE IF EXISTS `cierre_caja`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cierre_caja` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `nombre` varchar(35) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `creado_por` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -234,24 +409,30 @@ CREATE TABLE `cierre_caja` (
   `hasta` datetime DEFAULT NULL,
   `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `valor_total` varchar(145) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `fecha_reg` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha_reg` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `cierre_caja`
+-- Dumping data for table `cierre_caja`
 --
 
-INSERT INTO `cierre_caja` (`id`, `id_cl`, `nombre`, `creado_por`, `desde`, `hasta`, `estado`, `valor_total`, `fecha_reg`) VALUES
-(1, 1, 'Caja 22-08-2024', '1', '2024-08-22 18:10:25', '0000-00-00 00:00:00', 'A', '15000', '2024-08-22 18:10:25');
-
--- --------------------------------------------------------
+LOCK TABLES `cierre_caja` WRITE;
+/*!40000 ALTER TABLE `cierre_caja` DISABLE KEYS */;
+INSERT INTO `cierre_caja` VALUES (1,1,'Caja de prueba EDITADA','1','2024-10-16 15:49:29','2024-12-05 03:26:51','C','0','2024-10-16 15:49:29'),(2,1,'Caja 07-12-2024','1','2024-12-07 15:16:42','2024-12-14 16:23:22','C','5000','2024-12-07 15:16:42'),(3,1,'Caja 14-12-2024','1','2024-12-14 12:23:40','2024-12-15 04:09:13','C','900','2024-12-14 12:23:40'),(4,1,'Caja 21-12-2024','1','2024-12-21 15:07:30','2024-12-25 17:51:07','C','3000','2024-12-21 15:07:30'),(5,1,'Caja 25-12-2024','1','2024-12-25 13:51:24','2024-12-26 03:27:05','C','18350','2024-12-25 13:51:24'),(6,1,'Caja 28-12-2024','1','2024-12-28 12:53:05','2024-12-29 02:36:18','C','150','2024-12-28 12:53:05'),(7,1,'Caja 29-12-2024','1','2024-12-29 16:31:05','2025-01-01 00:51:12','C','200','2024-12-29 16:31:05'),(8,1,'Caja 01-01-2025','1','2024-12-31 20:51:45','2025-01-03 23:53:35','C','1200','2024-12-31 20:51:45'),(9,1,'Caja 03-01-2025','1','2025-01-03 19:53:49','2025-01-04 04:35:08','C','2500','2025-01-03 19:53:49'),(10,1,'Caja 04-01-2025','1','2025-01-04 00:35:44','2025-01-05 18:09:28','C','3200','2025-01-04 00:35:44'),(11,1,'Caja 05-01-2024','1','2025-01-05 14:09:37','2025-01-06 20:25:20','C','1200','2025-01-05 14:09:37'),(12,1,'Caja 06-01-2025','1','2025-01-06 16:31:11','2025-01-10 17:45:36','C','0','2025-01-06 16:31:11'),(13,1,'Caja 10-01-2025','1','2025-01-10 13:45:48','2025-01-11 18:16:38','C','4100','2025-01-10 13:45:48'),(14,1,'Caja 11-01-2025','1','2025-01-11 15:18:02','2025-01-12 16:01:48','C','4000','2025-01-11 15:18:02'),(15,1,'Caja 12-01-2025','1','2025-01-12 12:02:20','2025-01-13 15:48:22','C','2000','2025-01-12 12:02:20'),(16,1,'Caja 13-01-2025','1','2025-01-13 11:48:42','2025-01-18 18:56:47','C','2000','2025-01-13 11:48:42'),(18,1,'Caja 18-01-2025','1','2025-01-18 14:57:03','2025-01-19 17:28:32','C','900','2025-01-18 14:57:03'),(19,1,'Caja 19-01-2025','1','2025-01-19 13:28:46','2025-01-25 17:54:48','C','1850','2025-01-19 13:28:46'),(20,1,'Caja 25-01-2025','1','2025-01-25 13:55:07','2025-01-26 16:29:32','C','350','2025-01-25 13:55:07'),(21,1,'Caja 26-01-2025','1','2025-01-26 12:29:48','2025-01-27 22:32:50','C','6000','2025-01-26 12:29:48'),(22,1,'Caja de prueba','1','2025-01-27 22:42:36','2025-01-29 22:40:22','C','3150','2025-01-27 22:42:36'),(23,1,'caja 29-01-2025','1','2025-01-29 18:40:36','2025-01-29 22:40:47','C','0','2025-01-29 18:40:36'),(24,1,'caja 29-01-2025','1','2025-01-29 18:40:56','2025-02-01 17:16:10','C','1000','2025-01-29 18:40:56'),(25,1,'Caja 01-02-2025','1','2025-02-01 13:16:59','2025-02-02 20:00:31','C','21000','2025-02-01 13:16:59'),(26,1,'caja 02-02-2025','1','2025-02-02 16:00:41','2025-02-07 20:28:27','C','1200','2025-02-02 16:00:41'),(27,1,'Caja 07-02-2025','1','2025-02-07 16:28:39','2025-02-08 21:22:57','C','1500','2025-02-07 16:28:39'),(28,1,'Caja 08-02-2025','1','2025-02-08 17:23:23','2025-02-09 04:35:23','C','3000','2025-02-08 17:23:23'),(29,1,'Caja 09-02-2025','1','2025-02-09 13:54:50','2025-02-10 23:17:29','C','300','2025-02-09 13:54:50'),(30,1,'Caja 10-02-2025','1','2025-02-10 19:17:39','0000-00-00 00:00:00','A','0','2025-02-10 19:17:39');
+/*!40000 ALTER TABLE `cierre_caja` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `cliente`
+-- Table structure for table `cliente`
 --
 
+DROP TABLE IF EXISTS `cliente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cliente` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `rut` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `estado` varchar(5) NOT NULL,
@@ -263,62 +444,113 @@ CREATE TABLE `cliente` (
   `telefono` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `plan_comprado` int(11) NOT NULL,
   `plazo_pago` int(10) NOT NULL,
-  `fecha_registro` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha_registro` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `cliente`
+-- Dumping data for table `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `nombre`, `rut`, `estado`, `nom_fantasia`, `razon_social`, `giro`, `direccion`, `correo`, `telefono`, `plan_comprado`, `plazo_pago`, `fecha_registro`) VALUES
-(1, 'Claudio Francisco Werner Neira', '19150634-0', 'S', 'Camping Playa Werner', 'Camping Playa Werner', 11111, 'Camping Playa Werner', 'claudiowernern@hotmail.com', '978841411', 1, 1, '2024-08-26');
-
--- --------------------------------------------------------
+LOCK TABLES `cliente` WRITE;
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (1,'Claudio Francisco Werner Neira EDITADO','19150634-0','S','Camping Playa Werner','Camping Playa Werner',11111,'Camping Playa Werner','claudiowernern@hotmail.com','+56978841411',1,1,'2024-10-16');
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `clientes_negocio`
+-- Table structure for table `clientes_negocio`
 --
 
+DROP TABLE IF EXISTS `clientes_negocio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `clientes_negocio` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `rut` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `apellido` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `creado_por` int(11) NOT NULL,
-  `fecha_registro` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
+  `fecha_registro` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `comprobantes`
+-- Dumping data for table `clientes_negocio`
 --
 
+LOCK TABLES `clientes_negocio` WRITE;
+/*!40000 ALTER TABLE `clientes_negocio` DISABLE KEYS */;
+INSERT INTO `clientes_negocio` VALUES (1,1,'19150634-0','Claudio Francisco','Werner','N',1,'2024-10-16'),(2,1,'19150634-0','Claudio','Werner','S',1,'2024-10-16'),(3,1,'18752880-1','Constanza','Werner','S',1,'2024-12-04'),(4,1,'4531159-7','Graciela ','Gómez','S',1,'2024-12-14'),(5,1,'7367889-7','María Cecilia','Neira Gómez','S',1,'2025-01-27');
+/*!40000 ALTER TABLE `clientes_negocio` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comprobantes`
+--
+
+DROP TABLE IF EXISTS `comprobantes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comprobantes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
+  `id_pago` int(5) NOT NULL,
   `nombre_archivo` varchar(250) NOT NULL,
   `dir_archivo` varchar(1000) NOT NULL,
-  `fecha_carga` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `fecha_carga` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `comprobantes`
+-- Dumping data for table `comprobantes`
 --
 
-INSERT INTO `comprobantes` (`id`, `id_cl`, `nombre_archivo`, `dir_archivo`, `fecha_carga`) VALUES
-(1, 1, 'Comprobante 1', '../../files/comprobantes/Compr_22-8-2024-17-37-58.jpg', '2024-08-22');
-
--- --------------------------------------------------------
+LOCK TABLES `comprobantes` WRITE;
+/*!40000 ALTER TABLE `comprobantes` DISABLE KEYS */;
+INSERT INTO `comprobantes` VALUES (1,1,1,'Comprobante 1','../../files/comprobantes/Compr_16-10-2024-14-39-4.pdf','2024-10-16'),(2,1,2,'Comprobante 2','../../files/comprobantes/Compr_16-10-2024-14-39-29.pdf','2024-10-16'),(3,1,3,'Comprobante 3','../../files/comprobantes/Compr_6-11-2024-22-22-18.JPG','2024-11-06'),(4,1,4,'Comprobante 4','../../files/comprobantes/Compr_6-11-2024-22-22-40.JPG','2024-11-06');
+/*!40000 ALTER TABLE `comprobantes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `correlativo`
+-- Table structure for table `config_promociones`
 --
 
+DROP TABLE IF EXISTS `config_promociones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `config_promociones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cl` int(11) NOT NULL,
+  `estado` varchar(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `config_promociones`
+--
+
+LOCK TABLES `config_promociones` WRITE;
+/*!40000 ALTER TABLE `config_promociones` DISABLE KEYS */;
+INSERT INTO `config_promociones` VALUES (1,1,'N');
+/*!40000 ALTER TABLE `config_promociones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `correlativo`
+--
+
+DROP TABLE IF EXISTS `correlativo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `correlativo` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `correlativo` int(11) NOT NULL,
   `id_cl` int(11) NOT NULL,
   `caja` varchar(25) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -329,875 +561,269 @@ CREATE TABLE `correlativo` (
   `id_cierre` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `estado` varchar(2) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `fecha` datetime NOT NULL,
-  `fecha_cierre` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='	';
-
--- --------------------------------------------------------
+  `fecha_cierre` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=409 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='	';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `cuenta_corriente`
+-- Dumping data for table `correlativo`
 --
 
+LOCK TABLES `correlativo` WRITE;
+/*!40000 ALTER TABLE `correlativo` DISABLE KEYS */;
+INSERT INTO `correlativo` VALUES (1,1,1,'2','1','1',1000,0,'1','C','2024-12-04 21:02:10','0000-00-00 00:00:00'),(2,2,1,'2','1','1',0,0,'1','C','2024-12-04 00:00:00','2024-12-05 03:26:51'),(3,3,1,'2','1','1',0,0,'1','C','2024-12-04 23:25:28','2024-12-05 03:26:51'),(4,4,1,'2','1','2',0,1,'2','C','2024-12-07 15:29:18','2024-12-14 16:23:22'),(5,5,1,'2','1','3',0,1,'2','C','2024-12-07 16:42:41','2024-12-14 16:23:22'),(6,6,1,'2','1','4',0,1,'2','C','2024-12-07 17:54:41','2024-12-14 16:23:22'),(7,7,1,'2','1','4',0,0,'2','C','2024-12-07 18:27:41','2024-12-14 16:23:22'),(8,8,1,'2','1','4',1200,0,'2','C','2024-12-07 18:28:18','0000-00-00 00:00:00'),(9,9,1,'2','1','5',0,1,'2','C','2024-12-07 18:36:28','2024-12-14 16:23:22'),(10,10,1,'2','1','6',0,1,'2','C','2024-12-07 19:16:44','2024-12-14 16:23:22'),(11,11,1,'2','1','6',10000,0,'3','C','2024-12-14 13:42:10','0000-00-00 00:00:00'),(12,12,1,'2','1','6',11000,0,'3','C','2024-12-14 13:44:13','0000-00-00 00:00:00'),(13,13,1,'2','1','7',0,1,'3','C','2024-12-14 14:02:45','2024-12-15 04:09:13'),(14,14,1,'2','1','8',0,1,'3','C','2024-12-14 14:06:28','2024-12-15 04:09:13'),(15,15,1,'2','1','9',0,1,'3','C','2024-12-14 14:14:39','2024-12-15 04:09:13'),(16,16,1,'2','1','10',0,1,'3','C','2024-12-14 14:15:06','2024-12-15 04:09:13'),(17,17,1,'2','1','10',0,1,'3','C','2024-12-14 14:17:36','2024-12-15 04:09:13'),(18,18,1,'2','1','10',0,1,'3','C','2024-12-14 14:21:35','2024-12-15 04:09:13'),(19,19,1,'2','1','10',0,1,'3','C','2024-12-14 14:25:00','2024-12-15 04:09:13'),(20,20,1,'2','1','10',0,1,'3','C','2024-12-14 18:07:10','2024-12-15 04:09:13'),(21,21,1,'2','1','10',0,1,'3','C','2024-12-14 18:10:33','2024-12-15 04:09:13'),(22,22,1,'2','1','11',0,1,'3','C','2024-12-14 18:13:04','2024-12-15 04:09:13'),(23,23,1,'2','1','10',0,1,'3','C','2024-12-14 18:44:44','2024-12-15 04:09:13'),(24,24,1,'2','1','10',0,1,'3','C','2024-12-14 18:50:15','2024-12-15 04:09:13'),(25,25,1,'2','1','10',0,1,'3','C','2024-12-14 19:01:49','2024-12-15 04:09:13'),(26,26,1,'2','1','9',0,0,'3','C','2024-12-14 19:06:32','2024-12-15 04:09:13'),(27,27,1,'2','1','10',0,1,'4','C','2024-12-21 15:08:35','2024-12-25 17:51:07'),(28,28,1,'2','1','9',0,0,'4','C','2024-12-21 15:10:07','2024-12-25 17:51:07'),(29,29,1,'2','1','9',0,0,'4','C','2024-12-22 19:15:35','2024-12-25 17:51:07'),(30,30,1,'2','1','10',0,1,'5','C','2024-12-25 13:51:58','2024-12-26 03:27:05'),(31,31,1,'2','1','11',0,1,'5','C','2024-12-25 21:12:03','2024-12-26 03:27:05'),(32,32,1,'2','1','9',0,0,'','C','2024-12-27 13:13:29','0000-00-00 00:00:00'),(33,33,1,'2','1','10',0,1,'6','C','2024-12-28 12:53:22','2024-12-29 02:36:18'),(34,34,1,'2','1','10',0,1,'6','C','2024-12-28 15:16:57','2024-12-29 02:36:18'),(35,35,1,'2','1','10',0,1,'6','C','2024-12-28 15:23:23','2024-12-29 02:36:18'),(36,36,1,'2','1','10',0,1,'6','C','2024-12-28 15:46:00','2024-12-29 02:36:18'),(37,37,1,'2','1','10',0,1,'6','C','2024-12-28 15:48:17','2024-12-29 02:36:18'),(38,38,1,'2','1','10',0,1,'6','C','2024-12-28 17:49:51','2024-12-29 02:36:18'),(39,39,1,'2','1','10',0,1,'6','C','2024-12-28 17:52:01','2024-12-29 02:36:18'),(40,40,1,'2','1','10',0,1,'6','C','2024-12-28 18:03:00','2024-12-29 02:36:18'),(41,41,1,'2','1','10',0,1,'6','C','2024-12-28 18:05:52','2024-12-29 02:36:18'),(42,42,1,'2','1','10',0,1,'6','C','2024-12-28 18:13:20','2024-12-29 02:36:18'),(43,43,1,'2','1','11',0,1,'6','C','2024-12-28 18:15:46','2024-12-29 02:36:18'),(44,44,1,'2','1','10',0,1,'6','C','2024-12-28 19:56:08','2024-12-29 02:36:18'),(45,45,1,'2','1','10',0,1,'6','C','2024-12-28 19:58:37','2024-12-29 02:36:18'),(46,46,1,'2','1','9',0,0,'','C','2024-12-28 21:56:20','0000-00-00 00:00:00'),(47,47,1,'2','1','10',0,1,'6','C','2024-12-28 21:58:18','2024-12-29 02:36:18'),(48,48,1,'2','1','10',0,1,'6','C','2024-12-28 22:00:25','2024-12-29 02:36:18'),(49,49,1,'2','1','10',0,2,'7','C','2024-12-29 16:31:20','2025-01-01 00:51:12'),(50,50,1,'2','1','10',0,1,'7','C','2024-12-29 16:43:51','2025-01-01 00:51:12'),(51,51,1,'2','1','10',0,2,'7','C','2024-12-29 16:50:16','2025-01-01 00:51:12'),(52,52,1,'2','1','10',0,1,'7','C','2024-12-29 16:55:57','2025-01-01 00:51:12'),(53,53,1,'2','1','10',0,1,'7','C','2024-12-29 17:10:38','2025-01-01 00:51:12'),(54,54,1,'2','1','10',0,2,'7','C','2024-12-29 17:14:54','2025-01-01 00:51:12'),(55,55,1,'2','1','10',0,1,'7','C','2024-12-29 17:15:22','2025-01-01 00:51:12'),(56,56,1,'2','1','10',0,1,'8','C','2025-01-01 13:44:45','2025-01-03 23:53:35'),(57,57,1,'2','1','10',0,1,'8','C','2025-01-01 14:05:14','2025-01-03 23:53:35'),(58,58,1,'2','1','11',0,1,'8','C','2025-01-01 14:09:51','2025-01-03 23:53:35'),(59,59,1,'2','1','10',0,1,'8','C','2025-01-01 14:12:29','2025-01-03 23:53:35'),(60,60,1,'2','1','10',0,1,'8','C','2025-01-01 14:17:14','2025-01-03 23:53:35'),(61,61,1,'2','1','10',0,1,'8','C','2025-01-01 14:19:55','2025-01-03 23:53:35'),(62,62,1,'2','1','10',0,1,'8','C','2025-01-01 14:35:24','2025-01-03 23:53:35'),(63,63,1,'2','1','10',0,1,'8','C','2025-01-01 14:52:16','2025-01-03 23:53:35'),(64,64,1,'2','1','10',0,1,'8','C','2025-01-01 14:53:26','2025-01-03 23:53:35'),(65,65,1,'2','1','10',0,1,'8','C','2025-01-01 15:31:55','2025-01-03 23:53:35'),(66,66,1,'2','1','10',0,2,'8','C','2025-01-01 17:52:15','2025-01-03 23:53:35'),(67,67,1,'2','1','10',0,1,'8','C','2025-01-01 17:57:56','2025-01-03 23:53:35'),(68,68,1,'2','1','10',0,1,'8','C','2025-01-01 18:00:44','2025-01-03 23:53:35'),(69,69,1,'2','1','10',0,1,'8','C','2025-01-01 18:20:12','2025-01-03 23:53:35'),(70,70,1,'2','1','10',0,1,'8','C','2025-01-01 18:26:46','2025-01-03 23:53:35'),(71,71,1,'2','1','10',0,1,'8','C','2025-01-01 18:35:03','2025-01-03 23:53:35'),(72,72,1,'2','1','10',0,1,'8','C','2025-01-01 20:45:41','2025-01-03 23:53:35'),(73,73,1,'2','1','9',0,0,'8','C','2025-01-03 19:53:14','2025-01-03 23:53:35'),(74,74,1,'2','1','10',0,1,'9','C','2025-01-03 19:53:54','2025-01-04 04:35:08'),(75,75,1,'2','1','10',0,1,'9','C','2025-01-03 19:56:39','2025-01-04 04:35:08'),(76,76,1,'2','1','10',0,1,'9','C','2025-01-03 20:00:04','2025-01-04 04:35:08'),(77,77,1,'2','1','10',0,1,'9','C','2025-01-03 20:01:31','2025-01-04 04:35:08'),(78,78,1,'2','1','10',0,2,'9','C','2025-01-03 20:04:20','2025-01-04 04:35:08'),(79,79,1,'2','1','10',0,2,'9','C','2025-01-03 20:06:25','2025-01-04 04:35:08'),(80,80,1,'2','1','10',0,1,'9','C','2025-01-03 21:55:25','2025-01-04 04:35:08'),(81,81,1,'2','1','10',0,1,'9','C','2025-01-03 22:26:02','2025-01-04 04:35:08'),(82,82,1,'2','1','10',0,1,'9','C','2025-01-03 22:27:57','2025-01-04 04:35:08'),(83,83,1,'2','1','10',0,1,'9','C','2025-01-03 22:50:22','2025-01-04 04:35:08'),(84,84,1,'2','1','9',0,0,'9','C','2025-01-03 22:53:20','2025-01-04 04:35:08'),(85,85,1,'2','1','10',0,1,'10','C','2025-01-04 14:46:41','2025-01-05 18:09:28'),(86,86,1,'2','1','9',0,0,'10','C','2025-01-04 16:26:42','2025-01-05 18:09:28'),(87,87,1,'2','1','10',0,1,'10','C','2025-01-04 16:26:42','2025-01-05 18:09:28'),(88,88,1,'2','1','10',0,2,'10','C','2025-01-04 16:28:28','2025-01-05 18:09:28'),(89,89,1,'2','1','10',0,1,'10','C','2025-01-04 16:44:52','2025-01-05 18:09:28'),(90,90,1,'2','1','10',0,2,'10','C','2025-01-04 16:45:49','2025-01-05 18:09:28'),(91,91,1,'2','1','10',0,1,'10','C','2025-01-04 16:51:00','2025-01-05 18:09:28'),(92,92,1,'2','1','10',0,1,'10','C','2025-01-04 17:20:18','2025-01-05 18:09:28'),(93,93,1,'2','1','10',0,1,'10','C','2025-01-04 17:25:13','2025-01-05 18:09:28'),(94,94,1,'2','1','10',0,1,'10','C','2025-01-04 17:26:31','2025-01-05 18:09:28'),(95,95,1,'2','1','10',0,1,'10','C','2025-01-04 17:27:45','2025-01-05 18:09:28'),(96,96,1,'2','1','10',0,1,'10','C','2025-01-04 18:16:59','2025-01-05 18:09:28'),(97,97,1,'2','1','10',0,1,'10','C','2025-01-04 18:19:58','2025-01-05 18:09:28'),(98,98,1,'2','1','10',0,1,'10','C','2025-01-04 18:20:38','2025-01-05 18:09:28'),(99,99,1,'2','1','10',0,1,'10','C','2025-01-04 18:26:07','2025-01-05 18:09:28'),(100,100,1,'2','1','10',0,1,'10','C','2025-01-04 18:27:53','2025-01-05 18:09:28'),(101,101,1,'2','1','10',0,1,'10','C','2025-01-04 18:36:53','2025-01-05 18:09:28'),(102,102,1,'2','1','10',0,1,'10','C','2025-01-04 18:39:08','2025-01-05 18:09:28'),(103,103,1,'2','1','10',0,1,'10','C','2025-01-04 18:40:27','2025-01-05 18:09:28'),(104,104,1,'2','1','11',0,1,'10','C','2025-01-04 18:44:40','2025-01-05 18:09:28'),(105,105,1,'2','1','10',0,1,'10','C','2025-01-04 18:46:31','2025-01-05 18:09:28'),(106,106,1,'2','1','10',0,1,'10','C','2025-01-04 19:07:36','2025-01-05 18:09:28'),(107,107,1,'2','1','10',0,1,'10','C','2025-01-04 19:08:55','2025-01-05 18:09:28'),(108,108,1,'2','1','10',0,1,'10','C','2025-01-04 19:12:39','2025-01-05 18:09:28'),(109,109,1,'2','1','10',0,1,'10','C','2025-01-04 19:19:53','2025-01-05 18:09:28'),(110,110,1,'2','1','10',0,1,'10','C','2025-01-04 19:31:23','2025-01-05 18:09:28'),(111,111,1,'2','1','10',0,1,'10','C','2025-01-04 19:34:05','2025-01-05 18:09:28'),(112,112,1,'2','1','10',0,1,'10','C','2025-01-04 20:01:06','2025-01-05 18:09:28'),(113,113,1,'2','1','10',0,1,'10','C','2025-01-04 20:06:29','2025-01-05 18:09:28'),(114,114,1,'2','1','10',0,1,'10','C','2025-01-04 21:28:48','2025-01-05 18:09:28'),(115,115,1,'2','1','10',0,1,'10','C','2025-01-04 21:30:31','2025-01-05 18:09:28'),(116,116,1,'2','1','10',0,1,'10','C','2025-01-04 21:36:53','2025-01-05 18:09:28'),(117,117,1,'2','1','10',0,1,'10','C','2025-01-04 21:42:24','2025-01-05 18:09:28'),(118,118,1,'2','1','10',0,1,'10','C','2025-01-04 21:48:09','2025-01-05 18:09:28'),(119,119,1,'2','1','10',0,2,'10','C','2025-01-04 21:50:47','2025-01-05 18:09:28'),(120,120,1,'2','1','10',0,1,'10','C','2025-01-04 21:58:57','2025-01-05 18:09:28'),(121,121,1,'2','1','10',0,1,'10','C','2025-01-04 22:00:35','2025-01-05 18:09:28'),(122,122,1,'2','1','10',0,1,'10','C','2025-01-04 22:01:57','2025-01-05 18:09:28'),(123,123,1,'2','1','10',0,1,'10','C','2025-01-05 11:35:00','2025-01-05 18:09:28'),(124,124,1,'2','1','10',0,1,'11','C','2025-01-05 14:09:41','2025-01-06 20:25:20'),(125,125,1,'2','1','10',0,1,'11','C','2025-01-05 14:11:50','2025-01-06 20:25:20'),(126,126,1,'2','1','10',0,1,'11','C','2025-01-05 14:18:27','2025-01-06 20:25:20'),(127,127,1,'2','1','9',0,0,'11','C','2025-01-05 14:18:53','2025-01-06 20:25:20'),(128,128,1,'2','1','10',0,1,'11','C','2025-01-05 14:30:50','2025-01-06 20:25:20'),(129,129,1,'2','1','10',0,1,'11','C','2025-01-05 14:32:34','2025-01-06 20:25:20'),(130,130,1,'2','1','10',0,1,'11','C','2025-01-05 14:33:34','2025-01-06 20:25:20'),(131,131,1,'2','1','10',0,1,'11','C','2025-01-05 14:40:24','2025-01-06 20:25:20'),(132,132,1,'2','1','10',0,1,'11','C','2025-01-05 14:41:17','2025-01-06 20:25:20'),(133,133,1,'2','1','10',0,1,'11','C','2025-01-05 14:52:41','2025-01-06 20:25:20'),(134,134,1,'2','1','10',0,1,'11','C','2025-01-05 17:08:09','2025-01-06 20:25:20'),(135,135,1,'2','1','10',0,1,'11','C','2025-01-05 17:10:38','2025-01-06 20:25:20'),(136,136,1,'2','1','10',0,1,'11','C','2025-01-05 17:29:35','2025-01-06 20:25:20'),(137,137,1,'2','1','10',0,1,'11','C','2025-01-05 17:48:55','2025-01-06 20:25:20'),(138,138,1,'2','1','10',0,1,'11','C','2025-01-05 17:52:46','2025-01-06 20:25:20'),(139,139,1,'2','1','10',0,1,'11','C','2025-01-05 17:55:23','2025-01-06 20:25:20'),(140,140,1,'2','1','10',0,1,'11','C','2025-01-05 18:55:19','2025-01-06 20:25:20'),(141,141,1,'2','1','10',0,1,'11','C','2025-01-05 19:00:27','2025-01-06 20:25:20'),(142,142,1,'2','1','10',0,1,'11','C','2025-01-05 19:01:48','2025-01-06 20:25:20'),(143,143,1,'2','1','10',0,1,'11','C','2025-01-05 19:10:09','2025-01-06 20:25:20'),(144,144,1,'2','1','9',0,0,'11','C','2025-01-05 19:11:31','2025-01-06 20:25:20'),(145,145,1,'2','1','9',0,0,'12','C','2025-01-10 13:43:49','2025-01-10 17:45:36'),(146,146,1,'2','1','10',0,1,'13','C','2025-01-10 13:46:18','2025-01-11 18:16:38'),(147,147,1,'2','1','10',0,1,'13','C','2025-01-10 15:54:39','2025-01-11 18:16:38'),(148,148,1,'2','1','10',0,1,'13','C','2025-01-10 16:02:37','2025-01-11 18:16:38'),(149,149,1,'2','1','10',0,1,'13','C','2025-01-10 17:15:49','2025-01-11 18:16:38'),(150,150,1,'2','1','10',0,1,'13','C','2025-01-10 17:23:36','2025-01-11 18:16:38'),(151,151,1,'2','1','10',0,1,'13','C','2025-01-10 19:25:24','2025-01-11 18:16:38'),(152,152,1,'2','1','10',0,1,'13','C','2025-01-10 19:30:07','2025-01-11 18:16:38'),(153,153,1,'2','1','10',0,1,'13','C','2025-01-10 19:33:44','2025-01-11 18:16:38'),(154,154,1,'2','1','10',0,2,'13','C','2025-01-10 19:34:20','2025-01-11 18:16:38'),(155,155,1,'2','1','10',0,1,'13','C','2025-01-10 20:54:36','2025-01-11 18:16:38'),(156,156,1,'2','1','9',0,0,'13','C','2025-01-10 21:29:48','2025-01-11 18:16:38'),(157,157,1,'2','1','10',0,1,'14','C','2025-01-11 15:18:10','2025-01-12 16:01:48'),(158,158,1,'2','1','10',0,1,'14','C','2025-01-11 15:38:42','2025-01-12 16:01:48'),(159,159,1,'2','1','10',0,1,'14','C','2025-01-11 15:41:56','2025-01-12 16:01:48'),(160,160,1,'2','1','10',0,1,'14','C','2025-01-11 16:03:03','2025-01-12 16:01:48'),(161,161,1,'2','1','10',0,1,'14','C','2025-01-11 16:10:26','2025-01-12 16:01:48'),(162,162,1,'2','1','10',0,1,'14','C','2025-01-11 16:13:29','2025-01-12 16:01:48'),(163,163,1,'2','1','10',0,2,'14','C','2025-01-11 16:19:05','2025-01-12 16:01:48'),(164,164,1,'2','1','10',0,1,'14','C','2025-01-11 16:23:01','2025-01-12 16:01:48'),(165,165,1,'2','1','10',0,1,'14','C','2025-01-11 16:26:46','2025-01-12 16:01:48'),(166,166,1,'2','1','10',0,1,'14','C','2025-01-11 16:29:13','2025-01-12 16:01:48'),(167,167,1,'2','1','10',0,1,'14','C','2025-01-11 16:31:31','2025-01-12 16:01:48'),(168,168,1,'2','1','10',0,1,'14','C','2025-01-11 16:34:16','2025-01-12 16:01:48'),(169,169,1,'2','1','10',0,2,'14','C','2025-01-11 16:35:39','2025-01-12 16:01:48'),(170,170,1,'2','1','10',0,2,'14','C','2025-01-11 16:40:19','2025-01-12 16:01:48'),(171,171,1,'2','1','10',0,1,'14','C','2025-01-11 16:40:55','2025-01-12 16:01:48'),(172,172,1,'2','1','10',0,1,'14','C','2025-01-11 17:38:32','2025-01-12 16:01:48'),(173,173,1,'2','1','10',0,1,'14','C','2025-01-11 17:44:01','2025-01-12 16:01:48'),(174,174,1,'2','1','10',0,1,'14','C','2025-01-11 17:46:50','2025-01-12 16:01:48'),(175,175,1,'2','1','10',0,1,'14','C','2025-01-11 17:56:02','2025-01-12 16:01:48'),(176,176,1,'2','1','10',0,1,'14','C','2025-01-11 18:00:21','2025-01-12 16:01:48'),(177,177,1,'2','1','10',0,1,'14','C','2025-01-11 18:50:52','2025-01-12 16:01:48'),(178,178,1,'2','1','10',0,1,'14','C','2025-01-11 18:52:18','2025-01-12 16:01:48'),(179,179,1,'2','1','10',0,1,'14','C','2025-01-11 18:57:15','2025-01-12 16:01:48'),(180,180,1,'2','1','10',0,1,'14','C','2025-01-11 18:59:37','2025-01-12 16:01:48'),(181,181,1,'2','1','10',0,1,'14','C','2025-01-11 19:06:56','2025-01-12 16:01:48'),(182,182,1,'2','1','10',0,1,'14','C','2025-01-11 19:12:30','2025-01-12 16:01:48'),(183,183,1,'2','1','10',0,1,'14','C','2025-01-11 19:16:08','2025-01-12 16:01:48'),(184,184,1,'2','1','10',0,1,'14','C','2025-01-11 19:19:37','2025-01-12 16:01:48'),(185,185,1,'2','1','10',0,1,'14','C','2025-01-11 19:26:54','2025-01-12 16:01:48'),(186,186,1,'2','1','10',0,1,'14','C','2025-01-11 19:30:37','2025-01-12 16:01:48'),(187,187,1,'2','1','10',0,1,'14','C','2025-01-11 19:31:36','2025-01-12 16:01:48'),(188,188,1,'2','1','10',0,1,'14','C','2025-01-11 20:02:35','2025-01-12 16:01:48'),(189,189,1,'2','1','10',0,1,'14','C','2025-01-11 20:09:05','2025-01-12 16:01:48'),(190,190,1,'2','1','10',0,1,'14','C','2025-01-11 20:16:27','2025-01-12 16:01:48'),(191,191,1,'2','1','10',0,1,'14','C','2025-01-11 20:18:12','2025-01-12 16:01:48'),(192,192,1,'2','1','10',0,1,'14','C','2025-01-11 20:25:05','2025-01-12 16:01:48'),(193,193,1,'2','1','10',0,1,'14','C','2025-01-11 20:32:00','2025-01-12 16:01:48'),(194,194,1,'2','1','10',0,1,'14','C','2025-01-11 20:34:18','2025-01-12 16:01:48'),(195,195,1,'2','1','10',0,1,'14','C','2025-01-11 20:34:59','2025-01-12 16:01:48'),(196,196,1,'2','1','10',0,2,'14','C','2025-01-11 20:36:51','2025-01-12 16:01:48'),(197,197,1,'2','1','10',0,1,'14','C','2025-01-11 20:41:57','2025-01-12 16:01:48'),(198,198,1,'2','1','10',0,1,'14','C','2025-01-11 21:03:54','2025-01-12 16:01:48'),(199,199,1,'2','1','10',0,1,'14','C','2025-01-11 21:05:30','2025-01-12 16:01:48'),(200,200,1,'2','1','9',0,0,'14','C','2025-01-11 21:44:23','2025-01-12 16:01:48'),(201,201,1,'2','1','10',0,1,'14','C','2025-01-11 21:46:46','2025-01-12 16:01:48'),(202,202,1,'2','1','10',0,1,'14','C','2025-01-11 21:48:05','2025-01-12 16:01:48'),(203,203,1,'2','1','10',0,1,'14','C','2025-01-11 22:04:06','2025-01-12 16:01:48'),(204,204,1,'2','1','10',0,1,'14','C','2025-01-11 22:16:49','2025-01-12 16:01:48'),(205,205,1,'2','1','10',0,1,'14','C','2025-01-11 22:48:56','2025-01-12 16:01:48'),(206,206,1,'2','1','10',0,1,'15','C','2025-01-12 12:02:24','2025-01-13 15:48:22'),(207,207,1,'2','1','10',0,1,'15','C','2025-01-12 14:52:31','2025-01-13 15:48:22'),(208,208,1,'2','1','10',0,1,'15','C','2025-01-12 14:53:13','2025-01-13 15:48:22'),(209,209,1,'2','1','10',0,1,'15','C','2025-01-12 15:24:19','2025-01-13 15:48:22'),(210,210,1,'2','1','10',0,1,'16','C','2025-01-13 11:48:49','2025-01-18 18:56:47'),(211,211,1,'2','1','10',0,1,'16','C','2025-01-13 11:49:41','2025-01-18 18:56:47'),(212,212,1,'2','1','9',0,0,'16','C','2025-01-13 13:30:57','2025-01-18 18:56:47'),(213,213,1,'2','1','10',0,1,'16','C','2025-01-16 16:08:00','2025-01-18 18:56:47'),(214,214,1,'2','1','10',0,1,'16','C','2025-01-16 16:11:09','2025-01-18 18:56:47'),(215,215,1,'2','1','9',0,0,'16','C','2025-01-16 16:28:13','2025-01-18 18:56:47'),(216,216,1,'2','1','10',0,1,'18','C','2025-01-18 14:57:07','2025-01-19 17:28:32'),(217,217,1,'2','1','10',0,1,'18','C','2025-01-18 15:02:06','2025-01-19 17:28:32'),(218,218,1,'2','1','10',0,1,'18','C','2025-01-18 17:07:24','2025-01-19 17:28:32'),(219,219,1,'2','1','10',0,1,'18','C','2025-01-18 18:26:16','2025-01-19 17:28:32'),(220,220,1,'2','1','10',0,1,'18','C','2025-01-18 18:29:05','2025-01-19 17:28:32'),(221,221,1,'2','1','10',0,1,'18','C','2025-01-18 18:46:43','2025-01-19 17:28:32'),(222,222,1,'2','1','10',0,1,'18','C','2025-01-18 18:51:09','2025-01-19 17:28:32'),(223,223,1,'2','1','10',0,1,'18','C','2025-01-18 19:20:56','2025-01-19 17:28:32'),(224,224,1,'2','1','10',0,1,'18','C','2025-01-18 19:36:57','2025-01-19 17:28:32'),(225,225,1,'2','1','10',0,2,'18','C','2025-01-18 19:56:03','2025-01-19 17:28:32'),(226,226,1,'2','1','10',0,2,'18','C','2025-01-18 21:29:41','2025-01-19 17:28:32'),(227,227,1,'2','1','10',0,1,'18','C','2025-01-18 21:41:34','2025-01-19 17:28:32'),(228,228,1,'2','1','9',0,0,'18','C','2025-01-19 12:10:46','2025-01-19 17:28:32'),(229,229,1,'2','1','10',0,2,'19','C','2025-01-19 13:28:52','2025-01-25 17:54:48'),(230,230,1,'2','1','10',0,2,'19','C','2025-01-19 17:14:06','2025-01-25 17:54:48'),(231,231,1,'2','1','10',0,2,'19','C','2025-01-19 17:22:04','2025-01-25 17:54:48'),(232,232,1,'2','1','10',0,1,'19','C','2025-01-19 17:23:13','2025-01-25 17:54:48'),(233,233,1,'2','1','10',0,1,'19','C','2025-01-19 17:31:08','2025-01-25 17:54:48'),(234,234,1,'2','1','10',0,1,'19','C','2025-01-19 18:10:56','2025-01-25 17:54:48'),(235,235,1,'2','1','9',0,0,'19','C','2025-01-22 23:09:28','2025-01-25 17:54:48'),(236,236,1,'2','1','9',0,0,'19','C','2025-01-22 23:22:21','2025-01-25 17:54:48'),(237,237,1,'2','1','9',0,0,'19','C','2025-01-22 23:22:25','2025-01-25 17:54:48'),(238,238,1,'2','1','10',0,1,'19','C','2025-01-22 23:22:32','2025-01-25 17:54:48'),(239,239,1,'2','1','10',0,1,'19','C','2025-01-24 16:20:18','2025-01-25 17:54:48'),(240,240,1,'2','1','10',0,1,'19','C','2025-01-24 19:19:56','2025-01-25 17:54:48'),(241,241,1,'2','1','9',0,0,'19','C','2025-01-24 19:25:43','2025-01-25 17:54:48'),(242,242,1,'2','1','11',0,1,'20','C','2025-01-25 14:21:28','2025-01-26 16:29:32'),(243,243,1,'2','1','10',0,1,'20','C','2025-01-25 17:28:45','2025-01-26 16:29:32'),(244,244,1,'2','1','10',0,1,'20','C','2025-01-25 18:32:32','2025-01-26 16:29:32'),(245,245,1,'2','1','10',0,2,'20','C','2025-01-25 18:44:57','2025-01-26 16:29:32'),(246,246,1,'2','1','10',0,1,'20','C','2025-01-25 18:55:32','2025-01-26 16:29:32'),(247,247,1,'2','1','10',0,1,'20','C','2025-01-25 19:20:14','2025-01-26 16:29:32'),(248,248,1,'2','1','10',0,1,'20','C','2025-01-25 19:21:03','2025-01-26 16:29:32'),(249,249,1,'2','1','10',0,1,'20','C','2025-01-25 19:24:51','2025-01-26 16:29:32'),(250,250,1,'2','1','10',0,1,'20','C','2025-01-25 19:25:40','2025-01-26 16:29:32'),(251,251,1,'2','1','10',0,1,'20','C','2025-01-25 19:47:47','2025-01-26 16:29:32'),(252,252,1,'2','1','10',0,1,'20','C','2025-01-25 19:49:25','2025-01-26 16:29:32'),(253,253,1,'2','1','10',0,1,'20','C','2025-01-25 19:54:19','2025-01-26 16:29:32'),(254,254,1,'2','1','10',0,1,'20','C','2025-01-25 21:09:03','2025-01-26 16:29:32'),(255,255,1,'2','1','10',0,1,'20','C','2025-01-25 21:11:55','2025-01-26 16:29:32'),(256,256,1,'2','1','10',0,1,'20','C','2025-01-25 21:15:45','2025-01-26 16:29:32'),(257,257,1,'2','1','10',0,1,'20','C','2025-01-25 21:16:23','2025-01-26 16:29:32'),(258,258,1,'2','1','10',0,1,'20','C','2025-01-25 21:31:50','2025-01-26 16:29:32'),(259,259,1,'2','1','10',0,1,'20','C','2025-01-25 21:55:08','2025-01-26 16:29:32'),(260,260,1,'2','1','10',0,1,'20','C','2025-01-25 22:00:10','2025-01-26 16:29:32'),(261,261,1,'2','1','10',0,1,'20','C','2025-01-25 22:00:25','2025-01-26 16:29:32'),(262,262,1,'2','1','10',0,1,'20','C','2025-01-25 22:17:03','2025-01-26 16:29:32'),(263,263,1,'2','1','10',0,1,'20','C','2025-01-25 22:18:20','2025-01-26 16:29:32'),(264,264,1,'2','1','10',0,1,'20','C','2025-01-25 22:19:39','2025-01-26 16:29:32'),(265,265,1,'2','1','10',0,1,'20','C','2025-01-25 22:39:07','2025-01-26 16:29:32'),(266,266,1,'2','1','11',0,1,'20','C','2025-01-25 23:08:32','2025-01-26 16:29:32'),(267,267,1,'2','1','10',0,1,'20','C','2025-01-25 23:09:45','2025-01-26 16:29:32'),(268,268,1,'2','1','10',0,1,'20','C','2025-01-25 23:27:22','2025-01-26 16:29:32'),(269,269,1,'2','1','10',0,1,'20','C','2025-01-25 23:27:40','2025-01-26 16:29:32'),(270,270,1,'2','1','10',0,1,'20','C','2025-01-25 23:28:37','2025-01-26 16:29:32'),(271,271,1,'2','1','10',0,1,'20','C','2025-01-25 23:31:04','2025-01-26 16:29:32'),(272,272,1,'2','1','10',0,1,'20','C','2025-01-26 00:20:51','2025-01-26 16:29:32'),(273,273,1,'2','1','10',0,1,'21','C','2025-01-26 12:29:53','2025-01-27 22:32:50'),(274,274,1,'2','1','10',0,1,'21','C','2025-01-26 12:32:49','2025-01-27 22:32:50'),(275,275,1,'2','1','9',28000,1,'21','C','2025-01-26 12:38:37','2025-01-26 17:31:43'),(276,276,1,'2','1','10',0,1,'21','C','2025-01-26 13:59:14','2025-01-27 22:32:50'),(277,277,1,'2','1','10',0,1,'21','C','2025-01-26 14:22:32','2025-01-27 22:32:50'),(278,278,1,'2','1','10',0,1,'21','C','2025-01-26 14:24:42','2025-01-27 22:32:50'),(279,279,1,'2','1','10',0,1,'21','C','2025-01-26 15:28:20','2025-01-27 22:32:50'),(280,280,1,'2','1','10',0,1,'21','C','2025-01-26 17:35:15','2025-01-27 22:32:50'),(281,281,1,'2','1','10',0,1,'21','C','2025-01-26 18:10:04','2025-01-27 22:32:50'),(282,282,1,'2','1','10',0,1,'21','C','2025-01-26 18:45:42','2025-01-27 22:32:50'),(283,283,1,'2','1','10',0,1,'21','C','2025-01-26 19:08:10','2025-01-27 22:32:50'),(284,284,1,'2','1','9',11000,1,'21','C','2025-01-26 19:08:22','2025-01-27 18:22:37'),(285,285,1,'2','1','9',0,0,'21','C','2025-01-27 18:22:14','2025-01-27 22:32:50'),(286,286,1,'2','1','10',0,1,'22','C','2025-01-27 22:42:11','2025-01-29 22:40:22'),(287,287,1,'2','1','10',0,1,'22','C','2025-01-28 00:33:48','2025-01-29 22:40:22'),(288,288,1,'2','1','10',0,1,'22','C','2025-01-28 00:38:22','2025-01-29 22:40:22'),(289,289,1,'2','1','10',0,1,'22','C','2025-01-28 19:19:06','2025-01-29 22:40:22'),(290,290,1,'2','1','10',0,1,'22','C','2025-01-28 19:21:09','2025-01-29 22:40:22'),(291,291,1,'2','1','10',0,1,'22','C','2025-01-28 19:25:05','2025-01-29 22:40:22'),(292,292,1,'2','1','10',0,1,'22','C','2025-01-28 19:28:01','2025-01-29 22:40:22'),(293,293,1,'2','1','10',0,1,'24','C','2025-01-29 19:01:44','2025-02-01 17:16:10'),(294,294,1,'2','1','9',0,0,'24','C','2025-01-30 16:12:51','2025-02-01 17:16:10'),(295,295,1,'2','1','11',0,1,'24','C','2025-01-30 16:13:30','2025-02-01 17:16:10'),(296,296,1,'2','1','10',0,1,'24','C','2025-01-30 16:15:09','2025-02-01 17:16:10'),(297,297,1,'2','1','10',0,1,'24','C','2025-01-30 16:32:34','2025-02-01 17:16:10'),(298,298,1,'2','1','10',0,2,'24','C','2025-01-30 17:07:39','2025-02-01 17:16:10'),(299,299,1,'2','1','10',0,1,'24','C','2025-01-30 17:26:45','2025-02-01 17:16:10'),(300,300,1,'2','1','10',0,1,'24','C','2025-01-30 17:30:00','2025-02-01 17:16:10'),(301,301,1,'2','1','10',0,2,'24','C','2025-01-30 18:02:51','2025-02-01 17:16:10'),(302,302,1,'2','1','10',0,1,'24','C','2025-01-30 18:28:56','2025-02-01 17:16:10'),(303,303,1,'2','1','10',0,1,'25','C','2025-02-01 13:17:15','2025-02-02 20:00:31'),(304,304,1,'2','1','10',0,1,'25','C','2025-02-01 13:17:47','2025-02-02 20:00:31'),(305,305,1,'2','1','10',0,1,'25','C','2025-02-01 16:47:53','2025-02-02 20:00:31'),(306,306,1,'2','1','10',0,1,'25','C','2025-02-01 16:53:00','2025-02-02 20:00:31'),(307,307,1,'2','1','10',0,1,'25','C','2025-02-01 16:59:20','2025-02-02 20:00:31'),(308,308,1,'2','1','10',0,1,'25','C','2025-02-01 16:59:58','2025-02-02 20:00:31'),(309,309,1,'2','1','10',0,1,'25','C','2025-02-01 17:03:51','2025-02-02 20:00:31'),(310,310,1,'2','1','11',0,1,'25','C','2025-02-01 18:57:40','2025-02-02 20:00:31'),(311,311,1,'2','1','10',0,1,'25','C','2025-02-01 19:07:36','2025-02-02 20:00:31'),(312,312,1,'2','1','10',0,1,'25','C','2025-02-01 19:12:44','2025-02-02 20:00:31'),(313,313,1,'2','1','10',0,1,'25','C','2025-02-01 19:16:37','2025-02-02 20:00:31'),(314,314,1,'2','1','10',0,1,'25','C','2025-02-01 19:17:59','2025-02-02 20:00:31'),(315,315,1,'2','1','10',0,1,'25','C','2025-02-01 19:19:26','2025-02-02 20:00:31'),(316,316,1,'2','1','10',0,1,'25','C','2025-02-01 19:22:12','2025-02-02 20:00:31'),(317,317,1,'2','1','10',0,1,'25','C','2025-02-01 19:41:28','2025-02-02 20:00:31'),(318,318,1,'2','1','10',0,1,'25','C','2025-02-01 19:52:40','2025-02-02 20:00:31'),(319,319,1,'2','1','10',0,1,'25','C','2025-02-01 19:54:13','2025-02-02 20:00:31'),(320,320,1,'2','1','10',0,2,'25','C','2025-02-01 19:55:42','2025-02-02 20:00:31'),(321,321,1,'2','1','10',0,1,'25','C','2025-02-01 20:03:10','2025-02-02 20:00:31'),(322,322,1,'2','1','10',0,2,'25','C','2025-02-01 20:04:56','2025-02-02 20:00:31'),(323,323,1,'2','1','10',0,1,'25','C','2025-02-01 20:16:09','2025-02-02 20:00:31'),(324,324,1,'2','1','10',0,1,'25','C','2025-02-01 20:16:41','2025-02-02 20:00:31'),(325,325,1,'2','1','10',0,1,'25','C','2025-02-01 20:20:53','2025-02-02 20:00:31'),(326,326,1,'2','1','10',0,1,'25','C','2025-02-01 20:23:09','2025-02-02 20:00:31'),(327,327,1,'2','1','10',0,1,'25','C','2025-02-01 20:30:45','2025-02-02 20:00:31'),(328,328,1,'2','1','10',0,1,'25','C','2025-02-01 21:29:04','2025-02-02 20:00:31'),(329,329,1,'2','1','10',0,2,'25','C','2025-02-01 21:46:32','2025-02-02 20:00:31'),(330,330,1,'2','1','10',0,1,'25','C','2025-02-01 22:26:59','2025-02-02 20:00:31'),(331,331,1,'2','1','10',0,1,'25','C','2025-02-01 22:31:21','2025-02-02 20:00:31'),(332,332,1,'2','1','10',0,1,'25','C','2025-02-01 22:43:54','2025-02-02 20:00:31'),(333,333,1,'2','1','10',0,2,'25','C','2025-02-01 22:53:07','2025-02-02 20:00:31'),(334,334,1,'2','1','9',0,0,'25','C','2025-02-01 23:12:54','2025-02-02 20:00:31'),(335,335,1,'2','1','10',0,1,'26','C','2025-02-02 16:01:22','2025-02-07 20:28:27'),(336,336,1,'2','1','10',0,1,'26','C','2025-02-02 16:25:04','2025-02-07 20:28:27'),(337,337,1,'2','1','9',0,0,'26','C','2025-02-07 16:27:43','2025-02-07 20:28:27'),(338,338,1,'2','1','10',0,1,'27','C','2025-02-07 16:30:14','2025-02-08 21:22:57'),(339,339,1,'2','1','10',0,1,'27','C','2025-02-07 16:41:45','2025-02-08 21:22:57'),(340,340,1,'2','1','10',0,1,'27','C','2025-02-07 16:48:50','2025-02-08 21:22:57'),(341,341,1,'2','1','10',0,1,'27','C','2025-02-07 16:50:25','2025-02-08 21:22:57'),(342,342,1,'2','1','10',0,1,'27','C','2025-02-07 16:55:57','2025-02-08 21:22:57'),(343,343,1,'2','1','10',0,1,'27','C','2025-02-07 17:10:24','2025-02-08 21:22:57'),(344,344,1,'2','1','10',0,1,'27','C','2025-02-07 17:11:42','2025-02-08 21:22:57'),(345,345,1,'2','1','10',0,1,'27','C','2025-02-07 17:57:55','2025-02-08 21:22:57'),(346,346,1,'2','1','10',0,1,'27','C','2025-02-07 18:37:57','2025-02-08 21:22:57'),(347,347,1,'2','1','10',0,1,'27','C','2025-02-07 19:55:29','2025-02-08 21:22:57'),(348,348,1,'2','1','10',0,1,'27','C','2025-02-07 20:05:45','2025-02-08 21:22:57'),(349,349,1,'2','1','10',0,1,'27','C','2025-02-07 20:08:55','2025-02-08 21:22:57'),(350,350,1,'2','1','10',0,1,'27','C','2025-02-07 20:14:36','2025-02-08 21:22:57'),(351,351,1,'2','1','10',0,1,'27','C','2025-02-07 21:22:36','2025-02-08 21:22:57'),(352,352,1,'2','1','10',0,1,'27','C','2025-02-07 21:28:37','2025-02-08 21:22:57'),(353,353,1,'2','1','10',0,1,'27','C','2025-02-07 21:29:19','2025-02-08 21:22:57'),(354,354,1,'2','1','10',0,1,'27','C','2025-02-07 21:39:37','2025-02-08 21:22:57'),(355,355,1,'2','1','10',0,1,'27','C','2025-02-07 22:00:36','2025-02-08 21:22:57'),(356,356,1,'2','1','10',0,1,'27','C','2025-02-07 22:11:41','2025-02-08 21:22:57'),(357,357,1,'2','1','9',0,0,'27','C','2025-02-07 22:12:20','2025-02-08 21:22:57'),(358,358,1,'2','1','10',0,2,'28','C','2025-02-08 17:23:57','2025-02-09 04:35:23'),(359,359,1,'2','1','10',0,1,'28','C','2025-02-08 17:25:17','2025-02-09 04:35:23'),(360,360,1,'2','1','9',10000,0,'28','C','2025-02-08 17:48:14','0000-00-00 00:00:00'),(361,361,1,'2','1','10',0,1,'28','C','2025-02-08 17:48:54','2025-02-09 04:35:23'),(362,362,1,'2','1','10',0,2,'28','C','2025-02-08 18:58:05','2025-02-09 04:35:23'),(363,363,1,'2','1','10',0,1,'28','C','2025-02-08 19:02:39','2025-02-09 04:35:23'),(364,364,1,'2','1','10',0,1,'28','C','2025-02-08 19:05:15','2025-02-09 04:35:23'),(365,365,1,'2','1','10',0,1,'28','C','2025-02-08 20:18:29','2025-02-09 04:35:23'),(366,366,1,'2','1','10',0,1,'28','C','2025-02-08 20:29:01','2025-02-09 04:35:23'),(367,367,1,'2','1','10',0,1,'28','C','2025-02-08 20:52:31','2025-02-09 04:35:23'),(368,368,1,'2','1','10',0,1,'28','C','2025-02-08 21:04:11','2025-02-09 04:35:23'),(369,369,1,'2','1','10',0,1,'28','C','2025-02-08 21:05:58','2025-02-09 04:35:23'),(370,370,1,'2','1','10',0,1,'28','C','2025-02-08 21:11:16','2025-02-09 04:35:23'),(371,371,1,'2','1','10',0,1,'28','C','2025-02-08 21:14:51','2025-02-09 04:35:23'),(372,372,1,'2','1','10',0,1,'28','C','2025-02-08 21:29:10','2025-02-09 04:35:23'),(373,373,1,'2','1','10',0,1,'28','C','2025-02-08 21:35:10','2025-02-09 04:35:23'),(374,374,1,'2','1','10',0,1,'28','C','2025-02-08 21:52:33','2025-02-09 04:35:23'),(375,375,1,'2','1','11',0,1,'28','C','2025-02-08 21:53:33','2025-02-09 04:35:23'),(376,376,1,'2','1','10',0,1,'28','C','2025-02-08 21:56:31','2025-02-09 04:35:23'),(377,377,1,'2','1','10',0,1,'28','C','2025-02-08 21:57:13','2025-02-09 04:35:23'),(378,378,1,'2','1','10',0,1,'28','C','2025-02-08 21:59:13','2025-02-09 04:35:23'),(379,379,1,'2','1','10',0,1,'28','C','2025-02-08 22:21:32','2025-02-09 04:35:23'),(380,380,1,'2','1','10',0,1,'28','C','2025-02-08 22:22:58','2025-02-09 04:35:23'),(381,381,1,'2','1','10',0,1,'28','C','2025-02-08 22:24:56','2025-02-09 04:35:23'),(382,382,1,'2','1','10',0,2,'28','C','2025-02-08 22:33:11','2025-02-09 04:35:23'),(383,383,1,'2','1','10',0,1,'28','C','2025-02-08 22:39:40','2025-02-09 04:35:23'),(384,384,1,'2','1','10',0,1,'28','C','2025-02-08 22:44:07','2025-02-09 04:35:23'),(385,385,1,'2','1','11',0,1,'28','C','2025-02-08 22:59:41','2025-02-09 04:35:23'),(386,386,1,'2','1','9',0,0,'28','C','2025-02-09 00:14:05','2025-02-09 04:35:23'),(387,387,1,'2','1','10',0,1,'29','N','2025-02-09 13:54:59','2025-02-10 23:17:29'),(388,388,1,'2','1','10',0,2,'29','N','2025-02-09 14:00:42','2025-02-10 23:17:29'),(389,389,1,'2','1','10',0,1,'29','N','2025-02-09 14:31:26','2025-02-10 23:17:29'),(390,390,1,'2','1','10',0,1,'29','N','2025-02-09 17:07:33','2025-02-10 23:17:29'),(391,391,1,'2','1','10',0,1,'29','N','2025-02-09 17:08:43','2025-02-10 23:17:29'),(392,392,1,'2','1','10',0,2,'29','N','2025-02-09 17:09:54','2025-02-10 23:17:29'),(393,393,1,'2','1','10',0,1,'29','N','2025-02-09 17:29:41','2025-02-10 23:17:29'),(394,394,1,'2','1','10',0,1,'29','N','2025-02-09 17:33:44','2025-02-10 23:17:29'),(395,395,1,'2','1','10',0,1,'29','N','2025-02-09 17:34:34','2025-02-10 23:17:29'),(396,396,1,'2','1','10',0,1,'29','N','2025-02-09 17:36:40','2025-02-10 23:17:29'),(397,397,1,'2','1','10',0,1,'29','N','2025-02-09 17:47:25','2025-02-10 23:17:29'),(398,398,1,'2','1','10',0,2,'29','N','2025-02-09 17:51:05','2025-02-10 23:17:29'),(399,399,1,'2','1','10',0,1,'29','N','2025-02-09 17:53:42','2025-02-10 23:17:29'),(400,400,1,'2','1','10',0,1,'29','N','2025-02-09 17:54:41','2025-02-10 23:17:29'),(401,401,1,'2','1','10',0,1,'29','N','2025-02-09 17:59:32','2025-02-10 23:17:29'),(402,402,1,'2','1','10',0,1,'29','N','2025-02-09 18:20:48','2025-02-10 23:17:29'),(403,403,1,'2','1','10',0,1,'29','N','2025-02-09 19:33:42','2025-02-10 23:17:29'),(404,404,1,'2','1','10',0,1,'29','N','2025-02-09 19:36:30','2025-02-10 23:17:29'),(405,405,1,'2','1','10',0,1,'29','N','2025-02-09 19:55:22','2025-02-10 23:17:29'),(406,406,1,'2','1','10',0,1,'29','N','2025-02-09 19:57:52','2025-02-10 23:17:29'),(407,407,1,'2','1','10',0,1,'29','N','2025-02-09 20:10:30','2025-02-10 23:17:29'),(408,408,1,'2','1','9',0,0,'30','A','2025-02-10 19:17:42','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `correlativo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cuenta_corriente`
+--
+
+DROP TABLE IF EXISTS `cuenta_corriente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cuenta_corriente` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `rut` varchar(45) NOT NULL,
   `id_venta` int(11) NOT NULL,
   `estado` varchar(4) NOT NULL,
-  `fecha_registro` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+  `fecha_registro` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `giros`
+-- Dumping data for table `cuenta_corriente`
 --
 
+LOCK TABLES `cuenta_corriente` WRITE;
+/*!40000 ALTER TABLE `cuenta_corriente` DISABLE KEYS */;
+INSERT INTO `cuenta_corriente` VALUES (1,1,'18752880-1',1,'A','2024-12-04'),(2,1,'18752880-1',8,'A','2024-12-07'),(3,1,'4531159-7',11,'A','2024-12-14'),(4,1,'18752880-1',12,'A','2024-12-14'),(5,1,'4531159-7',275,'C','2025-01-26'),(6,1,'7367889-7',284,'C','2025-01-27'),(7,1,'4531159-7',360,'A','2025-02-08');
+/*!40000 ALTER TABLE `cuenta_corriente` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `diferencia_pago`
+--
+
+DROP TABLE IF EXISTS `diferencia_pago`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `diferencia_pago` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `id_cl` int(5) DEFAULT NULL,
+  `cambio_plan` varchar(5) DEFAULT NULL,
+  `cambio_periodo` varchar(5) DEFAULT NULL,
+  `estado` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `diferencia_pago`
+--
+
+LOCK TABLES `diferencia_pago` WRITE;
+/*!40000 ALTER TABLE `diferencia_pago` DISABLE KEYS */;
+/*!40000 ALTER TABLE `diferencia_pago` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `giros`
+--
+
+DROP TABLE IF EXISTS `giros`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `giros` (
   `id` int(11) NOT NULL,
   `nombre` varchar(200) DEFAULT NULL,
   `iva` int(11) DEFAULT NULL,
   `tributa` int(11) DEFAULT NULL,
-  `net` int(11) DEFAULT NULL
+  `net` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `giros`
+-- Dumping data for table `giros`
 --
 
-INSERT INTO `giros` (`id`, `nombre`, `iva`, `tributa`, `net`) VALUES
-(11111, 'CULTIVO DE TRIGO', 1, 1, 1),
-(11112, 'CULTIVO DE MAIZ', 1, 1, 1),
-(11113, 'CULTIVO DE AVENA', 1, 1, 1),
-(11114, 'CULTIVO DE ARROZ', 1, 1, 1),
-(11115, 'CULTIVO DE CEBADA', 1, 1, 1),
-(11119, 'CULTIVO DE OTROS CEREALES', 1, 1, 1),
-(11121, 'CULTIVO FORRAJEROS EN PRADERAS NATURALES', 1, 1, 1),
-(11122, 'CULTIVO FORRAJEROS EN PRADERAS MEJORADAS O SEMBRADAS', 1, 1, 1),
-(11131, 'CULTIVO DE POROTOS O FRIJOL', 1, 1, 1),
-(11132, 'CULTIVO, PRODUCCIÓN DE LUPINO', 1, 1, 1),
-(11139, 'CULTIVO DE OTRAS LEGUMBRES', 1, 1, 1),
-(11141, 'CULTIVO DE PAPAS', 1, 1, 1),
-(11142, 'CULTIVO DE CAMOTES O BATATAS', 1, 1, 1),
-(11149, 'CULTIVO DE OTROS TUBÉRCULOS N.C.P', 1, 1, 1),
-(11151, 'CULTIVO DE RAPS', 1, 1, 1),
-(11152, 'CULTIVO DE MARAVILLA', 1, 1, 1),
-(11159, 'CULTIVO DE OTRAS OLEAGINOSAS N.C.P.', 1, 1, 1),
-(11160, 'PRODUCCIÓN DE SEMILLAS DE CEREALES, LEGUMBRES, OLEAGINOSAS', 1, 1, 1),
-(11191, 'CULTIVO DE REMOLACHA', 1, 1, 1),
-(11192, 'CULTIVO DE TABACO', 1, 1, 1),
-(11193, 'CULTIVO DE FIBRAS VEGETALES INDUSTRIALES', 1, 1, 1),
-(11194, 'CULTIVO DE PLANTAS AROMÁTICAS O MEDICINALES', 1, 1, 1),
-(11199, 'OTROS CULTIVOS N.C.P.', 1, 1, 1),
-(11211, 'CULTIVO TRADICIONAL DE HORTALIZAS FRESCAS', 1, 1, 1),
-(11212, 'CULTIVO DE HORTALIZAS EN INVERNADEROS Y CULTIVOS HIDROPONICOS', 1, 1, 1),
-(11213, 'CULTIVO ORGÁNICO DE HORTALIZAS', 1, 1, 1),
-(11220, 'CULTIVO DE PLANTAS VIVAS Y PRODUCTOS DE LA FLORICULTURA', 1, 1, 1),
-(11230, 'PRODUCCIÓN DE SEMILLAS DE FLORES, PRADOS, FRUTAS Y HORTALIZAS', 1, 1, 1),
-(11240, 'PRODUCCIÓN EN VIVEROS; EXCEPTO ESPECIES FORESTALES', 1, 1, 1),
-(11250, 'CULTIVO Y RECOLECCIÓN DE HONGOS, TRUFAS Y SAVIA; PRODUCCIÓN DE JARABE DE ARCE DE AZÚCAR Y AZÚCAR', 1, 1, 1),
-(11311, 'CULTIVO DE UVA DESTINADA A PRODUCCIÓN DE PISCO Y AGUARDIENTE', 1, 1, 1),
-(11312, 'CULTIVO DE UVA DESTINADA A PRODUCCIÓN DE VINO', 1, 1, 1),
-(11313, 'CULTIVO DE UVA DE MESA', 1, 1, 1),
-(11321, 'CULTIVO DE FRUTALES EN ÁRBOLES O ARBUSTOS CON CICLO DE VIDA MAYOR A UNA TEMPORADA', 1, 1, 1),
-(11322, 'CULTIVO DE FRUTALES MENORES EN PLANTAS CON CICLO DE VIDA DE UNA TEMPORADA', 1, 1, 1),
-(11330, 'CULTIVO DE PLANTAS CUYAS HOJAS O FRUTAS SE UTILIZAN PARA PREPARAR BEBIDAS', 1, 1, 1),
-(11340, 'CULTIVO DE ESPECIAS', 1, 1, 1),
-(12111, 'CRÍA DE GANADO BOVINO PARA LA PRODUCCIÓN LECHERA', 1, 1, 1),
-(12112, 'CRÍA DE GANADO PARA PRODUCCIÓN DE CARNE, O COMO GANADO REPRODUCTOR', 1, 1, 1),
-(12120, 'CRÍA DE GANADO OVINO Y/O EXPLOTACIÓN LANERA', 1, 1, 1),
-(12130, 'CRÍA DE EQUINOS (CABALLARES, MULARES)', 1, 1, 1),
-(12210, 'CRÍA DE PORCINOS', 1, 1, 1),
-(12221, 'CRÍA DE AVES DE CORRAL PARA LA PRODUCCIÓN DE CARNE', 1, 1, 1),
-(12222, 'CRÍA DE AVES DE CORRAL PARA LA PRODUCCIÓN DE HUEVOS', 1, 1, 1),
-(12223, 'CRÍA DE AVES FINAS O NO TRADICIONALES', 1, 1, 1),
-(12230, 'CRÍA DE ANIMALES DOMÉSTICOS; PERROS Y GATOS', 1, 1, 1),
-(12240, 'APICULTURA', 1, 1, 1),
-(12250, 'RANICULTURA, HELICICULTURA U OTRA ACTIVIDAD CON ANIMALES MENORES O INSECTOS', 1, 1, 1),
-(12290, 'OTRAS EXPLOTACIONES DE ANIMALES NO CLASIFICADOS EN OTRA PARTE, INCLUIDO SUS SUBPRODUCTOS', 1, 1, 1),
-(13000, 'EXPLOTACIÓN MIXTA', 1, 1, 1),
-(14011, 'SERVICIO DE CORTE Y ENFARDADO DE FORRAJE', 1, 1, 1),
-(14012, 'SERVICIO DE RECOLECCIÓN, EMPACADO, TRILLA, DESCASCARAMIENTO Y DESGRANE; Y SIMILARES', 1, 1, 1),
-(14013, 'SERVICIO DE ROTURACIÓN SIEMBRA Y SIMILARES', 1, 1, 1),
-(14014, 'DESTRUCCIÓN DE PLAGAS; PULVERIZACIONES, FUMIGACIONES U OTRAS', 1, 1, 1),
-(14015, 'COSECHA, PODA, AMARRE Y LABORES DE ADECUACIÓN DE LA PLANTA U OTRAS', 1, 1, 1),
-(14019, 'OTROS SERVICIOS AGRÍCOLAS N.C.P.', 1, 1, 1),
-(14021, 'SERVICIOS DE ADIESTRAMIENTO, GUARDERÍA Y CUIDADOS DE MASCOTAS; EXCEPTO ACTIVIDADES VETERINARIAS', 1, 1, 1),
-(14022, 'SERVICIOS GANADEROS, EXCEPTO ACTIVIDADES VETERINARIAS', 1, 1, 1),
-(15010, 'CAZA DE MAMÍFEROS MARINOS; EXCEPTO BALLENAS', 1, 1, 1),
-(15090, 'CAZA ORDINARIA Y MEDIANTE TRAMPAS, Y ACTIVIDADES DE SERVICIOS CONEXAS', 1, 1, 1),
-(20010, 'EXPLOTACIÓN DE BOSQUES', 1, 1, 1),
-(20020, 'RECOLECCIÓN DE PRODUCTOS FORESTALES SILVESTRES', 1, 1, 1),
-(20030, 'EXPLOTACIÓN DE VIVEROS DE ESPECIES FORESTALES', 1, 1, 1),
-(20041, 'SERVICIOS DE FORESTACIÓN', 1, 1, 1),
-(20042, 'SERVICIOS DE CORTA DE MADERA', 1, 1, 1),
-(20043, 'SERVICIOS DE CONTROL DE INCENDIOS FORESTALES', 1, 1, 1),
-(20049, 'OTRAS ACTIVIDADES DE SERVICIOS CONEXAS A LA SILVICULTURA N.C.P.', 1, 1, 1),
-(51010, 'CULTIVO DE ESPECIES ACUÁTICAS EN CUERPO DE AGUA DULCE', 1, 1, 1),
-(51020, 'REPRODUCCIÓN Y CRIANZAS DE PECES MARINOS', 1, 1, 1),
-(51030, 'CULTIVO, REPRODUCCIÓN Y CRECIMIENTOS DE VEGETALES ACUÁTICOS', 1, 1, 1),
-(51040, 'REPRODUCCIÓN Y CRÍA DE MOLUSCOS Y CRUSTACEOS.', 1, 1, 1),
-(51090, 'SERVICIOS RELACIONADOS CON LA ACUICULTURA, NO INCLUYE SERVICIOS PROFESIONALES Y DE EXTRACCIÓN', 1, 1, 1),
-(52010, 'PESCA INDUSTRIAL', 1, 1, 1),
-(52020, 'ACTIVIDAD PESQUERA DE BARCOS FACTORÍAS', 1, 1, 1),
-(52030, 'PESCA ARTESANAL. EXTRACCIÓN DE RECURSOS ACUÁTICOS EN GENERAL; INCLUYE BALLENAS', 1, 1, 1),
-(52040, 'RECOLECCIÓN DE PRODUCTOS MARINOS, COMO PERLAS NATURALES, ESPONJAS, CORALES Y ALGAS.', 1, 1, 1),
-(52050, 'SERVICIOS RELACIONADOS CON LA PESCA, NO INCLUYE SERVICIOS PROFESIONALES', 1, 1, 1),
-(100000, 'EXTRACCIÓN, AGLOMERACIÓN DE CARBÓN DE PIEDRA, LIGNITO Y TURBA', 1, 1, 1),
-(111000, 'EXTRACCIÓN DE PETRÓLEO CRUDO Y GAS NATURAL', 1, 1, 1),
-(112000, 'ACTIVIDADES DE SERVICIOS RELACIONADAS CON LA EXTRACCIÓN DE PETRÓLEO Y GAS', 1, 1, 1),
-(120000, 'EXTRACCIÓN DE MINERALES DE URANIO Y TORIO', 1, 1, 1),
-(131000, 'EXTRACCIÓN DE MINERALES DE HIERRO', 1, 1, 1),
-(132010, 'EXTRACCIÓN DE ORO Y PLATA', 1, 1, 1),
-(132020, 'EXTRACCIÓN DE ZINC Y PLOMO', 1, 1, 1),
-(132030, 'EXTRACCIÓN DE MANGANESO', 1, 1, 1),
-(132090, 'EXTRACCIÓN DE OTROS MINERALES METALÍFEROS N.C.P.', 1, 1, 1),
-(133000, 'EXTRACCIÓN DE COBRE', 1, 1, 1),
-(141000, 'EXTRACCIÓN DE PIEDRA, ARENA Y ARCILLA', 1, 1, 1),
-(142100, 'EXTRACCIÓN DE NITRATOS Y YODO', 1, 1, 1),
-(142200, 'EXTRACCIÓN DE SAL', 1, 1, 1),
-(142300, 'EXTRACCIÓN DE LITIO Y CLORUROS, EXCEPTO SAL', 1, 1, 1),
-(142900, 'EXPLOTACIÓN DE OTRAS MINAS Y CANTERAS N.C.P.', 1, 1, 1),
-(151110, 'PRODUCCIÓN, PROCESAMIENTO DE CARNES ROJAS Y PRODUCTOS CÁRNICOS', 1, 1, 1),
-(151120, 'CONSERVACIÓN DE CARNES ROJAS (FRIGORÍFICOS)', 1, 1, 1),
-(151130, 'PRODUCCIÓN, PROCESAMIENTO Y CONSERVACIÓN DE CARNES DE AVE Y OTRAS CARNES DISTINTAS A LAS ROJAS', 1, 1, 1),
-(151140, 'ELABORACIÓN DE CECINAS, EMBUTIDOS Y CARNES EN CONSERVA.', 1, 1, 1),
-(151210, 'PRODUCCIÓN DE HARINA DE PESCADO', 1, 1, 1),
-(151221, 'FABRICACIÓN DE PRODUCTOS ENLATADOS DE PESCADO Y MARISCOS', 1, 1, 1),
-(151222, 'ELABORACIÓN DE CONGELADOS DE PESCADOS Y MARISCOS', 1, 1, 1),
-(151223, 'ELABORACIÓN DE PRODUCTOS AHUMADOS, SALADOS, DESHIDRATADOS Y OTROS PROCESOS SIMILARES', 1, 1, 1),
-(151230, 'ELABORACIÓN DE PRODUCTOS EN BASE A VEGETALES ACUÁTICOS', 1, 1, 1),
-(151300, 'ELABORACIÓN Y CONSERVACIÓN DE FRUTAS, LEGUMBRES Y HORTALIZAS', 1, 1, 1),
-(151410, 'ELABORACIÓN DE ACEITES Y GRASAS DE ORIGEN VEGETAL', 1, 1, 1),
-(151420, 'ELABORACIÓN DE ACEITES Y GRASAS DE ORIGEN ANIMAL, EXCEPTO LAS MANTEQUILLAS', 1, 1, 1),
-(151430, 'ELABORACIÓN DE ACEITES Y GRASAS DE ORIGEN MARINO', 1, 1, 1),
-(152010, 'ELABORACIÓN DE LECHE, MANTEQUILLA, PRODUCTOS LÁCTEOS Y DERIVADOS', 1, 1, 1),
-(152020, 'ELABORACIÓN DE QUESOS', 1, 1, 1),
-(152030, 'FABRICACIÓN DE POSTRES A BASE DE LECHE (HELADOS, SORBETES Y OTROS SIMILARES)', 1, 1, 1),
-(153110, 'ELABORACIÓN DE HARINAS DE TRIGO', 1, 1, 1),
-(153120, 'ACTIVIDADES DE MOLIENDA DE ARROZ', 1, 1, 1),
-(153190, 'ELABORACIÓN DE OTRAS MOLINERAS Y ALIMENTOS A BASE DE CEREALES', 1, 1, 1),
-(153210, 'ELABORACIÓN DE ALMIDONES Y PRODUCTOS DERIVADOS DEL ALMIDÓN', 1, 1, 1),
-(153220, 'ELABORACIÓN DE GLUCOSA Y OTROS AZÚCARES DIFERENTES DE LA REMOLACHA', 1, 1, 1),
-(153300, 'ELABORACIÓN DE ALIMENTOS PREPARADOS PARA ANIMALES', 1, 1, 1),
-(154110, 'FABRICACIÓN DE PAN, PRODUCTOS DE PANADERÍA Y PASTELERÍA', 1, 1, 1),
-(154120, 'FABRICACIÓN DE GALLETAS', 1, 1, 1),
-(154200, 'ELABORACIÓN DE AZÚCAR DE REMOLACHA O CANA', 1, 1, 1),
-(154310, 'ELABORACIÓN DE CACAO Y CHOCOLATES', 1, 1, 1),
-(154320, 'FABRICACIÓN DE PRODUCTOS DE CONFITERÍA', 1, 1, 1),
-(154400, 'ELABORACIÓN DE MACARRONES, FIDEOS, ALCUZCUZ Y PRODUCTOS FARINACEOS SIMILARES', 1, 1, 1),
-(154910, 'ELABORACIÓN DE TE, CAFÉ, INFUSIONES', 1, 1, 1),
-(154920, 'ELABORACIÓN DE LEVADURAS NATURALES O ARTIFICIALES', 1, 1, 1),
-(154930, 'ELABORACIÓN DE VINAGRES, MOSTAZAS, MAYONESAS Y CONDIMENTOS EN GENERAL', 1, 1, 1),
-(154990, 'ELABORACIÓN DE OTROS PRODUCTOS ALIMENTICIOS NO CLASIFICADOS EN OTRA PARTE', 1, 1, 1),
-(155110, 'ELABORACIÓN DE PISCOS (INDUSTRIAS PISQUERAS)', 1, 1, 1),
-(155120, 'ELABORACIÓN DE BEBIDAS ALCOHÓLICAS Y DE ALCOHOL ETÍLICO A PARTIR DE SUSTANCIAS FERMENTADAS Y OTROS', 1, 1, 1),
-(155200, 'ELABORACIÓN DE VINOS', 1, 1, 1),
-(155300, 'ELABORACIÓN DE BEBIDAS MALTEADAS, CERVEZAS Y MALTAS', 1, 1, 1),
-(155410, 'ELABORACIÓN DE BEBIDAS NO ALCOHÓLICAS', 1, 1, 1),
-(155420, 'ENVASADO DE AGUA MINERAL NATURAL, DE MANANTIAL Y POTABLE PREPARADA', 1, 1, 1),
-(155430, 'ELABORACIÓN DE HIELO', 1, 1, 1),
-(160010, 'FABRICACIÓN DE CIGARROS Y CIGARRILLOS', 1, 1, 1),
-(160090, 'FABRICACIÓN DE OTROS PRODUCTOS DEL TABACO', 1, 1, 1),
-(171100, 'PREPARACIÓN DE HILATURA DE FIBRAS TEXTILES; TEJEDURA PROD. TEXTILES', 1, 1, 1),
-(171200, 'ACABADO DE PRODUCTOS TEXTIL', 1, 1, 1),
-(172100, 'FABRICACIÓN DE ARTÍCULOS CONFECCIONADOS DE MATERIAS TEXTILES, EXCEPTO PRENDAS DE VESTIR', 1, 1, 1),
-(172200, 'FABRICACIÓN DE TAPICES Y ALFOMBRA', 1, 1, 1),
-(172300, 'FABRICACIÓN DE CUERDAS, CORDELES, BRAMANTES Y REDES', 1, 1, 1),
-(172910, 'FABRICACIÓN DE TEJIDOS DE USO INDUSTRIAL COMO TEJIDOS IMPREGNADOS, MOLTOPRENE, BATISTA, ETC.', 1, 1, 1),
-(172990, 'FABRICACIÓN DE OTROS PRODUCTOS TEXTILES N.C.P.', 1, 1, 1),
-(173000, 'FABRICACIÓN DE TEJIDOS DE PUNTO', 1, 1, 1),
-(181010, 'FABRICACIÓN DE PRENDAS DE VESTIR TEXTILES Y SIMILARES', 1, 1, 1),
-(181020, 'FABRICACIÓN DE PRENDAS DE VESTIR DE CUERO NATURAL, ARTIFICIAL, PLÁSTICO', 1, 1, 1),
-(181030, 'FABRICACIÓN DE ACCESORIOS DE VESTIR', 1, 1, 1),
-(181040, 'FABRICACIÓN DE ROPA DE TRABAJO', 1, 1, 1),
-(182000, 'ADOBO Y TENIDOS DE PIELES; FABRICACIÓN DE ARTÍCULOS DE PIEL', 1, 1, 1),
-(191100, 'CURTIDO Y ADOBO DE CUEROS', 1, 1, 1),
-(191200, 'FABRICACIÓN DE MALETAS, BOLSOS DE MANO Y SIMILARES; ARTÍCULOS DE TALABARTERÍA Y GUARNICIONERÍA', 1, 1, 1),
-(192000, 'FABRICACIÓN DE CALZADO', 1, 1, 1),
-(201000, 'ASERRADO Y ACEPILLADURA DE MADERAS', 1, 1, 1),
-(202100, 'FABRICACIÓN DE TABLEROS, PANELES Y HOJAS DE MADERA PARA ENCHAPADO', 1, 1, 1),
-(202200, 'FABRICACIÓN DE PARTES Y PIEZAS DE CARPINTERÍA PARA EDIFICIOS Y CONSTRUCCIONES', 1, 1, 1),
-(202300, 'FABRICACIÓN DE RECIPIENTES DE MADERA', 1, 1, 1),
-(202900, 'FABRICACIÓN DE OTROS PRODUCTOS DE MADERA; ARTÍCULOS DE CORCHO, PAJA Y MATERIALES TRENZABLES', 1, 1, 1),
-(210110, 'FABRICACIÓN DE CELULOSA Y OTRAS PASTAS DE MADERA', 1, 1, 1),
-(210121, 'FABRICACIÓN DE PAPEL DE PERIÓDICO', 1, 1, 1),
-(210129, 'FABRICACIÓN DE PAPEL Y CARTÓN N.C.P.', 1, 1, 1),
-(210200, 'FABRICACIÓN DE PAPEL Y CARTÓN ONDULADO Y DE ENVASES DE PAPEL Y CARTÓN', 1, 1, 1),
-(210900, 'FABRICACIÓN DE OTROS ARTÍCULOS DE PAPEL Y CARTÓN', 1, 1, 1),
-(221101, 'EDICIÓN PRINCIPALMENTE DE LIBROS', 1, 1, 1),
-(221109, 'EDICIÓN DE FOLLETOS, PARTITURAS Y OTRAS PUBLICACIONES', 1, 1, 1),
-(221200, 'EDICIÓN DE PERIÓDICOS, REVISTAS Y PUBLICACIONES PERIÓDICAS', 1, 1, 1),
-(221300, 'EDICIÓN DE GRABACIONES', 1, 1, 1),
-(221900, 'OTRAS ACTIVIDADES DE EDICIÓN', 1, 1, 1),
-(222101, 'IMPRESIÓN PRINCIPALMENTE DE LIBROS', 1, 1, 1),
-(222109, 'OTRAS ACTIVIDADES DE IMPRESIÓN N.C.P.', 1, 1, 1),
-(222200, 'ACTIVIDADES DE SERVICIO RELACIONADA CON LA IMPRESIÓN', 1, 1, 1),
-(223000, 'REPRODUCCIÓN DE GRABACIONES', 1, 1, 1),
-(231000, 'FABRICACIÓN DE PRODUCTOS DE HORNOS COQUE', 1, 1, 1),
-(232000, 'FABRICACIÓN DE PRODUCTOS DE REFINACIÓN DE PETRÓLEO', 1, 1, 1),
-(233000, 'ELABORACIÓN DE COMBUSTIBLE NUCLEAR', 1, 1, 1),
-(241110, 'FABRICACIÓN DE CARBÓN VEGETAL, Y BRIQUETAS DE CARBÓN VEGETAL', 1, 1, 1),
-(241190, 'FABRICACIÓN DE SUSTANCIAS QUÍMICAS BÁSICAS, EXCEPTO ABONOS Y COMPUESTOS DE NITRÓGENO', 1, 1, 1),
-(241200, 'FABRICACIÓN DE ABONOS Y COMPUESTOS DE NITRÓGENO', 1, 1, 1),
-(241300, 'FABRICACIÓN DE PLÁSTICOS EN FORMAS PRIMARIAS Y DE CAUCHO SINTÉTICO', 1, 1, 1),
-(242100, 'FABRICACIÓN DE PLAGUICIDAS Y OTROS PRODUCTOS QUÍMICOS DE USO AGROPECUARIO', 1, 1, 1),
-(242200, 'FABRICACIÓN DE PINTURAS, BARNICES Y PRODUCTOS DE REVESTIMIENTO SIMILARES', 1, 1, 1),
-(242300, 'FABRICACIÓN DE PRODUCTOS FARMACEUTICOS, SUSTANCIAS QUÍMICAS MEDICINALES Y PRODUCTOS BOTÁNICOS', 1, 1, 1),
-(242400, 'FABRICACIONES DE JABONES Y DETERGENTES, PREPARADOS PARA LIMPIAR, PERFUMES Y PREPARADOS DE TOCADOR', 1, 1, 1),
-(242910, 'FABRICACIÓN DE EXPLOSIVOS Y PRODUCTOS DE PIROTECNIA', 1, 1, 1),
-(242990, 'FABRICACIÓN DE OTROS PRODUCTOS QUÍMICOS N.C.P.', 1, 1, 1),
-(243000, 'FABRICACIÓN DE FIBRAS MANUFACTURADAS', 1, 1, 1),
-(251110, 'FABRICACIÓN DE CUBIERTAS Y CÁMARAS DE CAUCHO', 1, 1, 1),
-(251120, 'RECAUCHADO Y RENOVACIÓN DE CUBIERTAS DE CAUCHO', 1, 1, 1),
-(251900, 'FABRICACIÓN DE OTROS PRODUCTOS DE CAUCHO', 1, 1, 1),
-(252010, 'FABRICACIÓN DE PLANCHAS, LÁMINAS, CINTAS, TIRAS DE PLÁSTICO', 1, 1, 1),
-(252020, 'FABRICACIÓN DE TUBOS, MANGUERAS PARA LA CONSTRUCCIÓN', 1, 1, 1),
-(252090, 'FABRICACIÓN DE OTROS ARTÍCULOS DE PLÁSTICO', 1, 1, 1),
-(261010, 'FABRICACIÓN, MANIPULADO Y TRANSFORMACIÓN DE VIDRIO PLANO', 1, 1, 1),
-(261020, 'FABRICACIÓN DE VIDRIO HUECO', 1, 1, 1),
-(261030, 'FABRICACIÓN DE FIBRAS DE VIDRIO', 1, 1, 1),
-(261090, 'FABRICACIÓN DE ARTÍCULOS DE VIDRIO N.C.P.', 1, 1, 1),
-(269101, 'FABRICACIÓN DE PRODUCTOS DE CERÁMICA NO REFRACTARIA PARA USO NO ESTRUCTURAL CON FINES ORNAMENTALES', 1, 1, 1),
-(269109, 'FABRICACIÓN DE PRODUCTOS DE CERÁMICA NO REFRACTARIA PARA USO NO ESTRUCTURAL N.C.P.', 1, 1, 1),
-(269200, 'FABRICACIÓN DE PRODUCTOS DE CERÁMICAS REFRACTARIA', 1, 1, 1),
-(269300, 'FABRICACIÓN DE PRODUCTOS DE ARCILLA Y CERÁMICAS NO REFRACTARIAS PARA USO ESTRUCTURAL', 1, 1, 1),
-(269400, 'FABRICACIÓN DE CEMENTO, CAL Y YESO', 1, 1, 1),
-(269510, 'ELABORACIÓN DE HORMIGÓN, ARTÍCULOS DE HORMIGÓN Y MORTERO (MEZCLA PARA CONSTRUCCIÓN)', 1, 1, 1),
-(269520, 'FABRICACIÓN DE PRODUCTOS DE FIBROCEMENTO Y ASBESTOCEMENTO', 1, 1, 1),
-(269530, 'FABRICACIÓN DE PANELES DE YESO PARA LA CONSTRUCCIÓN', 1, 1, 1),
-(269590, 'FABRICACIÓN DE ARTÍCULOS DE CEMENTO Y YESO N.C.P.', 1, 1, 1),
-(269600, 'CORTE, TALLADO Y ACABADO DE LA PIEDRA', 1, 1, 1),
-(269910, 'FABRICACIÓN DE MEZCLAS BITUMINOSAS A BASE DE ASFALTO, DE BETUNES NATURALES, Y PRODUCTOS SIMILARES', 1, 1, 1),
-(269990, 'FABRICACIÓN DE OTROS PRODUCTOS MINERALES NO METÁLICOS N.C.P', 1, 1, 1),
-(271000, 'INDUSTRIAS BASICAS DE HIERRO Y ACERO', 1, 1, 1),
-(272010, 'ELABORACIÓN DE PRODUCTOS DE COBRE EN FORMAS PRIMARIAS.', 1, 1, 1),
-(272020, 'ELABORACIÓN DE PRODUCTOS DE ALUMINIO EN FORMAS PRIMARIAS', 1, 1, 1),
-(272090, 'FABRICACIÓN DE PRODUCTOS PRIMARIOS DE METALES PRECIOSOS Y DE OTROS METALES NO FERROSOS N.C.P.', 1, 1, 1),
-(273100, 'FUNDICIÓN DE HIERRO Y ACERO', 1, 1, 1),
-(273200, 'FUNDICIÓN DE METALES NO FERROSOS', 1, 1, 1),
-(281100, 'FABRICACIÓN DE PRODUCTOS METÁLICOS DE USO ESTRUCTURAL', 1, 1, 1),
-(281211, 'FABRICACIÓN DE RECIPIENTES DE GAS COMPRIMIDO O LICUADO', 1, 1, 1),
-(281219, 'FABRICACIÓN DE TANQUES, DEPÓSITOS Y RECIPIENTES DE METAL N.C.P.', 1, 1, 1),
-(281280, 'REPARACIÓN DE TANQUES, DEPÓSITOS Y RECIPIENTES DE METAL', 1, 1, 1),
-(281310, 'FABRICACIÓN DE GENERADORES DE VAPOR, EXCEPTO CALDERAS DE AGUA CALIENTE PARA CALEFACCIÓN', 1, 1, 1),
-(281380, 'REPARACIÓN DE GENERADORES DE VAPOR, EXCEPTO CALDERAS DE AGUA CALIENTE PARA CALEFACCIÓN CENTRAL', 1, 1, 1),
-(289100, 'FORJA, PRENSADO, ESTAMPADO Y LAMINADO DE METAL; INCLUYE PULVIMETALURGIA', 1, 1, 1),
-(289200, 'TRATAMIENTOS Y REVESTIMIENTOS DE METALES; OBRAS DE INGENIERÍA MECÁNICA EN GENERAL', 1, 1, 1),
-(289310, 'FABRICACIÓN DE ARTÍCULOS DE CUCHILLERÍA', 1, 1, 1),
-(289320, 'FABRICACIÓN DE HERRAMIENTAS DE MANO Y ARTÍCULOS DE FERRETERÍA', 1, 1, 1),
-(289910, 'FABRICACIÓN DE CABLES, ALAMBRES Y PRODUCTOS DE ALAMBRE', 1, 1, 1),
-(289990, 'FABRICACIÓN DE OTROS PRODUCTOS ELABORADOS DE METAL N.C.P.', 1, 1, 1),
-(291110, 'FABRICACIÓN DE MOTORES Y TURBINAS, EXCEPTO PARA AERONAVES, VEHÍCULOS AUTOMOTORES Y MOTOCICLETAS', 1, 1, 1),
-(291180, 'REPARACIÓN DE MOTORES Y TURBINAS, EXCEPTO PARA AERONAVES, VEHÍCULOS AUTOMOTORES Y MOTOCICLETAS', 1, 1, 1),
-(291210, 'FABRICACIÓN DE BOMBAS, GRIFOS, VÁLVULAS, COMPRESORES, SISTEMAS HIDRÁULICOS', 1, 1, 1),
-(291280, 'REPARACIÓN DE BOMBAS, COMPRESORES, SISTEMAS HIDRÁULICOS, VÁLVULAS Y ARTÍCULOS DE GRIFERÍA', 1, 1, 1),
-(291310, 'FABRICACIÓN DE COJINETES, ENGRANAJES, TRENES DE ENGRANAJES Y PIEZAS DE TRANSMISIÓN', 1, 1, 1),
-(291380, 'REPARACIÓN DE COJINETES, ENGRANAJES, TRENES DE ENGRANAJES Y PIEZAS DE TRANSMISIÓN', 1, 1, 1),
-(291410, 'FABRICACIÓN DE HORNOS, HOGARES Y QUEMADORES', 1, 1, 1),
-(291480, 'REPARACIÓN DE HORNOS, HOGARES Y QUEMADORES', 1, 1, 1),
-(291510, 'FABRICACIÓN DE EQUIPO DE ELEVACIÓN Y MANIPULACIÓN', 1, 1, 1),
-(291580, 'REPARACIÓN DE EQUIPO DE ELEVACIÓN Y MANIPULACIÓN', 1, 1, 1),
-(291910, 'FABRICACIÓN DE OTRO TIPO DE MAQUINARIAS DE USO GENERAL', 1, 1, 1),
-(291980, 'REPARACIÓN OTROS TIPOS DE MAQUINARIA Y EQUIPOS DE USO GENERAL', 1, 1, 1),
-(292110, 'FABRICACIÓN DE MAQUINARIA AGROPECUARIA Y FORESTAL', 1, 1, 1),
-(292180, 'REPARACIÓN DE MAQUINARIA AGROPECUARIA Y FORESTAL', 1, 1, 1),
-(292210, 'FABRICACIÓN DE MÁQUINAS HERRAMIENTAS', 1, 1, 1),
-(292280, 'REPARACIÓN DE MÁQUINAS HERRAMIENTAS', 1, 1, 1),
-(292310, 'FABRICACIÓN DE MAQUINARIA METALÚRGICA', 1, 1, 1),
-(292380, 'REPARACIÓN DE MAQUINARIA PARA LA INDUSTRIA METALÚRGICA', 1, 1, 1),
-(292411, 'FABRICACIÓN DE MAQUINARIA PARA MINAS Y CANTERAS Y PARA OBRAS DE CONSTRUCCIÓN', 1, 1, 1),
-(292412, 'FABRICACIÓN DE PARTES PARA MÁQUINAS DE SONDEO O PERFORACIÓN', 1, 1, 1),
-(292480, 'REPARACIÓN DE MAQUINARIA PARA LA EXPLOTACIÓN DE PETRÓLEO, MINAS, CANTERAS, Y OBRAS DE CONSTRUCCIÓN', 1, 1, 1),
-(292510, 'FABRICACIÓN DE MAQUINARIA PARA LA ELABORACIÓN DE ALIMENTOS, BEBIDAS Y TABACOS', 1, 1, 1),
-(292580, 'REPARACIÓN DE MAQUINARIA PARA LA ELABORACIÓN DE ALIMENTOS, BEBIDAS Y TABACOS', 1, 1, 1),
-(292610, 'FABRICACIÓN DE MAQUINARIA PARA LA ELABORACIÓN DE PRENDAS TEXTILES, PRENDAS DE VESTIR Y CUEROS', 1, 1, 1),
-(292680, 'REPARACIÓN DE MAQUINARIA PARA LA INDUSTRIA TEXTIL, DE LA CONFECCIÓN, DEL CUERO Y DEL CALZADO', 1, 1, 1),
-(292710, 'FABRICACIÓN DE ARMAS Y MUNICIONES', 1, 1, 1),
-(292780, 'REPARACIÓN DE ARMAS', 1, 1, 1),
-(292910, 'FABRICACIÓN DE OTROS TIPOS DE MAQUINARIAS DE USO ESPECIAL', 1, 1, 1),
-(292980, 'REPARACIÓN DE OTROS TIPOS DE MAQUINARIA DE USO ESPECIAL', 1, 1, 1),
-(293000, 'FABRICACIÓN DE APARATOS DE USO DOMÉSTICO N.C.P.', 1, 1, 1),
-(300010, 'FABRICACIÓN Y ARMADO DE COMPUTADORES Y HARDWARE EN GENERAL', 1, 1, 1),
-(300020, 'FABRICACIÓN DE MAQUINARIA DE OFICINA, CONTABILIDAD, N.C.P.', 1, 1, 1),
-(311010, 'FABRICACIÓN DE MOTORES, GENERADORES Y TRANSFORMADORES ELÉCTRICOS', 1, 1, 1),
-(311080, 'REPARACIÓN DE MOTORES, GENERADORES Y TRANSFORMADORES ELÉCTRICOS', 1, 1, 1),
-(312010, 'FABRICACIÓN DE APARATOS DE DISTRIBUCIÓN Y CONTROL', 1, 1, 1),
-(312080, 'REPARACIÓN DE APARATOS DE DISTRIBUCIÓN Y CONTROL', 1, 1, 1),
-(313000, 'FABRICACIÓN DE HILOS Y CABLES AISLADOS', 1, 1, 1),
-(314000, 'FABRICACIÓN DE ACUMULADORES DE PILAS Y BATERÍAS PRIMARIAS', 1, 1, 1),
-(315010, 'FABRICACIÓN DE LÁMPARAS Y EQUIPO DE ILUMINACIÓN', 1, 1, 1),
-(315080, 'REPARACIÓN DE EQUIPO DE ILUMINACIÓN', 1, 1, 1),
-(319010, 'FABRICACIÓN DE OTROS TIPOS DE EQUIPO ELÉCTRICO N.C.P.', 1, 1, 1),
-(319080, 'REPARACIÓN DE OTROS TIPOS DE EQUIPO ELÉCTRICO N.C.P.', 1, 1, 1),
-(321010, 'FABRICACIÓN DE COMPONENTES ELECTRÓNICOS', 1, 1, 1),
-(321080, 'REPARACIÓN DE COMPONENTES ELECTRÓNICOS', 1, 1, 1),
-(322010, 'FABRICACIÓN DE TRANSMISORES DE RADIO Y TELEVISIÓN, APARATOS PARA TELEFONÍA Y TELEGRAFÍA CON HILOS', 1, 1, 1),
-(322080, 'REPARACIÓN DE TRANSMISORES DE RADIO Y TELEVISIÓN, APARATOS PARA TELEFONÍA Y TELEGRAFÍA CON HILOS', 1, 1, 1),
-(323000, 'FABRICACIÓN DE RECEPTORES (RADIO Y TV); APARATOS DE GRABACIÓN Y REPRODUCCIÓN (AUDIO Y VIDEO)', 1, 1, 1),
-(331110, 'FABRICACIÓN DE EQUIPO MÉDICO Y QUIRÚRGICO, Y DE APARATOS ORTOPÉDICOS', 1, 1, 1),
-(331120, 'LABORATORIOS DENTALES', 1, 1, 1),
-(331180, 'REPARACIÓN DE EQUIPO MÉDICO Y QUIRÚRGICO, Y DE APARATOS ORTOPÉDICOS', 1, 1, 1),
-(331210, 'FABRICACIÓN DE INSTRUMENTOS Y APARATOS PARA MEDIR, VERIFICAR, ENSAYAR, NAVEGAR Y OTROS FINES', 1, 1, 1),
-(331280, 'REPARACIÓN DE INSTRUMENTOS Y APARATOS PARA MEDIR, VERIFICAR, ENSAYAR, NAVEGAR Y OTROS FINES', 1, 1, 1),
-(331310, 'FABRICACIÓN DE EQUIPOS DE CONTROL DE PROCESOS INDUSTRIALES', 1, 1, 1),
-(331380, 'REPARACIÓN DE EQUIPOS DE CONTROL DE PROCESOS INDUSTRIALES', 1, 1, 1),
-(332010, 'FABRICACIÓN Y/O REPARACIÓN DE LENTES Y ARTÍCULOS OFTALMOLÓGICOS', 1, 1, 1),
-(332020, 'FABRICACIÓN DE INSTRUMENTOS DE OPTICA N.C.P. Y EQUIPOS FOTOGRÁFICOS', 1, 1, 1),
-(332080, 'REPARACIÓN DE INSTRUMENTOS DE OPTICA N.C.P Y EQUIPO FOTOGRÁFICOS', 1, 1, 1),
-(333000, 'FABRICACIÓN DE RELOJES', 1, 1, 1),
-(341000, 'FABRICACIÓN DE VEHÍCULOS AUTOMOTORES', 1, 1, 1),
-(342000, 'FABRICACIÓN DE CARROCERÍAS PARA VEHÍCULOS AUTOMOTORES; FABRICACIÓN DE REMOLQUES Y SEMI REMOLQUES', 1, 1, 1),
-(343000, 'FABRICACIÓN DE PARTES Y ACCESORIOS PARA VEHÍCULOS AUTOMOTORES Y SUS MOTORES', 1, 1, 1),
-(351110, 'CONSTRUCCIÓN Y REPARACIÓN DE BUQUES; ASTILLEROS', 1, 1, 1),
-(351120, 'CONSTRUCCIÓN DE EMBARCACIONES MENORES', 1, 1, 1),
-(351180, 'REPARACIÓN DE EMBARCACIONES MENORES', 1, 1, 1),
-(351210, 'CONSTRUCCIÓN DE EMBARCACIONES DE RECREO Y DEPORTE', 1, 1, 1),
-(351280, 'REPARACIÓN DE EMBARCACIONES DE RECREO Y DEPORTES', 1, 1, 1),
-(352000, 'FABRICACIÓN DE LOCOMOTORAS Y DE MATERIAL RODANTE PARA FERROCARRILES Y TRANVÍAS', 1, 1, 1),
-(353010, 'FABRICACIÓN DE AERONAVES Y NAVES ESPACIALES', 1, 1, 1),
-(353080, 'REPARACIÓN DE AERONAVES Y NAVES ESPACIALES', 1, 1, 1),
-(359100, 'FABRICACIÓN DE MOTOCICLETAS', 1, 1, 1),
-(359200, 'FABRICACIÓN DE BICICLETAS Y DE SILLONES DE RUEDAS PARA INVALIDOS', 1, 1, 1),
-(359900, 'FABRICACIÓN DE OTROS EQUIPOS DE TRANSPORTE N.C.P.', 1, 1, 1),
-(361010, 'FABRICACIÓN DE MUEBLES PRINCIPALMENTE DE MADERA', 1, 1, 1),
-(361020, 'FABRICACIÓN DE OTROS MUEBLES N.C.P., INCLUSO COLCHONES', 1, 1, 1),
-(369100, 'FABRICACIÓN DE JOYAS Y PRODUCTOS CONEXOS', 1, 1, 1),
-(369200, 'FABRICACIÓN DE INSTRUMENTOS DE MÚSICA', 1, 1, 1),
-(369300, 'FABRICACIÓN DE ARTÍCULOS DE DEPORTE', 1, 1, 1),
-(369400, 'FABRICACIÓN DE JUEGOS Y JUGUETES', 1, 1, 1),
-(369910, 'FABRICACIÓN DE PLUMAS Y LÁPICES DE TODA CLASE Y ARTÍCULOS DE ESCRITORIO EN GENERAL', 1, 1, 1),
-(369920, 'FABRICACIÓN DE BROCHAS, ESCOBAS Y CEPILLOS', 1, 1, 1),
-(369930, 'FABRICACIÓN DE FÓSFOROS', 1, 1, 1),
-(369990, 'FABRICACIÓN DE ARTÍCULOS DE OTRAS INDUSTRIAS N.C.P.', 1, 1, 1),
-(371000, 'RECICLAMIENTO DE DESPERDICIOS Y DESECHOS METÁLICOS', 1, 1, 1),
-(372010, 'RECICLAMIENTO DE PAPEL', 1, 1, 1),
-(372020, 'RECICLAMIENTO DE VIDRIO', 1, 1, 1),
-(372090, 'RECICLAMIENTO DE OTROS DESPERDICIOS Y DESECHOS N.C.P.', 1, 1, 1),
-(401011, 'GENERACIÓN HIDROELÉCTRICA', 1, 1, 1),
-(401012, 'GENERACIÓN EN CENTRALES TERMOELÉCTRICA DE CICLOS COMBINADOS', 1, 1, 1),
-(401013, 'GENERACIÓN EN OTRAS CENTRALES TERMOELÉCTRICAS', 1, 1, 1),
-(401019, 'GENERACIÓN EN OTRAS CENTRALES N.C.P.', 1, 1, 1),
-(401020, 'TRANSMISIÓN DE ENERGÍA ELÉCTRICA', 1, 1, 1),
-(401030, 'DISTRIBUCIÓN DE ENERGIA ELÉCTRICA', 1, 1, 1),
-(402000, 'FABRICACIÓN DE GAS; DISTRIBUCIÓN DE COMBUSTIBLES GASEOSOS POR TUBERÍAS', 1, 1, 1),
-(403000, 'SUMINISTRO DE VAPOR Y AGUA CALIENTE', 1, 1, 1),
-(410000, 'CAPTACIÓN, DEPURACIÓN Y DISTRIBUCIÓN DE AGUA', NULL, 1, 1),
-(451010, 'PREPARACIÓN DEL TERRENO, EXCAVACIONES Y MOVIMIENTOS DE TIERRAS', 1, 1, 1),
-(451020, 'SERVICIOS DE DEMOLICIÓN Y EL DERRIBO DE EDIFICIOS Y OTRAS ESTRUCTURAS', 1, 1, 1),
-(452010, 'CONSTRUCCIÓN DE EDIFICIOS COMPLETOS O DE PARTES DE EDIFICIOS', 1, 1, 1),
-(452020, 'OBRAS DE INGENIERÍA', 1, 1, 1),
-(453000, 'ACONDICIONAMIENTO DE EDIFICIOS', 1, 1, 1),
-(454000, 'OBRAS MENORES EN CONSTRUCCIÓN (CONTRATISTAS, ALBANILES, CARPINTEROS)', 1, 1, 1),
-(455000, 'ALQUILER DE EQUIPO DE CONSTRUCCIÓN O DEMOLICIÓN DOTADO DE OPERARIOS', 1, 1, 1),
-(501010, 'VENTA AL POR MAYOR DE VEHÍCULOS AUTOMOTORES (IMPORTACIÓN, DISTRIBUCIÓN) EXCEPTO MOTOCICLETAS', 1, 1, 1),
-(501020, 'VENTA O COMPRAVENTA AL POR MENOR DE VEHÍCULOS AUTOMOTORES NUEVOS O USADOS; EXCEPTO MOTOCICLETAS', 1, 1, 1),
-(502010, 'SERVICIO DE LAVADO DE VEHÍCULOS AUTOMOTORES', NULL, 1, 1),
-(502020, 'SERVICIOS DE REMOLQUE DE VEHÍCULOS (GRUAS)', 1, 1, 1),
-(502080, 'MANTENIMIENTO Y REPARACIÓN DE VEHÍCULOS AUTOMOTORES', NULL, 1, 1),
-(503000, 'VENTA DE PARTES, PIEZAS Y ACCESORIOS DE VEHÍCULOS AUTOMOTORES', 1, 1, 1),
-(504010, 'VENTA DE MOTOCICLETAS', 1, 1, 1),
-(504020, 'VENTA DE PIEZAS Y ACCESORIOS DE MOTOCICLETAS', 1, 1, 1),
-(504080, 'REPARACIÓN DE MOTOCICLETAS', NULL, 1, 1),
-(505000, 'VENTA AL POR MENOR DE COMBUSTIBLE PARA AUTOMOTORES', 1, 1, 1),
-(511010, 'CORRETAJE DE PRODUCTOS AGRÍCOLAS', 1, 1, 1),
-(511020, 'CORRETAJE DE GANADO (FERIAS DE GANADO)', 1, 1, 1),
-(511030, 'OTROS TIPOS DE CORRETAJES O REMATES N.C.P. (NO INCLUYE SERVICIOS DE MARTILLERO)', 1, 1, 1),
-(512110, 'VENTA AL POR MAYOR DE ANIMALES VIVOS', 1, 1, 1),
-(512120, 'VENTA AL POR MAYOR DE PRODUCTOS PECUARIOS (LANAS, PIELES, CUEROS SIN PROCESAR); EXCEPTO ALIMENTOS', 1, 1, 1),
-(512130, 'VENTA AL POR MAYOR DE MATERIAS PRIMAS AGRÍCOLAS', 1, 1, 1),
-(512210, 'MAYORISTA DE FRUTAS Y VERDURAS', 1, 1, 1),
-(512220, 'MAYORISTAS DE CARNES', 1, 1, 1),
-(512230, 'MAYORISTAS DE PRODUCTOS DEL MAR (PESCADO, MARISCOS, ALGAS)', 1, 1, 1),
-(512240, 'MAYORISTAS DE VINOS Y BEBIDAS ALCOHÓLICAS Y DE FANTASÍA', 1, 1, 1),
-(512250, 'VENTA AL POR MAYOR DE CONFITES', 1, 1, 1),
-(512260, 'VENTA AL POR MAYOR DE TABACO Y PRODUCTOS DERIVADOS', 1, 1, 1),
-(512290, 'VENTA AL POR MAYOR DE HUEVOS, LECHE, ABARROTES, Y OTROS ALIMENTOS N.C.P.', 1, 1, 1),
-(513100, 'VENTA AL POR MAYOR DE PRODUCTOS TEXTILES, PRENDAS DE VESTIR Y CALZADO', 1, 1, 1),
-(513910, 'VENTA AL POR MAYOR DE MUEBLES', 1, 1, 1),
-(513920, 'VENTA AL POR MAYOR DE ARTÍCULOS ELÉCTRICOS Y ELECTRÓNICOS PARA EL HOGAR', 1, 1, 1),
-(513930, 'VENTA AL POR MAYOR DE ARTÍCULOS DE PERFUMERÍA, COSMÉTICOS, JABONES Y PRODUCTOS DE LIMPIEZA', 1, 1, 1),
-(513940, 'VENTA AL POR MAYOR DE PAPEL Y CARTÓN', 1, 1, 1),
-(513951, 'VENTA AL POR MAYOR DE LIBROS', 1, 1, 1),
-(513952, 'VENTA AL POR MAYOR DE REVISTAS Y PERIÓDICOS', 1, 1, 1),
-(513960, 'VENTA AL POR MAYOR DE PRODUCTOS FARMACEUTICOS', 1, 1, 1),
-(513970, 'VENTA AL POR MAYOR DE INSTRUMENTOS CIENTÍFICOS Y QUIRÚRGICOS', 1, 1, 1),
-(513990, 'VENTA AL POR MAYOR DE OTROS ENSERES DOMÉSTICOS N.C.P.', 1, 1, 1),
-(514110, 'VENTA AL POR MAYOR DE COMBUSTIBLES LÍQUIDOS', 1, 1, 1),
-(514120, 'VENTA AL POR MAYOR DE COMBUSTIBLES SÓLIDOS', 1, 1, 1),
-(514130, 'VENTA AL POR MAYOR DE COMBUSTIBLES GASEOSOS', 1, 1, 1),
-(514140, 'VENTA AL POR MAYOR DE PRODUCTOS CONEXOS A LOS COMBUSTIBLES', 1, 1, 1),
-(514200, 'VENTA AL POR MAYOR DE METALES Y MINERALES METALÍFEROS', 1, 1, 1),
-(514310, 'VENTA AL POR MAYOR DE MADERA NO TRABAJADA Y PRODUCTOS RESULTANTES DE SU ELABORACIÓN PRIMARIA', 1, 1, 1),
-(514320, 'VENTA AL POR MAYOR DE MATERIALES DE CONSTRUCCIÓN, ARTÍCULOS DE FERRETERÍA Y RELACIONADOS', 1, 1, 1),
-(514910, 'VENTA AL POR MAYOR DE PRODUCTOS QUÍMICOS', 1, 1, 1),
-(514920, 'VENTA AL POR MAYOR DE DESECHOS METÁLICOS (CHATARRA)', 1, 1, 1),
-(514930, 'VENTA AL POR MAYOR DE INSUMOS VETERINARIOS', 1, 1, 1),
-(514990, 'VENTA AL POR MAYOR DE OTROS PRODUCTOS INTERMEDIOS, DESPERDICIOS Y DESECHOS N.C.P.', 1, 1, 0),
-(515001, 'VENTA AL POR MAYOR DE MAQUINARIA AGRÍCOLA Y FORESTAL', 1, 1, 1),
-(515002, 'VENTA AL POR MAYOR DE MAQUINARIA METALÚRGICA', 1, 1, 1),
-(515003, 'VENTA AL POR MAYOR DE MAQUINARIA PARA LA MINERÍA', 1, 1, 1),
-(515004, 'VENTA AL POR MAYOR DE MAQUINARIA PARA LA CONSTRUCCIÓN', 1, 1, 1),
-(515005, 'VENTA AL POR MAYOR DE MAQUINARIA PARA LA ELABORACIÓN DE ALIMENTOS, BEBIDAS Y TABACO', 1, 1, 1),
-(515006, 'VENTA AL POR MAYOR DE MAQUINARIA PARA TEXTILES Y CUEROS', 1, 1, 1),
-(515007, 'VENTA AL POR MAYOR DE MÁQUINAS Y EQUIPOS DE OFICINA; INCLUYE MATERIALES CONEXOS', 1, 1, 1),
-(515008, 'VENTA AL POR MAYOR DE MAQUINARIA Y EQUIPO DE TRANSPORTE EXCEPTO VEHÍCULOS AUTOMOTORES', 1, 1, 1),
-(515009, 'VENTA AL POR MAYOR DE MAQUINARIA, HERRAMIENTAS, EQUIPO Y MATERIALES N.C.P.', 1, 1, 1),
-(519000, 'VENTA AL POR MAYOR DE OTROS PRODUCTOS N.C.P.', 1, 1, 0),
-(521111, 'GRANDES ESTABLECIMIENTOS (VENTA DE ALIMENTOS); HIPERMERCADOS', 1, 1, 1),
-(521112, 'ALMACENES MEDIANOS (VENTA DE ALIMENTOS); SUPERMERCADOS, MINIMARKETS', 1, 1, 1),
-(521120, 'ALMACENES PEQUENOS (VENTA DE ALIMENTOS)', 1, 1, 1),
-(521200, 'GRANDES TIENDAS - PRODUCTOS DE FERRETERÍA Y PARA EL HOGAR', 1, 1, 1),
-(521300, 'GRANDES TIENDAS - VESTUARIO Y PRODUCTOS PARA EL HOGAR', 1, 1, 1),
-(521900, 'VENTA AL POR MENOR DE OTROS PRODUCTOS EN PEQUENOS ALMACENES NO ESPECIALIZADOS', 1, 1, 1),
-(522010, 'VENTA AL POR MENOR DE BEBIDAS Y LICORES (BOTILLERÍAS)', 1, 1, 1),
-(522020, 'VENTA AL POR MENOR DE CARNES (ROJAS, BLANCAS, OTRAS) PRODUCTOS CÁRNICOS Y SIMILARES', 1, 1, 1),
-(522030, 'COMERCIO AL POR MENOR DE VERDURAS Y FRUTAS (VERDULERÍA)', 1, 1, 1),
-(522040, 'VENTA AL POR MENOR DE PESCADOS, MARISCOS Y PRODUCTOS CONEXOS', 1, 1, 1),
-(522050, 'VENTA AL POR MENOR DE PRODUCTOS DE PANADERÍA Y PASTELERÍA', 1, 1, 1),
-(522060, 'VENTA AL POR MENOR DE ALIMENTOS PARA MASCOTAS Y ANIMALES EN GENERAL', 1, 1, 1),
-(522070, 'VENTA AL POR MENOR DE AVES Y HUEVOS', 1, 1, 1),
-(522090, 'VENTA AL POR MENOR DE PRODUCTOS DE CONFITERÍAS, CIGARRILLOS, Y OTROS', 1, 1, 1),
-(523111, 'FARMACIAS - PERTENECIENTES A CADENA DE ESTABLECIMIENTOS', 1, 1, 1),
-(523112, 'FARMACIAS INDEPENDIENTES', 1, 1, 1),
-(523120, 'VENTA AL POR MENOR DE PRODUCTOS MEDICINALES', 1, 1, 1),
-(523130, 'VENTA AL POR MENOR DE ARTÍCULOS ORTOPÉDICOS', 1, 1, 1),
-(523140, 'VENTA AL POR MENOR DE ARTÍCULOS DE TOCADOR Y COSMÉTICOS', 1, 1, 1),
-(523210, 'VENTA AL POR MENOR DE CALZADO', 1, 1, 1),
-(523220, 'VENTA AL POR MENOR DE PRENDAS DE VESTIR EN GENERAL, INCLUYE ACCESORIOS', 1, 1, 1),
-(523230, 'VENTA AL POR MENOR DE LANAS, HILOS Y SIMILARES', 1, 1, 1),
-(523240, 'VENTA AL POR MENOR DE MALETERÍAS, TALABARTERÍAS Y ARTÍCULOS DE CUERO', 1, 1, 1),
-(523250, 'VENTA AL POR MENOR DE ROPA INTERIOR Y PRENDAS DE USO PERSONAL', 1, 1, 1),
-(523290, 'COMERCIO AL POR MENOR DE TEXTILES PARA EL HOGAR Y OTROS PRODUCTOS TEXTILES N.C.P.', 1, 1, 1),
-(523310, 'VENTA AL POR MENOR DE ARTÍCULOS ELECTRODOMÉSTICOS Y ELECTRÓNICOS PARA EL HOGAR', 1, 1, 1),
-(523320, 'VENTA AL POR MENOR DE CRISTALES, LOZAS, PORCELANA, MENAJE (CRISTALERÍAS)', 1, 1, 1),
-(523330, 'VENTA AL POR MENOR DE MUEBLES; INCLUYE COLCHONES', 1, 1, 1),
-(523340, 'VENTA AL POR MENOR DE INSTRUMENTOS MUSICALES (CASA DE MÚSICA)', 1, 1, 1),
-(523350, 'VENTA AL POR MENOR DE DISCOS, CASSETTES, DVD Y VIDEOS', 1, 1, 1),
-(523360, 'VENTA AL POR MENOR DE LÁMPARAS, APLIQUÉS Y SIMILARES', 1, 1, 1),
-(523390, 'VENTA AL POR MENOR DE APARATOS, ARTÍCULOS, EQUIPO DE USO DOMÉSTICO N.C.P.', 1, 1, 1),
-(523410, 'VENTA AL POR MENOR DE ARTÍCULOS DE FERRETERÍA Y MATERIALES DE CONSTRUCCIÓN', 1, 1, 1),
-(523420, 'VENTA AL POR MENOR DE PINTURAS, BARNICES Y LACAS', 1, 1, 1),
-(523430, 'COMERCIO AL POR MENOR DE PRODUCTOS DE VIDRIO', 1, 1, 1),
-(523911, 'COMERCIO AL POR MENOR DE ARTÍCULOS FOTOGRÁFICOS', 1, 1, 1),
-(523912, 'COMERCIO AL POR MENOR DE ARTÍCULOS ÓPTICOS', 1, 1, 1),
-(523921, 'COMERCIO POR MENOR DE JUGUETES', 1, 1, 1),
-(523922, 'COMERCIO AL POR MENOR DE LIBROS', 1, 1, 1),
-(523923, 'COMERCIO AL POR MENOR DE REVISTAS Y DIARIOS', 1, 1, 1),
-(523924, 'COMERCIO DE ARTÍCULOS DE SUMINISTROS DE OFICINAS Y ARTÍCULOS DE ESCRITORIO EN GENERAL', 1, 1, 1),
-(523930, 'COMERCIO AL POR MENOR DE COMPUTADORAS, SOFTWARES Y SUMINISTROS', 1, 1, 1),
-(523941, 'COMERCIO AL POR MENOR DE ARMERÍAS, ARTÍCULOS DE CAZA Y PESCA', 1, 1, 1),
-(523942, 'COMERCIO AL POR MENOR DE BICICLETAS Y SUS REPUESTOS', 1, 1, 1),
-(523943, 'COMERCIO AL POR MENOR DE ARTÍCULOS DEPORTIVOS', 1, 1, 1),
-(523950, 'COMERCIO AL POR MENOR DE ARTÍCULOS DE JOYERÍA, FANTASÍAS Y RELOJERÍAS', 1, 1, 1),
-(523961, 'VENTA AL POR MENOR DE GAS LICUADO EN BOMBONAS', 1, 1, 1),
-(523969, 'VENTA AL POR MENOR DE CARBÓN, LENA Y OTROS COMBUSTIBLES DE USO DOMÉSTICO', 1, 1, 1),
-(523991, 'COMERCIO AL POR MENOR DE ARTÍCULOS TÍPICOS (ARTESANÍAS)', 1, 1, 1),
-(523992, 'VENTA AL POR MENOR DE FLORES, PLANTAS, ÁRBOLES, SEMILLAS, ABONOS', 1, 1, 1),
-(523993, 'VENTA AL POR MENOR DE MASCOTAS Y ACCESORIOS', 1, 1, 1),
-(523999, 'VENTAS AL POR MENOR DE OTROS PRODUCTOS EN ALMACENES ESPECIALIZADOS N.C.P.', 1, 1, 1),
-(524010, 'COMERCIO AL POR MENOR DE ANTIGUEDADES', 1, 1, 1),
-(524020, 'COMERCIO AL POR MENOR DE ROPA USADA', 1, 1, 1),
-(524090, 'COMERCIO AL POR MENOR DE ARTÍCULOS Y ARTEFACTOS USADOS N.C.P.', 1, 1, 1),
-(525110, 'VENTA AL POR MENOR EN EMPRESAS DE VENTA A DISTANCIA POR CORREO', 1, 1, 1),
-(525120, 'VENTA AL POR MENOR EN EMPRESAS DE VENTA A DISTANCIA VÍA TELEFÓNICA', 1, 1, 1),
-(525130, 'VENTA AL POR MENOR EN EMPRESAS DE VENTA A DISTANCIA VÍA INTERNET; COMERCIO ELECTRÓNICO', 1, 1, 1),
-(525200, 'VENTA AL POR MENOR EN PUESTOS DE VENTA Y MERCADOS', 1, 1, 1),
-(525911, 'VENTA AL POR MENOR REALIZADA POR INDEPENDIENTES EN TRANSPORTE PÚBLICO (LEY 20.388)', 1, 1, 1),
-(525919, 'VENTA AL POR MENOR NO REALIZADA EN ALMACENES DE PRODUCTOS PROPIOS N.C.P.', 1, 1, 1),
-(525920, 'MÁQUINAS EXPENDEDORAS', 1, 1, 1),
-(525930, 'VENTA AL POR MENOR A CAMBIO DE UNA RETRIBUCIÓN O POR CONTRATA', 1, 1, 1),
-(525990, 'OTROS TIPOS DE VENTA AL POR MENOR NO REALIZADA EN ALMACENES N.C.P.', 1, 1, 1),
-(526010, 'REPARACIÓN DE CALZADO Y OTROS ARTÍCULOS DE CUERO', NULL, 1, 1),
-(526020, 'REPARACIONES ELÉCTRICAS Y ELECTRÓNICAS', NULL, 1, 1),
-(526030, 'REPARACIÓN DE RELOJES Y JOYAS', NULL, 1, 1),
-(526090, 'OTRAS REPARACIONES DE EFECTOS PERSONALES Y ENSERES DOMÉSTICOS N.C.P.', NULL, 1, 1),
-(551010, 'HOTELES', 1, 1, 1),
-(551020, 'MOTELES', 1, 1, 1),
-(551030, 'RESIDENCIALES', 1, 1, 1),
-(551090, 'OTROS TIPOS DE HOSPEDAJE TEMPORAL COMO CAMPING, ALBERGUES, POSADAS, REFUGIOS Y SIMILARES', 1, 1, 1),
-(552010, 'RESTAURANTES', 1, 1, 1),
-(552020, 'ESTABLECIMIENTOS DE COMIDA RÁPIDA (BARES, FUENTES DE SODA, GELATERÍAS, PIZZERÍAS Y SIMILARES)', 1, 1, 1),
-(552030, 'CASINOS Y CLUBES SOCIALES', 1, 1, 1),
-(552040, 'SERVICIOS DE COMIDA PREPARADA EN FORMA INDUSTRIAL', 1, 1, 1),
-(552050, 'SERVICIOS DE BANQUETES, BODAS Y OTRAS CELEBRACIONES', 1, 1, 1),
-(552090, 'SERVICIOS DE OTROS ESTABLECIMIENTOS QUE EXPENDEN COMIDAS Y BEBIDAS', 1, 1, 1),
-(601001, 'TRANSPORTE INTERURBANO DE PASAJEROS POR FERROCARRILES', 1, 1, 1),
-(601002, 'TRANSPORTE DE CARGA POR FERROCARRILES', 1, 1, 1),
-(602110, 'TRANSPORTE URBANO DE PASAJEROS VÍA FERROCARRIL (INCLUYE METRO)', 0, 1, 1),
-(602120, 'TRANSPORTE URBANO DE PASAJEROS VÍA AUTOBUS (LOCOMOCIÓN COLECTIVA)', 0, 1, 1),
-(602130, 'TRANSPORTE INTERURBANO DE PASAJEROS VÍA AUTOBUS', 0, 1, 1),
-(602140, 'TRANSPORTE URBANO DE PASAJEROS VÍA TAXI COLECTIVO', 0, 1, 1),
-(602150, 'SERVICIOS DE TRANSPORTE ESCOLAR', 0, 1, 1),
-(602160, 'SERVICIOS DE TRANSPORTE DE TRABAJADORES', 0, 1, 1),
-(602190, 'OTROS TIPOS DE TRANSPORTE REGULAR DE PASAJEROS POR VÍA TERRESTRE N.C.P.', 0, 1, 1),
-(602210, 'TRANSPORTES POR TAXIS LIBRES Y RADIOTAXIS', 0, 1, 1),
-(602220, 'SERVICIOS DE TRANSPORTE A TURISTAS', 0, 1, 1),
-(602230, 'TRANSPORTE DE PASAJEROS EN VEHÍCULOS DE TRACCIÓN HUMANA Y ANIMAL', 0, 1, 1),
-(602290, 'OTROS TIPOS DE TRANSPORTE NO REGULAR DE PASAJEROS N.C.P.', 0, 1, 1),
-(602300, 'TRANSPORTE DE CARGA POR CARRETERA', 1, 1, 1),
-(603000, 'TRANSPORTE POR TUBERÍAS', 1, 1, 1),
-(611001, 'TRANSPORTE MARÍTIMO Y DE CABOTAJE DE PASAJEROS', 1, 1, 1),
-(611002, 'TRANSPORTE MARÍTIMO Y DE CABOTAJE DE CARGA', 1, 1, 1),
-(612001, 'TRANSPORTE DE PASAJEROS POR VÍAS DE NAVEGACIÓN INTERIORES', 1, 1, 1),
-(612002, 'TRANSPORTE DE CARGA POR VÍAS DE NAVEGACIÓN INTERIORES', 1, 1, 1),
-(621010, 'TRANSPORTE REGULAR POR VÍA AÉREA DE PASAJEROS', 1, 1, 1),
-(621020, 'TRANSPORTE REGULAR POR VÍA AÉREA DE CARGA', 1, 1, 1),
-(622001, 'TRANSPORTE NO REGULAR POR VÍA AÉREA DE PASAJEROS', 1, 1, 1),
-(622002, 'TRANSPORTE NO REGULAR POR VÍA AÉREA DE CARGA', 1, 1, 1),
-(630100, 'MANIPULACIÓN DE LA CARGA', 1, 1, 1),
-(630200, 'SERVICIOS DE ALMACENAMIENTO Y DEPÓSITO', 1, 1, 1),
-(630310, 'TERMINALES TERRESTRES DE PASAJEROS', 1, 1, 1),
-(630320, 'ESTACIONAMIENTO DE VEHÍCULOS Y PARQUÍMETROS', 1, 1, 1),
-(630330, 'PUERTOS Y AEROPUERTOS', 1, 1, 1),
-(630340, 'SERVICIOS PRESTADOS POR CONCESIONARIOS DE CARRETERAS', 1, 1, 1),
-(630390, 'OTRAS ACTIVIDADES CONEXAS AL TRANSPORTE N.C.P.', 1, 1, 1),
-(630400, 'AGENCIAS Y ORGANIZADORES DE VIAJES; ACTIVIDADES DE ASISTENCIA A TURISTAS N.C.P.', 1, 1, 1),
-(630910, 'AGENCIAS DE ADUANAS', NULL, 1, 1),
-(630920, 'AGENCIAS DE TRANSPORTE', NULL, 1, 1),
-(641100, 'ACTIVIDADES POSTALES NACIONALES', NULL, 1, 1),
-(641200, 'ACTIVIDADES DE CORREO DISTINTAS DE LAS ACTIVIDADES POSTALES NACIONALES', NULL, 1, 1),
-(642010, 'SERVICIOS DE TELEFONÍA FIJA', 1, 1, 1),
-(642020, 'SERVICIOS DE TELEFONÍA MÓVIL', 1, 1, 1),
-(642030, 'PORTADORES TELEFÓNICOS (LARGA DISTANCIA NACIONAL E INTERNACIONAL)', 1, 1, 1),
-(642040, 'SERVICIOS DE TELEVISIÓN NO ABIERTA', 1, 1, 1),
-(642050, 'PROVEEDORES DE INTERNET', 1, 1, 1),
-(642061, 'CENTROS DE LLAMADOS; INCLUYE ENVÍO DE FAX', 1, 1, 1),
-(642062, 'CENTROS DE ACCESO A INTERNET', 1, 1, 1),
-(642090, 'OTROS SERVICIOS DE TELECOMUNICACIONES N.C.P.', 1, 1, 1),
-(651100, 'BANCA CENTRAL', 1, 1, 0),
-(651910, 'BANCOS', 1, 1, 0),
-(651920, 'FINANCIERAS', 1, 1, 1),
-(651990, 'OTROS TIPOS DE INTERMEDIACIÓN MONETARIA N.C.P.', 1, 1, 1),
-(659110, 'LEASING FINANCIERO', 1, 1, 1),
-(659120, 'LEASING HABITACIONAL', 1, 1, 1),
-(659210, 'FINANCIAMIENTO DEL FOMENTO DE LA PRODUCCIÓN', 1, 1, 0),
-(659220, 'ACTIVIDADES DE CRÉDITO PRENDARIO', 1, 1, 1),
-(659231, 'FACTORING', 1, 1, 1),
-(659232, 'SECURITIZADORAS', 1, 1, 0),
-(659290, 'OTROS INSTITUCIONES FINANCIERAS N.C.P.', 1, 1, 1),
-(659911, 'ADMINISTRADORAS DE FONDOS DE INVERSIÓN', 1, 1, 1),
-(659912, 'ADMINISTRADORAS DE FONDOS MUTUOS', 1, 1, 1),
-(659913, 'ADMINISTRADORAS DE FICES (FONDOS DE INVERSIÓN DE CAPITAL EXTRANJERO)', 1, 1, 1),
-(659914, 'ADMINISTRADORAS DE FONDOS PARA LA VIVIENDA', 1, 1, 1),
-(659915, 'ADMINISTRADORAS DE FONDOS PARA OTROS FINES Y/O GENERALES', 1, 1, 1),
-(659920, 'SOCIEDADES DE INVERSIÓN Y RENTISTAS DE CAPITALES MOBILIARIOS EN GENERAL', 0, 1, 1),
-(660101, 'PLANES DE SEGURO DE VIDA', 1, 1, 0),
-(660102, 'PLANES DE REASEGUROS DE VIDA', 1, 1, 0),
-(660200, 'ADMINISTRADORAS DE FONDOS DE PENSIONES (AFP)', 1, 1, 0),
-(660301, 'PLANES DE SEGUROS GENERALES', 1, 1, 0),
-(660302, 'PLANES DE REASEGUROS GENERALES', 1, 1, 0),
-(660400, 'ISAPRES', 1, 1, 0),
-(671100, 'ADMINISTRACIÓN DE MERCADOS FINANCIEROS', 1, 1, 1),
-(671210, 'CORREDORES DE BOLSA', 1, 1, 1),
-(671220, 'AGENTES DE VALORES', 1, 1, 1),
-(671290, 'OTROS SERVICIOS DE CORRETAJE', 1, 1, 1),
-(671910, 'CÁMARA DE COMPENSACIÓN', 1, 1, 1),
-(671921, 'ADMINISTRADORA DE TARJETAS DE CRÉDITO', 1, 1, 1),
-(671929, 'EMPRESAS DE ASESORÍA, CONSULTORÍA FINANCIERA Y DE APOYO AL GIRO', NULL, 1, 1),
-(671930, 'CLASIFICADORES DE RIESGOS', 1, 1, 1),
-(671940, 'CASAS DE CAMBIO Y OPERADORES DE DIVISA', NULL, 1, 1),
-(671990, 'OTRAS ACTIVIDADES AUXILIARES DE LA INTERMEDIACIÓN FINANCIERA N.C.P.', 1, 1, 1),
-(672010, 'CORREDORES DE SEGUROS', NULL, 1, 1),
-(672020, 'AGENTES Y LIQUIDADORES DE SEGUROS', 0, 2, 1),
-(672090, 'OTRAS ACTIVIDADES AUXILIARES DE LA FINANCIACIÓN DE PLANES DE SEGUROS Y DE PENSIONES N.C.P.', NULL, NULL, 1),
-(701001, 'ARRIENDO DE INMUEBLES AMOBLADOS O CON EQUIPOS Y MAQUINARIAS', 1, 1, 1),
-(701009, 'COMPRA, VENTA Y ALQUILER (EXCEPTO AMOBLADOS) DE INMUEBLES PROPIOS O ARRENDADOS', 0, 1, 1),
-(702000, 'CORREDORES DE PROPIEDADES', NULL, NULL, 1),
-(711101, 'ALQUILER DE AUTOS Y CAMIONETAS SIN CHOFER', 1, 1, 1),
-(711102, 'ALQUILER DE OTROS EQUIPOS DE TRANSPORTE POR VÍA TERRESTRE SIN OPERARIOS', 1, 1, 1),
-(711200, 'ALQUILER DE TRANSPORTE POR VÍA ACUÁTICA SIN TRIPULACIÓN', 1, 1, 1),
-(711300, 'ALQUILER DE EQUIPO DE TRANSPORTE POR VÍA AÉREA SIN TRIPULANTES', 1, 1, 1),
-(712100, 'ALQUILER DE MAQUINARIA Y EQUIPO AGROPECUARIO', 1, 1, 1),
-(712200, 'ALQUILER DE MAQUINARIA Y EQUIPO DE CONSTRUCCIÓN E INGENIERÍA CIVIL', 1, 1, 1),
-(712300, 'ALQUILER DE MAQUINARIA Y EQUIPO DE OFICINA (SIN OPERARIOS NI SERVICIO ADMINISTRATIVO)', 1, 1, 1),
-(712900, 'ALQUILER DE OTROS TIPOS DE MAQUINARIAS Y EQUIPOS N.C.P.', 1, 1, 1),
-(713010, 'ALQUILER DE BICICLETAS Y ARTÍCULOS PARA DEPORTES', 1, 1, 1),
-(713020, 'ARRIENDO DE VIDEOS, JUEGOS DE VIDEO, Y EQUIPOS REPRODUCTORES DE VIDEO, MÚSICA Y SIMILARES', 1, 1, 1),
-(713030, 'ALQUILER DE MOBILIARIO PARA EVENTOS (SILLAS, MESAS, MESONES, VAJILLAS, TOLDOS Y RELACIONADOS)', 1, 1, 1),
-(713090, 'ALQUILER DE OTROS EFECTOS PERSONALES Y ENSERES DOMÉSTICOS N.C.P.', 1, 1, 1),
-(722000, 'ASESORES Y CONSULTORES EN INFORMÁTICA (SOFTWARE)', 0, 2, 1),
-(724000, 'PROCESAMIENTO DE DATOS Y ACTIVIDADES RELACIONADAS CON BASES DE DATOS', NULL, 1, 1),
-(725000, 'MANTENIMIENTO Y REPARACIÓN DE MAQUINARIA DE OFICINA, CONTABILIDAD E INFORMÁTICA', 1, 1, 1),
-(726000, 'EMPRESAS DE SERVICIOS INTEGRALES DE INFORMÁTICA', NULL, 1, 1),
-(731000, 'INVESTIGACIONES Y DESARROLLO EXPERIMENTAL EN EL CAMPO DE LAS CIENCIAS NATURALES Y LA INGENIERÍA', NULL, 1, 1),
-(732000, 'INVESTIGACIONES Y DESARROLLO EXPERIMENTAL EN EL CAMPO DE LAS CIENCIAS SOCIALES Y LAS HUMANIDADES', NULL, 1, 1),
-(741110, 'SERVICIOS JURÍDICOS', 0, 2, 1),
-(741120, 'SERVICIO NOTARIAL', 0, 2, 0),
-(741130, 'CONSERVADOR DE BIENES RAICES', 0, 2, 0),
-(741140, 'RECEPTORES JUDICIALES', 0, 2, 1),
-(741190, 'ARBITRAJES, SÍNDICOS, PERITOS Y OTROS', 0, 2, 1),
-(741200, 'ACTIVIDADES DE CONTABILIDAD, TENEDURÍA DE LIBROS Y AUDITORÍA; ASESORAMIENTOS TRIBUTARIOS', 0, 2, 1),
-(741300, 'INVESTIGACIÓN DE MERCADOS Y REALIZACIÓN DE ENCUESTAS DE OPINIÓN PÚBLICA', NULL, NULL, 1),
-(741400, 'ACTIVIDADES DE ASESORAMIENTO EMPRESARIAL Y EN MATERIA DE GESTIÓN', 0, NULL, 1),
-(742110, 'SERVICIOS DE ARQUITECTURA Y TÉCNICO RELACIONADO', 0, 2, 1),
-(742121, 'EMPRESAS DE SERVICIOS GEOLÓGICOS Y DE PROSPECCIÓN', 1, 1, 1),
-(742122, 'SERVICIOS PROFESIONALES EN GEOLOGÍA Y PROSPECCIÓN', 0, 2, 1),
-(742131, 'EMPRESAS DE SERVICIOS DE TOPOGRAFÍA Y AGRIMENSURA', 1, 1, 1),
-(742132, 'SERVICIOS PROFESIONALES DE TOPOGRAFÍA Y AGRIMENSURA', 0, 2, 1),
-(742141, 'SERVICIOS DE INGENIERÍA PRESTADOS POR EMPRESAS N.C.P.', 1, 1, 1),
-(742142, 'SERVICIOS DE INGENIERÍA PRESTADOS POR PROFESIONALES N.C.P.', 0, 2, 1),
-(742190, 'OTROS SERVICIOS DESARROLLADOS POR PROFESIONALES', 0, 2, 1),
-(742210, 'SERVICIO DE REVISIÓN TÉCNICA DE VEHÍCULOS AUTOMOTORES', 1, 1, 1),
-(742290, 'OTROS SERVICIOS DE ENSAYOS Y ANALISIS TÉCNICOS', NULL, 1, 1),
-(743001, 'EMPRESAS DE PUBLICIDAD', 1, 1, 1),
-(743002, 'SERVICIOS PERSONALES EN PUBLICIDAD', 0, 2, 1),
-(749110, 'SERVICIOS SUMINISTRO DE PERSONAL; EMPRESAS SERVICIOS TRANSITORIOS', 1, 1, 1),
-(749190, 'SERVICIOS DE RECLUTAMIENTO DE PERSONAL', 1, 1, 1),
-(749210, 'ACTIVIDADES DE INVESTIGACIÓN', NULL, NULL, 1),
-(749221, 'SERVICIOS INTEGRALES DE SEGURIDAD', NULL, 1, 1),
-(749222, 'TRANSPORTE DE VALORES', 1, 1, 1),
-(749229, 'SERVICIOS PERSONALES RELACIONADOS CON SEGURIDAD', 0, 2, 1),
-(749310, 'EMPRESAS DE LIMPIEZA DE EDIFICIOS RESIDENCIALES Y NO RESIDENCIALES', 1, 1, 1),
-(749320, 'DESRATIZACIÓN Y FUMIGACIÓN NO AGRÍCOLA', NULL, 1, 1),
-(749401, 'SERVICIOS DE REVELADO, IMPRESIÓN, AMPLIACIÓN DE FOTOGRAFÍAS', 1, 1, 1),
-(749402, 'ACTIVIDADES DE FOTOGRAFÍA PUBLICITARIA', NULL, NULL, 1),
-(749409, 'SERVICIOS PERSONALES DE FOTOGRAFÍA', 0, 2, 1),
-(749500, 'SERVICIOS DE ENVASADO Y EMPAQUE', 1, 1, 1),
-(749911, 'SERVICIOS DE COBRANZA DE CUENTAS', NULL, 1, 1),
-(749912, 'EVALUACIÓN Y CALIFICACIÓN DEL GRADO DE SOLVENCIA', NULL, 1, 1),
-(749913, 'ASESORÍAS EN LA GESTIÓN DE LA COMPRA O VENTA DE PEQUENAS Y MEDIANAS EMPRESAS', NULL, 1, 1),
-(749921, 'DISENADORES DE VESTUARIO', NULL, NULL, 1),
-(749922, 'DISENADORES DE INTERIORES', NULL, NULL, 1),
-(749929, 'OTROS DISENADORES N.C.P.', NULL, NULL, 1),
-(749931, 'EMPRESAS DE TAQUIGRAFÍA, REPRODUCCIÓN, DESPACHO DE CORRESPONDENCIA, Y OTRAS LABORES DE OFICINA', 1, 1, 1),
-(749932, 'SERVICIOS PERSONALES DE TRADUCCIÓN, INTERPRETACIÓN Y LABORES DE OFICINA', 0, 2, 1),
-(749933, 'EMPRESAS DE TRADUCCIÓN E INTERPRETACIÓN', 1, 1, 1),
-(749934, 'SERVICIOS DE FOTOCOPIAS', 1, 1, 1),
-(749940, 'AGENCIAS DE CONTRATACIÓN DE ACTORES', 1, 1, 1),
-(749950, 'ACTIVIDADES DE SUBASTA (MARTILLEROS)', 1, 1, 1),
-(749961, 'GALERÍAS DE ARTE', 1, 1, 1),
-(749962, 'FERIAS DE EXPOSICIONES CON FINES EMPRESARIALES', NULL, 1, 1),
-(749970, 'SERVICIOS DE CONTESTACIÓN DE LLAMADAS (CALL CENTER)', 1, 1, 1),
-(749990, 'OTRAS ACTIVIDADES EMPRESARIALES N.C.P.', 1, 1, 1),
-(751110, 'GOBIERNO CENTRAL', NULL, 1, 0),
-(751120, 'MUNICIPALIDADES', NULL, 1, 0),
-(751200, 'ACTIVIDADES DEL PODER JUDICIAL', NULL, 1, 0),
-(751300, 'ACTIVIDADES DEL PODER LEGISLATIVO', NULL, 1, 0),
-(752100, 'RELACIONES EXTERIORES', NULL, 1, 0),
-(752200, 'ACTIVIDADES DE DEFENSA', NULL, 1, 0),
-(752300, 'ACTIVIDADES DE MANTENIMIENTO DEL ORDEN PÚBLICO Y DE SEGURIDAD', NULL, 1, 1),
-(753010, 'ACTIVIDADES DE PLANES DE SEGURIDAD SOCIAL DE AFILIACIÓN OBLIGATORIA RELACIONADOS CON SALUD', NULL, 1, 0),
-(753020, 'CAJAS DE COMPENSACIÓN', NULL, 1, 1),
-(753090, 'OTRAS ACTIVIDADES DE PLANES DE SEGURIDAD SOCIAL DE AFILIACIÓN OBLIGATORIA', NULL, 1, 0),
-(801010, 'ESTABLECIMIENTOS DE ENSEÑANZA PREESCOLAR', 1, 1, 1),
-(801020, 'ESTABLECIMIENTOS DE ENSEÑANZA PRIMARIA', 1, 1, 1),
-(802100, 'ESTABLECIMIENTOS DE ENSEÑANZA SECUNDARIA DE FORMACIÓN GENERAL', 1, 1, 1),
-(802200, 'ESTABLECIMIENTOS DE ENSEÑANZA SECUNDARIA DE FORMACIÓN TÉCNICA Y PROFESIONAL', 1, 1, 1),
-(803010, 'UNIVERSIDADES', 1, 1, 0),
-(803020, 'INSTITUTOS PROFESIONALES', 1, 1, 0),
-(803030, 'CENTROS DE FORMACIÓN TÉCNICA', 1, 1, 1),
-(809010, 'ESTABLECIMIENTOS DE ENSEÑANZA PRIMARIA Y SECUNDARIA PARA ADULTOS', 1, 1, 1),
-(809020, 'ESTABLECIMIENTOS DE ENSEÑANZA PREUNIVERSITARIA', 1, 1, 1),
-(809030, 'EDUCACIÓN EXTRAESCOLAR (ESCUELA DE CONDUCCIÓN, MÚSICA, MODELAJE, ETC.)', 1, 1, 1),
-(809041, 'EDUCACIÓN A DISTANCIA (INTERNET, CORRESPONDENCIA, OTRAS)', 0, 1, 1),
-(809049, 'SERVICIOS PERSONALES DE EDUCACIÓN', 0, 2, 1),
-(851110, 'HOSPITALES Y CLÍNICAS', 1, 1, 0),
-(851120, 'CLÍNICAS PSIQUIATRICAS, CENTROS DE REHABILITACIÓN, ASILOS Y CLÍNICAS DE REPOSO', 1, 1, 1),
-(851211, 'SERVICIOS DE MÉDICOS EN FORMA INDEPENDIENTE', 0, 2, 1),
-(851212, 'ESTABLECIMIENTOS MÉDICOS DE ATENCIÓN AMBULATORIA (CENTROS MÉDICOS)', NULL, 1, 1),
-(851221, 'SERVICIOS DE ODONTÓLOGOS EN FORMA INDEPENDIENTE', 0, 2, 1),
-(851222, 'CENTROS DE ATENCIÓN ODONTOLÓGICA', NULL, 1, 1),
-(851910, 'LABORATORIOS CLÍNICOS; INCLUYE BANCOS DE SANGRE', NULL, 1, 1),
-(851920, 'OTROS PROFESIONALES DE LA SALUD', 0, 2, 1),
-(851990, 'OTRAS ACTIVIDADES EMPRESARIALES RELACIONADAS CON LA SALUD HUMANA', NULL, 1, 1),
-(852010, 'ACTIVIDADES DE CLÍNICAS VETERINARIAS', NULL, 1, 1),
-(852021, 'SERVICIOS DE MÉDICOS VETERINARIOS EN FORMA INDEPENDIENTE', 0, 2, 1),
-(852029, 'SERVICIOS DE OTROS PROFESIONALES INDEPENDIENTES EN EL ÁREA VETERINARIA', 0, 2, 1),
-(853100, 'SERVICIOS SOCIALES CON ALOJAMIENTO', NULL, 1, 1),
-(853200, 'SERVICIOS SOCIALES SIN ALOJAMIENTO', NULL, 1, 1),
-(900010, 'SERVICIOS DE VERTEDEROS', 1, 1, 1),
-(900020, 'BARRIDO DE EXTERIORES', 1, 1, 1),
-(900030, 'RECOGIDA Y ELIMINACIÓN DE DESECHOS', 1, 1, 1),
-(900040, 'SERVICIOS DE EVACUACIÓN DE RILES Y AGUAS SERVIDAS', 1, 1, 1),
-(900050, 'SERVICIOS DE TRATAMIENTO DE RILES Y AGUAS SERVIDAS', 1, 1, 1),
-(900090, 'OTRAS ACTIVIDADES DE MANEJO DE DESPERDICIOS', 1, 1, 1),
-(911100, 'ACTIVIDADES DE ORGANIZACIONES EMPRESARIALES Y DE EMPLEADORES', NULL, 1, 1),
-(911210, 'COLEGIOS PROFESIONALES', NULL, 1, 0),
-(911290, 'ACTIVIDADES DE OTRAS ORGANIZACIONES PROFESIONALES', NULL, 1, 1),
-(912000, 'ACTIVIDADES DE SINDICATOS', NULL, 1, 1),
-(919100, 'ACTIVIDADES DE ORGANIZACIONES RELIGIOSAS', NULL, 1, 0),
-(919200, 'ACTIVIDADES DE ORGANIZACIONES POLÍTICAS', NULL, 1, 1),
-(919910, 'CENTROS DE MADRES Y UNIDADES VECINALES Y COMUNALES', NULL, 1, 0),
-(919920, 'CLUBES SOCIALES', NULL, 1, 0),
-(919930, 'SERVICIOS DE INSTITUTOS DE ESTUDIOS, FUNDACIONES, CORPORACIONES DE DESARROLLO (EDUCACIÓN, SALUD)', NULL, 1, 0),
-(919990, 'ACTIVIDADES DE OTRAS ASOCIACIONES N.C.P.', NULL, 1, 1),
-(921110, 'PRODUCCIÓN DE PELÍCULAS CINEMATOGRÁFICAS', NULL, 1, 1),
-(921120, 'DISTRIBUIDORA CINEMATOGRÁFICAS', 1, 1, 1),
-(921200, 'EXHIBICIÓN DE FILMES Y VIDEOCINTAS', 1, 1, 1),
-(921310, 'ACTIVIDADES DE TELEVISIÓN', NULL, 1, 1),
-(921320, 'ACTIVIDADES DE RADIO', NULL, 1, 1),
-(921411, 'SERVICIOS DE PRODUCCIÓN DE RECITALES Y OTROS EVENTOS MUSICALES MASIVOS', NULL, 1, 1),
-(921419, 'SERVICIOS DE PRODUCCIÓN TEATRAL Y OTROS N.C.P.', NULL, 1, 1),
-(921420, 'ACTIVIDADES EMPRESARIALES DE ARTISTAS', 1, 1, 1),
-(921430, 'ACTIVIDADES ARTÍSTICAS; FUNCIONES DE ARTISTAS, ACTORES, MÚSICOS, CONFERENCISTAS, OTROS', 0, 2, 1),
-(921490, 'AGENCIAS DE VENTA DE BILLETES DE TEATRO, SALAS DE CONCIERTO Y DE TEATRO', NULL, 1, 1),
-(921911, 'INSTRUCTORES DE DANZA', 0, 2, 1),
-(921912, 'ACTIVIDADES DE DISCOTECAS, CABARET, SALAS DE BAILE Y SIMILARES', 1, 1, 1),
-(921920, 'ACTIVIDADES DE PARQUES DE ATRACCIONES Y CENTROS SIMILARES', 1, 1, 1),
-(921930, 'ESPECTÁCULOS CIRCENSES, DE TÍTERES U OTROS SIMILARES', 1, 1, 1),
-(921990, 'OTRAS ACTIVIDADES DE ENTRETENIMIENTO N.C.P.', NULL, NULL, 1),
-(922001, 'AGENCIAS DE NOTICIAS', NULL, 1, 1),
-(922002, 'SERVICIOS PERIODÍSTICOS PRESTADO POR PROFESIONALES', 0, 2, 1),
-(923100, 'ACTIVIDADES DE BIBLIOTECAS Y ARCHIVOS', NULL, 1, 1),
-(923200, 'ACTIVIDADES DE MUSEOS Y PRESERVACIÓN DE LUGARES Y EDIFICIOS HISTÓRICOS', NULL, 1, 1),
-(923300, 'ACTIVIDADES DE JARDINES BOTÁNICOS Y ZOOLÓGICOS Y DE PARQUES NACIONALES', NULL, 1, 1),
-(924110, 'EXPLOTACIÓN DE INSTALACIONES ESPECIALIZADAS PARA LAS PRACTICAS DEPORTIVAS', NULL, 1, 1),
-(924120, 'ACTIVIDADES DE CLUBES DE DEPORTES Y ESTADIOS', NULL, 1, 1),
-(924131, 'FUTBOL PROFESIONAL', NULL, 1, 1),
-(924132, 'FUTBOL AMATEUR', NULL, 1, 1),
-(924140, 'HIPÓDROMOS', 1, 1, 1),
-(924150, 'PROMOCIÓN Y ORGANIZACIÓN DE ESPECTÁCULOS DEPORTIVOS', NULL, 1, 1),
-(924160, 'ESCUELAS PARA DEPORTES', 1, 1, 1),
-(924190, 'OTRAS ACTIVIDADES RELACIONADAS AL DEPORTE N.C.P.', NULL, 1, 1),
-(924910, 'SISTEMAS DE JUEGOS DE AZAR MASIVOS.', 1, 1, 0),
-(924920, 'ACTIVIDADES DE CASINO DE JUEGOS', 1, 1, 0),
-(924930, 'SALAS DE BILLAR, BOWLING, POOL Y JUEGOS ELECTRÓNICOS', 1, 1, 1),
-(924940, 'CONTRATACIÓN DE ACTORES PARA CINE, TV, Y TEATRO', 1, 1, 1),
-(924990, 'OTROS SERVICIOS DE DIVERSIÓN Y ESPARCIMIENTOS N.C.P.', NULL, NULL, 1),
-(930100, 'LAVADO Y LIMPIEZA DE PRENDAS DE TELA Y DE PIEL, INCLUSO LAS LIMPIEZAS EN SECO', 1, 1, 1),
-(930200, 'PELUQUERÍAS Y SALONES DE BELLEZA', NULL, NULL, 1),
-(930310, 'SERVICIOS FUNERARIOS', 1, 1, 1),
-(930320, 'SERVICIOS EN CEMENTERIOS', 1, 1, 1),
-(930330, 'SERVICIOS DE CARROZAS FÚNEBRES (TRANSPORTE DE CADÁVERES)', 1, 1, 1),
-(930390, 'OTRAS ACTIVIDADES DE SERVICIOS FUNERARIOS Y OTRAS ACTIVIDADES CONEXAS', 1, 1, 1),
-(930910, 'ACTIVIDADES DE MANTENIMIENTO FÍSICO CORPORAL (BAÑOS, TURCOS, SAUNAS)', 1, 1, 1),
-(930990, 'OTRAS ACTIVIDADES DE SERVICIOS PERSONALES N.C.P.', 0, 2, 1),
-(950001, 'HOGARES PRIVADOS INDIVIDUALES CON SERVICIO DOMÉSTICO', 0, NULL, 0),
-(950002, 'CONSEJO DE ADMINISTRACIÓN DE EDIFICIOS Y CONDOMINIOS', 0, 1, 0),
-(990000, 'ORGANIZACIONES Y ÓRGANOS EXTRATERRITORIALES', NULL, 1, 0);
-
--- --------------------------------------------------------
+LOCK TABLES `giros` WRITE;
+/*!40000 ALTER TABLE `giros` DISABLE KEYS */;
+INSERT INTO `giros` VALUES (11111,'CULTIVO DE TRIGO',1,1,1),(11112,'CULTIVO DE MAIZ',1,1,1),(11113,'CULTIVO DE AVENA',1,1,1),(11114,'CULTIVO DE ARROZ',1,1,1),(11115,'CULTIVO DE CEBADA',1,1,1),(11119,'CULTIVO DE OTROS CEREALES',1,1,1),(11121,'CULTIVO FORRAJEROS EN PRADERAS NATURALES',1,1,1),(11122,'CULTIVO FORRAJEROS EN PRADERAS MEJORADAS O SEMBRADAS',1,1,1),(11131,'CULTIVO DE POROTOS O FRIJOL',1,1,1),(11132,'CULTIVO, PRODUCCIÓN DE LUPINO',1,1,1),(11139,'CULTIVO DE OTRAS LEGUMBRES',1,1,1),(11141,'CULTIVO DE PAPAS',1,1,1),(11142,'CULTIVO DE CAMOTES O BATATAS',1,1,1),(11149,'CULTIVO DE OTROS TUBÉRCULOS N.C.P',1,1,1),(11151,'CULTIVO DE RAPS',1,1,1),(11152,'CULTIVO DE MARAVILLA',1,1,1),(11159,'CULTIVO DE OTRAS OLEAGINOSAS N.C.P.',1,1,1),(11160,'PRODUCCIÓN DE SEMILLAS DE CEREALES, LEGUMBRES, OLEAGINOSAS',1,1,1),(11191,'CULTIVO DE REMOLACHA',1,1,1),(11192,'CULTIVO DE TABACO',1,1,1),(11193,'CULTIVO DE FIBRAS VEGETALES INDUSTRIALES',1,1,1),(11194,'CULTIVO DE PLANTAS AROMÁTICAS O MEDICINALES',1,1,1),(11199,'OTROS CULTIVOS N.C.P.',1,1,1),(11211,'CULTIVO TRADICIONAL DE HORTALIZAS FRESCAS',1,1,1),(11212,'CULTIVO DE HORTALIZAS EN INVERNADEROS Y CULTIVOS HIDROPONICOS',1,1,1),(11213,'CULTIVO ORGÁNICO DE HORTALIZAS',1,1,1),(11220,'CULTIVO DE PLANTAS VIVAS Y PRODUCTOS DE LA FLORICULTURA',1,1,1),(11230,'PRODUCCIÓN DE SEMILLAS DE FLORES, PRADOS, FRUTAS Y HORTALIZAS',1,1,1),(11240,'PRODUCCIÓN EN VIVEROS; EXCEPTO ESPECIES FORESTALES',1,1,1),(11250,'CULTIVO Y RECOLECCIÓN DE HONGOS, TRUFAS Y SAVIA; PRODUCCIÓN DE JARABE DE ARCE DE AZÚCAR Y AZÚCAR',1,1,1),(11311,'CULTIVO DE UVA DESTINADA A PRODUCCIÓN DE PISCO Y AGUARDIENTE',1,1,1),(11312,'CULTIVO DE UVA DESTINADA A PRODUCCIÓN DE VINO',1,1,1),(11313,'CULTIVO DE UVA DE MESA',1,1,1),(11321,'CULTIVO DE FRUTALES EN ÁRBOLES O ARBUSTOS CON CICLO DE VIDA MAYOR A UNA TEMPORADA',1,1,1),(11322,'CULTIVO DE FRUTALES MENORES EN PLANTAS CON CICLO DE VIDA DE UNA TEMPORADA',1,1,1),(11330,'CULTIVO DE PLANTAS CUYAS HOJAS O FRUTAS SE UTILIZAN PARA PREPARAR BEBIDAS',1,1,1),(11340,'CULTIVO DE ESPECIAS',1,1,1),(12111,'CRÍA DE GANADO BOVINO PARA LA PRODUCCIÓN LECHERA',1,1,1),(12112,'CRÍA DE GANADO PARA PRODUCCIÓN DE CARNE, O COMO GANADO REPRODUCTOR',1,1,1),(12120,'CRÍA DE GANADO OVINO Y/O EXPLOTACIÓN LANERA',1,1,1),(12130,'CRÍA DE EQUINOS (CABALLARES, MULARES)',1,1,1),(12210,'CRÍA DE PORCINOS',1,1,1),(12221,'CRÍA DE AVES DE CORRAL PARA LA PRODUCCIÓN DE CARNE',1,1,1),(12222,'CRÍA DE AVES DE CORRAL PARA LA PRODUCCIÓN DE HUEVOS',1,1,1),(12223,'CRÍA DE AVES FINAS O NO TRADICIONALES',1,1,1),(12230,'CRÍA DE ANIMALES DOMÉSTICOS; PERROS Y GATOS',1,1,1),(12240,'APICULTURA',1,1,1),(12250,'RANICULTURA, HELICICULTURA U OTRA ACTIVIDAD CON ANIMALES MENORES O INSECTOS',1,1,1),(12290,'OTRAS EXPLOTACIONES DE ANIMALES NO CLASIFICADOS EN OTRA PARTE, INCLUIDO SUS SUBPRODUCTOS',1,1,1),(13000,'EXPLOTACIÓN MIXTA',1,1,1),(14011,'SERVICIO DE CORTE Y ENFARDADO DE FORRAJE',1,1,1),(14012,'SERVICIO DE RECOLECCIÓN, EMPACADO, TRILLA, DESCASCARAMIENTO Y DESGRANE; Y SIMILARES',1,1,1),(14013,'SERVICIO DE ROTURACIÓN SIEMBRA Y SIMILARES',1,1,1),(14014,'DESTRUCCIÓN DE PLAGAS; PULVERIZACIONES, FUMIGACIONES U OTRAS',1,1,1),(14015,'COSECHA, PODA, AMARRE Y LABORES DE ADECUACIÓN DE LA PLANTA U OTRAS',1,1,1),(14019,'OTROS SERVICIOS AGRÍCOLAS N.C.P.',1,1,1),(14021,'SERVICIOS DE ADIESTRAMIENTO, GUARDERÍA Y CUIDADOS DE MASCOTAS; EXCEPTO ACTIVIDADES VETERINARIAS',1,1,1),(14022,'SERVICIOS GANADEROS, EXCEPTO ACTIVIDADES VETERINARIAS',1,1,1),(15010,'CAZA DE MAMÍFEROS MARINOS; EXCEPTO BALLENAS',1,1,1),(15090,'CAZA ORDINARIA Y MEDIANTE TRAMPAS, Y ACTIVIDADES DE SERVICIOS CONEXAS',1,1,1),(20010,'EXPLOTACIÓN DE BOSQUES',1,1,1),(20020,'RECOLECCIÓN DE PRODUCTOS FORESTALES SILVESTRES',1,1,1),(20030,'EXPLOTACIÓN DE VIVEROS DE ESPECIES FORESTALES',1,1,1),(20041,'SERVICIOS DE FORESTACIÓN',1,1,1),(20042,'SERVICIOS DE CORTA DE MADERA',1,1,1),(20043,'SERVICIOS DE CONTROL DE INCENDIOS FORESTALES',1,1,1),(20049,'OTRAS ACTIVIDADES DE SERVICIOS CONEXAS A LA SILVICULTURA N.C.P.',1,1,1),(51010,'CULTIVO DE ESPECIES ACUÁTICAS EN CUERPO DE AGUA DULCE',1,1,1),(51020,'REPRODUCCIÓN Y CRIANZAS DE PECES MARINOS',1,1,1),(51030,'CULTIVO, REPRODUCCIÓN Y CRECIMIENTOS DE VEGETALES ACUÁTICOS',1,1,1),(51040,'REPRODUCCIÓN Y CRÍA DE MOLUSCOS Y CRUSTACEOS.',1,1,1),(51090,'SERVICIOS RELACIONADOS CON LA ACUICULTURA, NO INCLUYE SERVICIOS PROFESIONALES Y DE EXTRACCIÓN',1,1,1),(52010,'PESCA INDUSTRIAL',1,1,1),(52020,'ACTIVIDAD PESQUERA DE BARCOS FACTORÍAS',1,1,1),(52030,'PESCA ARTESANAL. EXTRACCIÓN DE RECURSOS ACUÁTICOS EN GENERAL; INCLUYE BALLENAS',1,1,1),(52040,'RECOLECCIÓN DE PRODUCTOS MARINOS, COMO PERLAS NATURALES, ESPONJAS, CORALES Y ALGAS.',1,1,1),(52050,'SERVICIOS RELACIONADOS CON LA PESCA, NO INCLUYE SERVICIOS PROFESIONALES',1,1,1),(100000,'EXTRACCIÓN, AGLOMERACIÓN DE CARBÓN DE PIEDRA, LIGNITO Y TURBA',1,1,1),(111000,'EXTRACCIÓN DE PETRÓLEO CRUDO Y GAS NATURAL',1,1,1),(112000,'ACTIVIDADES DE SERVICIOS RELACIONADAS CON LA EXTRACCIÓN DE PETRÓLEO Y GAS',1,1,1),(120000,'EXTRACCIÓN DE MINERALES DE URANIO Y TORIO',1,1,1),(131000,'EXTRACCIÓN DE MINERALES DE HIERRO',1,1,1),(132010,'EXTRACCIÓN DE ORO Y PLATA',1,1,1),(132020,'EXTRACCIÓN DE ZINC Y PLOMO',1,1,1),(132030,'EXTRACCIÓN DE MANGANESO',1,1,1),(132090,'EXTRACCIÓN DE OTROS MINERALES METALÍFEROS N.C.P.',1,1,1),(133000,'EXTRACCIÓN DE COBRE',1,1,1),(141000,'EXTRACCIÓN DE PIEDRA, ARENA Y ARCILLA',1,1,1),(142100,'EXTRACCIÓN DE NITRATOS Y YODO',1,1,1),(142200,'EXTRACCIÓN DE SAL',1,1,1),(142300,'EXTRACCIÓN DE LITIO Y CLORUROS, EXCEPTO SAL',1,1,1),(142900,'EXPLOTACIÓN DE OTRAS MINAS Y CANTERAS N.C.P.',1,1,1),(151110,'PRODUCCIÓN, PROCESAMIENTO DE CARNES ROJAS Y PRODUCTOS CÁRNICOS',1,1,1),(151120,'CONSERVACIÓN DE CARNES ROJAS (FRIGORÍFICOS)',1,1,1),(151130,'PRODUCCIÓN, PROCESAMIENTO Y CONSERVACIÓN DE CARNES DE AVE Y OTRAS CARNES DISTINTAS A LAS ROJAS',1,1,1),(151140,'ELABORACIÓN DE CECINAS, EMBUTIDOS Y CARNES EN CONSERVA.',1,1,1),(151210,'PRODUCCIÓN DE HARINA DE PESCADO',1,1,1),(151221,'FABRICACIÓN DE PRODUCTOS ENLATADOS DE PESCADO Y MARISCOS',1,1,1),(151222,'ELABORACIÓN DE CONGELADOS DE PESCADOS Y MARISCOS',1,1,1),(151223,'ELABORACIÓN DE PRODUCTOS AHUMADOS, SALADOS, DESHIDRATADOS Y OTROS PROCESOS SIMILARES',1,1,1),(151230,'ELABORACIÓN DE PRODUCTOS EN BASE A VEGETALES ACUÁTICOS',1,1,1),(151300,'ELABORACIÓN Y CONSERVACIÓN DE FRUTAS, LEGUMBRES Y HORTALIZAS',1,1,1),(151410,'ELABORACIÓN DE ACEITES Y GRASAS DE ORIGEN VEGETAL',1,1,1),(151420,'ELABORACIÓN DE ACEITES Y GRASAS DE ORIGEN ANIMAL, EXCEPTO LAS MANTEQUILLAS',1,1,1),(151430,'ELABORACIÓN DE ACEITES Y GRASAS DE ORIGEN MARINO',1,1,1),(152010,'ELABORACIÓN DE LECHE, MANTEQUILLA, PRODUCTOS LÁCTEOS Y DERIVADOS',1,1,1),(152020,'ELABORACIÓN DE QUESOS',1,1,1),(152030,'FABRICACIÓN DE POSTRES A BASE DE LECHE (HELADOS, SORBETES Y OTROS SIMILARES)',1,1,1),(153110,'ELABORACIÓN DE HARINAS DE TRIGO',1,1,1),(153120,'ACTIVIDADES DE MOLIENDA DE ARROZ',1,1,1),(153190,'ELABORACIÓN DE OTRAS MOLINERAS Y ALIMENTOS A BASE DE CEREALES',1,1,1),(153210,'ELABORACIÓN DE ALMIDONES Y PRODUCTOS DERIVADOS DEL ALMIDÓN',1,1,1),(153220,'ELABORACIÓN DE GLUCOSA Y OTROS AZÚCARES DIFERENTES DE LA REMOLACHA',1,1,1),(153300,'ELABORACIÓN DE ALIMENTOS PREPARADOS PARA ANIMALES',1,1,1),(154110,'FABRICACIÓN DE PAN, PRODUCTOS DE PANADERÍA Y PASTELERÍA',1,1,1),(154120,'FABRICACIÓN DE GALLETAS',1,1,1),(154200,'ELABORACIÓN DE AZÚCAR DE REMOLACHA O CANA',1,1,1),(154310,'ELABORACIÓN DE CACAO Y CHOCOLATES',1,1,1),(154320,'FABRICACIÓN DE PRODUCTOS DE CONFITERÍA',1,1,1),(154400,'ELABORACIÓN DE MACARRONES, FIDEOS, ALCUZCUZ Y PRODUCTOS FARINACEOS SIMILARES',1,1,1),(154910,'ELABORACIÓN DE TE, CAFÉ, INFUSIONES',1,1,1),(154920,'ELABORACIÓN DE LEVADURAS NATURALES O ARTIFICIALES',1,1,1),(154930,'ELABORACIÓN DE VINAGRES, MOSTAZAS, MAYONESAS Y CONDIMENTOS EN GENERAL',1,1,1),(154990,'ELABORACIÓN DE OTROS PRODUCTOS ALIMENTICIOS NO CLASIFICADOS EN OTRA PARTE',1,1,1),(155110,'ELABORACIÓN DE PISCOS (INDUSTRIAS PISQUERAS)',1,1,1),(155120,'ELABORACIÓN DE BEBIDAS ALCOHÓLICAS Y DE ALCOHOL ETÍLICO A PARTIR DE SUSTANCIAS FERMENTADAS Y OTROS',1,1,1),(155200,'ELABORACIÓN DE VINOS',1,1,1),(155300,'ELABORACIÓN DE BEBIDAS MALTEADAS, CERVEZAS Y MALTAS',1,1,1),(155410,'ELABORACIÓN DE BEBIDAS NO ALCOHÓLICAS',1,1,1),(155420,'ENVASADO DE AGUA MINERAL NATURAL, DE MANANTIAL Y POTABLE PREPARADA',1,1,1),(155430,'ELABORACIÓN DE HIELO',1,1,1),(160010,'FABRICACIÓN DE CIGARROS Y CIGARRILLOS',1,1,1),(160090,'FABRICACIÓN DE OTROS PRODUCTOS DEL TABACO',1,1,1),(171100,'PREPARACIÓN DE HILATURA DE FIBRAS TEXTILES; TEJEDURA PROD. TEXTILES',1,1,1),(171200,'ACABADO DE PRODUCTOS TEXTIL',1,1,1),(172100,'FABRICACIÓN DE ARTÍCULOS CONFECCIONADOS DE MATERIAS TEXTILES, EXCEPTO PRENDAS DE VESTIR',1,1,1),(172200,'FABRICACIÓN DE TAPICES Y ALFOMBRA',1,1,1),(172300,'FABRICACIÓN DE CUERDAS, CORDELES, BRAMANTES Y REDES',1,1,1),(172910,'FABRICACIÓN DE TEJIDOS DE USO INDUSTRIAL COMO TEJIDOS IMPREGNADOS, MOLTOPRENE, BATISTA, ETC.',1,1,1),(172990,'FABRICACIÓN DE OTROS PRODUCTOS TEXTILES N.C.P.',1,1,1),(173000,'FABRICACIÓN DE TEJIDOS DE PUNTO',1,1,1),(181010,'FABRICACIÓN DE PRENDAS DE VESTIR TEXTILES Y SIMILARES',1,1,1),(181020,'FABRICACIÓN DE PRENDAS DE VESTIR DE CUERO NATURAL, ARTIFICIAL, PLÁSTICO',1,1,1),(181030,'FABRICACIÓN DE ACCESORIOS DE VESTIR',1,1,1),(181040,'FABRICACIÓN DE ROPA DE TRABAJO',1,1,1),(182000,'ADOBO Y TENIDOS DE PIELES; FABRICACIÓN DE ARTÍCULOS DE PIEL',1,1,1),(191100,'CURTIDO Y ADOBO DE CUEROS',1,1,1),(191200,'FABRICACIÓN DE MALETAS, BOLSOS DE MANO Y SIMILARES; ARTÍCULOS DE TALABARTERÍA Y GUARNICIONERÍA',1,1,1),(192000,'FABRICACIÓN DE CALZADO',1,1,1),(201000,'ASERRADO Y ACEPILLADURA DE MADERAS',1,1,1),(202100,'FABRICACIÓN DE TABLEROS, PANELES Y HOJAS DE MADERA PARA ENCHAPADO',1,1,1),(202200,'FABRICACIÓN DE PARTES Y PIEZAS DE CARPINTERÍA PARA EDIFICIOS Y CONSTRUCCIONES',1,1,1),(202300,'FABRICACIÓN DE RECIPIENTES DE MADERA',1,1,1),(202900,'FABRICACIÓN DE OTROS PRODUCTOS DE MADERA; ARTÍCULOS DE CORCHO, PAJA Y MATERIALES TRENZABLES',1,1,1),(210110,'FABRICACIÓN DE CELULOSA Y OTRAS PASTAS DE MADERA',1,1,1),(210121,'FABRICACIÓN DE PAPEL DE PERIÓDICO',1,1,1),(210129,'FABRICACIÓN DE PAPEL Y CARTÓN N.C.P.',1,1,1),(210200,'FABRICACIÓN DE PAPEL Y CARTÓN ONDULADO Y DE ENVASES DE PAPEL Y CARTÓN',1,1,1),(210900,'FABRICACIÓN DE OTROS ARTÍCULOS DE PAPEL Y CARTÓN',1,1,1),(221101,'EDICIÓN PRINCIPALMENTE DE LIBROS',1,1,1),(221109,'EDICIÓN DE FOLLETOS, PARTITURAS Y OTRAS PUBLICACIONES',1,1,1),(221200,'EDICIÓN DE PERIÓDICOS, REVISTAS Y PUBLICACIONES PERIÓDICAS',1,1,1),(221300,'EDICIÓN DE GRABACIONES',1,1,1),(221900,'OTRAS ACTIVIDADES DE EDICIÓN',1,1,1),(222101,'IMPRESIÓN PRINCIPALMENTE DE LIBROS',1,1,1),(222109,'OTRAS ACTIVIDADES DE IMPRESIÓN N.C.P.',1,1,1),(222200,'ACTIVIDADES DE SERVICIO RELACIONADA CON LA IMPRESIÓN',1,1,1),(223000,'REPRODUCCIÓN DE GRABACIONES',1,1,1),(231000,'FABRICACIÓN DE PRODUCTOS DE HORNOS COQUE',1,1,1),(232000,'FABRICACIÓN DE PRODUCTOS DE REFINACIÓN DE PETRÓLEO',1,1,1),(233000,'ELABORACIÓN DE COMBUSTIBLE NUCLEAR',1,1,1),(241110,'FABRICACIÓN DE CARBÓN VEGETAL, Y BRIQUETAS DE CARBÓN VEGETAL',1,1,1),(241190,'FABRICACIÓN DE SUSTANCIAS QUÍMICAS BÁSICAS, EXCEPTO ABONOS Y COMPUESTOS DE NITRÓGENO',1,1,1),(241200,'FABRICACIÓN DE ABONOS Y COMPUESTOS DE NITRÓGENO',1,1,1),(241300,'FABRICACIÓN DE PLÁSTICOS EN FORMAS PRIMARIAS Y DE CAUCHO SINTÉTICO',1,1,1),(242100,'FABRICACIÓN DE PLAGUICIDAS Y OTROS PRODUCTOS QUÍMICOS DE USO AGROPECUARIO',1,1,1),(242200,'FABRICACIÓN DE PINTURAS, BARNICES Y PRODUCTOS DE REVESTIMIENTO SIMILARES',1,1,1),(242300,'FABRICACIÓN DE PRODUCTOS FARMACEUTICOS, SUSTANCIAS QUÍMICAS MEDICINALES Y PRODUCTOS BOTÁNICOS',1,1,1),(242400,'FABRICACIONES DE JABONES Y DETERGENTES, PREPARADOS PARA LIMPIAR, PERFUMES Y PREPARADOS DE TOCADOR',1,1,1),(242910,'FABRICACIÓN DE EXPLOSIVOS Y PRODUCTOS DE PIROTECNIA',1,1,1),(242990,'FABRICACIÓN DE OTROS PRODUCTOS QUÍMICOS N.C.P.',1,1,1),(243000,'FABRICACIÓN DE FIBRAS MANUFACTURADAS',1,1,1),(251110,'FABRICACIÓN DE CUBIERTAS Y CÁMARAS DE CAUCHO',1,1,1),(251120,'RECAUCHADO Y RENOVACIÓN DE CUBIERTAS DE CAUCHO',1,1,1),(251900,'FABRICACIÓN DE OTROS PRODUCTOS DE CAUCHO',1,1,1),(252010,'FABRICACIÓN DE PLANCHAS, LÁMINAS, CINTAS, TIRAS DE PLÁSTICO',1,1,1),(252020,'FABRICACIÓN DE TUBOS, MANGUERAS PARA LA CONSTRUCCIÓN',1,1,1),(252090,'FABRICACIÓN DE OTROS ARTÍCULOS DE PLÁSTICO',1,1,1),(261010,'FABRICACIÓN, MANIPULADO Y TRANSFORMACIÓN DE VIDRIO PLANO',1,1,1),(261020,'FABRICACIÓN DE VIDRIO HUECO',1,1,1),(261030,'FABRICACIÓN DE FIBRAS DE VIDRIO',1,1,1),(261090,'FABRICACIÓN DE ARTÍCULOS DE VIDRIO N.C.P.',1,1,1),(269101,'FABRICACIÓN DE PRODUCTOS DE CERÁMICA NO REFRACTARIA PARA USO NO ESTRUCTURAL CON FINES ORNAMENTALES',1,1,1),(269109,'FABRICACIÓN DE PRODUCTOS DE CERÁMICA NO REFRACTARIA PARA USO NO ESTRUCTURAL N.C.P.',1,1,1),(269200,'FABRICACIÓN DE PRODUCTOS DE CERÁMICAS REFRACTARIA',1,1,1),(269300,'FABRICACIÓN DE PRODUCTOS DE ARCILLA Y CERÁMICAS NO REFRACTARIAS PARA USO ESTRUCTURAL',1,1,1),(269400,'FABRICACIÓN DE CEMENTO, CAL Y YESO',1,1,1),(269510,'ELABORACIÓN DE HORMIGÓN, ARTÍCULOS DE HORMIGÓN Y MORTERO (MEZCLA PARA CONSTRUCCIÓN)',1,1,1),(269520,'FABRICACIÓN DE PRODUCTOS DE FIBROCEMENTO Y ASBESTOCEMENTO',1,1,1),(269530,'FABRICACIÓN DE PANELES DE YESO PARA LA CONSTRUCCIÓN',1,1,1),(269590,'FABRICACIÓN DE ARTÍCULOS DE CEMENTO Y YESO N.C.P.',1,1,1),(269600,'CORTE, TALLADO Y ACABADO DE LA PIEDRA',1,1,1),(269910,'FABRICACIÓN DE MEZCLAS BITUMINOSAS A BASE DE ASFALTO, DE BETUNES NATURALES, Y PRODUCTOS SIMILARES',1,1,1),(269990,'FABRICACIÓN DE OTROS PRODUCTOS MINERALES NO METÁLICOS N.C.P',1,1,1),(271000,'INDUSTRIAS BASICAS DE HIERRO Y ACERO',1,1,1),(272010,'ELABORACIÓN DE PRODUCTOS DE COBRE EN FORMAS PRIMARIAS.',1,1,1),(272020,'ELABORACIÓN DE PRODUCTOS DE ALUMINIO EN FORMAS PRIMARIAS',1,1,1),(272090,'FABRICACIÓN DE PRODUCTOS PRIMARIOS DE METALES PRECIOSOS Y DE OTROS METALES NO FERROSOS N.C.P.',1,1,1),(273100,'FUNDICIÓN DE HIERRO Y ACERO',1,1,1),(273200,'FUNDICIÓN DE METALES NO FERROSOS',1,1,1),(281100,'FABRICACIÓN DE PRODUCTOS METÁLICOS DE USO ESTRUCTURAL',1,1,1),(281211,'FABRICACIÓN DE RECIPIENTES DE GAS COMPRIMIDO O LICUADO',1,1,1),(281219,'FABRICACIÓN DE TANQUES, DEPÓSITOS Y RECIPIENTES DE METAL N.C.P.',1,1,1),(281280,'REPARACIÓN DE TANQUES, DEPÓSITOS Y RECIPIENTES DE METAL',1,1,1),(281310,'FABRICACIÓN DE GENERADORES DE VAPOR, EXCEPTO CALDERAS DE AGUA CALIENTE PARA CALEFACCIÓN',1,1,1),(281380,'REPARACIÓN DE GENERADORES DE VAPOR, EXCEPTO CALDERAS DE AGUA CALIENTE PARA CALEFACCIÓN CENTRAL',1,1,1),(289100,'FORJA, PRENSADO, ESTAMPADO Y LAMINADO DE METAL; INCLUYE PULVIMETALURGIA',1,1,1),(289200,'TRATAMIENTOS Y REVESTIMIENTOS DE METALES; OBRAS DE INGENIERÍA MECÁNICA EN GENERAL',1,1,1),(289310,'FABRICACIÓN DE ARTÍCULOS DE CUCHILLERÍA',1,1,1),(289320,'FABRICACIÓN DE HERRAMIENTAS DE MANO Y ARTÍCULOS DE FERRETERÍA',1,1,1),(289910,'FABRICACIÓN DE CABLES, ALAMBRES Y PRODUCTOS DE ALAMBRE',1,1,1),(289990,'FABRICACIÓN DE OTROS PRODUCTOS ELABORADOS DE METAL N.C.P.',1,1,1),(291110,'FABRICACIÓN DE MOTORES Y TURBINAS, EXCEPTO PARA AERONAVES, VEHÍCULOS AUTOMOTORES Y MOTOCICLETAS',1,1,1),(291180,'REPARACIÓN DE MOTORES Y TURBINAS, EXCEPTO PARA AERONAVES, VEHÍCULOS AUTOMOTORES Y MOTOCICLETAS',1,1,1),(291210,'FABRICACIÓN DE BOMBAS, GRIFOS, VÁLVULAS, COMPRESORES, SISTEMAS HIDRÁULICOS',1,1,1),(291280,'REPARACIÓN DE BOMBAS, COMPRESORES, SISTEMAS HIDRÁULICOS, VÁLVULAS Y ARTÍCULOS DE GRIFERÍA',1,1,1),(291310,'FABRICACIÓN DE COJINETES, ENGRANAJES, TRENES DE ENGRANAJES Y PIEZAS DE TRANSMISIÓN',1,1,1),(291380,'REPARACIÓN DE COJINETES, ENGRANAJES, TRENES DE ENGRANAJES Y PIEZAS DE TRANSMISIÓN',1,1,1),(291410,'FABRICACIÓN DE HORNOS, HOGARES Y QUEMADORES',1,1,1),(291480,'REPARACIÓN DE HORNOS, HOGARES Y QUEMADORES',1,1,1),(291510,'FABRICACIÓN DE EQUIPO DE ELEVACIÓN Y MANIPULACIÓN',1,1,1),(291580,'REPARACIÓN DE EQUIPO DE ELEVACIÓN Y MANIPULACIÓN',1,1,1),(291910,'FABRICACIÓN DE OTRO TIPO DE MAQUINARIAS DE USO GENERAL',1,1,1),(291980,'REPARACIÓN OTROS TIPOS DE MAQUINARIA Y EQUIPOS DE USO GENERAL',1,1,1),(292110,'FABRICACIÓN DE MAQUINARIA AGROPECUARIA Y FORESTAL',1,1,1),(292180,'REPARACIÓN DE MAQUINARIA AGROPECUARIA Y FORESTAL',1,1,1),(292210,'FABRICACIÓN DE MÁQUINAS HERRAMIENTAS',1,1,1),(292280,'REPARACIÓN DE MÁQUINAS HERRAMIENTAS',1,1,1),(292310,'FABRICACIÓN DE MAQUINARIA METALÚRGICA',1,1,1),(292380,'REPARACIÓN DE MAQUINARIA PARA LA INDUSTRIA METALÚRGICA',1,1,1),(292411,'FABRICACIÓN DE MAQUINARIA PARA MINAS Y CANTERAS Y PARA OBRAS DE CONSTRUCCIÓN',1,1,1),(292412,'FABRICACIÓN DE PARTES PARA MÁQUINAS DE SONDEO O PERFORACIÓN',1,1,1),(292480,'REPARACIÓN DE MAQUINARIA PARA LA EXPLOTACIÓN DE PETRÓLEO, MINAS, CANTERAS, Y OBRAS DE CONSTRUCCIÓN',1,1,1),(292510,'FABRICACIÓN DE MAQUINARIA PARA LA ELABORACIÓN DE ALIMENTOS, BEBIDAS Y TABACOS',1,1,1),(292580,'REPARACIÓN DE MAQUINARIA PARA LA ELABORACIÓN DE ALIMENTOS, BEBIDAS Y TABACOS',1,1,1),(292610,'FABRICACIÓN DE MAQUINARIA PARA LA ELABORACIÓN DE PRENDAS TEXTILES, PRENDAS DE VESTIR Y CUEROS',1,1,1),(292680,'REPARACIÓN DE MAQUINARIA PARA LA INDUSTRIA TEXTIL, DE LA CONFECCIÓN, DEL CUERO Y DEL CALZADO',1,1,1),(292710,'FABRICACIÓN DE ARMAS Y MUNICIONES',1,1,1),(292780,'REPARACIÓN DE ARMAS',1,1,1),(292910,'FABRICACIÓN DE OTROS TIPOS DE MAQUINARIAS DE USO ESPECIAL',1,1,1),(292980,'REPARACIÓN DE OTROS TIPOS DE MAQUINARIA DE USO ESPECIAL',1,1,1),(293000,'FABRICACIÓN DE APARATOS DE USO DOMÉSTICO N.C.P.',1,1,1),(300010,'FABRICACIÓN Y ARMADO DE COMPUTADORES Y HARDWARE EN GENERAL',1,1,1),(300020,'FABRICACIÓN DE MAQUINARIA DE OFICINA, CONTABILIDAD, N.C.P.',1,1,1),(311010,'FABRICACIÓN DE MOTORES, GENERADORES Y TRANSFORMADORES ELÉCTRICOS',1,1,1),(311080,'REPARACIÓN DE MOTORES, GENERADORES Y TRANSFORMADORES ELÉCTRICOS',1,1,1),(312010,'FABRICACIÓN DE APARATOS DE DISTRIBUCIÓN Y CONTROL',1,1,1),(312080,'REPARACIÓN DE APARATOS DE DISTRIBUCIÓN Y CONTROL',1,1,1),(313000,'FABRICACIÓN DE HILOS Y CABLES AISLADOS',1,1,1),(314000,'FABRICACIÓN DE ACUMULADORES DE PILAS Y BATERÍAS PRIMARIAS',1,1,1),(315010,'FABRICACIÓN DE LÁMPARAS Y EQUIPO DE ILUMINACIÓN',1,1,1),(315080,'REPARACIÓN DE EQUIPO DE ILUMINACIÓN',1,1,1),(319010,'FABRICACIÓN DE OTROS TIPOS DE EQUIPO ELÉCTRICO N.C.P.',1,1,1),(319080,'REPARACIÓN DE OTROS TIPOS DE EQUIPO ELÉCTRICO N.C.P.',1,1,1),(321010,'FABRICACIÓN DE COMPONENTES ELECTRÓNICOS',1,1,1),(321080,'REPARACIÓN DE COMPONENTES ELECTRÓNICOS',1,1,1),(322010,'FABRICACIÓN DE TRANSMISORES DE RADIO Y TELEVISIÓN, APARATOS PARA TELEFONÍA Y TELEGRAFÍA CON HILOS',1,1,1),(322080,'REPARACIÓN DE TRANSMISORES DE RADIO Y TELEVISIÓN, APARATOS PARA TELEFONÍA Y TELEGRAFÍA CON HILOS',1,1,1),(323000,'FABRICACIÓN DE RECEPTORES (RADIO Y TV); APARATOS DE GRABACIÓN Y REPRODUCCIÓN (AUDIO Y VIDEO)',1,1,1),(331110,'FABRICACIÓN DE EQUIPO MÉDICO Y QUIRÚRGICO, Y DE APARATOS ORTOPÉDICOS',1,1,1),(331120,'LABORATORIOS DENTALES',1,1,1),(331180,'REPARACIÓN DE EQUIPO MÉDICO Y QUIRÚRGICO, Y DE APARATOS ORTOPÉDICOS',1,1,1),(331210,'FABRICACIÓN DE INSTRUMENTOS Y APARATOS PARA MEDIR, VERIFICAR, ENSAYAR, NAVEGAR Y OTROS FINES',1,1,1),(331280,'REPARACIÓN DE INSTRUMENTOS Y APARATOS PARA MEDIR, VERIFICAR, ENSAYAR, NAVEGAR Y OTROS FINES',1,1,1),(331310,'FABRICACIÓN DE EQUIPOS DE CONTROL DE PROCESOS INDUSTRIALES',1,1,1),(331380,'REPARACIÓN DE EQUIPOS DE CONTROL DE PROCESOS INDUSTRIALES',1,1,1),(332010,'FABRICACIÓN Y/O REPARACIÓN DE LENTES Y ARTÍCULOS OFTALMOLÓGICOS',1,1,1),(332020,'FABRICACIÓN DE INSTRUMENTOS DE OPTICA N.C.P. Y EQUIPOS FOTOGRÁFICOS',1,1,1),(332080,'REPARACIÓN DE INSTRUMENTOS DE OPTICA N.C.P Y EQUIPO FOTOGRÁFICOS',1,1,1),(333000,'FABRICACIÓN DE RELOJES',1,1,1),(341000,'FABRICACIÓN DE VEHÍCULOS AUTOMOTORES',1,1,1),(342000,'FABRICACIÓN DE CARROCERÍAS PARA VEHÍCULOS AUTOMOTORES; FABRICACIÓN DE REMOLQUES Y SEMI REMOLQUES',1,1,1),(343000,'FABRICACIÓN DE PARTES Y ACCESORIOS PARA VEHÍCULOS AUTOMOTORES Y SUS MOTORES',1,1,1),(351110,'CONSTRUCCIÓN Y REPARACIÓN DE BUQUES; ASTILLEROS',1,1,1),(351120,'CONSTRUCCIÓN DE EMBARCACIONES MENORES',1,1,1),(351180,'REPARACIÓN DE EMBARCACIONES MENORES',1,1,1),(351210,'CONSTRUCCIÓN DE EMBARCACIONES DE RECREO Y DEPORTE',1,1,1),(351280,'REPARACIÓN DE EMBARCACIONES DE RECREO Y DEPORTES',1,1,1),(352000,'FABRICACIÓN DE LOCOMOTORAS Y DE MATERIAL RODANTE PARA FERROCARRILES Y TRANVÍAS',1,1,1),(353010,'FABRICACIÓN DE AERONAVES Y NAVES ESPACIALES',1,1,1),(353080,'REPARACIÓN DE AERONAVES Y NAVES ESPACIALES',1,1,1),(359100,'FABRICACIÓN DE MOTOCICLETAS',1,1,1),(359200,'FABRICACIÓN DE BICICLETAS Y DE SILLONES DE RUEDAS PARA INVALIDOS',1,1,1),(359900,'FABRICACIÓN DE OTROS EQUIPOS DE TRANSPORTE N.C.P.',1,1,1),(361010,'FABRICACIÓN DE MUEBLES PRINCIPALMENTE DE MADERA',1,1,1),(361020,'FABRICACIÓN DE OTROS MUEBLES N.C.P., INCLUSO COLCHONES',1,1,1),(369100,'FABRICACIÓN DE JOYAS Y PRODUCTOS CONEXOS',1,1,1),(369200,'FABRICACIÓN DE INSTRUMENTOS DE MÚSICA',1,1,1),(369300,'FABRICACIÓN DE ARTÍCULOS DE DEPORTE',1,1,1),(369400,'FABRICACIÓN DE JUEGOS Y JUGUETES',1,1,1),(369910,'FABRICACIÓN DE PLUMAS Y LÁPICES DE TODA CLASE Y ARTÍCULOS DE ESCRITORIO EN GENERAL',1,1,1),(369920,'FABRICACIÓN DE BROCHAS, ESCOBAS Y CEPILLOS',1,1,1),(369930,'FABRICACIÓN DE FÓSFOROS',1,1,1),(369990,'FABRICACIÓN DE ARTÍCULOS DE OTRAS INDUSTRIAS N.C.P.',1,1,1),(371000,'RECICLAMIENTO DE DESPERDICIOS Y DESECHOS METÁLICOS',1,1,1),(372010,'RECICLAMIENTO DE PAPEL',1,1,1),(372020,'RECICLAMIENTO DE VIDRIO',1,1,1),(372090,'RECICLAMIENTO DE OTROS DESPERDICIOS Y DESECHOS N.C.P.',1,1,1),(401011,'GENERACIÓN HIDROELÉCTRICA',1,1,1),(401012,'GENERACIÓN EN CENTRALES TERMOELÉCTRICA DE CICLOS COMBINADOS',1,1,1),(401013,'GENERACIÓN EN OTRAS CENTRALES TERMOELÉCTRICAS',1,1,1),(401019,'GENERACIÓN EN OTRAS CENTRALES N.C.P.',1,1,1),(401020,'TRANSMISIÓN DE ENERGÍA ELÉCTRICA',1,1,1),(401030,'DISTRIBUCIÓN DE ENERGIA ELÉCTRICA',1,1,1),(402000,'FABRICACIÓN DE GAS; DISTRIBUCIÓN DE COMBUSTIBLES GASEOSOS POR TUBERÍAS',1,1,1),(403000,'SUMINISTRO DE VAPOR Y AGUA CALIENTE',1,1,1),(410000,'CAPTACIÓN, DEPURACIÓN Y DISTRIBUCIÓN DE AGUA',NULL,1,1),(451010,'PREPARACIÓN DEL TERRENO, EXCAVACIONES Y MOVIMIENTOS DE TIERRAS',1,1,1),(451020,'SERVICIOS DE DEMOLICIÓN Y EL DERRIBO DE EDIFICIOS Y OTRAS ESTRUCTURAS',1,1,1),(452010,'CONSTRUCCIÓN DE EDIFICIOS COMPLETOS O DE PARTES DE EDIFICIOS',1,1,1),(452020,'OBRAS DE INGENIERÍA',1,1,1),(453000,'ACONDICIONAMIENTO DE EDIFICIOS',1,1,1),(454000,'OBRAS MENORES EN CONSTRUCCIÓN (CONTRATISTAS, ALBANILES, CARPINTEROS)',1,1,1),(455000,'ALQUILER DE EQUIPO DE CONSTRUCCIÓN O DEMOLICIÓN DOTADO DE OPERARIOS',1,1,1),(501010,'VENTA AL POR MAYOR DE VEHÍCULOS AUTOMOTORES (IMPORTACIÓN, DISTRIBUCIÓN) EXCEPTO MOTOCICLETAS',1,1,1),(501020,'VENTA O COMPRAVENTA AL POR MENOR DE VEHÍCULOS AUTOMOTORES NUEVOS O USADOS; EXCEPTO MOTOCICLETAS',1,1,1),(502010,'SERVICIO DE LAVADO DE VEHÍCULOS AUTOMOTORES',NULL,1,1),(502020,'SERVICIOS DE REMOLQUE DE VEHÍCULOS (GRUAS)',1,1,1),(502080,'MANTENIMIENTO Y REPARACIÓN DE VEHÍCULOS AUTOMOTORES',NULL,1,1),(503000,'VENTA DE PARTES, PIEZAS Y ACCESORIOS DE VEHÍCULOS AUTOMOTORES',1,1,1),(504010,'VENTA DE MOTOCICLETAS',1,1,1),(504020,'VENTA DE PIEZAS Y ACCESORIOS DE MOTOCICLETAS',1,1,1),(504080,'REPARACIÓN DE MOTOCICLETAS',NULL,1,1),(505000,'VENTA AL POR MENOR DE COMBUSTIBLE PARA AUTOMOTORES',1,1,1),(511010,'CORRETAJE DE PRODUCTOS AGRÍCOLAS',1,1,1),(511020,'CORRETAJE DE GANADO (FERIAS DE GANADO)',1,1,1),(511030,'OTROS TIPOS DE CORRETAJES O REMATES N.C.P. (NO INCLUYE SERVICIOS DE MARTILLERO)',1,1,1),(512110,'VENTA AL POR MAYOR DE ANIMALES VIVOS',1,1,1),(512120,'VENTA AL POR MAYOR DE PRODUCTOS PECUARIOS (LANAS, PIELES, CUEROS SIN PROCESAR); EXCEPTO ALIMENTOS',1,1,1),(512130,'VENTA AL POR MAYOR DE MATERIAS PRIMAS AGRÍCOLAS',1,1,1),(512210,'MAYORISTA DE FRUTAS Y VERDURAS',1,1,1),(512220,'MAYORISTAS DE CARNES',1,1,1),(512230,'MAYORISTAS DE PRODUCTOS DEL MAR (PESCADO, MARISCOS, ALGAS)',1,1,1),(512240,'MAYORISTAS DE VINOS Y BEBIDAS ALCOHÓLICAS Y DE FANTASÍA',1,1,1),(512250,'VENTA AL POR MAYOR DE CONFITES',1,1,1),(512260,'VENTA AL POR MAYOR DE TABACO Y PRODUCTOS DERIVADOS',1,1,1),(512290,'VENTA AL POR MAYOR DE HUEVOS, LECHE, ABARROTES, Y OTROS ALIMENTOS N.C.P.',1,1,1),(513100,'VENTA AL POR MAYOR DE PRODUCTOS TEXTILES, PRENDAS DE VESTIR Y CALZADO',1,1,1),(513910,'VENTA AL POR MAYOR DE MUEBLES',1,1,1),(513920,'VENTA AL POR MAYOR DE ARTÍCULOS ELÉCTRICOS Y ELECTRÓNICOS PARA EL HOGAR',1,1,1),(513930,'VENTA AL POR MAYOR DE ARTÍCULOS DE PERFUMERÍA, COSMÉTICOS, JABONES Y PRODUCTOS DE LIMPIEZA',1,1,1),(513940,'VENTA AL POR MAYOR DE PAPEL Y CARTÓN',1,1,1),(513951,'VENTA AL POR MAYOR DE LIBROS',1,1,1),(513952,'VENTA AL POR MAYOR DE REVISTAS Y PERIÓDICOS',1,1,1),(513960,'VENTA AL POR MAYOR DE PRODUCTOS FARMACEUTICOS',1,1,1),(513970,'VENTA AL POR MAYOR DE INSTRUMENTOS CIENTÍFICOS Y QUIRÚRGICOS',1,1,1),(513990,'VENTA AL POR MAYOR DE OTROS ENSERES DOMÉSTICOS N.C.P.',1,1,1),(514110,'VENTA AL POR MAYOR DE COMBUSTIBLES LÍQUIDOS',1,1,1),(514120,'VENTA AL POR MAYOR DE COMBUSTIBLES SÓLIDOS',1,1,1),(514130,'VENTA AL POR MAYOR DE COMBUSTIBLES GASEOSOS',1,1,1),(514140,'VENTA AL POR MAYOR DE PRODUCTOS CONEXOS A LOS COMBUSTIBLES',1,1,1),(514200,'VENTA AL POR MAYOR DE METALES Y MINERALES METALÍFEROS',1,1,1),(514310,'VENTA AL POR MAYOR DE MADERA NO TRABAJADA Y PRODUCTOS RESULTANTES DE SU ELABORACIÓN PRIMARIA',1,1,1),(514320,'VENTA AL POR MAYOR DE MATERIALES DE CONSTRUCCIÓN, ARTÍCULOS DE FERRETERÍA Y RELACIONADOS',1,1,1),(514910,'VENTA AL POR MAYOR DE PRODUCTOS QUÍMICOS',1,1,1),(514920,'VENTA AL POR MAYOR DE DESECHOS METÁLICOS (CHATARRA)',1,1,1),(514930,'VENTA AL POR MAYOR DE INSUMOS VETERINARIOS',1,1,1),(514990,'VENTA AL POR MAYOR DE OTROS PRODUCTOS INTERMEDIOS, DESPERDICIOS Y DESECHOS N.C.P.',1,1,0),(515001,'VENTA AL POR MAYOR DE MAQUINARIA AGRÍCOLA Y FORESTAL',1,1,1),(515002,'VENTA AL POR MAYOR DE MAQUINARIA METALÚRGICA',1,1,1),(515003,'VENTA AL POR MAYOR DE MAQUINARIA PARA LA MINERÍA',1,1,1),(515004,'VENTA AL POR MAYOR DE MAQUINARIA PARA LA CONSTRUCCIÓN',1,1,1),(515005,'VENTA AL POR MAYOR DE MAQUINARIA PARA LA ELABORACIÓN DE ALIMENTOS, BEBIDAS Y TABACO',1,1,1),(515006,'VENTA AL POR MAYOR DE MAQUINARIA PARA TEXTILES Y CUEROS',1,1,1),(515007,'VENTA AL POR MAYOR DE MÁQUINAS Y EQUIPOS DE OFICINA; INCLUYE MATERIALES CONEXOS',1,1,1),(515008,'VENTA AL POR MAYOR DE MAQUINARIA Y EQUIPO DE TRANSPORTE EXCEPTO VEHÍCULOS AUTOMOTORES',1,1,1),(515009,'VENTA AL POR MAYOR DE MAQUINARIA, HERRAMIENTAS, EQUIPO Y MATERIALES N.C.P.',1,1,1),(519000,'VENTA AL POR MAYOR DE OTROS PRODUCTOS N.C.P.',1,1,0),(521111,'GRANDES ESTABLECIMIENTOS (VENTA DE ALIMENTOS); HIPERMERCADOS',1,1,1),(521112,'ALMACENES MEDIANOS (VENTA DE ALIMENTOS); SUPERMERCADOS, MINIMARKETS',1,1,1),(521120,'ALMACENES PEQUENOS (VENTA DE ALIMENTOS)',1,1,1),(521200,'GRANDES TIENDAS - PRODUCTOS DE FERRETERÍA Y PARA EL HOGAR',1,1,1),(521300,'GRANDES TIENDAS - VESTUARIO Y PRODUCTOS PARA EL HOGAR',1,1,1),(521900,'VENTA AL POR MENOR DE OTROS PRODUCTOS EN PEQUENOS ALMACENES NO ESPECIALIZADOS',1,1,1),(522010,'VENTA AL POR MENOR DE BEBIDAS Y LICORES (BOTILLERÍAS)',1,1,1),(522020,'VENTA AL POR MENOR DE CARNES (ROJAS, BLANCAS, OTRAS) PRODUCTOS CÁRNICOS Y SIMILARES',1,1,1),(522030,'COMERCIO AL POR MENOR DE VERDURAS Y FRUTAS (VERDULERÍA)',1,1,1),(522040,'VENTA AL POR MENOR DE PESCADOS, MARISCOS Y PRODUCTOS CONEXOS',1,1,1),(522050,'VENTA AL POR MENOR DE PRODUCTOS DE PANADERÍA Y PASTELERÍA',1,1,1),(522060,'VENTA AL POR MENOR DE ALIMENTOS PARA MASCOTAS Y ANIMALES EN GENERAL',1,1,1),(522070,'VENTA AL POR MENOR DE AVES Y HUEVOS',1,1,1),(522090,'VENTA AL POR MENOR DE PRODUCTOS DE CONFITERÍAS, CIGARRILLOS, Y OTROS',1,1,1),(523111,'FARMACIAS - PERTENECIENTES A CADENA DE ESTABLECIMIENTOS',1,1,1),(523112,'FARMACIAS INDEPENDIENTES',1,1,1),(523120,'VENTA AL POR MENOR DE PRODUCTOS MEDICINALES',1,1,1),(523130,'VENTA AL POR MENOR DE ARTÍCULOS ORTOPÉDICOS',1,1,1),(523140,'VENTA AL POR MENOR DE ARTÍCULOS DE TOCADOR Y COSMÉTICOS',1,1,1),(523210,'VENTA AL POR MENOR DE CALZADO',1,1,1),(523220,'VENTA AL POR MENOR DE PRENDAS DE VESTIR EN GENERAL, INCLUYE ACCESORIOS',1,1,1),(523230,'VENTA AL POR MENOR DE LANAS, HILOS Y SIMILARES',1,1,1),(523240,'VENTA AL POR MENOR DE MALETERÍAS, TALABARTERÍAS Y ARTÍCULOS DE CUERO',1,1,1),(523250,'VENTA AL POR MENOR DE ROPA INTERIOR Y PRENDAS DE USO PERSONAL',1,1,1),(523290,'COMERCIO AL POR MENOR DE TEXTILES PARA EL HOGAR Y OTROS PRODUCTOS TEXTILES N.C.P.',1,1,1),(523310,'VENTA AL POR MENOR DE ARTÍCULOS ELECTRODOMÉSTICOS Y ELECTRÓNICOS PARA EL HOGAR',1,1,1),(523320,'VENTA AL POR MENOR DE CRISTALES, LOZAS, PORCELANA, MENAJE (CRISTALERÍAS)',1,1,1),(523330,'VENTA AL POR MENOR DE MUEBLES; INCLUYE COLCHONES',1,1,1),(523340,'VENTA AL POR MENOR DE INSTRUMENTOS MUSICALES (CASA DE MÚSICA)',1,1,1),(523350,'VENTA AL POR MENOR DE DISCOS, CASSETTES, DVD Y VIDEOS',1,1,1),(523360,'VENTA AL POR MENOR DE LÁMPARAS, APLIQUÉS Y SIMILARES',1,1,1),(523390,'VENTA AL POR MENOR DE APARATOS, ARTÍCULOS, EQUIPO DE USO DOMÉSTICO N.C.P.',1,1,1),(523410,'VENTA AL POR MENOR DE ARTÍCULOS DE FERRETERÍA Y MATERIALES DE CONSTRUCCIÓN',1,1,1),(523420,'VENTA AL POR MENOR DE PINTURAS, BARNICES Y LACAS',1,1,1),(523430,'COMERCIO AL POR MENOR DE PRODUCTOS DE VIDRIO',1,1,1),(523911,'COMERCIO AL POR MENOR DE ARTÍCULOS FOTOGRÁFICOS',1,1,1),(523912,'COMERCIO AL POR MENOR DE ARTÍCULOS ÓPTICOS',1,1,1),(523921,'COMERCIO POR MENOR DE JUGUETES',1,1,1),(523922,'COMERCIO AL POR MENOR DE LIBROS',1,1,1),(523923,'COMERCIO AL POR MENOR DE REVISTAS Y DIARIOS',1,1,1),(523924,'COMERCIO DE ARTÍCULOS DE SUMINISTROS DE OFICINAS Y ARTÍCULOS DE ESCRITORIO EN GENERAL',1,1,1),(523930,'COMERCIO AL POR MENOR DE COMPUTADORAS, SOFTWARES Y SUMINISTROS',1,1,1),(523941,'COMERCIO AL POR MENOR DE ARMERÍAS, ARTÍCULOS DE CAZA Y PESCA',1,1,1),(523942,'COMERCIO AL POR MENOR DE BICICLETAS Y SUS REPUESTOS',1,1,1),(523943,'COMERCIO AL POR MENOR DE ARTÍCULOS DEPORTIVOS',1,1,1),(523950,'COMERCIO AL POR MENOR DE ARTÍCULOS DE JOYERÍA, FANTASÍAS Y RELOJERÍAS',1,1,1),(523961,'VENTA AL POR MENOR DE GAS LICUADO EN BOMBONAS',1,1,1),(523969,'VENTA AL POR MENOR DE CARBÓN, LENA Y OTROS COMBUSTIBLES DE USO DOMÉSTICO',1,1,1),(523991,'COMERCIO AL POR MENOR DE ARTÍCULOS TÍPICOS (ARTESANÍAS)',1,1,1),(523992,'VENTA AL POR MENOR DE FLORES, PLANTAS, ÁRBOLES, SEMILLAS, ABONOS',1,1,1),(523993,'VENTA AL POR MENOR DE MASCOTAS Y ACCESORIOS',1,1,1),(523999,'VENTAS AL POR MENOR DE OTROS PRODUCTOS EN ALMACENES ESPECIALIZADOS N.C.P.',1,1,1),(524010,'COMERCIO AL POR MENOR DE ANTIGUEDADES',1,1,1),(524020,'COMERCIO AL POR MENOR DE ROPA USADA',1,1,1),(524090,'COMERCIO AL POR MENOR DE ARTÍCULOS Y ARTEFACTOS USADOS N.C.P.',1,1,1),(525110,'VENTA AL POR MENOR EN EMPRESAS DE VENTA A DISTANCIA POR CORREO',1,1,1),(525120,'VENTA AL POR MENOR EN EMPRESAS DE VENTA A DISTANCIA VÍA TELEFÓNICA',1,1,1),(525130,'VENTA AL POR MENOR EN EMPRESAS DE VENTA A DISTANCIA VÍA INTERNET; COMERCIO ELECTRÓNICO',1,1,1),(525200,'VENTA AL POR MENOR EN PUESTOS DE VENTA Y MERCADOS',1,1,1),(525911,'VENTA AL POR MENOR REALIZADA POR INDEPENDIENTES EN TRANSPORTE PÚBLICO (LEY 20.388)',1,1,1),(525919,'VENTA AL POR MENOR NO REALIZADA EN ALMACENES DE PRODUCTOS PROPIOS N.C.P.',1,1,1),(525920,'MÁQUINAS EXPENDEDORAS',1,1,1),(525930,'VENTA AL POR MENOR A CAMBIO DE UNA RETRIBUCIÓN O POR CONTRATA',1,1,1),(525990,'OTROS TIPOS DE VENTA AL POR MENOR NO REALIZADA EN ALMACENES N.C.P.',1,1,1),(526010,'REPARACIÓN DE CALZADO Y OTROS ARTÍCULOS DE CUERO',NULL,1,1),(526020,'REPARACIONES ELÉCTRICAS Y ELECTRÓNICAS',NULL,1,1),(526030,'REPARACIÓN DE RELOJES Y JOYAS',NULL,1,1),(526090,'OTRAS REPARACIONES DE EFECTOS PERSONALES Y ENSERES DOMÉSTICOS N.C.P.',NULL,1,1),(551010,'HOTELES',1,1,1),(551020,'MOTELES',1,1,1),(551030,'RESIDENCIALES',1,1,1),(551090,'OTROS TIPOS DE HOSPEDAJE TEMPORAL COMO CAMPING, ALBERGUES, POSADAS, REFUGIOS Y SIMILARES',1,1,1),(552010,'RESTAURANTES',1,1,1),(552020,'ESTABLECIMIENTOS DE COMIDA RÁPIDA (BARES, FUENTES DE SODA, GELATERÍAS, PIZZERÍAS Y SIMILARES)',1,1,1),(552030,'CASINOS Y CLUBES SOCIALES',1,1,1),(552040,'SERVICIOS DE COMIDA PREPARADA EN FORMA INDUSTRIAL',1,1,1),(552050,'SERVICIOS DE BANQUETES, BODAS Y OTRAS CELEBRACIONES',1,1,1),(552090,'SERVICIOS DE OTROS ESTABLECIMIENTOS QUE EXPENDEN COMIDAS Y BEBIDAS',1,1,1),(601001,'TRANSPORTE INTERURBANO DE PASAJEROS POR FERROCARRILES',1,1,1),(601002,'TRANSPORTE DE CARGA POR FERROCARRILES',1,1,1),(602110,'TRANSPORTE URBANO DE PASAJEROS VÍA FERROCARRIL (INCLUYE METRO)',0,1,1),(602120,'TRANSPORTE URBANO DE PASAJEROS VÍA AUTOBUS (LOCOMOCIÓN COLECTIVA)',0,1,1),(602130,'TRANSPORTE INTERURBANO DE PASAJEROS VÍA AUTOBUS',0,1,1),(602140,'TRANSPORTE URBANO DE PASAJEROS VÍA TAXI COLECTIVO',0,1,1),(602150,'SERVICIOS DE TRANSPORTE ESCOLAR',0,1,1),(602160,'SERVICIOS DE TRANSPORTE DE TRABAJADORES',0,1,1),(602190,'OTROS TIPOS DE TRANSPORTE REGULAR DE PASAJEROS POR VÍA TERRESTRE N.C.P.',0,1,1),(602210,'TRANSPORTES POR TAXIS LIBRES Y RADIOTAXIS',0,1,1),(602220,'SERVICIOS DE TRANSPORTE A TURISTAS',0,1,1),(602230,'TRANSPORTE DE PASAJEROS EN VEHÍCULOS DE TRACCIÓN HUMANA Y ANIMAL',0,1,1),(602290,'OTROS TIPOS DE TRANSPORTE NO REGULAR DE PASAJEROS N.C.P.',0,1,1),(602300,'TRANSPORTE DE CARGA POR CARRETERA',1,1,1),(603000,'TRANSPORTE POR TUBERÍAS',1,1,1),(611001,'TRANSPORTE MARÍTIMO Y DE CABOTAJE DE PASAJEROS',1,1,1),(611002,'TRANSPORTE MARÍTIMO Y DE CABOTAJE DE CARGA',1,1,1),(612001,'TRANSPORTE DE PASAJEROS POR VÍAS DE NAVEGACIÓN INTERIORES',1,1,1),(612002,'TRANSPORTE DE CARGA POR VÍAS DE NAVEGACIÓN INTERIORES',1,1,1),(621010,'TRANSPORTE REGULAR POR VÍA AÉREA DE PASAJEROS',1,1,1),(621020,'TRANSPORTE REGULAR POR VÍA AÉREA DE CARGA',1,1,1),(622001,'TRANSPORTE NO REGULAR POR VÍA AÉREA DE PASAJEROS',1,1,1),(622002,'TRANSPORTE NO REGULAR POR VÍA AÉREA DE CARGA',1,1,1),(630100,'MANIPULACIÓN DE LA CARGA',1,1,1),(630200,'SERVICIOS DE ALMACENAMIENTO Y DEPÓSITO',1,1,1),(630310,'TERMINALES TERRESTRES DE PASAJEROS',1,1,1),(630320,'ESTACIONAMIENTO DE VEHÍCULOS Y PARQUÍMETROS',1,1,1),(630330,'PUERTOS Y AEROPUERTOS',1,1,1),(630340,'SERVICIOS PRESTADOS POR CONCESIONARIOS DE CARRETERAS',1,1,1),(630390,'OTRAS ACTIVIDADES CONEXAS AL TRANSPORTE N.C.P.',1,1,1),(630400,'AGENCIAS Y ORGANIZADORES DE VIAJES; ACTIVIDADES DE ASISTENCIA A TURISTAS N.C.P.',1,1,1),(630910,'AGENCIAS DE ADUANAS',NULL,1,1),(630920,'AGENCIAS DE TRANSPORTE',NULL,1,1),(641100,'ACTIVIDADES POSTALES NACIONALES',NULL,1,1),(641200,'ACTIVIDADES DE CORREO DISTINTAS DE LAS ACTIVIDADES POSTALES NACIONALES',NULL,1,1),(642010,'SERVICIOS DE TELEFONÍA FIJA',1,1,1),(642020,'SERVICIOS DE TELEFONÍA MÓVIL',1,1,1),(642030,'PORTADORES TELEFÓNICOS (LARGA DISTANCIA NACIONAL E INTERNACIONAL)',1,1,1),(642040,'SERVICIOS DE TELEVISIÓN NO ABIERTA',1,1,1),(642050,'PROVEEDORES DE INTERNET',1,1,1),(642061,'CENTROS DE LLAMADOS; INCLUYE ENVÍO DE FAX',1,1,1),(642062,'CENTROS DE ACCESO A INTERNET',1,1,1),(642090,'OTROS SERVICIOS DE TELECOMUNICACIONES N.C.P.',1,1,1),(651100,'BANCA CENTRAL',1,1,0),(651910,'BANCOS',1,1,0),(651920,'FINANCIERAS',1,1,1),(651990,'OTROS TIPOS DE INTERMEDIACIÓN MONETARIA N.C.P.',1,1,1),(659110,'LEASING FINANCIERO',1,1,1),(659120,'LEASING HABITACIONAL',1,1,1),(659210,'FINANCIAMIENTO DEL FOMENTO DE LA PRODUCCIÓN',1,1,0),(659220,'ACTIVIDADES DE CRÉDITO PRENDARIO',1,1,1),(659231,'FACTORING',1,1,1),(659232,'SECURITIZADORAS',1,1,0),(659290,'OTROS INSTITUCIONES FINANCIERAS N.C.P.',1,1,1),(659911,'ADMINISTRADORAS DE FONDOS DE INVERSIÓN',1,1,1),(659912,'ADMINISTRADORAS DE FONDOS MUTUOS',1,1,1),(659913,'ADMINISTRADORAS DE FICES (FONDOS DE INVERSIÓN DE CAPITAL EXTRANJERO)',1,1,1),(659914,'ADMINISTRADORAS DE FONDOS PARA LA VIVIENDA',1,1,1),(659915,'ADMINISTRADORAS DE FONDOS PARA OTROS FINES Y/O GENERALES',1,1,1),(659920,'SOCIEDADES DE INVERSIÓN Y RENTISTAS DE CAPITALES MOBILIARIOS EN GENERAL',0,1,1),(660101,'PLANES DE SEGURO DE VIDA',1,1,0),(660102,'PLANES DE REASEGUROS DE VIDA',1,1,0),(660200,'ADMINISTRADORAS DE FONDOS DE PENSIONES (AFP)',1,1,0),(660301,'PLANES DE SEGUROS GENERALES',1,1,0),(660302,'PLANES DE REASEGUROS GENERALES',1,1,0),(660400,'ISAPRES',1,1,0),(671100,'ADMINISTRACIÓN DE MERCADOS FINANCIEROS',1,1,1),(671210,'CORREDORES DE BOLSA',1,1,1),(671220,'AGENTES DE VALORES',1,1,1),(671290,'OTROS SERVICIOS DE CORRETAJE',1,1,1),(671910,'CÁMARA DE COMPENSACIÓN',1,1,1),(671921,'ADMINISTRADORA DE TARJETAS DE CRÉDITO',1,1,1),(671929,'EMPRESAS DE ASESORÍA, CONSULTORÍA FINANCIERA Y DE APOYO AL GIRO',NULL,1,1),(671930,'CLASIFICADORES DE RIESGOS',1,1,1),(671940,'CASAS DE CAMBIO Y OPERADORES DE DIVISA',NULL,1,1),(671990,'OTRAS ACTIVIDADES AUXILIARES DE LA INTERMEDIACIÓN FINANCIERA N.C.P.',1,1,1),(672010,'CORREDORES DE SEGUROS',NULL,1,1),(672020,'AGENTES Y LIQUIDADORES DE SEGUROS',0,2,1),(672090,'OTRAS ACTIVIDADES AUXILIARES DE LA FINANCIACIÓN DE PLANES DE SEGUROS Y DE PENSIONES N.C.P.',NULL,NULL,1),(701001,'ARRIENDO DE INMUEBLES AMOBLADOS O CON EQUIPOS Y MAQUINARIAS',1,1,1),(701009,'COMPRA, VENTA Y ALQUILER (EXCEPTO AMOBLADOS) DE INMUEBLES PROPIOS O ARRENDADOS',0,1,1),(702000,'CORREDORES DE PROPIEDADES',NULL,NULL,1),(711101,'ALQUILER DE AUTOS Y CAMIONETAS SIN CHOFER',1,1,1),(711102,'ALQUILER DE OTROS EQUIPOS DE TRANSPORTE POR VÍA TERRESTRE SIN OPERARIOS',1,1,1),(711200,'ALQUILER DE TRANSPORTE POR VÍA ACUÁTICA SIN TRIPULACIÓN',1,1,1),(711300,'ALQUILER DE EQUIPO DE TRANSPORTE POR VÍA AÉREA SIN TRIPULANTES',1,1,1),(712100,'ALQUILER DE MAQUINARIA Y EQUIPO AGROPECUARIO',1,1,1),(712200,'ALQUILER DE MAQUINARIA Y EQUIPO DE CONSTRUCCIÓN E INGENIERÍA CIVIL',1,1,1),(712300,'ALQUILER DE MAQUINARIA Y EQUIPO DE OFICINA (SIN OPERARIOS NI SERVICIO ADMINISTRATIVO)',1,1,1),(712900,'ALQUILER DE OTROS TIPOS DE MAQUINARIAS Y EQUIPOS N.C.P.',1,1,1),(713010,'ALQUILER DE BICICLETAS Y ARTÍCULOS PARA DEPORTES',1,1,1),(713020,'ARRIENDO DE VIDEOS, JUEGOS DE VIDEO, Y EQUIPOS REPRODUCTORES DE VIDEO, MÚSICA Y SIMILARES',1,1,1),(713030,'ALQUILER DE MOBILIARIO PARA EVENTOS (SILLAS, MESAS, MESONES, VAJILLAS, TOLDOS Y RELACIONADOS)',1,1,1),(713090,'ALQUILER DE OTROS EFECTOS PERSONALES Y ENSERES DOMÉSTICOS N.C.P.',1,1,1),(722000,'ASESORES Y CONSULTORES EN INFORMÁTICA (SOFTWARE)',0,2,1),(724000,'PROCESAMIENTO DE DATOS Y ACTIVIDADES RELACIONADAS CON BASES DE DATOS',NULL,1,1),(725000,'MANTENIMIENTO Y REPARACIÓN DE MAQUINARIA DE OFICINA, CONTABILIDAD E INFORMÁTICA',1,1,1),(726000,'EMPRESAS DE SERVICIOS INTEGRALES DE INFORMÁTICA',NULL,1,1),(731000,'INVESTIGACIONES Y DESARROLLO EXPERIMENTAL EN EL CAMPO DE LAS CIENCIAS NATURALES Y LA INGENIERÍA',NULL,1,1),(732000,'INVESTIGACIONES Y DESARROLLO EXPERIMENTAL EN EL CAMPO DE LAS CIENCIAS SOCIALES Y LAS HUMANIDADES',NULL,1,1),(741110,'SERVICIOS JURÍDICOS',0,2,1),(741120,'SERVICIO NOTARIAL',0,2,0),(741130,'CONSERVADOR DE BIENES RAICES',0,2,0),(741140,'RECEPTORES JUDICIALES',0,2,1),(741190,'ARBITRAJES, SÍNDICOS, PERITOS Y OTROS',0,2,1),(741200,'ACTIVIDADES DE CONTABILIDAD, TENEDURÍA DE LIBROS Y AUDITORÍA; ASESORAMIENTOS TRIBUTARIOS',0,2,1),(741300,'INVESTIGACIÓN DE MERCADOS Y REALIZACIÓN DE ENCUESTAS DE OPINIÓN PÚBLICA',NULL,NULL,1),(741400,'ACTIVIDADES DE ASESORAMIENTO EMPRESARIAL Y EN MATERIA DE GESTIÓN',0,NULL,1),(742110,'SERVICIOS DE ARQUITECTURA Y TÉCNICO RELACIONADO',0,2,1),(742121,'EMPRESAS DE SERVICIOS GEOLÓGICOS Y DE PROSPECCIÓN',1,1,1),(742122,'SERVICIOS PROFESIONALES EN GEOLOGÍA Y PROSPECCIÓN',0,2,1),(742131,'EMPRESAS DE SERVICIOS DE TOPOGRAFÍA Y AGRIMENSURA',1,1,1),(742132,'SERVICIOS PROFESIONALES DE TOPOGRAFÍA Y AGRIMENSURA',0,2,1),(742141,'SERVICIOS DE INGENIERÍA PRESTADOS POR EMPRESAS N.C.P.',1,1,1),(742142,'SERVICIOS DE INGENIERÍA PRESTADOS POR PROFESIONALES N.C.P.',0,2,1),(742190,'OTROS SERVICIOS DESARROLLADOS POR PROFESIONALES',0,2,1),(742210,'SERVICIO DE REVISIÓN TÉCNICA DE VEHÍCULOS AUTOMOTORES',1,1,1),(742290,'OTROS SERVICIOS DE ENSAYOS Y ANALISIS TÉCNICOS',NULL,1,1),(743001,'EMPRESAS DE PUBLICIDAD',1,1,1),(743002,'SERVICIOS PERSONALES EN PUBLICIDAD',0,2,1),(749110,'SERVICIOS SUMINISTRO DE PERSONAL; EMPRESAS SERVICIOS TRANSITORIOS',1,1,1),(749190,'SERVICIOS DE RECLUTAMIENTO DE PERSONAL',1,1,1),(749210,'ACTIVIDADES DE INVESTIGACIÓN',NULL,NULL,1),(749221,'SERVICIOS INTEGRALES DE SEGURIDAD',NULL,1,1),(749222,'TRANSPORTE DE VALORES',1,1,1),(749229,'SERVICIOS PERSONALES RELACIONADOS CON SEGURIDAD',0,2,1),(749310,'EMPRESAS DE LIMPIEZA DE EDIFICIOS RESIDENCIALES Y NO RESIDENCIALES',1,1,1),(749320,'DESRATIZACIÓN Y FUMIGACIÓN NO AGRÍCOLA',NULL,1,1),(749401,'SERVICIOS DE REVELADO, IMPRESIÓN, AMPLIACIÓN DE FOTOGRAFÍAS',1,1,1),(749402,'ACTIVIDADES DE FOTOGRAFÍA PUBLICITARIA',NULL,NULL,1),(749409,'SERVICIOS PERSONALES DE FOTOGRAFÍA',0,2,1),(749500,'SERVICIOS DE ENVASADO Y EMPAQUE',1,1,1),(749911,'SERVICIOS DE COBRANZA DE CUENTAS',NULL,1,1),(749912,'EVALUACIÓN Y CALIFICACIÓN DEL GRADO DE SOLVENCIA',NULL,1,1),(749913,'ASESORÍAS EN LA GESTIÓN DE LA COMPRA O VENTA DE PEQUENAS Y MEDIANAS EMPRESAS',NULL,1,1),(749921,'DISENADORES DE VESTUARIO',NULL,NULL,1),(749922,'DISENADORES DE INTERIORES',NULL,NULL,1),(749929,'OTROS DISENADORES N.C.P.',NULL,NULL,1),(749931,'EMPRESAS DE TAQUIGRAFÍA, REPRODUCCIÓN, DESPACHO DE CORRESPONDENCIA, Y OTRAS LABORES DE OFICINA',1,1,1),(749932,'SERVICIOS PERSONALES DE TRADUCCIÓN, INTERPRETACIÓN Y LABORES DE OFICINA',0,2,1),(749933,'EMPRESAS DE TRADUCCIÓN E INTERPRETACIÓN',1,1,1),(749934,'SERVICIOS DE FOTOCOPIAS',1,1,1),(749940,'AGENCIAS DE CONTRATACIÓN DE ACTORES',1,1,1),(749950,'ACTIVIDADES DE SUBASTA (MARTILLEROS)',1,1,1),(749961,'GALERÍAS DE ARTE',1,1,1),(749962,'FERIAS DE EXPOSICIONES CON FINES EMPRESARIALES',NULL,1,1),(749970,'SERVICIOS DE CONTESTACIÓN DE LLAMADAS (CALL CENTER)',1,1,1),(749990,'OTRAS ACTIVIDADES EMPRESARIALES N.C.P.',1,1,1),(751110,'GOBIERNO CENTRAL',NULL,1,0),(751120,'MUNICIPALIDADES',NULL,1,0),(751200,'ACTIVIDADES DEL PODER JUDICIAL',NULL,1,0),(751300,'ACTIVIDADES DEL PODER LEGISLATIVO',NULL,1,0),(752100,'RELACIONES EXTERIORES',NULL,1,0),(752200,'ACTIVIDADES DE DEFENSA',NULL,1,0),(752300,'ACTIVIDADES DE MANTENIMIENTO DEL ORDEN PÚBLICO Y DE SEGURIDAD',NULL,1,1),(753010,'ACTIVIDADES DE PLANES DE SEGURIDAD SOCIAL DE AFILIACIÓN OBLIGATORIA RELACIONADOS CON SALUD',NULL,1,0),(753020,'CAJAS DE COMPENSACIÓN',NULL,1,1),(753090,'OTRAS ACTIVIDADES DE PLANES DE SEGURIDAD SOCIAL DE AFILIACIÓN OBLIGATORIA',NULL,1,0),(801010,'ESTABLECIMIENTOS DE ENSEÑANZA PREESCOLAR',1,1,1),(801020,'ESTABLECIMIENTOS DE ENSEÑANZA PRIMARIA',1,1,1),(802100,'ESTABLECIMIENTOS DE ENSEÑANZA SECUNDARIA DE FORMACIÓN GENERAL',1,1,1),(802200,'ESTABLECIMIENTOS DE ENSEÑANZA SECUNDARIA DE FORMACIÓN TÉCNICA Y PROFESIONAL',1,1,1),(803010,'UNIVERSIDADES',1,1,0),(803020,'INSTITUTOS PROFESIONALES',1,1,0),(803030,'CENTROS DE FORMACIÓN TÉCNICA',1,1,1),(809010,'ESTABLECIMIENTOS DE ENSEÑANZA PRIMARIA Y SECUNDARIA PARA ADULTOS',1,1,1),(809020,'ESTABLECIMIENTOS DE ENSEÑANZA PREUNIVERSITARIA',1,1,1),(809030,'EDUCACIÓN EXTRAESCOLAR (ESCUELA DE CONDUCCIÓN, MÚSICA, MODELAJE, ETC.)',1,1,1),(809041,'EDUCACIÓN A DISTANCIA (INTERNET, CORRESPONDENCIA, OTRAS)',0,1,1),(809049,'SERVICIOS PERSONALES DE EDUCACIÓN',0,2,1),(851110,'HOSPITALES Y CLÍNICAS',1,1,0),(851120,'CLÍNICAS PSIQUIATRICAS, CENTROS DE REHABILITACIÓN, ASILOS Y CLÍNICAS DE REPOSO',1,1,1),(851211,'SERVICIOS DE MÉDICOS EN FORMA INDEPENDIENTE',0,2,1),(851212,'ESTABLECIMIENTOS MÉDICOS DE ATENCIÓN AMBULATORIA (CENTROS MÉDICOS)',NULL,1,1),(851221,'SERVICIOS DE ODONTÓLOGOS EN FORMA INDEPENDIENTE',0,2,1),(851222,'CENTROS DE ATENCIÓN ODONTOLÓGICA',NULL,1,1),(851910,'LABORATORIOS CLÍNICOS; INCLUYE BANCOS DE SANGRE',NULL,1,1),(851920,'OTROS PROFESIONALES DE LA SALUD',0,2,1),(851990,'OTRAS ACTIVIDADES EMPRESARIALES RELACIONADAS CON LA SALUD HUMANA',NULL,1,1),(852010,'ACTIVIDADES DE CLÍNICAS VETERINARIAS',NULL,1,1),(852021,'SERVICIOS DE MÉDICOS VETERINARIOS EN FORMA INDEPENDIENTE',0,2,1),(852029,'SERVICIOS DE OTROS PROFESIONALES INDEPENDIENTES EN EL ÁREA VETERINARIA',0,2,1),(853100,'SERVICIOS SOCIALES CON ALOJAMIENTO',NULL,1,1),(853200,'SERVICIOS SOCIALES SIN ALOJAMIENTO',NULL,1,1),(900010,'SERVICIOS DE VERTEDEROS',1,1,1),(900020,'BARRIDO DE EXTERIORES',1,1,1),(900030,'RECOGIDA Y ELIMINACIÓN DE DESECHOS',1,1,1),(900040,'SERVICIOS DE EVACUACIÓN DE RILES Y AGUAS SERVIDAS',1,1,1),(900050,'SERVICIOS DE TRATAMIENTO DE RILES Y AGUAS SERVIDAS',1,1,1),(900090,'OTRAS ACTIVIDADES DE MANEJO DE DESPERDICIOS',1,1,1),(911100,'ACTIVIDADES DE ORGANIZACIONES EMPRESARIALES Y DE EMPLEADORES',NULL,1,1),(911210,'COLEGIOS PROFESIONALES',NULL,1,0),(911290,'ACTIVIDADES DE OTRAS ORGANIZACIONES PROFESIONALES',NULL,1,1),(912000,'ACTIVIDADES DE SINDICATOS',NULL,1,1),(919100,'ACTIVIDADES DE ORGANIZACIONES RELIGIOSAS',NULL,1,0),(919200,'ACTIVIDADES DE ORGANIZACIONES POLÍTICAS',NULL,1,1),(919910,'CENTROS DE MADRES Y UNIDADES VECINALES Y COMUNALES',NULL,1,0),(919920,'CLUBES SOCIALES',NULL,1,0),(919930,'SERVICIOS DE INSTITUTOS DE ESTUDIOS, FUNDACIONES, CORPORACIONES DE DESARROLLO (EDUCACIÓN, SALUD)',NULL,1,0),(919990,'ACTIVIDADES DE OTRAS ASOCIACIONES N.C.P.',NULL,1,1),(921110,'PRODUCCIÓN DE PELÍCULAS CINEMATOGRÁFICAS',NULL,1,1),(921120,'DISTRIBUIDORA CINEMATOGRÁFICAS',1,1,1),(921200,'EXHIBICIÓN DE FILMES Y VIDEOCINTAS',1,1,1),(921310,'ACTIVIDADES DE TELEVISIÓN',NULL,1,1),(921320,'ACTIVIDADES DE RADIO',NULL,1,1),(921411,'SERVICIOS DE PRODUCCIÓN DE RECITALES Y OTROS EVENTOS MUSICALES MASIVOS',NULL,1,1),(921419,'SERVICIOS DE PRODUCCIÓN TEATRAL Y OTROS N.C.P.',NULL,1,1),(921420,'ACTIVIDADES EMPRESARIALES DE ARTISTAS',1,1,1),(921430,'ACTIVIDADES ARTÍSTICAS; FUNCIONES DE ARTISTAS, ACTORES, MÚSICOS, CONFERENCISTAS, OTROS',0,2,1),(921490,'AGENCIAS DE VENTA DE BILLETES DE TEATRO, SALAS DE CONCIERTO Y DE TEATRO',NULL,1,1),(921911,'INSTRUCTORES DE DANZA',0,2,1),(921912,'ACTIVIDADES DE DISCOTECAS, CABARET, SALAS DE BAILE Y SIMILARES',1,1,1),(921920,'ACTIVIDADES DE PARQUES DE ATRACCIONES Y CENTROS SIMILARES',1,1,1),(921930,'ESPECTÁCULOS CIRCENSES, DE TÍTERES U OTROS SIMILARES',1,1,1),(921990,'OTRAS ACTIVIDADES DE ENTRETENIMIENTO N.C.P.',NULL,NULL,1),(922001,'AGENCIAS DE NOTICIAS',NULL,1,1),(922002,'SERVICIOS PERIODÍSTICOS PRESTADO POR PROFESIONALES',0,2,1),(923100,'ACTIVIDADES DE BIBLIOTECAS Y ARCHIVOS',NULL,1,1),(923200,'ACTIVIDADES DE MUSEOS Y PRESERVACIÓN DE LUGARES Y EDIFICIOS HISTÓRICOS',NULL,1,1),(923300,'ACTIVIDADES DE JARDINES BOTÁNICOS Y ZOOLÓGICOS Y DE PARQUES NACIONALES',NULL,1,1),(924110,'EXPLOTACIÓN DE INSTALACIONES ESPECIALIZADAS PARA LAS PRACTICAS DEPORTIVAS',NULL,1,1),(924120,'ACTIVIDADES DE CLUBES DE DEPORTES Y ESTADIOS',NULL,1,1),(924131,'FUTBOL PROFESIONAL',NULL,1,1),(924132,'FUTBOL AMATEUR',NULL,1,1),(924140,'HIPÓDROMOS',1,1,1),(924150,'PROMOCIÓN Y ORGANIZACIÓN DE ESPECTÁCULOS DEPORTIVOS',NULL,1,1),(924160,'ESCUELAS PARA DEPORTES',1,1,1),(924190,'OTRAS ACTIVIDADES RELACIONADAS AL DEPORTE N.C.P.',NULL,1,1),(924910,'SISTEMAS DE JUEGOS DE AZAR MASIVOS.',1,1,0),(924920,'ACTIVIDADES DE CASINO DE JUEGOS',1,1,0),(924930,'SALAS DE BILLAR, BOWLING, POOL Y JUEGOS ELECTRÓNICOS',1,1,1),(924940,'CONTRATACIÓN DE ACTORES PARA CINE, TV, Y TEATRO',1,1,1),(924990,'OTROS SERVICIOS DE DIVERSIÓN Y ESPARCIMIENTOS N.C.P.',NULL,NULL,1),(930100,'LAVADO Y LIMPIEZA DE PRENDAS DE TELA Y DE PIEL, INCLUSO LAS LIMPIEZAS EN SECO',1,1,1),(930200,'PELUQUERÍAS Y SALONES DE BELLEZA',NULL,NULL,1),(930310,'SERVICIOS FUNERARIOS',1,1,1),(930320,'SERVICIOS EN CEMENTERIOS',1,1,1),(930330,'SERVICIOS DE CARROZAS FÚNEBRES (TRANSPORTE DE CADÁVERES)',1,1,1),(930390,'OTRAS ACTIVIDADES DE SERVICIOS FUNERARIOS Y OTRAS ACTIVIDADES CONEXAS',1,1,1),(930910,'ACTIVIDADES DE MANTENIMIENTO FÍSICO CORPORAL (BAÑOS, TURCOS, SAUNAS)',1,1,1),(930990,'OTRAS ACTIVIDADES DE SERVICIOS PERSONALES N.C.P.',0,2,1),(950001,'HOGARES PRIVADOS INDIVIDUALES CON SERVICIO DOMÉSTICO',0,NULL,0),(950002,'CONSEJO DE ADMINISTRACIÓN DE EDIFICIOS Y CONDOMINIOS',0,1,0),(990000,'ORGANIZACIONES Y ÓRGANOS EXTRATERRITORIALES',NULL,1,0);
+/*!40000 ALTER TABLE `giros` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `margen_ganancia`
+-- Table structure for table `margen_ganancia`
 --
 
+DROP TABLE IF EXISTS `margen_ganancia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `margen_ganancia` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) DEFAULT NULL,
-  `porcentaje` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+  `porcentaje` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `metodo_pago`
+-- Dumping data for table `margen_ganancia`
 --
 
+LOCK TABLES `margen_ganancia` WRITE;
+/*!40000 ALTER TABLE `margen_ganancia` DISABLE KEYS */;
+INSERT INTO `margen_ganancia` VALUES (1,1,0);
+/*!40000 ALTER TABLE `margen_ganancia` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `metodo_pago`
+--
+
+DROP TABLE IF EXISTS `metodo_pago`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `metodo_pago` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `nombre_metodo_pago` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `metodo_pago`
+-- Dumping data for table `metodo_pago`
 --
 
-INSERT INTO `metodo_pago` (`id`, `id_cl`, `nombre_metodo_pago`, `estado`) VALUES
-(1, 1, 'EFECTIVO', 'S'),
-(2, 1, 'TRANSFERENCIA', 'S'),
-(3, 1, 'DÉBITO', 'S'),
-(4, 1, 'CRÉDITO', 'S');
-
--- --------------------------------------------------------
+LOCK TABLES `metodo_pago` WRITE;
+/*!40000 ALTER TABLE `metodo_pago` DISABLE KEYS */;
+INSERT INTO `metodo_pago` VALUES (1,1,'EFECTIVO','S'),(2,1,'TRANSFERENCIA','S'),(3,1,'DÉBITO','S'),(4,1,'CRÉDITO','S');
+/*!40000 ALTER TABLE `metodo_pago` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `monto_caja`
+-- Table structure for table `monto_caja`
 --
 
+DROP TABLE IF EXISTS `monto_caja`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `monto_caja` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `id_caja` int(11) NOT NULL,
   `id_cierre` int(11) NOT NULL,
   `motivo` int(11) NOT NULL,
-  `monto` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `monto` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `monto_caja`
+-- Dumping data for table `monto_caja`
 --
 
-INSERT INTO `monto_caja` (`id`, `id_cl`, `id_caja`, `id_cierre`, `motivo`, `monto`) VALUES
-(1, 1, 1, 1, 1, 20000),
-(2, 1, 1, 1, 2, 15000),
-(3, 1, 1, 1, 2, 15000);
-
--- --------------------------------------------------------
+LOCK TABLES `monto_caja` WRITE;
+/*!40000 ALTER TABLE `monto_caja` DISABLE KEYS */;
+INSERT INTO `monto_caja` VALUES (1,1,2,1,1,20000),(2,1,2,2,1,15000),(3,1,2,3,1,15000),(4,1,2,4,1,15000),(5,1,2,5,1,15000),(6,1,2,5,3,10000),(7,1,2,5,3,-10000),(8,1,2,6,1,15000),(9,1,2,7,1,15000),(10,1,2,8,1,20000),(11,1,2,9,1,15000),(12,1,2,10,1,15000),(13,1,2,11,1,20000),(14,1,2,12,1,15000),(15,1,2,13,1,15000),(16,1,2,14,1,20000),(17,1,2,15,1,15000),(18,1,2,16,1,15000),(19,1,2,17,1,15000),(20,1,2,18,1,20000),(21,1,2,19,1,10000),(22,1,2,20,1,20000),(23,1,2,21,1,15000),(24,1,2,21,4,28000),(25,1,2,21,4,11000),(26,1,2,22,1,5000),(27,1,2,24,1,20000),(28,1,2,25,1,20000),(29,1,2,26,1,15000),(30,1,2,27,1,15000),(31,1,2,28,1,20000),(32,1,2,29,1,15000),(33,1,2,30,1,15000);
+/*!40000 ALTER TABLE `monto_caja` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `motivo_mov_monto_caja`
+-- Table structure for table `motivo_mov_monto_caja`
 --
 
+DROP TABLE IF EXISTS `motivo_mov_monto_caja`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `motivo_mov_monto_caja` (
-  `id` int(11) NOT NULL,
-  `descripcion` varchar(100) NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `pago_cliente`
+-- Dumping data for table `motivo_mov_monto_caja`
 --
 
+LOCK TABLES `motivo_mov_monto_caja` WRITE;
+/*!40000 ALTER TABLE `motivo_mov_monto_caja` DISABLE KEYS */;
+/*!40000 ALTER TABLE `motivo_mov_monto_caja` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pago_cliente`
+--
+
+DROP TABLE IF EXISTS `pago_cliente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pago_cliente` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) DEFAULT NULL,
   `plan` int(11) NOT NULL,
   `metodo_pago` int(11) NOT NULL,
   `fecha_desde` date NOT NULL,
   `fecha_hasta` date NOT NULL,
   `periodo_actual` varchar(45) NOT NULL,
-  `estado` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `estado` varchar(5) NOT NULL,
+  `comprobante` varchar(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `pago_cliente`
+-- Dumping data for table `pago_cliente`
 --
 
-INSERT INTO `pago_cliente` (`id`, `id_cl`, `plan`, `metodo_pago`, `fecha_desde`, `fecha_hasta`, `periodo_actual`, `estado`) VALUES
-(1, 1, 1, 1, '2024-08-26', '2024-09-26', 'N', 'S'),
-(2, 1, 1, 1, '2024-09-27', '2024-10-26', 'N', 'S'),
-(3, 1, 1, 1, '2024-09-27', '2024-10-26', 'N', 'S'),
-(4, 1, 1, 1, '2024-09-27', '2024-10-26', 'N', 'S'),
-(5, 1, 1, 1, '2024-09-27', '2024-10-26', 'N', 'S'),
-(6, 1, 1, 1, '2024-09-27', '2024-10-26', 'N', 'S'),
-(7, 1, 1, 1, '2024-09-27', '2024-10-26', 'N', 'S'),
-(8, 1, 1, 1, '2024-09-27', '2024-10-26', 'N', 'S'),
-(9, 1, 1, 1, '2024-10-27', '2024-11-26', 'S', 'N');
-
--- --------------------------------------------------------
+LOCK TABLES `pago_cliente` WRITE;
+/*!40000 ALTER TABLE `pago_cliente` DISABLE KEYS */;
+INSERT INTO `pago_cliente` VALUES (1,1,1,1,'2024-10-16','2024-11-15','N','S','S'),(2,1,1,2,'2024-11-16','2024-12-15','N','S','S'),(3,1,1,1,'2024-12-16','2025-01-15','N','S','S'),(4,1,1,1,'2025-01-16','2025-02-15','S','S','S');
+/*!40000 ALTER TABLE `pago_cliente` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `pass_provisoria`
+-- Table structure for table `pass_provisoria`
 --
 
+DROP TABLE IF EXISTS `pass_provisoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pass_provisoria` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) DEFAULT NULL,
   `pass` varchar(45) DEFAULT NULL,
-  `fecha` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `fecha` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `pass_provisoria`
+-- Dumping data for table `pass_provisoria`
 --
 
-INSERT INTO `pass_provisoria` (`id`, `id_cl`, `pass`, `fecha`) VALUES
-(2, 2, '0ba2451778632691a61c70f', '2024-08-22 17:37:47'),
-(5, 1, '246c71c659363c0860ec51c', '2024-08-26 14:13:21');
-
--- --------------------------------------------------------
+LOCK TABLES `pass_provisoria` WRITE;
+/*!40000 ALTER TABLE `pass_provisoria` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pass_provisoria` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `pedidos`
+-- Table structure for table `pedidos`
 --
 
+DROP TABLE IF EXISTS `pedidos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pedidos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `nombre_pedido` varchar(250) NOT NULL,
   `id_proveedor` int(11) NOT NULL,
@@ -1205,78 +831,112 @@ CREATE TABLE `pedidos` (
   `estado_pago` varchar(5) NOT NULL,
   `fac_con_iva` varchar(5) NOT NULL,
   `creado_por` int(11) NOT NULL,
-  `fecha_registro` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
+  `fecha_registro` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `pedidos_detalle`
+-- Dumping data for table `pedidos`
 --
 
+LOCK TABLES `pedidos` WRITE;
+/*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
+INSERT INTO `pedidos` VALUES (1,1,'Pedido sin nombre',1,'N','A','A',1,'2024-10-16'),(2,1,'Pedido sin nombre',1,'N','A','A',1,'2024-10-16'),(3,1,'Pedido de helados n1',1,'N','A','S',1,'2024-10-16'),(4,1,'Pedido sin nombre',1,'N','A','A',1,'2024-10-16'),(5,1,'Pedido de helados',1,'N','C','S',1,'2024-10-16'),(6,1,'Pedido Kiosco',4,'N','A','S',1,'2024-12-04'),(7,1,'Pedido Kiosco 1',4,'C','C','N',1,'2024-12-04'),(8,1,'Pedido Savory Diciembre',7,'C','C','S',1,'2024-12-07'),(9,1,'Pedido Fruna',8,'N','A','S',1,'2024-12-14'),(10,1,'Pedido sin nombre',1,'N','A','A',1,'2024-12-14'),(11,1,'Pedido Fruna',8,'C','C','N',1,'2024-12-14'),(12,1,'Pedido Jumbo 21-12-2024',9,'C','C','A',1,'2024-12-21'),(13,1,'Pedido Alvi 2',4,'C','C','N',1,'2024-12-28'),(14,1,'Pedido sin nombre',1,'N','A','A',1,'2024-12-28'),(15,1,'Pedido Binder',10,'C','C','A',1,'2024-12-31'),(16,1,'Pedido Super portales',1,'N','A','A',1,'2025-01-04'),(17,1,'Pedido sin nombre',1,'N','A','A',1,'2025-01-04'),(18,1,'Pedido 2 Super Portales',1,'C','C','S',1,'2025-01-04'),(19,1,'Pedido Unimarc',4,'C','C','S',1,'2025-01-04'),(20,1,'Carbón',1,'C','C','A',1,'2025-01-11'),(21,1,'Pedido sin nombre',1,'N','A','A',1,'2025-01-11'),(22,1,'Pedido el trebol Plata mamá',5,'C','C','A',1,'2025-01-11'),(23,1,'Pedido sin nombre',1,'N','A','A',1,'2025-01-11'),(24,1,'Pedido El Trebol 2',5,'N','A','A',1,'2025-01-11'),(25,1,'Pedido Coca cola Pagado con plata mamá',1,'N','A','S',1,'2025-01-17'),(26,1,'Pedido Coca cola Pagado con plata mamá 428',12,'C','C','N',1,'2025-01-17'),(27,1,'Pedido Alvi pagado con plata del camping',4,'N','A','A',1,'2025-01-18'),(28,1,'Pedido binder pagado con plata camping',10,'C','C','S',1,'2025-01-18'),(29,1,'Alvi 3 camping',4,'C','C','N',1,'2025-01-22'),(30,1,'Pedido sin nombre',1,'N','A','A',1,'2025-01-28'),(31,1,'Pedido Coca cola Pagado con plata camping',12,'C','C','A',1,'2025-01-28'),(32,1,'Alvi 4',4,'N','A','A',1,'2025-02-01'),(33,1,'Alvi 4',4,'N','A','A',1,'2025-02-01'),(34,1,'Alvi 4 pagado con plata camping',4,'C','C','N',1,'2025-02-01'),(35,1,'Pedido Binder pagado con plata camping 2',1,'C','C','N',1,'2025-02-07');
+/*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pedidos_detalle`
+--
+
+DROP TABLE IF EXISTS `pedidos_detalle`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pedidos_detalle` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) NOT NULL,
   `id_pedido` int(11) NOT NULL,
   `producto` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `cantidad` int(11) NOT NULL,
   `valor` int(11) NOT NULL,
   `estado` varchar(5) NOT NULL,
-  `fecha_reg` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
+  `fecha_reg` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `planes`
+-- Dumping data for table `pedidos_detalle`
 --
 
+LOCK TABLES `pedidos_detalle` WRITE;
+/*!40000 ALTER TABLE `pedidos_detalle` DISABLE KEYS */;
+INSERT INTO `pedidos_detalle` VALUES (12,1,7,'Cheetos',1,10580,'S','2024-12-04'),(13,1,7,'Galleta mini mckay',1,2700,'S','2024-12-04'),(14,1,7,'Galleta mini',1,2700,'S','2024-12-04'),(15,1,7,'Galleta Mini',1,2700,'S','2024-12-04'),(16,1,7,'Ramitas Evercrisp',1,9780,'S','2024-12-04'),(17,1,7,'Galletas mini Mckay',1,2700,'S','2024-12-04'),(18,1,7,'Papas fritas',1,11180,'S','2024-12-04'),(19,1,7,'Super 8',1,11900,'S','2024-12-04'),(20,1,7,'Doblón ',1,6280,'S','2024-12-04'),(21,1,7,'Bom Bom Bum',1,3180,'S','2024-12-04'),(22,1,7,'Sprite lata',1,8160,'S','2024-12-04'),(23,1,7,'Coca Cola',1,8160,'S','2024-12-04'),(24,1,7,'Chicle Grosso',1,1520,'S','2024-12-04'),(25,1,7,'Chicle Grosso',1,1520,'S','2024-12-04'),(26,1,7,'Kryzpo',1,3420,'S','2024-12-04'),(27,1,7,'Agua Mineral',1,8880,'S','2024-12-04'),(28,1,7,'Galleta Bañada',1,11380,'S','2024-12-04'),(29,1,7,'Kryzpo 2',1,3420,'S','2024-12-04'),(30,0,0,'',0,0,'','0000-00-00'),(31,1,8,'Crazy Chirimoya',1,11040,'S','2024-12-07'),(32,1,8,'Crazy Flocos',1,11040,'S','2024-12-07'),(33,1,8,'Crazy Frambuesa',1,11040,'S','2024-12-07'),(34,1,8,'Xplori',1,9528,'S','2024-12-07'),(35,1,8,'Centella',1,10296,'S','2024-12-07'),(36,1,8,'Egocéntrico',1,11780,'S','2024-12-07'),(37,1,8,'Crocanty',1,11780,'S','2024-12-07'),(38,1,8,'Chocolito',1,11780,'S','2024-12-07'),(39,1,8,'Lolly Pop',1,9940,'S','2024-12-07'),(40,1,9,'Cachantún Más',1,9900,'S','2024-12-14'),(41,1,9,'Bachata',1,6120,'S','2024-12-14'),(42,1,9,'Mentitas',1,3840,'S','2024-12-14'),(43,1,9,'Bon o Bon',1,20580,'S','2024-12-14'),(44,1,9,'Inkat',1,10800,'S','2024-12-14'),(45,1,9,'Mekano',1,15600,'S','2024-12-14'),(46,1,9,'Loly Choc',1,5120,'S','2024-12-14'),(47,1,9,'Golpe ',1,11400,'S','2024-12-14'),(48,1,10,'',0,0,'S','2024-12-14'),(49,1,9,'',0,0,'N','2024-12-14'),(50,1,11,'Cachantun',1,9900,'S','2024-12-14'),(51,1,11,'Bachata',1,6120,'S','2024-12-14'),(52,1,11,'Mentitas',1,3840,'S','2024-12-14'),(53,1,11,'Bon o bon',1,20580,'S','2024-12-14'),(54,1,11,'Inkat',1,10800,'S','2024-12-14'),(55,1,11,'Mekano',1,15600,'S','2024-12-14'),(56,1,11,'Loly choc',1,5120,'S','2024-12-14'),(57,1,11,'Golpe',1,11400,'S','2024-12-14'),(58,1,12,'Pepsi lata',1,5590,'S','2024-12-21'),(59,1,12,'Sprite lata',1,5890,'S','2024-12-21'),(60,1,12,'Coca lata',1,5890,'S','2024-12-21'),(61,1,12,'Ginger ale',1,4300,'S','2024-12-21'),(62,1,12,'Seven Up',1,5590,'S','2024-12-21'),(63,1,12,'',0,0,'N','2024-12-21'),(64,1,13,'Agua vital',1,3900,'S','2024-12-28'),(65,1,13,'Sahnenuss',1,9380,'S','2024-12-28'),(66,1,13,'Chocolate',1,13380,'S','2024-12-28'),(67,1,13,'Cereal bar fruta',1,3220,'S','2024-12-28'),(68,1,13,'Cereal bar Chocolate',1,3130,'S','2024-12-28'),(69,1,13,'Cereal Bar Miel',1,3220,'S','2024-12-28'),(70,1,13,'Coca cola zero',1,5600,'S','2024-12-28'),(71,1,13,'Papas Fritas Stax',1,11340,'S','2024-12-28'),(72,1,14,'',0,0,'S','2024-12-28'),(73,1,13,'Chocolate Trencito',1,8600,'S','2024-12-28'),(74,1,13,'Ramitas queso',1,10580,'S','2024-12-28'),(75,1,13,'Ramitas original',1,5690,'S','2024-12-28'),(76,1,13,'Galleta Toddy',1,10800,'S','2024-12-28'),(77,1,13,'Galleta Tuareg',1,5200,'S','2024-12-28'),(78,1,13,'Galleta Din Don',1,2750,'S','2024-12-28'),(79,1,13,'Galleta Mini Palmerita',1,1890,'S','2024-12-28'),(80,1,13,'Galleta Mantequilla',1,5440,'S','2024-12-28'),(81,1,13,'Lays Stax',1,6720,'S','2024-12-28'),(82,1,15,'KeGol',2,2710,'S','2024-12-31'),(83,1,15,'Alfajor Bon o Bon',2,13436,'S','2024-12-31'),(84,1,15,'Galleta Bon o Bon',2,6544,'S','2024-12-31'),(85,1,15,'Galleta Coco Costa',10,625,'S','2024-12-31'),(86,1,16,'',0,0,'S','2025-01-04'),(87,1,17,'',0,0,'S','2025-01-04'),(88,1,18,'Cachantún Citrus',1,2606,'S','2025-01-04'),(89,1,18,'Coca cola Oreo',1,4622,'S','2025-01-04'),(90,1,18,'Fanta lata 350',1,4622,'S','2025-01-04'),(91,1,18,'Sprite Ice 350',1,6471,'S','2025-01-04'),(92,1,19,'Mini Mega Sahnenuss',1,8655,'S','2025-01-04'),(93,1,19,'Mini Crocanty',1,11346,'S','2025-01-04'),(94,1,19,'Mini Trululú',1,4025,'S','2025-01-04'),(95,1,19,'Centella',1,3697,'S','2025-01-04'),(96,1,19,'Carbon',1,20806,'S','2025-01-04'),(97,1,19,'',0,0,'S','2025-01-04'),(98,1,20,'Carbon',1,20000,'S','2025-01-11'),(99,1,21,'',0,0,'S','2025-01-11'),(100,1,22,'Frac',2,2517,'S','2025-01-11'),(101,1,23,'',0,0,'S','2025-01-11'),(102,1,24,'Galleta dindon',1,2933,'S','2025-01-11'),(103,1,24,'Galleta Frac',2,2517,'S','2025-01-11'),(104,1,24,'Alfi',1,1341,'S','2025-01-11'),(105,1,22,'Din don',1,2933,'S','2025-01-11'),(106,1,22,'Alfi',1,6689,'S','2025-01-11'),(107,1,22,'',0,0,'N','2025-01-11'),(108,1,25,'Vital Sin Gas',1,6837,'S','2025-01-17'),(109,1,25,'Vital Con Gass',1,6837,'S','2025-01-17'),(110,1,25,'Coca cola en lata',1,7588,'S','2025-01-17'),(111,1,25,'Coca Cola Zero',1,7980,'S','2025-01-17'),(112,1,25,'Sprite',1,3390,'S','2025-01-17'),(113,1,26,'Vital Sin Gas',1,8564,'S','2025-01-17'),(114,1,26,'Vital Con Gas',1,8564,'S','2025-01-17'),(115,1,26,'Coca cola lata',1,9458,'S','2025-01-17'),(116,1,26,'Coca Cola Sin azucar',1,9924,'S','2025-01-17'),(117,1,26,'Sprite',1,5176,'S','2025-01-17'),(118,1,27,'',0,0,'S','2025-01-18'),(119,1,28,'Galleta Bon o BON',10,1002,'S','2025-01-18'),(120,1,28,'Galleta Bon o Bon Blanca',10,1002,'S','2025-01-18'),(121,1,28,'Donuts',10,960,'S','2025-01-18'),(122,1,28,'Koyak',2,1528,'S','2025-01-18'),(123,1,28,'Dulces Arbolito',2,3113,'S','2025-01-18'),(124,1,28,'Golazo',2,3830,'S','2025-01-18'),(125,1,28,'Galleta Niza',10,727,'S','2025-01-18'),(126,1,28,'Galleta Mantequilla',10,727,'S','2025-01-18'),(127,1,28,'Jugo Refreskids',1,3385,'S','2025-01-18'),(128,1,28,'Jugo Refreskids Manzana',1,3385,'S','2025-01-18'),(129,1,29,'Chocman',1,5760,'S','2025-01-22'),(130,1,29,'Chocman Black',1,6080,'S','2025-01-22'),(131,1,29,'Marshmallow Maximo',1,8060,'S','2025-01-22'),(132,1,29,'Bon o Bon',1,12100,'S','2025-01-22'),(133,1,29,'Marshmallows',1,3540,'S','2025-01-22'),(134,1,29,'Alfi alfajores',1,4380,'S','2025-01-22'),(135,1,29,'Gomitas Ambrosito',1,3770,'S','2025-01-22'),(136,1,29,'Gomitas Flipy',1,3770,'S','2025-01-22'),(137,1,29,'Kryzpo',1,6720,'S','2025-01-22'),(138,1,29,'Kryzpo',1,6720,'S','2025-01-22'),(139,1,29,'Galleta',1,7380,'S','2025-01-22'),(140,1,30,'',0,0,'S','2025-01-28'),(141,1,31,'Coca cola lata',1,9167,'S','2025-01-28'),(142,1,31,'Sprite lata',1,9167,'S','2025-01-28'),(143,1,31,'Fanta lata',1,9167,'S','2025-01-28'),(144,1,31,'Coca cola 1lt',1,9167,'S','2025-01-28'),(145,1,32,'',0,0,'S','2025-02-01'),(146,1,33,'',0,0,'S','2025-02-01'),(147,1,34,'Galletón Quaker',1,3700,'S','2025-02-01'),(148,1,34,'Galleton Quaker',1,3700,'S','2025-02-01'),(149,1,34,'De Todito Queso',1,11420,'S','2025-02-01'),(150,1,34,'Cheetos',1,10580,'S','2025-02-01'),(151,1,34,'Papas Fritas',1,9980,'S','2025-02-01'),(152,1,34,'Doritos Queso',1,5650,'S','2025-02-01'),(153,1,35,'Golazo',1,7660,'S','2025-02-07'),(154,1,35,'Galleta niza',1,7270,'S','2025-02-07'),(155,1,35,'Bonobon',1,5087,'S','2025-02-07'),(156,1,35,'Bonobon',1,5087,'S','2025-02-07'),(157,1,35,'Galleta Bon o bon',1,10020,'S','2025-02-07'),(158,1,35,'cocaditas',1,5645,'S','2025-02-07');
+/*!40000 ALTER TABLE `pedidos_detalle` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `planes`
+--
+
+DROP TABLE IF EXISTS `planes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `planes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `estado` varchar(5) NOT NULL,
   `usuarios` int(11) NOT NULL,
   `cajas` int(11) NOT NULL,
-  `valor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `valor` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `planes`
+-- Dumping data for table `planes`
 --
 
-INSERT INTO `planes` (`id`, `nombre`, `estado`, `usuarios`, `cajas`, `valor`) VALUES
-(1, 'Plan 1 usuario + 1 caja', 'S', 1, 1, 10990),
-(2, 'Plan 2 usuarios + 2 cajas', 'S', 2, 2, 14990);
-
--- --------------------------------------------------------
+LOCK TABLES `planes` WRITE;
+/*!40000 ALTER TABLE `planes` DISABLE KEYS */;
+INSERT INTO `planes` VALUES (1,'Plan 1 usuario + 1 caja','S',1,1,9990),(2,'Plan 2 usuarios + 2 cajas','N',2,2,15990),(3,'Plan 2 usuarios + 2 cajas','S',2,2,15990);
+/*!40000 ALTER TABLE `planes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `plazos_pago`
+-- Table structure for table `plazos_pago`
 --
 
+DROP TABLE IF EXISTS `plazos_pago`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `plazos_pago` (
   `meses` int(3) NOT NULL,
-  `nombre_plazo` varchar(45) DEFAULT NULL
+  `nombre_plazo` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`meses`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `plazos_pago`
+-- Dumping data for table `plazos_pago`
 --
 
-INSERT INTO `plazos_pago` (`meses`, `nombre_plazo`) VALUES
-(1, 'PAGO MENSUAL'),
-(3, 'PAGO TRIMESTRAL'),
-(6, 'PAGO SEMESTRAL'),
-(12, 'PAGO ANUAL');
-
--- --------------------------------------------------------
+LOCK TABLES `plazos_pago` WRITE;
+/*!40000 ALTER TABLE `plazos_pago` DISABLE KEYS */;
+INSERT INTO `plazos_pago` VALUES (1,'PAGO MENSUAL'),(3,'PAGO TRIMESTRAL'),(6,'PAGO SEMESTRAL'),(12,'PAGO ANUAL');
+/*!40000 ALTER TABLE `plazos_pago` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Table structure for table `productos`
 --
 
+DROP TABLE IF EXISTS `productos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productos` (
-  `id_prod` int(11) NOT NULL,
+  `id_prod` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `codigo_barra` varchar(100) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `nombre_prod` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -1292,113 +952,163 @@ CREATE TABLE `productos` (
   `descuento` int(11) NOT NULL,
   `estado` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `creado_por` varchar(45) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
-  `fecha_reg` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha_reg` date NOT NULL,
+  PRIMARY KEY (`id_prod`)
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Dumping data for table `productos`
 --
 
-INSERT INTO `productos` (`id_prod`, `id_cl`, `codigo_barra`, `nombre_prod`, `proveedor`, `categoria`, `cantidad`, `pesaje`, `unidad_medida`, `valor_neto`, `margen_ganancia`, `monto_ganancia`, `valor_venta`, `descuento`, `estado`, `creado_por`, `fecha_reg`) VALUES
-(1, '1', '724347375026', 'Kudai - Vuelo', '1', '1', 10, 'N', 1, '10000', 50, 5000, '15000', 0, 'S', '1', '2024-08-22');
-
--- --------------------------------------------------------
+LOCK TABLES `productos` WRITE;
+/*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+INSERT INTO `productos` VALUES (1,'1','077779875849','Los Prisioneros - La Cultura de La Basura','3','1',10,'N',1,'8500',18,1500,'10000',0,'N','1','2024-10-16'),(2,'1','639842928823','Luis Miguel','3','1',10,'N',1,'8500',18,1500,'10000',0,'N','1','2024-10-16'),(3,'1','7802000017544','Cheetos','4','3',44,'N',1,'529',89,471,'1000',0,'S','1','2024-12-04'),(4,'1','7801610005194','Sprite Lata 350cc','4','5',10,'N',1,'680',121,820,'1500',0,'S','1','2024-12-04'),(5,'1','7613030612339','Super8 Normal','4','3',20,'N',1,'247',62,153,'400',0,'S','1','2024-12-04'),(6,'1','7801610001196','Coca Cola lata 350cc','4','5',11,'N',1,'680',121,820,'1500',0,'S','1','2024-12-04'),(7,'1','7802800535583','Kryzpo Crema Cebolla','4','3',6,'N',1,'570',75,430,'1000',0,'S','1','2024-12-04'),(8,'1','7802000002526','Papas Fritas Lays ','4','3',20,'N',1,'559',79,441,'1000',0,'S','1','2024-12-04'),(9,'1','7802000013737','Ramitas Evercrisp','4','3',20,'N',1,'489',64,311,'800',0,'S','1','2024-12-04'),(10,'1','koyak','Koyak','1','3',48,'N',1,'66',52,34,'100',0,'S','1','2024-12-04'),(11,'1','7613031649815','McKay Mini Vino','1','3',10,'N',1,'270',85,230,'500',0,'S','1','2024-12-04'),(12,'1','7613031651474','McKay Mini Coco','4','3',10,'N',1,'270',85,230,'500',0,'S','1','2024-12-04'),(13,'1','7613031650729','McKay Mini Limón','4','3',9,'N',1,'270',85,230,'500',0,'S','1','2024-12-04'),(14,'1','7613031651412','McKay Mini Mantequilla','4','3',9,'N',1,'270',85,230,'500',0,'S','1','2024-12-04'),(15,'1','7806500241416','Servilleta Nova','4','6',6,'N',1,'440',82,360,'800',0,'S','1','2024-12-04'),(16,'1','7613287755810','Chokita','4','3',20,'N',1,'285',75,215,'500',0,'S','1','2024-12-04'),(17,'1','7802215303036','Doblón','4','3',19,'N',1,'104',92,96,'200',0,'S','1','2024-12-04'),(18,'1','kayak simple 0.5 hora','Kayak Simple 1/2 hora','6','6',1000,'N',1,'1',399900,3999,'4000',0,'S','1','2024-12-04'),(19,'1','kayak simple 1 hora','Kayak Simple 1 hora','6','6',1000,'N',1,'1',599900,5999,'6000',0,'S','1','2024-12-04'),(20,'1','kayak doble 0.5 hora','Kayak doble 1/2 hora','6','6',1000,'N',1,'1',599900,5999,'6000',0,'S','1','2024-12-04'),(21,'1','kayak doble 1 hora','Kayak doble 1 hora','6','6',1000,'N',1,'1',799900,7999,'8000',0,'S','1','2024-12-04'),(22,'1','chicle','Chicle grosso','4','4',200,'N',1,'89',69,61,'150',0,'S','1','2024-12-04'),(23,'1','7802820600100',' Vital c Gas 600ml','4','5',23,'N',1,'370',170,630,'1000',0,'S','1','2024-12-04'),(24,'1','8445291145832','Centella','7','8',100,'N',1,'300',0,0,'300',0,'S','1','2024-12-07'),(25,'1','78006027','Lolly Pop','7','8',1000,'N',1,'750',0,0,'750',0,'S','1','2024-12-07'),(26,'1','7613032186852','Chocolito','7','8',1000,'N',1,'850',6,50,'900',0,'S','1','2024-12-07'),(27,'1','8445290971371','Xplori Helado','7','8',100,'N',1,'900',0,0,'900',0,'S','1','2024-12-07'),(28,'1','78006140','Crocanty','7','8',98,'N',1,'850',6,50,'900',0,'S','1','2024-12-07'),(29,'1','78006164','Egocéntrico','7','8',100,'N',1,'890',1,10,'900',0,'S','1','2024-12-07'),(30,'1','crazy','Crazy','7','8',99,'N',1,'1390',8,110,'1500',0,'S','1','2024-12-07'),(31,'1','carbon','Carbón','6','9',100,'N',1,'2500',140,3500,'6000',0,'S','1','2024-12-07'),(32,'1','7802200132696','Mentitas Ambrosoli','1','3',24,'N',1,'145',107,155,'300',0,'S','1','2024-12-14'),(33,'1','7802225588508','Golpe','7','3',30,'N',1,'190',58,110,'300',0,'S','1','2024-12-14'),(34,'1','confort','Confort /unidad','1','6',10,'N',1,'500',100,500,'1000',0,'S','1','2024-12-21'),(35,'1','7801620007508','Ginger Ale 1.75Lts','9','5',2,'N',1,'2150',44,950,'3100',0,'S','1','2024-12-21'),(36,'1','7801620000240','6 Pack 7 Up','9','5',1,'N',1,'5590',50,2790,'8380',0,'S','1','2024-12-21'),(37,'1','7801620852702','Seven Up Lata 350cc','1','5',6,'N',1,'932',61,568,'1500',0,'S','1','2024-12-21'),(38,'1','7801620006938','Six Pack Pepsi Zero','9','5',1,'N',1,'5590',50,2810,'8400',0,'S','1','2024-12-21'),(39,'1','7801620006846','Pepsi Zero Lata 350cc','9','5',6,'N',1,'932',61,568,'1500',0,'S','1','2024-12-21'),(40,'1','7802215502514','Din don ','9','2',5,'N',1,'500',100,500,'1000',0,'S','1','2024-12-22'),(41,'1','7500478008780','Toddy','9','2',10,'N',1,'1500',0,0,'1500',0,'S','1','2024-12-25'),(42,'1','7802950072358','Sahne-nuss impulsivo','8','3',20,'N',1,'100',400,400,'500',0,'S','1','2024-12-25'),(43,'1','7802230975324','Prestigio Impulsivo','9','3',20,'N',1,'200',150,300,'500',0,'S','1','2024-12-25'),(44,'1','7802215502262','Golpe','4','2',10,'N',1,'600',67,400,'1000',0,'S','1','2024-12-25'),(45,'1','7506195148686','Shampoo Head&Shoulders','8','6',3,'N',1,'1300',54,700,'2000',0,'S','1','2024-12-25'),(46,'1','7802000013607','Lays Stax 134 gr','1','3',6,'N',1,'1000',100,1000,'2000',0,'S','1','2024-12-25'),(47,'1','lolichoc','Loly Choc','1','3',10,'N',1,'100',50,50,'150',0,'S','1','2024-12-25'),(48,'1','bachata','Bachata','1','2',10,'N',1,'500',60,300,'800',0,'S','1','2024-12-25'),(49,'1','7801610000601','Coca Cola Zero 591ml','9','5',10,'N',1,'1000',50,500,'1500',0,'S','1','2024-12-28'),(50,'1','7801610350409','Coca Cola Zero 1.5lts','9','5',10,'N',1,'1000',100,1000,'2000',0,'S','1','2024-12-28'),(51,'1','7801610005262','Sprite 1.5 lts','9','5',10,'N',1,'1000',100,1000,'2000',0,'S','1','2024-12-28'),(52,'1','7801610002261','Fanta 1.5 lts','8','5',10,'N',1,'1000',100,1000,'2000',0,'S','1','2024-12-28'),(53,'1','78024106','Bon o bon blanco','1','3',20,'N',1,'200',0,0,'200',0,'S','1','2024-12-28'),(54,'1','78023994','Bon o Bon normal','1','3',20,'N',1,'200',0,0,'200',0,'S','1','2024-12-28'),(55,'1','hielo','Hielo','9','5',10,'N',1,'1000',100,1000,'2000',0,'S','1','2024-12-29'),(56,'1','7802220140602','In kat','8','3',10,'N',1,'300',33,100,'400',0,'S','1','2024-12-29'),(57,'1','7790040613706','Alfajor Bon o Bon','10','3',40,'N',1,'400',50,200,'600',0,'S','1','2024-12-31'),(58,'1','7790040613607','Alfajor Blanco Bon o Bon','10','3',40,'N',1,'400',50,200,'600',0,'S','1','2024-12-31'),(59,'1','7802225640770','Galletas Bon o Bon blanco','10','3',10,'N',1,'1192',26,308,'1500',0,'S','1','2024-12-31'),(60,'1','7802225640848','Galleta Bon o Bon Blanco','10','2',9,'N',1,'1192',26,308,'1500',0,'S','1','2024-12-31'),(61,'1','7802225625005','Scones Arcor','10','2',10,'N',1,'1698',18,302,'2000',0,'S','1','2024-12-31'),(62,'1','esponja','Esponja','9','2',10,'N',1,'1',49900,499,'500',0,'S','1','2025-01-01'),(63,'1','7801505231912','Azucar Iansa 1KG','9','6',10,'N',1,'1890',11,210,'2100',0,'S','1','2025-01-01'),(64,'1','78098152','Sal Lobos 125g','9','6',3,'N',1,'500',60,300,'800',0,'S','1','2025-01-01'),(65,'1','7791290794054','CIF lavalozas limón','1','6',30,'N',1,'1026',95,974,'2000',0,'S','1','2025-01-01'),(66,'1','7802810002105','Aceite Chef','9','6',3,'N',1,'1600',56,900,'2500',0,'S','1','2025-01-01'),(67,'1','kegol','KeGol','10','3',80,'N',1,'70',114,80,'150',0,'S','1','2025-01-01'),(68,'1','leña','leña','6','9',5000,'N',1,'5000',20,1000,'6000',0,'S','1','2025-01-03'),(69,'1','barra-cereal','barra cereal','1','3',10,'N',1,'800',0,0,'800',0,'S','1','2025-01-03'),(70,'1','7802575001030','Cabellos de Angel','4','6',3,'N',1,'1200',0,0,'1200',0,'S','1','2025-01-03'),(71,'1','8912510416375','Toallitas Húmedas','4','6',2,'N',1,'2000',0,0,'2000',0,'S','1','2025-01-03'),(72,'1','7806500506829','Paquete confort 4 unid','4','6',3,'N',1,'3194',41,1306,'4500',0,'S','1','2025-01-03'),(73,'1','7891024131909','Colgate mini','4','6',6,'N',1,'532',88,468,'1000',0,'S','1','2025-01-03'),(74,'1','7802810012531','Aceite Vegetal','4','6',3,'N',1,'1067',50,533,'1600',0,'S','1','2025-01-03'),(75,'1','7802950072679','Trencito','1','3',20,'N',1,'250',100,250,'500',0,'S','1','2025-01-03'),(76,'1','fosforos','Fosforos','4','6',20,'N',1,'190',216,410,'600',0,'S','1','2025-01-03'),(77,'1','7800120716644','Arroz Miraflores','1','6',10,'N',1,'941',59,559,'1500',0,'S','1','2025-01-03'),(78,'1','7702026177669','Paños diarios Nosotras','4','6',3,'N',1,'2150',49,1050,'3200',0,'S','1','2025-01-03'),(79,'1','7802337801014','Jugo de limón ','4','6',3,'N',1,'495',52,255,'750',0,'S','1','2025-01-03'),(80,'1','7806800004285','Esponja metálica','1','6',3,'N',1,'1386',80,1114,'2500',0,'S','1','2025-01-03'),(81,'1','7802000017865','Avena Quaker','4','6',3,'N',1,'1722',80,1378,'3100',0,'S','1','2025-01-03'),(82,'1','7802920000091','Leche Colun Semidescremada ','4','6',2,'N',1,'1100',82,900,'2000',0,'S','1','2025-01-03'),(83,'1','7805000301484','Mayonesa Hellmanns','4','6',3,'N',1,'546',83,454,'1000',0,'S','1','2025-01-03'),(84,'1','7802950002119','Nescafé','4','5',3,'N',1,'2400',46,1100,'3500',0,'S','1','2025-01-03'),(85,'1','7801875058065','Te Manzanilla Té Supremo','1','6',3,'N',1,'1597',75,1203,'2800',0,'S','1','2025-01-03'),(86,'1','7801875055101','Te surtido Te Supremo','4','6',1,'N',1,'1597',75,1203,'2800',0,'S','1','2025-01-03'),(87,'1','7801875001597','Te Chai Supremo','4','6',10,'N',1,'2000',40,800,'2800',0,'S','1','2025-01-03'),(88,'1','7801875061010','Te Supremo Surtido','1','6',3,'N',1,'1597',75,1203,'2800',0,'S','1','2025-01-03'),(89,'1','7802351314606','Mostaza Don Juan','4','6',3,'N',1,'900',89,800,'1700',0,'S','1','2025-01-03'),(90,'1','7802640720637','Ají JB','4','6',2,'N',1,'1690',60,1010,'2700',0,'S','1','2025-01-03'),(91,'1','7802640400270','Ají Chileno JB','4','6',10,'N',1,'1790',56,1010,'2800',0,'S','1','2025-01-03'),(92,'1','7801505000228','Azucar Iansa 400g','4','6',10,'N',1,'639',88,561,'1200',0,'S','1','2025-01-03'),(93,'1','8445290262646','Leche Nido Polvo','4','6',10,'N',1,'7200',39,2800,'10000',0,'S','1','2025-01-03'),(94,'1','7613032180096','Trululú','1','8',15,'N',1,'500',50,250,'750',0,'S','1','2025-01-04'),(95,'1','7802225630900','bocaditos arcor','1','2',3,'N',1,'1200',67,800,'2000',0,'S','1','2025-01-04'),(96,'1','7613035407176','Danky nogatonga','1','8',10,'N',1,'1990',1,10,'2000',0,'S','1','2025-01-04'),(97,'1','7613035407145','Danky 21','1','8',-1,'N',1,'2000',0,0,'2000',0,'S','1','2025-01-04'),(98,'1','7801620852580','Kem piña','1','5',10,'N',1,'1500',0,0,'1500',0,'S','1','2025-01-04'),(99,'1','hielo-grande','Hielo grande','1','8',10,'N',1,'3500',0,0,'3500',0,'S','1','2025-01-05'),(100,'1','21','21','1','3',10,'N',1,'10',30,3,'13',0,'N','1','2025-01-08'),(101,'1','7802000016448','De todito Evercrisp 120gr','11','3',10,'N',1,'1339',42,561,'1900',0,'S','1','2025-01-10'),(102,'1','7802200809178','Golazo','9','3',10,'N',1,'300',67,200,'500',0,'S','1','2025-01-10'),(103,'1','7802215508523','Donuts normal','1','3',10,'N',1,'1350',11,150,'1500',0,'S','1','2025-01-10'),(104,'1','7802215512377','Frac Bi Frutilla','1','2',10,'N',1,'500',60,300,'800',0,'S','1','2025-01-11'),(105,'1','7801610002193','Fanta 350cc','9','5',10,'N',1,'900',67,600,'1500',0,'S','1','2025-01-11'),(106,'1','dulces','Dulces 3x100','10','3',100,'N',1,'14',614,86,'100',0,'S','1','2025-01-11'),(107,'1','7802225682930','Selz','1','2',10,'N',1,'400',25,100,'500',0,'S','1','2025-01-11'),(108,'1','1dulce','1 Dulce','1','3',50,'N',1,'50',0,0,'50',0,'S','1','2025-01-11'),(109,'1','7803473004673','Alfajor Alfi','1','3',40,'N',1,'167',80,133,'300',0,'S','1','2025-01-11'),(110,'1','7802215230424','Refreskids Piña','10','5',10,'N',1,'250',100,250,'500',0,'S','1','2025-01-13'),(111,'1','7802215230479','Refreskids Manzana','10','5',10,'N',1,'250',100,250,'500',0,'S','1','2025-01-13'),(112,'1','quitasol','Quitasol ','6','9',1000,'N',1,'2000',0,0,'2000',0,'S','1','2025-01-13'),(113,'1','pañuelos','Pañuelos Elite','5','6',10,'N',1,'500',0,0,'500',0,'S','1','2025-01-18'),(114,'1','7802200135734','Gomitas Flipy','4','3',20,'N',1,'188',86,162,'350',0,'S','1','2025-01-18'),(115,'1','7802200135765','Ambrosito','4','3',20,'N',1,'188',86,162,'350',0,'S','1','2025-01-18'),(116,'1','7802215503535','Din don mini','5','2',10,'N',1,'250',100,250,'500',0,'S','1','2025-01-18'),(117,'1','8445290193193','Leche Nido Buen Dia','4','6',3,'N',1,'1250',44,550,'1800',0,'S','1','2025-01-18'),(118,'1','7802229001232','Marshmallows','4','3',3,'N',1,'1990',26,510,'2500',0,'S','1','2025-01-18'),(119,'1','7802215512414','Frac Naranja','1','2',10,'N',1,'800',0,0,'800',0,'S','1','2025-01-18'),(120,'1','78023215','Bon o Bon Chocolate','4','3',20,'N',1,'200',0,0,'200',0,'S','1','2025-01-19'),(121,'1','7801610350355','Coca Zero lata','12','5',10,'N',1,'1500',0,0,'1500',0,'S','1','2025-01-19'),(122,'1','7802215303401','Chocman normal','1','3',32,'N',1,'180',178,320,'500',0,'S','1','2025-01-22'),(123,'1','7802215303937','Chocman Black','1','3',33,'N',1,'190',163,310,'500',0,'S','1','2025-01-22'),(124,'1','7807910041221','Stevia Cuisine & Co','1','6',1,'N',1,'3000',0,0,'3000',0,'S','1','2025-01-22'),(125,'1','8445290855329','Sopa Maggi Pollo 12gr','4','6',10,'N',1,'450',100,450,'900',0,'S','1','2025-01-22'),(126,'1','7613033609992','Sopa Espárragos Maggi 12gr','4','6',10,'N',1,'450',100,450,'900',0,'S','1','2025-01-22'),(127,'1','7801620360153','Canada Dry Ginger Ale 350cc','1','5',10,'N',1,'1500',0,0,'1500',0,'S','1','2025-01-23'),(128,'1','7802225280655','Marshmallows Morf Mogul','1','3',2,'N',1,'800',88,700,'1500',0,'S','1','2025-01-24'),(129,'1','7613032590369','Galleta Niza Normal','4','2',8,'N',1,'1500',0,0,'1500',0,'S','1','2025-01-25'),(130,'1','7802820020953','Agua Vital c Gas','4','5',10,'N',1,'741',102,759,'1500',0,'S','1','2025-01-25'),(131,'1','7802800535569','Kryzpo 37g','4','3',12,'N',1,'1000',0,0,'1000',0,'S','1','2025-01-25'),(132,'1','7501086494262','Cepillo OralB','1','6',1,'N',1,'990',52,510,'1500',0,'S','1','2025-01-25'),(133,'1','7803480001405','Pan Fuchs','1','6',1,'N',1,'1990',51,1010,'3000',0,'S','1','2025-01-25'),(134,'1','7790990003657','Magistral lavaloza 300ml','4','6',1,'N',1,'2050',46,950,'3000',0,'S','1','2025-01-26'),(135,'1','7802230083951','Galleta McKay Mantequilla','4','2',7,'N',1,'650',131,850,'1500',0,'S','1','2025-01-26'),(136,'1','7802215505409','Galleta Coco Costa','1','2',10,'N',1,'1500',0,0,'1500',0,'S','1','2025-01-26'),(137,'1','1220369','Galletón Quaker','9','2',0,'N',1,'550',45,250,'800',0,'S','1','2025-01-27'),(138,'1','7802000015120','De Todito 50g','4','3',10,'N',1,'750',60,450,'1200',0,'S','1','2025-01-30'),(139,'1','7802820600209','Agua sin gas','4','5',10,'N',1,'390',156,610,'1000',0,'S','1','2025-01-30'),(140,'1','7802000017476','Doritos','4','3',10,'N',1,'1000',0,0,'1000',0,'S','1','2025-02-01'),(141,'1','7804945017405','Toallia Simond','1','6',1,'N',1,'1495',34,505,'2000',0,'S','1','2025-02-07'),(142,'1','7801420000617','Aceite de Oliva Banquete','4','6',1,'N',1,'2790',43,1210,'4000',0,'S','1','2025-02-08'),(143,'1','7613035421592','Danky Sahne-nuss','1','8',10,'N',1,'2000',0,0,'2000',0,'S','1','2025-02-08'),(144,'1','7801620370107','Agua Tonica','4','5',10,'N',1,'2200',36,800,'3000',0,'S','1','2025-02-08'),(145,'1','7802225280822','Marshmallow Mogul','1','3',10,'N',1,'1650',21,350,'2000',0,'S','1','2025-02-08'),(146,'1','7702367000558','Atún Van Camps','4','6',2,'N',1,'3290',37,1210,'4500',0,'S','1','2025-02-09'),(147,'1','agua-hervida','Agua Hervida','6','6',100000,'N',1,'1000',0,0,'1000',0,'S','1','2025-02-09'),(148,'1','7801610002858','Fanta lata','12','5',10,'N',1,'1500',0,0,'1500',0,'S','1','2025-02-09'),(149,'1','7613031299119','Chocolito Mini','2','8',1,'N',1,'4090',47,1910,'6000',0,'S','1','2025-02-09'),(150,'1','8445291307513','Trululu','1','8',10,'N',1,'4050',48,1950,'6000',0,'S','1','2025-02-09'),(151,'1','7802420151019','Papas Marco Polo 18g','4','3',10,'N',1,'211',137,289,'500',0,'S','1','2025-02-10');
+/*!40000 ALTER TABLE `productos` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `proveedores`
+-- Table structure for table `promociones`
 --
 
+DROP TABLE IF EXISTS `promociones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `promociones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cl` int(11) NOT NULL,
+  `nombre_promocion` varchar(250) NOT NULL,
+  `id_prod` int(30) NOT NULL,
+  `unidades` int(11) NOT NULL,
+  `precio` int(11) NOT NULL,
+  `estado` varchar(5) NOT NULL,
+  `creado_por` int(11) NOT NULL,
+  `fecha_registro` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `promociones`
+--
+
+LOCK TABLES `promociones` WRITE;
+/*!40000 ALTER TABLE `promociones` DISABLE KEYS */;
+INSERT INTO `promociones` VALUES (1,1,'Cheetos 2x1500',3,2,1500,'S',1,'2025-01-20'),(2,1,'',0,0,0,'S',1,'2025-01-20'),(3,1,'Sprite 2x2000',4,2,2500,'S',1,'2025-01-23'),(4,1,'Canada Dry',0,0,0,'S',1,'2025-01-23'),(5,1,'Canada Dry 2x2500',127,2,2500,'S',1,'2025-01-23'),(6,1,'Coca cola 350cc',6,2,2500,'S',1,'2025-01-27');
+/*!40000 ALTER TABLE `promociones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `proveedores`
+--
+
+DROP TABLE IF EXISTS `proveedores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `proveedores` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) DEFAULT NULL,
   `nombre_proveedor` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `rut` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fecha_registro` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha_registro` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `proveedores`
+-- Dumping data for table `proveedores`
 --
 
-INSERT INTO `proveedores` (`id`, `id_cl`, `nombre_proveedor`, `rut`, `estado`, `fecha_registro`) VALUES
-(1, 1, 'Plaza Independencia', '19150634-0', 'S', '2024-08-23');
-
--- --------------------------------------------------------
+LOCK TABLES `proveedores` WRITE;
+/*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
+INSERT INTO `proveedores` VALUES (1,1,'Helados Savory S.A.','19150634-0','N','2024-10-16'),(2,1,'Helados Savory S.A.','19150634-0','N','2024-10-16'),(3,1,'EMI Music','7367889-7','N','2024-10-16'),(4,1,'Alvi S.A.','96608540-1','S','2024-12-05'),(5,1,'Supermercados El Trébol','77349320-0','S','2024-12-05'),(6,1,'CAMPING o SIN PROVEEDOR','19150634-0','S','2024-12-05'),(7,1,'Savory','90703000-8','S','2024-12-07'),(8,1,'Fruna','84156500-2','S','2024-12-14'),(9,1,'Jumbo','81201000-k','S','2024-12-21'),(10,1,'Comercial Binder','77644820-6','S','2025-01-01'),(11,1,'Supermercado Portales','76574601-9','S','2025-01-04'),(12,1,'Coca Cola Embonor','93281000-k','S','2025-01-17');
+/*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `stock_minimo_producto`
+-- Table structure for table `stock_minimo_producto`
 --
 
+DROP TABLE IF EXISTS `stock_minimo_producto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `stock_minimo_producto` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cl` int(11) DEFAULT NULL,
   `estado` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `stock_minimo` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `stock_minimo` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `stock_minimo_producto`
+-- Dumping data for table `stock_minimo_producto`
 --
 
-INSERT INTO `stock_minimo_producto` (`id`, `id_cl`, `estado`, `stock_minimo`) VALUES
-(1, 1, 'N', 0),
-(2, 1, 'N', 0),
-(3, 2, 'N', 0),
-(4, 1, 'N', 0),
-(5, 1, 'N', 0);
-
--- --------------------------------------------------------
+LOCK TABLES `stock_minimo_producto` WRITE;
+/*!40000 ALTER TABLE `stock_minimo_producto` DISABLE KEYS */;
+INSERT INTO `stock_minimo_producto` VALUES (1,1,'S',5);
+/*!40000 ALTER TABLE `stock_minimo_producto` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `tipo_pago_cliente`
+-- Table structure for table `tipo_pago_cliente`
 --
 
+DROP TABLE IF EXISTS `tipo_pago_cliente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tipo_pago_cliente` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) DEFAULT NULL
+  `nombre` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `tipo_pago_cliente`
+-- Dumping data for table `tipo_pago_cliente`
 --
 
-INSERT INTO `tipo_pago_cliente` (`id`, `nombre`) VALUES
-(1, 'EFECTIVO'),
-(2, 'TRANSFERENCIA'),
-(3, 'DÉBITO'),
-(4, 'CRÉDITO');
-
--- --------------------------------------------------------
+LOCK TABLES `tipo_pago_cliente` WRITE;
+/*!40000 ALTER TABLE `tipo_pago_cliente` DISABLE KEYS */;
+INSERT INTO `tipo_pago_cliente` VALUES (1,'EFECTIVO'),(2,'DEBITO'),(3,'CREDITO'),(4,'TRANSFERENCIA');
+/*!40000 ALTER TABLE `tipo_pago_cliente` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `unidades_medida`
+-- Table structure for table `unidades_medida`
 --
 
+DROP TABLE IF EXISTS `unidades_medida`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `unidades_medida` (
-  `id` int(11) NOT NULL,
-  `nombre_medida` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_medida` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `unidades_medida`
+-- Dumping data for table `unidades_medida`
 --
 
-INSERT INTO `unidades_medida` (`id`, `nombre_medida`) VALUES
-(1, 'UNID'),
-(2, 'MM'),
-(3, 'CM'),
-(4, 'MT'),
-(5, 'KG');
-
--- --------------------------------------------------------
+LOCK TABLES `unidades_medida` WRITE;
+/*!40000 ALTER TABLE `unidades_medida` DISABLE KEYS */;
+INSERT INTO `unidades_medida` VALUES (1,'UNID'),(2,'KG'),(3,'CM'),(4,'MT');
+/*!40000 ALTER TABLE `unidades_medida` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'N',
   `user` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `pass` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -1406,17 +1116,30 @@ CREATE TABLE `usuarios` (
   `id_cl` int(11) NOT NULL,
   `estado` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `permisos` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `fecha_reg` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
+  `fecha_reg` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `ventas`
+-- Dumping data for table `usuarios`
 --
 
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'Admin','admin1','$2y$10$BI4ooDrfabAPN3lupD/GIe7433qOECGGnfTGG0cZkTsaNrz4OLbe.',1,1,'S','1,2','2024-10-16 14:39:43');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ventas`
+--
+
+DROP TABLE IF EXISTS `ventas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ventas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_venta` int(11) NOT NULL,
   `id_cl` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `id_caja` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -1429,433 +1152,28 @@ CREATE TABLE `ventas` (
   `estado` varchar(2) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `fecha` datetime NOT NULL,
   `fecha_pago` datetime DEFAULT NULL,
-  `forma_pago` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='								';
+  `forma_pago` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1984 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='								';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Índices para tablas volcadas
+-- Dumping data for table `ventas`
 --
 
---
--- Indices de la tabla `anula_cajas`
---
-ALTER TABLE `anula_cajas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `anula_categoria`
---
-ALTER TABLE `anula_categoria`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `anula_clientes`
---
-ALTER TABLE `anula_clientes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `anula_pedidos`
---
-ALTER TABLE `anula_pedidos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `anula_productos`
---
-ALTER TABLE `anula_productos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `anula_proveedor`
---
-ALTER TABLE `anula_proveedor`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `anula_turnos`
---
-ALTER TABLE `anula_turnos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `anula_usuario`
---
-ALTER TABLE `anula_usuario`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `anula_ventas`
---
-ALTER TABLE `anula_ventas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `autorizacion`
---
-ALTER TABLE `autorizacion`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_cl` (`id_cl`);
-
---
--- Indices de la tabla `cajas`
---
-ALTER TABLE `cajas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `cierre_caja`
---
-ALTER TABLE `cierre_caja`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `cliente`
---
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `clientes_negocio`
---
-ALTER TABLE `clientes_negocio`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `comprobantes`
---
-ALTER TABLE `comprobantes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `correlativo`
---
-ALTER TABLE `correlativo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `cuenta_corriente`
---
-ALTER TABLE `cuenta_corriente`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `giros`
---
-ALTER TABLE `giros`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `margen_ganancia`
---
-ALTER TABLE `margen_ganancia`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `metodo_pago`
---
-ALTER TABLE `metodo_pago`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `monto_caja`
---
-ALTER TABLE `monto_caja`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `motivo_mov_monto_caja`
---
-ALTER TABLE `motivo_mov_monto_caja`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `pago_cliente`
---
-ALTER TABLE `pago_cliente`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `pass_provisoria`
---
-ALTER TABLE `pass_provisoria`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `pedidos`
---
-ALTER TABLE `pedidos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `pedidos_detalle`
---
-ALTER TABLE `pedidos_detalle`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `planes`
---
-ALTER TABLE `planes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `plazos_pago`
---
-ALTER TABLE `plazos_pago`
-  ADD PRIMARY KEY (`meses`);
-
---
--- Indices de la tabla `productos`
---
-ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id_prod`);
-
---
--- Indices de la tabla `proveedores`
---
-ALTER TABLE `proveedores`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `stock_minimo_producto`
---
-ALTER TABLE `stock_minimo_producto`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `tipo_pago_cliente`
---
-ALTER TABLE `tipo_pago_cliente`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `unidades_medida`
---
-ALTER TABLE `unidades_medida`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `ventas`
---
-ALTER TABLE `ventas`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `anula_cajas`
---
-ALTER TABLE `anula_cajas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `anula_categoria`
---
-ALTER TABLE `anula_categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `anula_clientes`
---
-ALTER TABLE `anula_clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `anula_pedidos`
---
-ALTER TABLE `anula_pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `anula_productos`
---
-ALTER TABLE `anula_productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `anula_proveedor`
---
-ALTER TABLE `anula_proveedor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `anula_turnos`
---
-ALTER TABLE `anula_turnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `anula_usuario`
---
-ALTER TABLE `anula_usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `anula_ventas`
---
-ALTER TABLE `anula_ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de la tabla `autorizacion`
---
-ALTER TABLE `autorizacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `cajas`
---
-ALTER TABLE `cajas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `cierre_caja`
---
-ALTER TABLE `cierre_caja`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `cliente`
---
-ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `clientes_negocio`
---
-ALTER TABLE `clientes_negocio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `comprobantes`
---
-ALTER TABLE `comprobantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `correlativo`
---
-ALTER TABLE `correlativo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `cuenta_corriente`
---
-ALTER TABLE `cuenta_corriente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `margen_ganancia`
---
-ALTER TABLE `margen_ganancia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `metodo_pago`
---
-ALTER TABLE `metodo_pago`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `monto_caja`
---
-ALTER TABLE `monto_caja`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `motivo_mov_monto_caja`
---
-ALTER TABLE `motivo_mov_monto_caja`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `pago_cliente`
---
-ALTER TABLE `pago_cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de la tabla `pass_provisoria`
---
-ALTER TABLE `pass_provisoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `pedidos`
---
-ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `pedidos_detalle`
---
-ALTER TABLE `pedidos_detalle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `planes`
---
-ALTER TABLE `planes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `productos`
---
-ALTER TABLE `productos`
-  MODIFY `id_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `proveedores`
---
-ALTER TABLE `proveedores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `stock_minimo_producto`
---
-ALTER TABLE `stock_minimo_producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `unidades_medida`
---
-ALTER TABLE `unidades_medida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `ventas`
---
-ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
+LOCK TABLES `ventas` WRITE;
+/*!40000 ALTER TABLE `ventas` DISABLE KEYS */;
+INSERT INTO `ventas` VALUES (1,1,'1','2',1,4,'1','1200',0,0,'N','2024-12-04 21:05:23','0000-00-00 00:00:00','0'),(2,1,'1','2',1,4,'1','1200',0,0,'N','2024-12-04 21:06:33','0000-00-00 00:00:00','0'),(3,1,'1','2',1,4,'1','1200',0,0,'N','2024-12-04 21:06:34','0000-00-00 00:00:00','0'),(4,1,'1','2',1,4,'1','1200',0,0,'N','2024-12-04 21:06:34','0000-00-00 00:00:00','0'),(5,1,'1','2',1,4,'1','1200',0,0,'N','2024-12-04 21:06:35','0000-00-00 00:00:00','0'),(6,1,'1','2',1,4,'1','1200',0,0,'N','2024-12-04 21:06:35','0000-00-00 00:00:00','0'),(7,1,'1','2',1,4,'1','1200',0,0,'N','2024-12-04 21:06:35','0000-00-00 00:00:00','0'),(8,1,'1','2',1,4,'1','1200',0,0,'N','2024-12-04 21:06:35','0000-00-00 00:00:00','0'),(9,1,'1','2',1,4,'1','1200',0,0,'N','2024-12-04 21:06:36','0000-00-00 00:00:00','0'),(10,1,'1','2',1,4,'1','1200',0,0,'N','2024-12-04 21:08:37','0000-00-00 00:00:00','0'),(11,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:11:45','0000-00-00 00:00:00','0'),(12,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:05','0000-00-00 00:00:00','0'),(13,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:09','0000-00-00 00:00:00','0'),(14,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:13','0000-00-00 00:00:00','0'),(15,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:25','0000-00-00 00:00:00','0'),(16,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:27','0000-00-00 00:00:00','0'),(17,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:28','0000-00-00 00:00:00','0'),(18,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:29','0000-00-00 00:00:00','0'),(19,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:30','0000-00-00 00:00:00','0'),(20,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:43','0000-00-00 00:00:00','0'),(21,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:54','0000-00-00 00:00:00','0'),(22,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:55','0000-00-00 00:00:00','0'),(23,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:57','0000-00-00 00:00:00','0'),(24,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:58','0000-00-00 00:00:00','0'),(25,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:12:58','0000-00-00 00:00:00','0'),(26,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:14','0000-00-00 00:00:00','0'),(27,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:16','0000-00-00 00:00:00','0'),(28,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:17','0000-00-00 00:00:00','0'),(29,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:18','0000-00-00 00:00:00','0'),(30,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:19','0000-00-00 00:00:00','0'),(31,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:19','0000-00-00 00:00:00','0'),(32,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:20','0000-00-00 00:00:00','0'),(33,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:21','0000-00-00 00:00:00','0'),(34,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:23','0000-00-00 00:00:00','0'),(35,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:26','0000-00-00 00:00:00','0'),(36,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:30','0000-00-00 00:00:00','0'),(37,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:33','0000-00-00 00:00:00','0'),(38,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:33','0000-00-00 00:00:00','0'),(39,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:13:37','0000-00-00 00:00:00','0'),(40,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:14:16','0000-00-00 00:00:00','0'),(41,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:14:18','0000-00-00 00:00:00','0'),(42,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:14:18','0000-00-00 00:00:00','0'),(43,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:14:19','0000-00-00 00:00:00','0'),(44,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:14:19','0000-00-00 00:00:00','0'),(45,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:18:53','0000-00-00 00:00:00','0'),(46,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:18:54','0000-00-00 00:00:00','0'),(47,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:18:55','0000-00-00 00:00:00','0'),(48,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:18:56','0000-00-00 00:00:00','0'),(49,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:20:22','0000-00-00 00:00:00','0'),(50,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:20:25','0000-00-00 00:00:00','0'),(51,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:20:26','0000-00-00 00:00:00','0'),(52,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:21:03','0000-00-00 00:00:00','0'),(53,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:21:38','0000-00-00 00:00:00','0'),(54,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:23:44','0000-00-00 00:00:00','0'),(55,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:23:45','0000-00-00 00:00:00','0'),(56,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:23:46','0000-00-00 00:00:00','0'),(57,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:23:48','0000-00-00 00:00:00','0'),(58,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:23:48','0000-00-00 00:00:00','0'),(59,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:24:03','0000-00-00 00:00:00','0'),(60,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:24:44','0000-00-00 00:00:00','0'),(61,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 21:29:20','0000-00-00 00:00:00','0'),(62,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:29:22','0000-00-00 00:00:00','0'),(63,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:29:26','0000-00-00 00:00:00','0'),(64,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:29:27','0000-00-00 00:00:00','0'),(65,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:29:28','0000-00-00 00:00:00','0'),(66,1,'1','2',1,3,'1','1000',0,0,'N','2024-12-04 21:29:29','0000-00-00 00:00:00','0'),(67,1,'1','2',1,0,'1','0',0,0,'P','2024-12-04 22:25:06','0000-00-00 00:00:00','0'),(68,1,'1','2',1,3,'1','1000',0,0,'P','2024-12-04 22:25:07','0000-00-00 00:00:00','0'),(69,4,'1','2',1,24,'6','1800',0,0,'C','2024-12-07 16:41:46','2024-12-07 16:42:07','1'),(70,5,'1','2',1,6,'1','1200',0,0,'C','2024-12-07 17:53:29','2024-12-07 17:54:18','1'),(71,6,'1','2',1,24,'1','300',0,0,'C','2024-12-07 18:25:57','2024-12-07 18:27:30','1'),(72,8,'1','2',1,0,'1','0',0,0,'P','2024-12-07 18:31:11','0000-00-00 00:00:00','0'),(73,8,'1','2',1,0,'1','0',0,0,'P','2024-12-07 18:33:03','0000-00-00 00:00:00','0'),(74,8,'1','2',1,3,'1','1000',0,0,'P','2024-12-07 18:34:41','0000-00-00 00:00:00','0'),(75,8,'1','2',1,17,'1','200',0,0,'P','2024-12-07 18:35:16','0000-00-00 00:00:00','0'),(76,9,'1','2',1,6,'1','1200',0,0,'N','2024-12-07 19:11:56','0000-00-00 00:00:00','0'),(77,9,'1','2',1,6,'1','1200',0,0,'C','2024-12-07 19:12:03','2024-12-07 19:12:20','1'),(78,9,'1','2',1,31,'1','5000',0,0,'N','2024-12-07 19:16:38','0000-00-00 00:00:00','0'),(79,10,'1','2',1,31,'1','5000',0,0,'C','2024-12-07 19:16:47','2024-12-07 19:17:19','1'),(80,11,'1','2',1,0,'1','0',0,0,'P','2024-12-14 13:43:01','0000-00-00 00:00:00','0'),(81,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:02','0000-00-00 00:00:00','0'),(82,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:03','0000-00-00 00:00:00','0'),(83,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:03','0000-00-00 00:00:00','0'),(84,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:05','0000-00-00 00:00:00','0'),(85,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:05','0000-00-00 00:00:00','0'),(86,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:06','0000-00-00 00:00:00','0'),(87,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:06','0000-00-00 00:00:00','0'),(88,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:06','0000-00-00 00:00:00','0'),(89,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:07','0000-00-00 00:00:00','0'),(90,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:07','0000-00-00 00:00:00','0'),(91,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:08','0000-00-00 00:00:00','0'),(92,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:08','0000-00-00 00:00:00','0'),(93,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:09','0000-00-00 00:00:00','0'),(94,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:09','0000-00-00 00:00:00','0'),(95,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:10','0000-00-00 00:00:00','0'),(96,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:10','0000-00-00 00:00:00','0'),(97,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:11','0000-00-00 00:00:00','0'),(98,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:11','0000-00-00 00:00:00','0'),(99,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:11','0000-00-00 00:00:00','0'),(100,11,'1','2',1,16,'1','500',0,0,'P','2024-12-14 13:43:12','0000-00-00 00:00:00','0'),(101,12,'1','2',1,0,'1','0',0,0,'P','2024-12-14 13:45:00','0000-00-00 00:00:00','0'),(102,12,'1','2',1,23,'1','1000',0,0,'P','2024-12-14 13:45:02','0000-00-00 00:00:00','0'),(103,12,'1','2',1,3,'1','1000',0,0,'P','2024-12-14 13:45:28','0000-00-00 00:00:00','0'),(104,12,'1','2',1,3,'1','1000',0,0,'P','2024-12-14 13:45:28','0000-00-00 00:00:00','0'),(105,12,'1','2',1,3,'1','1000',0,0,'P','2024-12-14 13:45:29','0000-00-00 00:00:00','0'),(106,12,'1','2',1,3,'1','1000',0,0,'P','2024-12-14 13:45:29','0000-00-00 00:00:00','0'),(107,12,'1','2',1,3,'1','1000',0,0,'P','2024-12-14 13:45:30','0000-00-00 00:00:00','0'),(108,12,'1','2',1,17,'1','200',0,0,'P','2024-12-14 13:45:49','0000-00-00 00:00:00','0'),(109,12,'1','2',1,17,'1','200',0,0,'P','2024-12-14 13:45:49','0000-00-00 00:00:00','0'),(110,12,'1','2',1,17,'1','200',0,0,'P','2024-12-14 13:45:50','0000-00-00 00:00:00','0'),(111,12,'1','2',1,17,'1','200',0,0,'P','2024-12-14 13:45:50','0000-00-00 00:00:00','0'),(112,12,'1','2',1,17,'1','200',0,0,'P','2024-12-14 13:45:51','0000-00-00 00:00:00','0'),(113,12,'1','2',1,0,'1','0',0,0,'P','2024-12-14 13:46:20','0000-00-00 00:00:00','0'),(114,12,'1','2',1,17,'1','200',0,0,'P','2024-12-14 13:46:22','0000-00-00 00:00:00','0'),(115,12,'1','2',1,17,'1','200',0,0,'P','2024-12-14 13:46:22','0000-00-00 00:00:00','0'),(116,12,'1','2',1,0,'1','0',0,0,'P','2024-12-14 13:46:49','0000-00-00 00:00:00','0'),(117,12,'1','2',1,17,'1','200',0,0,'P','2024-12-14 13:46:50','0000-00-00 00:00:00','0'),(118,12,'1','2',1,17,'1','200',0,0,'P','2024-12-14 13:46:51','0000-00-00 00:00:00','0'),(119,12,'1','2',1,0,'1','0',0,0,'P','2024-12-14 13:47:29','0000-00-00 00:00:00','0'),(120,12,'1','2',1,17,'1','200',0,0,'P','2024-12-14 13:47:30','0000-00-00 00:00:00','0'),(121,12,'1','2',1,0,'1','0',0,0,'P','2024-12-14 13:48:11','0000-00-00 00:00:00','0'),(122,12,'1','2',1,5,'1','500',0,0,'P','2024-12-14 13:48:12','0000-00-00 00:00:00','0'),(123,12,'1','2',1,5,'1','500',0,0,'P','2024-12-14 13:48:14','0000-00-00 00:00:00','0'),(124,12,'1','2',1,5,'1','500',0,0,'P','2024-12-14 13:48:14','0000-00-00 00:00:00','0'),(125,12,'1','2',1,5,'1','500',0,0,'P','2024-12-14 13:48:15','0000-00-00 00:00:00','0'),(126,12,'1','2',1,14,'1','500',0,0,'P','2024-12-14 13:48:43','0000-00-00 00:00:00','0'),(127,12,'1','2',1,13,'1','500',0,0,'P','2024-12-14 13:48:48','0000-00-00 00:00:00','0'),(128,13,'1','2',1,0,'1','0',0,0,'C','2024-12-14 14:02:54','2024-12-14 14:06:16','1'),(129,13,'1','2',1,26,'1','900',0,0,'C','2024-12-14 14:02:54','2024-12-14 14:06:16','1'),(130,14,'1','2',1,0,'1','0',0,0,'C','2024-12-14 14:06:52','2024-12-14 14:14:27','1'),(131,14,'1','2',1,17,'1','200',0,0,'C','2024-12-14 14:06:53','2024-12-14 14:14:27','1'),(132,14,'1','2',1,17,'1','200',0,0,'C','2024-12-14 14:06:54','2024-12-14 14:14:27','1'),(133,14,'1','2',1,17,'1','200',0,0,'C','2024-12-14 14:06:55','2024-12-14 14:14:27','1'),(134,14,'1','2',1,17,'1','200',0,0,'C','2024-12-14 14:06:55','2024-12-14 14:14:27','1'),(135,14,'1','2',1,5,'1','500',0,0,'C','2024-12-14 14:07:02','2024-12-14 14:14:27','1'),(136,14,'1','2',1,5,'1','500',0,0,'C','2024-12-14 14:07:03','2024-12-14 14:14:27','1'),(137,14,'1','2',1,32,'1','300',0,0,'C','2024-12-14 14:09:40','2024-12-14 14:14:27','1'),(138,14,'1','2',1,0,'1','0',0,0,'C','2024-12-14 14:11:58','2024-12-14 14:14:27','1'),(139,14,'1','2',1,33,'1','400',0,0,'C','2024-12-14 14:11:59','2024-12-14 14:14:27','1'),(140,14,'1','2',1,22,'2','300',0,0,'C','2024-12-14 14:12:23','2024-12-14 14:14:27','1'),(141,14,'1','2',1,22,'1','150',0,0,'N','2024-12-14 14:12:43','0000-00-00 00:00:00','0'),(142,15,'1','2',1,26,'1','900',0,0,'N','2024-12-14 14:14:49','0000-00-00 00:00:00','0'),(143,15,'1','2',1,26,'1','900',0,0,'C','2024-12-14 14:14:49','2024-12-14 14:15:00','1'),(144,16,'1','2',1,0,'1','0',0,0,'C','2024-12-14 14:16:18','2024-12-14 14:16:52','1'),(145,16,'1','2',1,25,'1','750',0,0,'C','2024-12-14 14:16:19','2024-12-14 14:16:52','1'),(146,16,'1','2',1,0,'1','0',0,0,'A','2024-12-14 14:17:27','0000-00-00 00:00:00','0'),(147,16,'1','2',1,27,'1','900',0,0,'N','2024-12-14 14:17:28','0000-00-00 00:00:00','0'),(148,17,'1','2',1,0,'1','0',0,0,'C','2024-12-14 14:17:44','2024-12-14 14:19:50','1'),(149,17,'1','2',1,27,'1','900',0,0,'C','2024-12-14 14:17:45','2024-12-14 14:19:50','1'),(150,17,'1','2',1,25,'1','750',0,0,'C','2024-12-14 14:17:54','2024-12-14 14:19:50','1'),(151,17,'1','2',1,25,'1','750',0,0,'N','2024-12-14 14:17:55','0000-00-00 00:00:00','0'),(152,17,'1','2',1,0,'2','0',0,0,'C','2024-12-14 14:18:53','2024-12-14 14:19:50','1'),(153,17,'1','2',1,0,'1','0',0,0,'C','2024-12-14 14:18:55','2024-12-14 14:19:50','1'),(154,17,'1','2',1,22,'1','150',0,0,'C','2024-12-14 14:19:01','2024-12-14 14:19:50','1'),(155,17,'1','2',1,22,'1','150',0,0,'C','2024-12-14 14:19:06','2024-12-14 14:19:50','1'),(156,18,'1','2',1,28,'1','900',0,0,'C','2024-12-14 14:22:47','2024-12-14 14:23:54','1'),(157,18,'1','2',1,28,'1','900',0,0,'N','2024-12-14 14:22:47','0000-00-00 00:00:00','0'),(158,18,'1','2',1,0,'2','0',0,0,'C','2024-12-14 14:23:01','2024-12-14 14:23:54','1'),(159,18,'1','2',1,0,'1','0',0,0,'C','2024-12-14 14:23:04','2024-12-14 14:23:54','1'),(160,18,'1','2',1,22,'1','150',0,0,'C','2024-12-14 14:23:13','2024-12-14 14:23:54','1'),(161,19,'1','2',1,31,'1','5000',0,0,'C','2024-12-14 14:25:03','2024-12-14 14:25:17','1'),(162,20,'1','2',1,0,'1','0',0,0,'C','2024-12-14 18:07:23','2024-12-14 18:10:26','1'),(163,20,'1','2',1,28,'1','900',0,0,'N','2024-12-14 18:07:23','0000-00-00 00:00:00','0'),(164,20,'1','2',1,28,'1','900',0,0,'C','2024-12-14 18:07:23','2024-12-14 18:10:26','1'),(165,21,'1','2',1,0,'1','0',0,0,'C','2024-12-14 18:10:42','2024-12-14 18:12:21','1'),(166,21,'1','2',1,26,'1','900',0,0,'C','2024-12-14 18:10:42','2024-12-14 18:12:21','1'),(167,22,'1','2',1,28,'2','1800',0,0,'C','2024-12-14 18:13:18','2024-12-14 18:44:37','1'),(168,23,'1','2',1,0,'1','0',0,0,'C','2024-12-14 18:46:27','2024-12-14 18:47:58','1'),(169,23,'1','2',1,0,'1','0',0,0,'C','2024-12-14 18:47:47','2024-12-14 18:47:58','1'),(170,23,'1','2',1,16,'1','500',0,0,'C','2024-12-14 18:47:49','2024-12-14 18:47:58','1'),(171,24,'1','2',1,0,'1','0',0,0,'C','2024-12-14 18:58:54','2024-12-14 19:01:17','1'),(172,24,'1','2',1,24,'1','300',0,0,'C','2024-12-14 18:58:54','2024-12-14 19:01:17','1'),(173,24,'1','2',1,10,'8','100',0,0,'C','2024-12-14 18:59:14','2024-12-14 19:01:17','1'),(174,24,'1','2',1,22,'6','900',0,0,'C','2024-12-14 19:00:13','2024-12-14 19:01:17','1'),(175,25,'1','2',1,0,'1','0',0,0,'C','2024-12-14 19:05:55','2024-12-14 19:06:20','1'),(176,25,'1','2',1,26,'1','900',0,0,'C','2024-12-14 19:05:56','2024-12-14 19:06:20','1'),(177,27,'1','2',1,0,'1','0',0,0,'C','2024-12-21 15:08:50','2024-12-21 15:09:41','1'),(178,27,'1','2',1,28,'1','900',0,0,'C','2024-12-21 15:08:51','2024-12-21 15:09:41','1'),(179,27,'1','2',1,27,'1','900',0,0,'C','2024-12-21 15:08:55','2024-12-21 15:09:41','1'),(180,27,'1','2',1,29,'1','900',0,0,'C','2024-12-21 15:08:59','2024-12-21 15:09:41','1'),(181,27,'1','2',1,24,'1','300',0,0,'C','2024-12-21 15:09:04','2024-12-21 15:09:41','1'),(182,28,'1','2',1,0,'1','0',0,0,'N','2024-12-22 19:09:28','2024-12-22 19:15:35','0'),(183,28,'1','2',1,8,'1','1000',0,0,'N','2024-12-22 19:09:28','2024-12-22 19:15:35','0'),(184,28,'1','2',1,8,'1','1000',0,0,'N','2024-12-22 19:09:36','2024-12-22 19:15:35','0'),(185,28,'1','2',1,0,'1','0',0,0,'N','2024-12-22 19:11:07','2024-12-22 19:15:35','0'),(186,28,'1','2',1,0,'1','0',0,0,'N','2024-12-22 19:11:17','2024-12-22 19:15:35','0'),(187,28,'1','2',1,0,'1','0',0,0,'N','2024-12-22 19:13:02','2024-12-22 19:15:35','0'),(188,29,'1','2',1,0,'1','0',0,0,'A','2024-12-22 19:46:04','0000-00-00 00:00:00','0'),(189,29,'1','2',1,31,'2','10000',0,0,'N','2024-12-25 13:49:37','0000-00-00 00:00:00','0'),(190,30,'1','2',1,31,'2','10000',0,0,'N','2024-12-25 13:53:35','0000-00-00 00:00:00','0'),(191,30,'1','2',1,31,'1','5000',0,0,'C','2024-12-25 20:35:00','2024-12-25 21:11:50','1'),(192,30,'1','2',1,0,'1','0',0,0,'C','2024-12-25 20:54:53','2024-12-25 21:11:50','1'),(193,30,'1','2',1,42,'1','400',0,0,'C','2024-12-25 20:54:54','2024-12-25 21:11:50','1'),(194,30,'1','2',1,42,'1','400',0,0,'C','2024-12-25 20:54:55','2024-12-25 21:11:50','1'),(195,30,'1','2',1,8,'1','1000',0,0,'C','2024-12-25 20:55:12','2024-12-25 21:11:50','1'),(196,30,'1','2',1,7,'1','900',0,0,'N','2024-12-25 20:55:31','0000-00-00 00:00:00','0'),(197,30,'1','2',1,0,'1','0',0,0,'C','2024-12-25 20:56:31','2024-12-25 21:11:50','1'),(198,30,'1','2',1,7,'1','1000',0,0,'C','2024-12-25 20:56:31','2024-12-25 21:11:50','1'),(199,30,'1','2',1,27,'1','900',0,0,'C','2024-12-25 20:56:53','2024-12-25 21:11:50','1'),(200,30,'1','2',1,0,'1','0',0,0,'C','2024-12-25 20:58:23','2024-12-25 21:11:50','1'),(201,30,'1','2',1,43,'1','500',0,0,'C','2024-12-25 20:58:24','2024-12-25 21:11:50','1'),(202,30,'1','2',1,0,'1','0',0,0,'C','2024-12-25 20:59:25','2024-12-25 21:11:50','1'),(203,30,'1','2',1,33,'1','300',0,0,'C','2024-12-25 20:59:25','2024-12-25 21:11:50','1'),(204,30,'1','2',1,3,'1','1000',0,0,'C','2024-12-25 20:59:39','2024-12-25 21:11:50','1'),(205,30,'1','2',1,0,'1','0',0,0,'C','2024-12-25 21:00:47','2024-12-25 21:11:50','1'),(206,30,'1','2',1,44,'1','1000',0,0,'C','2024-12-25 21:00:49','2024-12-25 21:11:50','1'),(207,30,'1','2',1,0,'1','0',0,0,'C','2024-12-25 21:02:11','2024-12-25 21:11:50','1'),(208,30,'1','2',1,45,'1','1300',0,0,'C','2024-12-25 21:02:13','2024-12-25 21:11:50','1'),(209,30,'1','2',1,0,'1','0',0,0,'C','2024-12-25 21:02:15','2024-12-25 21:11:50','1'),(210,30,'1','2',1,0,'1','0',0,0,'C','2024-12-25 21:02:16','2024-12-25 21:11:50','1'),(211,30,'1','2',1,0,'1','0',0,0,'C','2024-12-25 21:04:53','2024-12-25 21:11:50','1'),(212,30,'1','2',1,46,'1','2000',0,0,'C','2024-12-25 21:04:54','2024-12-25 21:11:50','1'),(213,30,'1','2',1,47,'5','750',0,0,'C','2024-12-25 21:06:24','2024-12-25 21:11:50','1'),(214,30,'1','2',1,0,'1','0',0,0,'C','2024-12-25 21:07:39','2024-12-25 21:11:50','1'),(215,30,'1','2',1,48,'2','1600',0,0,'C','2024-12-25 21:07:50','2024-12-25 21:11:50','1'),(216,30,'1','2',1,7,'2','2000',0,0,'C','2024-12-25 21:08:22','2024-12-25 21:11:50','1'),(217,30,'1','2',1,10,'3','100',0,0,'C','2024-12-25 21:08:45','2024-12-25 21:11:50','1'),(218,30,'1','2',1,0,'1','0',0,0,'C','2024-12-25 21:11:38','2024-12-25 21:11:50','1'),(219,30,'1','2',1,41,'1','1500',0,0,'C','2024-12-25 21:11:38','2024-12-25 21:11:50','1'),(220,31,'1','2',1,24,'10','3000',0,0,'C','2024-12-25 21:12:18','2024-12-25 23:26:24','1'),(221,31,'1','2',1,31,'2','10000',0,0,'C','2024-12-25 21:12:35','2024-12-25 23:26:24','1'),(222,31,'1','2',1,5,'1','400',0,0,'C','2024-12-25 21:13:07','2024-12-25 23:26:24','1'),(223,31,'1','2',1,47,'1','150',0,0,'C','2024-12-25 21:14:04','2024-12-25 23:26:24','1'),(224,31,'1','2',1,42,'2','800',0,0,'C','2024-12-25 21:14:11','2024-12-25 23:26:24','1'),(225,31,'1','2',1,14,'2','1000',0,0,'C','2024-12-25 21:15:37','2024-12-25 23:26:24','1'),(226,31,'1','2',1,41,'1','1500',0,0,'C','2024-12-25 21:15:58','2024-12-25 23:26:24','1'),(227,31,'1','2',1,25,'2','1500',0,0,'C','2024-12-25 21:16:13','2024-12-25 23:26:24','1'),(228,33,'1','2',1,10,'1','100',0,0,'C','2024-12-28 15:09:55','2024-12-28 15:16:45','1'),(229,33,'1','2',1,0,'1','0',0,0,'C','2024-12-28 15:10:15','2024-12-28 15:16:45','1'),(230,33,'1','2',1,46,'1','2000',0,0,'C','2024-12-28 15:10:16','2024-12-28 15:16:45','1'),(231,34,'1','2',1,0,'1','0',0,0,'C','2024-12-28 15:19:49','2024-12-28 15:23:17','1'),(232,34,'1','2',1,44,'1','1000',0,0,'C','2024-12-28 15:19:49','2024-12-28 15:23:17','1'),(233,34,'1','2',1,0,'1','0',0,0,'C','2024-12-28 15:20:23','2024-12-28 15:23:17','1'),(234,34,'1','2',1,0,'1','0',0,0,'C','2024-12-28 15:20:25','2024-12-28 15:23:17','1'),(235,34,'1','2',1,0,'1','0',0,0,'C','2024-12-28 15:20:27','2024-12-28 15:23:17','1'),(236,34,'1','2',1,0,'1','0',0,0,'C','2024-12-28 15:20:28','2024-12-28 15:23:17','1'),(237,34,'1','2',1,0,'1','0',0,0,'C','2024-12-28 15:20:29','2024-12-28 15:23:17','1'),(238,34,'1','2',1,0,'1','0',0,0,'C','2024-12-28 15:20:30','2024-12-28 15:23:17','1'),(239,34,'1','2',1,0,'1','0',0,0,'C','2024-12-28 15:20:32','2024-12-28 15:23:17','1'),(240,34,'1','2',1,10,'1','100',0,0,'C','2024-12-28 15:20:50','2024-12-28 15:23:17','1'),(241,34,'1','2',1,22,'1','150',0,0,'C','2024-12-28 15:21:18','2024-12-28 15:23:17','1'),(242,35,'1','2',1,7,'1','1000',0,0,'C','2024-12-28 15:23:34','2024-12-28 15:24:39','1'),(243,35,'1','2',1,10,'1','100',0,0,'C','2024-12-28 15:23:49','2024-12-28 15:24:39','1'),(244,36,'1','2',1,48,'1','800',0,0,'C','2024-12-28 15:46:32','2024-12-28 15:47:22','1'),(245,37,'1','2',1,7,'1','1000',0,0,'C','2024-12-28 15:49:47','2024-12-28 15:49:58','1'),(246,37,'1','2',1,10,'1','100',0,0,'C','2024-12-28 15:49:53','2024-12-28 15:49:58','1'),(247,38,'1','2',1,0,'1','0',0,0,'C','2024-12-28 17:50:14','2024-12-28 17:51:53','1'),(248,38,'1','2',1,23,'3','3000',0,0,'C','2024-12-28 17:50:14','2024-12-28 17:51:53','1'),(249,39,'1','2',1,0,'1','0',0,0,'C','2024-12-28 17:53:31','2024-12-28 17:54:02','1'),(250,39,'1','2',1,24,'1','300',0,0,'C','2024-12-28 17:53:31','2024-12-28 17:54:02','1'),(251,39,'1','2',1,24,'1','300',0,0,'C','2024-12-28 17:53:32','2024-12-28 17:54:02','1'),(252,39,'1','2',1,24,'1','300',0,0,'C','2024-12-28 17:53:33','2024-12-28 17:54:02','1'),(253,39,'1','2',1,24,'1','300',0,0,'C','2024-12-28 17:53:33','2024-12-28 17:54:02','1'),(254,39,'1','2',1,26,'1','900',0,0,'C','2024-12-28 17:53:39','2024-12-28 17:54:02','1'),(255,39,'1','2',1,26,'1','900',0,0,'C','2024-12-28 17:53:40','2024-12-28 17:54:02','1'),(256,40,'1','2',1,0,'1','0',0,0,'C','2024-12-28 18:03:07','2024-12-28 18:03:54','1'),(257,40,'1','2',1,6,'1','1400',0,0,'C','2024-12-28 18:03:08','2024-12-28 18:03:54','1'),(258,41,'1','2',1,24,'1','300',0,0,'C','2024-12-28 18:13:05','2024-12-28 18:13:10','1'),(259,42,'1','2',1,0,'1','0',0,0,'C','2024-12-28 18:13:40','2024-12-28 18:13:53','1'),(260,42,'1','2',1,8,'1','1000',0,0,'C','2024-12-28 18:13:41','2024-12-28 18:13:53','1'),(261,43,'1','2',1,47,'5','750',0,0,'C','2024-12-28 18:15:49','2024-12-28 18:30:42','1'),(262,43,'1','2',1,0,'1','0',0,0,'C','2024-12-28 18:28:39','2024-12-28 18:30:42','1'),(263,43,'1','2',1,54,'1','200',0,0,'C','2024-12-28 18:28:40','2024-12-28 18:30:42','1'),(264,44,'1','2',1,0,'1','0',0,0,'C','2024-12-28 19:56:24','2024-12-28 19:57:31','1'),(265,44,'1','2',1,9,'1','800',0,0,'C','2024-12-28 19:56:25','2024-12-28 19:57:31','1'),(266,44,'1','2',1,7,'1','1000',0,0,'C','2024-12-28 19:57:26','2024-12-28 19:57:31','1'),(267,45,'1','2',1,0,'1','0',0,0,'C','2024-12-28 19:58:44','2024-12-28 20:00:54','1'),(268,45,'1','2',1,0,'1','0',0,0,'C','2024-12-28 20:00:04','2024-12-28 20:00:54','1'),(269,45,'1','2',1,26,'1','900',0,0,'C','2024-12-28 20:00:05','2024-12-28 20:00:54','1'),(270,45,'1','2',1,16,'1','500',0,0,'C','2024-12-28 20:00:34','2024-12-28 20:00:54','1'),(271,45,'1','2',1,16,'1','500',0,0,'C','2024-12-28 20:00:34','2024-12-28 20:00:54','1'),(272,47,'1','2',1,54,'1','200',0,0,'C','2024-12-28 21:58:34','2024-12-28 21:58:51','1'),(273,47,'1','2',1,24,'1','300',0,0,'C','2024-12-28 21:58:43','2024-12-28 21:58:51','1'),(274,48,'1','2',1,22,'1','150',0,0,'C','2024-12-28 22:35:23','2024-12-28 22:35:31','1'),(275,49,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:32:32','2024-12-29 16:43:21','2'),(276,49,'1','2',1,8,'1','1000',0,0,'C','2024-12-29 16:32:32','2024-12-29 16:43:21','2'),(277,49,'1','2',1,46,'1','2000',0,0,'C','2024-12-29 16:32:36','2024-12-29 16:43:21','2'),(278,49,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:32:45','2024-12-29 16:43:21','2'),(279,49,'1','2',1,10,'1','100',0,0,'C','2024-12-29 16:32:49','2024-12-29 16:43:21','2'),(280,49,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:35:43','2024-12-29 16:43:21','2'),(281,49,'1','2',1,39,'2','2800',0,0,'C','2024-12-29 16:35:43','2024-12-29 16:43:21','2'),(282,49,'1','2',1,31,'1','5000',0,0,'N','2024-12-29 16:39:05','0000-00-00 00:00:00','0'),(283,50,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:44:01','2024-12-29 16:50:07','1'),(284,50,'1','2',1,8,'1','1000',0,0,'C','2024-12-29 16:44:02','2024-12-29 16:50:07','1'),(285,50,'1','2',1,46,'1','2000',0,0,'C','2024-12-29 16:44:56','2024-12-29 16:50:07','1'),(286,50,'1','2',1,46,'1','2000',0,0,'C','2024-12-29 16:44:57','2024-12-29 16:50:07','1'),(287,50,'1','2',1,9,'1','800',0,0,'C','2024-12-29 16:45:02','2024-12-29 16:50:07','1'),(288,50,'1','2',1,41,'1','1500',0,0,'C','2024-12-29 16:45:13','2024-12-29 16:50:07','1'),(289,50,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:47:31','2024-12-29 16:50:07','1'),(290,50,'1','2',1,26,'1','900',0,0,'C','2024-12-29 16:47:34','2024-12-29 16:50:07','1'),(291,50,'1','2',1,24,'1','300',0,0,'C','2024-12-29 16:47:46','2024-12-29 16:50:07','1'),(292,50,'1','2',1,24,'1','300',0,0,'C','2024-12-29 16:47:47','2024-12-29 16:50:07','1'),(293,50,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:49:34','2024-12-29 16:50:07','1'),(294,50,'1','2',1,24,'1','300',0,0,'C','2024-12-29 16:49:34','2024-12-29 16:50:07','1'),(295,51,'1','2',1,55,'1','2000',0,0,'C','2024-12-29 16:51:39','2024-12-29 16:55:40','2'),(296,51,'1','2',1,24,'1','300',0,0,'C','2024-12-29 16:51:46','2024-12-29 16:55:40','2'),(297,51,'1','2',1,24,'1','300',0,0,'C','2024-12-29 16:51:47','2024-12-29 16:55:40','2'),(298,51,'1','2',1,24,'1','300',0,0,'C','2024-12-29 16:51:48','2024-12-29 16:55:40','2'),(299,51,'1','2',1,24,'1','300',0,0,'C','2024-12-29 16:51:49','2024-12-29 16:55:40','2'),(300,52,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:56:21','2024-12-29 17:05:32','1'),(301,52,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:56:21','2024-12-29 17:05:32','1'),(302,52,'1','2',1,56,'1','400',0,0,'C','2024-12-29 16:57:27','2024-12-29 17:05:32','1'),(303,52,'1','2',1,24,'1','300',0,0,'C','2024-12-29 16:57:32','2024-12-29 17:05:32','1'),(304,52,'1','2',1,5,'1','400',0,0,'C','2024-12-29 16:57:36','2024-12-29 17:05:32','1'),(305,52,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:57:39','2024-12-29 17:05:32','1'),(306,52,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:57:42','2024-12-29 17:05:32','1'),(307,52,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:57:43','2024-12-29 17:05:32','1'),(308,52,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:57:44','2024-12-29 17:05:32','1'),(309,52,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:57:44','2024-12-29 17:05:32','1'),(310,52,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:57:44','2024-12-29 17:05:32','1'),(311,52,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:57:45','2024-12-29 17:05:32','1'),(312,52,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:57:45','2024-12-29 17:05:32','1'),(313,52,'1','2',1,0,'1','0',0,0,'C','2024-12-29 16:57:45','2024-12-29 17:05:32','1'),(314,52,'1','2',1,42,'1','400',0,0,'C','2024-12-29 16:57:59','2024-12-29 17:05:32','1'),(315,52,'1','2',1,42,'1','400',0,0,'C','2024-12-29 16:58:24','2024-12-29 17:05:32','1'),(316,52,'1','2',1,7,'1','1000',0,0,'C','2024-12-29 16:58:33','2024-12-29 17:05:32','1'),(317,53,'1','2',1,0,'1','0',0,0,'C','2024-12-29 17:10:55','2024-12-29 17:13:12','1'),(318,53,'1','2',1,29,'1','900',0,0,'C','2024-12-29 17:10:56','2024-12-29 17:13:12','1'),(319,53,'1','2',1,24,'1','300',0,0,'C','2024-12-29 17:11:02','2024-12-29 17:13:12','1'),(320,53,'1','2',1,28,'1','900',0,0,'C','2024-12-29 17:11:09','2024-12-29 17:13:12','1'),(321,53,'1','2',1,28,'1','900',0,0,'N','2024-12-29 17:11:09','0000-00-00 00:00:00','0'),(322,53,'1','2',1,30,'2','3000',0,0,'C','2024-12-29 17:11:34','2024-12-29 17:13:12','1'),(323,54,'1','2',1,31,'1','5000',0,0,'C','2024-12-29 17:15:02','2024-12-29 17:15:14','2'),(324,55,'1','2',1,10,'2','100',0,0,'C','2024-12-29 20:34:43','2024-12-29 20:35:19','1'),(325,56,'1','2',1,0,'1','0',0,0,'C','2025-01-01 13:46:44','2025-01-01 13:49:10','1'),(326,56,'1','2',1,24,'1','300',0,0,'C','2025-01-01 13:46:45','2025-01-01 13:49:10','1'),(327,56,'1','2',1,27,'1','900',0,0,'C','2025-01-01 13:46:52','2025-01-01 13:49:10','1'),(328,56,'1','2',1,27,'1','900',0,0,'N','2025-01-01 13:46:52','0000-00-00 00:00:00','0'),(329,56,'1','2',1,0,'1','0',0,0,'C','2025-01-01 13:47:11','2025-01-01 13:49:10','1'),(330,56,'1','2',1,9,'1','800',0,0,'C','2025-01-01 13:47:12','2025-01-01 13:49:10','1'),(331,56,'1','2',1,0,'1','0',0,0,'C','2025-01-01 13:47:21','2025-01-01 13:49:10','1'),(332,56,'1','2',1,0,'1','0',0,0,'C','2025-01-01 13:47:24','2025-01-01 13:49:10','1'),(333,56,'1','2',1,0,'1','0',0,0,'C','2025-01-01 13:47:26','2025-01-01 13:49:10','1'),(334,56,'1','2',1,0,'1','0',0,0,'C','2025-01-01 13:47:27','2025-01-01 13:49:10','1'),(335,56,'1','2',1,10,'1','100',0,0,'C','2025-01-01 13:47:31','2025-01-01 13:49:10','1'),(336,56,'1','2',1,10,'1','100',0,0,'C','2025-01-01 13:47:33','2025-01-01 13:49:10','1'),(337,56,'1','2',1,10,'1','100',0,0,'C','2025-01-01 13:47:34','2025-01-01 13:49:10','1'),(338,57,'1','2',1,0,'1','0',0,0,'C','2025-01-01 14:08:40','2025-01-01 14:09:43','1'),(339,57,'1','2',1,28,'1','900',0,0,'C','2025-01-01 14:08:41','2025-01-01 14:09:43','1'),(340,58,'1','2',1,0,'1','0',0,0,'C','2025-01-01 14:10:00','2025-01-01 14:12:21','1'),(341,58,'1','2',1,9,'1','800',0,0,'C','2025-01-01 14:10:01','2025-01-01 14:12:21','1'),(342,59,'1','2',1,63,'1','2100',0,0,'C','2025-01-01 14:16:41','2025-01-01 14:17:07','1'),(343,59,'1','2',1,24,'3','900',0,0,'C','2025-01-01 14:16:51','2025-01-01 14:17:07','1'),(344,60,'1','2',1,63,'1','2100',0,0,'C','2025-01-01 14:17:30','2025-01-01 14:19:48','1'),(345,60,'1','2',1,62,'1','500',0,0,'C','2025-01-01 14:19:32','2025-01-01 14:19:48','1'),(346,60,'1','2',1,0,'1','0',0,0,'C','2025-01-01 14:19:32','2025-01-01 14:19:48','1'),(347,61,'1','2',1,64,'1','800',0,0,'C','2025-01-01 14:32:28','2025-01-01 14:32:35','1'),(348,61,'1','2',1,0,'1','0',0,0,'C','2025-01-01 14:32:29','2025-01-01 14:32:35','1'),(349,62,'1','2',1,0,'1','0',0,0,'C','2025-01-01 14:35:42','2025-01-01 14:37:26','1'),(350,62,'1','2',1,54,'5','1000',0,0,'C','2025-01-01 14:35:42','2025-01-01 14:37:26','1'),(351,63,'1','2',1,0,'1','0',0,0,'C','2025-01-01 14:52:27','2025-01-01 14:53:20','1'),(352,63,'1','2',1,65,'1','2000',0,0,'C','2025-01-01 14:52:28','2025-01-01 14:53:20','1'),(353,63,'1','2',1,54,'5','1000',0,0,'C','2025-01-01 14:53:13','2025-01-01 14:53:20','1'),(354,64,'1','2',1,0,'1','0',0,0,'C','2025-01-01 15:28:22','2025-01-01 15:28:33','1'),(355,64,'1','2',1,66,'1','2500',0,0,'C','2025-01-01 15:28:25','2025-01-01 15:28:33','1'),(356,65,'1','2',1,0,'1','0',0,0,'C','2025-01-01 15:32:01','2025-01-01 15:33:24','1'),(357,65,'1','2',1,65,'1','2000',0,0,'C','2025-01-01 15:32:02','2025-01-01 15:33:24','1'),(358,66,'1','2',1,5,'1','400',0,0,'C','2025-01-01 17:52:25','2025-01-01 17:57:44','2'),(359,66,'1','2',1,5,'1','400',0,0,'C','2025-01-01 17:52:29','2025-01-01 17:57:44','2'),(360,66,'1','2',1,57,'1','600',0,0,'C','2025-01-01 17:52:38','2025-01-01 17:57:44','2'),(361,66,'1','2',1,60,'1','1400',0,0,'C','2025-01-01 17:54:44','2025-01-01 17:57:44','2'),(362,67,'1','2',1,0,'1','0',0,0,'C','2025-01-01 17:58:14','2025-01-01 17:59:24','1'),(363,67,'1','2',1,35,'1','3100',0,0,'C','2025-01-01 17:58:14','2025-01-01 17:59:24','1'),(364,67,'1','2',1,0,'1','0',0,0,'C','2025-01-01 17:58:17','2025-01-01 17:59:24','1'),(365,67,'1','2',1,0,'1','0',0,0,'C','2025-01-01 17:58:18','2025-01-01 17:59:24','1'),(366,67,'1','2',1,0,'1','0',0,0,'C','2025-01-01 17:58:40','2025-01-01 17:59:24','1'),(367,67,'1','2',1,6,'1','1400',0,0,'C','2025-01-01 17:58:41','2025-01-01 17:59:24','1'),(368,67,'1','2',1,31,'1','5000',0,0,'C','2025-01-01 17:58:55','2025-01-01 17:59:24','1'),(369,68,'1','2',1,0,'1','0',0,0,'C','2025-01-01 18:02:17','2025-01-01 18:04:44','1'),(370,68,'1','2',1,29,'1','900',0,0,'C','2025-01-01 18:02:17','2025-01-01 18:04:44','1'),(371,69,'1','2',1,0,'1','0',0,0,'C','2025-01-01 18:20:24','2025-01-01 18:26:40','1'),(372,69,'1','2',1,9,'1','800',0,0,'C','2025-01-01 18:20:24','2025-01-01 18:26:40','1'),(373,69,'1','2',1,54,'1','200',0,0,'C','2025-01-01 18:21:00','2025-01-01 18:26:40','1'),(374,70,'1','2',1,0,'1','0',0,0,'C','2025-01-01 18:26:57','2025-01-01 18:27:39','1'),(375,70,'1','2',1,27,'1','900',0,0,'C','2025-01-01 18:26:57','2025-01-01 18:27:39','1'),(376,71,'1','2',1,0,'1','0',0,0,'C','2025-01-01 18:35:23','2025-01-01 18:35:50','1'),(377,71,'1','2',1,9,'1','800',0,0,'C','2025-01-01 18:35:24','2025-01-01 18:35:50','1'),(378,72,'1','2',1,67,'4','600',0,0,'C','2025-01-01 20:45:44','2025-01-01 20:46:16','1'),(379,72,'1','2',1,0,'1','0',0,0,'C','2025-01-01 20:45:56','2025-01-01 20:46:16','1'),(380,72,'1','2',1,22,'4','600',0,0,'C','2025-01-01 20:46:02','2025-01-01 20:46:16','1'),(381,74,'1','2',1,9,'2','1600',0,0,'C','2025-01-03 19:55:15','2025-01-03 19:56:28','1'),(382,74,'1','2',1,24,'1','300',0,0,'N','2025-01-03 19:55:27','0000-00-00 00:00:00','0'),(383,74,'1','2',1,6,'1','1400',0,0,'C','2025-01-03 19:55:41','2025-01-03 19:56:28','1'),(384,75,'1','2',1,68,'1','5000',0,0,'C','2025-01-03 19:58:45','2025-01-03 19:59:58','1'),(385,76,'1','2',1,54,'1','200',0,0,'C','2025-01-03 20:00:14','2025-01-03 20:00:56','1'),(386,76,'1','2',1,9,'1','800',0,0,'C','2025-01-03 20:00:24','2025-01-03 20:00:56','1'),(387,76,'1','2',1,9,'1','800',0,0,'N','2025-01-03 20:00:39','0000-00-00 00:00:00','0'),(388,76,'1','2',1,8,'1','1000',0,0,'C','2025-01-03 20:00:52','2025-01-03 20:00:56','1'),(389,77,'1','2',1,41,'1','1500',0,0,'C','2025-01-03 20:01:34','2025-01-03 20:04:15','1'),(390,77,'1','2',1,9,'2','1600',0,0,'C','2025-01-03 20:01:46','2025-01-03 20:04:15','1'),(391,77,'1','2',1,69,'1','800',0,0,'C','2025-01-03 20:03:59','2025-01-03 20:04:15','1'),(392,78,'1','2',1,9,'2','1600',0,0,'C','2025-01-03 20:04:54','2025-01-03 20:05:53','2'),(393,78,'1','2',1,8,'1','1000',0,0,'C','2025-01-03 20:05:03','2025-01-03 20:05:53','2'),(394,78,'1','2',1,41,'1','1500',0,0,'C','2025-01-03 20:05:17','2025-01-03 20:05:53','2'),(395,78,'1','2',1,26,'2','1800',0,0,'C','2025-01-03 20:05:29','2025-01-03 20:05:53','2'),(396,78,'1','2',1,28,'1','900',0,0,'C','2025-01-03 20:05:38','2025-01-03 20:05:53','2'),(397,79,'1','2',1,28,'2','1800',0,0,'C','2025-01-03 20:06:35','2025-01-03 20:06:43','2'),(398,80,'1','2',1,9,'2','1600',0,0,'C','2025-01-03 21:55:39','2025-01-03 21:56:10','1'),(399,80,'1','2',1,65,'1','2000',0,0,'C','2025-01-03 21:55:48','2025-01-03 21:56:10','1'),(400,80,'1','2',1,62,'1','500',0,0,'C','2025-01-03 21:55:57','2025-01-03 21:56:10','1'),(401,81,'1','2',1,0,'1','0',0,0,'C','2025-01-03 22:26:07','2025-01-03 22:26:47','1'),(402,81,'1','2',1,64,'1','800',0,0,'C','2025-01-03 22:26:08','2025-01-03 22:26:47','1'),(403,81,'1','2',1,0,'1','0',0,0,'C','2025-01-03 22:26:10','2025-01-03 22:26:47','1'),(404,82,'1','2',1,0,'1','0',0,0,'C','2025-01-03 22:28:04','2025-01-03 22:29:15','1'),(405,82,'1','2',1,59,'1','1500',0,0,'C','2025-01-03 22:28:04','2025-01-03 22:29:15','1'),(406,82,'1','2',1,0,'1','0',0,0,'C','2025-01-03 22:28:15','2025-01-03 22:29:15','1'),(407,82,'1','2',1,0,'1','0',0,0,'C','2025-01-03 22:28:18','2025-01-03 22:29:15','1'),(408,82,'1','2',1,0,'1','0',0,0,'C','2025-01-03 22:28:20','2025-01-03 22:29:15','1'),(409,82,'1','2',1,0,'1','0',0,0,'C','2025-01-03 22:28:22','2025-01-03 22:29:15','1'),(410,82,'1','2',1,0,'1','0',0,0,'C','2025-01-03 22:28:55','2025-01-03 22:29:15','1'),(411,82,'1','2',1,75,'1','500',0,0,'C','2025-01-03 22:28:55','2025-01-03 22:29:15','1'),(412,83,'1','2',1,0,'2','0',0,0,'C','2025-01-03 22:50:36','2025-01-03 22:53:12','1'),(413,83,'1','2',1,75,'1','500',0,0,'C','2025-01-03 22:50:37','2025-01-03 22:53:12','1'),(414,83,'1','2',1,75,'1','500',0,0,'C','2025-01-03 22:50:41','2025-01-03 22:53:12','1'),(415,83,'1','2',1,59,'1','1500',0,0,'C','2025-01-03 22:51:45','2025-01-03 22:53:12','1'),(416,83,'1','2',1,59,'1','1500',0,0,'N','2025-01-03 22:51:46','0000-00-00 00:00:00','0'),(417,85,'1','2',1,68,'1','5000',0,0,'C','2025-01-04 14:46:59','2025-01-04 14:47:10','1'),(418,87,'1','2',1,0,'1','0',0,0,'C','2025-01-04 16:27:45','2025-01-04 16:28:20','1'),(419,87,'1','2',1,31,'1','5000',0,0,'C','2025-01-04 16:27:47','2025-01-04 16:28:20','1'),(420,88,'1','2',1,31,'2','10000',0,0,'C','2025-01-04 16:29:17','2025-01-04 16:44:16','2'),(421,88,'1','2',1,0,'1','0',0,0,'C','2025-01-04 16:34:33','2025-01-04 16:44:16','2'),(422,88,'1','2',1,24,'1','300',0,0,'C','2025-01-04 16:34:33','2025-01-04 16:44:16','2'),(423,88,'1','2',1,24,'1','300',0,0,'C','2025-01-04 16:34:41','2025-01-04 16:44:16','2'),(424,88,'1','2',1,24,'1','300',0,0,'C','2025-01-04 16:34:41','2025-01-04 16:44:16','2'),(425,88,'1','2',1,24,'1','300',0,0,'C','2025-01-04 16:34:43','2025-01-04 16:44:16','2'),(426,88,'1','2',1,24,'1','300',0,0,'C','2025-01-04 16:34:43','2025-01-04 16:44:16','2'),(427,88,'1','2',1,24,'1','300',0,0,'C','2025-01-04 16:34:44','2025-01-04 16:44:16','2'),(428,88,'1','2',1,24,'1','300',0,0,'C','2025-01-04 16:34:44','2025-01-04 16:44:16','2'),(429,88,'1','2',1,0,'1','0',0,0,'C','2025-01-04 16:37:00','2025-01-04 16:44:16','2'),(430,88,'1','2',1,94,'1','750',0,0,'C','2025-01-04 16:37:01','2025-01-04 16:44:16','2'),(431,89,'1','2',1,26,'1','900',0,0,'C','2025-01-04 16:45:35','2025-01-04 16:45:41','1'),(432,90,'1','2',1,0,'1','0',0,0,'C','2025-01-04 16:46:36','2025-01-04 16:50:55','2'),(433,90,'1','2',1,0,'1','0',0,0,'C','2025-01-04 16:46:37','2025-01-04 16:50:55','2'),(434,90,'1','2',1,95,'1','2000',0,0,'C','2025-01-04 16:50:46','2025-01-04 16:50:55','2'),(435,91,'1','2',1,0,'1','0',0,0,'C','2025-01-04 16:51:07','2025-01-04 17:20:07','1'),(436,91,'1','2',1,54,'1','200',0,0,'C','2025-01-04 16:51:07','2025-01-04 17:20:07','1'),(437,91,'1','2',1,54,'1','200',0,0,'C','2025-01-04 16:51:08','2025-01-04 17:20:07','1'),(438,91,'1','2',1,54,'1','200',0,0,'C','2025-01-04 16:51:08','2025-01-04 17:20:07','1'),(439,91,'1','2',1,54,'1','200',0,0,'C','2025-01-04 16:51:09','2025-01-04 17:20:07','1'),(440,91,'1','2',1,54,'1','200',0,0,'C','2025-01-04 16:51:09','2025-01-04 17:20:07','1'),(441,91,'1','2',1,54,'1','200',0,0,'C','2025-01-04 16:51:09','2025-01-04 17:20:07','1'),(442,91,'1','2',1,54,'1','200',0,0,'C','2025-01-04 16:51:10','2025-01-04 17:20:07','1'),(443,91,'1','2',1,54,'1','200',0,0,'C','2025-01-04 16:51:11','2025-01-04 17:20:07','1'),(444,91,'1','2',1,54,'1','200',0,0,'C','2025-01-04 16:51:13','2025-01-04 17:20:07','1'),(445,91,'1','2',1,54,'1','200',0,0,'C','2025-01-04 16:51:13','2025-01-04 17:20:07','1'),(446,92,'1','2',1,0,'1','0',0,0,'C','2025-01-04 17:20:26','2025-01-04 17:22:13','1'),(447,92,'1','2',1,15,'1','800',0,0,'C','2025-01-04 17:20:27','2025-01-04 17:22:13','1'),(448,92,'1','2',1,55,'2','4000',0,0,'C','2025-01-04 17:20:37','2025-01-04 17:22:13','1'),(449,92,'1','2',1,0,'1','0',0,0,'C','2025-01-04 17:20:54','2025-01-04 17:22:13','1'),(450,92,'1','2',1,65,'1','2000',0,0,'C','2025-01-04 17:20:57','2025-01-04 17:22:13','1'),(451,93,'1','2',1,26,'1','900',0,0,'N','2025-01-04 17:25:19','0000-00-00 00:00:00','0'),(452,93,'1','2',1,26,'1','900',0,0,'C','2025-01-04 17:25:20','2025-01-04 17:26:24','1'),(453,93,'1','2',1,0,'1','0',0,0,'C','2025-01-04 17:25:35','2025-01-04 17:26:24','1'),(454,93,'1','2',1,8,'1','1000',0,0,'C','2025-01-04 17:25:36','2025-01-04 17:26:24','1'),(455,94,'1','2',1,22,'1','150',0,0,'C','2025-01-04 17:26:35','2025-01-04 17:27:29','1'),(456,94,'1','2',1,0,'1','0',0,0,'C','2025-01-04 17:26:50','2025-01-04 17:27:29','1'),(457,94,'1','2',1,95,'1','2000',0,0,'C','2025-01-04 17:26:52','2025-01-04 17:27:29','1'),(458,94,'1','2',1,0,'1','0',0,0,'C','2025-01-04 17:26:55','2025-01-04 17:27:29','1'),(459,94,'1','2',1,0,'1','0',0,0,'C','2025-01-04 17:27:17','2025-01-04 17:27:29','1'),(460,95,'1','2',1,0,'1','0',0,0,'C','2025-01-04 17:36:56','2025-01-04 18:16:55','1'),(461,95,'1','2',1,96,'1','2000',0,0,'C','2025-01-04 17:36:57','2025-01-04 18:16:55','1'),(462,95,'1','2',1,26,'1','900',0,0,'C','2025-01-04 17:37:14','2025-01-04 18:16:55','1'),(463,95,'1','2',1,26,'1','900',0,0,'C','2025-01-04 17:37:15','2025-01-04 18:16:55','1'),(464,95,'1','2',1,26,'1','900',0,0,'C','2025-01-04 17:37:15','2025-01-04 18:16:55','1'),(465,95,'1','2',1,26,'1','900',0,0,'C','2025-01-04 17:37:16','2025-01-04 18:16:55','1'),(466,96,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:17:17','2025-01-04 18:19:52','1'),(467,96,'1','2',1,58,'1','600',0,0,'N','2025-01-04 18:17:17','0000-00-00 00:00:00','0'),(468,96,'1','2',1,56,'1','400',0,0,'N','2025-01-04 18:17:31','0000-00-00 00:00:00','0'),(469,96,'1','2',1,56,'1','400',0,0,'C','2025-01-04 18:17:32','2025-01-04 18:19:52','1'),(470,96,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:18:03','2025-01-04 18:19:52','1'),(471,96,'1','2',1,54,'1','200',0,0,'C','2025-01-04 18:18:03','2025-01-04 18:19:52','1'),(472,96,'1','2',1,54,'1','200',0,0,'C','2025-01-04 18:18:07','2025-01-04 18:19:52','1'),(473,96,'1','2',1,54,'1','200',0,0,'C','2025-01-04 18:18:07','2025-01-04 18:19:52','1'),(474,97,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:20:09','2025-01-04 18:20:32','1'),(475,97,'1','2',1,97,'1','2000',0,0,'C','2025-01-04 18:20:10','2025-01-04 18:20:32','1'),(476,98,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:24:47','2025-01-04 18:25:58','1'),(477,98,'1','2',1,24,'1','300',0,0,'C','2025-01-04 18:24:48','2025-01-04 18:25:58','1'),(478,98,'1','2',1,96,'1','2000',0,0,'C','2025-01-04 18:24:51','2025-01-04 18:25:58','1'),(479,98,'1','2',1,96,'1','2000',0,0,'C','2025-01-04 18:24:51','2025-01-04 18:25:58','1'),(480,98,'1','2',1,97,'1','2000',0,0,'C','2025-01-04 18:24:55','2025-01-04 18:25:58','1'),(481,99,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:26:59','2025-01-04 18:27:46','1'),(482,99,'1','2',1,96,'1','2000',0,0,'C','2025-01-04 18:27:00','2025-01-04 18:27:46','1'),(483,99,'1','2',1,97,'1','2000',0,0,'C','2025-01-04 18:27:03','2025-01-04 18:27:46','1'),(484,100,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:28:15','2025-01-04 18:35:53','1'),(485,100,'1','2',1,83,'1','1000',0,0,'N','2025-01-04 18:28:16','0000-00-00 00:00:00','0'),(486,100,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:28:21','2025-01-04 18:35:53','1'),(487,100,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:35:27','2025-01-04 18:35:53','1'),(488,100,'1','2',1,24,'1','300',0,0,'N','2025-01-04 18:35:27','0000-00-00 00:00:00','0'),(489,100,'1','2',1,24,'1','300',0,0,'C','2025-01-04 18:35:28','2025-01-04 18:35:53','1'),(490,100,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:35:41','2025-01-04 18:35:53','1'),(491,100,'1','2',1,96,'1','2000',0,0,'C','2025-01-04 18:35:41','2025-01-04 18:35:53','1'),(492,100,'1','2',1,96,'1','2000',0,0,'C','2025-01-04 18:35:42','2025-01-04 18:35:53','1'),(493,100,'1','2',1,96,'1','2000',0,0,'C','2025-01-04 18:35:43','2025-01-04 18:35:53','1'),(494,101,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:37:11','2025-01-04 18:38:26','1'),(495,101,'1','2',1,75,'1','500',0,0,'C','2025-01-04 18:37:11','2025-01-04 18:38:26','1'),(496,101,'1','2',1,75,'1','500',0,0,'N','2025-01-04 18:37:12','0000-00-00 00:00:00','0'),(497,101,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:37:51','2025-01-04 18:38:26','1'),(498,101,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:37:54','2025-01-04 18:38:26','1'),(499,101,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:37:56','2025-01-04 18:38:26','1'),(500,101,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:38:00','2025-01-04 18:38:26','1'),(501,101,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:38:01','2025-01-04 18:38:26','1'),(502,101,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:38:02','2025-01-04 18:38:26','1'),(503,101,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:38:02','2025-01-04 18:38:26','1'),(504,101,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:38:02','2025-01-04 18:38:26','1'),(505,101,'1','2',1,69,'1','800',0,0,'C','2025-01-04 18:38:12','2025-01-04 18:38:26','1'),(506,102,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:39:18','2025-01-04 18:39:37','1'),(507,102,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:39:19','2025-01-04 18:39:37','1'),(508,102,'1','2',1,7,'1','1000',0,0,'C','2025-01-04 18:39:29','2025-01-04 18:39:37','1'),(509,103,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:40:31','2025-01-04 18:41:00','1'),(510,103,'1','2',1,83,'1','1000',0,0,'C','2025-01-04 18:40:33','2025-01-04 18:41:00','1'),(511,103,'1','2',1,83,'1','1000',0,0,'C','2025-01-04 18:40:33','2025-01-04 18:41:00','1'),(512,104,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:44:51','2025-01-04 18:46:13','1'),(513,104,'1','2',1,75,'1','500',0,0,'C','2025-01-04 18:44:55','2025-01-04 18:46:13','1'),(514,104,'1','2',1,75,'1','500',0,0,'N','2025-01-04 18:44:55','0000-00-00 00:00:00','0'),(515,105,'1','2',1,0,'1','0',0,0,'C','2025-01-04 18:59:47','2025-01-04 19:07:29','1'),(516,105,'1','2',1,24,'1','300',0,0,'C','2025-01-04 18:59:47','2025-01-04 19:07:29','1'),(517,105,'1','2',1,24,'1','300',0,0,'C','2025-01-04 18:59:48','2025-01-04 19:07:29','1'),(518,105,'1','2',1,24,'1','300',0,0,'C','2025-01-04 18:59:49','2025-01-04 19:07:29','1'),(519,105,'1','2',1,58,'1','600',0,0,'C','2025-01-04 19:00:03','2025-01-04 19:07:29','1'),(520,105,'1','2',1,57,'1','600',0,0,'C','2025-01-04 19:00:06','2025-01-04 19:07:29','1'),(521,106,'1','2',1,0,'1','0',0,0,'C','2025-01-04 19:08:07','2025-01-04 19:08:46','1'),(522,106,'1','2',1,97,'1','2000',0,0,'C','2025-01-04 19:08:07','2025-01-04 19:08:46','1'),(523,106,'1','2',1,97,'1','2000',0,0,'N','2025-01-04 19:08:07','0000-00-00 00:00:00','0'),(524,107,'1','2',1,26,'1','900',0,0,'C','2025-01-04 19:09:14','2025-01-04 19:12:24','1'),(525,107,'1','2',1,68,'1','5000',0,0,'N','2025-01-04 19:12:34','0000-00-00 00:00:00','0'),(526,108,'1','2',1,68,'1','5000',0,0,'C','2025-01-04 19:12:50','2025-01-04 19:13:08','1'),(527,109,'1','2',1,0,'1','0',0,0,'C','2025-01-04 19:20:00','2025-01-04 19:20:08','1'),(528,109,'1','2',1,98,'1','1400',0,0,'C','2025-01-04 19:20:00','2025-01-04 19:20:08','1'),(529,110,'1','2',1,0,'1','0',0,0,'C','2025-01-04 19:31:48','2025-01-04 19:33:57','1'),(530,110,'1','2',1,51,'1','2000',0,0,'C','2025-01-04 19:31:49','2025-01-04 19:33:57','1'),(531,110,'1','2',1,58,'1','600',0,0,'C','2025-01-04 19:32:27','2025-01-04 19:33:57','1'),(532,110,'1','2',1,9,'1','800',0,0,'C','2025-01-04 19:32:39','2025-01-04 19:33:57','1'),(533,110,'1','2',1,9,'1','800',0,0,'N','2025-01-04 19:32:40','0000-00-00 00:00:00','0'),(534,111,'1','2',1,0,'1','0',0,0,'C','2025-01-04 19:46:46','2025-01-04 19:56:04','1'),(535,111,'1','2',1,65,'1','2000',0,0,'C','2025-01-04 19:46:46','2025-01-04 19:56:04','1'),(536,111,'1','2',1,62,'1','500',0,0,'C','2025-01-04 19:46:52','2025-01-04 19:56:04','1'),(537,112,'1','2',1,0,'1','0',0,0,'C','2025-01-04 20:02:34','2025-01-04 20:05:45','1'),(538,112,'1','2',1,24,'1','300',0,0,'C','2025-01-04 20:02:36','2025-01-04 20:05:45','1'),(539,112,'1','2',1,28,'1','900',0,0,'C','2025-01-04 20:02:38','2025-01-04 20:05:45','1'),(540,112,'1','2',1,26,'1','900',0,0,'C','2025-01-04 20:02:40','2025-01-04 20:05:45','1'),(541,112,'1','2',1,54,'1','200',0,0,'C','2025-01-04 20:02:59','2025-01-04 20:05:45','1'),(542,112,'1','2',1,54,'1','200',0,0,'C','2025-01-04 20:03:01','2025-01-04 20:05:45','1'),(543,112,'1','2',1,0,'1','0',0,0,'C','2025-01-04 20:04:04','2025-01-04 20:05:45','1'),(544,112,'1','2',1,28,'1','900',0,0,'C','2025-01-04 20:04:04','2025-01-04 20:05:45','1'),(545,113,'1','2',1,0,'1','0',0,0,'C','2025-01-04 20:07:08','2025-01-04 21:25:47','1'),(546,113,'1','2',1,57,'1','600',0,0,'C','2025-01-04 20:07:08','2025-01-04 21:25:47','1'),(547,113,'1','2',1,57,'1','600',0,0,'C','2025-01-04 20:07:10','2025-01-04 21:25:47','1'),(548,113,'1','2',1,57,'1','600',0,0,'C','2025-01-04 20:07:11','2025-01-04 21:25:47','1'),(549,114,'1','2',1,8,'1','1000',0,0,'C','2025-01-04 21:29:28','2025-01-04 21:30:24','1'),(550,114,'1','2',1,8,'1','1000',0,0,'N','2025-01-04 21:29:29','0000-00-00 00:00:00','0'),(551,114,'1','2',1,0,'1','0',0,0,'C','2025-01-04 21:29:41','2025-01-04 21:30:24','1'),(552,114,'1','2',1,8,'1','1000',0,0,'C','2025-01-04 21:29:44','2025-01-04 21:30:24','1'),(553,114,'1','2',1,59,'1','1500',0,0,'C','2025-01-04 21:29:46','2025-01-04 21:30:24','1'),(554,115,'1','2',1,0,'1','0',0,0,'C','2025-01-04 21:35:00','2025-01-04 21:36:28','1'),(555,115,'1','2',1,58,'1','600',0,0,'C','2025-01-04 21:35:01','2025-01-04 21:36:28','1'),(556,116,'1','2',1,53,'1','200',0,0,'C','2025-01-04 21:37:06','2025-01-04 21:38:53','1'),(557,116,'1','2',1,9,'1','800',0,0,'C','2025-01-04 21:37:16','2025-01-04 21:38:53','1'),(558,116,'1','2',1,75,'1','500',0,0,'C','2025-01-04 21:37:49','2025-01-04 21:38:53','1'),(559,116,'1','2',1,43,'1','500',0,0,'C','2025-01-04 21:38:24','2025-01-04 21:38:53','1'),(560,117,'1','2',1,0,'1','0',0,0,'C','2025-01-04 21:42:32','2025-01-04 21:44:03','1'),(561,117,'1','2',1,4,'1','1400',0,0,'C','2025-01-04 21:42:32','2025-01-04 21:44:03','1'),(562,117,'1','2',1,0,'1','0',0,0,'C','2025-01-04 21:42:38','2025-01-04 21:44:03','1'),(563,117,'1','2',1,0,'1','0',0,0,'C','2025-01-04 21:43:03','2025-01-04 21:44:03','1'),(564,117,'1','2',1,9,'1','800',0,0,'C','2025-01-04 21:43:04','2025-01-04 21:44:03','1'),(565,117,'1','2',1,47,'1','150',0,0,'C','2025-01-04 21:43:13','2025-01-04 21:44:03','1'),(566,117,'1','2',1,47,'1','150',0,0,'C','2025-01-04 21:43:19','2025-01-04 21:44:03','1'),(567,118,'1','2',1,0,'1','0',0,0,'C','2025-01-04 21:48:16','2025-01-04 21:50:36','1'),(568,118,'1','2',1,83,'1','1000',0,0,'C','2025-01-04 21:48:16','2025-01-04 21:50:36','1'),(569,118,'1','2',1,0,'1','0',0,0,'C','2025-01-04 21:48:18','2025-01-04 21:50:36','1'),(570,118,'1','2',1,47,'1','150',0,0,'C','2025-01-04 21:49:08','2025-01-04 21:50:36','1'),(571,119,'1','2',1,68,'1','5000',0,0,'C','2025-01-04 21:58:39','2025-01-04 21:58:50','2'),(572,120,'1','2',1,0,'1','0',0,0,'C','2025-01-04 21:59:37','2025-01-04 22:00:17','1'),(573,120,'1','2',1,57,'1','600',0,0,'C','2025-01-04 21:59:38','2025-01-04 22:00:17','1'),(574,120,'1','2',1,5,'1','400',0,0,'C','2025-01-04 22:00:01','2025-01-04 22:00:17','1'),(575,121,'1','2',1,31,'1','5000',0,0,'C','2025-01-04 22:00:39','2025-01-04 22:01:46','1'),(576,122,'1','2',1,31,'1','5000',0,0,'C','2025-01-04 22:12:52','2025-01-04 22:12:59','1'),(577,123,'1','2',1,92,'1','1200',0,0,'C','2025-01-05 11:35:10','2025-01-05 11:35:36','1'),(578,123,'1','2',1,55,'1','2000',0,0,'C','2025-01-05 11:35:25','2025-01-05 11:35:36','1'),(579,124,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:10:01','2025-01-05 14:11:36','1'),(580,124,'1','2',1,26,'1','900',0,0,'C','2025-01-05 14:10:01','2025-01-05 14:11:36','1'),(581,124,'1','2',1,26,'1','900',0,0,'C','2025-01-05 14:10:05','2025-01-05 14:11:36','1'),(582,124,'1','2',1,96,'1','2000',0,0,'C','2025-01-05 14:10:09','2025-01-05 14:11:36','1'),(583,124,'1','2',1,96,'1','2000',0,0,'C','2025-01-05 14:10:10','2025-01-05 14:11:36','1'),(584,125,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:12:35','2025-01-05 14:14:53','1'),(585,125,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:12:37','2025-01-05 14:14:53','1'),(586,125,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:12:38','2025-01-05 14:14:53','1'),(587,125,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:12:42','2025-01-05 14:14:53','1'),(588,125,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:12:42','2025-01-05 14:14:53','1'),(589,125,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:12:43','2025-01-05 14:14:53','1'),(590,125,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:12:43','2025-01-05 14:14:53','1'),(591,125,'1','2',1,4,'3','4200',0,0,'C','2025-01-05 14:12:49','2025-01-05 14:14:53','1'),(592,125,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:12:51','2025-01-05 14:14:53','1'),(593,125,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:12:53','2025-01-05 14:14:53','1'),(594,126,'1','2',1,99,'1','3500',0,0,'C','2025-01-05 14:18:32','2025-01-05 14:18:46','1'),(595,127,'1','2',1,0,'1','0',0,0,'N','2025-01-05 14:21:55','2025-01-05 14:30:49','0'),(596,127,'1','2',1,29,'1','900',0,0,'N','2025-01-05 14:21:56','2025-01-05 14:30:49','0'),(597,127,'1','2',1,29,'1','900',0,0,'N','2025-01-05 14:21:58','2025-01-05 14:30:49','0'),(598,127,'1','2',1,29,'1','900',0,0,'N','2025-01-05 14:21:59','2025-01-05 14:30:49','0'),(599,127,'1','2',1,26,'1','900',0,0,'N','2025-01-05 14:22:08','2025-01-05 14:30:49','0'),(600,127,'1','2',1,26,'1','900',0,0,'N','2025-01-05 14:22:10','2025-01-05 14:30:49','0'),(601,127,'1','2',1,26,'1','900',0,0,'N','2025-01-05 14:22:10','2025-01-05 14:30:49','0'),(602,127,'1','2',1,29,'1','900',0,0,'N','2025-01-05 14:22:18','2025-01-05 14:30:49','0'),(603,127,'1','2',1,28,'1','900',0,0,'N','2025-01-05 14:22:30','2025-01-05 14:30:49','0'),(604,127,'1','2',1,28,'1','900',0,0,'N','2025-01-05 14:22:30','2025-01-05 14:30:49','0'),(605,127,'1','2',1,28,'1','900',0,0,'N','2025-01-05 14:22:31','2025-01-05 14:30:49','0'),(606,127,'1','2',1,28,'1','900',0,0,'N','2025-01-05 14:22:31','2025-01-05 14:30:49','0'),(607,128,'1','2',1,55,'3','6000',0,0,'C','2025-01-05 14:31:03','2025-01-05 14:32:25','1'),(608,129,'1','2',1,55,'2','4000',0,0,'C','2025-01-05 14:32:39','2025-01-05 14:32:48','1'),(609,130,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:33:46','2025-01-05 14:35:45','1'),(610,130,'1','2',1,15,'1','800',0,0,'C','2025-01-05 14:33:47','2025-01-05 14:35:45','1'),(611,131,'1','2',1,31,'2','10000',0,0,'C','2025-01-05 14:40:30','2025-01-05 14:41:06','1'),(612,131,'1','2',1,68,'1','5000',0,0,'C','2025-01-05 14:40:47','2025-01-05 14:41:06','1'),(613,131,'1','2',1,24,'3','900',0,0,'C','2025-01-05 14:40:55','2025-01-05 14:41:06','1'),(614,132,'1','2',1,0,'1','0',0,0,'C','2025-01-05 14:51:25','2025-01-05 14:52:28','1'),(615,132,'1','2',1,97,'1','2000',0,0,'C','2025-01-05 14:51:25','2025-01-05 14:52:28','1'),(616,132,'1','2',1,97,'1','2000',0,0,'C','2025-01-05 14:51:27','2025-01-05 14:52:28','1'),(617,132,'1','2',1,97,'1','2000',0,0,'C','2025-01-05 14:51:28','2025-01-05 14:52:28','1'),(618,133,'1','2',1,0,'1','0',0,0,'C','2025-01-05 15:00:49','2025-01-05 15:01:40','1'),(619,133,'1','2',1,77,'1','1500',0,0,'C','2025-01-05 15:00:49','2025-01-05 15:01:40','1'),(620,134,'1','2',1,31,'2','10000',0,0,'C','2025-01-05 17:08:28','2025-01-05 17:10:30','1'),(621,134,'1','2',1,92,'1','1200',0,0,'C','2025-01-05 17:08:54','2025-01-05 17:10:30','1'),(622,134,'1','2',1,92,'1','1200',0,0,'N','2025-01-05 17:10:18','0000-00-00 00:00:00','0'),(623,134,'1','2',1,92,'1','1200',0,0,'N','2025-01-05 17:10:20','0000-00-00 00:00:00','0'),(624,135,'1','2',1,0,'1','0',0,0,'C','2025-01-05 17:10:44','2025-01-05 17:29:28','1'),(625,135,'1','2',1,45,'1','2000',0,0,'N','2025-01-05 17:10:44','0000-00-00 00:00:00','0'),(626,135,'1','2',1,22,'1','150',0,0,'C','2025-01-05 17:28:28','2025-01-05 17:29:28','1'),(627,135,'1','2',1,0,'1','0',0,0,'C','2025-01-05 17:29:12','2025-01-05 17:29:28','1'),(628,135,'1','2',1,11,'1','500',0,0,'C','2025-01-05 17:29:13','2025-01-05 17:29:28','1'),(629,136,'1','2',1,0,'1','0',0,0,'C','2025-01-05 17:30:43','2025-01-05 17:31:25','1'),(630,136,'1','2',1,24,'1','300',0,0,'C','2025-01-05 17:30:47','2025-01-05 17:31:25','1'),(631,136,'1','2',1,24,'1','300',0,0,'C','2025-01-05 17:30:49','2025-01-05 17:31:25','1'),(632,136,'1','2',1,24,'1','300',0,0,'N','2025-01-05 17:30:50','0000-00-00 00:00:00','0'),(633,137,'1','2',1,0,'1','0',0,0,'C','2025-01-05 17:49:25','2025-01-05 17:51:18','1'),(634,137,'1','2',1,60,'1','1400',0,0,'C','2025-01-05 17:49:25','2025-01-05 17:51:18','1'),(635,137,'1','2',1,9,'1','800',0,0,'C','2025-01-05 17:49:29','2025-01-05 17:51:18','1'),(636,137,'1','2',1,9,'1','800',0,0,'N','2025-01-05 17:49:29','0000-00-00 00:00:00','0'),(637,137,'1','2',1,0,'1','0',0,0,'C','2025-01-05 17:49:57','2025-01-05 17:51:18','1'),(638,137,'1','2',1,60,'1','1400',0,0,'C','2025-01-05 17:49:57','2025-01-05 17:51:18','1'),(639,137,'1','2',1,57,'1','600',0,0,'C','2025-01-05 17:50:27','2025-01-05 17:51:18','1'),(640,137,'1','2',1,58,'1','600',0,0,'C','2025-01-05 17:50:50','2025-01-05 17:51:18','1'),(641,138,'1','2',1,22,'3','450',0,0,'C','2025-01-05 17:54:09','2025-01-05 17:55:14','1'),(642,138,'1','2',1,67,'2','300',0,0,'C','2025-01-05 17:54:21','2025-01-05 17:55:14','1'),(643,139,'1','2',1,0,'1','0',0,0,'C','2025-01-05 18:07:48','2025-01-05 18:08:39','1'),(644,139,'1','2',1,24,'1','300',0,0,'N','2025-01-05 18:07:48','0000-00-00 00:00:00','0'),(645,139,'1','2',1,24,'1','300',0,0,'C','2025-01-05 18:07:50','2025-01-05 18:08:39','1'),(646,139,'1','2',1,24,'1','300',0,0,'C','2025-01-05 18:07:53','2025-01-05 18:08:39','1'),(647,139,'1','2',1,24,'1','300',0,0,'C','2025-01-05 18:07:54','2025-01-05 18:08:39','1'),(648,140,'1','2',1,0,'1','0',0,0,'C','2025-01-05 18:55:33','2025-01-05 18:56:44','1'),(649,140,'1','2',1,57,'1','600',0,0,'C','2025-01-05 18:55:37','2025-01-05 18:56:44','1'),(650,140,'1','2',1,57,'1','600',0,0,'C','2025-01-05 18:55:38','2025-01-05 18:56:44','1'),(651,140,'1','2',1,22,'2','300',0,0,'C','2025-01-05 18:55:53','2025-01-05 18:56:44','1'),(652,141,'1','2',1,53,'2','400',0,0,'C','2025-01-05 19:00:43','2025-01-05 19:01:37','1'),(653,141,'1','2',1,0,'1','0',0,0,'C','2025-01-05 19:00:58','2025-01-05 19:01:37','1'),(654,141,'1','2',1,24,'1','300',0,0,'C','2025-01-05 19:00:58','2025-01-05 19:01:37','1'),(655,141,'1','2',1,10,'1','100',0,0,'C','2025-01-05 19:01:08','2025-01-05 19:01:37','1'),(656,142,'1','2',1,0,'1','0',0,0,'C','2025-01-05 19:08:40','2025-01-05 19:09:35','1'),(657,142,'1','2',1,54,'1','200',0,0,'C','2025-01-05 19:08:41','2025-01-05 19:09:35','1'),(658,142,'1','2',1,54,'1','200',0,0,'C','2025-01-05 19:08:42','2025-01-05 19:09:35','1'),(659,142,'1','2',1,53,'1','200',0,0,'C','2025-01-05 19:08:46','2025-01-05 19:09:35','1'),(660,142,'1','2',1,53,'1','200',0,0,'C','2025-01-05 19:08:47','2025-01-05 19:09:35','1'),(661,143,'1','2',1,0,'1','0',0,0,'C','2025-01-05 19:10:50','2025-01-05 19:11:24','1'),(662,143,'1','2',1,58,'1','600',0,0,'C','2025-01-05 19:10:51','2025-01-05 19:11:24','1'),(663,143,'1','2',1,58,'1','600',0,0,'C','2025-01-05 19:11:06','2025-01-05 19:11:24','1'),(664,146,'1','2',1,0,'1','0',0,0,'C','2025-01-10 13:46:33','2025-01-10 14:04:08','1'),(665,146,'1','2',1,73,'1','1000',0,0,'N','2025-01-10 13:46:34','0000-00-00 00:00:00','0'),(666,146,'1','2',1,0,'1','0',0,0,'C','2025-01-10 13:57:52','2025-01-10 14:04:08','1'),(667,146,'1','2',1,26,'1','900',0,0,'C','2025-01-10 13:57:53','2025-01-10 14:04:08','1'),(668,146,'1','2',1,26,'1','900',0,0,'C','2025-01-10 13:57:54','2025-01-10 14:04:08','1'),(669,147,'1','2',1,47,'3','450',0,0,'C','2025-01-10 15:54:47','2025-01-10 15:56:02','1'),(670,147,'1','2',1,57,'1','600',0,0,'C','2025-01-10 15:55:57','2025-01-10 15:56:02','1'),(671,148,'1','2',1,0,'1','0',0,0,'C','2025-01-10 16:58:46','2025-01-10 17:00:39','1'),(672,148,'1','2',1,8,'1','1000',0,0,'C','2025-01-10 16:58:47','2025-01-10 17:00:39','1'),(673,148,'1','2',1,0,'1','0',0,0,'C','2025-01-10 17:00:15','2025-01-10 17:00:39','1'),(674,148,'1','2',1,101,'1','1900',0,0,'C','2025-01-10 17:00:16','2025-01-10 17:00:39','1'),(675,149,'1','2',1,0,'1','0',0,0,'C','2025-01-10 17:16:07','2025-01-10 17:23:26','1'),(676,149,'1','2',1,101,'1','1900',0,0,'C','2025-01-10 17:16:07','2025-01-10 17:23:26','1'),(677,149,'1','2',1,8,'1','1000',0,0,'C','2025-01-10 17:16:18','2025-01-10 17:23:26','1'),(678,149,'1','2',1,22,'1','150',0,0,'C','2025-01-10 17:17:04','2025-01-10 17:23:26','1'),(679,150,'1','2',1,56,'2','800',0,0,'C','2025-01-10 17:23:54','2025-01-10 17:25:48','1'),(680,150,'1','2',1,43,'1','500',0,0,'C','2025-01-10 17:24:01','2025-01-10 17:25:48','1'),(681,150,'1','2',1,69,'1','800',0,0,'C','2025-01-10 17:24:11','2025-01-10 17:25:48','1'),(682,150,'1','2',1,0,'1','0',0,0,'C','2025-01-10 17:25:03','2025-01-10 17:25:48','1'),(683,150,'1','2',1,57,'1','600',0,0,'C','2025-01-10 17:25:04','2025-01-10 17:25:48','1'),(684,150,'1','2',1,57,'1','600',0,0,'C','2025-01-10 17:25:04','2025-01-10 17:25:48','1'),(685,150,'1','2',1,58,'1','600',0,0,'C','2025-01-10 17:25:08','2025-01-10 17:25:48','1'),(686,150,'1','2',1,58,'1','600',0,0,'C','2025-01-10 17:25:08','2025-01-10 17:25:48','1'),(687,151,'1','2',1,10,'2','100',0,0,'C','2025-01-10 19:25:28','2025-01-10 19:28:58','1'),(688,151,'1','2',1,0,'1','0',0,0,'C','2025-01-10 19:28:22','2025-01-10 19:28:58','1'),(689,151,'1','2',1,103,'1','1500',0,0,'C','2025-01-10 19:28:23','2025-01-10 19:28:58','1'),(690,151,'1','2',1,47,'2','300',0,0,'C','2025-01-10 19:28:33','2025-01-10 19:28:58','1'),(691,152,'1','2',1,0,'1','0',0,0,'C','2025-01-10 19:30:11','2025-01-10 19:30:52','1'),(692,152,'1','2',1,47,'1','150',0,0,'C','2025-01-10 19:30:18','2025-01-10 19:30:52','1'),(693,153,'1','2',1,0,'1','0',0,0,'C','2025-01-10 19:34:00','2025-01-10 19:34:09','1'),(694,153,'1','2',1,103,'1','1500',0,0,'C','2025-01-10 19:34:01','2025-01-10 19:34:09','1'),(695,154,'1','2',1,0,'1','0',0,0,'C','2025-01-10 20:33:32','2025-01-10 20:54:30','2'),(696,154,'1','2',1,103,'1','1500',0,0,'C','2025-01-10 20:33:34','2025-01-10 20:54:30','2'),(697,154,'1','2',1,47,'5','750',0,0,'C','2025-01-10 20:33:46','2025-01-10 20:54:30','2'),(698,155,'1','2',1,0,'1','0',0,0,'C','2025-01-10 21:27:55','2025-01-10 21:29:41','1'),(699,155,'1','2',1,94,'1','750',0,0,'C','2025-01-10 21:27:56','2025-01-10 21:29:41','1'),(700,155,'1','2',1,94,'1','750',0,0,'C','2025-01-10 21:28:02','2025-01-10 21:29:41','1'),(701,155,'1','2',1,9,'1','800',0,0,'C','2025-01-10 21:28:10','2025-01-10 21:29:41','1'),(702,155,'1','2',1,9,'1','800',0,0,'C','2025-01-10 21:28:10','2025-01-10 21:29:41','1'),(703,155,'1','2',1,54,'1','200',0,0,'C','2025-01-10 21:28:29','2025-01-10 21:29:41','1'),(704,155,'1','2',1,54,'1','200',0,0,'C','2025-01-10 21:28:29','2025-01-10 21:29:41','1'),(705,155,'1','2',1,54,'1','200',0,0,'C','2025-01-10 21:28:30','2025-01-10 21:29:41','1'),(706,155,'1','2',1,54,'1','200',0,0,'C','2025-01-10 21:28:30','2025-01-10 21:29:41','1'),(707,155,'1','2',1,54,'1','200',0,0,'C','2025-01-10 21:28:31','2025-01-10 21:29:41','1'),(708,157,'1','2',1,0,'1','0',0,0,'C','2025-01-11 15:18:27','2025-01-11 15:19:40','1'),(709,157,'1','2',1,74,'1','1600',0,0,'C','2025-01-11 15:18:28','2025-01-11 15:19:40','1'),(710,157,'1','2',1,0,'1','0',0,0,'C','2025-01-11 15:18:32','2025-01-11 15:19:40','1'),(711,158,'1','2',1,0,'1','0',0,0,'C','2025-01-11 15:40:07','2025-01-11 15:41:49','1'),(712,158,'1','2',1,104,'1','800',0,0,'C','2025-01-11 15:40:07','2025-01-11 15:41:49','1'),(713,158,'1','2',1,53,'1','200',0,0,'C','2025-01-11 15:40:25','2025-01-11 15:41:49','1'),(714,159,'1','2',1,22,'1','150',0,0,'C','2025-01-11 15:57:46','2025-01-11 16:02:57','1'),(715,160,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:03:08','2025-01-11 16:04:36','1'),(716,160,'1','2',1,42,'1','500',0,0,'C','2025-01-11 16:03:09','2025-01-11 16:04:36','1'),(717,160,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:04:15','2025-01-11 16:04:36','1'),(718,160,'1','2',1,75,'1','500',0,0,'C','2025-01-11 16:04:16','2025-01-11 16:04:36','1'),(719,161,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:10:34','2025-01-11 16:11:47','1'),(720,161,'1','2',1,97,'1','2000',0,0,'C','2025-01-11 16:10:35','2025-01-11 16:11:47','1'),(721,161,'1','2',1,94,'1','750',0,0,'C','2025-01-11 16:10:42','2025-01-11 16:11:47','1'),(722,162,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:13:47','2025-01-11 16:17:40','1'),(723,162,'1','2',1,61,'1','2000',0,0,'N','2025-01-11 16:13:47','0000-00-00 00:00:00','0'),(724,162,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:17:26','2025-01-11 16:17:40','1'),(725,162,'1','2',1,4,'1','1400',0,0,'C','2025-01-11 16:17:27','2025-01-11 16:17:40','1'),(726,162,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:17:29','2025-01-11 16:17:40','1'),(727,162,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:17:30','2025-01-11 16:17:40','1'),(728,163,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:19:25','2025-01-11 16:21:03','2'),(729,163,'1','2',1,26,'1','900',0,0,'C','2025-01-11 16:19:26','2025-01-11 16:21:03','2'),(730,163,'1','2',1,96,'1','2000',0,0,'C','2025-01-11 16:19:34','2025-01-11 16:21:03','2'),(731,163,'1','2',1,96,'1','2000',0,0,'C','2025-01-11 16:19:35','2025-01-11 16:21:03','2'),(732,164,'1','2',1,26,'1','900',0,0,'C','2025-01-11 16:23:58','2025-01-11 16:24:28','1'),(733,164,'1','2',1,24,'1','300',0,0,'C','2025-01-11 16:24:09','2025-01-11 16:24:28','1'),(734,165,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:26:58','2025-01-11 16:29:05','1'),(735,165,'1','2',1,26,'1','900',0,0,'C','2025-01-11 16:27:02','2025-01-11 16:29:05','1'),(736,165,'1','2',1,26,'1','900',0,0,'C','2025-01-11 16:27:03','2025-01-11 16:29:05','1'),(737,165,'1','2',1,24,'1','300',0,0,'C','2025-01-11 16:27:13','2025-01-11 16:29:05','1'),(738,165,'1','2',1,24,'1','300',0,0,'N','2025-01-11 16:27:40','0000-00-00 00:00:00','0'),(739,165,'1','2',1,22,'3','450',0,0,'C','2025-01-11 16:27:55','2025-01-11 16:29:05','1'),(740,166,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:30:12','2025-01-11 16:31:25','1'),(741,166,'1','2',1,96,'1','2000',0,0,'C','2025-01-11 16:30:13','2025-01-11 16:31:25','1'),(742,166,'1','2',1,26,'1','900',0,0,'C','2025-01-11 16:30:31','2025-01-11 16:31:25','1'),(743,166,'1','2',1,24,'1','300',0,0,'C','2025-01-11 16:30:40','2025-01-11 16:31:25','1'),(744,167,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:31:46','2025-01-11 16:33:43','1'),(745,167,'1','2',1,97,'1','2000',0,0,'C','2025-01-11 16:31:46','2025-01-11 16:33:43','1'),(746,167,'1','2',1,26,'1','900',0,0,'C','2025-01-11 16:31:51','2025-01-11 16:33:43','1'),(747,167,'1','2',1,26,'1','900',0,0,'C','2025-01-11 16:31:52','2025-01-11 16:33:43','1'),(748,168,'1','2',1,25,'1','750',0,0,'C','2025-01-11 16:34:31','2025-01-11 16:35:33','1'),(749,168,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:34:39','2025-01-11 16:35:33','1'),(750,168,'1','2',1,97,'1','2000',0,0,'C','2025-01-11 16:34:39','2025-01-11 16:35:33','1'),(751,169,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:37:31','2025-01-11 16:40:09','2'),(752,169,'1','2',1,4,'1','1400',0,0,'C','2025-01-11 16:37:32','2025-01-11 16:40:09','2'),(753,169,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:37:34','2025-01-11 16:40:09','2'),(754,169,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:39:58','2025-01-11 16:40:09','2'),(755,169,'1','2',1,97,'1','2000',0,0,'N','2025-01-11 16:39:59','0000-00-00 00:00:00','0'),(756,170,'1','2',1,0,'1','0',0,0,'C','2025-01-11 16:40:30','2025-01-11 16:40:40','2'),(757,170,'1','2',1,97,'1','2000',0,0,'C','2025-01-11 16:40:30','2025-01-11 16:40:40','2'),(758,171,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:35:39','2025-01-11 17:37:39','1'),(759,171,'1','2',1,6,'1','1400',0,0,'N','2025-01-11 17:35:42','0000-00-00 00:00:00','0'),(760,171,'1','2',1,6,'1','1400',0,0,'C','2025-01-11 17:35:45','2025-01-11 17:37:39','1'),(761,171,'1','2',1,6,'1','1400',0,0,'C','2025-01-11 17:35:47','2025-01-11 17:37:39','1'),(762,171,'1','2',1,6,'1','1400',0,0,'C','2025-01-11 17:35:48','2025-01-11 17:37:39','1'),(763,171,'1','2',1,6,'1','1400',0,0,'C','2025-01-11 17:35:49','2025-01-11 17:37:39','1'),(764,171,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:36:21','2025-01-11 17:37:39','1'),(765,171,'1','2',1,6,'1','1400',0,0,'C','2025-01-11 17:36:23','2025-01-11 17:37:39','1'),(766,171,'1','2',1,53,'1','200',0,0,'C','2025-01-11 17:37:10','2025-01-11 17:37:39','1'),(767,171,'1','2',1,53,'1','200',0,0,'C','2025-01-11 17:37:11','2025-01-11 17:37:39','1'),(768,171,'1','2',1,53,'1','200',0,0,'C','2025-01-11 17:37:12','2025-01-11 17:37:39','1'),(769,171,'1','2',1,53,'1','200',0,0,'C','2025-01-11 17:37:13','2025-01-11 17:37:39','1'),(770,172,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:41:55','2025-01-11 17:43:50','1'),(771,172,'1','2',1,25,'1','750',0,0,'C','2025-01-11 17:41:56','2025-01-11 17:43:50','1'),(772,173,'1','2',1,10,'4','100',0,0,'C','2025-01-11 17:44:04','2025-01-11 17:45:53','1'),(773,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:47:17','2025-01-11 17:50:05','1'),(774,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:47:18','2025-01-11 17:50:05','1'),(775,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:47:19','2025-01-11 17:50:05','1'),(776,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:47:20','2025-01-11 17:50:05','1'),(777,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:47:20','2025-01-11 17:50:05','1'),(778,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:47:21','2025-01-11 17:50:05','1'),(779,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:47:21','2025-01-11 17:50:05','1'),(780,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:47:21','2025-01-11 17:50:05','1'),(781,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:47:22','2025-01-11 17:50:05','1'),(782,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:30','2025-01-11 17:50:05','1'),(783,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:31','2025-01-11 17:50:05','1'),(784,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:32','2025-01-11 17:50:05','1'),(785,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:33','2025-01-11 17:50:05','1'),(786,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:34','2025-01-11 17:50:05','1'),(787,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:34','2025-01-11 17:50:05','1'),(788,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:35','2025-01-11 17:50:05','1'),(789,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:35','2025-01-11 17:50:05','1'),(790,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:35','2025-01-11 17:50:05','1'),(791,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:36','2025-01-11 17:50:05','1'),(792,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:37','2025-01-11 17:50:05','1'),(793,174,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:49:58','2025-01-11 17:50:05','1'),(794,174,'1','2',1,105,'1','1400',0,0,'C','2025-01-11 17:50:00','2025-01-11 17:50:05','1'),(795,175,'1','2',1,0,'1','0',0,0,'C','2025-01-11 17:56:25','2025-01-11 17:57:41','1'),(796,175,'1','2',1,27,'1','900',0,0,'C','2025-01-11 17:56:28','2025-01-11 17:57:41','1'),(797,175,'1','2',1,24,'1','300',0,0,'C','2025-01-11 17:56:33','2025-01-11 17:57:41','1'),(798,176,'1','2',1,0,'1','0',0,0,'C','2025-01-11 18:00:30','2025-01-11 18:50:42','1'),(799,176,'1','2',1,94,'1','750',0,0,'C','2025-01-11 18:00:30','2025-01-11 18:50:42','1'),(800,176,'1','2',1,94,'1','750',0,0,'C','2025-01-11 18:00:31','2025-01-11 18:50:42','1'),(801,177,'1','2',1,0,'1','0',0,0,'C','2025-01-11 18:50:56','2025-01-11 18:51:06','1'),(802,177,'1','2',1,94,'1','750',0,0,'C','2025-01-11 18:50:58','2025-01-11 18:51:06','1'),(803,177,'1','2',1,0,'1','0',0,0,'A','2025-01-11 18:52:11','0000-00-00 00:00:00','0'),(804,177,'1','2',1,94,'1','750',0,0,'N','2025-01-11 18:52:12','0000-00-00 00:00:00','0'),(805,178,'1','2',1,0,'1','0',0,0,'C','2025-01-11 18:52:23','2025-01-11 18:52:36','1'),(806,178,'1','2',1,94,'1','750',0,0,'C','2025-01-11 18:52:24','2025-01-11 18:52:36','1'),(807,179,'1','2',1,0,'1','0',0,0,'C','2025-01-11 18:57:24','2025-01-11 18:58:37','1'),(808,179,'1','2',1,51,'1','2000',0,0,'C','2025-01-11 18:57:25','2025-01-11 18:58:37','1'),(809,179,'1','2',1,52,'1','2000',0,0,'C','2025-01-11 18:57:46','2025-01-11 18:58:37','1'),(810,179,'1','2',1,64,'1','800',0,0,'C','2025-01-11 18:57:58','2025-01-11 18:58:37','1'),(811,179,'1','2',1,0,'1','0',0,0,'C','2025-01-11 18:58:01','2025-01-11 18:58:37','1'),(812,180,'1','2',1,31,'1','5000',0,0,'C','2025-01-11 19:02:13','2025-01-11 19:06:49','1'),(813,181,'1','2',1,55,'1','2000',0,0,'C','2025-01-11 19:07:04','2025-01-11 19:12:23','1'),(814,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:12:35','2025-01-11 19:16:03','1'),(815,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:12:35','2025-01-11 19:16:03','1'),(816,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:12:36','2025-01-11 19:16:03','1'),(817,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:12:36','2025-01-11 19:16:03','1'),(818,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:12:37','2025-01-11 19:16:03','1'),(819,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:12:37','2025-01-11 19:16:03','1'),(820,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:12:37','2025-01-11 19:16:03','1'),(821,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:12:37','2025-01-11 19:16:03','1'),(822,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:12:38','2025-01-11 19:16:03','1'),(823,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:12:38','2025-01-11 19:16:03','1'),(824,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:12:39','2025-01-11 19:16:03','1'),(825,182,'1','2',1,9,'1','800',0,0,'C','2025-01-11 19:12:45','2025-01-11 19:16:03','1'),(826,182,'1','2',1,75,'1','500',0,0,'C','2025-01-11 19:13:50','2025-01-11 19:16:03','1'),(827,182,'1','2',1,75,'1','500',0,0,'C','2025-01-11 19:13:51','2025-01-11 19:16:03','1'),(828,182,'1','2',1,75,'1','500',0,0,'C','2025-01-11 19:13:52','2025-01-11 19:16:03','1'),(829,182,'1','2',1,75,'1','500',0,0,'C','2025-01-11 19:13:52','2025-01-11 19:16:03','1'),(830,182,'1','2',1,75,'1','500',0,0,'C','2025-01-11 19:13:53','2025-01-11 19:16:03','1'),(831,182,'1','2',1,75,'1','500',0,0,'C','2025-01-11 19:13:53','2025-01-11 19:16:03','1'),(832,182,'1','2',1,60,'1','1400',0,0,'C','2025-01-11 19:14:14','2025-01-11 19:16:03','1'),(833,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:15:08','2025-01-11 19:16:03','1'),(834,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:15:09','2025-01-11 19:16:03','1'),(835,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:15:09','2025-01-11 19:16:03','1'),(836,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:15:10','2025-01-11 19:16:03','1'),(837,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:15:10','2025-01-11 19:16:03','1'),(838,182,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:15:11','2025-01-11 19:16:03','1'),(839,182,'1','2',1,39,'1','1400',0,0,'C','2025-01-11 19:15:40','2025-01-11 19:16:03','1'),(840,182,'1','2',1,39,'1','1400',0,0,'C','2025-01-11 19:15:43','2025-01-11 19:16:03','1'),(841,183,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:16:53','2025-01-11 19:17:18','1'),(842,183,'1','2',1,39,'1','1400',0,0,'C','2025-01-11 19:16:53','2025-01-11 19:17:18','1'),(843,184,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:26:36','2025-01-11 19:26:46','1'),(844,184,'1','2',1,94,'1','750',0,0,'C','2025-01-11 19:26:37','2025-01-11 19:26:46','1'),(845,185,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:27:55','2025-01-11 19:30:30','1'),(846,185,'1','2',1,24,'1','300',0,0,'C','2025-01-11 19:27:56','2025-01-11 19:30:30','1'),(847,185,'1','2',1,24,'1','300',0,0,'C','2025-01-11 19:27:57','2025-01-11 19:30:30','1'),(848,185,'1','2',1,24,'1','300',0,0,'C','2025-01-11 19:27:57','2025-01-11 19:30:30','1'),(849,185,'1','2',1,24,'1','300',0,0,'C','2025-01-11 19:27:58','2025-01-11 19:30:30','1'),(850,185,'1','2',1,22,'3','450',0,0,'C','2025-01-11 19:28:23','2025-01-11 19:30:30','1'),(851,186,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:30:54','2025-01-11 19:31:19','1'),(852,186,'1','2',1,9,'1','800',0,0,'C','2025-01-11 19:30:54','2025-01-11 19:31:19','1'),(853,187,'1','2',1,0,'1','0',0,0,'C','2025-01-11 19:33:55','2025-01-11 19:34:34','1'),(854,187,'1','2',1,56,'1','400',0,0,'C','2025-01-11 19:33:56','2025-01-11 19:34:34','1'),(855,187,'1','2',1,56,'1','400',0,0,'C','2025-01-11 19:33:56','2025-01-11 19:34:34','1'),(856,187,'1','2',1,56,'1','400',0,0,'C','2025-01-11 19:33:56','2025-01-11 19:34:34','1'),(857,187,'1','2',1,56,'1','400',0,0,'C','2025-01-11 19:33:57','2025-01-11 19:34:34','1'),(858,187,'1','2',1,56,'1','400',0,0,'C','2025-01-11 19:33:57','2025-01-11 19:34:34','1'),(859,188,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:05:18','2025-01-11 20:08:19','1'),(860,188,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:05:18','2025-01-11 20:08:19','1'),(861,188,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:05:19','2025-01-11 20:08:19','1'),(862,188,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:05:19','2025-01-11 20:08:19','1'),(863,188,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:05:20','2025-01-11 20:08:19','1'),(864,188,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:05:20','2025-01-11 20:08:19','1'),(865,188,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:05:21','2025-01-11 20:08:19','1'),(866,188,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:06:43','2025-01-11 20:08:19','1'),(867,188,'1','2',1,107,'1','500',0,0,'C','2025-01-11 20:06:44','2025-01-11 20:08:19','1'),(868,188,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:07:26','2025-01-11 20:08:19','1'),(869,188,'1','2',1,42,'1','500',0,0,'C','2025-01-11 20:07:27','2025-01-11 20:08:19','1'),(870,188,'1','2',1,67,'1','150',0,0,'C','2025-01-11 20:08:09','2025-01-11 20:08:19','1'),(871,189,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:14:58','2025-01-11 20:16:19','1'),(872,189,'1','2',1,94,'1','750',0,0,'C','2025-01-11 20:14:59','2025-01-11 20:16:19','1'),(873,189,'1','2',1,22,'4','600',0,0,'C','2025-01-11 20:15:03','2025-01-11 20:16:19','1'),(874,190,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:16:55','2025-01-11 20:17:43','1'),(875,190,'1','2',1,103,'1','1500',0,0,'C','2025-01-11 20:16:55','2025-01-11 20:17:43','1'),(876,190,'1','2',1,107,'1','500',0,0,'C','2025-01-11 20:17:00','2025-01-11 20:17:43','1'),(877,190,'1','2',1,107,'1','500',0,0,'C','2025-01-11 20:17:01','2025-01-11 20:17:43','1'),(878,190,'1','2',1,107,'1','500',0,0,'C','2025-01-11 20:17:10','2025-01-11 20:17:43','1'),(879,191,'1','2',1,31,'1','5000',0,0,'C','2025-01-11 20:20:35','2025-01-11 20:21:18','1'),(880,191,'1','2',1,68,'1','5000',0,0,'C','2025-01-11 20:21:11','2025-01-11 20:21:18','1'),(881,192,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:25:29','2025-01-11 20:26:22','1'),(882,192,'1','2',1,53,'1','200',0,0,'C','2025-01-11 20:25:30','2025-01-11 20:26:22','1'),(883,192,'1','2',1,24,'1','300',0,0,'C','2025-01-11 20:25:42','2025-01-11 20:26:22','1'),(884,193,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:32:39','2025-01-11 20:33:11','1'),(885,193,'1','2',1,24,'1','300',0,0,'C','2025-01-11 20:32:54','2025-01-11 20:33:11','1'),(886,194,'1','2',1,55,'1','2000',0,0,'C','2025-01-11 20:34:22','2025-01-11 20:34:26','1'),(887,195,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:35:07','2025-01-11 20:35:49','1'),(888,195,'1','2',1,53,'1','200',0,0,'C','2025-01-11 20:35:08','2025-01-11 20:35:49','1'),(889,196,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:37:05','2025-01-11 20:38:33','2'),(890,196,'1','2',1,59,'1','1500',0,0,'C','2025-01-11 20:37:06','2025-01-11 20:38:33','2'),(891,196,'1','2',1,0,'1','0',0,0,'C','2025-01-11 20:37:28','2025-01-11 20:38:33','2'),(892,196,'1','2',1,101,'1','1900',0,0,'C','2025-01-11 20:37:29','2025-01-11 20:38:33','2'),(893,197,'1','2',1,22,'5','750',0,0,'C','2025-01-11 20:56:05','2025-01-11 21:03:47','1'),(894,197,'1','2',1,106,'2','200',0,0,'C','2025-01-11 20:58:19','2025-01-11 21:03:47','1'),(895,197,'1','2',1,108,'1','50',0,0,'C','2025-01-11 21:03:38','2025-01-11 21:03:47','1'),(896,198,'1','2',1,30,'1','1500',0,0,'C','2025-01-11 21:03:59','2025-01-11 21:05:25','1'),(897,198,'1','2',1,0,'1','0',0,0,'C','2025-01-11 21:05:00','2025-01-11 21:05:25','1'),(898,198,'1','2',1,47,'1','150',0,0,'C','2025-01-11 21:05:07','2025-01-11 21:05:25','1'),(899,199,'1','2',1,0,'1','0',0,0,'C','2025-01-11 21:05:43','2025-01-11 21:05:51','1'),(900,199,'1','2',1,102,'1','500',0,0,'C','2025-01-11 21:05:43','2025-01-11 21:05:51','1'),(901,200,'1','2',1,0,'1','0',0,0,'N','2025-01-11 21:44:33','2025-01-11 21:46:46','0'),(902,200,'1','2',1,35,'1','3100',0,0,'N','2025-01-11 21:44:34','2025-01-11 21:46:46','0'),(903,200,'1','2',1,0,'1','0',0,0,'N','2025-01-11 21:44:41','2025-01-11 21:46:46','0'),(904,200,'1','2',1,0,'1','0',0,0,'N','2025-01-11 21:44:42','2025-01-11 21:46:46','0'),(905,201,'1','2',1,35,'1','3100',0,0,'C','2025-01-11 21:47:02','2025-01-11 21:47:59','1'),(906,201,'1','2',1,0,'1','0',0,0,'C','2025-01-11 21:47:04','2025-01-11 21:47:59','1'),(907,202,'1','2',1,31,'1','5000',0,0,'C','2025-01-11 21:48:08','2025-01-11 21:55:48','1'),(908,202,'1','2',1,0,'1','0',0,0,'A','2025-01-11 22:04:01','0000-00-00 00:00:00','0'),(909,202,'1','2',1,105,'1','1400',0,0,'N','2025-01-11 22:04:02','0000-00-00 00:00:00','0'),(910,203,'1','2',1,0,'1','0',0,0,'C','2025-01-11 22:04:11','2025-01-11 22:05:35','1'),(911,203,'1','2',1,105,'1','1400',0,0,'C','2025-01-11 22:04:12','2025-01-11 22:05:35','1'),(912,204,'1','2',1,0,'1','0',0,0,'C','2025-01-11 22:17:03','2025-01-11 22:19:35','1'),(913,204,'1','2',1,79,'1','750',0,0,'C','2025-01-11 22:17:04','2025-01-11 22:19:35','1'),(914,204,'1','2',1,0,'1','0',0,0,'C','2025-01-11 22:17:25','2025-01-11 22:19:35','1'),(915,204,'1','2',1,0,'1','0',0,0,'C','2025-01-11 22:17:50','2025-01-11 22:19:35','1'),(916,204,'1','2',1,103,'1','1500',0,0,'C','2025-01-11 22:17:51','2025-01-11 22:19:35','1'),(917,204,'1','2',1,53,'1','200',0,0,'C','2025-01-11 22:18:21','2025-01-11 22:19:35','1'),(918,204,'1','2',1,53,'1','200',0,0,'C','2025-01-11 22:18:24','2025-01-11 22:19:35','1'),(919,204,'1','2',1,53,'1','200',0,0,'C','2025-01-11 22:18:24','2025-01-11 22:19:35','1'),(920,204,'1','2',1,53,'1','200',0,0,'C','2025-01-11 22:18:25','2025-01-11 22:19:35','1'),(921,204,'1','2',1,53,'1','200',0,0,'C','2025-01-11 22:18:25','2025-01-11 22:19:35','1'),(922,205,'1','2',1,55,'2','4000',0,0,'C','2025-01-11 22:53:32','2025-01-11 22:54:09','1'),(923,206,'1','2',1,22,'4','600',0,0,'C','2025-01-12 14:39:33','2025-01-12 14:42:14','1'),(924,206,'1','2',1,47,'4','600',0,0,'C','2025-01-12 14:41:46','2025-01-12 14:42:14','1'),(925,207,'1','2',1,0,'1','0',0,0,'C','2025-01-12 14:52:37','2025-01-12 14:53:02','1'),(926,207,'1','2',1,25,'1','750',0,0,'C','2025-01-12 14:52:38','2025-01-12 14:53:02','1'),(927,207,'1','2',1,25,'1','750',0,0,'C','2025-01-12 14:52:39','2025-01-12 14:53:02','1'),(928,208,'1','2',1,0,'1','0',0,0,'C','2025-01-12 15:01:30','2025-01-12 15:03:36','1'),(929,208,'1','2',1,102,'1','500',0,0,'C','2025-01-12 15:01:31','2025-01-12 15:03:36','1'),(930,208,'1','2',1,75,'1','500',0,0,'C','2025-01-12 15:03:28','2025-01-12 15:03:36','1'),(931,209,'1','2',1,0,'1','0',0,0,'C','2025-01-12 15:24:39','2025-01-12 15:25:07','1'),(932,209,'1','2',1,102,'1','500',0,0,'C','2025-01-12 15:24:39','2025-01-12 15:25:07','1'),(933,209,'1','2',1,102,'1','500',0,0,'C','2025-01-12 15:24:46','2025-01-12 15:25:07','1'),(934,209,'1','2',1,102,'1','500',0,0,'C','2025-01-12 15:24:55','2025-01-12 15:25:07','1'),(935,209,'1','2',1,102,'1','500',0,0,'C','2025-01-12 15:24:56','2025-01-12 15:25:07','1'),(936,210,'1','2',1,0,'1','0',0,0,'C','2025-01-13 11:49:09','2025-01-13 11:49:30','1'),(937,210,'1','2',1,111,'1','500',0,0,'C','2025-01-13 11:49:10','2025-01-13 11:49:30','1'),(938,210,'1','2',1,111,'1','500',0,0,'C','2025-01-13 11:49:12','2025-01-13 11:49:30','1'),(939,210,'1','2',1,110,'1','500',0,0,'C','2025-01-13 11:49:15','2025-01-13 11:49:30','1'),(940,210,'1','2',1,110,'1','500',0,0,'C','2025-01-13 11:49:16','2025-01-13 11:49:30','1'),(941,211,'1','2',1,0,'1','0',0,0,'C','2025-01-13 11:49:44','2025-01-13 11:51:32','1'),(942,211,'1','2',1,112,'1','2000',0,0,'C','2025-01-13 11:51:26','2025-01-13 11:51:32','1'),(943,213,'1','2',1,0,'1','0',0,0,'C','2025-01-16 16:08:19','2025-01-16 16:11:04','1'),(944,213,'1','2',1,32,'1','300',0,0,'C','2025-01-16 16:08:20','2025-01-16 16:11:04','1'),(945,213,'1','2',1,32,'1','300',0,0,'C','2025-01-16 16:08:34','2025-01-16 16:11:04','1'),(946,213,'1','2',1,32,'1','300',0,0,'C','2025-01-16 16:08:34','2025-01-16 16:11:04','1'),(947,213,'1','2',1,106,'1','100',0,0,'C','2025-01-16 16:09:19','2025-01-16 16:11:04','1'),(948,213,'1','2',1,0,'1','0',0,0,'C','2025-01-16 16:09:35','2025-01-16 16:11:04','1'),(949,213,'1','2',1,108,'1','50',0,0,'C','2025-01-16 16:09:41','2025-01-16 16:11:04','1'),(950,214,'1','2',1,22,'8','1200',0,0,'C','2025-01-16 16:11:14','2025-01-16 16:13:05','1'),(951,216,'1','2',1,55,'1','2000',0,0,'C','2025-01-18 14:57:23','2025-01-18 14:57:37','1'),(952,217,'1','2',1,113,'1','500',0,0,'C','2025-01-18 15:02:10','2025-01-18 15:02:19','1'),(953,217,'1','2',1,0,'1','0',0,0,'A','2025-01-18 17:07:17','0000-00-00 00:00:00','0'),(954,217,'1','2',1,59,'1','1500',0,0,'N','2025-01-18 17:07:17','0000-00-00 00:00:00','0'),(955,218,'1','2',1,0,'1','0',0,0,'C','2025-01-18 17:07:29','2025-01-18 18:26:10','1'),(956,218,'1','2',1,59,'1','1500',0,0,'C','2025-01-18 17:07:29','2025-01-18 18:26:10','1'),(957,218,'1','2',1,0,'1','0',0,0,'C','2025-01-18 18:08:22','2025-01-18 18:26:10','1'),(958,218,'1','2',1,0,'1','0',0,0,'C','2025-01-18 18:08:23','2025-01-18 18:26:10','1'),(959,218,'1','2',1,0,'1','0',0,0,'C','2025-01-18 18:08:24','2025-01-18 18:26:10','1'),(960,219,'1','2',1,0,'1','0',0,0,'C','2025-01-18 18:26:51','2025-01-18 18:27:00','1'),(961,219,'1','2',1,116,'1','500',0,0,'C','2025-01-18 18:26:52','2025-01-18 18:27:00','1'),(962,219,'1','2',1,116,'1','500',0,0,'C','2025-01-18 18:26:53','2025-01-18 18:27:00','1'),(963,220,'1','2',1,0,'1','0',0,0,'C','2025-01-18 18:29:36','2025-01-18 18:31:14','1'),(964,220,'1','2',1,59,'1','1500',0,0,'N','2025-01-18 18:29:37','0000-00-00 00:00:00','0'),(965,220,'1','2',1,56,'1','400',0,0,'C','2025-01-18 18:29:43','2025-01-18 18:31:14','1'),(966,220,'1','2',1,56,'1','400',0,0,'C','2025-01-18 18:29:57','2025-01-18 18:31:14','1'),(967,220,'1','2',1,56,'1','400',0,0,'C','2025-01-18 18:29:58','2025-01-18 18:31:14','1'),(968,220,'1','2',1,56,'1','400',0,0,'C','2025-01-18 18:29:58','2025-01-18 18:31:14','1'),(969,220,'1','2',1,0,'1','0',0,0,'C','2025-01-18 18:30:14','2025-01-18 18:31:14','1'),(970,220,'1','2',1,59,'1','1500',0,0,'C','2025-01-18 18:30:15','2025-01-18 18:31:14','1'),(971,220,'1','2',1,59,'1','1500',0,0,'C','2025-01-18 18:30:16','2025-01-18 18:31:14','1'),(972,221,'1','2',1,31,'1','6000',0,0,'C','2025-01-18 18:50:56','2025-01-18 18:51:02','1'),(973,222,'1','2',1,0,'1','0',0,0,'C','2025-01-18 19:18:40','2025-01-18 19:20:48','1'),(974,222,'1','2',1,102,'1','500',0,0,'C','2025-01-18 19:18:40','2025-01-18 19:20:48','1'),(975,222,'1','2',1,102,'1','500',0,0,'C','2025-01-18 19:18:59','2025-01-18 19:20:48','1'),(976,222,'1','2',1,102,'1','500',0,0,'C','2025-01-18 19:19:00','2025-01-18 19:20:48','1'),(977,222,'1','2',1,115,'1','350',0,0,'C','2025-01-18 19:19:06','2025-01-18 19:20:48','1'),(978,222,'1','2',1,115,'1','350',0,0,'C','2025-01-18 19:19:07','2025-01-18 19:20:48','1'),(979,222,'1','2',1,0,'1','0',0,0,'C','2025-01-18 19:20:12','2025-01-18 19:20:48','1'),(980,222,'1','2',1,109,'1','300',0,0,'C','2025-01-18 19:20:12','2025-01-18 19:20:48','1'),(981,223,'1','2',1,0,'1','0',0,0,'C','2025-01-18 19:32:58','2025-01-18 19:33:56','1'),(982,223,'1','2',1,47,'4','600',0,0,'C','2025-01-18 19:33:15','2025-01-18 19:33:56','1'),(983,223,'1','2',1,0,'1','0',0,0,'C','2025-01-18 19:33:28','2025-01-18 19:33:56','1'),(984,223,'1','2',1,114,'1','350',0,0,'C','2025-01-18 19:33:29','2025-01-18 19:33:56','1'),(985,224,'1','2',1,47,'3','450',0,0,'C','2025-01-18 19:55:38','2025-01-18 19:55:54','1'),(986,225,'1','2',1,0,'1','0',0,0,'C','2025-01-18 21:29:04','2025-01-18 21:29:34','2'),(987,225,'1','2',1,118,'1','2500',0,0,'C','2025-01-18 21:29:05','2025-01-18 21:29:34','2'),(988,225,'1','2',1,0,'1','0',0,0,'C','2025-01-18 21:29:09','2025-01-18 21:29:34','2'),(989,225,'1','2',1,0,'1','0',0,0,'C','2025-01-18 21:29:19','2025-01-18 21:29:34','2'),(990,225,'1','2',1,118,'1','2500',0,0,'C','2025-01-18 21:29:20','2025-01-18 21:29:34','2'),(991,225,'1','2',1,0,'1','0',0,0,'C','2025-01-18 21:29:21','2025-01-18 21:29:34','2'),(992,226,'1','2',1,0,'1','0',0,0,'C','2025-01-18 21:40:20','2025-01-18 21:41:25','2'),(993,226,'1','2',1,114,'1','350',0,0,'C','2025-01-18 21:40:20','2025-01-18 21:41:25','2'),(994,226,'1','2',1,102,'1','500',0,0,'C','2025-01-18 21:40:43','2025-01-18 21:41:25','2'),(995,227,'1','2',1,0,'1','0',0,0,'C','2025-01-18 21:44:40','2025-01-19 12:10:33','1'),(996,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:41','0000-00-00 00:00:00','0'),(997,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:44','0000-00-00 00:00:00','0'),(998,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:45','0000-00-00 00:00:00','0'),(999,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:45','0000-00-00 00:00:00','0'),(1000,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:46','0000-00-00 00:00:00','0'),(1001,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:47','0000-00-00 00:00:00','0'),(1002,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:47','0000-00-00 00:00:00','0'),(1003,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:48','0000-00-00 00:00:00','0'),(1004,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:48','0000-00-00 00:00:00','0'),(1005,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:49','0000-00-00 00:00:00','0'),(1006,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:49','0000-00-00 00:00:00','0'),(1007,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:50','0000-00-00 00:00:00','0'),(1008,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:53','0000-00-00 00:00:00','0'),(1009,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:53','0000-00-00 00:00:00','0'),(1010,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:55','0000-00-00 00:00:00','0'),(1011,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:55','0000-00-00 00:00:00','0'),(1012,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:56','0000-00-00 00:00:00','0'),(1013,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:56','0000-00-00 00:00:00','0'),(1014,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:57','0000-00-00 00:00:00','0'),(1015,227,'1','2',1,119,'1','800',0,0,'N','2025-01-18 21:44:57','0000-00-00 00:00:00','0'),(1016,227,'1','2',1,26,'1','900',0,0,'C','2025-01-19 12:10:21','2025-01-19 12:10:33','1'),(1017,228,'1','2',1,68,'1','6000',0,0,'N','2025-01-19 13:27:40','0000-00-00 00:00:00','0'),(1018,229,'1','2',1,68,'1','6000',0,0,'C','2025-01-19 13:32:40','2025-01-19 17:14:00','2'),(1019,229,'1','2',1,56,'1','400',0,0,'C','2025-01-19 13:32:44','2025-01-19 17:14:00','2'),(1020,229,'1','2',1,56,'1','400',0,0,'C','2025-01-19 13:32:44','2025-01-19 17:14:00','2'),(1021,229,'1','2',1,56,'1','400',0,0,'C','2025-01-19 13:32:46','2025-01-19 17:14:00','2'),(1022,230,'1','2',1,10,'1','100',0,0,'N','2025-01-19 17:14:11','0000-00-00 00:00:00','0'),(1023,230,'1','2',1,0,'1','0',0,0,'C','2025-01-19 17:14:38','2025-01-19 17:16:48','2'),(1024,230,'1','2',1,53,'1','200',0,0,'C','2025-01-19 17:14:42','2025-01-19 17:16:48','2'),(1025,230,'1','2',1,0,'1','0',0,0,'C','2025-01-19 17:14:45','2025-01-19 17:16:48','2'),(1026,230,'1','2',1,10,'1','100',0,0,'C','2025-01-19 17:14:48','2025-01-19 17:16:48','2'),(1027,230,'1','2',1,47,'3','450',0,0,'C','2025-01-19 17:16:03','2025-01-19 17:16:48','2'),(1028,231,'1','2',1,0,'1','0',0,0,'C','2025-01-19 17:22:22','2025-01-19 17:22:51','2'),(1029,231,'1','2',1,59,'1','1500',0,0,'C','2025-01-19 17:22:23','2025-01-19 17:22:51','2'),(1030,231,'1','2',1,53,'1','200',0,0,'C','2025-01-19 17:22:39','2025-01-19 17:22:51','2'),(1031,232,'1','2',1,0,'1','0',0,0,'C','2025-01-19 17:28:54','2025-01-19 17:30:51','1'),(1032,232,'1','2',1,0,'1','0',0,0,'C','2025-01-19 17:28:56','2025-01-19 17:30:51','1'),(1033,232,'1','2',1,0,'1','0',0,0,'C','2025-01-19 17:28:57','2025-01-19 17:30:51','1'),(1034,232,'1','2',1,0,'1','0',0,0,'C','2025-01-19 17:28:58','2025-01-19 17:30:51','1'),(1035,232,'1','2',1,0,'1','0',0,0,'C','2025-01-19 17:28:58','2025-01-19 17:30:51','1'),(1036,232,'1','2',1,0,'1','0',0,0,'C','2025-01-19 17:28:59','2025-01-19 17:30:51','1'),(1037,232,'1','2',1,0,'1','0',0,0,'C','2025-01-19 17:29:30','2025-01-19 17:30:51','1'),(1038,232,'1','2',1,53,'1','200',0,0,'C','2025-01-19 17:29:30','2025-01-19 17:30:51','1'),(1039,232,'1','2',1,53,'1','200',0,0,'C','2025-01-19 17:29:31','2025-01-19 17:30:51','1'),(1040,232,'1','2',1,53,'1','200',0,0,'C','2025-01-19 17:29:31','2025-01-19 17:30:51','1'),(1041,232,'1','2',1,53,'1','200',0,0,'C','2025-01-19 17:29:32','2025-01-19 17:30:51','1'),(1042,232,'1','2',1,0,'1','0',0,0,'C','2025-01-19 17:30:14','2025-01-19 17:30:51','1'),(1043,232,'1','2',1,121,'1','1500',0,0,'C','2025-01-19 17:30:16','2025-01-19 17:30:51','1'),(1044,232,'1','2',1,121,'1','1500',0,0,'C','2025-01-19 17:30:16','2025-01-19 17:30:51','1'),(1045,233,'1','2',1,0,'1','0',0,0,'C','2025-01-19 18:08:45','2025-01-19 18:10:46','1'),(1046,233,'1','2',1,33,'1','300',0,0,'C','2025-01-19 18:08:46','2025-01-19 18:10:46','1'),(1047,233,'1','2',1,33,'1','300',0,0,'C','2025-01-19 18:08:47','2025-01-19 18:10:46','1'),(1048,233,'1','2',1,42,'1','500',0,0,'C','2025-01-19 18:08:59','2025-01-19 18:10:46','1'),(1049,233,'1','2',1,42,'1','500',0,0,'C','2025-01-19 18:09:00','2025-01-19 18:10:46','1'),(1050,233,'1','2',1,42,'1','500',0,0,'C','2025-01-19 18:09:00','2025-01-19 18:10:46','1'),(1051,233,'1','2',1,95,'1','2000',0,0,'C','2025-01-19 18:09:14','2025-01-19 18:10:46','1'),(1052,233,'1','2',1,0,'1','0',0,0,'C','2025-01-19 18:09:18','2025-01-19 18:10:46','1'),(1053,233,'1','2',1,0,'1','0',0,0,'C','2025-01-19 18:10:21','2025-01-19 18:10:46','1'),(1054,233,'1','2',1,24,'1','300',0,0,'C','2025-01-19 18:10:21','2025-01-19 18:10:46','1'),(1055,233,'1','2',1,24,'1','300',0,0,'C','2025-01-19 18:10:24','2025-01-19 18:10:46','1'),(1056,233,'1','2',1,24,'1','300',0,0,'C','2025-01-19 18:10:25','2025-01-19 18:10:46','1'),(1057,234,'1','2',1,3,'1','1000',0,0,'C','2025-01-21 15:17:17','2025-01-22 23:09:22','1'),(1058,234,'1','2',1,3,'1','1000',0,0,'C','2025-01-21 15:18:11','2025-01-22 23:09:22','1'),(1059,234,'1','2',1,3,'1','1000',0,0,'C','2025-01-21 15:22:30','2025-01-22 23:09:22','1'),(1060,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:35:25','0000-00-00 00:00:00','0'),(1061,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:36:31','0000-00-00 00:00:00','0'),(1062,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:37:12','0000-00-00 00:00:00','0'),(1063,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:38:26','0000-00-00 00:00:00','0'),(1064,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:50:05','0000-00-00 00:00:00','0'),(1065,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:54:31','0000-00-00 00:00:00','0'),(1066,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:56:35','0000-00-00 00:00:00','0'),(1067,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:57:10','0000-00-00 00:00:00','0'),(1068,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:57:24','0000-00-00 00:00:00','0'),(1069,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:57:36','0000-00-00 00:00:00','0'),(1070,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:58:11','0000-00-00 00:00:00','0'),(1071,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:58:22','0000-00-00 00:00:00','0'),(1072,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:58:29','0000-00-00 00:00:00','0'),(1073,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-22 23:58:40','0000-00-00 00:00:00','0'),(1074,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:00:19','0000-00-00 00:00:00','0'),(1075,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:01:10','0000-00-00 00:00:00','0'),(1076,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:01:32','0000-00-00 00:00:00','0'),(1077,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:02:10','0000-00-00 00:00:00','0'),(1078,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:02:20','0000-00-00 00:00:00','0'),(1079,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:02:31','0000-00-00 00:00:00','0'),(1080,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:03:07','0000-00-00 00:00:00','0'),(1081,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:03:19','0000-00-00 00:00:00','0'),(1082,238,'1','2',1,4,'5','7000',0,0,'N','2025-01-23 00:03:34','0000-00-00 00:00:00','0'),(1083,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:11:17','0000-00-00 00:00:00','0'),(1084,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:17:08','0000-00-00 00:00:00','0'),(1085,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:17:12','0000-00-00 00:00:00','0'),(1086,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:20:45','0000-00-00 00:00:00','0'),(1087,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:20:50','0000-00-00 00:00:00','0'),(1088,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:20:52','0000-00-00 00:00:00','0'),(1089,238,'1','2',1,5,'1','400',0,0,'N','2025-01-23 00:20:57','0000-00-00 00:00:00','0'),(1090,238,'1','2',1,5,'1','400',0,0,'N','2025-01-23 00:21:00','0000-00-00 00:00:00','0'),(1091,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:24:02','0000-00-00 00:00:00','0'),(1092,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:25:34','0000-00-00 00:00:00','0'),(1093,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:25:36','0000-00-00 00:00:00','0'),(1094,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:25:37','0000-00-00 00:00:00','0'),(1095,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:27:46','0000-00-00 00:00:00','0'),(1096,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:28:18','0000-00-00 00:00:00','0'),(1097,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:28:23','0000-00-00 00:00:00','0'),(1098,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:28:25','0000-00-00 00:00:00','0'),(1099,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:31:46','0000-00-00 00:00:00','0'),(1100,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:31:56','0000-00-00 00:00:00','0'),(1101,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:33:30','0000-00-00 00:00:00','0'),(1102,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:34:53','0000-00-00 00:00:00','0'),(1103,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:34:59','0000-00-00 00:00:00','0'),(1104,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:35:05','0000-00-00 00:00:00','0'),(1105,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:38:06','0000-00-00 00:00:00','0'),(1106,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:38:22','0000-00-00 00:00:00','0'),(1107,238,'1','2',1,0,'1','0',0,0,'C','2025-01-23 00:38:24','2025-01-24 16:20:08','1'),(1108,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:38:27','0000-00-00 00:00:00','0'),(1109,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:39:50','0000-00-00 00:00:00','0'),(1110,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:39:53','0000-00-00 00:00:00','0'),(1111,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:45:44','0000-00-00 00:00:00','0'),(1112,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:45:49','0000-00-00 00:00:00','0'),(1113,238,'1','2',1,0,'1','0',0,0,'C','2025-01-23 00:45:52','2025-01-24 16:20:08','1'),(1114,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:45:57','0000-00-00 00:00:00','0'),(1115,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:46:58','0000-00-00 00:00:00','0'),(1116,238,'1','2',1,0,'1','0',0,0,'C','2025-01-23 00:47:00','2025-01-24 16:20:08','1'),(1117,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:47:04','0000-00-00 00:00:00','0'),(1118,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:48:30','0000-00-00 00:00:00','0'),(1119,238,'1','2',1,0,'1','0',0,0,'C','2025-01-23 00:48:33','2025-01-24 16:20:08','1'),(1120,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:48:38','0000-00-00 00:00:00','0'),(1121,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:49:23','0000-00-00 00:00:00','0'),(1122,238,'1','2',1,0,'1','0',0,0,'C','2025-01-23 00:49:26','2025-01-24 16:20:08','1'),(1123,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:49:31','0000-00-00 00:00:00','0'),(1124,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 00:49:43','0000-00-00 00:00:00','0'),(1125,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 00:50:05','0000-00-00 00:00:00','0'),(1126,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 13:00:50','0000-00-00 00:00:00','0'),(1127,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 13:00:54','0000-00-00 00:00:00','0'),(1128,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 13:00:56','0000-00-00 00:00:00','0'),(1129,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 13:00:57','0000-00-00 00:00:00','0'),(1130,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 13:01:05','0000-00-00 00:00:00','0'),(1131,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 13:01:06','0000-00-00 00:00:00','0'),(1132,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 15:11:57','0000-00-00 00:00:00','0'),(1133,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 15:12:07','0000-00-00 00:00:00','0'),(1134,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 15:12:12','0000-00-00 00:00:00','0'),(1135,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 15:12:14','0000-00-00 00:00:00','0'),(1136,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 15:13:32','0000-00-00 00:00:00','0'),(1137,238,'1','2',1,0,'1','0',0,0,'C','2025-01-23 15:15:50','2025-01-24 16:20:08','1'),(1138,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:15:50','0000-00-00 00:00:00','0'),(1139,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:15:52','0000-00-00 00:00:00','0'),(1140,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:15:55','0000-00-00 00:00:00','0'),(1141,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:15:56','0000-00-00 00:00:00','0'),(1142,238,'1','2',1,0,'1','0',0,0,'C','2025-01-23 15:16:26','2025-01-24 16:20:08','1'),(1143,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:16:27','0000-00-00 00:00:00','0'),(1144,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:16:29','0000-00-00 00:00:00','0'),(1145,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:16:32','0000-00-00 00:00:00','0'),(1146,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:16:32','0000-00-00 00:00:00','0'),(1147,238,'1','2',1,0,'1','0',0,0,'C','2025-01-23 15:18:42','2025-01-24 16:20:08','1'),(1148,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:18:43','0000-00-00 00:00:00','0'),(1149,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:18:44','0000-00-00 00:00:00','0'),(1150,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:18:45','0000-00-00 00:00:00','0'),(1151,238,'1','2',1,0,'1','0',0,0,'C','2025-01-23 15:20:55','2025-01-24 16:20:08','1'),(1152,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:20:55','0000-00-00 00:00:00','0'),(1153,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:20:59','0000-00-00 00:00:00','0'),(1154,238,'1','2',1,5,'1','400',0,0,'N','2025-01-23 15:21:23','0000-00-00 00:00:00','0'),(1155,238,'1','2',1,5,'1','400',0,0,'N','2025-01-23 15:21:24','0000-00-00 00:00:00','0'),(1156,238,'1','2',1,5,'1','400',0,0,'N','2025-01-23 15:21:26','0000-00-00 00:00:00','0'),(1157,238,'1','2',1,5,'1','400',0,0,'N','2025-01-23 15:21:27','0000-00-00 00:00:00','0'),(1158,238,'1','2',1,5,'1','400',0,0,'N','2025-01-23 15:21:28','0000-00-00 00:00:00','0'),(1159,238,'1','2',1,5,'1','400',0,0,'N','2025-01-23 15:21:28','0000-00-00 00:00:00','0'),(1160,238,'1','2',1,0,'1','0',0,0,'C','2025-01-23 15:21:38','2025-01-24 16:20:08','1'),(1161,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:21:39','0000-00-00 00:00:00','0'),(1162,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:21:40','0000-00-00 00:00:00','0'),(1163,238,'1','2',1,0,'1','0',0,0,'C','2025-01-23 15:21:49','2025-01-24 16:20:08','1'),(1164,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:21:50','0000-00-00 00:00:00','0'),(1165,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 15:21:53','0000-00-00 00:00:00','0'),(1166,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 18:39:38','0000-00-00 00:00:00','0'),(1167,238,'1','2',1,3,'1','1000',0,0,'N','2025-01-23 18:39:40','0000-00-00 00:00:00','0'),(1168,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 18:39:45','0000-00-00 00:00:00','0'),(1169,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 18:39:49','0000-00-00 00:00:00','0'),(1170,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 18:42:35','0000-00-00 00:00:00','0'),(1171,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 18:42:37','0000-00-00 00:00:00','0'),(1172,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 18:47:50','0000-00-00 00:00:00','0'),(1173,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 18:47:51','0000-00-00 00:00:00','0'),(1174,238,'1','2',1,6,'1','1500',0,0,'N','2025-01-23 18:48:03','0000-00-00 00:00:00','0'),(1175,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 18:48:06','0000-00-00 00:00:00','0'),(1176,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 18:49:05','0000-00-00 00:00:00','0'),(1177,238,'1','2',1,127,'1','1500',0,0,'N','2025-01-23 18:49:06','0000-00-00 00:00:00','0'),(1178,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 18:53:06','0000-00-00 00:00:00','0'),(1179,238,'1','2',1,4,'1','1400',0,0,'N','2025-01-23 18:53:07','0000-00-00 00:00:00','0'),(1180,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 18:54:49','0000-00-00 00:00:00','0'),(1181,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 18:54:51','0000-00-00 00:00:00','0'),(1182,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 18:56:38','0000-00-00 00:00:00','0'),(1183,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 18:56:39','0000-00-00 00:00:00','0'),(1184,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 18:57:42','0000-00-00 00:00:00','0'),(1185,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 18:57:44','0000-00-00 00:00:00','0'),(1186,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 18:58:56','0000-00-00 00:00:00','0'),(1187,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 18:58:57','0000-00-00 00:00:00','0'),(1188,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 18:59:01','0000-00-00 00:00:00','0'),(1189,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 18:59:02','0000-00-00 00:00:00','0'),(1190,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:00:33','0000-00-00 00:00:00','0'),(1191,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:00:35','0000-00-00 00:00:00','0'),(1192,238,'1','2',1,5,'1','400',0,0,'N','2025-01-23 19:07:27','0000-00-00 00:00:00','0'),(1193,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:07:31','0000-00-00 00:00:00','0'),(1194,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:07:33','0000-00-00 00:00:00','0'),(1195,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:08:52','0000-00-00 00:00:00','0'),(1196,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:08:53','0000-00-00 00:00:00','0'),(1197,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:09:16','0000-00-00 00:00:00','0'),(1198,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:09:19','0000-00-00 00:00:00','0'),(1199,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:12:08','0000-00-00 00:00:00','0'),(1200,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:12:09','0000-00-00 00:00:00','0'),(1201,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:13:02','0000-00-00 00:00:00','0'),(1202,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:13:04','0000-00-00 00:00:00','0'),(1203,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:16:40','0000-00-00 00:00:00','0'),(1204,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:16:41','0000-00-00 00:00:00','0'),(1205,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:17:01','0000-00-00 00:00:00','0'),(1206,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:17:03','0000-00-00 00:00:00','0'),(1207,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:18:09','0000-00-00 00:00:00','0'),(1208,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:18:10','0000-00-00 00:00:00','0'),(1209,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:18:40','0000-00-00 00:00:00','0'),(1210,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:18:44','0000-00-00 00:00:00','0'),(1211,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:19:28','0000-00-00 00:00:00','0'),(1212,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:19:58','0000-00-00 00:00:00','0'),(1213,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:20:00','0000-00-00 00:00:00','0'),(1214,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:20:02','0000-00-00 00:00:00','0'),(1215,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:20:39','0000-00-00 00:00:00','0'),(1216,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-23 19:20:41','0000-00-00 00:00:00','0'),(1217,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-24 13:51:37','0000-00-00 00:00:00','0'),(1218,238,'1','2',1,4,'1','1500',0,0,'N','2025-01-24 13:51:39','0000-00-00 00:00:00','0'),(1219,238,'1','2',1,68,'1','6000',0,0,'C','2025-01-24 16:20:02','2025-01-24 16:20:08','1'),(1220,239,'1','2',1,0,'1','0',0,0,'C','2025-01-24 16:45:10','2025-01-24 19:19:51','1'),(1221,239,'1','2',1,29,'1','900',0,0,'C','2025-01-24 16:45:10','2025-01-24 19:19:51','1'),(1222,239,'1','2',1,25,'1','750',0,0,'C','2025-01-24 16:45:23','2025-01-24 19:19:51','1'),(1223,240,'1','2',1,0,'1','0',0,0,'C','2025-01-24 19:20:09','2025-01-24 19:25:37','1'),(1224,240,'1','2',1,0,'1','0',0,0,'C','2025-01-24 19:20:09','2025-01-24 19:25:37','1'),(1225,240,'1','2',1,0,'1','0',0,0,'C','2025-01-24 19:20:10','2025-01-24 19:25:37','1'),(1226,240,'1','2',1,0,'1','0',0,0,'C','2025-01-24 19:20:10','2025-01-24 19:25:37','1'),(1227,240,'1','2',1,0,'1','0',0,0,'C','2025-01-24 19:20:11','2025-01-24 19:25:37','1'),(1228,240,'1','2',1,0,'1','0',0,0,'C','2025-01-24 19:20:11','2025-01-24 19:25:37','1'),(1229,240,'1','2',1,0,'1','0',0,0,'C','2025-01-24 19:20:11','2025-01-24 19:25:37','1'),(1230,240,'1','2',1,0,'1','0',0,0,'C','2025-01-24 19:20:12','2025-01-24 19:25:37','1'),(1231,240,'1','2',1,0,'1','0',0,0,'C','2025-01-24 19:22:11','2025-01-24 19:25:37','1'),(1232,240,'1','2',1,128,'1','1500',0,0,'C','2025-01-24 19:22:12','2025-01-24 19:25:37','1'),(1233,240,'1','2',1,0,'1','0',0,0,'C','2025-01-24 19:22:15','2025-01-24 19:25:37','1'),(1234,240,'1','2',1,0,'1','0',0,0,'C','2025-01-24 19:24:18','2025-01-24 19:25:37','1'),(1235,240,'1','2',1,114,'1','350',0,0,'C','2025-01-24 19:24:18','2025-01-24 19:25:37','1'),(1236,242,'1','2',1,55,'1','2000',0,0,'C','2025-01-25 14:22:07','2025-01-25 17:28:39','1'),(1237,243,'1','2',1,22,'2','300',0,0,'C','2025-01-25 17:29:00','2025-01-25 17:30:21','1'),(1238,243,'1','2',1,122,'1','500',0,0,'N','2025-01-25 17:29:22','0000-00-00 00:00:00','0'),(1239,243,'1','2',1,122,'1','500',0,0,'N','2025-01-25 17:29:23','0000-00-00 00:00:00','0'),(1240,244,'1','2',1,0,'1','0',0,0,'C','2025-01-25 18:33:37','2025-01-25 18:33:47','1'),(1241,244,'1','2',1,56,'1','400',0,0,'C','2025-01-25 18:33:38','2025-01-25 18:33:47','1'),(1242,244,'1','2',1,56,'1','400',0,0,'C','2025-01-25 18:33:38','2025-01-25 18:33:47','1'),(1243,245,'1','2',1,0,'1','0',0,0,'C','2025-01-25 18:45:01','2025-01-25 18:54:31','2'),(1244,245,'1','2',1,29,'1','900',0,0,'N','2025-01-25 18:45:02','0000-00-00 00:00:00','0'),(1245,245,'1','2',1,0,'1','0',0,0,'C','2025-01-25 18:52:10','2025-01-25 18:54:31','2'),(1246,245,'1','2',1,97,'1','2000',0,0,'N','2025-01-25 18:52:11','0000-00-00 00:00:00','0'),(1247,245,'1','2',1,96,'1','2000',0,0,'C','2025-01-25 18:52:15','2025-01-25 18:54:31','2'),(1248,245,'1','2',1,96,'1','2000',0,0,'C','2025-01-25 18:52:16','2025-01-25 18:54:31','2'),(1249,245,'1','2',1,96,'1','2000',0,0,'C','2025-01-25 18:52:17','2025-01-25 18:54:31','2'),(1250,245,'1','2',1,96,'1','2000',0,0,'N','2025-01-25 18:52:18','0000-00-00 00:00:00','0'),(1251,245,'1','2',1,0,'1','0',0,0,'C','2025-01-25 18:54:07','2025-01-25 18:54:31','2'),(1252,245,'1','2',1,96,'1','2000',0,0,'C','2025-01-25 18:54:08','2025-01-25 18:54:31','2'),(1253,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:09:33','2025-01-25 19:20:07','1'),(1254,246,'1','2',1,119,'1','800',0,0,'N','2025-01-25 19:09:33','0000-00-00 00:00:00','0'),(1255,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:09:56','2025-01-25 19:20:07','1'),(1256,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:09:56','2025-01-25 19:20:07','1'),(1257,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:09:57','2025-01-25 19:20:07','1'),(1258,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:09:57','2025-01-25 19:20:07','1'),(1259,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:09:58','2025-01-25 19:20:07','1'),(1260,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:09:58','2025-01-25 19:20:07','1'),(1261,246,'1','2',1,22,'1','150',0,0,'C','2025-01-25 19:11:55','2025-01-25 19:20:07','1'),(1262,246,'1','2',1,22,'1','150',0,0,'C','2025-01-25 19:11:57','2025-01-25 19:20:07','1'),(1263,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:12:35','2025-01-25 19:20:07','1'),(1264,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:12:37','2025-01-25 19:20:07','1'),(1265,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:12:38','2025-01-25 19:20:07','1'),(1266,246,'1','2',1,35,'1','3100',0,0,'N','2025-01-25 19:12:50','0000-00-00 00:00:00','0'),(1267,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:14:21','2025-01-25 19:20:07','1'),(1268,246,'1','2',1,130,'1','1500',0,0,'C','2025-01-25 19:14:23','2025-01-25 19:20:07','1'),(1269,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:16:10','2025-01-25 19:20:07','1'),(1270,246,'1','2',1,53,'1','200',0,0,'C','2025-01-25 19:16:10','2025-01-25 19:20:07','1'),(1271,246,'1','2',1,53,'1','200',0,0,'C','2025-01-25 19:16:12','2025-01-25 19:20:07','1'),(1272,246,'1','2',1,60,'1','1500',0,0,'C','2025-01-25 19:16:16','2025-01-25 19:20:07','1'),(1273,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:16:39','2025-01-25 19:20:07','1'),(1274,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:16:42','2025-01-25 19:20:07','1'),(1275,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:16:43','2025-01-25 19:20:07','1'),(1276,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:16:43','2025-01-25 19:20:07','1'),(1277,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:16:44','2025-01-25 19:20:07','1'),(1278,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:16:44','2025-01-25 19:20:07','1'),(1279,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:17:48','2025-01-25 19:20:07','1'),(1280,246,'1','2',1,131,'1','1000',0,0,'C','2025-01-25 19:17:50','2025-01-25 19:20:07','1'),(1281,246,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:19:34','2025-01-25 19:20:07','1'),(1282,246,'1','2',1,131,'1','1000',0,0,'C','2025-01-25 19:19:35','2025-01-25 19:20:07','1'),(1283,247,'1','2',1,55,'1','2000',0,0,'C','2025-01-25 19:20:34','2025-01-25 19:20:58','1'),(1284,248,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:21:09','2025-01-25 19:22:04','1'),(1285,248,'1','2',1,114,'1','350',0,0,'C','2025-01-25 19:21:09','2025-01-25 19:22:04','1'),(1286,248,'1','2',1,114,'1','350',0,0,'C','2025-01-25 19:21:10','2025-01-25 19:22:04','1'),(1287,248,'1','2',1,114,'1','350',0,0,'C','2025-01-25 19:21:10','2025-01-25 19:22:04','1'),(1288,249,'1','2',1,55,'1','2000',0,0,'C','2025-01-25 19:24:53','2025-01-25 19:24:58','1'),(1289,250,'1','2',1,31,'2','12000',0,0,'C','2025-01-25 19:25:43','2025-01-25 19:26:17','1'),(1290,250,'1','2',1,130,'1','1500',0,0,'N','2025-01-25 19:41:28','0000-00-00 00:00:00','0'),(1291,251,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:48:16','2025-01-25 19:48:56','1'),(1292,251,'1','2',1,101,'1','1900',0,0,'C','2025-01-25 19:48:17','2025-01-25 19:48:56','1'),(1293,251,'1','2',1,103,'1','1500',0,0,'C','2025-01-25 19:48:22','2025-01-25 19:48:56','1'),(1294,251,'1','2',1,110,'1','500',0,0,'C','2025-01-25 19:48:31','2025-01-25 19:48:56','1'),(1295,251,'1','2',1,110,'1','500',0,0,'C','2025-01-25 19:48:34','2025-01-25 19:48:56','1'),(1296,251,'1','2',1,6,'1','1500',0,0,'C','2025-01-25 19:48:39','2025-01-25 19:48:56','1'),(1297,251,'1','2',1,6,'1','1500',0,0,'C','2025-01-25 19:48:39','2025-01-25 19:48:56','1'),(1298,252,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:49:52','2025-01-25 19:50:29','1'),(1299,252,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:49:52','2025-01-25 19:50:29','1'),(1300,252,'1','2',1,6,'1','1500',0,0,'C','2025-01-25 19:50:06','2025-01-25 19:50:29','1'),(1301,252,'1','2',1,6,'1','1500',0,0,'C','2025-01-25 19:50:07','2025-01-25 19:50:29','1'),(1302,252,'1','2',1,6,'1','1500',0,0,'C','2025-01-25 19:50:07','2025-01-25 19:50:29','1'),(1303,252,'1','2',1,6,'1','1500',0,0,'C','2025-01-25 19:50:08','2025-01-25 19:50:29','1'),(1304,252,'1','2',1,6,'1','1500',0,0,'C','2025-01-25 19:50:08','2025-01-25 19:50:29','1'),(1305,252,'1','2',1,6,'1','1500',0,0,'C','2025-01-25 19:50:09','2025-01-25 19:50:29','1'),(1306,253,'1','2',1,0,'1','0',0,0,'C','2025-01-25 19:57:08','2025-01-25 19:58:45','1'),(1307,253,'1','2',1,29,'1','900',0,0,'C','2025-01-25 19:57:10','2025-01-25 19:58:45','1'),(1308,253,'1','2',1,22,'9','1350',0,0,'C','2025-01-25 19:57:42','2025-01-25 19:58:45','1'),(1309,254,'1','2',1,0,'1','0',0,0,'C','2025-01-25 21:09:06','2025-01-25 21:11:50','1'),(1310,254,'1','2',1,10,'3','100',0,0,'C','2025-01-25 21:09:08','2025-01-25 21:11:50','1'),(1311,254,'1','2',1,0,'1','0',0,0,'C','2025-01-25 21:11:28','2025-01-25 21:11:50','1'),(1312,254,'1','2',1,122,'1','500',0,0,'C','2025-01-25 21:11:29','2025-01-25 21:11:50','1'),(1313,255,'1','2',1,68,'1','6000',0,0,'C','2025-01-25 21:14:33','2025-01-25 21:15:13','1'),(1314,256,'1','2',1,10,'1','100',0,0,'C','2025-01-25 21:15:50','2025-01-25 21:16:16','1'),(1315,257,'1','2',1,0,'1','0',0,0,'C','2025-01-25 21:25:02','2025-01-25 21:31:44','1'),(1316,257,'1','2',1,64,'1','800',0,0,'C','2025-01-25 21:25:02','2025-01-25 21:31:44','1'),(1317,257,'1','2',1,0,'1','0',0,0,'C','2025-01-25 21:25:08','2025-01-25 21:31:44','1'),(1318,258,'1','2',1,31,'1','6000',0,0,'C','2025-01-25 21:31:56','2025-01-25 21:32:00','1'),(1319,259,'1','2',1,0,'1','0',0,0,'C','2025-01-25 21:55:16','2025-01-25 21:55:57','1'),(1320,259,'1','2',1,6,'1','1500',0,0,'C','2025-01-25 21:55:16','2025-01-25 21:55:57','1'),(1321,260,'1','2',1,55,'1','2000',0,0,'C','2025-01-25 22:00:12','2025-01-25 22:00:17','1'),(1322,261,'1','2',1,0,'1','0',0,0,'C','2025-01-25 22:16:06','2025-01-25 22:16:56','1'),(1323,261,'1','2',1,42,'1','500',0,0,'C','2025-01-25 22:16:07','2025-01-25 22:16:56','1'),(1324,261,'1','2',1,16,'1','500',0,0,'C','2025-01-25 22:16:11','2025-01-25 22:16:56','1'),(1325,261,'1','2',1,114,'1','350',0,0,'C','2025-01-25 22:16:20','2025-01-25 22:16:56','1'),(1326,262,'1','2',1,0,'1','0',0,0,'C','2025-01-25 22:17:27','2025-01-25 22:17:55','1'),(1327,262,'1','2',1,103,'1','1500',0,0,'C','2025-01-25 22:17:28','2025-01-25 22:17:55','1'),(1328,262,'1','2',1,42,'1','500',0,0,'C','2025-01-25 22:17:38','2025-01-25 22:17:55','1'),(1329,263,'1','2',1,0,'1','0',0,0,'C','2025-01-25 22:18:26','2025-01-25 22:19:31','1'),(1330,263,'1','2',1,114,'1','350',0,0,'C','2025-01-25 22:18:26','2025-01-25 22:19:31','1'),(1331,263,'1','2',1,42,'1','500',0,0,'C','2025-01-25 22:18:35','2025-01-25 22:19:31','1'),(1332,263,'1','2',1,42,'1','500',0,0,'C','2025-01-25 22:18:35','2025-01-25 22:19:31','1'),(1333,264,'1','2',1,0,'1','0',0,0,'C','2025-01-25 22:38:40','2025-01-25 22:38:50','1'),(1334,264,'1','2',1,60,'1','1500',0,0,'C','2025-01-25 22:38:42','2025-01-25 22:38:50','1'),(1335,265,'1','2',1,0,'1','0',0,0,'C','2025-01-25 22:39:28','2025-01-25 22:39:54','1'),(1336,265,'1','2',1,131,'1','1000',0,0,'C','2025-01-25 22:39:28','2025-01-25 22:39:54','1'),(1337,265,'1','2',1,131,'1','1000',0,0,'C','2025-01-25 22:39:29','2025-01-25 22:39:54','1'),(1338,266,'1','2',1,68,'1','6000',0,0,'N','2025-01-25 23:08:34','0000-00-00 00:00:00','0'),(1339,266,'1','2',1,31,'1','6000',0,0,'C','2025-01-25 23:08:44','2025-01-25 23:09:40','1'),(1340,267,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:10:14','2025-01-25 23:26:17','1'),(1341,267,'1','2',1,60,'2','3000',0,0,'N','2025-01-25 23:10:15','0000-00-00 00:00:00','0'),(1342,267,'1','2',1,107,'1','500',0,0,'N','2025-01-25 23:10:49','0000-00-00 00:00:00','0'),(1343,267,'1','2',1,107,'1','500',0,0,'N','2025-01-25 23:10:51','0000-00-00 00:00:00','0'),(1344,267,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:12:32','2025-01-25 23:26:17','1'),(1345,267,'1','2',1,132,'1','1500',0,0,'N','2025-01-25 23:12:32','0000-00-00 00:00:00','0'),(1346,267,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:12:34','2025-01-25 23:26:17','1'),(1347,267,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:13:50','2025-01-25 23:26:17','1'),(1348,267,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:13:51','2025-01-25 23:26:17','1'),(1349,267,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:17:15','2025-01-25 23:26:17','1'),(1350,267,'1','2',1,133,'1','3000',0,0,'C','2025-01-25 23:17:16','2025-01-25 23:26:17','1'),(1351,267,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:17:18','2025-01-25 23:26:17','1'),(1352,267,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:17:20','2025-01-25 23:26:17','1'),(1353,267,'1','2',1,68,'1','6000',0,0,'C','2025-01-25 23:17:30','2025-01-25 23:26:17','1'),(1354,267,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:17:49','2025-01-25 23:26:17','1'),(1355,267,'1','2',1,128,'1','1500',0,0,'C','2025-01-25 23:17:54','2025-01-25 23:26:17','1'),(1356,267,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:17:56','2025-01-25 23:26:17','1'),(1357,268,'1','2',1,55,'1','2000',0,0,'C','2025-01-25 23:27:25','2025-01-25 23:27:35','1'),(1358,269,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:27:52','2025-01-25 23:28:14','1'),(1359,269,'1','2',1,12,'1','500',0,0,'C','2025-01-25 23:27:52','2025-01-25 23:28:14','1'),(1360,270,'1','2',1,0,'1','0',0,0,'C','2025-01-25 23:28:45','2025-01-25 23:30:21','1'),(1361,270,'1','2',1,114,'1','350',0,0,'C','2025-01-25 23:28:46','2025-01-25 23:30:21','1'),(1362,270,'1','2',1,114,'1','350',0,0,'C','2025-01-25 23:28:46','2025-01-25 23:30:21','1'),(1363,270,'1','2',1,114,'1','350',0,0,'C','2025-01-25 23:28:47','2025-01-25 23:30:21','1'),(1364,270,'1','2',1,60,'1','1500',0,0,'C','2025-01-25 23:28:58','2025-01-25 23:30:21','1'),(1365,270,'1','2',1,10,'1','100',0,0,'C','2025-01-25 23:29:14','2025-01-25 23:30:21','1'),(1366,271,'1','2',1,12,'1','500',0,0,'C','2025-01-25 23:31:15','2025-01-25 23:31:19','1'),(1367,272,'1','2',1,114,'1','350',0,0,'C','2025-01-26 00:20:53','2025-01-26 00:20:59','1'),(1368,273,'1','2',1,0,'1','0',0,0,'C','2025-01-26 12:30:10','2025-01-26 12:31:19','1'),(1369,273,'1','2',1,122,'1','500',0,0,'C','2025-01-26 12:30:10','2025-01-26 12:31:19','1'),(1370,273,'1','2',1,109,'1','300',0,0,'C','2025-01-26 12:30:33','2025-01-26 12:31:19','1'),(1371,273,'1','2',1,10,'2','100',0,0,'C','2025-01-26 12:31:03','2025-01-26 12:31:19','1'),(1372,274,'1','2',1,0,'1','0',0,0,'C','2025-01-26 12:36:19','2025-01-26 12:37:25','1'),(1373,274,'1','2',1,25,'2','750',0,0,'C','2025-01-26 12:36:25','2025-01-26 12:37:25','1'),(1385,275,'1','2',1,97,'11','2000',0,0,'C','2025-01-26 13:51:08','2025-01-26 17:31:43','1'),(1386,275,'1','2',1,0,'1','0',0,0,'C','2025-01-26 13:52:57','2025-01-26 17:31:43','1'),(1387,275,'1','2',1,135,'1','1500',0,0,'C','2025-01-26 13:52:58','2025-01-26 17:31:43','1'),(1388,275,'1','2',1,135,'1','1500',0,0,'C','2025-01-26 13:52:59','2025-01-26 17:31:43','1'),(1389,275,'1','2',1,129,'1','1500',0,0,'C','2025-01-26 13:53:11','2025-01-26 17:31:43','1'),(1390,275,'1','2',1,129,'1','1500',0,0,'C','2025-01-26 13:53:12','2025-01-26 17:31:43','1'),(1391,276,'1','2',1,0,'1','0',0,0,'C','2025-01-26 13:59:26','2025-01-26 13:59:43','1'),(1392,276,'1','2',1,116,'1','500',0,0,'C','2025-01-26 13:59:27','2025-01-26 13:59:43','1'),(1393,276,'1','2',1,0,'1','0',0,0,'A','2025-01-26 14:22:25','0000-00-00 00:00:00','0'),(1394,276,'1','2',1,114,'1','350',0,0,'N','2025-01-26 14:22:25','0000-00-00 00:00:00','0'),(1395,276,'1','2',1,114,'1','350',0,0,'N','2025-01-26 14:22:26','0000-00-00 00:00:00','0'),(1396,277,'1','2',1,0,'1','0',0,0,'C','2025-01-26 14:22:37','2025-01-26 14:23:51','1'),(1397,277,'1','2',1,114,'1','350',0,0,'C','2025-01-26 14:22:37','2025-01-26 14:23:51','1'),(1398,277,'1','2',1,114,'1','350',0,0,'C','2025-01-26 14:22:39','2025-01-26 14:23:51','1'),(1399,277,'1','2',1,114,'1','350',0,0,'C','2025-01-26 14:22:40','2025-01-26 14:23:51','1'),(1400,277,'1','2',1,114,'1','350',0,0,'C','2025-01-26 14:22:40','2025-01-26 14:23:51','1'),(1401,277,'1','2',1,42,'1','500',0,0,'C','2025-01-26 14:23:19','2025-01-26 14:23:51','1'),(1402,277,'1','2',1,10,'1','100',0,0,'C','2025-01-26 14:23:36','2025-01-26 14:23:51','1'),(1403,278,'1','2',1,0,'1','0',0,0,'C','2025-01-26 15:18:19','2025-01-26 15:18:38','1'),(1404,278,'1','2',1,12,'1','500',0,0,'C','2025-01-26 15:18:21','2025-01-26 15:18:38','1'),(1405,278,'1','2',1,12,'1','500',0,0,'C','2025-01-26 15:18:22','2025-01-26 15:18:38','1'),(1406,279,'1','2',1,0,'1','0',0,0,'C','2025-01-26 15:28:56','2025-01-26 17:31:27','1'),(1407,279,'1','2',1,29,'1','900',0,0,'C','2025-01-26 15:28:56','2025-01-26 17:31:27','1'),(1408,280,'1','2',1,0,'1','0',0,0,'C','2025-01-26 17:36:01','2025-01-26 17:38:59','1'),(1409,280,'1','2',1,9,'1','800',0,0,'C','2025-01-26 17:36:02','2025-01-26 17:38:59','1'),(1410,280,'1','2',1,9,'1','800',0,0,'C','2025-01-26 17:36:02','2025-01-26 17:38:59','1'),(1411,280,'1','2',1,9,'1','800',0,0,'C','2025-01-26 17:36:02','2025-01-26 17:38:59','1'),(1412,280,'1','2',1,9,'1','800',0,0,'C','2025-01-26 17:36:03','2025-01-26 17:38:59','1'),(1413,280,'1','2',1,0,'1','0',0,0,'C','2025-01-26 17:36:49','2025-01-26 17:38:59','1'),(1414,280,'1','2',1,0,'1','0',0,0,'C','2025-01-26 17:36:50','2025-01-26 17:38:59','1'),(1415,280,'1','2',1,0,'1','0',0,0,'C','2025-01-26 17:36:51','2025-01-26 17:38:59','1'),(1416,280,'1','2',1,0,'1','0',0,0,'C','2025-01-26 17:36:51','2025-01-26 17:38:59','1'),(1417,280,'1','2',1,0,'1','0',0,0,'C','2025-01-26 17:36:52','2025-01-26 17:38:59','1'),(1418,280,'1','2',1,0,'1','0',0,0,'C','2025-01-26 17:36:52','2025-01-26 17:38:59','1'),(1419,280,'1','2',1,0,'1','0',0,0,'C','2025-01-26 17:36:52','2025-01-26 17:38:59','1'),(1420,280,'1','2',1,136,'1','1500',0,0,'C','2025-01-26 17:37:37','2025-01-26 17:38:59','1'),(1421,281,'1','2',1,0,'1','0',0,0,'C','2025-01-26 18:10:16','2025-01-26 18:11:30','1'),(1422,281,'1','2',1,122,'1','500',0,0,'C','2025-01-26 18:10:17','2025-01-26 18:11:30','1'),(1423,281,'1','2',1,114,'1','350',0,0,'N','2025-01-26 18:10:41','0000-00-00 00:00:00','0'),(1424,281,'1','2',1,114,'1','350',0,0,'N','2025-01-26 18:10:42','0000-00-00 00:00:00','0'),(1425,281,'1','2',1,0,'1','0',0,0,'C','2025-01-26 18:11:01','2025-01-26 18:11:30','1'),(1426,281,'1','2',1,115,'1','350',0,0,'C','2025-01-26 18:11:03','2025-01-26 18:11:30','1'),(1427,281,'1','2',1,10,'1','100',0,0,'C','2025-01-26 18:11:18','2025-01-26 18:11:30','1'),(1428,282,'1','2',1,47,'2','150',0,0,'C','2025-01-26 18:45:49','2025-01-26 19:08:06','1'),(1429,283,'1','2',1,68,'1','6000',0,0,'C','2025-01-26 19:08:13','2025-01-26 19:08:17','1'),(1430,284,'1','2',1,28,'2','900',0,0,'C','2025-01-27 18:04:56','2025-01-27 18:22:37','1'),(1431,284,'1','2',1,30,'1','1500',0,0,'C','2025-01-27 18:05:04','2025-01-27 18:22:37','1'),(1432,284,'1','2',1,137,'4','800',0,0,'C','2025-01-27 18:08:28','2025-01-27 18:22:37','1'),(1433,284,'1','2',1,137,'1','800',0,0,'N','2025-01-27 18:09:22','0000-00-00 00:00:00','0'),(1434,284,'1','2',1,137,'1','800',0,0,'N','2025-01-27 18:09:23','0000-00-00 00:00:00','0'),(1435,284,'1','2',1,137,'1','800',0,0,'N','2025-01-27 18:09:23','0000-00-00 00:00:00','0'),(1436,284,'1','2',1,137,'1','800',0,0,'N','2025-01-27 18:09:24','0000-00-00 00:00:00','0'),(1437,284,'1','2',1,137,'1','800',0,0,'N','2025-01-27 18:09:25','0000-00-00 00:00:00','0'),(1438,284,'1','2',1,137,'1','800',0,0,'N','2025-01-27 18:09:25','0000-00-00 00:00:00','0'),(1439,284,'1','2',1,60,'1','1500',0,0,'C','2025-01-27 18:09:53','2025-01-27 18:22:37','1'),(1440,284,'1','2',1,6,'1','1500',0,0,'C','2025-01-27 18:11:47','2025-01-27 18:22:37','1'),(1441,284,'1','2',1,135,'1','1500',0,0,'C','2025-01-27 18:12:33','2025-01-27 18:22:37','1'),(1442,286,'1','2',1,5,'2','800',0,0,'N','2025-01-27 22:43:13','0000-00-00 00:00:00','0'),(1495,291,'1','2',1,6,'8','1250',0,0,'C','2025-01-28 19:25:37','2025-01-28 19:25:50','1'),(1496,292,'1','2',1,6,'6','1250',0,0,'C','2025-01-28 19:28:11','2025-01-28 19:29:11','1'),(1497,292,'1','2',1,16,'2','1000',0,0,'N','2025-01-28 19:28:24','0000-00-00 00:00:00','0'),(1498,292,'1','2',1,15,'1','800',0,0,'C','2025-01-28 19:28:44','2025-01-28 19:29:11','1'),(1499,292,'1','2',1,17,'1','200',0,0,'C','2025-01-28 19:28:51','2025-01-28 19:29:11','1'),(1500,292,'1','2',1,29,'1','900',0,0,'C','2025-01-28 19:29:01','2025-01-28 19:29:11','1'),(1501,293,'1','2',1,6,'4','1250',0,0,'N','2025-01-29 19:02:03','2025-01-30 16:12:50','0'),(1502,293,'1','2',1,6,'1','1250',0,0,'N','2025-01-29 19:03:50','2025-01-30 16:12:50','1'),(1503,293,'1','2',1,6,'1','1250',0,0,'N','2025-01-29 19:03:51','2025-01-30 16:12:50','1'),(1504,293,'1','2',1,6,'1','1250',0,0,'N','2025-01-29 19:04:04','2025-01-30 16:12:50','1'),(1505,293,'1','2',1,6,'1','1250',0,0,'N','2025-01-29 19:04:06','2025-01-30 16:12:50','1'),(1506,295,'1','2',1,0,'1','0',0,0,'C','2025-01-30 16:13:36','2025-01-30 16:15:02','1'),(1507,295,'1','2',1,113,'2','500',0,0,'C','2025-01-30 16:13:49','2025-01-30 16:15:02','1'),(1508,296,'1','2',1,0,'1','0',0,0,'C','2025-01-30 16:30:58','2025-01-30 16:31:25','1'),(1509,296,'1','2',1,114,'1','350',0,0,'C','2025-01-30 16:30:59','2025-01-30 16:31:25','1'),(1510,297,'1','2',1,0,'1','0',0,0,'C','2025-01-30 17:07:01','2025-01-30 17:07:30','1'),(1511,297,'1','2',1,103,'1','1500',0,0,'C','2025-01-30 17:07:01','2025-01-30 17:07:30','1'),(1512,298,'1','2',1,0,'1','0',0,0,'C','2025-01-30 17:19:35','2025-01-30 17:25:13','1'),(1513,298,'1','2',1,29,'1','900',0,0,'C','2025-01-30 17:19:35','2025-01-30 17:25:13','2'),(1514,298,'1','2',1,0,'1','0',0,0,'C','2025-01-30 17:24:16','2025-01-30 17:25:13','1'),(1515,298,'1','2',1,129,'1','1500',0,0,'C','2025-01-30 17:24:16','2025-01-30 17:25:13','2'),(1516,299,'1','2',1,0,'1','0',0,0,'C','2025-01-30 17:27:17','2025-01-30 17:29:16','1'),(1517,299,'1','2',1,116,'1','500',0,0,'N','2025-01-30 17:27:18','0000-00-00 00:00:00','0'),(1518,299,'1','2',1,116,'1','500',0,0,'N','2025-01-30 17:27:19','0000-00-00 00:00:00','0'),(1519,299,'1','2',1,68,'1','6000',0,0,'C','2025-01-30 17:28:52','2025-01-30 17:29:16','1'),(1520,300,'1','2',1,0,'1','0',0,0,'C','2025-01-30 17:30:40','2025-01-30 17:30:52','1'),(1521,300,'1','2',1,116,'1','500',0,0,'C','2025-01-30 17:30:41','2025-01-30 17:30:52','1'),(1522,300,'1','2',1,116,'1','500',0,0,'C','2025-01-30 17:30:41','2025-01-30 17:30:52','1'),(1523,301,'1','2',1,0,'1','0',0,0,'C','2025-01-30 18:03:08','2025-01-30 18:07:31','2'),(1524,301,'1','2',1,0,'1','0',0,0,'C','2025-01-30 18:03:10','2025-01-30 18:07:31','2'),(1525,301,'1','2',1,6,'1','1500',0,0,'C','2025-01-30 18:03:17','2025-01-30 18:07:31','2'),(1526,301,'1','2',1,6,'1','1500',0,0,'C','2025-01-30 18:03:18','2025-01-30 18:07:31','2'),(1527,301,'1','2',1,0,'1','0',0,0,'C','2025-01-30 18:03:45','2025-01-30 18:07:31','2'),(1528,301,'1','2',1,129,'1','1500',0,0,'C','2025-01-30 18:03:46','2025-01-30 18:07:31','2'),(1529,301,'1','2',1,0,'1','0',0,0,'C','2025-01-30 18:06:23','2025-01-30 18:07:31','2'),(1530,301,'1','2',1,138,'1','1200',0,0,'C','2025-01-30 18:06:23','2025-01-30 18:07:31','2'),(1531,302,'1','2',1,130,'1','1500',0,0,'N','2025-01-30 18:29:03','0000-00-00 00:00:00','0'),(1532,302,'1','2',1,130,'1','1500',0,0,'N','2025-01-30 18:29:18','0000-00-00 00:00:00','0'),(1533,302,'1','2',1,130,'1','1500',0,0,'N','2025-01-30 18:32:52','0000-00-00 00:00:00','0'),(1534,302,'1','2',1,23,'1','1000',0,0,'C','2025-01-30 18:33:00','2025-01-30 18:33:08','1'),(1535,303,'1','2',1,68,'1','6000',0,0,'C','2025-02-01 13:17:32','2025-02-01 13:17:41','1'),(1536,304,'1','2',1,68,'1','6000',0,0,'C','2025-02-01 14:44:49','2025-02-01 14:44:54','1'),(1537,305,'1','2',1,0,'1','0',0,0,'C','2025-02-01 16:47:56','2025-02-01 16:52:39','1'),(1538,305,'1','2',1,0,'1','0',0,0,'C','2025-02-01 16:47:59','2025-02-01 16:52:39','1'),(1539,305,'1','2',1,0,'1','0',0,0,'C','2025-02-01 16:48:04','2025-02-01 16:52:39','1'),(1540,305,'1','2',1,0,'1','0',0,0,'C','2025-02-01 16:48:07','2025-02-01 16:52:39','1'),(1541,305,'1','2',1,0,'1','0',0,0,'C','2025-02-01 16:49:22','2025-02-01 16:52:39','1'),(1542,305,'1','2',1,6,'1','1500',0,0,'C','2025-02-01 16:49:23','2025-02-01 16:52:39','1'),(1543,305,'1','2',1,6,'1','1500',0,0,'C','2025-02-01 16:49:24','2025-02-01 16:52:39','1'),(1544,305,'1','2',1,6,'1','1500',0,0,'C','2025-02-01 16:49:25','2025-02-01 16:52:39','1'),(1545,305,'1','2',1,23,'1','1000',0,0,'C','2025-02-01 16:49:30','2025-02-01 16:52:39','1'),(1546,305,'1','2',1,24,'4','300',0,0,'C','2025-02-01 16:50:31','2025-02-01 16:52:39','1'),(1547,305,'1','2',1,0,'1','0',0,0,'C','2025-02-01 16:51:13','2025-02-01 16:52:39','1'),(1548,305,'1','2',1,103,'1','1500',0,0,'C','2025-02-01 16:51:14','2025-02-01 16:52:39','1'),(1549,306,'1','2',1,0,'1','0',0,0,'C','2025-02-01 16:58:12','2025-02-01 16:58:33','1'),(1550,306,'1','2',1,25,'1','750',0,0,'C','2025-02-01 16:58:13','2025-02-01 16:58:33','1'),(1551,306,'1','2',1,25,'1','750',0,0,'C','2025-02-01 16:58:19','2025-02-01 16:58:33','1'),(1552,307,'1','2',1,0,'1','0',0,0,'C','2025-02-01 16:59:26','2025-02-01 16:59:50','1'),(1553,307,'1','2',1,29,'1','900',0,0,'C','2025-02-01 16:59:28','2025-02-01 16:59:50','1'),(1554,308,'1','2',1,0,'1','0',0,0,'C','2025-02-01 17:01:39','2025-02-01 17:03:41','1'),(1555,308,'1','2',1,24,'1','300',0,0,'C','2025-02-01 17:01:40','2025-02-01 17:03:41','1'),(1556,309,'1','2',1,24,'1','300',0,0,'C','2025-02-01 17:04:14','2025-02-01 17:05:19','1'),(1557,309,'1','2',1,25,'1','750',0,0,'C','2025-02-01 17:04:33','2025-02-01 17:05:19','1'),(1558,310,'1','2',1,0,'1','0',0,0,'C','2025-02-01 18:59:09','2025-02-01 19:07:28','1'),(1559,310,'1','2',1,29,'1','900',0,0,'C','2025-02-01 18:59:10','2025-02-01 19:07:28','1'),(1560,311,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:07:46','2025-02-01 19:09:37','1'),(1561,311,'1','2',1,24,'1','300',0,0,'C','2025-02-01 19:07:47','2025-02-01 19:09:37','1'),(1562,311,'1','2',1,24,'1','300',0,0,'C','2025-02-01 19:07:47','2025-02-01 19:09:37','1'),(1563,311,'1','2',1,10,'2','100',0,0,'C','2025-02-01 19:07:55','2025-02-01 19:09:37','1'),(1564,311,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:08:26','2025-02-01 19:09:37','1'),(1565,311,'1','2',1,115,'1','350',0,0,'C','2025-02-01 19:08:26','2025-02-01 19:09:37','1'),(1566,312,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:13:44','2025-02-01 19:15:48','1'),(1567,312,'1','2',1,24,'1','300',0,0,'C','2025-02-01 19:13:45','2025-02-01 19:15:48','1'),(1568,312,'1','2',1,24,'1','300',0,0,'C','2025-02-01 19:13:45','2025-02-01 19:15:48','1'),(1569,312,'1','2',1,24,'1','300',0,0,'C','2025-02-01 19:13:47','2025-02-01 19:15:48','1'),(1570,312,'1','2',1,24,'1','300',0,0,'C','2025-02-01 19:13:47','2025-02-01 19:15:48','1'),(1571,312,'1','2',1,24,'1','300',0,0,'C','2025-02-01 19:13:49','2025-02-01 19:15:48','1'),(1572,312,'1','2',1,24,'1','300',0,0,'C','2025-02-01 19:13:49','2025-02-01 19:15:48','1'),(1573,312,'1','2',1,25,'1','750',0,0,'C','2025-02-01 19:14:15','2025-02-01 19:15:48','1'),(1574,312,'1','2',1,25,'1','750',0,0,'C','2025-02-01 19:14:16','2025-02-01 19:15:48','1'),(1575,312,'1','2',1,25,'1','750',0,0,'C','2025-02-01 19:14:18','2025-02-01 19:15:48','1'),(1576,312,'1','2',1,25,'1','750',0,0,'C','2025-02-01 19:14:19','2025-02-01 19:15:48','1'),(1577,312,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:14:54','2025-02-01 19:15:48','1'),(1578,312,'1','2',1,53,'1','200',0,0,'C','2025-02-01 19:14:54','2025-02-01 19:15:48','1'),(1579,312,'1','2',1,53,'1','200',0,0,'C','2025-02-01 19:14:55','2025-02-01 19:15:48','1'),(1580,312,'1','2',1,53,'1','200',0,0,'C','2025-02-01 19:14:57','2025-02-01 19:15:48','1'),(1581,312,'1','2',1,53,'1','200',0,0,'C','2025-02-01 19:14:58','2025-02-01 19:15:48','1'),(1582,312,'1','2',1,120,'1','200',0,0,'C','2025-02-01 19:15:11','2025-02-01 19:15:48','1'),(1583,312,'1','2',1,120,'1','200',0,0,'C','2025-02-01 19:15:11','2025-02-01 19:15:48','1'),(1584,313,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:16:50','2025-02-01 19:17:40','1'),(1585,313,'1','2',1,115,'1','350',0,0,'C','2025-02-01 19:16:51','2025-02-01 19:17:40','1'),(1586,313,'1','2',1,114,'1','350',0,0,'C','2025-02-01 19:17:03','2025-02-01 19:17:40','1'),(1587,313,'1','2',1,67,'1','150',0,0,'C','2025-02-01 19:17:09','2025-02-01 19:17:40','1'),(1588,314,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:18:14','2025-02-01 19:19:18','1'),(1589,314,'1','2',1,115,'1','350',0,0,'C','2025-02-01 19:18:16','2025-02-01 19:19:18','1'),(1590,314,'1','2',1,3,'1','1000',0,0,'C','2025-02-01 19:18:31','2025-02-01 19:19:18','1'),(1591,314,'1','2',1,67,'1','150',0,0,'C','2025-02-01 19:19:12','2025-02-01 19:19:18','1'),(1592,315,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:20:01','2025-02-01 19:21:12','1'),(1593,315,'1','2',1,59,'1','1500',0,0,'C','2025-02-01 19:20:02','2025-02-01 19:21:12','1'),(1594,315,'1','2',1,109,'1','300',0,0,'C','2025-02-01 19:20:17','2025-02-01 19:21:12','1'),(1595,315,'1','2',1,67,'1','150',0,0,'C','2025-02-01 19:20:43','2025-02-01 19:21:12','1'),(1596,315,'1','2',1,67,'1','150',0,0,'C','2025-02-01 19:21:05','2025-02-01 19:21:12','1'),(1597,316,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:22:16','2025-02-01 19:26:18','1'),(1598,316,'1','2',1,9,'1','800',0,0,'C','2025-02-01 19:22:17','2025-02-01 19:26:18','1'),(1599,316,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:22:42','2025-02-01 19:26:18','1'),(1600,316,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:22:44','2025-02-01 19:26:18','1'),(1601,316,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:22:44','2025-02-01 19:26:18','1'),(1602,316,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:22:44','2025-02-01 19:26:18','1'),(1603,316,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:22:47','2025-02-01 19:26:18','1'),(1604,316,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:24:55','2025-02-01 19:26:18','1'),(1605,316,'1','2',1,140,'1','1000',0,0,'C','2025-02-01 19:24:57','2025-02-01 19:26:18','1'),(1606,316,'1','2',1,114,'1','350',0,0,'C','2025-02-01 19:25:01','2025-02-01 19:26:18','1'),(1607,316,'1','2',1,10,'1','100',0,0,'C','2025-02-01 19:25:11','2025-02-01 19:26:18','1'),(1608,317,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:41:57','2025-02-01 19:42:39','1'),(1609,317,'1','2',1,29,'1','900',0,0,'C','2025-02-01 19:41:58','2025-02-01 19:42:39','1'),(1610,317,'1','2',1,106,'1','100',0,0,'C','2025-02-01 19:42:08','2025-02-01 19:42:39','1'),(1611,318,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:52:44','2025-02-01 19:54:01','1'),(1612,318,'1','2',1,45,'1','2000',0,0,'C','2025-02-01 19:52:44','2025-02-01 19:54:01','1'),(1613,318,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:52:50','2025-02-01 19:54:01','1'),(1614,319,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:54:23','2025-02-01 19:55:01','1'),(1615,319,'1','2',1,45,'1','2000',0,0,'C','2025-02-01 19:54:24','2025-02-01 19:55:01','1'),(1616,319,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:54:29','2025-02-01 19:55:01','1'),(1617,319,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:54:41','2025-02-01 19:55:01','1'),(1618,319,'1','2',1,107,'1','500',0,0,'C','2025-02-01 19:54:42','2025-02-01 19:55:01','1'),(1619,319,'1','2',1,107,'1','500',0,0,'C','2025-02-01 19:54:44','2025-02-01 19:55:01','1'),(1620,320,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:56:00','2025-02-01 20:01:26','2'),(1621,320,'1','2',1,110,'1','500',0,0,'C','2025-02-01 19:56:01','2025-02-01 20:01:26','2'),(1622,320,'1','2',1,111,'1','500',0,0,'C','2025-02-01 19:56:05','2025-02-01 20:01:26','2'),(1623,320,'1','2',1,98,'1','1500',0,0,'C','2025-02-01 19:56:31','2025-02-01 20:01:26','2'),(1624,320,'1','2',1,98,'1','1500',0,0,'N','2025-02-01 19:56:32','0000-00-00 00:00:00','0'),(1625,320,'1','2',1,0,'1','0',0,0,'C','2025-02-01 19:57:27','2025-02-01 20:01:26','2'),(1626,320,'1','2',1,94,'1','750',0,0,'C','2025-02-01 19:57:28','2025-02-01 20:01:26','2'),(1627,320,'1','2',1,94,'1','750',0,0,'C','2025-02-01 19:57:29','2025-02-01 20:01:26','2'),(1628,320,'1','2',1,94,'1','750',0,0,'C','2025-02-01 19:57:39','2025-02-01 20:01:26','2'),(1629,320,'1','2',1,8,'1','1000',0,0,'C','2025-02-01 19:58:29','2025-02-01 20:01:26','2'),(1630,321,'1','2',1,0,'1','0',0,0,'C','2025-02-01 20:03:15','2025-02-01 20:03:58','1'),(1631,321,'1','2',1,122,'1','500',0,0,'C','2025-02-01 20:03:15','2025-02-01 20:03:58','1'),(1632,321,'1','2',1,122,'1','500',0,0,'C','2025-02-01 20:03:26','2025-02-01 20:03:58','1'),(1633,321,'1','2',1,122,'1','500',0,0,'C','2025-02-01 20:03:27','2025-02-01 20:03:58','1'),(1634,321,'1','2',1,122,'1','500',0,0,'C','2025-02-01 20:03:28','2025-02-01 20:03:58','1'),(1635,321,'1','2',1,24,'1','300',0,0,'C','2025-02-01 20:03:39','2025-02-01 20:03:58','1'),(1636,321,'1','2',1,24,'1','300',0,0,'C','2025-02-01 20:03:40','2025-02-01 20:03:58','1'),(1637,321,'1','2',1,24,'1','300',0,0,'C','2025-02-01 20:03:41','2025-02-01 20:03:58','1'),(1638,322,'1','2',1,0,'1','0',0,0,'C','2025-02-01 20:05:00','2025-02-01 20:09:22','2'),(1639,322,'1','2',1,41,'1','1500',0,0,'C','2025-02-01 20:05:01','2025-02-01 20:09:22','2'),(1640,322,'1','2',1,115,'1','350',0,0,'C','2025-02-01 20:05:14','2025-02-01 20:09:22','2'),(1641,322,'1','2',1,115,'1','350',0,0,'C','2025-02-01 20:05:21','2025-02-01 20:09:22','2'),(1642,322,'1','2',1,115,'1','350',0,0,'C','2025-02-01 20:05:22','2025-02-01 20:09:22','2'),(1643,322,'1','2',1,115,'1','350',0,0,'C','2025-02-01 20:05:23','2025-02-01 20:09:22','2'),(1644,322,'1','2',1,0,'1','0',0,0,'C','2025-02-01 20:06:09','2025-02-01 20:09:22','2'),(1645,322,'1','2',1,33,'1','300',0,0,'C','2025-02-01 20:06:10','2025-02-01 20:09:22','2'),(1646,322,'1','2',1,120,'1','200',0,0,'C','2025-02-01 20:06:45','2025-02-01 20:09:22','2'),(1647,323,'1','2',1,67,'1','150',0,0,'C','2025-02-01 20:16:15','2025-02-01 20:16:24','1'),(1648,324,'1','2',1,108,'1','50',0,0,'N','2025-02-01 20:17:05','0000-00-00 00:00:00','0'),(1649,324,'1','2',1,106,'1','100',0,0,'C','2025-02-01 20:17:14','2025-02-01 20:20:43','1'),(1650,324,'1','2',1,120,'1','200',0,0,'C','2025-02-01 20:17:24','2025-02-01 20:20:43','1'),(1651,324,'1','2',1,120,'1','200',0,0,'C','2025-02-01 20:17:26','2025-02-01 20:20:43','1'),(1652,325,'1','2',1,0,'1','0',0,0,'C','2025-02-01 20:21:35','2025-02-01 20:22:44','1'),(1653,325,'1','2',1,8,'1','1000',0,0,'C','2025-02-01 20:21:36','2025-02-01 20:22:44','1'),(1654,325,'1','2',1,8,'1','1000',0,0,'C','2025-02-01 20:21:38','2025-02-01 20:22:44','1'),(1655,325,'1','2',1,0,'1','0',0,0,'A','2025-02-01 20:23:06','0000-00-00 00:00:00','0'),(1656,326,'1','2',1,0,'1','0',0,0,'C','2025-02-01 20:23:13','2025-02-01 20:24:54','1'),(1657,326,'1','2',1,136,'1','1500',0,0,'N','2025-02-01 20:23:14','0000-00-00 00:00:00','0'),(1658,326,'1','2',1,67,'2','150',0,0,'C','2025-02-01 20:23:57','2025-02-01 20:24:54','1'),(1659,326,'1','2',1,22,'2','150',0,0,'C','2025-02-01 20:24:27','2025-02-01 20:24:54','1'),(1660,327,'1','2',1,67,'6','150',0,0,'C','2025-02-01 20:31:07','2025-02-01 20:33:18','1'),(1661,327,'1','2',1,0,'1','0',0,0,'C','2025-02-01 20:31:42','2025-02-01 20:33:18','1'),(1662,327,'1','2',1,122,'1','500',0,0,'C','2025-02-01 20:31:42','2025-02-01 20:33:18','1'),(1663,327,'1','2',1,122,'1','500',0,0,'C','2025-02-01 20:31:52','2025-02-01 20:33:18','1'),(1664,327,'1','2',1,122,'1','500',0,0,'C','2025-02-01 20:31:52','2025-02-01 20:33:18','1'),(1665,327,'1','2',1,0,'1','0',0,0,'C','2025-02-01 20:32:15','2025-02-01 20:33:18','1'),(1666,327,'1','2',1,115,'1','350',0,0,'C','2025-02-01 20:32:15','2025-02-01 20:33:18','1'),(1667,328,'1','2',1,68,'1','6000',0,0,'C','2025-02-01 21:29:07','2025-02-01 21:29:13','1'),(1668,329,'1','2',1,68,'1','6000',0,0,'C','2025-02-01 21:46:34','2025-02-01 21:46:43','2'),(1669,330,'1','2',1,68,'1','6000',0,0,'C','2025-02-01 22:27:13','2025-02-01 22:28:20','1'),(1670,331,'1','2',1,10,'1','100',0,0,'C','2025-02-01 22:42:34','2025-02-01 22:43:27','1'),(1671,331,'1','2',1,10,'1','100',0,0,'C','2025-02-01 22:42:35','2025-02-01 22:43:27','1'),(1672,331,'1','2',1,0,'1','0',0,0,'C','2025-02-01 22:43:17','2025-02-01 22:43:27','1'),(1673,332,'1','2',1,10,'1','100',0,0,'C','2025-02-01 22:49:16','2025-02-01 22:49:21','1'),(1674,333,'1','2',1,0,'1','0',0,0,'C','2025-02-01 22:53:15','2025-02-01 23:12:43','2'),(1675,333,'1','2',1,96,'1','2000',0,0,'C','2025-02-01 22:53:16','2025-02-01 23:12:43','2'),(1676,333,'1','2',1,96,'1','2000',0,0,'C','2025-02-01 22:53:18','2025-02-01 23:12:43','2'),(1677,333,'1','2',1,96,'1','2000',0,0,'C','2025-02-01 22:53:20','2025-02-01 23:12:43','2'),(1678,333,'1','2',1,96,'1','2000',0,0,'C','2025-02-01 22:53:20','2025-02-01 23:12:43','2'),(1679,333,'1','2',1,96,'1','2000',0,0,'C','2025-02-01 22:53:21','2025-02-01 23:12:43','2'),(1680,333,'1','2',1,96,'1','2000',0,0,'C','2025-02-01 22:53:21','2025-02-01 23:12:43','2'),(1681,333,'1','2',1,96,'1','2000',0,0,'C','2025-02-01 22:53:22','2025-02-01 23:12:43','2'),(1682,333,'1','2',1,96,'1','2000',0,0,'C','2025-02-01 22:53:23','2025-02-01 23:12:43','2'),(1683,333,'1','2',1,6,'4','1500',0,0,'C','2025-02-01 22:56:02','2025-02-01 23:12:43','2'),(1684,333,'1','2',1,41,'5','1500',0,0,'C','2025-02-01 22:58:12','2025-02-01 23:12:43','2'),(1685,333,'1','2',1,53,'15','200',0,0,'C','2025-02-01 22:58:59','2025-02-01 23:12:43','2'),(1686,333,'1','2',1,104,'8','800',0,0,'C','2025-02-01 22:59:34','2025-02-01 23:12:43','2'),(1687,333,'1','2',1,3,'5','1000',0,0,'C','2025-02-01 23:00:22','2025-02-01 23:12:43','2'),(1688,335,'1','2',1,0,'1','0',0,0,'C','2025-02-02 16:01:52','2025-02-02 16:24:50','1'),(1689,335,'1','2',1,111,'1','500',0,0,'C','2025-02-02 16:01:54','2025-02-02 16:24:50','1'),(1690,336,'1','2',1,0,'1','0',0,0,'C','2025-02-02 16:27:19','2025-02-02 16:29:07','1'),(1691,336,'1','2',1,120,'1','200',0,0,'C','2025-02-02 16:27:20','2025-02-02 16:29:07','1'),(1692,336,'1','2',1,140,'1','1000',0,0,'C','2025-02-02 16:27:31','2025-02-02 16:29:07','1'),(1693,337,'1','2',1,112,'1','2000',0,0,'N','2025-02-07 16:27:46','0000-00-00 00:00:00','0'),(1694,338,'1','2',1,0,'1','0',0,0,'C','2025-02-07 16:40:35','2025-02-07 16:41:38','1'),(1695,338,'1','2',1,16,'1','500',0,0,'C','2025-02-07 16:40:35','2025-02-07 16:41:38','1'),(1696,338,'1','2',1,33,'1','300',0,0,'C','2025-02-07 16:40:54','2025-02-07 16:41:38','1'),(1697,338,'1','2',1,33,'1','300',0,0,'C','2025-02-07 16:41:13','2025-02-07 16:41:38','1'),(1698,339,'1','2',1,112,'1','2000',0,0,'C','2025-02-07 16:48:41','2025-02-07 16:48:45','1'),(1699,340,'1','2',1,0,'1','0',0,0,'C','2025-02-07 16:49:13','2025-02-07 16:49:42','1'),(1700,340,'1','2',1,8,'1','1000',0,0,'C','2025-02-07 16:49:13','2025-02-07 16:49:42','1'),(1701,340,'1','2',1,8,'1','1000',0,0,'C','2025-02-07 16:49:14','2025-02-07 16:49:42','1'),(1702,340,'1','2',1,8,'1','1000',0,0,'C','2025-02-07 16:49:14','2025-02-07 16:49:42','1'),(1703,341,'1','2',1,0,'1','0',0,0,'C','2025-02-07 16:50:42','2025-02-07 16:51:57','1'),(1704,341,'1','2',1,140,'1','1000',0,0,'C','2025-02-07 16:50:43','2025-02-07 16:51:57','1'),(1705,341,'1','2',1,138,'1','1200',0,0,'C','2025-02-07 16:50:47','2025-02-07 16:51:57','1'),(1706,341,'1','2',1,8,'1','1000',0,0,'C','2025-02-07 16:50:58','2025-02-07 16:51:57','1'),(1707,341,'1','2',1,103,'1','1500',0,0,'C','2025-02-07 16:51:18','2025-02-07 16:51:57','1'),(1708,342,'1','2',1,0,'1','0',0,0,'C','2025-02-07 16:56:02','2025-02-07 16:56:48','1'),(1709,342,'1','2',1,59,'1','1500',0,0,'C','2025-02-07 16:56:03','2025-02-07 16:56:48','1'),(1710,343,'1','2',1,0,'1','0',0,0,'C','2025-02-07 17:10:34','2025-02-07 17:11:36','1'),(1711,343,'1','2',1,130,'1','1500',0,0,'C','2025-02-07 17:10:35','2025-02-07 17:11:36','1'),(1712,343,'1','2',1,6,'1','1500',0,0,'C','2025-02-07 17:10:45','2025-02-07 17:11:36','1'),(1713,343,'1','2',1,6,'1','1500',0,0,'C','2025-02-07 17:10:55','2025-02-07 17:11:36','1'),(1714,344,'1','2',1,0,'1','0',0,0,'C','2025-02-07 17:12:11','2025-02-07 17:12:27','1'),(1715,344,'1','2',1,6,'1','1500',0,0,'C','2025-02-07 17:12:12','2025-02-07 17:12:27','1'),(1716,344,'1','2',1,6,'1','1500',0,0,'C','2025-02-07 17:12:12','2025-02-07 17:12:27','1'),(1717,345,'1','2',1,0,'1','0',0,0,'C','2025-02-07 17:58:18','2025-02-07 17:58:28','1'),(1718,345,'1','2',1,16,'1','500',0,0,'C','2025-02-07 17:58:18','2025-02-07 17:58:28','1'),(1719,346,'1','2',1,109,'1','300',0,0,'C','2025-02-07 18:38:51','2025-02-07 19:53:55','1'),(1720,346,'1','2',1,0,'1','0',0,0,'C','2025-02-07 18:39:03','2025-02-07 19:53:55','1'),(1721,346,'1','2',1,24,'1','300',0,0,'C','2025-02-07 18:39:05','2025-02-07 19:53:55','1'),(1722,346,'1','2',1,115,'1','350',0,0,'C','2025-02-07 18:39:08','2025-02-07 19:53:55','1'),(1723,346,'1','2',1,22,'1','150',0,0,'C','2025-02-07 18:39:23','2025-02-07 19:53:55','1'),(1724,346,'1','2',1,67,'1','150',0,0,'C','2025-02-07 18:39:28','2025-02-07 19:53:55','1'),(1725,346,'1','2',1,67,'1','150',0,0,'C','2025-02-07 18:39:30','2025-02-07 19:53:55','1'),(1726,347,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:04:17','2025-02-07 20:05:21','1'),(1727,347,'1','2',1,53,'1','200',0,0,'C','2025-02-07 20:04:17','2025-02-07 20:05:21','1'),(1728,347,'1','2',1,53,'1','200',0,0,'C','2025-02-07 20:04:17','2025-02-07 20:05:21','1'),(1729,347,'1','2',1,53,'1','200',0,0,'C','2025-02-07 20:04:18','2025-02-07 20:05:21','1'),(1730,347,'1','2',1,53,'1','200',0,0,'C','2025-02-07 20:04:19','2025-02-07 20:05:21','1'),(1731,347,'1','2',1,0,'2','0',0,0,'C','2025-02-07 20:04:40','2025-02-07 20:05:21','1'),(1732,347,'1','2',1,10,'2','100',0,0,'C','2025-02-07 20:04:44','2025-02-07 20:05:21','1'),(1733,348,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:05:58','2025-02-07 20:08:44','1'),(1734,348,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:05:58','2025-02-07 20:08:44','1'),(1735,348,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:05:59','2025-02-07 20:08:44','1'),(1736,348,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:06:00','2025-02-07 20:08:44','1'),(1737,348,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:06:01','2025-02-07 20:08:44','1'),(1738,348,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:06:01','2025-02-07 20:08:44','1'),(1739,348,'1','2',1,96,'1','2000',0,0,'C','2025-02-07 20:06:13','2025-02-07 20:08:44','1'),(1740,348,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:07:12','2025-02-07 20:08:44','1'),(1741,348,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:07:13','2025-02-07 20:08:44','1'),(1742,348,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:07:13','2025-02-07 20:08:44','1'),(1743,348,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:07:14','2025-02-07 20:08:44','1'),(1744,348,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:08:00','2025-02-07 20:08:44','1'),(1745,348,'1','2',1,4,'1','1500',0,0,'C','2025-02-07 20:08:01','2025-02-07 20:08:44','1'),(1746,349,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:09:32','2025-02-07 20:09:59','1'),(1747,349,'1','2',1,94,'1','750',0,0,'C','2025-02-07 20:09:33','2025-02-07 20:09:59','1'),(1748,350,'1','2',1,0,'1','0',0,0,'C','2025-02-07 20:14:40','2025-02-07 20:15:05','1'),(1749,350,'1','2',1,94,'1','750',0,0,'C','2025-02-07 20:14:41','2025-02-07 20:15:05','1'),(1750,351,'1','2',1,76,'1','600',0,0,'C','2025-02-07 21:22:54','2025-02-07 21:27:23','1'),(1751,351,'1','2',1,141,'1','2000',0,0,'C','2025-02-07 21:27:09','2025-02-07 21:27:23','1'),(1752,351,'1','2',1,0,'1','0',0,0,'A','2025-02-07 21:28:33','0000-00-00 00:00:00','0'),(1753,352,'1','2',1,0,'1','0',0,0,'C','2025-02-07 21:28:40','2025-02-07 21:28:59','1'),(1754,352,'1','2',1,33,'1','300',0,0,'C','2025-02-07 21:28:40','2025-02-07 21:28:59','1'),(1755,352,'1','2',1,33,'1','300',0,0,'C','2025-02-07 21:28:42','2025-02-07 21:28:59','1'),(1756,352,'1','2',1,6,'1','1500',0,0,'C','2025-02-07 21:28:46','2025-02-07 21:28:59','1'),(1757,353,'1','2',1,0,'1','0',0,0,'C','2025-02-07 21:29:26','2025-02-07 21:36:05','1'),(1758,353,'1','2',1,23,'1','1000',0,0,'N','2025-02-07 21:29:27','0000-00-00 00:00:00','0'),(1759,353,'1','2',1,0,'1','0',0,0,'C','2025-02-07 21:35:24','2025-02-07 21:36:05','1'),(1760,353,'1','2',1,23,'1','1000',0,0,'C','2025-02-07 21:35:26','2025-02-07 21:36:05','1'),(1761,354,'1','2',1,47,'4','150',0,0,'C','2025-02-07 21:39:42','2025-02-07 21:40:26','1'),(1762,355,'1','2',1,0,'1','0',0,0,'C','2025-02-07 22:00:56','2025-02-07 22:01:43','1'),(1763,355,'1','2',1,60,'1','1500',0,0,'C','2025-02-07 22:00:56','2025-02-07 22:01:43','1'),(1764,355,'1','2',1,59,'1','1500',0,0,'C','2025-02-07 22:01:00','2025-02-07 22:01:43','1'),(1765,355,'1','2',1,55,'1','2000',0,0,'C','2025-02-07 22:01:06','2025-02-07 22:01:43','1'),(1766,356,'1','2',1,0,'1','0',0,0,'C','2025-02-07 22:11:49','2025-02-07 22:12:14','1'),(1767,356,'1','2',1,0,'1','0',0,0,'C','2025-02-07 22:11:50','2025-02-07 22:12:14','1'),(1768,356,'1','2',1,0,'1','0',0,0,'C','2025-02-07 22:11:52','2025-02-07 22:12:14','1'),(1769,356,'1','2',1,6,'1','1500',0,0,'C','2025-02-07 22:12:04','2025-02-07 22:12:14','1'),(1770,357,'1','2',1,55,'1','2000',0,0,'N','2025-02-08 17:22:36','0000-00-00 00:00:00','0'),(1771,358,'1','2',1,55,'3','2000',0,0,'C','2025-02-08 17:24:15','2025-02-08 17:24:27','2'),(1772,359,'1','2',1,0,'1','0',0,0,'C','2025-02-08 17:39:06','2025-02-08 17:48:09','1'),(1773,359,'1','2',1,0,'1','0',0,0,'C','2025-02-08 17:39:07','2025-02-08 17:48:09','1'),(1774,359,'1','2',1,0,'1','0',0,0,'C','2025-02-08 17:39:08','2025-02-08 17:48:09','1'),(1775,359,'1','2',1,0,'1','0',0,0,'C','2025-02-08 17:39:09','2025-02-08 17:48:09','1'),(1776,359,'1','2',1,0,'1','0',0,0,'C','2025-02-08 17:39:09','2025-02-08 17:48:09','1'),(1777,359,'1','2',1,0,'1','0',0,0,'C','2025-02-08 17:47:53','2025-02-08 17:48:09','1'),(1778,359,'1','2',1,143,'1','2000',0,0,'C','2025-02-08 17:47:54','2025-02-08 17:48:09','1'),(1779,360,'1','2',1,0,'1','0',0,0,'P','2025-02-08 17:48:26','0000-00-00 00:00:00','0'),(1780,360,'1','2',1,143,'1','2000',0,0,'P','2025-02-08 17:48:26','0000-00-00 00:00:00','0'),(1781,360,'1','2',1,143,'1','2000',0,0,'P','2025-02-08 17:48:27','0000-00-00 00:00:00','0'),(1782,360,'1','2',1,143,'1','2000',0,0,'P','2025-02-08 17:48:27','0000-00-00 00:00:00','0'),(1783,360,'1','2',1,143,'1','2000',0,0,'P','2025-02-08 17:48:28','0000-00-00 00:00:00','0'),(1784,360,'1','2',1,143,'1','2000',0,0,'P','2025-02-08 17:48:29','0000-00-00 00:00:00','0'),(1785,361,'1','2',1,0,'1','0',0,0,'C','2025-02-08 18:26:30','2025-02-08 18:34:38','1'),(1786,361,'1','2',1,82,'1','2000',0,0,'C','2025-02-08 18:26:31','2025-02-08 18:34:38','1'),(1787,361,'1','2',1,0,'1','0',0,0,'C','2025-02-08 18:27:09','2025-02-08 18:34:38','1'),(1788,361,'1','2',1,59,'1','1500',0,0,'C','2025-02-08 18:27:10','2025-02-08 18:34:38','1'),(1789,361,'1','2',1,109,'4','300',0,0,'C','2025-02-08 18:27:36','2025-02-08 18:34:38','1'),(1790,361,'1','2',1,10,'3','100',0,0,'C','2025-02-08 18:34:06','2025-02-08 18:34:38','1'),(1791,362,'1','2',1,0,'1','0',0,0,'C','2025-02-08 18:58:50','2025-02-08 19:00:44','2'),(1792,362,'1','2',1,122,'1','500',0,0,'C','2025-02-08 18:58:51','2025-02-08 19:00:44','2'),(1793,362,'1','2',1,122,'1','500',0,0,'C','2025-02-08 18:58:54','2025-02-08 19:00:44','2'),(1794,362,'1','2',1,122,'1','500',0,0,'C','2025-02-08 18:58:55','2025-02-08 19:00:44','2'),(1795,362,'1','2',1,59,'1','1500',0,0,'C','2025-02-08 18:58:59','2025-02-08 19:00:44','2'),(1796,362,'1','2',1,60,'1','1500',0,0,'C','2025-02-08 18:59:02','2025-02-08 19:00:44','2'),(1797,363,'1','2',1,68,'1','6000',0,0,'C','2025-02-08 19:02:49','2025-02-08 19:03:39','1'),(1798,364,'1','2',1,0,'1','0',0,0,'C','2025-02-08 19:05:37','2025-02-08 19:06:31','1'),(1799,364,'1','2',1,60,'1','1500',0,0,'C','2025-02-08 19:05:38','2025-02-08 19:06:31','1'),(1800,364,'1','2',1,59,'1','1500',0,0,'C','2025-02-08 19:05:51','2025-02-08 19:06:31','1'),(1801,365,'1','2',1,68,'1','6000',0,0,'C','2025-02-08 20:18:31','2025-02-08 20:18:39','1'),(1802,365,'1','2',1,31,'1','6000',0,0,'C','2025-02-08 20:18:33','2025-02-08 20:18:39','1'),(1803,366,'1','2',1,55,'2','2000',0,0,'C','2025-02-08 20:29:04','2025-02-08 20:29:12','1'),(1804,367,'1','2',1,0,'1','0',0,0,'C','2025-02-08 20:52:42','2025-02-08 21:03:31','1'),(1805,367,'1','2',1,87,'1','2800',0,0,'N','2025-02-08 20:52:43','0000-00-00 00:00:00','0'),(1806,367,'1','2',1,31,'1','6000',0,0,'C','2025-02-08 21:02:51','2025-02-08 21:03:31','1'),(1807,368,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:04:59','2025-02-08 21:05:39','1'),(1808,368,'1','2',1,94,'1','750',0,0,'C','2025-02-08 21:05:00','2025-02-08 21:05:39','1'),(1809,368,'1','2',1,94,'1','750',0,0,'N','2025-02-08 21:05:00','0000-00-00 00:00:00','0'),(1810,369,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:06:06','2025-02-08 21:06:22','1'),(1811,369,'1','2',1,3,'1','1000',0,0,'C','2025-02-08 21:06:06','2025-02-08 21:06:22','1'),(1812,370,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:12:16','2025-02-08 21:14:39','1'),(1813,370,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:12:51','2025-02-08 21:14:39','1'),(1814,370,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:13:04','2025-02-08 21:14:39','1'),(1815,370,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:13:42','2025-02-08 21:14:39','1'),(1816,370,'1','2',1,143,'1','2000',0,0,'C','2025-02-08 21:13:42','2025-02-08 21:14:39','1'),(1817,370,'1','2',1,143,'1','2000',0,0,'C','2025-02-08 21:13:43','2025-02-08 21:14:39','1'),(1818,371,'1','2',1,68,'1','6000',0,0,'C','2025-02-08 21:26:43','2025-02-08 21:26:47','1'),(1819,372,'1','2',1,67,'4','150',0,0,'C','2025-02-08 21:29:14','2025-02-08 21:30:15','1'),(1820,372,'1','2',1,115,'1','350',0,0,'C','2025-02-08 21:29:23','2025-02-08 21:30:15','1'),(1821,373,'1','2',1,68,'1','6000',0,0,'N','2025-02-08 21:35:13','0000-00-00 00:00:00','0'),(1822,373,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:35:25','2025-02-08 21:37:00','1'),(1823,373,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:35:29','2025-02-08 21:37:00','1'),(1824,373,'1','2',1,31,'1','6000',0,0,'C','2025-02-08 21:35:31','2025-02-08 21:37:00','1'),(1825,374,'1','2',1,68,'1','6000',0,0,'C','2025-02-08 21:52:34','2025-02-08 21:53:29','1'),(1826,375,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:54:01','2025-02-08 21:56:26','1'),(1827,375,'1','2',1,123,'1','500',0,0,'C','2025-02-08 21:54:02','2025-02-08 21:56:26','1'),(1828,375,'1','2',1,123,'1','500',0,0,'C','2025-02-08 21:54:20','2025-02-08 21:56:26','1'),(1829,375,'1','2',1,136,'1','1500',0,0,'C','2025-02-08 21:54:28','2025-02-08 21:56:26','1'),(1830,376,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:56:45','2025-02-08 21:57:08','1'),(1831,376,'1','2',1,16,'1','500',0,0,'C','2025-02-08 21:56:45','2025-02-08 21:57:08','1'),(1832,376,'1','2',1,16,'1','500',0,0,'C','2025-02-08 21:56:46','2025-02-08 21:57:08','1'),(1833,377,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:58:07','2025-02-08 21:59:05','1'),(1834,377,'1','2',1,132,'1','1500',0,0,'C','2025-02-08 21:58:07','2025-02-08 21:59:05','1'),(1835,377,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:58:09','2025-02-08 21:59:05','1'),(1836,377,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:58:15','2025-02-08 21:59:05','1'),(1837,378,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:59:19','2025-02-08 22:00:50','1'),(1838,378,'1','2',1,132,'1','1500',0,0,'C','2025-02-08 21:59:20','2025-02-08 22:00:50','1'),(1839,378,'1','2',1,0,'1','0',0,0,'C','2025-02-08 21:59:51','2025-02-08 22:00:50','1'),(1840,378,'1','2',1,53,'1','200',0,0,'C','2025-02-08 21:59:52','2025-02-08 22:00:50','1'),(1841,378,'1','2',1,53,'1','200',0,0,'C','2025-02-08 21:59:54','2025-02-08 22:00:50','1'),(1842,378,'1','2',1,54,'1','200',0,0,'C','2025-02-08 21:59:56','2025-02-08 22:00:50','1'),(1843,378,'1','2',1,54,'1','200',0,0,'C','2025-02-08 21:59:57','2025-02-08 22:00:50','1'),(1844,379,'1','2',1,42,'4','500',0,0,'C','2025-02-08 22:22:07','2025-02-08 22:22:41','1'),(1845,379,'1','2',1,0,'1','0',0,0,'A','2025-02-08 22:22:55','0000-00-00 00:00:00','0'),(1846,380,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:23:01','2025-02-08 22:24:40','1'),(1847,380,'1','2',1,59,'1','1500',0,0,'C','2025-02-08 22:23:02','2025-02-08 22:24:40','1'),(1848,380,'1','2',1,54,'1','200',0,0,'C','2025-02-08 22:23:16','2025-02-08 22:24:40','1'),(1849,380,'1','2',1,54,'1','200',0,0,'C','2025-02-08 22:23:17','2025-02-08 22:24:40','1'),(1850,380,'1','2',1,54,'1','200',0,0,'C','2025-02-08 22:23:17','2025-02-08 22:24:40','1'),(1851,380,'1','2',1,54,'1','200',0,0,'C','2025-02-08 22:23:18','2025-02-08 22:24:40','1'),(1852,380,'1','2',1,16,'1','500',0,0,'C','2025-02-08 22:23:34','2025-02-08 22:24:40','1'),(1853,380,'1','2',1,16,'1','500',0,0,'C','2025-02-08 22:23:34','2025-02-08 22:24:40','1'),(1854,381,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:25:05','2025-02-08 22:27:59','1'),(1855,381,'1','2',1,64,'1','800',0,0,'C','2025-02-08 22:25:07','2025-02-08 22:27:59','1'),(1856,381,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:25:12','2025-02-08 22:27:59','1'),(1857,381,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:25:35','2025-02-08 22:27:59','1'),(1858,381,'1','2',1,16,'1','500',0,0,'C','2025-02-08 22:25:36','2025-02-08 22:27:59','1'),(1859,381,'1','2',1,16,'1','500',0,0,'C','2025-02-08 22:25:36','2025-02-08 22:27:59','1'),(1860,381,'1','2',1,16,'1','500',0,0,'C','2025-02-08 22:25:37','2025-02-08 22:27:59','1'),(1861,381,'1','2',1,16,'1','500',0,0,'C','2025-02-08 22:25:38','2025-02-08 22:27:59','1'),(1862,381,'1','2',1,115,'1','350',0,0,'C','2025-02-08 22:25:51','2025-02-08 22:27:59','1'),(1863,381,'1','2',1,67,'5','150',0,0,'C','2025-02-08 22:26:01','2025-02-08 22:27:59','1'),(1864,382,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:33:32','2025-02-08 22:39:34','2'),(1865,382,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:33:32','2025-02-08 22:39:34','2'),(1866,382,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:33:34','2025-02-08 22:39:34','2'),(1867,382,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:33:34','2025-02-08 22:39:34','2'),(1868,382,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:34:58','2025-02-08 22:39:34','2'),(1869,382,'1','2',1,144,'1','3000',0,0,'C','2025-02-08 22:34:59','2025-02-08 22:39:34','2'),(1870,382,'1','2',1,4,'1','1500',0,0,'C','2025-02-08 22:35:21','2025-02-08 22:39:34','2'),(1871,382,'1','2',1,4,'1','1500',0,0,'C','2025-02-08 22:35:22','2025-02-08 22:39:34','2'),(1872,382,'1','2',1,22,'6','150',0,0,'C','2025-02-08 22:35:44','2025-02-08 22:39:34','2'),(1873,383,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:39:51','2025-02-08 22:44:01','1'),(1874,383,'1','2',1,9,'1','800',0,0,'C','2025-02-08 22:39:51','2025-02-08 22:44:01','1'),(1875,383,'1','2',1,136,'1','1500',0,0,'C','2025-02-08 22:40:05','2025-02-08 22:44:01','1'),(1876,383,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:40:13','2025-02-08 22:44:01','1'),(1877,383,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:40:14','2025-02-08 22:44:01','1'),(1878,383,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:40:15','2025-02-08 22:44:01','1'),(1879,383,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:40:15','2025-02-08 22:44:01','1'),(1880,383,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:40:16','2025-02-08 22:44:01','1'),(1881,383,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:42:22','2025-02-08 22:44:01','1'),(1882,383,'1','2',1,145,'1','2000',0,0,'C','2025-02-08 22:42:23','2025-02-08 22:44:01','1'),(1883,383,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:42:27','2025-02-08 22:44:01','1'),(1884,383,'1','2',1,22,'4','150',0,0,'C','2025-02-08 22:42:29','2025-02-08 22:44:01','1'),(1885,383,'1','2',1,0,'1','0',0,0,'C','2025-02-08 22:43:07','2025-02-08 22:44:01','1'),(1886,383,'1','2',1,8,'1','1000',0,0,'C','2025-02-08 22:43:07','2025-02-08 22:44:01','1'),(1887,384,'1','2',1,68,'1','6000',0,0,'C','2025-02-08 22:44:15','2025-02-08 22:44:57','1'),(1888,384,'1','2',1,55,'1','2000',0,0,'C','2025-02-08 22:44:34','2025-02-08 22:44:57','1'),(1889,385,'1','2',1,0,'1','0',0,0,'C','2025-02-08 23:00:18','2025-02-08 23:01:51','1'),(1890,385,'1','2',1,0,'1','0',0,0,'C','2025-02-08 23:00:18','2025-02-08 23:01:51','1'),(1891,385,'1','2',1,0,'1','0',0,0,'C','2025-02-08 23:00:19','2025-02-08 23:01:51','1'),(1892,385,'1','2',1,0,'1','0',0,0,'C','2025-02-08 23:00:20','2025-02-08 23:01:51','1'),(1893,385,'1','2',1,0,'1','0',0,0,'C','2025-02-08 23:00:20','2025-02-08 23:01:51','1'),(1894,385,'1','2',1,144,'1','3000',0,0,'C','2025-02-08 23:00:38','2025-02-08 23:01:51','1'),(1895,387,'1','2',1,55,'2','2000',0,0,'C','2025-02-09 13:55:51','2025-02-09 13:59:25','1'),(1896,388,'1','2',1,0,'1','0',0,0,'C','2025-02-09 14:23:57','2025-02-09 14:29:38','2'),(1897,388,'1','2',1,146,'1','4500',0,0,'C','2025-02-09 14:23:58','2025-02-09 14:29:38','2'),(1898,388,'1','2',1,0,'1','0',0,0,'C','2025-02-09 14:24:00','2025-02-09 14:29:38','2'),(1899,388,'1','2',1,147,'1','1000',0,0,'C','2025-02-09 14:27:06','2025-02-09 14:29:38','2'),(1900,389,'1','2',1,0,'1','0',0,0,'C','2025-02-09 14:32:04','2025-02-09 17:07:28','1'),(1901,389,'1','2',1,23,'1','1000',0,0,'C','2025-02-09 14:32:07','2025-02-09 17:07:28','1'),(1902,390,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:07:48','2025-02-09 17:08:38','1'),(1903,390,'1','2',1,115,'1','350',0,0,'C','2025-02-09 17:07:48','2025-02-09 17:08:38','1'),(1904,390,'1','2',1,67,'4','150',0,0,'C','2025-02-09 17:08:04','2025-02-09 17:08:38','1'),(1905,391,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:08:53','2025-02-09 17:09:31','1'),(1906,391,'1','2',1,138,'1','1200',0,0,'C','2025-02-09 17:08:53','2025-02-09 17:09:31','1'),(1907,391,'1','2',1,138,'1','1200',0,0,'C','2025-02-09 17:08:57','2025-02-09 17:09:31','1'),(1908,391,'1','2',1,122,'1','500',0,0,'C','2025-02-09 17:09:17','2025-02-09 17:09:31','1'),(1909,392,'1','2',1,76,'1','600',0,0,'C','2025-02-09 17:25:21','2025-02-09 17:29:33','2'),(1910,392,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:25:49','2025-02-09 17:29:33','2'),(1911,392,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:25:50','2025-02-09 17:29:33','2'),(1912,392,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:25:50','2025-02-09 17:29:33','2'),(1913,392,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:25:51','2025-02-09 17:29:33','2'),(1914,392,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:25:52','2025-02-09 17:29:33','2'),(1915,392,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:25:52','2025-02-09 17:29:33','2'),(1916,392,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:26:37','2025-02-09 17:29:33','2'),(1917,392,'1','2',1,148,'1','1500',0,0,'C','2025-02-09 17:26:38','2025-02-09 17:29:33','2'),(1918,392,'1','2',1,148,'1','1500',0,0,'C','2025-02-09 17:26:40','2025-02-09 17:29:33','2'),(1919,393,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:32:29','2025-02-09 17:33:36','1'),(1920,393,'1','2',1,94,'1','750',0,0,'C','2025-02-09 17:32:29','2025-02-09 17:33:36','1'),(1921,393,'1','2',1,94,'1','750',0,0,'C','2025-02-09 17:32:30','2025-02-09 17:33:36','1'),(1922,393,'1','2',1,94,'1','750',0,0,'C','2025-02-09 17:32:30','2025-02-09 17:33:36','1'),(1923,393,'1','2',1,94,'1','750',0,0,'C','2025-02-09 17:32:32','2025-02-09 17:33:36','1'),(1924,393,'1','2',1,94,'1','750',0,0,'C','2025-02-09 17:32:38','2025-02-09 17:33:36','1'),(1925,394,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:34:05','2025-02-09 17:34:29','1'),(1926,394,'1','2',1,143,'1','2000',0,0,'C','2025-02-09 17:34:05','2025-02-09 17:34:29','1'),(1927,394,'1','2',1,143,'1','2000',0,0,'C','2025-02-09 17:34:06','2025-02-09 17:34:29','1'),(1928,394,'1','2',1,143,'1','2000',0,0,'C','2025-02-09 17:34:07','2025-02-09 17:34:29','1'),(1929,394,'1','2',1,143,'1','2000',0,0,'C','2025-02-09 17:34:07','2025-02-09 17:34:29','1'),(1930,395,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:35:30','2025-02-09 17:36:10','1'),(1931,395,'1','2',1,29,'1','900',0,0,'C','2025-02-09 17:35:30','2025-02-09 17:36:10','1'),(1932,395,'1','2',1,140,'1','1000',0,0,'C','2025-02-09 17:35:42','2025-02-09 17:36:10','1'),(1933,395,'1','2',1,122,'1','500',0,0,'C','2025-02-09 17:35:54','2025-02-09 17:36:10','1'),(1934,396,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:41:01','2025-02-09 17:41:38','1'),(1935,396,'1','2',1,148,'1','1500',0,0,'C','2025-02-09 17:41:02','2025-02-09 17:41:38','1'),(1936,397,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:48:05','2025-02-09 17:48:50','1'),(1937,397,'1','2',1,41,'1','1500',0,0,'C','2025-02-09 17:48:06','2025-02-09 17:48:50','1'),(1938,397,'1','2',1,59,'1','1500',0,0,'C','2025-02-09 17:48:11','2025-02-09 17:48:50','1'),(1939,397,'1','2',1,8,'1','1000',0,0,'C','2025-02-09 17:48:15','2025-02-09 17:48:50','1'),(1940,397,'1','2',1,3,'1','1000',0,0,'C','2025-02-09 17:48:29','2025-02-09 17:48:50','1'),(1941,398,'1','2',1,67,'8','150',0,0,'C','2025-02-09 17:51:11','2025-02-09 17:53:24','2'),(1942,398,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:51:30','2025-02-09 17:53:24','2'),(1943,398,'1','2',1,122,'1','500',0,0,'C','2025-02-09 17:51:31','2025-02-09 17:53:24','2'),(1944,398,'1','2',1,122,'1','500',0,0,'C','2025-02-09 17:51:36','2025-02-09 17:53:24','2'),(1945,398,'1','2',1,123,'1','500',0,0,'C','2025-02-09 17:51:41','2025-02-09 17:53:24','2'),(1946,398,'1','2',1,123,'1','500',0,0,'C','2025-02-09 17:51:41','2025-02-09 17:53:24','2'),(1947,398,'1','2',1,143,'1','2000',0,0,'C','2025-02-09 17:51:45','2025-02-09 17:53:24','2'),(1948,398,'1','2',1,139,'1','1000',0,0,'C','2025-02-09 17:51:50','2025-02-09 17:53:24','2'),(1949,399,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:53:49','2025-02-09 17:54:36','1'),(1950,399,'1','2',1,61,'1','2000',0,0,'C','2025-02-09 17:53:50','2025-02-09 17:54:36','1'),(1951,400,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:54:46','2025-02-09 17:55:54','1'),(1952,400,'1','2',1,24,'1','300',0,0,'C','2025-02-09 17:54:47','2025-02-09 17:55:54','1'),(1953,400,'1','2',1,24,'1','300',0,0,'C','2025-02-09 17:55:05','2025-02-09 17:55:54','1'),(1954,400,'1','2',1,24,'1','300',0,0,'C','2025-02-09 17:55:06','2025-02-09 17:55:54','1'),(1955,401,'1','2',1,0,'1','0',0,0,'C','2025-02-09 17:59:40','2025-02-09 18:00:26','1'),(1956,401,'1','2',1,42,'1','500',0,0,'C','2025-02-09 17:59:41','2025-02-09 18:00:26','1'),(1957,401,'1','2',1,53,'1','200',0,0,'C','2025-02-09 17:59:45','2025-02-09 18:00:26','1'),(1958,401,'1','2',1,115,'1','350',0,0,'N','2025-02-09 17:59:55','0000-00-00 00:00:00','0'),(1959,402,'1','2',1,0,'1','0',0,0,'C','2025-02-09 18:20:52','2025-02-09 18:21:22','1'),(1960,402,'1','2',1,60,'1','1500',0,0,'C','2025-02-09 18:20:53','2025-02-09 18:21:22','1'),(1961,403,'1','2',1,0,'1','0',0,0,'C','2025-02-09 19:33:46','2025-02-09 19:35:52','1'),(1962,403,'1','2',1,149,'1','6000',0,0,'C','2025-02-09 19:33:48','2025-02-09 19:35:52','1'),(1963,403,'1','2',1,0,'1','0',0,0,'C','2025-02-09 19:33:51','2025-02-09 19:35:52','1'),(1964,403,'1','2',1,0,'1','0',0,0,'C','2025-02-09 19:34:58','2025-02-09 19:35:52','1'),(1965,403,'1','2',1,150,'1','6000',0,0,'C','2025-02-09 19:35:00','2025-02-09 19:35:52','1'),(1966,403,'1','2',1,60,'1','1500',0,0,'C','2025-02-09 19:35:14','2025-02-09 19:35:52','1'),(1967,403,'1','2',1,59,'1','1500',0,0,'C','2025-02-09 19:35:18','2025-02-09 19:35:52','1'),(1968,404,'1','2',1,0,'1','0',0,0,'C','2025-02-09 19:44:51','2025-02-09 19:47:22','1'),(1969,404,'1','2',1,60,'1','1500',0,0,'C','2025-02-09 19:44:52','2025-02-09 19:47:22','1'),(1970,404,'1','2',1,60,'1','1500',0,0,'C','2025-02-09 19:44:52','2025-02-09 19:47:22','1'),(1971,404,'1','2',1,60,'1','1500',0,0,'N','2025-02-09 19:44:52','0000-00-00 00:00:00','0'),(1972,405,'1','2',1,0,'1','0',0,0,'C','2025-02-09 19:55:29','2025-02-09 19:56:17','1'),(1973,405,'1','2',1,9,'1','800',0,0,'C','2025-02-09 19:55:29','2025-02-09 19:56:17','1'),(1974,406,'1','2',1,0,'1','0',0,0,'C','2025-02-09 20:03:06','2025-02-09 20:04:07','1'),(1975,406,'1','2',1,143,'1','2000',0,0,'C','2025-02-09 20:03:07','2025-02-09 20:04:07','1'),(1976,406,'1','2',1,0,'1','0',0,0,'A','2025-02-09 20:10:26','0000-00-00 00:00:00','0'),(1977,407,'1','2',1,0,'1','0',0,0,'C','2025-02-09 20:10:51','2025-02-09 20:11:07','1'),(1978,407,'1','2',1,24,'1','300',0,0,'C','2025-02-09 20:10:57','2025-02-09 20:11:07','1'),(1979,408,'1','2',1,0,'1','0',0,0,'A','2025-02-10 19:18:34','0000-00-00 00:00:00','0'),(1980,408,'1','2',1,56,'1','400',0,0,'A','2025-02-10 19:18:34','0000-00-00 00:00:00','0'),(1981,408,'1','2',1,56,'1','400',0,0,'A','2025-02-10 19:18:39','0000-00-00 00:00:00','0'),(1982,408,'1','2',1,54,'1','200',0,0,'A','2025-02-10 19:19:07','0000-00-00 00:00:00','0'),(1983,408,'1','2',1,53,'1','200',0,0,'A','2025-02-10 19:19:11','0000-00-00 00:00:00','0');
+/*!40000 ALTER TABLE `ventas` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-02-10 19:42:05
