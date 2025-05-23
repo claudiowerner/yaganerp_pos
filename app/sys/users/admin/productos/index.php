@@ -70,9 +70,9 @@
                                             require "productos/modals/modal_abrir_detalles.php";
                                             require "productos/modals/modal_editar.php";
                                             require "productos/modals/modal_registro.php";
+                                            require "codigo_barra/modals/modal_generar_codigo_barra.php";
                                             require "promociones/modal/modal_registrar_promocion.php";
                                             require "promociones/modal/modal_editar_promocion.php";
-                                            echo modalRegistro();
                                             echo modalAbrirDetalles();
                                         ?>
 
@@ -116,6 +116,8 @@
 
     <script src="../../../datatables/datatables.js"></script>
 
+    <!--SCRIPTS JSBARCODE-->
+    <script src="../../../js/JsBarcode.all.min.js"></script>
 
     <!--SCRIPTS DE PRODUCTOS-->
     <script src="productos/js/crear/crear_producto.js"></script>
@@ -136,6 +138,10 @@
     <script src="productos/js/leer/configuracion_productos.js"></script>
     <script src="productos/js/switches/switch_pesaje_editar.js"></script>
     <script src="productos/js/switches/switch_pesaje.js"></script>
+
+    <!--SCRIPT DE CÓDIGOS DE BARRA-->
+    <script src="codigo_barra/js/crear/abrir_modal_codigo_barra.js"></script>
+    <script src="codigo_barra/js/crear/crear_cod_barra.js"></script>
 
 
 

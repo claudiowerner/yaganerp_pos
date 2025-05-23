@@ -1,7 +1,4 @@
-<?php
-  function modalRegistro()
-  {
-    return "<div class='modal fade' id='modalRegistro' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
+<div class='modal fade' id='modalRegistro' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
@@ -10,7 +7,6 @@
                 <span aria-hidden='true'>&times;</span>
               </button>
             </div>
-            <form id='formRegistroProducto'>
               <div class='modal-body'>
                 <table id='productos2' class='table'>
                   <tr>
@@ -36,6 +32,7 @@
                     <td><label name='codigoBarra'>Código de barra</label></td>
                     <td>
                       <input type='text' name='codigoBarra' id='codigoBarra' class='form-control' required>
+                      <button id="btnAbrirModalCodigo" class="btn btn-primary">Generar</button>
                     </td>
                   </tr>
                   <tr>
@@ -101,11 +98,6 @@
                 <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
                 <button type='submit' id='btnGuardar' class='btn btn-primary'>Guardar</button>
               </div>
-            </form>
           </div>
         </div>
-      </div>";
-  }
-
-  
-?>
+      </div>

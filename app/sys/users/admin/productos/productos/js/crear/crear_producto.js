@@ -28,7 +28,7 @@ $("#btnAgregarCategoria").on("click", function(e)
 
 //Función de registro
 
-$("#formRegistroProducto").submit(function(e)
+$("#btnGuardar").on("click",function(e)
 {
     e.preventDefault();
     var np = $("#nomProd").val();
