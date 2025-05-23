@@ -33,7 +33,7 @@
 
 		//obtener valor precio del producto
 		$valor = 0;
-		echo $sql = "SELECT valor_venta 
+		$sql = "SELECT valor_venta 
 		FROM productos 
 		WHERE id_cl = '$id_cl' 
 		AND id_prod = '$idProd'";

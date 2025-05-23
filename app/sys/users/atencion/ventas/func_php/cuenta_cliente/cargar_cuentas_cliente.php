@@ -22,7 +22,8 @@
 
 		$sql = "SELECT id_venta, DATE_FORMAT(fecha_registro, '%d-%m-%Y') AS fecha_registro
 		FROM cuenta_corriente 
-		WHERE rut = '$rut'";
+		WHERE rut = '$rut'
+		AND id_cl = '$id_cl'";
 		$res = $conexion -> query($sql);
 
 		while($row=$res->fetch_array())

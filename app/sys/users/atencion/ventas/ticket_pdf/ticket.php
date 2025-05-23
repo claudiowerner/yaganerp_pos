@@ -35,7 +35,7 @@
     # descargar datos de la venta
     $sql = 
     "SELECT DATE_FORMAT(fecha, '%d-%m-%Y %H:%i:%s') AS fecha,
-    descto, valor
+    descto, (valor*cantidad) AS valor
     FROM ventas 
     WHERE id_venta = $ids 
     AND id_cl = $id_cl 
@@ -60,7 +60,7 @@
     $total = $subtotal + $iva - $valDescto;
     
 
-    $sql = "SELECT v.id_cl, v.id, p.id_prod, v.cantidad AS cantidad, SUM(v.valor) AS valor
+    $sql = "SELECT v.id_cl, v.id, p.id_prod, SUM(v.cantidad) AS cantidad, SUM(v.valor*v.cantidad) AS valor
     FROM ventas v
     JOIN productos p 
     ON p.id_prod = v.producto 
@@ -121,12 +121,12 @@
             {
                 while ($qry = $resultado->fetch_array()) 
                 {
-                $nombre_prod = $qry["nombre_prod"];
-                //echo "Producto: ".$nombre_prod." - CANTIDAD: ".$cantidad[$i]; echo "<br>";
-                $items[] = new item3(normaliza(strtoupper($nombre_prod))." X ".$cantidad[$i]);
+                    $nombre_prod = $qry["nombre_prod"];
+                    //echo "Producto: ".$nombre_prod." - CANTIDAD: ".$cantidad[$i]; echo "<br>";
+                    $items[] = new item3(normaliza(strtoupper($nombre_prod))." X ".$cantidad[$i]);
+                }
             }
         }
-    }
 
 
     $pdf = new PDF_Code128('P','mm',array(90,208));
