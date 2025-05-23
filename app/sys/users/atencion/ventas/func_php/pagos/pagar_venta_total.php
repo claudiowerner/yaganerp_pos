@@ -139,11 +139,10 @@
 	{
 		$monto = $row["monto"];
 	}
-
+	echo "forma_pago: $forma_pago";
 	//REGISTRO EN MONTO_CAJA
 	if($forma_pago==1)
 	{
-		
 		$sql = 
 		"INSERT INTO monto_caja VALUES(
 			null,

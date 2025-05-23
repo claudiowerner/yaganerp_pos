@@ -16,7 +16,7 @@ let obs = "";
 let descto = 0;
 
 //variable que almacena el nombre del producto y la cantidad
-var descProd = new Array();
+let descProd = new Array();
 $("#cantProd").val(1);
 $("#prod").select2();
 

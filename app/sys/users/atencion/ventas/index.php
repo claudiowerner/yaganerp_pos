@@ -173,6 +173,8 @@
     <script src="js/venta/editar/anularVenta.js"></script>
     <script src="js/correlativo/correlativo.js"></script>
     <script src="js/caja_atencion/cerrarCaja.js"></script>
+    <script src="js/caja_atencion/crear/crear_movimiento.js"></script>
+    <script src="js/caja_atencion/leer/leer_movimiento_caja.js"></script>
     <script src="js/venta/leer/cargarIDVenta.js"></script>
     <script src="js/fecha_hora/getFechaHora.js"></script>
     <script src="js/stock/comprobar_estado_stock_minimo.js"></script>

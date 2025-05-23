@@ -1,22 +1,5 @@
-//DESCARGA VIA AJAX DE MOVIMIENTOS DE CAJA
-function movimientoCaja()
-{
-    let turno = $("#id_caja").text();
-    let datos = {
-        "id_cierre": turno,
-        "caja": nCaja
-    }
-
-    return $.ajax({
-        url: "func_php/caja_dinero/read_movimiento_caja.php",
-        data: datos,
-        type: "POST",
-        async: false
-    }).responseText;
-}
-
-
-//INSERCIÓN DE MOVIMIENTOS VIA AJAX
+/* ----------------------------------------------------- FUNCION AJAX ------------------------------------------------- */
+//INSERTAR MOVIMIENTO DESDE MODAL DE MOVIMIENTOS
 function insertarMovimiento()
 {
     let turno = $("#id_caja").text();
@@ -34,20 +17,26 @@ function insertarMovimiento()
         async: false
     }).responseText;
 }
-function cargarMovimientoCaja()
+//INSERTAR MOVIMIENTO DESDE MÉTODO DE PAGO
+
+function insertarMovimientoPago(turno, nCaja, movCaja)
 {
-    let descarga = movimientoCaja();
-    let json = JSON.parse(descarga);
-    let template = "";
-    let valor = 0;
-    json.forEach(j=>
-        {
-            valor = parseInt(valor) + parseInt(j.monto);
-            template+=`<tr><td>${j.n_op}</td><td>${j.descripcion}</td><td>$${j.monto}</td></tr>`;
-        })
-    template+=`<tr><td colspan=2><strong>Total en caja:</strong></td><td><strong>$${valor}</strong></td></tr>`;
-    $("#bodyMovimientoCaja").html(template);
+    let datos = {
+        "turno": turno,
+        "caja": nCaja,
+        "monto": movCaja
+    }
+
+    return $.ajax({
+        url: "func_php/caja_dinero/agregarMovimientoCaja.php",
+        data: datos,
+        type: "POST",
+        async: false
+    }).responseText;
 }
+
+
+/* ------------------------------------------------------ FUNCION DOM -------------------------------------------------- */
 
 $("#btnAgregarMovimiento").on("click", function(e)
 {
@@ -70,9 +59,3 @@ $("#btnAgregarMovimiento").on("click", function(e)
     }
     cargarMovimientoCaja();
 });
-
-$("#btnMovimientoCaja").on("click", function(e)
-{
-    $("#modalMovimientoCaja").modal("show");
-    cargarMovimientoCaja();
-})

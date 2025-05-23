@@ -75,8 +75,7 @@
         DATE_FORMAT(fecha_hasta, '%d-%m-%Y') AS fecha_hasta,
         estado
         FROM pago_cliente 
-        WHERE id_cl = $id_cl
-        AND '$fecha_usuario' BETWEEN fecha_desde AND fecha_hasta";
+        WHERE id_cl = $id_cl";
         $res = $conexion -> query($sql);
 
         while($row = $res -> fetch_array())
