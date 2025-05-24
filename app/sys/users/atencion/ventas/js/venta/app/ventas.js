@@ -15,8 +15,6 @@ let cantProd = "";
 let obs = "";
 let descto = 0;
 
-//variable que almacena el nombre del producto y la cantidad
-let descProd = new Array();
 $("#cantProd").val(1);
 $("#prod").select2();
 
@@ -95,8 +93,6 @@ $("#btnAgregarCliente").on("click", function(e)
 
 var ventaInd = 0;
 
-//array para rebajar stock según venta individual
-let descProdInd = new Array();
 
 //acciones impresion venta individual
 let valorCuentaInd = 0;

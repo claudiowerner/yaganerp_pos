@@ -38,14 +38,14 @@
                                 <td>Seleccionar</td>
                             </tr>
                         </th>
-                    <tbody id='datosCliente'>
-                        <tr>
-                            <td colspan=4 align=center>Indique un parámetro de búsqueda</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>  
+                        <tbody id='datosCliente'>
+                            <tr>
+                                <td colspan=4 align=center>Indique un parámetro de búsqueda</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>  
+            </div>
         </div>
     </div>
 </div>
-        

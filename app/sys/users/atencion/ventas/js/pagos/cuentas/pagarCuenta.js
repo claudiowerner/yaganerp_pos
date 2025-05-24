@@ -31,6 +31,7 @@ $("#btnConfirmarPagaCuenta").on("click", function(e)
             if(msj.registro_movimiento)
             {
                 msjes_swal("PAGO EN EFECTIVO", "El pago se registró en el movimiento de caja", msj.icono);
+                
             }
             
             $("#modalMetodoPagoCuenta").modal("hide");
