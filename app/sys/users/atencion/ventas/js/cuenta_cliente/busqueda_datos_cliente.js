@@ -38,6 +38,7 @@ function parseoDatosClienteBusqueda(rut)
                         <td>${j.rut}</td>
                         <td>${j.nombre}</td>
                         <td>${j.apellido}</td>
+                        <td>${j.telefono}</td>
                         <td><button onClick='selecCliente("${j.rut}")' style='margin: 2px'  class='btn btn-success'>Seleccionar</button></td>
                     </tr>`;
                 }

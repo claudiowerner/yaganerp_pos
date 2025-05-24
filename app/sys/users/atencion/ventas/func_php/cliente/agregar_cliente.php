@@ -17,6 +17,7 @@
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
 	$fecha = $_POST["fecha"];
+	$telefono = $_POST["telefono"];
 	
 
 	$sql = 
@@ -33,7 +34,7 @@
 	{
 		$sql = 
 		"INSERT INTO clientes_negocio 
-		VALUES (null, '$id_cl', '$rut', '$nombre', '$apellido', 'S', '$id_us', '$fecha');";
+		VALUES (null, '$id_cl', '$rut', '$nombre', '$apellido', '$telefono', 'S', '$id_us', '$fecha');";
 		$resultado = $conexion->query($sql);;
 
 		if($resultado)

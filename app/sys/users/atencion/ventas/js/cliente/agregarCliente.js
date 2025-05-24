@@ -23,6 +23,7 @@ $("#btnGuardarCliente").on("click", function(e)
     let rut = $("#txtRutGuardar").val();
     let nombre = $("#txtNombreGuardar").val();
     let apellido = $("#txtApellidoGuardar").val();
+    let telefono = $("#txtTelefonoGuardar").val();
 
     let fecha = getFechaBD();
 
@@ -30,7 +31,8 @@ $("#btnGuardarCliente").on("click", function(e)
         "rut":rut,
         "nombre": nombre,
         "apellido": apellido,
-        "fecha": fecha
+        "fecha": fecha, 
+        "telefono": telefono
     }
 
     swal({

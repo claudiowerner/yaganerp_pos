@@ -18,7 +18,7 @@ if(isset($_SESSION['user'])){
 
     //query
     $sql = 
-    "SELECT rut, nombre, apellido 
+    "SELECT rut, nombre, apellido, telefono
     FROM clientes_negocio
     WHERE id_cl = $id_cl
     AND rut LIKE '%$rut%'
@@ -30,7 +30,8 @@ if(isset($_SESSION['user'])){
         $json[] =array(
           'rut' => $row['rut'],
           'nombre' => ($row['nombre']),
-          'apellido' => ($row['apellido'])
+          'apellido' => ($row['apellido']),
+          'telefono' => ($row['telefono'])
         );
       };
     }
