@@ -47,7 +47,8 @@ table = $('#producto').DataTable({
 				return `
 				<button id='btnAbrirDetalles' class='btn btn-success' onClick="abrirDetalles(${pesaje},'${id}','${codigo_barra}','${nombre_prod}', '${data.nombre_cat}', '${data.nombre_proveedor}', '${cantidad}', '${valor_neto}', '${margen_ganancia}', '${monto_ganancia}','${valor_venta}','${descuento}', '${creado_por}', '${fecha_reg}')"><i class='fa fa-expand' aria-hidden='true'></i></button>
 				<button type="submit" id="btnEditar" class="btn btn-primary" onClick="abrirModalEditar(${pesaje},'${id}','${codigo_barra}','${nombre_prod}', '${id_categoria}', '${id_proveedor}', '${cantidad}', '${valor_neto}', '${margen_ganancia}', '${monto_ganancia}','${valor_venta}','${descuento}', '${creado_por}', '${fecha_reg}')"><i class='fa fa-edit' aria-hidden='true'></i></button>
-				<button id='btnEliminar' class='btn btn-danger' onClick="eliminarProducto(${data.id}, '${nombre_prod}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
+				<button id='btnEliminar' class='btn btn-danger' onClick="eliminarProducto(${data.id}, '${nombre_prod}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>
+				<button id='btnEliminar' class='btn btn-primary' onClick="abrirModalCodBarra('${codigo_barra}', '${nombre_prod}')"><i class="fa-solid fa-barcode"></i></button>`;
 			}
 		}
 	],
