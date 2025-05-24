@@ -206,7 +206,8 @@
     <script src="js/cliente/agregarACuentaCliente.js"></script>
     <script src="js/pagos/cuentas/confirmar_paga_cuenta.js"></script>
     <script src="js/pagos/cuentas/pagarCuenta.js"></script>
-    <script src="js/pagos/confirmarPaga.js"></script>
+    <script src="js/pagos/pago/confirmarPaga.js"></script>
+    <script src="js/pagos/desc_prod/desc_prod.js"></script>
     <script src="js/vuelto/calcularVuelto.js"></script>
     <script src="js/caja_atencion/resumenCaja.js"></script>
     <script src="js/precio/consultarPrecio.js"></script>
