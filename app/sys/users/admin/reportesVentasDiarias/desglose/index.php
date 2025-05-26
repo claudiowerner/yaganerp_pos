@@ -66,7 +66,8 @@
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
-                                        <h1>Detalle de venta turno/caja <br><strong id=nomCaja ><?php echo $nomCaja?></strong></h1>
+                                        <h1>Detalle de venta turno<br><strong id=nomCaja ><?php echo $nomCaja?></strong></h1>
+                                        <span style="display: none"></span>
                                         <strong id="idCierre" style="display:none"><?php echo$idCierre?></strong>
                                         
                                         <div class="col-md-12" style="width:100%" align=center>

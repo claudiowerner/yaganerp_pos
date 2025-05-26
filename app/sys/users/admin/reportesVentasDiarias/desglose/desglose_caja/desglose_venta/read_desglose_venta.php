@@ -32,14 +32,12 @@
 
 	//obtener nombre del usuario creador de la venta
 	$sql = 
-	"SELECT u.nombre, mp.nombre_metodo_pago, cj.nom_caja
+	"SELECT u.nombre, mp.nombre_metodo_pago
 	FROM correlativo c
 	JOIN usuarios u
 	ON u.id = c.usuario
 	JOIN metodo_pago mp
 	ON mp.id = c.forma_pago 
-    JOIN cajas cj
-    ON cj.id = c.caja
 	WHERE correlativo = $idVenta";
 	$res = $conexion->query($sql);
 	
@@ -47,7 +45,6 @@
 	{
 		$nom_us = $row["nombre"];
 		$metodo_pago = $row["nombre_metodo_pago"];
-		$caja = $row["nom_caja"];
 	}
 
 	//rellenar Arrays
@@ -100,7 +97,6 @@
 		$valor = ($arrValor[$i]*$arrCant[$i])*0.81;
 		$iva = ($arrValor[$i]*$arrCant[$i])*0.19;
 		$json[] = array(
-			"nom_caja" => $caja,
 			"nombre" => $nom_us, 
 			"estado_venta" => $arrCerrado[$i], 
 			"fecha" => $arrFecha[$i], 
@@ -114,20 +110,5 @@
 		);
 	}
 
-	/*$json[] =array(
-		'nombre' => ($row['nombre']),
-		'nom_caja' => $row['nom_caja'],
-		'nombre_prod' => ($row['nombre_prod']),
-		'cantidad' => $row['cantidad'],
-		'valor' => round($valor*0.81),
-		'iva' => round($row['valor']*0.19),
-		'valor_descuento' => $valorDescto,
-		'valor_total' => $valor_total,
-		'descto' => $descto,
-		'estado_prod' => $estado_prod,
-		'estado_venta' => $estado_venta,
-		'metodo_pago' => $row['nombre_metodo_pago'],
-		'fecha' => $row['fecha']
-		);*/
 	echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 ?>

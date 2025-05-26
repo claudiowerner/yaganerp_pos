@@ -32,7 +32,7 @@
 	//query
 
   $sql =
-  "SELECT id FROM cajas WHERE id_cl = '$id_cl'";
+  "SELECT id FROM cajas WHERE id_cl = '$id_cl' AND estado!='N'";
 
   $res = $conexion->query($sql);;
   while($row = $res->fetch_assoc())

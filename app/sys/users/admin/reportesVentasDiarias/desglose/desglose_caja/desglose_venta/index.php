@@ -5,6 +5,7 @@
   $id_cl = $_SESSION['user']["id_cl"];
   
   $idVenta = $_GET['idVenta'];
+  $id_caja = $_GET['id_caja'];
 ?>
 
 <!DOCTYPE html>
@@ -45,13 +46,14 @@
                                 <div class="card card-warning" align="left">
                                     <div class="card-header">
                                     <h1>Detalle de venta <strong id=venta><?php echo $idVenta?></strong></h1>
+                                    <strong id=id_caja style="display: none"><?php echo $id_caja?></strong>
                                     <table>
                                         <tr>
                                             <td>
                                                 <strong>Caja: </strong>
                                             </td>
-                                            <td id="nombre_mesa">
-                                                CARGANDO...
+                                            <td>
+                                                <span id="span_caja">CARGANDO...</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -108,6 +110,7 @@
 
 
     <!--llamada a categorias-->
+    <script src="obtener_nom_caja.js"></script>
     <script src="desgloseVenta.js"></script>
 
 

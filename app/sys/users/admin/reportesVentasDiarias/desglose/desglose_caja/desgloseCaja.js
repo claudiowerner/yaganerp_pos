@@ -16,7 +16,8 @@ $("#desgloseCaja").on("click", "button.btn-success", function()
 {
   let element = $(this)[0].parentElement.parentElement;
   let id = $(element).attr('idVenta');
-  location.href = "desglose_venta/index.php?idVenta="+id;
+  let caja = $("#idCaja").text();
+  location.href = "desglose_venta/index.php?idVenta="+id+"&id_caja="+caja;
 });
 
 $("#btnReimprimirResumen").on("click", function(e)
