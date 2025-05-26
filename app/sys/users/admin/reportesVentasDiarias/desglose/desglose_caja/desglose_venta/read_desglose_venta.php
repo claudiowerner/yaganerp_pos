@@ -1,107 +1,133 @@
 <?php
 
 
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
 
-  error_reporting(E_ALL);
-  session_start();
+	error_reporting(E_ALL);
+	session_start();
 
-  $id_us = $_SESSION['user']['id'];
-  $nombre = $_SESSION['user']["nombre"];
-  $id_cl = $_SESSION['user']["id_cl"];
-  
+	$id_us = $_SESSION['user']['id'];
+	$nombre = $_SESSION['user']["nombre"];
+	$id_cl = $_SESSION['user']["id_cl"];
+	
 
-  $idVenta = $_GET['idVenta'];
+	//recepcion de ID de venta
+	$idVenta = $_GET['idVenta'];
 
-  require_once '../../../../../../conexion.php';
+	require_once '../../../../../../conexion.php';
 
-	//query
-  $sql = 
-  "SELECT us.nombre, p.nombre_prod, caja.nom_caja, 
-  SUM(v.cantidad) AS cantidad,
-  mp.nombre_metodo_pago, 
-  SUM(v.valor*v.cantidad) AS valor, 
-  c.estado AS estado_venta,
-  v.estado AS estado_prod, 
-  v.descto,
-  DATE_FORMAT(v.fecha, '%d-%m-%Y %H:%i:%s') AS fecha
-  FROM ventas v 
-  JOIN metodo_pago mp ON mp.id = v.forma_pago
-  JOIN correlativo c ON c.correlativo = v.id_venta
-  JOIN cajas caja ON caja.id = v.id_caja
-  JOIN usuarios us ON us.id = v.usuario 
-  JOIN productos p ON p.id_prod = v.producto 
-  WHERE v.id_cl = $id_cl 
-  AND v.id_venta = $idVenta 
-  AND v.estado = 'C'
-  GROUP BY p.id_prod";
+	//declaración de variable que obtendrá el nombre de usuario y el tipo de pago
+	$nom_us = "";
+	$metodo_pago = "";
+	//Declaración de arrays 
+	$arrIdVenta = array();
+	$arrIdProd = array();
+	$arrCant = array();
+	$arrNomProd = array();
+	$arrValor = array();
+	$arrEstado = array();
+	$arrFecha = array();
+	$arrDescto = array();
 
-  $query = $conexion->query($sql);
+	//obtener nombre del usuario creador de la venta
+	$sql = 
+	"SELECT u.nombre, mp.nombre_metodo_pago, cj.nom_caja
+	FROM correlativo c
+	JOIN usuarios u
+	ON u.id = c.usuario
+	JOIN metodo_pago mp
+	ON mp.id = c.forma_pago 
+    JOIN cajas cj
+    ON cj.id = c.caja
+	WHERE correlativo = $idVenta";
+	$res = $conexion->query($sql);
+	
+	while($row = $res -> fetch_array())
+	{
+		$nom_us = $row["nombre"];
+		$metodo_pago = $row["nombre_metodo_pago"];
+		$caja = $row["nom_caja"];
+	}
 
-  $json = Array();
-  while($row = $query->fetch_array())
-  {
-    $estado_prod = $row['estado_prod'];
-    $estado_venta = $row['estado_venta'];
+	//rellenar Arrays
+	//Rellenar array IdVenta
+	$sql = 
+	"SELECT id, producto, SUM(cantidad) AS cantidad, fecha_pago, descto 
+	FROM ventas 
+	WHERE id_cl = $id_cl 
+	AND id_venta = $idVenta
+	AND estado = 'C'
+	AND producto!=0
+	GROUP BY producto";
+	
+	$res = $conexion->query($sql);
+	while($row = $res->fetch_array())
+	{
+		$arrIdVenta[] = $row["id"];
+		$arrIdProd[] = $row["producto"];
+		$arrCant[] = $row["cantidad"];
+		$arrFecha[] = $row["fecha_pago"];
+		$arrDescto[] = $row["descto"];
+		$arrCerrado[] = "CERRADO";
+	}
 
-    if($estado_prod=='A')
-    {
-      $estado_prod = 'POR PAGAR';
-    }
-    if($estado_prod=='C')
-    {
-      $estado_prod = 'CERRADO';
-    }
-    if($estado_prod=="N")
-    {
-      $estado_prod = "ANULADO";
-    }
+	//contador de filas de arrIdVenta 
+	$cont = count($arrIdVenta);
+	
+	//Rellenar arrNomProd y arrValor
+	for($i=0; $i<$cont; $i++)
+	{
+		$idp = $arrIdProd[$i];
+		$sql =
+		"SELECT nombre_prod, valor_venta 
+		FROM productos 
+		WHERE id_cl = $id_cl 
+		AND id_prod = $idp";
+		$res = $conexion->query($sql);
+		while($row = $res -> fetch_array())
+		{
+			$arrNomProd[] = $row["nombre_prod"];
+			$arrValor[] = $row["valor_venta"];
+		}
+	}
+	
+	//rellenar array de salida
+	$json = array();
 
+	for($i=0; $i<$cont; $i++)
+	{
+		$valor = ($arrValor[$i]*$arrCant[$i])*0.81;
+		$iva = ($arrValor[$i]*$arrCant[$i])*0.19;
+		$json[] = array(
+			"nom_caja" => $caja,
+			"nombre" => $nom_us, 
+			"estado_venta" => $arrCerrado[$i], 
+			"fecha" => $arrFecha[$i], 
+			"nombre_prod" => $arrNomProd[$i], 
+			"cantidad" => $arrCant[$i],
+			"metodo_pago" => $metodo_pago,
+			"valor" => $valor,
+			"iva" => $iva,
+			"descto" => $arrDescto[$i],
+			"valor_total" => $valor - $arrDescto[$i] + $iva
+		);
+	}
 
-    if($estado_venta=='A')
-    {
-      $estado_venta = 'EN CURSO';
-    }
-    if($estado_venta=='C')
-    {
-      $estado_venta = 'CERRADO';
-    }
-    if($estado_venta=="N")
-    {
-      $estado_venta = "ANULADO";
-    }
-    $valor = $row["valor"];
-    $descto = $row["descto"]; 
-
-    $valorDescto = ($valor*$descto)/100;
-        $valorDesctoAplicado = $valor-$valorDescto;
-        $valor_total = 0;
-
-        if($descto == 0)
-        {
-            $valor_total = $valor;
-        }
-        else
-        {
-            $valor_total = $valorDesctoAplicado;
-        }
-    
-    $json[] =array(
-      'nombre' => ($row['nombre']),
-      'nom_caja' => $row['nom_caja'],
-      'nombre_prod' => ($row['nombre_prod']),
-      'cantidad' => $row['cantidad'],
-      'valor' => round($valor*0.81),
-      'iva' => round($row['valor']*0.19),
-      'valor_descuento' => $valorDescto,
-      'valor_total' => $valor_total,
-      'descto' => $descto,
-      'estado_prod' => $estado_prod,
-      'estado_venta' => $estado_venta,
-      'metodo_pago' => $row['nombre_metodo_pago'],
-      'fecha' => $row['fecha']
-    );
-  }
+	/*$json[] =array(
+		'nombre' => ($row['nombre']),
+		'nom_caja' => $row['nom_caja'],
+		'nombre_prod' => ($row['nombre_prod']),
+		'cantidad' => $row['cantidad'],
+		'valor' => round($valor*0.81),
+		'iva' => round($row['valor']*0.19),
+		'valor_descuento' => $valorDescto,
+		'valor_total' => $valor_total,
+		'descto' => $descto,
+		'estado_prod' => $estado_prod,
+		'estado_venta' => $estado_venta,
+		'metodo_pago' => $row['nombre_metodo_pago'],
+		'fecha' => $row['fecha']
+		);*/
 	echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 ?>

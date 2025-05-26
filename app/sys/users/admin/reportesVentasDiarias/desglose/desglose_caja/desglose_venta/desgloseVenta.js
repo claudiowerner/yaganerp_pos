@@ -31,20 +31,20 @@ function leerCaja()
             iva_formateado = formatearNumero("P",iva);
             valorTotal=parseFloat(valorTotal)+parseFloat(c.valor_total);
             valorTotal_formateado = formatearNumero("P",valorTotal);
-            desctoTotal=parseFloat(desctoTotal)+parseFloat(c.valor_descuento);
+            desctoTotal=parseFloat(desctoTotal)+parseFloat(c.descto);
             desctoTotal_formateado = formatearNumero("P",desctoTotal);
           }
           template+=
           `<tr idVenta=${c.id_venta} class='${c.estado}'>
             <td>${c.nombre}</td>
-            <td>${c.estado_prod}</td>
+            <td>${c.estado_venta}</td>
             <td>${c.fecha}</td>
             <td>${c.nombre_prod}</td>
             <td>${c.cantidad}</td>
             <td>${c.metodo_pago}</td>
             <td>${formatearNumero("P",c.valor)}</td>
             <td>${formatearNumero("P",c.iva)}</td>
-            <td>${formatearNumero("P",c.valor_descuento)}</td>
+            <td>${formatearNumero("P",c.descto)}</td>
             <td>${formatearNumero("P",c.valor_total)}</td>
           </tr>`;
           nomCaja = c.nom_caja;

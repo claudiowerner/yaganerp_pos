@@ -19,7 +19,6 @@ function confirmarPaga(ticket, id, formaPago)
 		"id_venta": id,
 		"idCierre": idCaja,
 		"nomCaja": nomCaja,
-		"producto": descProd,
 		"descto": descto
 	}
 

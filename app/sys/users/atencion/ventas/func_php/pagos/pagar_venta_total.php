@@ -13,7 +13,6 @@
 	$id_cl = $_SESSION['user']["id_cl"];
 	
 	
-	$producto = $_POST['producto'];
 	$fecha = $_POST['fecha'];
 	$hora = $_POST['hora'];
 	$forma_pago = $_POST['forma_pago'];
@@ -97,33 +96,7 @@
 	$r = '';
 	//realizar descuentos en tabla productos
 	$cp_pedido = 0;
-	for($i = 0;$i<count($producto); $i++)
-	{
-		$id = $producto[$i]["id_venta"];
-		$valor = $producto[$i]["valor"];
-		$valorDescto = $valor*$descto;
-		$valorTotal = $valor - $valorDescto;
-
-		$sql = 
-		"UPDATE ventas SET valorDescto = '$valorTotal' WHERE id = '$id' AND id_cl = '$id_cl'";
-		$res = $conexion->query($sql);
-
-		//acrónimo cp= Cantidad Pedido
-		$np = $producto[$i]['nom_prod'];
-
-		//CONTAR CANTIDAD DE PRODUCTOS SOLICITADOS 
-		//DESCONTAR CANTIDAD DE PRODUCTO DE LA BD
-		$sql = 
-		"UPDATE productos p
-		JOIN ventas v
-		ON p.id_prod = v.producto
-		SET p.cantidad = (p.cantidad-$cp_pedido) 
-		WHERE nombre_prod = '$np'
-		AND v.id_venta = $id_venta";
-		$r5 = $conexion->query($sql);;
-
-		
-	}
+	
 
 	//CONSULTAR VALOR TOTAL DE LA VENTA
 	$sql = 
@@ -139,7 +112,6 @@
 	{
 		$monto = $row["monto"];
 	}
-	echo "forma_pago: $forma_pago";
 	//REGISTRO EN MONTO_CAJA
 	if($forma_pago==1)
 	{
@@ -166,7 +138,7 @@
 	
 	
 
-	if($r1&&$r2&&$r3&&$r5)
+	if($r1&&$r2&&$r3)
 	{
 		echo "Pago registrado correctamente";
 	}
