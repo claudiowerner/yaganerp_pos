@@ -37,7 +37,6 @@ $("#btnModificarPlan").on("click", function(e)
         "usuarios": numUsuarios,
         "cajas": numCajas,
         "valor": valorPlan,
-        "estado": ep
     }
     
     let respuesta = modificarPlan(datos);

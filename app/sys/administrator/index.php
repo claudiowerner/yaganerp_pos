@@ -104,49 +104,8 @@
                                         </ul>
 
                                         <div class="tab-content">
-                                            <div id="clientes" class="tab-pane fade">
-                                                <h1>Clientes</h1>
-                                                <button type="button" id="btnAgregarCliente" class="btn btn-success">Agregar cliente</button>
-                                                <property name="characterEncoding" value="UTF-8">
-
-                                                    <table id="producto" width="100%" class="table table-bordered table-hover dt-resposive display nowrap">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Nombre</th>
-                                                                <th>Rut</th>
-                                                                <th>Estado</th>
-                                                                <th>Fecha registro</th>
-                                                                <th>Paga desde</th>
-                                                                <th>Paga hasta</th>
-                                                                <th>Estado pago</th>
-                                                                <th>Acción</th>
-                                                                <th>Claves</th>
-                                                                <th>Eliminar</th>
-                                                            </tr>
-                                                        </thead>
-                                                    </table>
-                                                </property>
-                                            </div>
-                                            <div id="plan_cliente" class="tab-pane fade">
-                                            <h1>Planes</h1>
-                                                <button type="button" class="btn btn-success" id="btnAgregarPlan">Agregar plan</button>
-                                                <property name="characterEncoding" value="UTF-8">
-
-                                                    <table id="planes" width="100%" class="table table-bordered table-hover dt-resposive display nowrap">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Id</th>
-                                                                <th>Nombre</th>
-                                                                <th>Usuarios</th>
-                                                                <th>Cajas</th>
-                                                                <th>Valor</th>
-                                                                <th>Editar</th>
-                                                            </tr>
-                                                        </thead>
-                                                    </table>
-                                                </property>
-                                            </div>
-                                        </div>
+                                            <?php require "items/cliente/cliente.php";?>
+                                            <?php require "items/planes/planes.php";?></div>
                                     </div>
                                 </div>
                             </div>
@@ -167,64 +126,7 @@
     ================================================== -->
     <!-- Main jQuery Plugins -->
     <?php require "cdn_css/cdn/cdn_index.php";?></body>
-    <script type="text/javascript" src="../datatables/datatables.js"></script>
-    <script src = "js/planes/leer_planes/cargar_select_planes.js"></script>
-    
-    
-    <script src = "../js/numberFormat.js"></script>
-    <script src = "js/pestañas/pestañas.js"></script>
-    <script src = "js/giros/cargarGiros.js"></script>
-    <!--Clientes-->
-    <script src = "js/cliente/cliente/crear_cliente/crear_cliente.js"></script>
-    <script src = "js/cliente/cliente/crear_cliente/validar_rut.js"></script>
-    <script src = "js/cliente/cliente/editar_clientes/editar_cliente.js"></script>
-    <script src = "js/cliente/cliente/read_clientes/mostrar_info_cliente.js"></script>
-    <script src = "js/cliente/cliente/read_clientes/read_clientes.js"></script>
-    <script src = "js/cliente/cliente/eliminar_cliente/eliminar_cliente.js"></script>
-    <script src = "js/cliente/comprobante/abrir_comprobante_seleccionado.js"></script>
-    <script src = "js/cliente/comprobante/pagos_cliente.js"></script>
-    <script src = "js/cliente/comprobante/cargar_archivos_comprobantes.js"></script>
-    <script src = "js/cliente/comprobante/cargar_comprobante_seleccionado.js"></script>
-    <script src = "js/cliente/comprobante/cambiar_comprobante.js"></script>
-    <script src = "js/cliente/comprobante/cargar_archivos.js"></script>
-    <script src = "js/cliente/comprobante/cargar_archivos_nuevo_comprobante.js"></script>
-    <script src = "js/cliente/comprobante/cargar_nuevo_comprobante.js"></script>
-    <script src = "js/cliente/comprobante/cargar_periodo_comprobante.js"></script>
-    <script src = "js/cliente/comprobante/editar_periodo.js"></script>
-    <script src = "js/cliente/comprobante/validar_pago_en_uso.js"></script>
-
-    <!--Plazo de pago-->
-    <script src = "js/cliente/plazo_pago/cargar_plazo_pago.js"></script>
-    
-    <!--Resumen de pago-->
-    <script src = "js/cliente/resumen_pago/resumen_pago.js"></script>
-
-    <!--Correo-->
-    <script src = "js/cliente/cliente/correo/correo_registro.js"></script>
-
-    <!--Pago-->
-    <script src = "js/cliente/pago/leer_pagos/cargarTipoPago.js"></script>
-    <script src = "js/cliente/pago/crear_pago/crear_nuevo_pago.js"></script>
-    <script src = "js/cliente/pago/crear_pago/abrir_modal_registro_pago.js"></script>
-    <script src = "js/cliente/pago/crear_pago/pagar_periodo_independiente.js"></script>
-    <script src = "js/cliente/pago/leer_pagos/abrir_modal_tabla_pagos.js"></script>
-    <script src = "js/cliente/pago/calculo/calcular_precio_nuevo_pago.js"></script>
-    <script src = "js/cliente/pago/editar_pago/abrir_modal_editar_pago.js"></script>
-    <script src = "js/cliente/pago/editar_pago/editar_pago.js"></script>
-
-    <!--Usuario-->
-    <script src = "js/cliente/cliente/usuarios/crear_usuario_admin.js"></script>
-    <script src = "js/cliente/cliente/usuarios/cambiar_contraseña.js"></script>
-
-    <!--Planes-->
-    <script src = "js/planes/crear_plan/crear_plan.js"></script>
-    <script src = "js/planes/leer_planes/leer_planes.js"></script>
-    <script src = "js/planes/editar_plan/editar_plan.js"></script>
-    <script src = "js/planes/eliminar_plan/eliminar_plan.js"></script>
-    <script src = "js/planes/eliminar_plan/validar_uso_plan.js"></script>
-
-
-    <script src = "../js/validarRut.js"></script>
+    <?php require "items/scripts/scripts.php";?>
     
 
 </html>
