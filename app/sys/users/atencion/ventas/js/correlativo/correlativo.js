@@ -18,7 +18,7 @@ function correlativo()
         }
     )
     .fail(function(e)
-        {
-            msjes_swal("Error correlativo",e,"error");
-        })
+    {
+        msjes_swal("Error correlativo",e,"error");
+    })
 }

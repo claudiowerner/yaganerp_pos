@@ -35,7 +35,7 @@
     # descargar datos de la venta
     $sql = 
     "SELECT DATE_FORMAT(fecha, '%d-%m-%Y %H:%i:%s') AS fecha,
-    descto, (valor*cantidad) AS valor
+    (valor*cantidad) AS valor
     FROM ventas 
     WHERE id_venta = $ids 
     AND id_cl = $id_cl 
@@ -46,9 +46,20 @@
     while($row = $res->fetch_assoc())
     {
         $fecha = $row["fecha"];
-        $descto = $row["descto"];
         $valorVenta = $valorVenta + $row["valor"];
         $cont++;
+    }
+
+    //obtener % de descuento de la venta
+    $sql = 
+    "SELECT descuento 
+    FROM correlativo 
+    WHERE id_cl = $id_cl
+    AND correlativo = $ids";
+    $res = $conexion -> query($sql);
+    while($row = $res -> fetch_array())
+    {
+        $descto = $row["descuento"];
     }
     
     $valDescto = ($descto/100)*$valorVenta;

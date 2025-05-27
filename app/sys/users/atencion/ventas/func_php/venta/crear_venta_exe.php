@@ -40,7 +40,7 @@
 		$resultado = $conexion->query($sql);
 		while ($row = $resultado->fetch_array())
 		{
-			$valor = $row['valor_venta']*$cantProd;
+			$valor = $row['valor_venta'];
 		}
 
 		//obtener fecha

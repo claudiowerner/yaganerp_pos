@@ -78,7 +78,7 @@
 		}		
 		
 		$sql = "INSERT INTO correlativo VALUES 
-		(null, $corr, '$id_cl', '$idCaja', '$id_us', '$boleta', '0', '0', '$idCierre', 'A', '$fecha', '0000-00-00 00:00:00')";
+		(null, $corr, '$id_cl', '$idCaja', '$id_us', '$boleta', '0', '0', '0', '$idCierre', 'A', '$fecha', '0000-00-00 00:00:00')";
 		$r2 = $conexion->query($sql);
 		   
 		if($r1&&$r2)

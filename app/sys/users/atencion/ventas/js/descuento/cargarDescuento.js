@@ -4,7 +4,7 @@ function cargarDescto()
     $.ajax(
         {
             url:"func_php/descuento/cargarDescto.php",
-            data: {"id_venta": id_venta},
+            data: {"correlativo": id_venta},
             type: "POST",
             success: function(e)
             {
