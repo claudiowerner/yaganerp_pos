@@ -1,92 +1,120 @@
 <?php
 	session_start();
-	date_default_timezone_set('America/Santiago');	ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
+	date_default_timezone_set('America/Santiago');
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	
+	error_reporting(E_ALL);
+	require_once '../../../conexion.php';
 
-		error_reporting(E_ALL);
-		if(isset($_SESSION['user'])){
-			$tipo = $_SESSION['user']['tipo_usuario'];
-			if($tipo == 1){
-				//header('Location: ../');
-			}
-		}
-		else
-		{
-			header('Location: ../../../../index.php');
-		}
-     	require_once '../../../conexion.php';
-
-	    $id_us = $_SESSION['user']['id'];
-	    $nombre = $_SESSION['user']["nombre"];
-	    $id_cl = $_SESSION['user']["id_cl"];
+	$id_us = $_SESSION['user']['id'];
+    $nombre = $_SESSION['user']["nombre"];
+	$id_cl = $_SESSION['user']["id_cl"];
 	    
 
-		//obtener fecha
-		$hoy = getdate();
-		$hora = $hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"];
-		$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hora;
+	//obtener fecha
+	$hoy = getdate();
+	$hora = $hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"];
+	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hora;
 
-	    $idCaja = $_GET['idCaja'];
+	$idCaja = $_GET['idCaja'];
 
-		//obtener ID venta
-		$sql = "SELECT MAX(id+1) as id FROM ventas WHERE id_cl='$id_cl'";
-		$r1 = $conexion->query($sql);
-		$id_venta = 0;
-		while($row = $r1->fetch_array())
-		{
-			$id_venta = $row['id'];
-		}
-
-		//obtener ID caja/turno abierto
-		$idCierre = "";
-		$sql = 
-		"SELECT id FROM cierre_caja 
-		WHERE id_cl = '$id_cl'
-		AND estado = 'A'";
+	//obtener ID venta
+	$sql = "SELECT MAX(id+1) as id FROM ventas WHERE id_cl='$id_cl'";
+	$r1 = $conexion->query($sql);
+	$id_venta = 0;
+	while($row = $r1->fetch_array())
+	{
+		$id_venta = $row['id'];
+	}
+	
+	//obtener ID caja/turno abierto
+	$idCierre = "";
+	$sql = 
+	"SELECT id FROM cierre_caja 
+	WHERE id_cl = '$id_cl'
+	AND estado = 'A'";
 		
-		$r = mysqli_query($conexion,$sql);
+	$r = mysqli_query($conexion,$sql);
 
-		while($row = $r->fetch_array())
-		{
-			$idCierre = $row["id"];
-		}
-
-		//registro tabla correlativo
+	while($row = $r->fetch_array())
+	{
+		$idCierre = $row["id"];
+	}
+	
+	$json = array(
+		"corr" => true,
+		"titulo" => "Excelente",
+		"mensaje" => "Correlativo generado correctamente",
+		"icono" => "success"
+	);
+	//registro tabla correlativo
 		
-		$id_corr = "SELECT MAX(id+1) AS id, MAX(correlativo+1) as corr, max(boleta) AS boleta FROM correlativo WHERE id_cl = '$id_cl'";
-		$r_id = mysqli_query($conexion, $id_corr);
-		$arr = array();
-		$id=1;
-		$corr=1;
-		$boleta=1;
+	$id_corr = "SELECT MAX(id+1) AS id, MAX(correlativo+1) as corr, max(boleta) AS boleta 
+	FROM correlativo WHERE id_cl = '$id_cl'";
+	$r_id = mysqli_query($conexion, $id_corr);
+	$arr = array();
+	$id=1;
+	$corr=1;
+	$boleta=1;
 
-		if($r_id)
+	if($r_id)
+	{
+		while($row = $r_id->fetch_array())
 		{
-			while($row = $r_id->fetch_array())
+			if(isset($row['id'])&&isset($row['corr'])&&isset($row['boleta']))
 			{
-				if(isset($row['id'])&&isset($row['corr'])&&isset($row['boleta']))
-				{
-					$id = $row['id'];
-					$corr = $row['corr'];
-					$boleta = $row['boleta'];
-				}
+				$id = $row['id'];
+				$corr = $row['corr'];
+				$boleta = $row['boleta'];
 			}
 		}
-		else
-		{
-			echo "No se generó el ID";
-		}		
-		
-		$sql = "INSERT INTO correlativo VALUES 
-		(null, $corr, '$id_cl', '$idCaja', '$id_us', '$boleta', '0', '0', '0', '$idCierre', 'A', '$fecha', '0000-00-00 00:00:00')";
-		$r2 = $conexion->query($sql);
-		   
-		if($r1&&$r2)
-		{
-			echo 1;
-		}
-		else
-		{
-			die("Error al agregar correlativo: ". mysqli_error($conexion));
-		}
+	}
+	else
+	{
+		echo "No se generó el ID";
+	}		
+	
+	$sql = "INSERT INTO correlativo VALUES 
+	(null, 
+	$corr, 
+	'$id_cl', 
+	'$idCaja', 
+	'$id_us', 
+	'$boleta', 
+	'0', 
+	'0', 
+	'$idCierre', 
+	'A', 
+	'$fecha', 
+	'0000-00-00 00:00:00')";
+	$r2 = $conexion->query($sql);
+	if(!$r1)
+	{
+		$json = array(
+			"corr" => false,
+			"titulo" => "Error corr#1",
+			"mensaje" => "Error al generar correlativo: $conexion->error",
+			"icono" => "success"
+		);
+		echo json_encode($json);
+		die();
+	}
+	if(!$r2)
+	{
+		$json = array(
+			"corr" => false,
+			"titulo" => "Error corr#2",
+			"mensaje" => "Error al generar correlativo: $conexion->error",
+			"icono" => "error"
+		);
+		echo json_encode($json);
+		die();
+	}
+	if($r1&&$r2)
+	{
+		echo json_encode($json);
+		die();
+	}
+	
 ?>

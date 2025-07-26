@@ -12,6 +12,8 @@
     $nombre = $_SESSION['user']["nombre"];
     echo $id_cl = $_SESSION['user']["id_cl"];
 	
+	//impresion de info en DOM
+	$json = array();
 
 	if(isset($_GET['idProd'])&&$_GET['cantProd'])
 	{
@@ -89,12 +91,24 @@
 		    
 		if($resultado)
 		{
-			echo "Venta agregada correctamente";
+			$json = array(
+				"venta" => true,
+				"titulo" => "Excelente",
+				"mensaje" => "Venta agregada correctamente",
+				"icono" => "success"
+			);
 		}
 		else
 		{
-			die("Error al agregar venta: ". $conexion->error);
+			$json = array(
+				"venta" => false,
+				"titulo" => "Error",
+				"mensaje" => "Ha ocurrido un error: $conexion->error",
+				"icono" => "error"
+			);
 		}
+		echo json_encode($json);
+		
 	}
 	else
 	{
