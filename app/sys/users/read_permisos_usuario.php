@@ -4,37 +4,52 @@
 * además, esta clase se usa para cargar los permisos de los usuarios a la hora de vender, por lo que esta clase
 * si o si debe recibir el ID del usuario para verificar los permisos*/
 
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
-session_start();
+	error_reporting(E_ALL);
+	ini_set('display_errors', 'On');
+	session_start();
 
-if(isset($_SESSION['user'])){
-  $tipo = $_SESSION['user']['tipo_usuario'];
-  $nombre = $_SESSION['user']["nombre"];
-  $id_cl = $_SESSION['user']["id_cl"];
-  
-  $id_usu = $_POST["id_usu"];
+	if(isset($_SESSION['user'])){
+		$tipo = $_SESSION['user']['tipo_usuario'];
+		$nombre = $_SESSION['user']["nombre"];
+		$id_cl = $_SESSION['user']["id_cl"];
+		$id_usu = $_POST["id_usu"];
+		
+		
+		require_once '../conexion.php';
 
-  require_once '../conexion.php';
+		//Variable que almacenará la cadena string que será retornada desde la BD con los permisos 
+		$res_bd = "";
+		$split = "";
+		$json = 0;
 
-    //query
-  $sql = "SELECT permisos FROM usuarios WHERE id_cl = $id_cl AND id = $id_usu;";
-  $resultado = $conexion->query($sql);;
-  if ($resultado->num_rows > 0)
-  {
-    $json = array();
-    while ($row = $resultado->fetch_array())
-    {
-      echo "Permisos ".$row["permisos"];
-    };
-  }
-  else
-  {
-    echo die("Error al obtener permisos: ". mysqli_error($conexion));
-  }
-}
-else
-{
-  header('Location: ../');
-}
+		//query
+		$sql = "SELECT permisos FROM usuarios WHERE id_cl = $id_cl AND id = $id_usu;";
+		$resultado = $conexion->query($sql);;
+		if ($resultado->num_rows > 0)
+		{
+			$json = array();
+			while ($row = $resultado->fetch_array())
+			{
+				$res_bd = $row["permisos"];
+			};
+
+			$split = explode(",",$res_bd);
+
+			for($i=0; $i<count($split);$i++)
+			{
+				$json[]= array(
+					"permiso" => $split[$i]
+				);
+			}
+			echo json_encode($json);
+		}
+		else
+		{
+			echo die("Error al obtener permisos: ". mysqli_error($conexion));
+		}
+	}
+	else
+	{
+		header('Location: ../');
+	}
 ?>

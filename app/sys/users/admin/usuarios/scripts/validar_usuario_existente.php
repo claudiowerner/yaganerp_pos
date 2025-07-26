@@ -22,6 +22,7 @@
 	$sql = 
 	"SELECT * FROM usuarios
 	WHERE user = '$nombre$id_cl'
+	AND estado = 'S'
 	AND id_cl = $id_cl";
 	$resultado = $conexion->query($sql);
 

@@ -8,21 +8,22 @@ $.ajax(
         type: "POST",
         success: function(e)
         {
-            if(!e.match(/1/)||e==null||e=="")
+            let permiso_ventas = false;
+            
+            let j = JSON.parse(e)
+            j.forEach(j=>{
+                if(j.permiso!=2)
+                {
+                    permiso_ventas = false;
+                }
+                else
+                {
+                    permiso_ventas = true;
+                }
+            })
+            if(permiso_ventas == false)
             {
                 $("#div_ventas").html("Sin permiso de ventas.");
-            }
-            if(!e.match(/2/)||e==null||e=="")
-            {
-                $("#div_pagarCta").html("Sin permiso de pagar cuentas.");
-            }
-            if(!e.match(/3/)||e==null||e=="")
-            {
-                $("#div_anular").html("Sin permiso de anular venta.");
-            }
-            if(!e.match(/4/)||e==null||e=="")
-            {
-                $("#div_cambiarMesa").html("Sin permiso de cambiar la mesa.");
             }
         }
     }
