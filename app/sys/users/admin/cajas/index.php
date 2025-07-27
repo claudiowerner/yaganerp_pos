@@ -119,5 +119,6 @@
     <script src="script_js/crear_caja.js"></script>
     <script src="script_js/eliminar_caja.js"></script>
     <script src="script_js/validar_caja_con_ventas.js"></script>
+    <script src="script_js/eliminar_caja_ajax.js"></script>
 
 </html>

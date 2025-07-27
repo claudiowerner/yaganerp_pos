@@ -26,6 +26,7 @@
 	if($resultado)
 	{
 		$json = array(
+			"crear" => true,
 			"titulo" => "Excelente",
 			"mensaje" => "Caja creada correctamente",
 			"icono" => "success"
@@ -34,6 +35,7 @@
 	else
 	{
 		$json = array(
+			"crear" => false,
 			"titulo" => "Error",
 			"mensaje" => "Ha ocurrido un error al crear la caja: ".$conexion->error,
 			"icono" => "error"

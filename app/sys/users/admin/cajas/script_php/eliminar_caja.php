@@ -46,6 +46,7 @@
 	if($res&&$res2)
 	{
 		$json = array(
+			"eliminar" => true,
 			"titulo" => "Excelente",
 			"mensaje" => "Caja eliminada correctamente",
 			"icono" => "success"
@@ -54,6 +55,7 @@
 	else
 	{
 		$json = array(
+			"eliminar" => false,
 			"titulo" => "Error",
 			"mensaje" => "Ha ocurrido un error al eliminar la caja: ".$conexion->error,
 			"icono" => "success"

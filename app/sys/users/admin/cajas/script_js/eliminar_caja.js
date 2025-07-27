@@ -1,14 +1,3 @@
-/* ------------------------------------ PROCEDIMIENTO EN BD -------------------------------- */
-
-function eliminarCajaBD(id)
-{
-    return $.ajax({
-        url:"script_php/eliminar_caja.php",
-        data: {"idCaja": id},
-        type: "POST",
-        async: false
-    }).responseText;
-}
 
 
 /* --------------------------------------------- MODAL DE EDICIÓN ------------------------------------ */
@@ -33,10 +22,15 @@ function eliminarCaja(idCaja, nombre)
             if (pagar)
             {
                 let respuesta = eliminarCajaBD(idCaja);
-                let json = JSON.parse(respuesta);
-                msjes_swal(json.titulo, json.mensaje, json.icono);
+                let j = JSON.parse(respuesta);
+                msjes_swal(j.titulo, j.mensaje, j.icono);
                 cargarCajasActivas();
-                $('#producto').DataTable().ajax.reload();
+                if(j.eliminar)
+                {
+                    $('#producto').DataTable().ajax.reload();
+                    $("#msjesCajasActivas").hide();
+                    validarCajasActivas();
+                }
             }
             else 
             {
