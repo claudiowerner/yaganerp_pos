@@ -123,7 +123,13 @@
     <!-- Main jQuery Plugins -->
     <?php require "../../cdn_css/cdn/cdn_sub_item.php";?></body>
 
-    <script src="cuentas.js"></script>
     <script src="../../../../js/numberFormat.js"></script>
 
+    
+    <!--Leer cuentas-->
+    <script src="script_js/leer/cargar_nombre_cliente.js"></script>
+    <script src="script_js/leer/leer_cuentas.js"></script>
+
+    
+    <script src="script_js/main/main.js"></script>
 </html>

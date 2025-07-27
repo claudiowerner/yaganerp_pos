@@ -114,13 +114,26 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
 
-    <script src="javascript/clientes.js"></script>
-    <script src="javascript/datatable_cliente.js"></script>
-    <script src="javascript/validar_rut_en_bd.js"></script>
-    <script src="javascript/crear_cliente.js"></script>
-    <script src="javascript/editar_cliente.js"></script>
-    <script src="javascript/eliminar_cliente.js"></script>
-    <script src="javascript/contar_cuentas_pendientes_clte.js"></script>
+    <!--Leer cuentas-->
+    <script src="javascript/leer/ver_cuentas.js"></script>
+    <script src="javascript/leer/datatable_cliente.js"></script>
+    <script src="javascript/leer/contar_cuentas_pendientes_clte.js"></script>
+
+    <script src="javascript/leer/validar_rut_en_bd.js"></script>
+    
+    <!--Crear cuentas-->
+    <script src="javascript/crear/abrir_modal_crear_cliente.js"></script>
+    <script src="javascript/crear/crear_cliente.js"></script>
+    <script src="javascript/crear/crear_cliente_ajax.js"></script>
+
+    <!--Editar cuentas-->
+    <script src="javascript/editar/abrir_modal_editar.js"></script>
+    <script src="javascript/editar/editar_cliente_ajax.js"></script>
+    <script src="javascript/editar/editar_cliente.js"></script>
+
+    <!--Eliminar cuentas-->
+    <script src="javascript/eliminar/eliminar_cliente_ajax.js"></script>
+    <script src="javascript/eliminar/eliminar_cliente.js"></script>
     <script src="../../../js/validarRut.js"></script>
 
 </html>
