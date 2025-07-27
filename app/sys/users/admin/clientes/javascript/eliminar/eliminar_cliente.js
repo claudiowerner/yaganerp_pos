@@ -16,7 +16,6 @@ function eliminarCliente(rut, nombre)
         if (eliminar)
         {
             let contar_cuentas = parseInt(validarCuentasActivasBD(rut));
-            alert(contar_cuentas)
             if(contar_cuentas==0)
             {
                 eliminarClienteBD(rut);
