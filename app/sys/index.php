@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/style.css">
 
 
-    <title>.:WebPos:.</title>
+    <title>.:VendeloPOS:.</title>
     <style type="text/css">
 
         .bg
@@ -62,7 +62,7 @@
 		<div class="container" style="">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5 col-lg-12">
-					<h2 class="heading-section"><strong>Bienvenido a WebPOS&nbsp;</strong> </h2>
+					<h2 class="heading-section"><strong>Bienvenido a VendeloPOS&nbsp;</strong> </h2>
 					<h3 class="heading-section"><strong>Sistema de ventas online&nbsp;</strong> </h3>
 				</div>
 			</div>

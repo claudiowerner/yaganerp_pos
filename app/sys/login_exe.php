@@ -76,7 +76,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 			}
 			else
 			{
-				echo json_encode(array('error' => true,'mensaje' => 'Su contraseña provisoria ya caducó. Póngase en contacto con el equipo de WebPOS. Días transcurridos: '.$dias));
+				echo json_encode(array('error' => true,'mensaje' => 'Su contraseña provisoria ya caducó. Póngase en contacto con el equipo de VendeloPOS. Días transcurridos: '.$dias));
 			}
 		}
 		else

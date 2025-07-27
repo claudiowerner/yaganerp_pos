@@ -34,7 +34,7 @@
     <meta content="" name="author">
     <link href="ico/favicon.ico" rel="shortcut icon">
 
-    <title>.:WebPOS Administrador:.</title>
+    <title>.:VendeloPOS Administrador:.</title>
 
     <link rel="stylesheet" href="switch.css">
 

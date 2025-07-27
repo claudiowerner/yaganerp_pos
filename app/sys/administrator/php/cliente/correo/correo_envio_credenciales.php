@@ -16,7 +16,7 @@
 
 	function enviarCorreo($nombre, $correo, $user, $pass, $fecha)
 	{
-		$asunto = "Credenciales de acceso a WebPOS";
+		$asunto = "Credenciales de acceso a VendeloPOS";
 		$cuerpo = "Hola, $nombre:
 		\n
 		\n
@@ -32,7 +32,7 @@
 		\n
 		Ten en cuenta que, la contraseña es PROVISORIA y CADUCARÁ EN 24 HORAS desde la fecha de creación mostrada más arriba.
 		\n
-		El equipo de WebPOS.";
+		El equipo de VendeloPOS.";
 	
     
 		//Configuracion del servidor
@@ -46,7 +46,7 @@
 		$mail -> Port			= 465;
 
 		//Receptores
-		$mail -> setFrom("noreply@calendarit.cl", "Contacto WebPOS Software");
+		$mail -> setFrom("noreply@calendarit.cl", "Contacto VendeloPOS Software");
 		$mail -> addAddress($correo, $correo);
 		//contenido del mail
 		$mail -> Subject 		= $asunto;

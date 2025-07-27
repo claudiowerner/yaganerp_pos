@@ -29,7 +29,7 @@ function enviarMail($cuerpo, $correo, $asunto)
 			$mail -> Port			= 465;
 
 			//Receptores
-			$mail -> setFrom("claudiowernern@hotmail.com", "Contacto WebPOS");
+			$mail -> setFrom("claudiowernern@hotmail.com", "Contacto VendeloPOS");
 			$mail -> addAddress($correo, $correo);
 
 			//contenido del mail

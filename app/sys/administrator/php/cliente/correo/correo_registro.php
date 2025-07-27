@@ -17,8 +17,8 @@
     $correo = $_POST["correo"];
     $nombre = $_POST["nombre"];
 
-    $asunto = "Registro exitoso en WebPOS - Contacto WebPOS";
-	$cuerpo = "Hola, $nombre:\n\nTe informamos que se ha creado una cuenta en el sistema de ventas WebPOS exitosamente. En un próximo correo, deberían llegar las credenciales para que puedas acceder a tu cuenta.\n\n El equipo de WebPOS.";
+    $asunto = "Registro exitoso en VendeloPOS - Contacto VendeloPOS";
+	$cuerpo = "Hola, $nombre:\n\nTe informamos que se ha creado una cuenta en el sistema de ventas VendeloPOS exitosamente. En un próximo correo, deberían llegar las credenciales para que puedas acceder a tu cuenta.\n\n El equipo de VendeloPOS.";
 
 	//respuesta que se enviará al DOM
 	$json = array();
@@ -36,7 +36,7 @@
 		$mail -> Port			= 465;
 
 		//Receptores
-		$mail -> setFrom("noreply@calendarit.cl", "Contacto WebPOS Software");
+		$mail -> setFrom("noreply@calendarit.cl", "Contacto VendeloPOS Software");
 		$mail -> addAddress($correo, $correo);
 		//contenido del mail
 		$mail -> isHTML 		= true;

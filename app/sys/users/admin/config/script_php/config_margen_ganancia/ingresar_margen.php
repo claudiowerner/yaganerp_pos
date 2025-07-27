@@ -17,7 +17,7 @@
 
   if($resultado -> num_rows<=0)
   {
-    $sql = "INSERT INTO `webpos`.`margen_ganancia` (`id`, `id_cl`, `porcentaje`) VALUES (null, '$id_cl', $porcentaje);";
+    $sql = "INSERT INTO `VendeloPOS`.`margen_ganancia` (`id`, `id_cl`, `porcentaje`) VALUES (null, '$id_cl', $porcentaje);";
   }
   else
   {

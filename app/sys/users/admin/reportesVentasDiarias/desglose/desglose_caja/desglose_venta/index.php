@@ -18,7 +18,7 @@
   <meta content="" name="author">
   <link href="ico/favicon.ico" rel="shortcut icon">
 
-  <title>.:WebPOS Administrador:.</title>
+  <title>.:VendeloPOS Administrador:.</title>
 
   <?php require "../../../../cdn_css/css/css_sub_sub_sub_item.php";?>
   <link rel="stylesheet" href="../../../css/estadoItem.css">
