@@ -1,10 +1,11 @@
 <?php
-  session_start();
+
+    session_start();
 
   if(isset($_SESSION['user']))
   {
     $tipo = $_SESSION['user']['tipo_usuario'];
-    if($tipo == 3)
+    if($tipo != 1)
     {
       header('Location: ../');
     }

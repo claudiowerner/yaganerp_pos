@@ -3,19 +3,6 @@
   session_start();
 	date_default_timezone_set('America/Santiago');
 
-  if(isset($_SESSION['user']))
-  {
-    $tipo = $_SESSION['user']['tipo_usuario'];
-    if($tipo == 3)
-    {
-      header('Location: ../');
-    }
-  }
-  else
-  {
-    header('Location: ../');
-  }
-
 
   $id_us = $_SESSION['user']['id'];
   $nombre = $_SESSION['user']["nombre"];
