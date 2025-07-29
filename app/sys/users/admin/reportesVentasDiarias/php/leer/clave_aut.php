@@ -13,7 +13,7 @@ if(isset($_SESSION['user'])){
 
   $clave = $_POST['clave'];
 
-  require_once '../../../conexion.php';
+	require_once '../../../../../conexion.php';
 
   //query
   $sql = "SELECT * FROM autorizacion WHERE id_cl = '$id_cl' AND clave = $clave";

@@ -115,10 +115,35 @@
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?></body>
     <script type="text/javascript" src="../../../datatables/datatables.js"></script>
-    <script src="js/cargar_cierres_caja.js"></script>
-    <script src="js/id_usuario.js"></script>
-    <script src="js/repVentas.js"></script>
-    <script src="js/imprimir.js"></script>
-    <script src="js/editarCaja.js"></script>
+
+    
+    
+    <!--Crear caja-->
+    <script src="js/crear/crear_caja.js"></script>
+    <script src="js/crear/crear_caja_ajax.js"></script>
+    
+    <!--Leer-->
+    <script src="js/leer/validar_solicitud_clave.js"></script>
+    <script src="js/leer/validar_cajas_venta_abiertas.js"></script>
+    <script src="js/leer/abrir_desglose.js"></script>
+    <script src="js/leer/leer_cierres_caja_ajax.js"></script>
+    <script src="js/leer/leer_cierres_caja_ajax_filtrados.js"></script>
+    <script src="js/leer/validar_clave_autorizacion.js"></script>
+    <script src="js/leer/cargar_cierres_caja.js"></script>
+    <script src="js/leer/cargar_cierres_caja.js"></script>
+    <script src="js/leer/id_usuario.js"></script>
+    <script src="js/leer/imprimir.js"></script>
+    <script src="js/leer/cierre_caja.js"></script>
+    <script src="js/leer/filtro_fechas_cierre_caja.js"></script>
+
+    <!--Editar caja-->
+    <script src="js/editar/validar_cierre_caja.js"></script>
+    <script src="js/editar/editar_caja.js"></script>
+    <script src="js/editar/editar_caja_ajax.js"></script>
+    <script src="js/editar/abrir_modal_editar.js"></script>
+    <script src="js/editar/cerrar_caja.js"></script>
+    <!--Main-->
+    <script src="js/main/main.js"></script>
+    
 
 </html>

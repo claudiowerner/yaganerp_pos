@@ -22,7 +22,7 @@
 	
 
 
-	require_once '../../../conexion.php';
+	require_once '../../../../../conexion.php';
 	//arrays
 	$arrId = array();
 	$arrNombreCaja = array();

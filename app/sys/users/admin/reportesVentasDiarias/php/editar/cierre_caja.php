@@ -24,7 +24,7 @@
 	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"];
   $idCierre = $_GET['idCierre'];
 
-  require_once '../../../conexion.php';
+	require_once '../../../../../conexion.php';
 
   //anular ventas con valor 0
   $sql = 

@@ -11,7 +11,7 @@ $id_us = $_SESSION['user']['id'];
     
     $mostrar = "N";
 
-    require_once '../../../conexion.php';
+	require_once '../../../../../conexion.php';
 
     //query
     $sql = 

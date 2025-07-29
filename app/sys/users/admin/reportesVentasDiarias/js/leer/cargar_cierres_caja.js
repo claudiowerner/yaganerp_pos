@@ -1,24 +1,3 @@
-/* --------------------------------------------- FUNCION AJAX --------------------------------------- */
-function obtenerCierresCajaAjax()
-{
-    return $.ajax({
-        url: "read_cierre_caja.php",
-        type: "GET",
-        async: false
-    }).responseText;
-}
-
-function obtenerCierresCajaFiltradaAjax(desde, hasta)
-{
-    return $.ajax({
-        url: "read_cierre_caja_filtrada.php?desde="+desde+"&hasta="+hasta,
-        type: "GET",
-        async: false
-    }).responseText;
-}
-
-
-/* --------------------------------------------- FUNCION DOM ---------------------------------------- */
 function obtenerCierresCaja()
 {
     //obtener fechas escritas
@@ -38,12 +17,10 @@ function obtenerCierresCaja()
     let descarga;
     if(fechaDesde&&fechaHasta)
     {
-        console.log("entra a con filtro");
         descarga = obtenerCierresCajaFiltradaAjax(desde, hasta);
     }
     else
     {
-        console.log("entra a sin filtro");
         descarga = obtenerCierresCajaAjax();
     }
 

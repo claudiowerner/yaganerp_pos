@@ -12,8 +12,7 @@ if(isset($_SESSION['user'])){
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
     
-
-    require_once '../../../conexion.php';
+    require_once '../../../../../conexion.php';
 
     //query de ventas
     //query
