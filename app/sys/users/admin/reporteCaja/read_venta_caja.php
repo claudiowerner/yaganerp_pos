@@ -23,12 +23,30 @@ session_start();
   $arrayEstado = array();
 
   $sql =
-  "SELECT id FROM cajas WHERE id_cl = '$id_cl'";
+  "SELECT id, estado
+  FROM cajas 
+  WHERE id_cl = '$id_cl'
+  AND estado = 'S'";
 
   $res = $conexion->query($sql);;
   while($row = $res->fetch_assoc())
   {
     $arrayCaja[] = $row["id"];
+    $arrayEstado[] = $row["estado"];
+  }
+
+  //Agregar las cajas eliminadas a la lista
+  $sql = "SELECT c.id, c.estado
+  FROM cajas c
+  JOIN ventas v 
+  ON v.id_caja = c.id
+  WHERE c.id_cl = $id_cl
+  HAVING SUM(v.cantidad*v.valor)>1";
+  $res = $conexion->query($sql);;
+  while($row = $res->fetch_assoc())
+  {
+    $arrayCaja[] = $row["id"];
+    $arrayEstado[] = $row["estado"];
   }
 
   $cont = count($arrayCaja);
@@ -50,7 +68,11 @@ session_start();
   {
     $id = $arrayCaja[$i];
     $sql =
-    "SELECT COUNT(caja) AS ventas_caja, estado FROM correlativo WHERE caja = $id AND id_cl = '$id_cl'";
+    "SELECT COUNT(caja) AS ventas_caja, estado 
+    FROM correlativo 
+    WHERE caja = $id 
+    AND id_cl = '$id_cl'
+    AND estado = 'C'";
     $res = $conexion->query($sql);;
     while($row = $res->fetch_assoc())
     {
@@ -71,7 +93,11 @@ session_start();
   {
     $id = $arrayCaja[$i];
     $sql =
-    "SELECT SUM(valor) AS valor FROM ventas WHERE id_caja = $id AND id_cl = $id_cl";
+    "SELECT SUM(valor) AS valor 
+    FROM ventas 
+    WHERE id_caja = $id 
+    AND id_cl = $id_cl
+    AND estado = 'C'";
     $res = $conexion->query($sql);;
     while($row = $res->fetch_assoc())
     {
@@ -90,12 +116,18 @@ session_start();
 
   for($i=0;$i<$cont;$i++)
   {
+    $nombre_caja = $arrayNombre[$i];
+    if($arrayEstado[$i]=="N")
+    {
+      $nombre_caja = "$nombre_caja <br>(Caja eliminada)";
+    }
     $json[] = array(
       "caja" => $arrayCaja[$i],
-      "nom_caja" => $arrayNombre[$i],
+      "nom_caja" => $nombre_caja,
       "ventas_caja" => $arrayVentasCaja[$i],
       "valor_total" => $arrayValorGenerado[$i],
     );
+    sort($json);
   }
   
   echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
