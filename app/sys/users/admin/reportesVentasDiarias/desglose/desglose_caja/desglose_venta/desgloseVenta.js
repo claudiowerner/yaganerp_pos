@@ -21,59 +21,58 @@ function leerCaja()
       let template = '';
       let nomCaja = "";
       let estado_venta = "";
-        tasks.forEach(c=>{
-          $("#descto").html(c.descto)
-          if(c.estado_venta  == "CERRADO")
-          {
-            valor=parseFloat(valor)+parseFloat(c.valor);
-            valor_formateado = formatearNumero("P",valor);
-            iva=parseFloat(iva)+parseFloat(c.iva);
-            iva_formateado = formatearNumero("P",iva);
-            valorTotal=parseFloat(valorTotal)+parseFloat(c.valor_total);
-            valorTotal_formateado = formatearNumero("P",valorTotal);
-            desctoTotal=parseFloat(desctoTotal)+parseFloat(c.descto);
-            desctoTotal_formateado = formatearNumero("P",desctoTotal);
-          }
-          template+=
-          `<tr idVenta=${c.id_venta} class='${c.estado}'>
-            <td>${c.nombre}</td>
-            <td>${c.estado_venta}</td>
-            <td>${c.fecha}</td>
-            <td>${c.nombre_prod}</td>
-            <td>${c.cantidad}</td>
-            <td>${c.metodo_pago}</td>
-            <td>${formatearNumero("P",c.valor)}</td>
-            <td>${formatearNumero("P",c.iva)}</td>
-            <td>${formatearNumero("P",c.descto)}</td>
-            <td>${formatearNumero("P",c.valor_total)}</td>
-          </tr>`;
-          nomCaja = c.nom_caja;
-          estado_venta = c.estado_venta;
-        });
-        template +=
-        `<tr>
-          <td colspan=6 align=right>
-            <strong>Total:</strong>
-          </td>
-          <td>
-            <strong>${valor_formateado}</strong>
-          </td>
-          <td>
-            <strong>${iva_formateado}</strong>
-          </td>
-          <td>
-            <strong>${desctoTotal_formateado}</strong>
-          </td>
-          <td>
-            <strong>${valorTotal_formateado}</strong>
-          </td>
+      tasks.forEach(c=>{
+        $("#descto").html(c.descto)
+        if(c.estado_venta  == "CERRADO")
+        {
+          valor=parseFloat(valor)+parseFloat(c.valor);
+          valor_formateado = formatearNumero("P",valor);
+          iva=parseFloat(iva)+parseFloat(c.iva);
+          iva_formateado = formatearNumero("P",iva);
+          valorTotal=parseFloat(valorTotal)+parseFloat(c.valor_total);
+          valorTotal_formateado = formatearNumero("P",valorTotal);
+          desctoTotal=parseFloat(desctoTotal)+parseFloat(c.descto);
+          desctoTotal_formateado = formatearNumero("P",desctoTotal);
+        }
+        template+=
+        `<tr idVenta=${c.id_venta} class='${c.estado}'>
+          <td>${c.nombre}</td>
+          <td>${c.estado_venta}</td>
+          <td>${c.fecha}</td>
+          <td>${c.nombre_prod}</td>
+          <td>${c.cantidad}</td>
+          <td>${c.metodo_pago}</td>
+          <td>${formatearNumero("P",c.valor)}</td>
+          <td>${formatearNumero("P",c.iva)}</td>
+          <td>${formatearNumero("P",c.descto)}</td>
+          <td>${formatearNumero("P",c.valor_total)}</td>
         </tr>`;
-        $("#bodyDesgloseVenta").html(template);
-        $("#nombre_mesa").html(nomCaja);
-        $("#estadoVenta").html(estado_venta);
-      }
+        nomCaja = c.nom_caja;
+        estado_venta = c.estado_venta;
+      });
+      template +=
+      `<tr>
+        <td colspan=6 align=right>
+          <strong>Total:</strong>
+        </td>
+        <td>
+          <strong>${valor_formateado}</strong>
+        </td>
+        <td>
+        <strong>${iva_formateado}</strong>
+        </td>
+        <td>
+          <strong>${desctoTotal_formateado}</strong>
+        </td>
+        <td>
+          <strong>${valorTotal_formateado}</strong>
+        </td>
+      </tr>`;
+      $("#bodyDesgloseVenta").html(template);
+      $("#span_caja").html(nomCaja);
+      $("#estadoVenta").html(estado_venta);
     }
-  )
+  })
   .done( function() {
     console.log( 'Success!!' );
   }).fail( function(resp) {

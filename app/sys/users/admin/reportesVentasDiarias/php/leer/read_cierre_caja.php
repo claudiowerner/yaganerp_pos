@@ -72,7 +72,7 @@
 		$sql = "SELECT correlativo 
 		FROM correlativo 
 		WHERE id_cierre = $id
-		AND estado!='P'";
+		AND estado!='N'";
 		$res = $conexion -> query($sql);
 		while($row = $res->fetch_array())
 		{

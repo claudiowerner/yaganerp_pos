@@ -2,19 +2,14 @@
 $( document ).ready(function() {
   
   //obtener nombre y desglose de la caja
-  let caja = "";
-  let nCaja = "";
-
-  caja = $("#nCaja").text();
   nomCaja = $("#nomCaja").text();
   idCierre = $("#idCierre").text();
-
   valor = 0;
   let horaDesde = $("#horaDesde").val();
   let horaHasta = $("#horaHasta").val();
   $.ajax(
   {
-    url: 'read_desglose.php?idCaja='+caja+"&horaDesde="+horaDesde+"&horaHasta="+horaHasta+"&idCierre="+idCierre,
+    url: 'read_desglose.php?horaDesde="'+horaDesde+"&horaHasta="+horaHasta+"&idCierre="+idCierre,
     type: 'GET',
     success: function(response)
     {

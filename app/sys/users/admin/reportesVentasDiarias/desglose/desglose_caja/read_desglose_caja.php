@@ -59,12 +59,14 @@
 	//rellenar array Valor Total con los cálculos de descuento, imprimento literalmente el valor total
 	for($i = 0; $i<$cont; $i++)
 	{
+		$valor_total = 0;
 		$id = $arrCorrelativo[$i];
 		$sql = 
 		"SELECT ((valor-descto)*cantidad) AS valor 
 		FROM ventas 
 		WHERE id_cl = $id_cl 
-		AND id_venta = $id";
+		AND id_venta = $id
+		AND estado = 'C'";
 		$res = $conexion -> query($sql);
 		while($row = $res -> fetch_array())
 		{
@@ -77,6 +79,7 @@
 	for($i = 0; $i<$cont; $i++)
 	{
 		$json[] =array(
+			"id" => ($i+1),
 			'id_venta' => $arrCorrelativo[$i],
 			'creado_por' => $arrUsuario[$i],
 			'hasta' => $arrFechaPago[$i],

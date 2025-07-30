@@ -81,20 +81,12 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <!--<table>
-                                            <tr>
-                                                <td><strong>Desde</strong></td>
-                                                <td><input type="calendar" name="horaDesde" id="horaDesde" class="form-control" placeholder="HH:MM:SS"></td>
-                                                <td><strong>Hasta</strong></td>
-                                                <td><input type="text" name="horaHasta" id="horaHasta" class="form-control" placeholder="HH:MM:SS"></td>
-                                            </tr>
-                                        </table>-->
                                     </div>
                                     <div class="col-md-12">
                                         <table id="desgloseCaja" class="table table-bordered table-hover dt-resposive display nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th>ID venta</th>
+                                                    <th>#</th>
                                                     <th>Creado por</th>
                                                     <th>Fecha y hora de pago</th>
                                                     <th>Estado</th>

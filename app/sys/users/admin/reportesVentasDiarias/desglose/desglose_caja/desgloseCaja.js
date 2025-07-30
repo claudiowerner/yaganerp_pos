@@ -66,7 +66,7 @@ function cargarDesglose()
           desglose_formateado = formatearNumero("P",valor_desglose);
           template+=
           `<tr idVenta=`+c.id_venta+` class="${estado}">
-            <td>${c.id_venta}</td>
+            <td>${c.id}</td>
             <td>${c.creado_por}</td>
             <td>${c.hasta}</td>
             <td>${c.estado}</td>

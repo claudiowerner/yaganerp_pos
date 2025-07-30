@@ -12,7 +12,6 @@
   $id_cl = $_SESSION['user']["id_cl"];
   
 
-  $idCaja = $_GET['idCaja'];
   $idCierre = $_GET['idCierre'];
   
 
@@ -32,35 +31,49 @@
 	//query
 
   $sql =
-  "SELECT id FROM cajas WHERE id_cl = '$id_cl' AND estado!='N'";
+  "SELECT c.id, v.valor, c.nom_caja, c.estado
+  FROM cajas c
+  JOIN ventas v
+  ON v.id_caja = c.id
+  JOIN correlativo corr
+  ON corr.id_cierre=$idCierre
+  WHERE v.id_cl = '$id_cl'
+  HAVING SUM(v.valor)>0";
 
-  $res = $conexion->query($sql);;
+  $res = $conexion->query($sql);
   while($row = $res->fetch_assoc())
   {
+    $nom_caja = $row["nom_caja"];
+    if($row["estado"]=="N")
+    {
+      $nom_caja = $nom_caja. "<br>(CAJA ELIMINADA)";
+    }
     $arrayCaja[] = $row["id"];
+    $arrayNombre[] = $nom_caja;
   }
 
   $cont = count($arrayCaja);
 
 
-  for($i=0;$i<$cont;$i++)
+  /*for($i=0;$i<$cont;$i++)
   {
     $id = $arrayCaja[$i];
     $sql =
     "SELECT nom_caja FROM cajas WHERE id = '$id' AND id_cl = '$id_cl'";
-    $res = $conexion->query($sql);;
+    $res = $conexion->query($sql);
     while($row = $res->fetch_assoc())
     {
       $arrayNombre[] = $row["nom_caja"];
     }
-  }
+  }*/
+
   
   for($i=0;$i<$cont;$i++)
   {
     $id = $arrayCaja[$i];
     $sql =
     "SELECT COUNT(caja) AS ventas_caja, estado FROM correlativo WHERE caja = $id AND id_cl = '$id_cl'";
-    $res = $conexion->query($sql);;
+    $res = $conexion->query($sql);
     while($row = $res->fetch_assoc())
     {
       if($row["ventas_caja"]!=""||$row["estado"]!=null)
