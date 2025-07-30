@@ -79,7 +79,7 @@
                                         <div class="card-body" id="grafico">
                                         <span align="center">
                                             Ventas por mes
-                                            <select id="añoVenta" class="form-control" onchange="crearGrafico()">
+                                            <select id="anoVenta" class="form-control" onchange="crearGrafico()">
                                             </select>
                                         </span>
                                         <div id="ventasAño"></div>

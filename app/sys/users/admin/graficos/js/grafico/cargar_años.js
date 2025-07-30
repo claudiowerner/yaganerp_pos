@@ -26,5 +26,5 @@ function rellenarSelectAño()
     {
         template += `<option value='${año.ano}'>${año.ano}</option>`;
     }
-    $("#añoVenta").html(template);
+    $("#anoVenta").html(template);
 }

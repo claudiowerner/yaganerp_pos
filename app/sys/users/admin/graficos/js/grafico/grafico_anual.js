@@ -4,7 +4,8 @@ function descargarInfoGraficoAnual()
     // Obtener una referencia al elemento canvas del DOM
     var fecha = new Date();
     var año = fecha.getFullYear();
-    var añoSelect = $("#añoVenta").val();
+    var añoSelect = $("#anoVenta").val();
+    console.log(añoSelect);
     var url = "";
     if(añoSelect=="")
     {
@@ -27,6 +28,7 @@ function descargarInfoGraficoAnual()
 
 function crearGrafico()
 {
+    
     let descargar = descargarInfoGraficoAnual();
     let json = JSON.parse(descargar);
     // Load the Visualization API and the corechart package.

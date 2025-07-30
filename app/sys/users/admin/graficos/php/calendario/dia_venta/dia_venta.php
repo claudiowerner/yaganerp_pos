@@ -28,12 +28,11 @@
     $res = $conexion->query($local_date);
 
     $sql = 
-        "SELECT DAY(corr.fecha_cierre) AS fecha 
+        "SELECT DAY(fecha_cierre) AS fecha 
         FROM correlativo corr
-        JOIN ventas v
-        ON v.id_venta = corr.correlativo
-        AND MONTH(fecha_cierre) = $mes_actual
-        AND YEAR(fecha_cierre) = $año_actual";
+        WHERE MONTH(fecha_cierre) = $mes_actual
+        AND YEAR(fecha_cierre) = $año_actual
+        GROUP BY fecha_cierre";
 
         $res = $conexion->query($sql);
         if($res->num_rows>0)
