@@ -109,8 +109,9 @@
     <script type="text/javascript" src="../../../../datatables/datatables.js"></script>
 
 
-    <!--llamada a categorias-->
-    <script src="obtener_nom_caja.js"></script>
+    
+    <!--Leer-->
+    <script src="js/leer/obtener_nombre_caja.js"></script>
     <script src="desgloseVenta.js"></script>
 
 

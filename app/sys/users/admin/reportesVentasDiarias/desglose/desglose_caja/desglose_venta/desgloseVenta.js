@@ -1,4 +1,3 @@
-
 leerCaja();
 function leerCaja()
 {
