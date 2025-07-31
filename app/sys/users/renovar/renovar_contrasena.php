@@ -16,7 +16,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/toastr/toastr.css">
 
 
     <title>.:VendeloPOS:.</title>
@@ -45,8 +46,7 @@
     </style>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
 
 
 
@@ -62,13 +62,13 @@
 		<div class="container" style="">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5 col-lg-12">
-					<h2 class="heading-section"><strong>Bienvenido a VendeloPOS&nbsp;</strong> </h2>
+					<h2 class="heading-section"><strong>Renueva tu contraseña&nbsp;</strong> </h2>
 					<h3 class="heading-section"><strong>Sistema de ventas online&nbsp;</strong> </h3>
 				</div>
 			</div>
 			<div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5" class="responsive">
-                    <img src="img/shopping.jpg" width="701" srcset="">
+                    <img src="../../img/shopping.jpg" width="701" srcset="">
                 </div>
 				<div class="col-md-5 col-lg-5 col-lg-offset-2">
                     
@@ -78,12 +78,24 @@
                         </div>
                         <form id="Frm" action="">
                             <div class="form-group">
-                                <input name="t_user" onkeypress="return check(event)" required placeholder="Usuario" type="text" class="form-control" autofocus autocomplete="off" pattern="[A-Za-z0-9]{1,15}">
+                                <strong>Paso 1: </strong>Indique su nombre de usuario
+                                <input name="t_user" id="t_user" onblur="verificar_usuario()" required placeholder="Usuario" type="text" class="form-control" autofocus autocomplete="off" pattern="[A-Za-z0-9]{1,15}">
+                                <div id="buscandoUsuario" style="display: none">
+                                    Buscando...
+                                </div>
+                                <div id="alert_usuario">
+
+                                </div>
                             </div>
                             <div class="form-group">
-                                <a href="users/renovar/renovar_contrasena.php" class="pull-right label-forgot primary">¿Olvidó su contraseña?</a>
-                                <label></label>
-                                <input name="t_pass" onkeypress="return check(event)" required placeholder="Contraseña" type="password" class="form-control">
+                                <strong>Paso 2:</strong>Indique su nueva contraseña
+                                <input name="t_pass" id="t_pass" onkeypress="" required placeholder="Contraseña" type="password" class="form-control" disabled>
+                            
+                                Repita su contraseña
+                                <input name="t_pass2" id="t_pass2" onkeyup="comparar_contraseñas()" required placeholder="Contraseña" type="password" class="form-control" disabled>
+                            </div>
+                            <div id="contrasena">
+                                
                             </div>
                             <button class="btn btn-primary btn-block botonlg">Iniciar sesión&nbsp;</button>
                         </form>
@@ -109,12 +121,18 @@
     <script type="text/javascript" src="css/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/mensajes-swal.js"></script>
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/toastr/toastr.min.js"></script>
 
-
+    <!--Debounce-->
+    <script src="js/leer/verificar_usuario.js"></script>
+    <script src="js/leer/comparar_contraseñas.js"></script>
     
+    
+    <script src="js/crear_contraseña/checkear_password.js"></script>
+    <script src="js/crear_contraseña/crear_contraseña.js"></script>
+
+
 
 
 
