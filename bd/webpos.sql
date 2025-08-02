@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: VendeloPOS
+-- Host: 127.0.0.1    Database: webpos
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.4.32-MariaDB
 
@@ -1027,6 +1027,32 @@ INSERT INTO `proveedores` VALUES (1,1,'Helados Savory S.A.','19150634-0','N','20
 UNLOCK TABLES;
 
 --
+-- Table structure for table `solicitud_usuario`
+--
+
+DROP TABLE IF EXISTS `solicitud_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `solicitud_usuario` (
+  `id` int(5) NOT NULL,
+  `id_cl` int(5) DEFAULT NULL,
+  `solicitud` int(5) DEFAULT NULL,
+  `estado_reg_solicitud` varchar(5) DEFAULT NULL,
+  `autorizacion` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `solicitud_usuario`
+--
+
+LOCK TABLES `solicitud_usuario` WRITE;
+/*!40000 ALTER TABLE `solicitud_usuario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `solicitud_usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `stock_minimo_producto`
 --
 
@@ -1074,6 +1100,30 @@ LOCK TABLES `tipo_pago_cliente` WRITE;
 /*!40000 ALTER TABLE `tipo_pago_cliente` DISABLE KEYS */;
 INSERT INTO `tipo_pago_cliente` VALUES (1,'EFECTIVO'),(2,'DEBITO'),(3,'CREDITO'),(4,'TRANSFERENCIA');
 /*!40000 ALTER TABLE `tipo_pago_cliente` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tipo_solicitud_usuario`
+--
+
+DROP TABLE IF EXISTS `tipo_solicitud_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tipo_solicitud_usuario` (
+  `id` int(5) NOT NULL,
+  `nombre_solicitud` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipo_solicitud_usuario`
+--
+
+LOCK TABLES `tipo_solicitud_usuario` WRITE;
+/*!40000 ALTER TABLE `tipo_solicitud_usuario` DISABLE KEYS */;
+INSERT INTO `tipo_solicitud_usuario` VALUES (1,'CAMBIO DE CONTRASEÑA');
+/*!40000 ALTER TABLE `tipo_solicitud_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1176,4 +1226,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-10 19:42:05
+-- Dump completed on 2025-08-02 16:29:42
