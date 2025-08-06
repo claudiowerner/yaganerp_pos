@@ -17,6 +17,8 @@ function advertenciaSistema(url)
     let dias = descargarDiasPagoAjax(url);
     let j = JSON.parse(dias);
 
+    $("#fecha_pago").html(j.fecha_final);
+
     if(j.dias_restantes<=7&&j.dias_restantes>=3)
     {
         $("#advertenciaSuscripcion").show();

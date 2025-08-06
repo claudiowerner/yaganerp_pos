@@ -66,11 +66,12 @@
             <!-- CONTENT -->
             <div class="wrap-fluid" id="paper-bg">
                 <div class="row">
-                        <?php
-                            require "aviso_pago/dom/alert.php";
-                        ?>
+                    <?php
+                        require "aviso_pago/dom/alert/alert.php";
+                    ?>
                     <div class="col-lg-12">
                         <div id="pantallaPrincipal" class="plan">
+                            <?php require "aviso_pago/dom/alert/prox_pago.php";?>
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">

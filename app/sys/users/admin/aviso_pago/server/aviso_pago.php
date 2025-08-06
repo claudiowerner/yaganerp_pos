@@ -44,10 +44,11 @@
     DATE_FORMAT(fecha_hasta+1, '%d-%m-%Y') AS fecha_hasta_formateada
     FROM pago_cliente 
     WHERE id_cl = $id_cl
-    AND estado = 'N'";
+    AND periodo_actual = 'S'
+    AND '$fecha_actual_str' <= fecha_hasta";
     $res = $conexion->query($sql);
 
-    $num_dias = 30;//inicializado en 30 para que no salte el aviso de pago o no se bloquee el sistema
+    $num_dias = 0;//inicializado en 30 para que no salte el aviso de pago o no se bloquee el sistema
     $mostrar_dias = "0";
     $fecha_final_str = "0000-00-00";
     $fecha_final_formateada = "00-00-0000";
