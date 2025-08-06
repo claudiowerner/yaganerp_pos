@@ -10,10 +10,12 @@ function comparar_contraseñas()
         `<div class='alert alert-danger'>
             Las contraseñas indicadas no coinciden.
         </div>`;
+        $(".btn").prop("disabled", true);
     }
     else
     {
         template = "";
+        $(".btn").prop("disabled", false);
     }
     $("#contrasena").html(template)
 }

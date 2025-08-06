@@ -1,38 +1,73 @@
 
 $(document).on('submit','#Frm',function(event){
 
-"use strict";
+	"use strict";
 	event.preventDefault();
+	let user = $("#t_user").val();
+	
+	
+	
+	//Solicitud AJAX que busca el correo y el ID del cliente asociado al usuario que desea cambiar contraseña
+	let respuesta = buscar_datos_usuario(user);
 
+	//Conversion de la respuesta a JSON
+	let json = JSON.parse(respuesta);
+	console.log(json)
+
+
+	//Registro de la solicitud en la BD
 	$.ajax({
-		url: "php/crear_contraseña/crear_contraseña.php",
-		type: 'POST',
-		dataType: 'json',
-		data: $(this).serialize(),
-		beforeSend: function(){
-			$('.botonlg').val('Validando...');
-		}
-	})
+		url: "php/seguridad/crear/crear_solicitud.php",
+		data: json,
+		type: "POST",
+		beforeSend: function(e)
+		{
+			$(".botonlg").html("Enviando solicitud...");
+			$(".botonlg").prop("disabled", true);	
+		},
+		success: function(e)
+		{
+			let j = JSON.parse(e);
+			$("#mensaje").html(j.mensaje+"<br><div id='loading-spinner' class='spinner'></div>")
+			if(j.correo)
+			{
+				$("#cuerpo1").hide();
+				$("#cuerpo2").show();
+				
+				let autorizacion;
+				let js;
 
-	.done(function(r)
-	{
-		if(r.cambio)
-		{
-			toastr.success(r.mensaje);
-			//Redirigir a la pantalla de login
-			setTimeout(function(){
-				location.href  = "../../";
-			}, 5000)
+				//consultar cada 1 segundo si existe algún cambio en la solicitud de la autorización
+				var solicitud = setInterval(function()
+				{
+					autorizacion = consultar_estado_solicitud(j.id_solicitud);
+					js = JSON.parse(autorizacion);
+					
+					if(js.aut == "S") 
+					{
+						clearInterval(solicitud);
+						cambiar_contraseña();
+					}
+					if(js.aut == "N")
+					{
+						$("#declinado").show();
+						$("#mensaje").hide();
+						clearInterval(solicitud);
+					}
+				}, 1000); 
+			}
+			else
+			{
+				alert(j.mensaje);
+			}
 		}
-		else
-		{
-			toastr.error(r.mensaje);
-		}
+	}).fail(function(e){
+		alert(e.responseText)
 	})
-	.fail(function(resp){
-		console.log(resp.responseText);
-	})
-	.always(function(){
-		console.log("complete");
-	});
 });
+
+
+$("#btnLogin").on("click", function(e)
+{
+	location.href = "../../";
+})

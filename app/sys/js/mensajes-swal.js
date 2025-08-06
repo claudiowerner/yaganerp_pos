@@ -4,5 +4,5 @@ function msjes_swal(t, msj, ic)
         title: t,
         text: msj,
         icon: ic
-      })
+    })
 }

@@ -6,8 +6,8 @@
     require_once '../../../../conexion.php';
 
 
-    $pass = password_hash($_POST["t_pass"], PASSWORD_DEFAULT);
-    $user = $_POST["t_user"];
+    $pass = password_hash($_POST["pass"], PASSWORD_DEFAULT);
+    $user = $_POST["user"];
 
     $json = array(
         "cambio" => false,
@@ -23,15 +23,14 @@
         $hoy = getdate();
         $fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"];
 
-        if ($consulta = $mysqli->prepare("UPDATE usuarios SET pass = ? WHERE user = ?"))
+        $final_query = "UPDATE usuarios SET pass = ? WHERE user = ?";
+        if ($consulta = $mysqli->prepare($final_query))
         {
-            $consulta->bind_param("ss",$usuario, $password);
-
+            $consulta->bind_param("ss",$password, $usuario);
             if($consulta -> execute())
             {
                 $json = array(
                     "cambio" => true,
-                    "mensaje" => "Contraseña cambiada correctamente. Será redirigido a la pantalla inicial para iniciar sesión."
                 );
             }
         }

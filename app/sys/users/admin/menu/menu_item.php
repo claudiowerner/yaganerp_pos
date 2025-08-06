@@ -108,6 +108,13 @@
                             <span>Usuarios</span>
                         </a>
                     </li>
+                    
+                  <li>
+                      <a class="tooltip-tip" href="../solicitudes">
+                          <i class=" fontello-mail-1"></i>
+                          <span>Solicitudes</span>
+                      </a>
+                  </li>
                     <li>
                         <a class="tooltip-tip" href="../config">
                             <i class=" fontello-mail-1"></i>

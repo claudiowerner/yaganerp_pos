@@ -112,6 +112,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/mensajes-swal.js"></script>
+    <script src="main.js"></script>
 
 
     
