@@ -1,0 +1,3 @@
+w<?php
+	header("Location: ../")
+?>

@@ -112,7 +112,12 @@
 
 
     <!--llamada a categorias-->
-    <script src="desglose.js"></script>
+    <script src="func_js/desglose.js"></script>
+    <script src="func_js/filtros.js"></script>
+    <script src="func_js/imprimir_detalle.js"></script>
+    <script src="func_js/reimprimir_resumen.js"></script>
+
+
     <script src="../js/id_usuario.js"></script>
     <script src="../js/imprimir.js"></script>
 

@@ -2,7 +2,7 @@
 $("#btnCrearCajaNueva").on("click", function(e)
 {
     $.ajax({
-        url:"validar_turno_abierto.php",
+        url: "php/leer/validar_turno_abierto.php",
         type: "GET",
         success: function(e)
         {

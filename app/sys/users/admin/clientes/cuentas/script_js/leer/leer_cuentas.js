@@ -8,7 +8,7 @@ function cargar_dataTable()
     table = $('#producto').DataTable({
         "createdRow": function( row, data, dataIndex){},
         "ajax":{
-            "url":"read_cuentas.php?rut="+rut,
+            "url":"script_php/read_cuentas.php?rut="+rut,
             "type":"GET",
             "dataSrc":""
         },

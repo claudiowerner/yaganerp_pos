@@ -1,3 +1,23 @@
+<?php
+    if(session_start())
+    {
+        if(isset($_SESSION['user']))
+        {
+            $tipo = $_SESSION['user']['tipo_usuario'];
+            if($tipo == 1){
+                header("Location: users/admin/");
+            }
+            else
+            {
+                header('Location: users/atencion/');
+            }
+        }
+
+    }
+    
+?>
+
+
 <!DOCTYPE html>
 
 <html lang="en">

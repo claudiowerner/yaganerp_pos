@@ -7,12 +7,12 @@
     $tipo = $_SESSION['user']['tipo_usuario'];
     if($tipo != 1)
     {
-      header('Location: ../');
+      header('Location: ../../');
     }
   }
   else
   {
-    header('Location: ../');
+    header('Location: ../../');
   }
 
   require_once '../../conexion.php';

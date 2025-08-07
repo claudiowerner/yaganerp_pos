@@ -129,8 +129,8 @@
 
 
     <!--llamada a categorias-->
-    <script src="desgloseCaja.js"></script>
-    <script src="obtenerResumenCaja.js"></script>
+    <script src="func_js/desgloseCaja.js"></script>
+    <script src="func_js/obtenerResumenCaja.js"></script>
     <script src="../../js/id_usuario.js"></script>
     <script src="../../js/imprimir.js"></script>
 

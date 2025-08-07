@@ -13,7 +13,7 @@
   }
   else
   {
-    header('Location: ../');
+    header('Location: ../../');
   }
 
 ?>

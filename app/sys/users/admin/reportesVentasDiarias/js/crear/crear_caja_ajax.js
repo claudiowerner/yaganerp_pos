@@ -1,4 +1,3 @@
-alert();
 $("#btnAbrirCaja").on('click', function(e)
 {
   let nomCaja = $("#nombreCaja").val();

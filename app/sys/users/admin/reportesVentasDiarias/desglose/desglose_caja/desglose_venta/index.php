@@ -112,7 +112,7 @@
     
     <!--Leer-->
     <script src="js/leer/obtener_nombre_caja.js"></script>
-    <script src="desgloseVenta.js"></script>
+    <script src="js/leer/desgloseVenta.js"></script>
 
 
 </body>

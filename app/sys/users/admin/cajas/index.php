@@ -58,7 +58,7 @@
             <div class="wrap-fluid" id="paper-bg">
                 <div class="row">
                     <?php
-                        require "../aviso_pago/dom/alert.php";
+                        require "../aviso_pago/dom/alert/alert.php";
                     ?>
                     <div class="col-lg-12">
                         <div id="pantallaPrincipal" class="plan">

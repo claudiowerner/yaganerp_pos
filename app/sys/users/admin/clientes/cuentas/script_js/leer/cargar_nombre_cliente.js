@@ -2,7 +2,7 @@ function cargarNombreCliente()
 {
     let rut = $("#rut").text();
     $.ajax({
-        url: "read_datos_cliente.php",
+        url: "script_php/read_datos_cliente.php",
         data: {"rut": rut},
         type: "POST",
         success: function(e)
