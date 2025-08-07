@@ -748,7 +748,7 @@ CREATE TABLE `motivo_mov_monto_caja` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -757,6 +757,7 @@ CREATE TABLE `motivo_mov_monto_caja` (
 
 LOCK TABLES `motivo_mov_monto_caja` WRITE;
 /*!40000 ALTER TABLE `motivo_mov_monto_caja` DISABLE KEYS */;
+INSERT INTO `motivo_mov_monto_caja` VALUES (1,'MONTO INICIAL'),(2,'PAGO EN EFECTIVO'),(3,'RETIRO DE DINERO'),(4,'INGRESO DE DINERO');
 /*!40000 ALTER TABLE `motivo_mov_monto_caja` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1230,4 +1231,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-08-06 21:09:05
+-- Dump completed on 2025-08-06 21:29:24
