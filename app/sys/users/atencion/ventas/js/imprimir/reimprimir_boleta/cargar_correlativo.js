@@ -26,6 +26,7 @@ function cargarVentasPorDia(año, mes, fecha)
 
     //descargar datos
     let descarga = descargarCorrelativo(año, mes, fecha);
+    console.log(descarga);
     let json = JSON.parse(descarga);
     
     //rellenar tabla

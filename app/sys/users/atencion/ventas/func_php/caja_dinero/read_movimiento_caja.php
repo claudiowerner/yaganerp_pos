@@ -25,7 +25,7 @@
 		AND id_caja = $caja 
 		AND id_cierre = $id_cierre 
 		ORDER BY mc.id ASC" ;
-		$res = $conexion->query($sql);;
+		$res = $conexion->query($sql);
 		while($row = $res->fetch_array())
 		{
 			$cont_mov++;
