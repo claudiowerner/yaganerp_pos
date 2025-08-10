@@ -83,6 +83,7 @@
 	'$id_us', 
 	'$boleta', 
 	'0', 
+	'0',
 	'0', 
 	'$idCierre', 
 	'A', 
