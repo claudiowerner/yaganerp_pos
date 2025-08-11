@@ -10,13 +10,19 @@ function graficoTartaProductosSinFiltrar()
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Value');
 
-        //descarga de datos desde la BD
-        let descarga = descargarInfoGraficoTartaProductosSinFiltrar();
-        let json = JSON.parse(descarga);
-        json.forEach(j=>{
-                let cantidad = parseInt(j.cantidad);
-                data.addRows([[`${j.nombre_producto}`, cantidad]]);
-            })
+        $.ajax({
+            url: "funciones_php/graficos/info_sin_filtrar/read_cant_productos_vendidos.php",
+            type: "POST",
+            success: function(e)
+            {
+                let json = JSON.parse(e);
+                json.forEach(j=>{
+                    let cantidad = parseInt(j.cantidad);
+                    data.addRows([[`${j.nombre_producto}`, cantidad]]);
+                })
+            }
+        })
+        
             var options = {'title':'Ventas de productos',
                 width: graficoWidthTarta(),
                 height: graficoHeightTarta(),

@@ -1,8 +1,7 @@
 <?php
 
-session_start();
-
-
+  session_start();
+  
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
 
@@ -13,6 +12,7 @@ session_start();
   $id_cl = $_SESSION['user']["id_cl"];
   
   $fecha_inicio = $_POST["fecha_inicio"];
+  
   $fecha_fin = $_POST["fecha_fin"];
 
   require_once '../../../../../../../conexion.php';
@@ -72,12 +72,7 @@ session_start();
         $res = $conexion->query($sql);
         while($row = $res->fetch_array())
         {
-          $cantidad = 0;
-          if($row["cantidad"]!=""||$row["cantidad"]!=null)
-          {
-            $cantidad = $row["cantidad"];
-          }
-          $arrCantidad[] = $cantidad;
+          $arrCantidad[] = $row["cantidad"];
         }
       }
 
@@ -85,12 +80,14 @@ session_start();
       for($i=0;$i<$length;$i++)
       {
         $id = $arrId[$i];
-        $sql = "SELECT SUM(valor) AS valor
+        $cant = $arrCantidad[$i];
+        $sql = "SELECT valor
         FROM ventas 
         WHERE id_cl = $id_cl
         AND producto = $id
         AND estado = 'C'
-        AND fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'";
+        AND fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'
+        GROUP BY producto";
         $res = $conexion->query($sql);
         while($row = $res->fetch_array())
         {
@@ -99,7 +96,7 @@ session_start();
           {
             $valor = $row["valor"];
           }
-          $arrayValor[] = $valor;
+          $arrayValor[] = $valor*$cant;
         }
       }
 

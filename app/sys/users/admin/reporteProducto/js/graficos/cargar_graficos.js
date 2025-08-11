@@ -10,7 +10,7 @@ function cargarGraficosBarraSinFiltrar()
 {
     //cargar gráfico de barras sin filtro de fechas
 graficoBarraCategoriasSinFiltrar()
-graficoBarraProductosSinFiltrar();
+//graficoBarraProductosSinFiltrar();
 
 }
 
@@ -19,7 +19,7 @@ function cargarGraficosTartaSinFiltrar()
 {
     //cargar gráfico de tarta sin filtro de fechas
 graficoTartaCategoriasSinFiltrar()
-graficoTartaProductosSinFiltrar();
+//graficoTartaProductosSinFiltrar();
 
 
 }

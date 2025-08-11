@@ -21,6 +21,7 @@ session_start();
   $arrNombre = array();
   $arrCantidad = array();
   $arrayValor = array();
+  $arrayValorUnitario = array();
   $json = array();
 
 	//query
@@ -83,6 +84,7 @@ session_start();
         $id = $arrId[$i];
         $cant = $arrCantidad[$i];
         $valor = 0;
+        $valor_unitario = 0;
         $sql = "SELECT valor
         FROM ventas 
         WHERE id_cl = $id_cl
@@ -94,9 +96,11 @@ session_start();
         {
           if($row["valor"]!=""||$row["valor"]!=null)
           {
-            $valor = $row["valor"]*$cant;
+            $valor = $row["valor"] * $cant;
+            //$valor_unitario = $row["valor"];
           }
         }
+        $arrayValorUnitario[] = $valor_unitario;
         $arrayValor[] = $valor;
       }
       for($i=0;$i<$length;$i++)
@@ -104,7 +108,8 @@ session_start();
         $json[] = array(
           "nombre_producto" => $arrNombre[$i],
           "cantidad" => $arrCantidad[$i],
-          "valor" => $arrayValor[$i]
+          //"valor_unitario" => $arrayValorUnitario[$i],
+          "valor" => intval($arrayValor[$i])
         );
       }
       

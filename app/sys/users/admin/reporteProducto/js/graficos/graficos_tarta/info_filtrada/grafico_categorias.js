@@ -13,29 +13,40 @@ function graficoTartaCategorias(fecha_inicio, fecha_fin)
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Value');
 
-        //descarga de datos desde la BD
-        let descarga = descargarInfoGraficoTartaCategorias(fecha_inicio, fecha_fin);
-        let json = JSON.parse(descarga);
-        json.forEach(j=>{
-                let cantidad = parseInt(j.cantidad);
-                data.addRows([[`${j.nombre_categoria}`, cantidad]]);
-            })
+        let datos = {
+            "fecha_inicio": fecha_inicio,
+            "fecha_fin": fecha_fin,
+        };
+        $.ajax({
+            url: "funciones_php/graficos/info_filtrada/graficos/read_ventas_por_categoria.php",
+            data: datos,
+            type: "POST",
+            success: function(e)
+            {
+                let json = JSON.parse(e);
+                json.forEach(j=>{
+                    let cantidad = parseInt(j.cantidad);
+                    data.addRows([[`${j.nombre_categoria}`, cantidad]]);
+                })
 
-        var options = {'title':'Ventas por categorías',
-            width: graficoWidthTarta(),
-            height: graficoHeightTarta(),
-            chartArea: {
-                'width': '100%'
-            },
-            bar: {
-                groupWidth: "100%"
-            },
-            legend: {
-                position: "none"
-            },};
 
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById("graficoTartaCategorias"));
-        chart.draw(data, options);
+                var options = {'title':'Ventas por categorías',
+                    width: graficoWidthTarta(),
+                    height: graficoHeightTarta(),
+                    chartArea: {
+                        'width': '100%'
+                    },
+                    bar: {
+                        groupWidth: "100%"
+                    },
+                    legend: {
+                        position: "none"
+                    },};
+
+                // Instantiate and draw our chart, passing in some options.
+                var chart = new google.visualization.PieChart(document.getElementById("graficoTartaCategorias"));
+                chart.draw(data, options);
+            }
+        });
     }
 }

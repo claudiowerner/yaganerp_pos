@@ -9,4 +9,6 @@ $("#btnEliminarFiltros").on("click", function(e)
 
     cargarGraficosBarraSinFiltrar();
     cargarGraficosTartaSinFiltrar();
+    cargarTablaProductosSinFiltrar();
+    cargarTablaCategoriasSinFiltrar();
 })

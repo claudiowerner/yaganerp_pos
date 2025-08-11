@@ -12,28 +12,36 @@ function graficoBarraCategoriasSinFiltrar()
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Value');
 
-        //descarga de datos desde la BD
-        let descarga = descargarInfoGraficoBarraCategoriasSinFiltrar();
-        let json = JSON.parse(descarga);
-        json.forEach(j=>{
-                let cantidad = parseInt(j.cantidad);
-                data.addRows([[`${j.nombre_categoria}`, cantidad]]);
-            })
-        var options = {'title':'Ventas por categorías',
-            width: graficoWidthBarra(),
-            height: graficoHeightBarra(),
-            chartArea: {
-                'width': '100%'
-            },
-            bar: {
-                groupWidth: "100%"
-            },
-            legend: {
-                position: "top"
-            },};
+        $.ajax({
+            url: "funciones_php/graficos/info_sin_filtrar/read_ventas_por_categoria.php",
+            type: "POST",
+            success: function(e)
+            {
+                let json = JSON.parse(e);
+                console.log(json)
+                json.forEach(j=>{
+                    data.addRows([[`${j.nombre_categoria}`, j.cantidad]]);
+                })
+                
+                var options = {'title':'Ventas por categorías',
+                    width: graficoWidthBarra(),
+                    height: graficoHeightBarra(),
+                    chartArea: {
+                        'width': '100%'
+                    },
+                    bar: {
+                        groupWidth: "100%"
+                    },
+                    legend: {
+                        position: "top"
+                    },};
 
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.BarChart(document.getElementById("graficoBarraCategorias"));
-        chart.draw(data, options);
+                // Instantiate and draw our chart, passing in some options.
+                var chart = new google.visualization.BarChart(document.getElementById("graficoBarraCategorias"));
+                chart.draw(data, options);
+            }
+        });
+        
+        
     }
 }

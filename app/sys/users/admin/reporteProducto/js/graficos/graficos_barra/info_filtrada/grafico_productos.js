@@ -11,14 +11,24 @@ function graficoBarraProductos(fecha_inicio, fecha_fin)
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Value');
-
-        //descarga de datos desde la BD
-        let descarga = descargarInfoGraficoBarraProductos(fecha_inicio, fecha_fin);
-        let json = JSON.parse(descarga);
-        json.forEach(j=>{
-                let cantidad = parseInt(j.cantidad);
-                data.addRows([[`${j.nombre_producto}`, cantidad]]);
-            })
+        let datos = {
+                "fecha_inicio": fecha_inicio,
+                "fecha_fin": fecha_fin,
+            };
+            $.ajax({
+                url: "funciones_php/graficos/info_filtrada/graficos/read_cant_productos_vendidos.php",
+                data: datos,
+                type: "POST",
+                success: function(e)
+                {
+                    let json = JSON.parse(e);
+                    json.forEach(j=>{
+                        let cantidad = parseInt(j.cantidad);
+                        data.addRows([[`${j.nombre_producto}`, cantidad]]);
+                    })
+                }
+            }).responseText;
+        
             var options = {'title':'Ventas de productos',
                 width: graficoWidthBarra(),
                 height: graficoHeightBarra(),

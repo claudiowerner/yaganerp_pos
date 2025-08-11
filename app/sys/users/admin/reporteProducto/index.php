@@ -68,10 +68,11 @@
                                             <table>
                                                 <tr>
                                                     <td><label>Desde</label></td>
-                                                    <td><input type="date" id="fecha_inicio" class="form-control" onkeyup="filtrarInformacion()" onchange="filtrarInformacion()"></td>
+                                                    <td><input type="date" id="fecha_inicio" class="form-control"></td>
                                                     <td><label>Hasta</label></td>
-                                                    <td><input type="date" id="fecha_fin" class="form-control" onkeyup="filtrarInformacion()" onchange="filtrarInformacion()"></td>
-                                                    <td><button id="btnEliminarFiltros" class="btn btn-success">Borrar filtros</button></td>
+                                                    <td><input type="date" id="fecha_fin" class="form-control"></td>
+                                                    <td><button id="btnAplicarFiltros" class="btn btn-success">Aplicar filtros</button></td>
+                                                    <td><button id="btnEliminarFiltros" class="btn btn-danger">Borrar filtros</button></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -103,15 +104,15 @@
                                                 <div id="graficoTartaCategorias" align='center' class="col-lg-12">
                                                     Cargando...
                                                 </div>
-                                                <div id="graficoTartaProductos" align='center' class="col-lg-12">
+                                                <!--<div id="graficoTartaProductos" align='center' class="col-lg-12">
                                                     Cargando...
-                                                </div>
+                                                </div>-->
                                                 <div id="graficoBarraCategorias" align='center' class="col-lg-12">
                                                     Cargando...
                                                 </div>
-                                                <div id="graficoBarraProductos" align='center' class="col-lg-12">
+                                                <!--<div id="graficoBarraProductos" align='center' class="col-lg-12">
                                                     Cargando...
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div id="tabla" class="tab-pane fade">
                                                 <div id="divTablaCategorias" class="col-lg-6">
@@ -174,6 +175,13 @@
     <script src="../../../js/numberFormat.js"></script>
     <script src="js/productoVendido.js"></script>
     <script src="js/loader.js"></script>
+
+    <!--Validar fechas-->
+    <script src="../../../js/validar_fechas.js"></script>
+
+    <!--Botón filtrar-->
+
+
     <script src="js/graficos/seleccionar_grafico.js"></script>
     <script src="js/graficos/graficos_tarta/info_filtrada/grafico_productos.js"></script>
     <script src="js/graficos/graficos_tarta/info_filtrada/grafico_categorias.js"></script>
@@ -187,9 +195,9 @@
     <script src="js/graficos/graficos_barra/info_sin_filtrar/grafico_productos.js"></script>
     <script src="js/graficos/graficos_barra/info_sin_filtrar/grafico_categorias.js"></script>
     <script src="js/graficos/graficos_barra/info_sin_filtrar/tamano_grafico.js"></script>
+    <script src="js/filtro_informacion/accion_boton_filtrar.js"></script>
     <script src="js/filtro_informacion/obtener_primer_año_venta.js"></script>
     <script src="js/filtro_informacion/filtrar_informacion.js"></script>
-    <script src="js/filtro_informacion/descargar_informacion_grafico_ajax.js"></script>
     <script src="js/filtro_informacion/descargar_informacion_tabla_ajax.js"></script>
     <script src="js/tabla/tablas_sin_filtrar/categorias_sin_filtrar.js"></script>
     <script src="js/tabla/tablas_sin_filtrar/productos_sin_filtrar.js"></script>

@@ -80,7 +80,7 @@ session_start();
       {
         $json[] = array(
           "nombre_categoria" => $arrNombre[$i],
-          "cantidad" => $arrCantidad[$i]
+          "cantidad" => intval($arrCantidad[$i])
         );
       }
       

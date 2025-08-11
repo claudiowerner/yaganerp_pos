@@ -1,4 +1,4 @@
-
+/* ARREGLAR IMPRESIÓN DE GRÁFICO DE PRODUCTOS */
 
 function graficoBarraProductosSinFiltrar()
 {
@@ -12,30 +12,36 @@ function graficoBarraProductosSinFiltrar()
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Value');
 
-        //descarga de datos desde la BD
-        let descarga = descargarInfoGraficoBarraProductosSinFiltrar();
-        let json = JSON.parse(descarga);
-        json.forEach(j=>{
-                let cantidad = parseInt(j.cantidad);
-                data.addRows([[`${j.nombre_producto}`, cantidad]]);
-            })
-            var options = {'title':'Ventas de productos',
-                width: graficoWidthBarra(),
-                height: graficoHeightBarra(),
-                chartArea: {
-                    'width': '100%'
-                },
-                bar: {
-                    groupWidth: "100%"
-                },
-                legend: {
-                    position: "none"
-                },};
-    
+        $.ajax({
+            url: "funciones_php/graficos/info_sin_filtrar/read_cant_productos_vendidos.php",
+            type: "POST",
+            success: function(e)
+            {
+                let json = JSON.parse(e);
+                json.forEach(j=>{
+                    data.addRows([[`${j.nombre_producto}`, j.cantidad]]);
+                })
 
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.BarChart(document.getElementById("graficoBarraProductos"));
-        chart.draw(data, options);
+                var options = {'title':'Ventas de productos',
+                    width: graficoWidthBarra(),
+                    height: graficoHeightBarra(),
+                    chartArea: {
+                        'width': '100%'
+                    },
+                    bar: {
+                        groupWidth: "100%"
+                    },
+                    legend: {
+                        position: "none"
+                    },};
+        
+
+                // Instantiate and draw our chart, passing in some options.
+                var chart = new google.visualization.BarChart(document.getElementById("graficoBarraProductos"));
+                chart.draw(data, options);
+            }
+        });
+        
     }
 }
 

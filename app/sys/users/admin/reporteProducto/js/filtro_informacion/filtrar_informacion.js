@@ -4,14 +4,8 @@ function filtrarInformacion()
     let fecha_inicio = $("#fecha_inicio").val();
     let fecha_fin = $("#fecha_fin").val();
 
-    if(fecha_inicio=="")
-    {
-        fecha_inicio = getFecha();
-    }
-    if(fecha_fin=="")
-    {
-        fecha_fin = getFecha();
-    }
+    let fi_valida = validar_fechas(fecha_inicio);
+    let ff_valida = validar_fechas(fecha_fin);
 
     //validar si el formato de las fechas corresponde o no
     let fecha_inicio_valida = moment(fecha_inicio, 'YYYY-MM-DD', true).isValid();
