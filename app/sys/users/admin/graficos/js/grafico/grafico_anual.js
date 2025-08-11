@@ -4,8 +4,8 @@ function descargarInfoGraficoAnual()
     // Obtener una referencia al elemento canvas del DOM
     var fecha = new Date();
     var año = fecha.getFullYear();
+    
     var añoSelect = $("#anoVenta").val();
-    console.log(añoSelect);
     var url = "";
     if(añoSelect=="")
     {

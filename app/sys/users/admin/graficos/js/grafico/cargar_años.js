@@ -15,16 +15,23 @@ function rellenarSelectAño()
 {
     let template = '';
     let resp = descargarSelectAñoAjax();
-    let año = JSON.parse(resp);
-    if(Array.isArray(año))
+    let j = JSON.parse(resp);
+    let fecha = new Date();
+    let año = fecha.getFullYear();
+    let selected = "";
+    if(Array.isArray(j))
     {
-        año.forEach(a=>{
-            template += `<option value='${a.ano}'>${a.ano}</option>`;
+        j.forEach(a=>{
+            if(a.ano == año)
+            {
+                selected = "selected";
+            }
+            template += `<option value='${a.ano}' ${selected}>${a.ano}</option>`;
         });
     }
     else
     {
-        template += `<option value='${año.ano}'>${año.ano}</option>`;
+        template += `<option value='${j.ano}'>${j.ano}</option>`;
     }
     $("#anoVenta").html(template);
 }

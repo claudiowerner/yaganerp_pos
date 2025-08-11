@@ -25,13 +25,8 @@ session_start();
   $json = array();
 
 	//query
-	$sql = "SELECT p.id_prod FROM productos p
-    JOIN ventas v 
-    ON v.producto = p.id_prod
-    WHERE p.id_cl = $id_cl
-    AND p.estado != 'N'
-    AND v.estado='C'
-    GROUP BY p.id_prod";
+	$sql = "SELECT id_prod, nombre_prod FROM productos
+    WHERE id_cl = $id_cl";
     $res = $conexion->query($sql);
 
     if($res->num_rows>0)
@@ -39,26 +34,10 @@ session_start();
       while ($row = $res->fetch_array())
       {
         $arrId[] = $row["id_prod"];
+        $arrNombre[] = $row["nombre_prod"];
       };
 
       $length = count($arrId);
-      //rellenar array nombre 
-      for($i=0;$i<$length;$i++)
-      {
-        $id = $arrId[$i];
-        $sql = "SELECT p.nombre_prod FROM productos p
-        WHERE p.id_cl = $id_cl
-        AND p.estado = 'S'
-        AND p.id_prod = $id
-        GROUP BY p.id_prod";
-        $res = $conexion->query($sql);
-        while($row = $res->fetch_array())
-        {
-          $arrNombre[] = $row["nombre_prod"];
-        }
-      }
-
-
       //rellenar array cantidad 
       for($i=0;$i<$length;$i++)
       {
