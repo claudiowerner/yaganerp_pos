@@ -1,8 +1,6 @@
 //SELECCIONAR PESTAÑA AL CARGAR LA PÁGINA
 $('a[href="#productos"]').click();
 
-$("#slctProveedorProductoEditar").select2();     
-$("#listCatEditar").select2();
 
 
 ep = "S"; //almacena el estado del piso

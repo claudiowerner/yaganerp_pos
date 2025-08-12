@@ -18,7 +18,8 @@ function abrirModalEditar(pesaje, id, codigo_barra, nombre_prod, id_categoria, i
     cantidad, valor_neto, margen_ganancia, monto_ganancia, valor_venta, descuento)
 {
     let proveedores = cargarProveedores();
-    $("#slctProveedorProductoEditar").html(proveedores);   
+    $("#slctProveedorProductoEditar").html(proveedores);
+
     $("#modalEditar").modal("show");
     cargarUnidadEspecifica(id);
     abrirProductoEspecifico(id);

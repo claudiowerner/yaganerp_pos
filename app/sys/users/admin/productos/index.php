@@ -115,6 +115,11 @@
 
     <!--SCRIPTS JSBARCODE-->
     <script src="../../../js/JsBarcode.all.min.js"></script>
+    
+    <!--Select2-->
+    <script src="productos/js/select2/conf_select2.js"></script>
+    <script src="productos/js/select2/aplicar_select2.js"></script>
+
 
     <!--SCRIPTS DE PRODUCTOS-->
     <script src="productos/js/crear/crear_producto.js"></script>
