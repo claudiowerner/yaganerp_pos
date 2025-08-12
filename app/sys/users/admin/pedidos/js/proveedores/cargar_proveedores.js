@@ -38,5 +38,7 @@ function imprimirProveedoresEditar()
 
   $("#slctProveedorEditar").html(template);
 
-  $("#slctProveedorEditar").select2();
+  $("#slctProveedorEditar").select2({
+    dropdownParent: $("#modalEditar")
+  });
 }

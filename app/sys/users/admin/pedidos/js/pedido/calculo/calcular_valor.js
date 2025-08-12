@@ -12,7 +12,6 @@ function valor_con_iva(id)
 //Calculo de valor sin iva
 function valor_sin_iva(id)
 {
-    debugger;
     let valorPedido = obtenerValorPedido(id);
     let iva = valorPedido*0.19;
     let valor_formateado = formatearNumero("P", valorPedido);

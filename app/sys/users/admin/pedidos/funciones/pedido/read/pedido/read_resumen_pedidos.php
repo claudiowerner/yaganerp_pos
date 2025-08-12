@@ -70,7 +70,8 @@
   ON p.id = pd.id_pedido
   WHERE p.id_cl = $id_cl
   AND p.estado!='N' 
-  AND p.estado_pago = 'C'";
+  AND p.estado_pago = 'C'
+  AND pd.estado!='N'";
   $res = $conexion->query($sql);
   
   if($res->num_rows!=0)
