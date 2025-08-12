@@ -13,17 +13,20 @@ function descargarCategorias()
 
 /* --------------------------------------------- FUNCIONES DOM ------------------------------------- */
 
-function cargarCategoria()
+function cargarCategoria(id)
 {
     let respuesta = descargarCategorias()
     let json = JSON.parse(respuesta);
-      let template = '<option value="O">---SELECCIONE---</option>';
-      json.forEach(cat=>{
-        template+=`<option value="${cat.id}">${cat.nombre_cat}</option>`;
-      });
-      $("#listCat").html(template);
-      $("#listCatEditar").html(template);
-  
+    let selected = "";
+	let template = '<option value="0">---SELECCIONE---</option>';
+	json.forEach(cat=>{
+		if(cat.id==id)
+		{
+			selected = "selected";
+		}
+		template+=`<option value="${cat.id}" ${selected}>${cat.nombre_cat}</option>`;
+	});
+	$("#listCat").html(template);
+	$("#listCatEditar").html(template);
+	
 }
-
-cargarCategoria();

@@ -11,12 +11,3 @@ function descargarIDCategoria(nombre)
 }
 
 /* --------------------------------- FUNCIONES DOM --------------------------------------- */
-
-function obtenerID(nombre)
-{
-    let descarga = descargarIDCategoria(nombre);
-    let tasks = JSON.parse(descarga);
-    tasks.forEach(cat=>{
-        $("#listCatEditar").val(cat.id);
-    });
-}

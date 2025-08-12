@@ -23,6 +23,7 @@ function abrirModalEditar(pesaje, id, codigo_barra, nombre_prod, id_categoria, i
     $("#modalEditar").modal("show");
     cargarUnidadEspecifica(id);
     abrirProductoEspecifico(id);
+    cargarCategoria(id_categoria);
     
     
     //Validar si el producto seleccionado tiene pesaje
@@ -37,7 +38,7 @@ function abrirModalEditar(pesaje, id, codigo_barra, nombre_prod, id_categoria, i
     $("#valorVentaEditar").val(valor_venta);
     $("#txtCantidadEditar").val(cantidad);
     $("#porcDesctoEditar").val(descuento); 
-    $("#slctProveedorProductoEditar").val(id_proveedor); 
+    $("#slctProveedorProductoEditar").val(id_proveedor);
     $("#listCatEditar").val(id_categoria);
     
     $("#swPesajeEditar").prop("checked", pesaje);
