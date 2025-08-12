@@ -18,12 +18,12 @@ if(isset($_SESSION['user'])){
 
     //query
     $sql = 
-    "SELECT rut, nombre, apellido, telefono
+    "SELECT rut, nombre, apellido
     FROM clientes_negocio
     WHERE id_cl = $id_cl
     AND rut LIKE '%$rut%'
     AND estado ='S'";
-    $resultado = $conexion->query($sql);;
+    $resultado = $conexion->query($sql);
     if ($resultado->num_rows > 0)
     {
       while ($row = $resultado->fetch_array()) {
@@ -31,7 +31,6 @@ if(isset($_SESSION['user'])){
           'rut' => $row['rut'],
           'nombre' => ($row['nombre']),
           'apellido' => ($row['apellido']),
-          'telefono' => ($row['telefono'])
         );
       };
     }

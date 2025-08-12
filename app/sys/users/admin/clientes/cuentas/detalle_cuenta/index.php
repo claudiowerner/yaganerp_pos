@@ -18,9 +18,9 @@
   $id_us = $_SESSION['user']['id'];
   $nombre = $_SESSION['user']["nombre"];
   $id_cl = $_SESSION['user']["id_cl"];
-  
 
-  $rut = $_GET["rut"];
+  
+  
 
 ?>
 
@@ -37,14 +37,14 @@
 
     <title>.:VendeloPOS Administrador:.</title>
 
-    <?php require "../../cdn_css/css/css_sub_item.php";?>
+    <?php require "../../../cdn_css/css/css_sub_sub_item.php";?>
 
 
 </head>
 
 <body role="document">
 
-    <?php require "../../menu/sesion_sub_item.php";?>
+    <?php require "../../../menu/sesion_sub_sub_item.php";?>
     <!-- END OF TOPNAV -->
     <!-- Comtainer -->
     <div class="container-fluid paper-wrap bevel tlbr">
@@ -52,11 +52,13 @@
         <!-- SIDE MENU -->
         <div class="wrap-sidebar-content">
             <?php 
-                require "../../menu/menu_sub_item.php";
-                require "../../menu/top_menu_sub_item.php";
+                require "../../../menu/menu_sub_sub_item.php";
+                require "../../../menu/top_menu_sub_sub_item.php";
             ?>
             <!-- CONTENT -->
-            <strong id="rut" style="display: none"><?php echo $rut;?></strong>
+            <strong id="rut" style="display: none"></strong>
+            <span id="id_venta" style="display: none"><?php echo $_GET["id_venta"];?></span>
+            <span id="id_caja" style="display: none"><?php echo $_GET["id_caja"];?></span>
             <div class="wrap-fluid" id="paper-bg">
                 <div class="row">
                     <div class="col-lg-12">
@@ -64,36 +66,19 @@
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
-                                        <?php
-                                            require "modal.php";
-                                            echo modalRegistro();
-                                            echo modalEditar();
-                                        ?>
 
-                                        <h1 align="left">Cuentas asociadas a: </h1>
-                                        
-                                        <div align="left">
-                                            <table>
-                                                <tr>
-                                                    <td><strong>Nombre:</strong></td>
-                                                    <td id="nombre">Cargando...</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Apellido:</strong></td>
-                                                    <td id="apellido">Cargando...</td>
-                                                </tr>
-                                            </table>
-                                        </div>
+                                        <h1 align="left">Detalle venta: <?php echo$_GET["id_venta"]?></h1>
+
                                         <property name="characterEncoding" value="UTF-8">
 
                                             <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
                                                 <thead>
                                                     <tr>
-                                                        <th>Correlativo</th>
+                                                        <th>Producto</th>
                                                         <th>Estado</th>
-                                                        <th>Fecha</th>
-                                                        <th>Valor</th>
-                                                        <th>Acción</th>
+                                                        <th>Precio</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Total</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="bodyCuenta">
@@ -122,16 +107,11 @@
     <!-- 
     ================================================== -->
     <!-- Main jQuery Plugins -->
-    <?php require "../../cdn_css/cdn/cdn_sub_item.php";?></body>
+    <?php require "../../../cdn_css/cdn/cdn_sub_sub_item.php";?></body>
 
-    <script src="../../../../js/numberFormat.js"></script>
+    <script src="../../../../../js/numberFormat.js"></script>
 
-    
-    <!--Leer cuentas-->
-    <script src="script_js/leer/direccionar_detalle.js"></script>
-    <script src="script_js/leer/cargar_nombre_cliente.js"></script>
-    <script src="script_js/leer/leer_cuentas.js"></script>
+    <script src="script_js/leer_detalle.js"></script>
 
-    
-    <script src="script_js/main/main.js"></script>
+    <script src="../../../../../js/numberFormat.js"></script>
 </html>

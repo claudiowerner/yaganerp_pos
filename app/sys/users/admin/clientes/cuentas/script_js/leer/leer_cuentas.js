@@ -37,6 +37,12 @@ function cargar_dataTable()
                 "mRender": function(data, type, value) {
                     return formatearNumero("P", data.valor)
                 }
+            },
+            {"data": null,
+                "bSortable": false,
+                "mRender": function(data, type, value) {
+                    return `<button class='btn btn-success' onclick='abrirVenta(${data.correlativo})'>Ir</button>`;
+                }
             }
         ],
             
@@ -58,3 +64,5 @@ function cargar_dataTable()
         }
     });
 }
+
+
