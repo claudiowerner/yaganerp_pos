@@ -5,7 +5,7 @@ function confirmarPagaCuenta(array)
     let idCaja = $("#id_caja").text();
     let formaPago = $("#metodoPagoCuenta").val();
     nomCaja = $("#nomCaja").text();
-
+    alert();
     let datos = {
         "nCaja": nCaja,
         "fecha": getFechaBD() +" "+ getHora(),

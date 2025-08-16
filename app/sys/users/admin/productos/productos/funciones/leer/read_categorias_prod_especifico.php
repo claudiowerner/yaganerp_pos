@@ -11,6 +11,7 @@ session_start();
   
 
   require_once '../../../../../../conexion.php';
+  require_once '../../../../../../php/mb_encoding.php';
 	//query
   $sql = "SELECT id FROM categorias 
   WHERE id_cl = $id_cl 

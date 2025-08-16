@@ -14,6 +14,7 @@ if(isset($_SESSION['user'])){
     
 
     require_once '../../../../conexion.php';
+    require_once "../../../../php/mb_encoding.php";
 
     //query
     $sql = 
@@ -43,7 +44,7 @@ if(isset($_SESSION['user'])){
         $json[] =array(
           "item" => $item,
           'id' => $row['id'],
-          'nombre_proveedor' => ($row['nombre_proveedor']),
+          'nombre_proveedor' => mb_encoding($row['nombre_proveedor']),
           'rut' => $row['rut'],
           'estado' => $estado,
           'fecha_registro' => $row['fecha_registro']

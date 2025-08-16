@@ -13,6 +13,7 @@
 
 
     require_once '../../../../../conexion.php';
+    require_once '../../../../../php/mb_encoding.php';
 
     //definición de arrays
     $arrId = array();
@@ -21,12 +22,15 @@
     $json = array();
 
 
+    //setear charset
+    $conexion -> set_charset("utf8");
+    //query
     $sql = "SELECT id, nombre_metodo_pago FROM metodo_pago";
     $res = $conexion->query($sql);;
     while ($row = $res->fetch_array())
     {
       $arrId[] = $row["id"];
-      $arrNombre[] = $row["nombre_metodo_pago"];
+      $arrNombre[] = mb_encoding($row["nombre_metodo_pago"]);
     }
 
     //contador de número de métodos de pago

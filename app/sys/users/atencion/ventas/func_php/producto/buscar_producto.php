@@ -13,7 +13,10 @@ if(isset($_SESSION['user'])){
     
 
     require_once '../../../../../conexion.php';
+    require_once '../../../../../php/mb_encoding.php';
 
+    //setear charset
+    $conexion -> set_charset("utf8");
     //query
     $sql = 
     "SELECT p.id_prod, p.codigo_barra, c.nombre_cat, p.nombre_prod, smp.stock_minimo, smp.estado, p.cantidad, smp.estado
@@ -28,10 +31,10 @@ if(isset($_SESSION['user'])){
     $json = array();
     while ($row = $resultado->fetch_array()) {
       $json[] =array(
-        'codigo_barra' => ($row['codigo_barra']),
-        'nombre_prod' => ($row['nombre_prod']),
-        'cantidad' => ($row['cantidad']),
-        'nombre_cat' => ($row['nombre_cat']),
+        'codigo_barra' => mb_encoding($row['codigo_barra']),
+        'nombre_prod' => mb_encoding($row['nombre_prod']),
+        'cantidad' => mb_encoding($row['cantidad']),
+        'nombre_cat' => mb_encoding($row['nombre_cat']),
       );
     };
     echo json_encode($json, JSON_UNESCAPED_UNICODE);

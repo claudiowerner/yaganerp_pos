@@ -14,7 +14,8 @@ session_start();
   
 
   
-  require_once '../../../../../../conexion.php';
+  require_once '../../../../../../conexion.php';  
+  require_once '../../../../../../php/mb_encoding.php';
   
   //rellenar array de id de producto
   $arrId = array();
@@ -24,6 +25,8 @@ session_start();
   $arrayValorUnitario = array();
   $json = array();
 
+  //setear charset 
+  $conexion -> set_charset("utf8");
 	//query
 	$sql = "SELECT id_prod, nombre_prod FROM productos
     WHERE id_cl = $id_cl";
@@ -34,7 +37,7 @@ session_start();
       while ($row = $res->fetch_array())
       {
         $arrId[] = $row["id_prod"];
-        $arrNombre[] = $row["nombre_prod"];
+        $arrNombre[] = mb_encoding($row["nombre_prod"]);
       };
 
       $length = count($arrId);

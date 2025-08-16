@@ -28,7 +28,8 @@ function graficoBarraCategorias(fecha_inicio, fecha_fin)
                     let cantidad = parseInt(j.cantidad);
                     data.addRows([[`${j.nombre_categoria}`, cantidad]]);
                 })
-                var options = {'title':'Ventas por categorías',
+                var options = {
+                    'title':'Ventas por categorías',
                     width: graficoWidthBarra(),
                     height: graficoHeightBarra(),
                     chartArea: {
@@ -39,7 +40,9 @@ function graficoBarraCategorias(fecha_inicio, fecha_fin)
                     },
                     legend: {
                         position: "none"
-                    },};
+                    },
+
+                };
 
                 try
                 {

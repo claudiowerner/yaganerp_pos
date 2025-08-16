@@ -1,7 +1,7 @@
 <?php
+    session_start();
     error_reporting(E_ALL);
     ini_set('display_errors', 'On');
-    session_start();
 
     if(isset($_SESSION['user'])){
         $tipo = $_SESSION['user']['tipo_usuario'];
@@ -14,7 +14,10 @@
         
         $codigo_barra = $_POST["cod_barra"];
         require_once '../../../../../conexion.php';
+        require_once '../../../../../php/mb_encoding.php';
 
+        //setear charset
+        $conexion -> set_charset("utf8");
         //query
         $sql = 
         "SELECT nombre_prod, valor_venta 
@@ -30,7 +33,7 @@
             while($row = $res->fetch_array())
             {
                 $json = array(
-                    "nombre"=>$row["nombre_prod"],
+                    "nombre"=>mb_encoding($row["nombre_prod"]),
                     "valor"=>$row["valor_venta"]
                 );
             }

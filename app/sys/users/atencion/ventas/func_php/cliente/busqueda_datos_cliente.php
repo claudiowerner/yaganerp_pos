@@ -15,10 +15,13 @@ if(isset($_SESSION['user'])){
     $json = array();
 
     require_once '../../../../../conexion.php';
+		require_once '../../../../../php/mb_encoding.php';
 
+    //setear charset
+    $conexion -> set_charset("utf8");
     //query
     $sql = 
-    "SELECT rut, nombre, apellido
+    "SELECT rut, nombre, apellido, telefono
     FROM clientes_negocio
     WHERE id_cl = $id_cl
     AND rut LIKE '%$rut%'
@@ -29,8 +32,9 @@ if(isset($_SESSION['user'])){
       while ($row = $resultado->fetch_array()) {
         $json[] =array(
           'rut' => $row['rut'],
-          'nombre' => ($row['nombre']),
-          'apellido' => ($row['apellido']),
+          'nombre' => mb_encoding($row['nombre']),
+          'apellido' => mb_encoding($row['apellido']),
+          'telefono' => mb_encoding($row['telefono']),
         );
       };
     }

@@ -19,7 +19,8 @@ if(isset($_SESSION['user'])){
 	//query
 	$sql = "SELECT * FROM categorias 
   WHERE id_cl = $id_cl 
-  AND nombre_cat = '$nombre'";
+  AND nombre_cat = '$nombre'
+  AND estado !='N'";
   $res = $conexion->query($sql);
 
   echo $res->num_rows;

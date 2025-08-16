@@ -14,10 +14,14 @@ session_start();
   
 
   require_once '../../../../conexion.php';
+  require_once '../../../../php/mb_encoding.php';
 
 
 
   $json = array();
+
+  //setear charset
+  $conexion -> set_charset("utf8");
 	//query
 	$sql = "SELECT YEAR(fecha_pago) AS año_inicial
   FROM ventas 
@@ -25,6 +29,7 @@ session_start();
   AND id_venta = 1
   GROUP BY fecha_pago";
   $res = $conexion->query($sql);
+  echo $conexion->error;
   if($res->num_rows>0)
   {
     while($row = $res->fetch_array())

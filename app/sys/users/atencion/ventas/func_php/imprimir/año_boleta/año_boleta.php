@@ -12,6 +12,10 @@
     //este array es el que se muestra con la respuesta que se obtenga desde la BD
     $json = array();
 
+
+    //set charset
+    $conexion -> set_charset("utf8");
+    
 	$sql = 
 	"SELECT YEAR(fecha_cierre) AS año 
     FROM correlativo 

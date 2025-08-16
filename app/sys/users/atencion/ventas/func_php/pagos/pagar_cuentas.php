@@ -117,7 +117,7 @@
                     $id_cl,
                     $nCaja,
                     $id_turno,
-                    4,
+                    2,
                     $valor
                 )";
                 $res4 = $conexion->query($sql);

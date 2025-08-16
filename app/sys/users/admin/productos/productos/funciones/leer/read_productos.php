@@ -15,8 +15,10 @@ if(isset($_SESSION['user'])){
     
     
     require_once '../../../../../../conexion.php';
+    require_once '../../../../../../php/mb_encoding.php';
 
     //query
+    $conexion -> set_charset("utf8");
     $sql = 
     "SELECT p.pesaje, p.id_prod, p.codigo_barra, p.nombre_prod, prov.id AS id_proveedor, 
     c.id AS id_categoria, prov.nombre_proveedor, p.categoria, p.cantidad, 
@@ -60,9 +62,9 @@ if(isset($_SESSION['user'])){
 
         $json[] =array(
           'id' => $row['id_prod'],
-          'id_proveedor' => ($row['id_proveedor']),
-          'id_categoria' => ($row['id_categoria']),
-          'codigo_barra' => ($row['codigo_barra']),
+          'id_proveedor' => $row['id_proveedor'],
+          'id_categoria' => $row['id_categoria'],
+          'codigo_barra' => $row['codigo_barra'],
           'nombre_prod' => $row['nombre_prod'],
           'nombre_proveedor' => $row['nombre_proveedor'],
           'nombre_cat' => $row['nombre_cat'],

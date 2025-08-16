@@ -16,6 +16,7 @@
 	$idVenta = $_GET['idVenta'];
 
 	require_once '../../../../../../../../conexion.php';
+	require_once "../../../../../../../../php/mb_encoding.php";
 
 	//declaración de variable que obtendrá el nombre de usuario y el tipo de pago
 	$nom_us = "";
@@ -30,6 +31,8 @@
 	$arrFecha = array();
 	$arrDescto = array();
 
+    //set charset
+    $conexion -> set_charset("utf8");
 	//obtener nombre del usuario creador de la venta
 	$sql = 
 	"SELECT u.nombre, mp.nombre_metodo_pago

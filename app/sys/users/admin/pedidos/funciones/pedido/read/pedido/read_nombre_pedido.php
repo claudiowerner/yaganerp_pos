@@ -10,6 +10,7 @@
 
 
 	require_once '../../../../../../../conexion.php';
+  require_once "../../../../../../../php/mb_encoding.php";
 
 
   $id_pedido = $_POST["id_pedido"];
@@ -24,7 +25,7 @@
   if ($resultado->num_rows > 0){
     while ($row = $resultado->fetch_array())
     {
-      echo $row["nombre_pedido"];
+      echo mb_encoding($row["nombre_pedido"]);
     }
   }
 

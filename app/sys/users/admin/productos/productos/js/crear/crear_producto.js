@@ -21,6 +21,7 @@ $("#btnAgregarCategoria").on("click", function(e)
 {
     $("#modalRegistro").modal("show");
     let proveedores = cargarProveedores();
+    cargarCategoria(0);
     $("#slctProveedor").html(proveedores);
 })
 

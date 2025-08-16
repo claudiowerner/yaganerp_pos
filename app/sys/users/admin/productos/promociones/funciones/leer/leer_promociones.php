@@ -4,16 +4,20 @@
 	session_start();
 	date_default_timezone_set('America/Santiago');
   
-	if(isset($_SESSION['user'])){
-      	$tipo = $_SESSION['user']['tipo_usuario'];
-     	if($tipo == 1){
+	if(isset($_SESSION['user']))
+	{
+		$tipo = $_SESSION['user']['tipo_usuario'];
+     	if($tipo == 1)
+		{
        	    //header('Location: ../');
      	}
-    }else
+    }
+	else
     {
         header('Location: ../../../../index.php');
     }
     require_once '../../../../../../conexion.php';
+    require_once '../../../../../../php/mb_encoding.php';
 
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
@@ -41,7 +45,7 @@
 		$json[] = array(
 			"id" => $cont,
 			"id_promo" => $row["id"],
-			"nombre_promocion" => $row["nombre_promocion"],
+			"nombre_promocion" => mb_encoding($row["nombre_promocion"]),
 			"unidades" => $row["unidades"],
 			"nombre_prod" => $row["nombre_prod"],
 			"precio" => $row["precio"],

@@ -20,7 +20,7 @@
     //Recepción del año actual
     $año = $_POST["año"];
     $sql = 
-        "SELECT corr.correlativo, SUM(v.valor*v.cantidad)-v.descto AS valor, 
+        "SELECT corr.correlativo, SUM(v.valor*v.cantidad)-SUM(v.descto) AS valor, 
         DATE_FORMAT(corr.fecha_cierre,'%d-%m-%Y %H:%i:%s') AS fecha_cierre
         FROM correlativo corr
         JOIN usuarios us 
@@ -32,7 +32,7 @@
         AND YEAR(fecha_cierre) = $año
         AND MONTH(fecha_cierre) = $mes
         AND DAY(fecha_cierre) = $fecha
-        GROUP BY fecha_cierre";
+        GROUP BY corr.correlativo";
         $res = $conexion->query($sql);
         if($res->num_rows>0)
         {

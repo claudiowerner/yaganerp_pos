@@ -13,7 +13,10 @@ if(isset($_SESSION['user'])){
     
 
     require_once '../../../../../conexion.php';
+    require_once '../../../../../php/mb_encoding.php';
 
+    //setear charset
+    $conexion -> set_charset("utf8");
     //query
     $sql = 
     "SELECT p.id_prod, p.codigo_barra, c.nombre_cat, p.nombre_prod, smp.stock_minimo, p.cantidad, smp.estado
@@ -24,18 +27,18 @@ if(isset($_SESSION['user'])){
     AND p.estado = 'S' 
     AND p.cantidad>0 
     GROUP BY p.id_prod";
-    $resultado = $conexion->query($sql);;
+    $resultado = $conexion->query($sql);
     if ($resultado->num_rows > 0){
     $json = array();
     while ($row = $resultado->fetch_array()) {
       $json[] =array(
         'id' => $row['id_prod'],
-        'codigo_barra' => ($row['codigo_barra']),
-        'nombre_prod' => ($row['nombre_prod']),
-        'cantidad' => ($row['cantidad']),
-        'estado' => ($row['estado']),
-        'nombre_cat' => ($row['nombre_cat']),
-        'stock_minimo' => ($row['stock_minimo'])
+        'codigo_barra' => mb_encoding($row['codigo_barra']),
+        'nombre_prod' => mb_encoding($row['nombre_prod']),
+        'cantidad' => mb_encoding($row['cantidad']),
+        'estado' => mb_encoding($row['estado']),
+        'nombre_cat' => mb_encoding($row['nombre_cat']),
+        'stock_minimo' => mb_encoding($row['stock_minimo'])
       );
     };
     echo json_encode($json);

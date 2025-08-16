@@ -23,6 +23,7 @@
 
 
 	require_once '../../../../../conexion.php';
+	require_once '../../../../../php/mb_encoding.php';
 	//arrays
 	$arrId = array();
 	$arrNombreCaja = array();
@@ -56,8 +57,8 @@
 		$cont++;
 		$arrNumFila[] = $cont;
 		$arrId[] = $row["id"];
-		$arrNombreCaja[] = $row["nombre"];
-		$arrNombreUsuario[] = $row["nombre_usuario"];
+		$arrNombreCaja[] = mb_encoding($row["nombre"]);
+		$arrNombreUsuario[] = mb_encoding($row["nombre_usuario"]);
 		$arrFechaDesde[] = $row["desde"];
 		$arrFechaHasta[] = $row["hasta"];
 		$arrEstado[] = $row["estado"];

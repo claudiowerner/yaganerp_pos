@@ -18,6 +18,7 @@ session_start();
   
   
   require_once '../../../../../../../conexion.php';
+  require_once '../../../../../../../php/mb_encoding.php';
   
   //rellenar array de id de producto
   $arrId = array();
@@ -27,6 +28,8 @@ session_start();
   
 
 	//query
+  $conexion -> set_charset("utf8");
+	//query
 	$sql = "SELECT c.id, c.nombre_cat 
   FROM categorias c
   JOIN productos p 
@@ -34,8 +37,11 @@ session_start();
   JOIN ventas v
   ON v.producto = p.id_prod
   WHERE c.id_cl = $id_cl
-  AND v.fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'
+  AND v.fecha_pago 
+  BETWEEN '$fecha_inicio' 
+  AND '$fecha_fin'
   AND v.estado = 'C'
+  AND p.estado != 'N'
   GROUP BY c.id";
     $res = $conexion->query($sql);
 
@@ -44,7 +50,7 @@ session_start();
       while ($row = $res->fetch_array())
       {
         $arrId[] = $row["id"];
-        $arrNombre[] = $row["nombre_cat"];
+        $arrNombre[] = mb_encoding($row["nombre_cat"]);
       };
 
       $length = count($arrId);

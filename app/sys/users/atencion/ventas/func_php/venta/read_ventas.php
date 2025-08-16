@@ -16,6 +16,8 @@
 
     require_once '../../../../../conexion.php';
 
+    //setear charset
+    $conexion -> set_charset("utf8");
     //query
     $sql = 
     "SELECT p.codigo_barra, c.correlativo AS corr, 

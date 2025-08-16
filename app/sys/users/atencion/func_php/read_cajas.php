@@ -12,10 +12,10 @@
 		$id_cl = $_SESSION['user']["id_cl"];
 		
 
-
 		require_once '../../../conexion.php';
+		require_once '../../../php/mb_encoding.php';
 		
-		
+		$conexion -> set_charset("utf8");
 		$sql = 
 		"SELECT * FROM cajas 
 		WHERE id_cl = $id_cl
@@ -29,7 +29,7 @@
 				$json[] =array(
 					"cajas_existentes" => true,
 					'id' => $row['id'],
-					'nombre' => $row['nom_caja'],
+					'nombre' => mb_encoding($row['nom_caja']),
 					'estado' => $row['estado']
 				);
 			}

@@ -76,16 +76,15 @@ if(isset($_SESSION['user'])){
       {
         while($row = $res->fetch_array())
         {
-          $arrNombre[] = $row["nombre"];
-          $arrApellido[] = $row["apellido"];
-          $arrNombreUsuario[] = $row["nombre_usuario"];
+          $arrNombre[] = mb_convert_encoding($row["nombre"], "UTF-8", "ISO-8859-1");
+          $arrApellido[] = mb_convert_encoding($row["apellido"], "UTF-8", "ISO-8859-1");
+          $arrNombreUsuario[] = mb_convert_encoding($row["nombre_usuario"], "UTF-8", "ISO-8859-1");
           $arrFechaRegistro[] = $row["fecha_registro"];
           
           
         }
       }
     }
-
     //obtener número total de cuentas según rut
     for($i=0; $i<$largo_array_id; $i++)
     {
@@ -136,11 +135,9 @@ if(isset($_SESSION['user'])){
         }';
         die();
     }
-
-
     
     
-      echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+    echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
     }
   }
   

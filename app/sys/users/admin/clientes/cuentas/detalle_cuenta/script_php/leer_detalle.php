@@ -95,7 +95,7 @@
 	{
 		$iva = ($arrValor[$i]*$arrCant[$i])*0.19;
 		$json[] = array(
-			"nombre_prod" => $arrNomProd[$i], 
+			"nombre_prod" => mb_convert_encoding($arrNomProd[$i], "UTF-8", "ISO-8859-1"), 
 			"cantidad" => $arrCant[$i],
 			"valor" => $arrValor[$i],
 			"estado_venta" => "<button class='btn btn-primary' style='width=100%' disabled>CERRADO</button>"

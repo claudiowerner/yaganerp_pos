@@ -19,6 +19,7 @@
   $horaHasta = $_GET["horaHasta"];  
 
   require_once '.././../../../../conexion.php';
+  require_once '.././../../../../php/mb_encoding.php';
 
 
   
@@ -28,8 +29,9 @@
   $arrayValorGenerado = array();
   $arrayEstado = array();
 
+  //setear charset
+  $conexion -> set_charset("utf8");
 	//query
-
   $sql =
   "SELECT c.id, v.valor, c.nom_caja, c.estado
   FROM cajas c
@@ -40,6 +42,7 @@
   WHERE v.id_cl = '$id_cl'
   HAVING SUM(v.valor)>0";
 
+
   $res = $conexion->query($sql);
   while($row = $res->fetch_assoc())
   {
@@ -49,7 +52,7 @@
       $nom_caja = $nom_caja. "<br>(CAJA ELIMINADA)";
     }
     $arrayCaja[] = $row["id"];
-    $arrayNombre[] = $nom_caja;
+    $arrayNombre[] = mb_encoding($nom_caja);
   }
 
   $cont = count($arrayCaja);

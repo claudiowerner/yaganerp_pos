@@ -13,8 +13,12 @@
 		$id_cierre = $_POST['id_cierre'];
 
 		require_once '../../../../../conexion.php';
+		require_once '../../../../../php/mb_encoding.php';
 		$cont_mov = 0;
 		$json = array();
+
+		//setear charset
+		$conexion -> set_charset("utf8");
 		//query
 		$sql = 
 		"SELECT mc.monto, mmmc.descripcion

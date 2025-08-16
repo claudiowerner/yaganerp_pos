@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+  session_start();
 
 
   ini_set('display_errors', 1);
@@ -18,6 +18,7 @@ session_start();
   
   
   require_once '../../../../../../../conexion.php';
+  require_once '../../../../../../../php/mb_encoding.php';
   
   //rellenar array de id de producto
   $arrId = array();
@@ -26,11 +27,20 @@ session_start();
   $json = array();
   
 
+  //setear charset
+  $conexion -> set_charset("utf8");
 	//query
-	$sql = "SELECT c.id, c.nombre_cat 
+	$sql = "SELECT c.id, c.nombre_cat
   FROM categorias c
+  JOIN productos p 
+  ON p.categoria = c.id
+  JOIN ventas v 
+  ON v.producto = p.id_prod
   WHERE c.id_cl = $id_cl
-  GROUP BY c.id";
+  AND v.estado = 'C'
+  AND p.estado != 'N'
+  GROUP BY c.id
+  HAVING SUM(v.id)>1";
     $res = $conexion->query($sql);
 
     if($res->num_rows>0)
@@ -38,7 +48,7 @@ session_start();
       while ($row = $res->fetch_array())
       {
         $arrId[] = $row["id"];
-        $arrNombre[] = $row["nombre_cat"];
+        $arrNombre[] = mb_encoding($row["nombre_cat"]);
       };
 
       $length = count($arrId);

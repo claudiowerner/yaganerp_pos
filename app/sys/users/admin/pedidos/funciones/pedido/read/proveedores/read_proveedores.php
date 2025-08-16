@@ -12,6 +12,7 @@
 
 
 	require_once '../../../../../../../conexion.php';
+	require_once '../../../../../../../php/mb_encoding.php';
 
 	//query
 	$sql = 
@@ -27,10 +28,10 @@
     {
       $json[] =array(
           'id' => $row['id'],
-          'nombre_proveedor' => $row['nombre_proveedor'] 
+          'nombre_proveedor' => mb_encoding($row['nombre_proveedor']) 
       );
     }
-    echo json_encode($json);
+    echo json_encode($json, JSON_UNESCAPED_UNICODE);
   }
   else
   {

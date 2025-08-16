@@ -28,7 +28,6 @@ function parseoDatosCliente(rut)
     {
         let descarga = descargarDatosCliente(rut)
         json = JSON.parse(descarga);
-        console.log(json);
         if(Array.isArray(json))
         {
             length = json.length;

@@ -13,6 +13,8 @@
 
 
 	require_once '../../../../../../../conexion.php';
+  require_once '../../../../../../../php/mb_encoding.php';
+  
 
 	//query
 	  $sql = 
@@ -34,7 +36,7 @@
       $json[] =array(
         'id_proveedor' => $row['id_proveedor'],
         'id' => $row['id'],
-        'producto' => $row['producto'],
+        'producto' => mb_encoding($row['producto']),
         'cantidad' => $row['cantidad'],
         'valor' => $row['valor']
       );

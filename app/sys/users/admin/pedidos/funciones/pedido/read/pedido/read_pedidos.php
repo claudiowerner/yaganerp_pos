@@ -1,6 +1,10 @@
 <?php
 
   session_start();
+	date_default_timezone_set('America/Santiago');
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+  header('Content-Type: application/json; charset=utf-8');
   
 
   $id_us = $_SESSION['user']['id'];
@@ -9,6 +13,7 @@
 
   
 	require_once '../../../../../../../conexion.php';
+  require_once "../../../../../../../php/mb_encoding.php";
 
 	
   //arrays
@@ -25,6 +30,8 @@
   //array que se va a imprimir con los resultados
   $json = array();
 
+  //setear charset
+  $conexion->set_charset("utf-8");
   //rellenar Array ID
   $sql =
   "SELECT id 
@@ -32,6 +39,7 @@
   WHERE id_cl = $id_cl
   AND estado != 'N'";
   $res = $conexion->query($sql);
+
 
   if($res->num_rows>0)
   {
@@ -64,7 +72,7 @@
       "SELECT pr.nombre_proveedor, ped.nombre_pedido, ped.estado, us.nombre, 
       DATE_FORMAT(ped.fecha_registro, '%d-%m-%Y') AS fecha_registro, ped.estado_pago
       FROM pedidos ped
-      JOIN proveedores PR
+      JOIN proveedores pr
       ON pr.id = ped.id_proveedor
       JOIN usuarios us 
       ON ped.creado_por = us.id
@@ -95,10 +103,10 @@
           $estado_pago = "POR HACER";
         }
         
-        $arrayNombreProveedor[] = $row["nombre_proveedor"];
-        $arrayNombrePedido[] = $row["nombre_pedido"];
+        $arrayNombreProveedor[] = mb_encoding($row["nombre_proveedor"]);
+        $arrayNombrePedido[] = mb_encoding($row["nombre_pedido"]);
         $arrayEstado[] = $estado;
-        $arrayNombreUsuario[] = $row["nombre"];
+        $arrayNombreUsuario[] = mb_encoding($row["nombre"]);
         $arrayFechaRegistro[] = $row["fecha_registro"];
         $arrayEstadoPago[] = $estado_pago;
       }

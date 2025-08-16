@@ -18,7 +18,6 @@ function graficoBarraCategoriasSinFiltrar()
             success: function(e)
             {
                 let json = JSON.parse(e);
-                console.log(json)
                 json.forEach(j=>{
                     data.addRows([[`${j.nombre_categoria}`, j.cantidad]]);
                 })

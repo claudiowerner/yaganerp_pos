@@ -1,7 +1,8 @@
 <?php
 
 	session_start();
-	date_default_timezone_set('America/Santiago');ini_set('display_errors', 1);
+	date_default_timezone_set('America/Santiago');
+    ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	
 
@@ -14,37 +15,46 @@
     $json = array();
 
 	$sql = 
-	"SELECT YEAR(fecha_cierre) AS año 
+	"SELECT YEAR(fecha_cierre) AS ano 
     FROM correlativo 
-    WHERE id_cl = $id_cl
+    WHERE id_cl = '$id_cl'
     AND YEAR(fecha_cierre) != 0 
     GROUP BY YEAR(fecha_cierre)";
 	$res = $conexion->query($sql);
-
-    if($res->num_rows>0)
+    echo $conexion->error;
+    if($res)
     {
-        while($row = $res->fetch_array())
+        if($res->num_rows>0)
         {
-            $año_actual = date("Y");
-            $año_en_curso = true;
-            if($año_actual==$row["año"])
+            while($row = $res->fetch_array())
             {
-                $año_en_curso = "btn btn-primary";
+                $año_actual = date("Y");
+                $año_en_curso = true;
+                if($año_actual==$row["ano"])
+                {
+                    $año_en_curso = "btn btn-primary";
+                }
+                else
+                {
+                    $año_en_curso = "btn btn-primary";
+                }
+                $json[] = array(
+                    "ano" => $row["ano"],
+                    "ano_en_curso" => $año_en_curso
+                );
             }
-            else
-            {
-                $año_en_curso = "btn btn-primary";
-            }
-            $json[] = array(
-                "año" => $row["año"],
-                "año_en_curso" => $año_en_curso
+        }
+        else
+        {
+            $json = array(
+                "aviso" => "Aún no hay ventas concretadas."
             );
         }
     }
     else
     {
         $json = array(
-            "aviso" => "Aún no hay ventas concretadas."
+            "error" => $conexion->error
         );
     }
     echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);

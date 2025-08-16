@@ -13,15 +13,19 @@ session_start();
   $id_cl = $_SESSION['user']["id_cl"];
   
 
-  require_once '../../../conexion.php';
+  require_once '../../../../conexion.php';
+  require_once '../../../../php/mb_encoding.php';
 
-	//query
+	//arrays
   $arrayCaja = array();
   $arrayNombre = array();
   $arrayVentasCaja = array();
   $arrayValorGenerado = array();
   $arrayEstado = array();
 
+  //set charset
+  $conexion -> set_charset("utf8");
+  //query
   $sql =
   "SELECT id, estado
   FROM cajas 
@@ -60,7 +64,7 @@ session_start();
     $res = $conexion->query($sql);;
     while($row = $res->fetch_assoc())
     {
-      $arrayNombre[] = $row["nom_caja"];
+      $arrayNombre[] = mb_encoding($row["nom_caja"]);
     }
   }
   

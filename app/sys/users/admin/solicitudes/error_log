@@ -1,0 +1,6 @@
+[14-Aug-2025 23:14:33 America/Santiago] PHP Warning:  Undefined array key "user" in /home6/cve111045/public_html/app/sys/users/admin/solicitudes/index.php on line 19
+[14-Aug-2025 23:14:33 America/Santiago] PHP Warning:  Trying to access array offset on value of type null in /home6/cve111045/public_html/app/sys/users/admin/solicitudes/index.php on line 19
+[14-Aug-2025 23:14:33 America/Santiago] PHP Warning:  Undefined array key "user" in /home6/cve111045/public_html/app/sys/users/admin/solicitudes/index.php on line 20
+[14-Aug-2025 23:14:33 America/Santiago] PHP Warning:  Trying to access array offset on value of type null in /home6/cve111045/public_html/app/sys/users/admin/solicitudes/index.php on line 20
+[14-Aug-2025 23:14:33 America/Santiago] PHP Warning:  Undefined array key "user" in /home6/cve111045/public_html/app/sys/users/admin/solicitudes/index.php on line 21
+[14-Aug-2025 23:14:33 America/Santiago] PHP Warning:  Trying to access array offset on value of type null in /home6/cve111045/public_html/app/sys/users/admin/solicitudes/index.php on line 21

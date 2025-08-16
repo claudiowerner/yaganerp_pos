@@ -12,13 +12,17 @@
 	$id_cl = $_SESSION['user']["id_cl"];
 	
 
+
 	//recepcion de ID de caja
 	$id_caja = $_POST["id_caja"];
 
 	require_once "../../../../../../../../conexion.php";
+	require_once "../../../../../../../../php/mb_encoding.php";
 
     $arr_res = array();
 
+    //set charset
+    $conexion -> set_charset("utf8");
     //Consulta SQL
     $sql = 
     "SELECT nom_caja 
@@ -28,7 +32,9 @@
     $res = $conexion->query($sql);
 
     $arr_res = $res -> fetch_assoc();
-    
+    $arr_res = array(
+        "nom_caja" => mb_encoding($arr_res["nom_caja"])
+    );
     echo json_encode($arr_res);
 
 ?>

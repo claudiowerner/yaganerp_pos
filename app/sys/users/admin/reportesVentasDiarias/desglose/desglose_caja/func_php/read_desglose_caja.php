@@ -8,6 +8,7 @@
 	session_start();
 
 	require_once '../../../../../../conexion.php';
+	require_once '../../../../../../php/mb_encoding.php';
 	$id_us = $_SESSION['user']['id'];
 	$nombre = $_SESSION['user']["nombre"];
 	$id_cl = $_SESSION['user']["id_cl"];
@@ -27,7 +28,8 @@
 	//variable json que va a ser impresa en pantalla
 	$json = array();
 	
-
+	//setear charset
+	$conexion -> set_charset("utf8");
 	//Rellenar arrIdVenta
 	$sql = 
 	"SELECT u.nombre, c.correlativo, c.fecha_cierre, c.estado, mp.nombre_metodo_pago
@@ -44,10 +46,10 @@
 	while($row = $res->fetch_array())
 	{
 		$arrCorrelativo[] = $row["correlativo"];
-		$arrUsuario[] = $row["nombre"];
+		$arrUsuario[] = mb_encoding($row["nombre"]);
 		$arrFechaPago[] = $row["fecha_cierre"];
 		$arrEstado[] = "CERRADO";
-		$arrFormaPago[] = $row["nombre_metodo_pago"];
+		$arrFormaPago[] = mb_encoding($row["nombre_metodo_pago"]);
 	}
 
 	//contador de filas de ArrCorrelativo

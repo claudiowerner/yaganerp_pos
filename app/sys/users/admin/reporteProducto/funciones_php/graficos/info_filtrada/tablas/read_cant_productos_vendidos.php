@@ -16,6 +16,7 @@
   $fecha_fin = $_POST["fecha_fin"];
 
   require_once '../../../../../../../conexion.php';
+  require_once '../../../../../../../php/mb_encoding.php';
   
   //rellenar array de id de producto
   $arrId = array();
@@ -24,6 +25,8 @@
   $arrayValor = array();
   $json = array();
 
+	//setear charset
+  $conexion -> set_charset("utf8");
 	//query
 	$sql = "SELECT p.id_prod FROM productos p
     JOIN ventas v 
@@ -32,7 +35,8 @@
     AND p.estado != 'N'
     AND v.estado='C'
     AND v.fecha_pago BETWEEN '$fecha_inicio' AND '$fecha_fin'
-    GROUP BY p.id_prod";
+    GROUP BY p.id_prod
+    HAVING SUM(v.cantidad)>1";
     $res = $conexion->query($sql);
 
     if($res->num_rows>0)
@@ -55,7 +59,7 @@
         $res = $conexion->query($sql);
         while($row = $res->fetch_array())
         {
-          $arrNombre[] = $row["nombre_prod"];
+          $arrNombre[] = mb_encoding($row["nombre_prod"]);
         }
       }
 

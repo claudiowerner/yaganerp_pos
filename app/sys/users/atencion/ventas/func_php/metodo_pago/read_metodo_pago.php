@@ -4,10 +4,14 @@
 
 	if(isset($_SESSION['user'])){
 		require_once '../../../../../conexion.php';
+		require_once '../../../../../php/mb_encoding.php';
 
 
 
 		$json = array();
+		
+		//setear charset
+		$conexion -> set_charset("utf8");
 		//query
 		$sql = 
 		"SELECT * FROM metodo_pago";
@@ -17,7 +21,7 @@
 			while ($row = $resultado->fetch_array()) {
 				$json[] =array(
 					'id' => $row['id'],
-					'nombre_opcion' => $row['nombre_metodo_pago']
+					'nombre_opcion' => mb_encoding($row['nombre_metodo_pago'])
 				);
 			} 
 		}
