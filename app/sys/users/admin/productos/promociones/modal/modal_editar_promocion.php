@@ -8,6 +8,7 @@
                 <h5 class='modal-title' id='exampleModalLongTitle'><strong>Editar promoción</strong><strong id="idPromocionEditar" style="display: none"></strong></h5>
             </div>
             <div class='modal-body'>
+                <span id="id_prod" display="none"></span>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">

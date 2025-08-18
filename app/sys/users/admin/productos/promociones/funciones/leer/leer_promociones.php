@@ -27,6 +27,10 @@
     $id_cl = $_SESSION['user']["id_cl"];
 
 	$json = array();
+
+	//setear charset
+	$conexion -> set_charset("utf8");
+	//Query
 	$sql = "SELECT pr.id, pr.nombre_promocion, pr.unidades, prod.id_prod, prod.nombre_prod, pr.precio, us.nombre, 
 	DATE_FORMAT(pr.fecha_registro, '%d-%m-%Y') AS fecha_registro
 	FROM promociones pr
@@ -47,7 +51,7 @@
 			"id_promo" => $row["id"],
 			"nombre_promocion" => mb_encoding($row["nombre_promocion"]),
 			"unidades" => $row["unidades"],
-			"nombre_prod" => $row["nombre_prod"],
+			"nombre_prod" => mb_encoding($row["nombre_prod"]),
 			"precio" => $row["precio"],
 			"nombre" => $row["nombre"],
 			"fecha_registro" => $row["fecha_registro"],

@@ -29,6 +29,10 @@
     $id_cl = $_SESSION['user']["id_cl"];
 
 	$json = array();
+
+	//setear charset
+	$conexion -> set_charset("utf8");
+	//query
 	$sql = 
     "SELECT id_prod, nombre_prod FROM productos 
     WHERE id_cl = $id_cl 

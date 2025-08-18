@@ -23,6 +23,7 @@
     $subtotal = 0;
     $iva = 0;
     $total = 0;
+    $aplicar_descto = 0;
     $valorVenta = 0;//total sin iva
 
     //obtener fecha
@@ -41,7 +42,7 @@
     AND id_cl = $id_cl 
     AND estado!='N'";
 
-    $res = $conexion->query($sql);;
+    $res = $conexion->query($sql);
     $cont = 0;
     while($row = $res->fetch_assoc())
     {
@@ -71,7 +72,7 @@
     $total = $subtotal + $iva - $valDescto;
     
 
-    $sql = "SELECT v.id_cl, v.id, p.id_prod, SUM(v.cantidad) AS cantidad, SUM(v.valor*v.cantidad) AS valor
+    $sql = "SELECT v.id_cl, v.id, p.id_prod, SUM(v.cantidad) AS cantidad, SUM(p.valor_venta*v.cantidad) AS valor
     FROM ventas v
     JOIN productos p 
     ON p.id_prod = v.producto 
@@ -80,6 +81,7 @@
     AND v.estado = 'C'
     GROUP BY p.id_prod 
     ORDER BY v.id ASC";
+
     $result = $conexion->query($sql) or die (mysqli_error());
 
     //declaracion de arrays
@@ -87,6 +89,8 @@
     $id_prod = array();
     $cantidad = array();
     $valor = array();
+    $nombre_promocion = array();
+    $valor_tot_desc_apl = array();
 
     $id_cliente = "";
     if ($result->num_rows>0){
@@ -98,6 +102,13 @@
             $id_cliente = $row["id_cl"];
         }
     }
+    //consultar y aplicar promoción
+    for($i = 0; $i<count($id); $i ++)
+    {
+        
+    }
+
+
     //descarga de datos de supermercado (nombre de fantasía, etc)
     $sql = 
     "SELECT c.rut, c.nom_fantasia, c.razon_social, 
@@ -184,7 +195,6 @@
     $pdf->Ln(5);
 
     $pdf->MultiCell(0,5,utf8_decode("FECHA: $fecha "),0,'L',false);
-    $pdf->MultiCell(0,5,utf8_decode("CAJA N°: 1"),0,'L',false);
     //$pdf->MultiCell(0,5,utf8_decode("Cajero: Nombre Persona"),0,'C',false);
     //$pdf->SetFont('Arial','B',10);
     //$pdf->MultiCell(0,5,utf8_decode(strtoupper("Ticket Nro: 1")),0,'C',false);
@@ -206,15 +216,53 @@
     /*----------  Detalles de la tabla  ----------*/
 	for($i=0; $i<count($id);$i++)
     {
+        $id_item = ($i+1);
         $pdf->SetFont('Helvetica','',8);
         $pdf->SetTextColor(0,0,0);
-        $pdf->Cell(2,5,utf8_decode($cantidad[$i]),0,0,'C');
-        $pdf->Cell(69,5,utf8_decode(substr($items[$i], 0, 40)),0,0,'L');//40 son los caracteres maximos por linea
+        $pdf->Cell(5,5,utf8_decode("$id_item)"),0,0,'C');
+        $pdf->Cell(66,5,utf8_decode(substr($items[$i], 0, 40)),0,0,'L');//40 son los caracteres maximos por linea
         $pdf->SetFont('Helvetica','',9);
         $pdf->SetTextColor(0,0,0);
         $pdf->Cell(19,5,utf8_decode("$".$valor[$i]),0,0,'R');
         $pdf->Ln(4);
+        $unid = 0;
+        $precio = 0;
+        $precio_unit_promo = 0;
+        $valor_total_descuento = 0;
+        $valor_total = $valor[$i];
+        $cant = $cantidad[$i];
+        $idp = $id_prod[$i];
+        $sql = 
+        "SELECT nombre_promocion, unidades, precio 
+        FROM promociones 
+        WHERE id_cl = $id_cl 
+        AND id_prod = $idp";
+        $res = $conexion -> query($sql);
+        if($res->num_rows>0)
+        {
+            while($row = $res -> fetch_array())
+            {
+                $unid = $row["unidades"];
+                $precio = $row["precio"];
+                $nombre_promocion = $row["nombre_promocion"];
+            }
+            $precio_unit_promo = $precio/$unid;
+            $valor_total_descuento = $precio_unit_promo * $cant;
+            $valor_tot_desc_apl[$i] = $valor_total - $valor_total_descuento;
+            
+            $pdf->Cell(5,5,utf8_decode("->"),0,0,'C');
+            $pdf->SetTextColor(128, 128, 128);
+            $pdf->Cell(66,5,utf8_decode(substr("Descuento promo $nombre_promocion", 0, 40)),0,0,'L');
+            $pdf->SetFont('Helvetica','',9);
+            $pdf->Cell(19,5,utf8_decode("-$".$valor_tot_desc_apl[$i]),0,0,'R');
+        }
+        $pdf->Ln(4);
 	
+    }
+
+    for($i=0; $i<count($valor_tot_desc_apl); $i++)
+    {
+        $aplicar_descto = $aplicar_descto + $valor_tot_desc_apl[$i];
     }
 	
     /*----------  Fin Detalles de la tabla  ----------*/
@@ -246,16 +294,11 @@
     $pdf->Cell(19,5,utf8_decode("$$total"),0,0,'R');
 	
 
-    //$pdf->Ln(5);
-    //$pdf->Cell(18,5,utf8_decode(""),0,0,'C');
-    //$pdf->Cell(22,5,utf8_decode("USTED AHORRA"),0,0,'C');
-    //$pdf->Cell(32,5,utf8_decode("$0.00 USD"),0,0,'C');
-
     $pdf->Ln(10);
 	$pdf->SetFont('Helvetica','',8);
 	$pdf->SetTextColor(0,0,0);
     $pdf->MultiCell(0,5,utf8_decode("** COMPROBANTE DE VENTA NO VALIDO COMO BOLETA FISCAL **"),0,'L',false);
-	$pdf->MultiCell(0,5,utf8_decode("** CAMBIOS O DEVOLUCIONES, ESTE COMPROBANTE DEBE SER PRESENTADO JUNTO CON EL PRODUCTO EN LAS MISMAS CONDICIONES EN QUE FUE ENTREGADO **"),0,'L',false);
+	$pdf->MultiCell(0,5,utf8_decode("** PARA CAMBIOS O DEVOLUCIONES, ESTE COMPROBANTE DEBE SER PRESENTADO JUNTO CON EL PRODUCTO EN LAS MISMAS CONDICIONES EN QUE FUE ENTREGADO **"),0,'L',false);
 
 	$pdf->Ln(8);
     $pdf->SetFont('Helvetica','B',9);

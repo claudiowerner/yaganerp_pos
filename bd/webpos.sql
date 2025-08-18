@@ -472,6 +472,7 @@ CREATE TABLE `clientes_negocio` (
   `rut` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `apellido` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `telefono` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `estado` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `creado_por` int(11) NOT NULL,
   `fecha_registro` date NOT NULL,
@@ -485,7 +486,12 @@ CREATE TABLE `clientes_negocio` (
 
 LOCK TABLES `clientes_negocio` WRITE;
 /*!40000 ALTER TABLE `clientes_negocio` DISABLE KEYS */;
-INSERT INTO `clientes_negocio` VALUES (1,1,'19150634-0','Claudio Francisco','Werner','N',1,'2024-10-16'),(2,1,'19150634-0','Claudio','Werner','S',1,'2024-10-16'),(3,1,'18752880-1','Constanza','Werner','S',1,'2024-12-04'),(4,1,'4531159-7','Graciela ','Gómez','S',1,'2024-12-14'),(5,1,'7367889-7','María Cecilia','Neira Gómez','S',1,'2025-01-27');
+INSERT INTO `clientes_negocio` VALUES 
+(1,1,'19150634-0','Claudio Francisco','Werner', '+56978841411','N',1,'2024-10-16'),
+(2,1,'19150634-0','Claudio','Werner', '+56978841411','S',1,'2024-10-16'),
+(3,1,'18752880-1','Constanza','Werner', '+56978841411','S',1,'2024-12-04'),
+(4,1,'4531159-7','Graciela ','Gómez', '+56978841411','S',1,'2024-12-14'),
+(5,1,'7367889-7','María Cecilia','Neira Gómez', '+56978841411','S',1,'2025-01-27');
 /*!40000 ALTER TABLE `clientes_negocio` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -10,7 +10,7 @@ function aplicarPromo(idProd, id_venta)
     if(j_p!=null)
     {
         //leer datos
-        //leer unidades deuna promo
+        //leer unidades de una promo
         let promo = j_p.unidades;
         //leer unidades en venta asociadas a una promo
         let venta = j_v.unidades;
@@ -41,16 +41,13 @@ function aplicarPromoAjax(idProd, id_venta, promo_aplicada)
         "id_venta": id_venta, 
         "valor": promo_aplicada, 
     };
+    console.log(datos)
 
     $.ajax({
         url: "func_php/promociones/aplicar_promocion.php",
         data: datos,
         type: "POST",
         cache : false,
-        success: function(e)
-        {
-            console.log(e);
-        }
     })
     .fail(function(e){
         alert(e.responseText)

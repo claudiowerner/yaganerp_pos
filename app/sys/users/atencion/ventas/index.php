@@ -187,10 +187,15 @@
     <script src="js/venta/eliminar/eliminar_venta_autorizacion.js"></script>
     <script src="js/venta/eliminar/eliminarVenta.js"></script>
     <script src="js/imprimir/primera_impresion/imprCtaGeneral.js"></script>
-    <script src="js/cantidad/modificarCant.js"></script>
+    <script src="js/cantidad/js/actualizar_pesaje.js"></script>
+    <script src="js/cantidad/js/funcion_actualizar_cantidad_bd.js"></script>
+    <script src="js/cantidad/js/accion_actualizar_cantidad_bd.js"></script>
+    <script src="js/cantidad/js/obtener_id_venta.js"></script>
+    <script src="js/cantidad/js/comprobar_cantidad.js"></script>
+    <script src="js/cantidad/js/agregar_cantidad.js"></script>
+    <script src="js/cantidad/js/modificar_cantidad.js"></script>
     <script src="js/metodoPago/validarMetodoPago.js"></script>
     <script src="js/permisos/permisos.js"></script>
-    <script src="js/cantidad/comprobarCantidad.js"></script>
     <script src="js/venta/leer/verificar_id_crear_venta.js"></script>
     <script src="js/venta/app/ventas.js"></script>
     <script src="js/venta/crear/crear_nueva_venta.js"></script>

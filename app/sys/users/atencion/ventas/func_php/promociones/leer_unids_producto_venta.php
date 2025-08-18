@@ -18,7 +18,7 @@
         //query
         $sql = "SELECT SUM(cantidad) AS unidades 
         FROM ventas 
-        WHERE id_venta = $id_venta
+        WHERE id = $id_venta
         AND producto = $id_prod 
         AND estado != 'N'";
         $res = $conexion->query($sql);
