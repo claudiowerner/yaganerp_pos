@@ -1,18 +1,13 @@
 <hr>
-<table width="100%">
-    <tr>
-        <td align="left" width="">
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-1">
             <label name="lblCantidad">Producto</label>
-        </td>
-        <td align="left" width="70%">
-            <select id="prod" class="form form-control" onChange="productoValido()">
-            </select>
-        </td>
-        
-        <td align="left" width="15%">
-            <label name="lblCantidad">Cantidad</label>
-        </td>
-        <td width="15%">
+        </div>
+        <div class="col-lg-7">
+            <select id="prod" class="form form-control" onChange="productoValido()"></select>
+        </div>
+        <div class="col-lg-2">
             <button type="button" id="restarCant" class="btn btn-danger">
             <img src="../../../img/restar.png" width="10">
             </button>
@@ -20,17 +15,20 @@
             <button type="button" id="sumarCant" class="btn btn-success">
             <img src="../../../img/sumar.png" width="10">
             </button>
-        </td>
-        <td>
+        </div>
+        <div class="col-lg-1">
+            <label name="lblCantidad">Cantidad</label>
+        </div>
+        <div class="col-lg-1">
             <button id="venta" name="agregar" class="agregar btn btn-success" disabled>Agregar</button>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" width="40px">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-1">
             <label name="lblCantidad">Código de barra</label>
-        </td>
-        <td align="left" width="">
+        </div>
+        <div class="col-lg-11">
             <input type="text" name="cod_barra" id="txtCodBarra" class="form form-control" placeholder="Haga click acá y escanée el código de barra">
-        </td>
-    </tr>
-</table>
+        </div>
+    </div>
+</div>

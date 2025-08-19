@@ -162,6 +162,9 @@
     <script src='../../../js/fullcalendar/dist/fullcalendar.js' type='text/javascript'></script>;
 
     <!--llamada a ventas-->
+    <script src="js/venta/crear/obtener_id_item_venta.js"></script>
+    <script src="js/venta/crear/obtener_id_item_venta.js"></script>
+    <script src="js/venta/crear/accion_guardar_venta.js"></script>
     <script src="js/promociones/cargar_estado_promocion.js"></script>
     <script src="js/promociones/leer_numero_unids_producto_venta.js"></script>
     <script src="js/promociones/leer_numero_unids_producto.js"></script>
