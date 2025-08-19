@@ -248,23 +248,20 @@
             }
             $precio_unit_promo = $precio/$unid;
             $valor_total_descuento = $precio_unit_promo * $cant;
-            $valor_tot_desc_apl[$i] = $valor_total - $valor_total_descuento;
-            
+            $valor_tot_desc_apl = $valor_total - $valor_total_descuento;
+        }
+        $div = esMultiplo($cant, $unid);
+        if($div == 1)
+        {
             $pdf->Cell(5,5,utf8_decode("->"),0,0,'C');
             $pdf->SetTextColor(128, 128, 128);
             $pdf->Cell(66,5,utf8_decode(substr("Descuento promo $nombre_promocion", 0, 40)),0,0,'L');
             $pdf->SetFont('Helvetica','',9);
-            $pdf->Cell(19,5,utf8_decode("-$".$valor_tot_desc_apl[$i]),0,0,'R');
-        }
-        $pdf->Ln(4);
+            $pdf->Cell(19,5,utf8_decode("-$".$valor_tot_desc_apl),0,0,'R');
+            $pdf->Ln(4);
+        };
 	
     }
-
-    for($i=0; $i<count($valor_tot_desc_apl); $i++)
-    {
-        $aplicar_descto = $aplicar_descto + $valor_tot_desc_apl[$i];
-    }
-	
     /*----------  Fin Detalles de la tabla  ----------*/
 
 	
@@ -315,3 +312,12 @@
     
     # Nombre del archivo PDF #
     $pdf->Output("I","ticket_venta_$ids f_$fecha.pdf",true);
+
+
+    function esMultiplo($numero, $divisor)
+    {
+        if ($divisor == 0) {
+            return false; // Evitar división por cero
+        }
+        return ($numero % $divisor == 0);
+    }

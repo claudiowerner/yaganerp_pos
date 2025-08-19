@@ -20,6 +20,7 @@ function cargarVentasCaja()
 				let aumentar;
 				let eliminar;
 				descuento = parseInt(descuento) + parseInt(v.descto);
+				alert(v.estado)
 				if(v.estado=='A')
 				{
 					estado = "<button class='btn btn-danger' disabled='true'>PENDIENTE</button>";
