@@ -1,29 +1,11 @@
-
-/* ------------------------------------------- FUNCIONES AJAX --------------------------------------- */
-
-function registrarCliente(datos)
-{
-  return $.ajax({
-    url:"php/cliente/clientes/crear_cliente.php",
-    data: datos,
-    type: "POST",
-    async: false
-  }).responseText;
-}
-
-function registrarPago(datos)
-{
-  return $.ajax({
-    url: "php/cliente/pagos/crear_primer_pago.php",
-    data: datos,
-    type: "POST",
-    async: false
-  }).responseText;
-}
 /* -------------------------------------------- FUNCIONES DOM --------------------------------------- */
 $("#btnAgregarCliente").on("click", function(e)
 {
   $("#modalRegistro").modal("show");
+  
+  $('.select2').on('select2:select', function (e) {
+    $(this).focus();
+  });
   $("#nomCliente").val("");
   $("#rut").val("");
   $("#telefono").val("");
@@ -52,13 +34,7 @@ $("#btnGuardar").on("click", function(e)
   let giro = $("#slctGiros").val();
   let plazo = $("#slctPlazoPago").val();
 
-  if(plan==0||giro==0||plazo==0)
-  {
-    msjes_swal("Aviso", "El método de pago, Periodo de pago o Plan contratado, debe ser una opción válida.", "warning");
-  }
-  else
-  {
-    if(
+  if(
       rut == "" ||
       nombre == "" ||
       correo == "" ||
@@ -108,14 +84,26 @@ $("#btnGuardar").on("click", function(e)
             let cliente = JSON.parse(regCliente);
 
             //registro pago
-            let datosPago = {
-              "rut": rut,
-              "plazo": plazo,
-              "plan": plan,
-              "tipoPago": tipoPago
+            let datosPago;
+            let respPago;
+            if(plan!= 1)
+            {
+              datosPago  = {
+                "rut": rut,
+                "plazo": plazo,
+                "plan": plan,
+                "tipoPago": tipoPago
+              }
+              respPago = registrarPago(datosPago);
             }
-
-            let respPago = registrarPago(datosPago);
+            else
+            {
+              datosPago = {
+                "rut": rut
+              }
+              respPago = crear_periodo_prueba_ajax(datosPago);
+              console.log(respPago)
+            }
             let pago = JSON.parse(respPago)
 
             if(cliente.registro&&pago.registro)
@@ -163,7 +151,6 @@ $("#btnGuardar").on("click", function(e)
         msjes_swal("Aviso", "El formato del R.U.T. es inválido. Debe ser: xxxxxxxx-x", "warning");
       }
     }
-  }
 
 
   

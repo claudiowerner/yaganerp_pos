@@ -18,27 +18,20 @@ $("#btnRegistrarPago").on("click", function(e)
     let planContratado = $("#slctPlanContratado").val();
     let id_cl = $("#idClientePago").text();
 
-    if(metodoPago==0||periodoPago==0||planContratado==0)
-    {
-        msjes_swal("Aviso", "El método de pago, Periodo de pago o Plan contratado, debe ser una opción válida.", "warning");
+    let datos = {
+        "id_cl": id_cl,
+        "metodo": metodoPago,
+        "periodo": periodoPago,
+        "plan": planContratado
     }
-    else
-    {
-        let datos = {
-            "id_cl": id_cl,
-            "metodo": metodoPago,
-            "periodo": periodoPago,
-            "plan": planContratado
-        }
     
-        let respuesta = crearNuevoPago(datos);
-        let j = JSON.parse(respuesta);
+    let respuesta = crearNuevoPago(datos);
+    let j = JSON.parse(respuesta);
         
-        msjes_swal(j.titulo, j.mensaje, j.icono);
-        if(j.registro_pago)
-        {   
-            $('#producto').DataTable().ajax.reload();
+    msjes_swal(j.titulo, j.mensaje, j.icono);
+    if(j.registro_pago)
+    {   
+        $('#producto').DataTable().ajax.reload();
         }
-    }
     
 })

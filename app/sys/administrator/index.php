@@ -1,26 +1,3 @@
-<?php
-  session_start();
-
-  /*if(isset($_SESSION['user']))
-  {
-    $tipo = $_SESSION['user']['tipo_usuario'];
-    if($tipo == 3)
-    {
-      header('Location: ../');
-    }
-  }
-  else
-  {
-    header('Location: ../');
-  }
-
-
-  $id_us = $_SESSION['user']['id'];
-  $nombre = $_SESSION['user']["nombre"];
-  
-  */
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,9 +57,7 @@
                                             //correo
                                             require "modals/correo/modalCorreo.php";
                                             
-                                            echo modalRegistroCliente();
                                             echo modalEditarCliente();
-                                            echo modalRegistrarPlan();
                                             echo modalEditarPlan();
                                             echo modalComprobantesPago();
                                             echo modalInfoClientes();
@@ -115,9 +90,6 @@
             </div>
             <!-- #/paper bg -->
         </div>
-        <!-- ./wrap-sidebar-content -->
-
-        <!-- / END OF CONTENT -->
 
     </div>
     <!-- Container -->

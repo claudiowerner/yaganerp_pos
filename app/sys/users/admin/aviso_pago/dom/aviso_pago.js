@@ -19,6 +19,11 @@ function advertenciaSistema(url)
 
     $("#fecha_pago").html(j.fecha_final);
 
+    if(j.dias_restantes<10)
+    {
+        $("#proximo_pago").show();
+    }
+
     if(j.dias_restantes<=7&&j.dias_restantes>=3)
     {
         $("#advertenciaSuscripcion").show();

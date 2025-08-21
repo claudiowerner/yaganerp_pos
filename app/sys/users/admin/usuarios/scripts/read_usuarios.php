@@ -14,7 +14,10 @@ if(isset($_SESSION['user'])){
     
 
     require_once '../../../../conexion.php';
+    require_once '../../../../php/mb_encoding.php';
 
+    //setear charset
+    $conexion -> set_charset("utf8");
     //query
     $sql = "SELECT id, nombre, user, tipo_usuario, estado, permisos, DATE_FORMAT(fecha_reg, '%d-%m-%Y %H:%i:%S') AS fecha_reg
     FROM usuarios 
@@ -55,7 +58,7 @@ if(isset($_SESSION['user'])){
         $json[] =array(
           'item' => $contador,
           'id' => $row['id'],
-          'nombre' => $row['nombre'],
+          'nombre' => mb_encoding($row['nombre']),
           'user' => $row['user'],
           'tipo_usuario' => $tipo_usuario,
           'id_tipo_usuario' => $row["tipo_usuario"],

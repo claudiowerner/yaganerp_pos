@@ -23,8 +23,14 @@ table = $('#planes').DataTable({
                 let usuarios = data.usuarios;
                 let cajas = data.cajas;
                 let valor = data.valor; 
+                let tipo_plan = data.tipo_plan;
+                let disabled = "";
+                if(tipo_plan == 1)
+                {
+                    disabled = "disabled";
+                }
                 return `<button type="submit" class="btn btn-primary editar" id="btnEditar" onclick="modalEditarPlan(${id}, '${nombre}', ${usuarios}, ${cajas}, ${valor})"><i class='fa fa-edit' aria-hidden='true'></i></button>
-                <button type="submit" class="btn btn-danger" id="btnEliminar" onclick="eliminarPlan(${id}, '${nombre}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`
+                <button type="submit" class="btn btn-danger" id="btnEliminar" onclick="eliminarPlan(${id}, '${nombre}')" ${disabled}><i class='fa fa-trash-o' aria-hidden='true'></i></button>`
             }
         }
   ],

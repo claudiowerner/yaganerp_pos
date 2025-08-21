@@ -28,7 +28,8 @@
         "nombre" => $row["nombre"],
         "usuarios" => $row["usuarios"],
         "cajas" => $row["cajas"],
-        "valor" => $row["valor"]
+        "valor" => $row["valor"],
+        "tipo_plan" => $row["tipo_plan"]
       );
     };
   }

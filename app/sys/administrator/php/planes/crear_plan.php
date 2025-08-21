@@ -14,7 +14,7 @@
 	$cajas = $_POST["cajas"];
 	$valor = $_POST["valor"];
 	$sql = "INSERT INTO planes VALUES 
-	(null,'$nombre', 'S', '$usuarios', '$cajas', '$valor');";
+	(null,'$nombre', 2, '1m', 'S', '$usuarios', '$cajas', '$valor');";
 	$res = $conexion->query($sql);
 
 

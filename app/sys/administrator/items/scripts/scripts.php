@@ -6,6 +6,10 @@
     <script src = "js/pestañas/pestañas.js"></script>
     <script src = "js/giros/cargarGiros.js"></script>
     <!--Clientes-->
+    <script src = "items/cliente/js/cliente/crear_cliente/crear_periodo_prueba_ajax.js"></script>
+    <script src = "items/cliente/js/cliente/crear_cliente/crear_cliente_ajax.js"></script>
+    <script src = "items/cliente/js/cliente/crear_cliente/registrar_primer_pago_ajax.js"></script>
+    <script src = "items/cliente/js/cliente/crear_cliente/acciones_select.js"></script>
     <script src = "items/cliente/js/cliente/crear_cliente/crear_cliente.js"></script>
     <script src = "items/cliente/js/cliente/crear_cliente/validar_rut.js"></script>
     <script src = "items/cliente/js/cliente/editar_clientes/editar_cliente.js"></script>

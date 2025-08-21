@@ -16,15 +16,15 @@
 	DATE_FORMAT(pc.fecha_hasta,'%d-%m-%Y') AS fecha_hasta,
 	pl.id AS id_plan, 
 	pl.nombre, 
-	mp.id AS id_metodo,
-	mp.nombre_metodo_pago, pl.valor, 
+	tpc.id AS id_metodo,
+	tpc.nombre AS metodo_pago, (c.plazo_pago*pl.valor) AS valor,
 	pc.periodo_actual, pc.estado,
 	c.plazo_pago
 	FROM pago_cliente pc
 	JOIN planes pl 
 	ON pl.id = pc.plan
-	JOIN metodo_pago mp
-	ON mp.id = pc.metodo_pago
+	JOIN tipo_pago_cliente tpc
+	ON pc.metodo_pago = tpc.id
 	JOIN cliente c 
 	ON c.id = pc.id_cl
 	WHERE pc.id_cl = $id;";
@@ -55,7 +55,7 @@
 				"fecha_desde" => $row["fecha_desde"],
 				"fecha_hasta" => $row["fecha_hasta"],
 				"nombre" => $row["nombre"],
-				"nombre_metodo_pago" => $row["nombre_metodo_pago"],
+				"nombre_metodo_pago" => $row["metodo_pago"],
 				"valor" => $row["valor"],
 				"periodo_actual" => $periodo_actual,
 				"estado_pago" => $row["estado"],
