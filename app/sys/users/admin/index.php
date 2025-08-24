@@ -51,10 +51,11 @@
         modalMesVenta();
         modalDiaVenta();
     ?>
-    <span id=opcion style="display: none">1</span>
+    <span id="opcion" style="display: none">1</span>
 
     <?php require "menu/sesion_index.php"; ?>
     <!-- Comtainer -->
+    
     <div class="container-fluid paper-wrap bevel tlbr">
 
         <!-- SIDE MENU -->
@@ -62,6 +63,7 @@
             <?php 
                 require "menu/menu_index.php";
                 require "menu/top_menu.php";
+                require "../../utilidades/manual/modal/modal_manual.php";
             ?>
             <!-- CONTENT -->
             <div class="wrap-fluid" id="paper-bg">
@@ -113,20 +115,7 @@
     ================================================== -->
     <!-- Main jQuery Plugins -->
     <?php require "cdn_css/cdn/cdn_index.php";?>
-    <script src="graficos/js/grafico/loader.js"></script>
-    <script src='graficos/js/grafico/cargar_fechas.js'></script>
-    <script src='graficos/js/grafico/grafico_anual.js'></script>
-    <script src='graficos/js/grafico/grafico_ventas_hora.js'></script>
-    <script src='graficos/js/grafico/cargar_años.js'></script>
-    <script src='graficos/js/grafico/graficos.js'></script>
-
-
-    <!--Calendario de ventas-->
-    <script src='graficos/js/calendario/cargar_año_venta.js'></script>
-    <script src='graficos/js/calendario/cargar_mes_venta.js'></script>
-    <script src='graficos/js/calendario/cargar_dias_venta.js'></script>
-    <script src='graficos/js/calendario/calendario.js'></script>
-
+    
 
 
 

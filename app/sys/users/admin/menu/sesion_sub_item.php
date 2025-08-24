@@ -1,25 +1,21 @@
-<?php
-
-    echo "<div class='row'>
-        
-
-    <div class='col-lg-12'>
-        <ul class='nav navbar-nav navbar-right'>
+<div id=sesion class='col-lg-12' align="right">
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+            Hola, <?php echo $nombre;?>
+        </button>
+        <ul class='dropdown-menu'>
             <li>
-                <a data-toggle='dropdown' class='dropdown-toggle text-white' href='#'>
-                    Hola, $nombre <b class='caret'></b>
+                <a class="dropdown-item" href='../../../atencion/'>
+                    <span class='entypo-user'></span>&nbsp;&nbsp;Cambiar a Ventas
                 </a>
-                <ul style='margin:25px 15px 0 0;' role='menu' class='dropdown-setting dropdown-menu bg-amber'>
-                    <li>
-                        <a href='../../../../cerrar_sesion.php'>
-                            <span class='entypo-user'></span>&nbsp;&nbsp;Cerrar sesión</a>
-                    </li>
-                </ul>
             </li>
-
+            <li>
+                <a class="dropdown-item" href='../../../../cerrar_sesion.php'>
+                    <span class='entypo-user'></span>&nbsp;&nbsp;Cerrar sesión
+                </a>
+            </li>
+            <hr>
         </ul>
     </div>
-
-</div>";
-
-?>
+</div>
+    

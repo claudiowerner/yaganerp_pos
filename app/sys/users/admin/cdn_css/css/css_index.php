@@ -2,7 +2,7 @@
     echo "<!-- Bootstrap core CSS -->
     <link rel='stylesheet' href='../../css/bootstrap.css'>
     <!-- Bootstrap theme -->
-    <!--  <link rel='stylesheet' href='css/bootstrap-theme.min.css'> -->
+     <link rel='stylesheet' href='../../css/bootstrap-theme.min.css'>
 
     <!-- Custom styles for this template -->
     <link rel='stylesheet' href='../../css/theme.css'>
@@ -17,6 +17,5 @@
     <link rel='stylesheet' type='text/css' href='../../js/number-progress-bar/number-pb.css'>
     <!-- pace loader -->
     <script src='../../js/pace/pace.js'></script>
-    <link href='../../js/pace/themes/orange/pace-theme-flash.css' rel='stylesheet' />
-";
+    <link href='../../js/pace/themes/orange/pace-theme-flash.css' rel='stylesheet' />";
 ?>

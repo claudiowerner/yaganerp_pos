@@ -18,7 +18,6 @@ function crearGraficoVentaHora(fecha)
     //la fecha que se va a mostrar en el gráfico
     let fecha_split = fecha.split("-");
     let f_imp = fecha_split[2]+"/"+fecha_split[1]+"/"+fecha_split[0];
-    $("#modalDiaVenta").modal("hide");
     var descarga = descargarDatosVentasHora(fecha);
     let hora = JSON.parse(descarga);
             
