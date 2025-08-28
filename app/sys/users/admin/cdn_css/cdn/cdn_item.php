@@ -1,5 +1,8 @@
 
     <script type='text/javascript' src='../../../js/jquery.js'></script>
+    
+    <script type='text/javascript' src='../../../js/datatables/datatables.js'></script>
+
 
     <script type='text/javascript' src='../../../js/mensajes-swal.js'></script>
     <script type='text/javascript' src='../../../js/numberFormat.js'></script>
@@ -40,8 +43,6 @@
     <script src='../../../js/chart.js'></script>
 
     
-    <script type='text/javascript' src='../../../js/datatables/datatables.js'></script>
-
 
 
     <!--Aviso de pago-->

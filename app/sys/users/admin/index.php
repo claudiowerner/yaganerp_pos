@@ -63,7 +63,6 @@
             <?php 
                 require "menu/menu_index.php";
                 require "menu/top_menu.php";
-                require "../../utilidades/manual/modal/modal_manual.php";
             ?>
             <!-- CONTENT -->
             <div class="wrap-fluid" id="paper-bg">

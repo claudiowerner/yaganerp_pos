@@ -2,6 +2,7 @@
 
     <!--Bootstrap-->
     <script type='text/javascript' src='../../../../../../js/bootstrap.bundle.js'></script>
+    <script type='text/javascript' src='../../../../../../js/datatables/datatables.js'></script>
 
     <script type='text/javascript' src='../../../../../../js/mensajes-swal.js'></script>
     <script type='text/javascript' src='../../../../../../tipo_usuario/acceso_ventas_dashboard.js'></script>

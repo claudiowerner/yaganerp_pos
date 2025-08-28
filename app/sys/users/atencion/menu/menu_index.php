@@ -12,7 +12,7 @@
               <ul id="menu-showhide" class="topnav">
                   <li class="devider-title">
                       <h3>
-                        <i class="fontello-settings"></i><span>Opciones restaurant</span>
+                        <i class="fontello-settings"></i><span>Opciones tienda</span>
                       </h3>
                   </li>
                   <li >
@@ -37,7 +37,7 @@
                   <li>
                       <a class="tooltip-tip" href="mesas">
                           <i class=" fontello-mail-1"></i>
-                          <span>Mesas</span>
+                          <span>Cajas</span>
                       </a>
                   </li>
                   
