@@ -102,9 +102,9 @@ $("#btnGuardar").on("click", function(e)
                 "rut": rut
               }
               respPago = crear_periodo_prueba_ajax(datosPago);
-              console.log(respPago)
             }
             let pago = JSON.parse(respPago)
+            
 
             if(cliente.registro&&pago.registro)
             {

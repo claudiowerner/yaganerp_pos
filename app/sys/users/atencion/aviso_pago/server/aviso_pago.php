@@ -5,6 +5,7 @@
 	
 	
 	require_once '../../../../conexion.php';
+	require_once '../../../../php/mb_encoding.php';
     
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
@@ -13,6 +14,7 @@
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
 
+    $json = array();
 
 
 
@@ -37,6 +39,9 @@
     
     //set locale mysql
     $sql = "SET lc_time_names = 'es_CL';";
+
+    //setear charset
+    $conexion -> set_charset("utf8");
     $res = $conexion->query($sql);
     
     $sql = "SELECT (fecha_hasta+1) AS fecha_hasta, 
@@ -44,11 +49,14 @@
     DATE_FORMAT(fecha_hasta+1, '%d-%m-%Y') AS fecha_hasta_formateada
     FROM pago_cliente 
     WHERE id_cl = $id_cl
-    AND estado = 'N'";
+    AND periodo_actual = 'S'
+    AND '$fecha_actual_str' <= fecha_hasta";
     $res = $conexion->query($sql);
 
-    $num_dias = 30;//inicializado en 30 para que no salte el aviso de pago o no se bloquee el sistema
+    $num_dias = 0;//inicializado en 30 para que no salte el aviso de pago o no se bloquee el sistema
     $mostrar_dias = "0";
+    $fecha_final_str = "0000-00-00";
+    $fecha_final_formateada = "00-00-0000";
     $res->num_rows;
     if($res -> num_rows>0)
     {
@@ -61,12 +69,23 @@
         $fecha_actual = strtotime($fecha_actual_str)/86400;
         $fecha_final = strtotime($fecha_final_str)/86400;
         $num_dias = $fecha_final - $fecha_actual;
+
+        if($num_dias>1||$num_dias==0||$num_dias<0)
+        {
+            $mostrar_dias = "$num_dias días";
+        }
+        else
+        {
+            $mostrar_dias = "$num_dias día";
+        }
     }
 
 
 
     $json = array(
         "dias_restantes" => $num_dias,
+        "mostrar_dias" => $mostrar_dias,
+        "fecha_final" => $fecha_final_formateada,
     );
     echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 

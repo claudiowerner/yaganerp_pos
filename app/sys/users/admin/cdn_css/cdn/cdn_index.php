@@ -1,11 +1,11 @@
-
-    <script type='text/javascript' src='../../js/jquery.js'></script>
-    <!--Bootstrap-->
-    <script type='text/javascript' src='../../js/bootstrap.bundle.js'></script>
+<?php
+    echo 
+    "<script type='text/javascript' src='../../js/jquery.js'></script>
 
     <script type='text/javascript' src='../../js/mensajes-swal.js'></script>
     <script type='text/javascript' src='../../js/numberFormat.js'></script>
     <script type='text/javascript' src='../../tipo_usuario/acceso_ventas_dashboard.js'></script>
+    <script type='text/javascript' src='../../js/bootstrap.js'></script>
     <script type='text/javascript' src='../../js/sweetalert.min.js'></script>
     <script type='text/javascript' src='../../js/date.js'></script>
     <script type='text/javascript' src='../../js/slimscroll/jquery.slimscroll.js'></script>
@@ -42,30 +42,8 @@
     <script src='../../js/chart.js'></script>
 
 
-
     <!--Aviso de pago-->
     <script src='aviso_pago/dom/bloqueo_sistema.js'></script>
     <script src='aviso_pago/dom/aviso_pago.js'></script>
-    <script>advertenciaSistema('aviso_pago/server/aviso_pago.php')</script>
-
-
-    <script src="graficos/js/grafico/loader.js"></script>
-    <script src='graficos/js/grafico/cargar_fechas.js'></script>
-    <script src='graficos/js/grafico/grafico_anual.js'></script>
-    <script src='graficos/js/grafico/grafico_ventas_hora.js'></script>
-    <script src='graficos/js/grafico/cargar_años.js'></script>
-    <script src='graficos/js/grafico/graficos.js'></script>
-
-
-    <!--Calendario de ventas-->
-    <script src='graficos/js/calendario/cargar_año_venta.js'></script>
-    <script src='graficos/js/calendario/cargar_mes_venta.js'></script>
-    <script src='graficos/js/calendario/cargar_dias_venta.js'></script>
-    <script src='graficos/js/calendario/calendario.js'></script>
-
-
-
-
-
-    <!--Manual-->
-    <script src="../../utilidades/manual/js/abrir_manual.js"></script>
+    <script>advertenciaSistema('aviso_pago/server/aviso_pago.php')</script>";
+?>

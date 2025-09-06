@@ -5,6 +5,7 @@
 	
 	
 	require_once '../../../../conexion.php';
+	require_once '../../../../php/mb_encoding.php';
     
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
@@ -13,6 +14,7 @@
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
 
+    $json = array();
 
 
 
@@ -37,6 +39,9 @@
     
     //set locale mysql
     $sql = "SET lc_time_names = 'es_CL';";
+
+    //setear charset
+    $conexion -> set_charset("utf8");
     $res = $conexion->query($sql);
     
     $sql = "SELECT (fecha_hasta+1) AS fecha_hasta, 

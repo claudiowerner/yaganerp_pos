@@ -1,4 +1,6 @@
-<div id="skin-select">
+<?php
+
+  echo '<div id="skin-select">
   <span id="opcion" style="display: none">1</span>
   <a id="toggle">
       <span class="fa icon-menu"></span>
@@ -107,31 +109,21 @@
                         </a>
                     </li>
                     
-                    <li>
-                        <a class="tooltip-tip" href="../solicitudes">
-                            <i class=" fontello-mail-1"></i>
-                            <span>Solicitudes</span>
-                        </a>
-                    </li>
+                  <li>
+                      <a class="tooltip-tip" href="../solicitudes">
+                          <i class=" fontello-mail-1"></i>
+                          <span>Solicitudes</span>
+                      </a>
+                  </li>
                     <li>
                         <a class="tooltip-tip" href="../config">
                             <i class=" fontello-mail-1"></i>
                             <span>Otras configuraciones</span>
                         </a>
                     </li>
-                    <li class="devider-title">
-                        <h3>
-                            <i class="fa fa-book"></i><span>Manual y especificaciones</span>
-                        </h3>
-                    </li>
-                    <li>
-                        <a class="tooltip-tip" href="../manual">
-                            <i class="fa fa-book"></i>
-                            <span>Manual de usuario</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
-</div>
+</div>';
+?>

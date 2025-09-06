@@ -51,7 +51,7 @@
 
 	function insertar($id_cl, $caja, $id_cierre, $monto, $conexion)
 	{
-		$sql = 
+		echo $sql = 
 		"INSERT INTO monto_caja VALUES(
 			null,
 			$id_cl,

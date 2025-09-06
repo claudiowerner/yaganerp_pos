@@ -25,7 +25,6 @@
 
 	//cantidad de dias del mes en curso
 	$dias_mes_actual = date('t');
-
 	if($dia_plazo>$dias_mes_actual)
 	{
 		$dia = $dia_plazo - $dias_mes_actual;
@@ -38,7 +37,8 @@
 		$mes = $mes - 12;
 		$año = $año + 1;
 	}
-	$fechaHasta = "$año-$mes-$dia";
+	
+	$fechaHasta = "$año-$mes-$dia_plazo";
 
 	
 	

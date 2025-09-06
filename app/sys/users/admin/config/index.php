@@ -54,7 +54,6 @@
         require "modals/info_stock/info_stock.php";
         require "modals/plan_contratado/plan_contratado.php";
         require "modals/config_promociones/config_promociones.php";
-        require "../../../utilidades/manual/modal/modal_manual.php";
     ?>
 
     <?php require "../menu/sesion_item.php";?>

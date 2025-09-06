@@ -10,6 +10,8 @@
 
     endif;
 
+
+
     $conexion = new mysqli('localhost','root','','webpos') or die("error" . mysqli_errno($connect));
 
 

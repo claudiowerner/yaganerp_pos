@@ -1,11 +1,10 @@
-    <script type='text/javascript' src='../../../../../../js/jquery.js'></script>
-
-    <!--Bootstrap-->
-    <script type='text/javascript' src='../../../../../../js/bootstrap.bundle.js'></script>
-    <script type='text/javascript' src='../../../../../../js/datatables/datatables.js'></script>
+<?php
+    echo 
+    "<script type='text/javascript' src='../../../../../../js/jquery.js'></script>
 
     <script type='text/javascript' src='../../../../../../js/mensajes-swal.js'></script>
     <script type='text/javascript' src='../../../../../../tipo_usuario/acceso_ventas_dashboard.js'></script>
+    <script type='text/javascript' src='../../../../../../js/bootstrap.js'></script>
     <script type='text/javascript' src='../../../../../../js/numberFormat.js'></script>
     <script type='text/javascript' src='../../../../../../js/date.js'></script>
     <script type='text/javascript' src='../../../../../../js/slimscroll/jquery.slimscroll.js'></script>
@@ -37,6 +36,5 @@
     <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
     <script src='../../../../../../js/flot/jquery.flot.pie.min.js' type='text/javascript'></script>
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-    <script src='../../../../../../js/flot/jquery.flot.categories.min.js' type='text/javascript'></script>
-
-    
+    <script src='../../../../../../js/flot/jquery.flot.categories.min.js' type='text/javascript'></script>";
+?>
