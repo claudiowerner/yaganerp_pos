@@ -8,46 +8,69 @@ session_start();
 
 require_once '../../../../../conexion.php';
 if(isset($_SESSION['user'])){
-  $tipo = $_SESSION['user']['tipo_usuario'];
+	$tipo = $_SESSION['user']['tipo_usuario'];
   
     $id_us = $_SESSION['user']['id'];
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];
     
     $rut = $_GET["rut"];
-    
 
-    $sql = 
-      "SELECT corr.correlativo, ccr.estado, 
-      DATE_FORMAT(ccr.fecha_registro, '%d-%m-%Y') AS fecha, SUM(v.valor) AS valor
-      FROM cuenta_corriente ccr 
-      JOIN correlativo corr 
-      ON corr.correlativo = ccr.id_venta
-      JOIN ventas v 
-      ON v.id_venta = corr.correlativo
-      WHERE ccr.id_cl = $id_cl
-      AND rut = '$rut'
-      AND v.estado!='N'
-      AND ccr.estado !='N'
-      GROUP BY corr.correlativo";
-    $resultado = $conexion->query($sql);;
+	//declaración de arrays
+	$arrIdVenta = array();
+	$arrEstado = array();
+	$arrFecha = array();
+	$arrValor = array();
     $json= array();
-    while ($row = $resultado->fetch_array())
-    {
+	
 
-        $json[] =array(
-          'correlativo' => $row['correlativo'],
-          'estado' =>  $row['estado'],
-          'fecha' => ($row['fecha']),
-          'valor' => ($row['valor'])
+    //rellenar array de ID de venta
+	$sql = 
+	"SELECT id_venta, estado, DATE_FORMAT(fecha_registro, '%d-%m-%Y') AS fecha_registro
+	FROM cuenta_corriente
+	WHERE id_cl = $id_cl
+	AND rut = '$rut'";
+	$res = $conexion -> query($sql);
+
+	while($row = $res -> fetch_array())
+	{
+		$arrIdVenta[] = $row["id_venta"];
+		$arrEstado[] = $row["estado"];
+		$arrFecha[] = $row["fecha_registro"];
+	}
+
+
+
+	$cont = count($arrIdVenta);
+
+	for($i = 0; $i<$cont; $i++)
+	{
+		$id = $arrIdVenta[$i];
+		$sql = 
+		"SELECT SUM(valor - valorDescto) AS valor 
+		FROM ventas 
+		WHERE id_cl = $id_cl 
+		AND estado = 'P'
+		AND id_venta = $id";
+		$res = $conexion -> query($sql);
+		while($row = $res -> fetch_array())
+		{
+			$arrValor[] = $row["valor"];
+		}
+	}
+    for($i = 0; $i<$cont; $i++)
+    {
+		$json[] =array(
+			'correlativo' => $arrIdVenta[$i],
+			'estado' =>  $arrEstado[$i],
+			'fecha' => $arrFecha[$i],
+			'valor' => $arrValor[$i]
         );
     }
     echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
-  
-  
 }
 else
 {
-  header('Location: ../');
+	header('Location: ../');
 }
 ?>
