@@ -20,7 +20,6 @@ function cargarVentasCaja()
 				let aumentar;
 				let eliminar;
 				descuento = parseInt(descuento) + parseInt(v.descto);
-				alert(v.estado)
 				if(v.estado=='A')
 				{
 					estado = "<button class='btn btn-danger' disabled='true'>PENDIENTE</button>";
@@ -39,9 +38,7 @@ function cargarVentasCaja()
 				}
 				template_1+=
 				`<tr>
-					<td>${v.usuario}</td>
 					<td>${v.nombre_prod}</td>
-					<td id=nombre_cat>${v.nombre_cat}</td>
 					<td><a id=cantVenta>${v.cantidad}</a> ${v.nombre_medida}</td>
 					<td id=valVenta>$${v.valor}</td>
 					<td>${estado}</td>

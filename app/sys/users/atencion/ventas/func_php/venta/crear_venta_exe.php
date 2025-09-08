@@ -71,7 +71,7 @@
 		}
 
 		//registro tabla ventas
-		$sql = 
+		echo $sql = 
 		"INSERT INTO ventas VALUES 
 		(null, 
 		$id_venta, 

@@ -16,19 +16,12 @@
     //este array es el que se muestra con la respuesta que se obtenga desde la BD
     $json = array();
 
-    /*//recepcion del dia seleccionado
+    //recepcion del dia seleccionado
     $fecha = $_POST["fecha"];
     //Recepción del número del mes
     $mes = $_POST["mes"];
     //Recepción del año actual
-    $año = $_POST["año"];*/
-
-    //recepcion del dia seleccionado
-    $fecha = 6;
-    //Recepción del número del mes
-    $mes = 9;
-    //Recepción del año actual
-    $año = 2025;
+    $año = $_POST["año"];
 
     $fecha_cierre = "$año-$mes-$fecha";
 
@@ -40,7 +33,8 @@
     WHERE id_cl = $id_cl
     AND YEAR(fecha_cierre) = $año
     AND MONTH(fecha_cierre) = $mes
-    AND DAY(fecha_cierre) = $fecha";
+    AND DAY(fecha_cierre) = $fecha
+    AND estado = 'C'";
     $res = $conexion -> query($sql);
 
     while($row = $res -> fetch_array())
@@ -76,6 +70,7 @@
         for($i = 0; $i<$cont; $i++)
         {
             $json[] = array(
+                "res" => $cont, 
                 "correlativo" => $arrCorr[$i],
                 "valor" => $arrValor[$i],
                 "fecha_cierre" => $arrFechaCierre[$i],
@@ -85,10 +80,7 @@
     else
     {
         $json = array(
-            "sEcho" => 1,
-            "iTotalRecords" => "0",
-            "iTotalDisplayRecords" => "0",
-            "aaData" => []
+            "res" => 0
         );
     } 
     echo json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);

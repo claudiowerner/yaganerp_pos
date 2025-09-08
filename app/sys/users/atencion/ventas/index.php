@@ -1,145 +1,89 @@
 <?php
-  session_start();
-  if(isset($_GET["tipoVenta"])||isset($_GET["idMesa"]))
-  {
-    $tipoVenta = $_GET["tipoVenta"];
-    $idMesa = $_GET["idMesa"];
-  }
-  else
-  {
-    $tipoVenta = null;
-    $idMesa = null;
-  }
-  
+    session_start();
+    if(isset($_GET["tipoVenta"])||isset($_GET["idMesa"]))
+    {
+        $tipoVenta = $_GET["tipoVenta"];
+        $idMesa = $_GET["idMesa"];
+    }
+    else
+    {
+        $tipoVenta = null;
+        $idMesa = null;
+    }
+    
 
-  require_once '../../../conexion.php';
+    require_once '../../../conexion.php';
 
-  $id_us = $_SESSION['user']['id'];
-  $nombre = $_SESSION['user']["nombre"];
-  $id_cl = $_SESSION['user']["id_cl"];
+    $id_us = $_SESSION['user']['id'];
+    $nombre = $_SESSION['user']["nombre"];
+    $id_cl = $_SESSION['user']["id_cl"];
   
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    
     <meta charset="utf-8">
     <!--   <meta content="IE=edge" http-equiv="X-UA-Compatible"> -->
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
     <link href="ico/favicon.ico" rel="shortcut icon">
+    <?php require "../cdn_css/css/css_item.php"?>
 
-    <title>VendeloPOS Venta CAJA <?php echo $_GET['nomCaja']?></title>
-
-    <?php require "../cdn_css/css/css_item.php";?>
-    
-    <link rel='stylesheet' href='css.css'>
+    <title>.:VendeloPOS Administrador:.</title>
 
 
 </head>
 
-<body>
-<span id="opcion" style="display:none">2</span>
-    <?php require "../menu/sesion_item.php";?>
-    <!-- END OF TOPNAV -->
+<body role="document">
+    <span id=opcion style="display: none">1</span>
+    <span id=id_usuario style="display: none"><?php echo $id_us;?></span>
+    <span id=nCaja style="display: none"><?php echo $_GET["id"];?></span>
+
+    <?php 
+        require "../menu/sesion_item.php";
+    ?>
+.
     <!-- Comtainer -->
-    
-    <div class="row">
-        <div class="row">
-            <div class="col-md-12">
-                <!-- SIDE MENU -->
-                <div class="wrap-sidebar-content">
-                    <!--Llamada modals-->
-                    <?php
-                        require_once "items_index/modals/llamado_modals.php";
-                    ?>
-                </div>
-                <!-- CONTENT -->
-                <div class="wrap-fluid" id="paper-bg">
-                    <div class="col-lg-10" style='align:left' >
-                        <table width=90%>
-                            <tr>
-                                <td width=90%><h1>Ventas</h1></td>
-                                <td width=5%><button class='btn btn-secondary'><?php require_once "items_index/ventas/dropdown.php";?></button></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <strong id="id_usuario" style="display: none"><?php echo $id_us?></strong>
-                            <div class="row">
-                                
-                                <div class="col-lg-12">
-                                    <div id="pantallaPrincipal" class="plan">
-                                        <div class="col-md-12" id="div_ventas">
-                                            <div class="card card-warning">
-                                                <div>
-                                                    <?php require_once "items_index/botones/botones_index.php";?>
-                                                </div>
-                                                <div>
-                                                    <?php require_once "items_index/producto/producto.php";?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+    <div class="container-fluid paper-wrap bevel tlbr">
+        <!-- SIDE MENU -->
+        <div class="wrap-sidebar-content">
+            <?php
+                require "../menu/top_menu_item.php";
+            ?>
+            <!-- CONTENT -->
+            <div class="wrap-fluid" id="paper-bg">
+                <div class="row">
+                    <?php require "items_index/modals/llamado_modals.php";?>
+                    <div class="col-md-12">
+                        <div class="card card-warning" id="">
+                            <div class="card-body">
+                                <?php require "items_index/modulo_venta/titulo.php"?>
+                                <div class="col-lg-9">
+                                    <?php require "items_index/botones/botones_index.php"?>
+                                    <?php require "items_index/producto/producto.php"?>
+                                    <?php require "items_index/modulo_venta/modulo_venta.php"?>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div id="pantallaPrincipal" class="plan">
-                                        <div class="col-md-12">
-                                            <div class="card card-warning">
-                                                <div class="card-header" style="align:left;">
-                                                    <table width="100%">
-                                                        <tr>
-                                                            <td>Venta <strong>CAJA </strong><strong id="nomCaja"><?php echo $_GET['nomCaja']?></strong><strong id="nCaja" style="display: none"><?php echo $_GET['id']?></strong>
-                                                            <strong id="idMesa" style="display:none"><?php echo $idMesa;?></strong></td>
-                                                            <td>ID venta: <strong name="id_venta" id="id_venta">CARGANDO...</strong></td>
-                                                            <td>Caja/turno: <strong name="nombreCaja" id="nombreCaja">CARGANDO...</strong></td>
-                                                            <td>N° de Productos: <strong name="nProd" id="nProd">CARGANDO...</strong></td>
-                                                            <td><strong name="id_caja" id="id_caja" style="display: none"></strong></td>
-                                                        </tr>
-                                                    </table> 
-                                                </div>
-                                                <div id="imprimirBoleta" class="card-body">
-                                                    <div class="row" id="">
-                                                        <table class="table table-hover responsive" width="100%" id="tablaVentas">
-                                                            <th>Atención</th>
-                                                            <th>Pedido</th>
-                                                            <th>Tipo</th>
-                                                            <th>Cant</th>
-                                                            <th>Valor</th>
-                                                            <th>Estado</th>
-                                                            <th>Fecha</th>
-                                                            <th>- Ó +</th>
-                                                            <th>Eliminar</th>
-                                                            <tbody id="ventas" class="table-hover ">
-                                                                <tr>
-                                                                    <td>Cargando...</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-lg-3">
+                                    <?php require "items_index/modulo_pago/modulo_pago.php"?>
                                 </div>
                             </div>
                         </div>
-                        <?php require_once 'items_index/modulo_pago/modulo_pago.php'?>
                     </div>
                 </div>
-                
             </div>
+            <!-- #/paper bg -->
         </div>
+        <!-- ./wrap-sidebar-content -->
+
+        <!-- / END OF CONTENT -->
+
     </div>
-    
-    <!-- Container -->
+ <!-- Container -->
 
     <!-- 
     ================================================== -->
@@ -159,7 +103,7 @@
     <script src='../../../js/moment/moment.js' type='text/javascript'></script>
     
     <!--Full Calendar-->
-    <script src='../../../js/fullcalendar/dist/fullcalendar.js' type='text/javascript'></script>;
+    <script src='../../../js/fullcalendar/dist/fullcalendar.js' type='text/javascript'></script>
 
     <!--llamada a ventas-->
     <script src="js/venta/crear/obtener_id_item_venta.js"></script>
@@ -238,8 +182,12 @@
     <script src="js/cuenta_cliente/checkbox/checkbox.js"></script>
     <script src="js/cuenta_cliente/pagar_cuenta/pagar_cuenta.js"></script>
     <script src="js/usuario/obtener_usuario.js"></script>
-    
-    
+
+
+
+
+
+
 </body>
 
 </html>

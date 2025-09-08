@@ -170,7 +170,7 @@ $.ajax(
                 {
                     index = "../../../index.php";
                 }
-                tituloIndex = "Mesas";
+                tituloIndex = "Cajas";
                 opciones = opciones + `
                     <li>
                         <a href=`+index+`>

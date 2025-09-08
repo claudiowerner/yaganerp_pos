@@ -9,7 +9,8 @@ function correlativo()
             type: "GET",
             success: function(e)
             {
-                if(e==1)
+                let j = JSON.parse(e);
+                if(j.corr)
                 {
                     let id = cargarIDVentaCaja(idCaja);
                     $("#id_venta").html(id);
