@@ -1,8 +1,5 @@
-$("#cierreCaja").on('click', 'button.btn-danger', function(e)
+function cerrarCaja(id, nomCaja)
 {
-  let element = $(this)[0].parentElement.parentElement;
-  let id = $(element).attr('idCierre');
-  let nomCaja = $(element).attr('nomCaja');
   $("#nomCaja").html(nomCaja);
   $("#nCaja").html(id);
   $("#idCierre").html(id);
@@ -35,4 +32,4 @@ $("#cierreCaja").on('click', 'button.btn-danger', function(e)
     }
   });
   
-});
+};

@@ -56,20 +56,6 @@
   }
 
   $cont = count($arrayCaja);
-
-
-  /*for($i=0;$i<$cont;$i++)
-  {
-    $id = $arrayCaja[$i];
-    $sql =
-    "SELECT nom_caja FROM cajas WHERE id = '$id' AND id_cl = '$id_cl'";
-    $res = $conexion->query($sql);
-    while($row = $res->fetch_assoc())
-    {
-      $arrayNombre[] = $row["nom_caja"];
-    }
-  }*/
-
   
   for($i=0;$i<$cont;$i++)
   {
@@ -114,8 +100,7 @@
     $valorTotal = 0;
     $id = $arrayCaja[$i];
     $sql =
-    "SELECT SUM(v.valor*v.cantidad) AS valor,
-    v.descto
+    "SELECT SUM((v.valor - v.descto)*v.cantidad) AS valor
     FROM ventas v 
     JOIN correlativo c 
     ON c.correlativo = v.id_venta
@@ -131,12 +116,7 @@
       {
         if($row["valor"]!="")
         {
-          $valor = $row["valor"];
-          $descto = $row["descto"];
-          $valorDescto = ($valor*$descto)/100;
-          $valorTotal = $valor-$valorDescto;
-          $valorGenerado = $valorGenerado + $valorTotal;
-
+          $valorGenerado = $row["valor"];
         }
         else
         {

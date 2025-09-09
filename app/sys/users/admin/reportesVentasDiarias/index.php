@@ -67,16 +67,6 @@
                                     <div class="card-header">
                                         <h1>Reporte de caja diaria</h1>
                                         <button id="btnCrearCajaNueva" class="btn btn-success" >Abrir caja</button>
-                                        <div class="col-md-12" style="width:100%" align=center>
-                                            <table>
-                                                <tr>
-                                                    <td><strong>Desde</strong></td>
-                                                    <td><input type="date" name="fechaDesde" id="fechaDesde" class="form-control" placeholder="DD-MM-AAAA"></td>
-                                                    <td><strong>Hasta</strong></td>
-                                                    <td><input type="date" name="fechaHasta" id="fechaHasta" class="form-control" placeholder="DD-MM-AAAA"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
                                         <table id="cierreCaja" class="table table-bordered table-hover dt-resposive display nowrap">
                                             <thead>
                                                 <tr>

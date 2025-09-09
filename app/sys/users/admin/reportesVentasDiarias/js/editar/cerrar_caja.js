@@ -21,7 +21,7 @@ function cierreCaja()
           msjes_swal("Excelente", e, "success");
           //imprimirResumenVenta("../../",idCierre);
         }
-        obtenerCierresCaja();
+        $('#cierreCaja').DataTable().ajax.reload();
       }
     })
     .fail(function(e)

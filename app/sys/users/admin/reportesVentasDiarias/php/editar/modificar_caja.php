@@ -13,8 +13,8 @@ if(isset($_SESSION['user'])){
   $idCaja = $_POST["id"];
   $nomCaja = $_POST["nombre"];
 
-  require_once '../../../conexion.php';
-
+	require_once '../../../../../conexion.php';
+  
   //query
   $sql = 
   "UPDATE cierre_caja 

@@ -92,7 +92,7 @@
 		FROM ventas v
 		JOIN correlativo corr
 		ON corr.correlativo = v.id_venta 
-		WHERE v.estado!='N'
+		WHERE v.estado='C'
 		AND corr.id_cierre = '$id_cierre'";
 		$res = $conexion -> query($sql);
 		$ganancia = 0;
@@ -101,6 +101,7 @@
 			$arrGanancia[] = $row["valor"];
 		}
 	}
+
 	for($i=0;$i<$contador;$i++)
 	{
 		$json[] = array(

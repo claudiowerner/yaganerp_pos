@@ -1,7 +1,5 @@
-$("#cierreCaja").on('click', 'button.btn-success', function(e)
+function abrirDesglose(idCierre, nomCaja)
 {
-  let element = $(this)[0].parentElement.parentElement;
-  let idCierre = $(element).attr('idCierre');
-  let nomCaja = $(element).attr('nomCaja');
-  location.href = "desglose/index.php?idCierre="+idCierre+"&nomCaja="+nomCaja;
-})
+	location.href = "desglose/index.php?idCierre="+idCierre+"&nomCaja="+nomCaja;
+}
+

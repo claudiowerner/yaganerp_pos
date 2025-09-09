@@ -15,7 +15,7 @@ $("#btnAbrirCaja").on('click', function(e)
       success: function(e)
       {
         msjes_swal("Excelente", e, "success");
-        obtenerCierresCaja();
+        $('#cierreCaja').DataTable().ajax.reload();
         $("#abrirCaja").modal("hide");
         $("#msjCaja").html("<span style='color: red'></span>");
       }

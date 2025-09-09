@@ -96,7 +96,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="bodyDetalleCaja">
-                                                    
+                                                
                                             </tbody>
                                             <tbody id="bodyTotal">
                                                 <tr>

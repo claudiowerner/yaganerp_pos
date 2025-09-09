@@ -13,6 +13,6 @@ $("#btnEditarCaja").on("click", function(e)
         let descarga = modificarNombreCaja(idCaja, nom_caja);
         let r = JSON.parse(descarga);
         msjes_swal(r.titulo, r.mensaje, r.tipo)
-        obtenerCierresCaja();
+        $('#cierreCaja').DataTable().ajax.reload();
     }
 })
