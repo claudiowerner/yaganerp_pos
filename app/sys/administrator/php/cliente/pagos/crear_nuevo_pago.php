@@ -77,7 +77,7 @@
 	$fechaHasta = "$año-$mes_plazo-$dia";
 
 	/* --------------------------------------------- REGISTRO EN PAGO CLIENTE -------------------------------- */
-	echo $sql = "INSERT INTO pago_cliente VALUES
+	$sql = "INSERT INTO pago_cliente VALUES
 	(null, $id, $plan, $tipoPago, '$fechaDesde', '$fechaHasta', 'S', 'N', 'N')";
 
 	$res = $conexion -> query($sql);

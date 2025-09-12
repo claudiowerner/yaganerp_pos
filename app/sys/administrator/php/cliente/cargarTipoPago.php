@@ -5,12 +5,13 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 session_start();
 require_once '../../../conexion.php';
+require_once '../../../php/mb_encoding.php';
 
 date_default_timezone_set('America/Santiago');
     //query
     $sql =
     "SELECT * FROM tipo_pago_cliente";
-    $resultado = $conexion->query($sql);;
+    $resultado = $conexion->query($sql);
     if ($resultado->num_rows > 0)
     {
       $json = array();
@@ -18,7 +19,7 @@ date_default_timezone_set('America/Santiago');
       {
         $json[] =array(
           'id' => $row['id'],
-          'nombre' => $row['nombre']
+          'nombre' => mb_encoding($row['nombre'])
         );
       };
     }

@@ -45,5 +45,12 @@
     <!--Aviso de pago-->
     <script src='aviso_pago/dom/bloqueo_sistema.js'></script>
     <script src='aviso_pago/dom/aviso_pago.js'></script>
-    <script>advertenciaSistema('aviso_pago/server/aviso_pago.php')</script>";
+    <script>advertenciaSistema('aviso_pago/server/aviso_pago.php')</script>
+    
+    
+    <!--Sugerencias-->
+    <script src='sugerencias/js/modal/abrir_modal_sugerencias.js'></script>
+    <script src='sugerencias/js/caracteres/caracteres.js'></script>
+    <script src='sugerencias/js/enviar/enviar_sugerencia.js'></script>
+    <script src='sugerencias/js/enviar/enviar_sugerencia_ajax.js'></script>";
 ?>

@@ -61,7 +61,8 @@
 	FROM cliente cl 
 	JOIN usuarios us 
 	ON us.id_cl = cl.id
-	WHERE cl.id = $id";
+	WHERE cl.id = $id
+	AND us.permisos LIKE '1%'";
 	$res = $conexion->query($sql);
 
 	
@@ -101,12 +102,12 @@
 	//Configuracion del servidor
 	$mail = new PHPMailer();
 	$mail -> isSMTP();
-	$mail -> Host 			= 'mail.calendarit.cl';
-	$mail -> SMTPAuth 		= true;
-	$mail -> Username 		= 'contacto@calendarit.cl';
-	$mail -> Password 		= 'xXUzYTC.z+~N';
-	$mail -> SMTPSecure 	= 'ssl';
-	$mail -> Port			= 465;
+	$mail -> Host 			= 'mail.calendarit.cl';							
+	$mail -> SMTPAuth 		= true;																
+	$mail -> Username 		= 'contacto@calendarit.cl';					
+	$mail -> Password 		= 'xXUzYTC.z+~N';									
+	$mail -> SMTPSecure 	= 'ssl';													
+	$mail -> Port			= 465;						
 
 	//Receptores
 	$mail -> setFrom("noreply@calendarit.cl", "Contacto VendeloPOS Software");

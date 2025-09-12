@@ -124,6 +124,12 @@
                           <span>Otras configuraciones</span>
                       </a>
                   </li>
+                  <li>
+                      <a class="tooltip-tip" onclick="abrir_modal_sugerencias()">
+                          <i class=" fontello-mail-1"></i>
+                          <span>Sugerencias</span>
+                      </a>
+                  </li>
               </ul>
           </div>
       </div>

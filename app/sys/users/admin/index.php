@@ -50,6 +50,11 @@
         modalAñoVenta();
         modalMesVenta();
         modalDiaVenta();
+
+
+
+        
+        require "sugerencias/modal/sugerencias.php";
     ?>
     <span id=opcion style="display: none">1</span>
 
