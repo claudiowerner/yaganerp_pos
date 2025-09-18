@@ -56,4 +56,13 @@
     <script src = "items/planes/js/eliminar_plan/validar_uso_plan.js"></script>
 
 
+    <!--Sugerencias-->
+    <script src = "items/sugerencias/js/leer/leer_sugerencias.js"></script>
+    <script src = "items/sugerencias/js/leer/abrir_modal_sugerencias.js"></script>
+    <script src = "items/sugerencias/js/editar/marcar_como_leido.js"></script>
+    <script src = "items/sugerencias/js/leer/cantidad_sugerencias.js"></script>
+    <script src = "items/sugerencias/js/editar/eliminar_sugerencia.js"></script>
+
+
+
     <script src = "../js/validarRut.js"></script>

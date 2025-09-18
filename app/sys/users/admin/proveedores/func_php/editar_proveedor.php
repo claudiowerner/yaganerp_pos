@@ -2,7 +2,8 @@
 
 
 	session_start();
-	date_default_timezone_set('America/Santiago');require_once '../../../../conexion.php';
+	date_default_timezone_set('America/Santiago');
+	require_once '../../../../conexion.php';
 
 
 	ini_set('display_errors', 1);

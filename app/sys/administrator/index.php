@@ -56,6 +56,9 @@
 
                                             //correo
                                             require "modals/correo/modalCorreo.php";
+
+                                            //sugerencias
+                                            require "modals/sugerencias/modal_sugerencias.php";
                                             
                                             echo modalEditarCliente();
                                             echo modalEditarPlan();
@@ -76,11 +79,16 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#plan_cliente" data-toggle="tab">Planes</a>
                                             </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#sugerencias" data-toggle="tab">Sugerencias <span id="cantSugerencias">(0/0)</span></a>
+                                            </li>
                                         </ul>
 
                                         <div class="tab-content">
                                             <?php require "items/cliente/cliente.php";?>
-                                            <?php require "items/planes/planes.php";?></div>
+                                            <?php require "items/planes/planes.php";?>
+                                            <?php require "items/sugerencias/html/sugerencias.php";?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

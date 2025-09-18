@@ -11,6 +11,8 @@ $("#btnEnviarSugerencia").on("click", function(e)
         if (enviar)
         {
             enviar_sugerencia();
+            enviar_mail_sugerencia_admin();
+            enviar_copia_mail_sugerencia_admin();
         } 
     });
 })

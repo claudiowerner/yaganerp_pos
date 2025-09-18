@@ -1,6 +1,4 @@
-<?php
-    echo 
-    "<script type='text/javascript' src='../../js/jquery.js'></script>
+<script type='text/javascript' src='../../js/jquery.js'></script>
 
     <script type='text/javascript' src='../../js/mensajes-swal.js'></script>
     <script type='text/javascript' src='../../js/numberFormat.js'></script>
@@ -17,6 +15,10 @@
     <script type='text/javascript' src='../../js/tab/jquery.newsTicker.js'></script>
     <script type='text/javascript' src='../../js/tab/app.ticker.js'></script>
     <script type='text/javascript' src='../../js/moment/moment.js'></script>
+    
+    
+    <!--Caracteres especiales-->
+    <script src='../../js/validar_caracteres_especiales.js'></script>
 
 
     <script type='text/javascript' src='../../js/vegas/jquery.vegas.js'></script>
@@ -52,5 +54,8 @@
     <script src='sugerencias/js/modal/abrir_modal_sugerencias.js'></script>
     <script src='sugerencias/js/caracteres/caracteres.js'></script>
     <script src='sugerencias/js/enviar/enviar_sugerencia.js'></script>
-    <script src='sugerencias/js/enviar/enviar_sugerencia_ajax.js'></script>";
-?>
+    <script src='sugerencias/js/enviar/enviar_sugerencia_ajax.js'></script>
+    <script src='sugerencias/js/enviar/enviar_mail_sugerencia_admin.js'></script>
+    <script src='sugerencias/js/enviar/enviar_copia_mail_sugerencia_admin.js'></script>
+    <script src='sugerencias/js/caracteres/accion_validar_caracteres.js'></script>
+
