@@ -32,7 +32,7 @@
 	$conexion -> set_charset("utf8");
 	//Rellenar arrIdVenta
 	$sql = 
-	"SELECT u.nombre, c.id, c.fecha_cierre, c.estado, mp.nombre_metodo_pago
+	"SELECT u.nombre, c.correlativo, c.fecha_cierre, c.estado, mp.nombre_metodo_pago
 	FROM correlativo c
 	JOIN usuarios u 
 	ON u.id = c.usuario
@@ -45,7 +45,7 @@
 	$res = $conexion -> query($sql);
 	while($row = $res->fetch_array())
 	{
-		$arrCorrelativo[] = $row["id"];
+		$arrCorrelativo[] = $row["correlativo"];
 		$arrUsuario[] = mb_encoding($row["nombre"]);
 		$arrFechaPago[] = $row["fecha_cierre"];
 		$arrEstado[] = "CERRADO";

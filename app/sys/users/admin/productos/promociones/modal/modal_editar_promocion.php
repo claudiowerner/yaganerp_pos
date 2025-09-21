@@ -46,6 +46,9 @@
                     </div>
                 </div>
             </div>
+            <div class="modal-footer">
+                La edición de la promoción cuenta con la función AutoGuardado.
+            </div>
         </div>
     </div>
 </div>

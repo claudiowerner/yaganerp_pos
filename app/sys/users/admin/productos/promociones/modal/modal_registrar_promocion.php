@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class='modal-footer'>
-                ssssss
+                El registro de promociones cuenta con la función de AutoGuardado.
             </div>
         </div>
     </div>

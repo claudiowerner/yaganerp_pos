@@ -12,7 +12,7 @@
     $id_cl = $_SESSION['user']["id_cl"];
     
     //Obtener ID de venta
-    $id_venta = $_GET["id_venta"];
+    $id_venta = $_POST["id_venta"];
 
     //Declaración de Arrays
     $arrIdProd = array();
@@ -35,11 +35,6 @@
         $arrCantidad[] = $row["cantidad"];
     }
 
-    print_r($arrIdProd);
-    echo "<br>";
-    print_r($arrCantidad);
-    echo "<br>";
-
 
     //obtener número de filas del arrayIdProd
     $cont = count($arrIdProd);
@@ -49,7 +44,7 @@
     {
         $id = $arrIdProd[$i];
         $cant = $arrCantidad[$i];
-        $sql = 
+        echo$sql = 
         "UPDATE productos 
         SET cantidad = (cantidad-$cant) 
         WHERE id_cl = $id_cl

@@ -75,7 +75,7 @@
 	fecha_cierre= '$fecha $hora',
 	forma_pago = '$forma_pago',
 	id_cierre = '$idCierre'
-	WHERE id = '$id_venta'";
+	WHERE correlativo = '$id_venta'";
 	$r1 = $conexion->query($sql);;
 
 	//actualizar tabla ventas

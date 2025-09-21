@@ -14,7 +14,6 @@
 
 	//recepcion de ID de venta
 	$idVenta = $_GET['idVenta'];
-
 	require_once '../../../../../../../../conexion.php';
 	require_once "../../../../../../../../php/mb_encoding.php";
 
@@ -80,10 +79,15 @@
 	{
 		$idp = $arrIdProd[$i];
 		$sql =
-		"SELECT nombre_prod, valor_venta 
-		FROM productos 
-		WHERE id_cl = $id_cl 
-		AND id_prod = $idp";
+		"SELECT p.nombre_prod,
+		SUM(v.cantidad*v.valor)-v.valorDescto AS valor_venta
+		FROM productos p 
+		JOIN ventas v 
+		ON p.id_prod = v.producto
+		WHERE v.id_cl = $id_cl 
+		AND p.id_prod = $idp
+		AND v.id_venta = $idVenta 
+		AND v.estado = 'C'";
 		$res = $conexion->query($sql);
 		while($row = $res -> fetch_array())
 		{
@@ -91,14 +95,14 @@
 			$arrValor[] = $row["valor_venta"];
 		}
 	}
-	
+
 	//rellenar array de salida
 	$json = array();
 
 	for($i=0; $i<$cont; $i++)
 	{
-		$valor = ($arrValor[$i]*$arrCant[$i])*0.81;
-		$iva = ($arrValor[$i]*$arrCant[$i])*0.19;
+		$valor = ($arrValor[$i])*0.81;
+		$iva = ($arrValor[$i])*0.19;
 		$json[] = array(
 			"nombre" => $nom_us, 
 			"estado_venta" => $arrCerrado[$i], 

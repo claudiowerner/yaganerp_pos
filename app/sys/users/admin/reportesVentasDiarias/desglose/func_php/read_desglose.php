@@ -12,11 +12,8 @@
   $id_cl = $_SESSION['user']["id_cl"];
   
 
-  $idCierre = $_GET['idCierre'];
-  
-
-  $horaDesde = $_GET["horaDesde"];
-  $horaHasta = $_GET["horaHasta"];  
+  //$idCierre = $_GET['idCierre'];
+  $idCierre = 1;
 
   require_once '.././../../../../conexion.php';
   require_once '.././../../../../php/mb_encoding.php';
@@ -36,11 +33,11 @@
   "SELECT c.id, v.valor, c.nom_caja, c.estado
   FROM cajas c
   JOIN ventas v
-  ON v.id_caja = c.id
   JOIN correlativo corr
-  ON corr.id_cierre=$idCierre
-  WHERE v.id_cl = '$id_cl'
-  HAVING SUM(v.valor)>0";
+  ON corr.id_cierre = $idCierre
+  WHERE c.id_cl = '$id_cl' 
+  AND c.estado != 'N'
+  GROUP BY c.id";
 
 
   $res = $conexion->query($sql);
@@ -61,7 +58,10 @@
   {
     $id = $arrayCaja[$i];
     $sql =
-    "SELECT COUNT(caja) AS ventas_caja, estado FROM correlativo WHERE caja = $id AND id_cl = '$id_cl'";
+    "SELECT COUNT(caja) AS ventas_caja, estado 
+    FROM correlativo 
+    WHERE caja = $id 
+    AND id_cl = '$id_cl'";
     $res = $conexion->query($sql);
     while($row = $res->fetch_assoc())
     {
