@@ -15,6 +15,13 @@
     <script type='text/javascript' src='../../js/tab/jquery.newsTicker.js'></script>
     <script type='text/javascript' src='../../js/tab/app.ticker.js'></script>
     <script type='text/javascript' src='../../js/moment/moment.js'></script>
+
+    <!--Font awesome-->
+    <script defer type='text/javascript' src="../../js/fontawesome/fontawesome.js"></script>
+    <script defer type='text/javascript' src="../../js/fontawesome/brands.js"></script>
+    <script defer type='text/javascript' src="../../js/fontawesome/solid.js"></script>
+    <script defer type='text/javascript' src="../../js/fontawesome/sharp-thin.js"></script>
+    <script defer type='text/javascript' src="../../js/fontawesome/sharp-duotone-thin.js"></script>
     
     
     <!--Caracteres especiales-->

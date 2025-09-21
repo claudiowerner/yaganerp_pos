@@ -1,6 +1,4 @@
-<?php
-    echo 
-    "<script type='text/javascript' src='../../../js/jquery.js'></script>
+<script type='text/javascript' src='../../../js/jquery.js'></script>
     <script type='text/javascript' src='../../../js/numberFormat.js'></script>
     <script type='text/javascript' src='../../../js/jquery-ui.min.js'></script>
     <script type='text/javascript' src='../../../js/mensajes-swal.js'></script>
@@ -32,6 +30,12 @@
     <script src='../../../js/loader/demo.js' type='text/javascript'></script>
     <script type='text/javascript' src='../../../js/skycons/skycons.js'></script>
 
+    <script defer type='text/javascript' src='../../../js/fontawesome/fontawesome.js'></script>
+    <script defer type='text/javascript' src='../../../js/fontawesome/brands.js'></script>
+    <script defer type='text/javascript' src='../../../js/fontawesome/solid.js'></script>
+    <script defer type='text/javascript' src='../../../js/fontawesome/sharp-thin.js'></script>
+    <script defer type='text/javascript' src='../../../js/fontawesome/sharp-duotone-thin.js'></script>
+
     <!-- FLOT CHARTS -->
     <script src='../../../js/flot/jquery.flot.min.js' type='text/javascript'></script>
     <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
@@ -45,5 +49,4 @@
     <!--Aviso de pago-->
     <script src='../aviso_pago/dom/bloqueo_sistema.js'></script>
     <script src='../aviso_pago/dom/aviso_pago.js'></script>
-    <script>advertenciaSistema('../aviso_pago/server/aviso_pago.php')</script>";
-?>
+    <script>advertenciaSistema('../aviso_pago/server/aviso_pago.php')</script>

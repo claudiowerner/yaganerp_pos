@@ -1,5 +1,4 @@
-<?php
-    echo "<!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
     <link rel='stylesheet' href='../../css/bootstrap.css'>
     <!-- Bootstrap theme -->
     <!--  <link rel='stylesheet' href='css/bootstrap-theme.min.css'> -->
@@ -10,7 +9,6 @@
     <link rel='stylesheet' href='../../css/style.css'>
     <link rel='stylesheet' href='../../css/dripicon.css'>
     <link rel='stylesheet' href='../../css/typicons.css' />
-    <link rel='stylesheet' href='../../css/font-awesome.css' />
     <link rel='stylesheet' href='../../css/responsive.css'>
     <link rel='stylesheet' href='../../js/tip/tooltipster.css'>
     <link rel='stylesheet' type='text/css' href='../../js/vegas/jquery.vegas.css' />
@@ -18,5 +16,8 @@
     <!-- pace loader -->
     <script src='../../js/pace/pace.js'></script>
     <link href='../../js/pace/themes/orange/pace-theme-flash.css' rel='stylesheet' />
-";
-?>
+
+    <!--Font Awesome-->
+    
+    <link rel='stylesheet' href='../../css/fontawesome/fontawesome.css' />
+    <link rel='stylesheet' href='../../css/fontawesome/regular.css' />
