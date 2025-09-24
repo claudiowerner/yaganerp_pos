@@ -182,6 +182,10 @@
     <script src="js/cuenta_cliente/checkbox/checkbox.js"></script>
     <script src="js/cuenta_cliente/pagar_cuenta/pagar_cuenta.js"></script>
     <script src="js/usuario/obtener_usuario.js"></script>
+    <script src="js/promociones/aplicar_promo_actualizar_cantidad.js"></script>
+    <script src="js/promociones/anular_promocion.js"></script>
+    <script src="js/promociones/obtener_id_producto.js"></script>
+    
 
 
 

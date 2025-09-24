@@ -13,6 +13,7 @@ function accionEliminarVenta(id)
     else
     {
         let descargarRespuesta = eliminarVenta(id);
+        anular_promo(id);
         let jsonRes = JSON.parse(descargarRespuesta);
 
         if(jsonRes.eliminar_venta)

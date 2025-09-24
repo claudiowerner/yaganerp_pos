@@ -18,7 +18,7 @@
         FROM stock_minimo_producto
         WHERE id_cl = $id_cl
         AND estado = 'S'";
-        $resultado = $conexion->query($sql);;
+        $resultado = $conexion->query($sql);
 
         $json = array();
 
@@ -43,6 +43,6 @@
     }
     else
     {
-    header('Location: ../');
+        header('Location: ../');
     }
 ?>

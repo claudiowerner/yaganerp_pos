@@ -8,7 +8,6 @@ function registrarVenta(id_venta, idProd, cantProd, idCaja, nomCaja, hora)
     {
         let cantidad = parseInt(comprobarCantidad(idProd));
         let stockMinimo = parseInt(cargarNumeroStockMinimo());
-
         if(cantidad<=stockMinimo)
         {
             if(cantProd<=cantidad)

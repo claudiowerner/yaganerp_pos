@@ -9,8 +9,7 @@ function accionGuardarVenta(idCaja, id_venta, idProd, hora, cantProd, nomCaja)
             let j = JSON.parse(promo);
             if(j.activado)
             {
-                let id_item = parseInt(obtener_id_venta());
-                aplicarPromo(idProd, id_item, j.activado);
+                aplicarPromo(idProd, id_venta);
             }
             cargarVentasCaja();
         }

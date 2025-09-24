@@ -37,7 +37,6 @@
 </head>
 
 <body role="document">
-  <span></span>
 <span id="opcion" style="display:none">2</span>
     <?php 
         require "menu/sesion_index.php";

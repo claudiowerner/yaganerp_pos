@@ -32,7 +32,7 @@ function cargarVentasCaja()
 				{
 					estado = "<button class='btn btn-success' disabled='true'style='width: 100%;'>PAGADO</button>";
 					aumentar = "<button class='btn btn-success' disabled='true'>- Ó +</button>";
-					eliminar = "<button class='btn btn-danger'  disabled='true'>Eliminar</button>";
+					eliminar = "<button class='btn btn-danger' disabled='true'>Eliminar</button>";
 					imprimir = "<button id='imprimir' class='btn btn-warning' disabled='true'>Imprimir</button>";
 					$('#btnCrearVenta').attr('disabled', false);
 				}

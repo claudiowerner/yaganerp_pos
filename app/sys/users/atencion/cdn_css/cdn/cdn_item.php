@@ -1,6 +1,4 @@
-<?php
-    echo 
-    "<script type='text/javascript' src='../../../js/jquery.js'></script>
+<script type='text/javascript' src='../../../js/jquery.js'></script>
 
     
     <script type='text/javascript' src='../../../js/sweetalert.min.js'></script>
@@ -36,6 +34,10 @@
     <script src='../../../js/flot/jquery.flot.pie.min.js' type='text/javascript'></script>
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
     <script src='../../../js/flot/jquery.flot.categories.min.js' type='text/javascript'></script>
+
     
-    ";
-?>
+    <script defer type='text/javascript' src='../../../js/fontawesome/fontawesome.js'></script>
+    <script defer type='text/javascript' src='../../../js/fontawesome/brands.js'></script>
+    <script defer type='text/javascript' src='../../../js/fontawesome/solid.js'></script>
+    <script defer type='text/javascript' src='../../../js/fontawesome/sharp-thin.js'></script>
+    <script defer type='text/javascript' src='../../../js/fontawesome/sharp-duotone-thin.js'></script>

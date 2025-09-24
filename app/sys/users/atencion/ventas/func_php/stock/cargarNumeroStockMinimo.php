@@ -13,19 +13,21 @@
 
         require_once '../../../../../conexion.php';
 
+        $salida = 0;
         //query
         $sql = 
         "SELECT stock_minimo 
         FROM stock_minimo_producto
         WHERE estado='S' AND id_cl = '$id_cl'";
-        $resultado = $conexion->query($sql);;
+        $resultado = $conexion->query($sql);
 
         if($resultado->num_rows!=0)
         {    
             while($row = $resultado->fetch_array())
             {
-                echo $row["stock_minimo"];
+                $salida = $row["stock_minimo"];
             }
+            echo $salida;
         }
         else
         {

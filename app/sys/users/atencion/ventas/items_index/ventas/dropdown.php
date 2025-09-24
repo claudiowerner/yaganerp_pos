@@ -2,7 +2,7 @@
 <ul class="nav navbar-nav navbar-right">
     <li>
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-            <i class="fa fa-fw fa-bars"></i>
+            <span class="fa-solid fa-bars" aria-hidden="true"></span>
         </a>
         <ul style="margin:25px 15px 0 0;" role="menu" class="dropdown-setting dropdown-menu bg-amber">
             <li>

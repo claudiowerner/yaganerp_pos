@@ -18,9 +18,9 @@
         require_once '../../../../../conexion.php';
 
         //query
-        $sql = "UPDATE ventas 
+        echo $sql = "UPDATE ventas 
         SET valor = $valor
-        WHERE id = '$id_venta' 
+        WHERE id_venta = '$id_venta' 
         AND producto = '$id_prod'
         AND id_cl = $id_cl";
         $res = $conexion->query($sql);
