@@ -12,8 +12,6 @@
                                 <th>Pedido</th>
                                 <th>Tipo</th>
                                 <th>Valor</th>
-                                <th>Estado</th>
-                                <th>Fecha</th>
                                 <th>- Ó +</th>
                                 <th>Eliminar</th>
                                 <tbody id="ventas" class="table-hover ">

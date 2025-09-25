@@ -7,6 +7,7 @@
     <link rel='stylesheet' href='../../../css/theme.css'>
     <link rel='stylesheet' href='../../../css/dashboard.css'>
     <link rel='stylesheet' href='../../../css/style.css'>
+    <link rel='stylesheet' href='../../../css/select2.css'>
     <link rel='stylesheet' href='../../../css/dripicon.css'>
     <link rel='stylesheet' href='../../../css/typicons.css' />
     <link rel='stylesheet' href='../../../css/responsive.css'>

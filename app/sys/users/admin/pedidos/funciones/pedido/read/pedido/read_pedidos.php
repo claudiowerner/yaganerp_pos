@@ -31,7 +31,7 @@
   $json = array();
 
   //setear charset
-  $conexion->set_charset("utf-8");
+  $conexion->set_charset("UTF8");
   //rellenar Array ID
   $sql =
   "SELECT id 

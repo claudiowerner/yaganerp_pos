@@ -28,7 +28,7 @@
             while($row = $resultado->fetch_array())
             {
                 $json= array(
-                    "id"=>$row["id_prod"],
+                    "id"=>intval($row["id_prod"]    ),
                     "encontrado"=> true
                 );
             }

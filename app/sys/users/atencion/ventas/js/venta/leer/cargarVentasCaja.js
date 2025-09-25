@@ -22,7 +22,6 @@ function cargarVentasCaja()
 				descuento = parseInt(descuento) + parseInt(v.descto);
 				if(v.estado=='A')
 				{
-					estado = "<button class='btn btn-danger' disabled='true'>PENDIENTE</button>";
 					aumentar = "<button class='btn btn-success modCant' id='"+v.id+"' pesaje='"+v.pesaje+"' cant='"+v.cantidad+"' id_prod='"+v.id_prod+"' onClick=obtenerIDVenta(this)>- Ó +</button>";
 					eliminar = "<button class='btn btn-danger' onClick=accionEliminarVenta("+v.id+")>Eliminar</button>";
 					imprimir = "<button id='imprimir' class='btn btn-warning'>Imprimir</button>";
@@ -30,7 +29,6 @@ function cargarVentasCaja()
 				}
 				else
 				{
-					estado = "<button class='btn btn-success' disabled='true'style='width: 100%;'>PAGADO</button>";
 					aumentar = "<button class='btn btn-success' disabled='true'>- Ó +</button>";
 					eliminar = "<button class='btn btn-danger' disabled='true'>Eliminar</button>";
 					imprimir = "<button id='imprimir' class='btn btn-warning' disabled='true'>Imprimir</button>";
@@ -41,8 +39,6 @@ function cargarVentasCaja()
 					<td>${v.nombre_prod}</td>
 					<td><a id=cantVenta>${v.cantidad}</a> ${v.nombre_medida}</td>
 					<td id=valVenta>$${v.valor}</td>
-					<td>${estado}</td>
-					<td id=fecha>${v.fecha}</td>
 					<td>${aumentar}</td>
 					<td>${eliminar}</td>
 				</tr>`;

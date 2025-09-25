@@ -26,7 +26,8 @@
     "SELECT producto, cantidad
     FROM ventas
     WHERE id_cl = $id_cl
-    AND id_venta = $id_venta";
+    AND id_venta = $id_venta
+    AND estado = 'C'";
     $res = $conexion -> query($sql);
     //Rellenar array de ID de productos
     while($row = $res -> fetch_array())

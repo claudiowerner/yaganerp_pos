@@ -7,7 +7,7 @@ function descontar_productos(id_venta)
         type: "POST",
         success: function(e)
         {
-            alert(e)
+            //agregar código si fuese necesario
         }
     })
     .fail(function(e){
