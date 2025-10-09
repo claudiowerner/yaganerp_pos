@@ -149,11 +149,8 @@
 
     <!--SCRIPT DE PROMOCIONES-->
     <script src="promociones/js/leer/cargar_estado_promociones.js"></script>
+    <script src="promociones/js/crear/abrir_modal_crear_promocion.js"></script>
     <script src="promociones/js/crear/crear_promocion.js"></script>
-    <script src="promociones/js/crear/crear_nombre_promocion.js"></script>
-    <script src="promociones/js/crear/crear_producto_promocion.js"></script>
-    <script src="promociones/js/crear/crear_unidades_promocion.js"></script>
-    <script src="promociones/js/crear/crear_precio_promocion.js"></script>
     <script src="promociones/js/leer/cargar_promociones.js"></script>
     <script src="promociones/js/leer/cargar_productos.js"></script>
     <script src="promociones/js/leer/cargar_promocion_seleccionada.js"></script>

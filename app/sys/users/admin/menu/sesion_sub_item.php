@@ -1,13 +1,10 @@
-<?php
-
-    echo "<div class='row'>
-        
-
+<div class='row'>
     <div class='col-lg-12'>
+        <img src="../../../../img/logo_vendelopos.png" width="5%">
         <ul class='nav navbar-nav navbar-right'>
             <li>
                 <a data-toggle='dropdown' class='dropdown-toggle text-white' href='#'>
-                    Hola, $nombre <b class='caret'></b>
+                    Hola, <?php echo $nombre?> <b class='caret'></b>
                 </a>
                 <ul style='margin:25px 15px 0 0;' role='menu' class='dropdown-setting dropdown-menu bg-amber'>
                     <li>
@@ -20,6 +17,4 @@
         </ul>
     </div>
 
-</div>";
-
-?>
+</div>

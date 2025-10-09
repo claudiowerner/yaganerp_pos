@@ -16,7 +16,7 @@ function cargarUnidad()
     let descarga = descargarUnidades();
     let json = JSON.parse(descarga);
 
-    template = "<option>---SELECCIONE---</option>";
+    template = "<option value='0'>---SELECCIONE---</option>";
     json.forEach(j=>{
         template += `<option value='${j.id}'>${j.nombre_medida}</option>`;
     })

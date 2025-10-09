@@ -2,6 +2,7 @@
         
 
     <div id=sesion class='col-lg-12'>
+        <img src="../../img/logo_vendelopos.png" width="5%">
         <ul class='nav navbar-nav navbar-right'>
             <li>
                 <a data-toggle='dropdown' class='dropdown-toggle text-white' href='#'>

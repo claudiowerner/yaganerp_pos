@@ -1,19 +1,3 @@
-
-/* --------------------------------------- FUNCION AJAX ---------------------------------------------- */
-
-function crearProductoAjax(datos)
-{
-    return $.ajax({
-        url:"productos/funciones/crear/crear_producto_exe.php",
-        data: datos,
-        type: "POST",
-        async: false,
-    }).responseText;
-
-}
-
-
-
 /* ----------------------------------------- FUNCIONES DOM --------------------------------------- */
 //abrir modal de registro
 
@@ -32,6 +16,12 @@ $("#btnAgregarCategoria").on("click", function(e)
 $("#btnGuardar").on("click",function(e)
 {
     e.preventDefault();
+
+    if($("#swPesaje").is(':checked'))
+    {
+        rp = "S";
+    }
+
     var np = $("#nomProd").val();
     var lc = $("#listCat").val();
     var can = $("#cantidadProd").val();
@@ -42,8 +32,7 @@ $("#btnGuardar").on("click",function(e)
     var montoGanancia = $("#montoGanancia").val();
     var unidad = $("#slctUnidad").val();
     var proveedor = $("#slctProveedor").val();
-
-    datos = 
+    let datos = 
     {
         "nomProd":np,
         "cat":lc,
@@ -51,20 +40,24 @@ $("#btnGuardar").on("click",function(e)
         "vn":vn,
         "vv":vv,
         "cod_barra":cb,
-        "rp":rp,
         "unidad":unidad,
-        "pesaje":rp,
+        "rp":rp,
         "marGan":margenGanancia,
         "monGan":montoGanancia,
         "proveedor":proveedor
     }
+    console.log(datos)
 
 
-    if(lc=="O"||cb=="O")
+    if(can==""||can=="0"||cb==""||margenGanancia==""||montoGanancia==""||proveedor==""||vn==""||vv==""||lc==0)
     {
-        if(lc=="O")
+        if(rp=="S"&&unidad==0)
         {
-            msjes_swal("Aviso", "Debe seleccionar una categoría válida.", "warning");
+            msjes_swal("Aviso", "Debe rellenar todos los campos e indicar opciones válidas, incluyendo el tipo de unidad", "warning");
+        }
+        else
+        {
+            msjes_swal("Aviso", "Debe rellenar todos los campos e indicar opciones válidas", "warning");
         }
     }
     else
@@ -76,18 +69,25 @@ $("#btnGuardar").on("click",function(e)
         }
         else
         {
-            let registro_producto = crearProductoAjax(datos);
-            let json = JSON.parse(registro_producto);
+            $.ajax({
+                url:"productos/funciones/crear/crear_producto_exe.php",
+                data: datos,
+                type: "POST",
+                success: function(e)
+                {
+                    let j = JSON.parse(e);
 
-            msjes_swal(json.titulo, json.mensaje, json.icono);
+                    msjes_swal(j.titulo, j.mensaje, j.icono);
 
-            if(json.registro)
-            {
-                $('#producto').DataTable().ajax.reload();
-                $("#formRegistro").trigger('reset');
-                $("#modalRegistro").modal("hide");
-                $("#formRegistroProducto").trigger("reset");
-            }
+                    if(j.registro)
+                    {
+                        $('#producto').DataTable().ajax.reload();
+                        $("#formRegistro").trigger('reset');
+                        $("#modalRegistro").modal("hide");
+                        $("#formRegistroProducto").trigger("reset");
+                    }
+                }
+            })
         }
-    }
+    } 
 });

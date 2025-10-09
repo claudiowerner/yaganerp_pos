@@ -22,7 +22,7 @@ table = $('#tablaPromociones').DataTable({
             'render': function (data, type, row, meta) {
 				return `
 				<button type="submit" id="btnEditarPromocion" class="btn btn-primary" onClick="cargarPromocionSeleccionada(${data.id_promo})"><i class='fa fa-edit' aria-hidden='true'></i></button>
-				<button id='btnEliminarPromocion' class='btn btn-danger' onClick="eliminarPromocion(${data.id_promo})"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
+				<button id='btnEliminarPromocion' class='btn btn-danger' onClick="eliminarPromocion(${data.id_promo})"><i class='fa fa-trash' aria-hidden='true'></i></button>`;
 			}
 		}
 	],

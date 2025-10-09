@@ -1,3 +1,7 @@
+<!--Errores SQL-->
+<script type='text/javascript' src='../../js/registro_errores/registro_error_sql.js'></script>
+
+
 <script type='text/javascript' src='../../js/jquery.js'></script>
 
     <script type='text/javascript' src='../../js/mensajes-swal.js'></script>

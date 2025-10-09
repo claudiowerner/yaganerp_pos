@@ -38,7 +38,7 @@ var table;
                   }
                   return `<button type="submit" id="btnEditar" class="btn btn-primary" onClick="editarCliente('${value.id}','${value.rut}','${value.nombre}','${value.apellido}')" ><i class='fa fa-edit' aria-hidden='true'></i></button>
                   <button type="submit" id="btnVerCuentas" class="btn btn-success" onClick=verCuentas('${value.rut}') ${disabled}><i class='fa fa-folder-open' aria-hidden='true'></i>(${value.total_cuentas})</button>
-                  <button type="submit" id="btnEliminar" class="btn btn-danger" onClick="eliminarCliente('${value.rut}','${value.nombre}','${value.total_cuentas}')"><i class='fa fa-trash-o' aria-hidden='true'></i></button>`;
+                  <button type="submit" id="btnEliminar" class="btn btn-danger" onClick="eliminarCliente('${value.rut}','${value.nombre}','${value.total_cuentas}')"><i class='fa fa-trash' aria-hidden='true'></i></button>`;
                 }
             }
           ],

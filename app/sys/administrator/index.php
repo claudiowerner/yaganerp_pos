@@ -82,12 +82,16 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#sugerencias" data-toggle="tab">Sugerencias <span id="cantSugerencias">(0/0)</span></a>
                                             </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#errores" data-toggle="tab">Errores</a>
+                                            </li>
                                         </ul>
 
                                         <div class="tab-content">
                                             <?php require "items/cliente/cliente.php";?>
                                             <?php require "items/planes/planes.php";?>
                                             <?php require "items/sugerencias/html/sugerencias.php";?>
+                                            <?php require "items/errores/html/errores.php";?>
                                         </div>
                                     </div>
                                 </div>

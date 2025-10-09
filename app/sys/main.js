@@ -44,7 +44,7 @@ jQuery(document).on('submit','#Frm',function(event){
 		}
 	})
 	.fail(function(resp){
-		console.log(resp.responseText);
+		correo_error_conexion_db(resp.responseText)
 	})
 	.always(function(){
 		console.log("complete");

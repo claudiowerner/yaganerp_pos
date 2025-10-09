@@ -1,25 +1,37 @@
-/* ------------------------------------------------- FUNCION AJAX ---------------------------------------------------- */
-function registrar_promocion()
+$("#btnGuardarPromocion").on("click", function(e)
 {
-    $.ajax({
-        url: "promociones/funciones/crear/crear_promocion.php",
-        type: "POST",
-        success: function(e)
-        {
-            let j = JSON.parse(e);
-            $("#idPromocion").html(j.id);
-            $("#tablaPromociones").DataTable().ajax.reload();
-        }
-    })
-}
+    let nombre_promo = $("#txtNombrePromocion").val();
+    let id_prod = $("#slctProductoPromocion").val();
+    let unidades = $("#txtNumeroUnidades").val();
+    let precio_promo = $("#txtPrecioPromocion").val();
 
+    if(nombre_promo==""||id_prod==0||unidades==""||precio_promo=="")
+    {
+        msjes_swal("Aviso", "Debe indicar opciones válidas.", "warning")
+    }
+    else
+    {
+        let datos = {
+            "nombre_promo": nombre_promo,
+            "id_prod": id_prod,
+            "unidades": unidades,
+            "precio_promo": precio_promo,
+        };
 
-
-/* ------------------------------------------------- FUNCION DOM ----------------------------------------------------- */
-//Abrir modal registrar
-$("#btnModalPromocion").on("click", function(e)
-{
-    $("#modalRegistrarPromocion").modal("show");
-    registrar_promocion();
-    cargarProductosPromocion();
-});
+        $.ajax({
+            url: "promociones/funciones/crear/crear_promocion.php",
+            data: datos,
+            type: "POST",
+            success: function(e)
+            {
+                let j = JSON.parse(e);
+                msjes_swal(j.titulo, j.mensaje, j.icono);
+                if(j.registro)
+                {
+                    $("#tablaPromociones").DataTable().ajax.reload();
+                    $("#modalRegistrarPromocion").modal("hide"); 
+                }
+            }
+        })
+    }
+})

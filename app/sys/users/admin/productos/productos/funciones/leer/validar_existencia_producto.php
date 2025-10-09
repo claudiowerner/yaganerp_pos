@@ -16,7 +16,11 @@ if(isset($_SESSION['user'])){
     require_once '../../../../../../conexion.php';
 
     //query
-    $sql = "SELECT * FROM productos WHERE id_cl = $id_cl AND codigo_barra = '$cod_barra'";
+    $sql = 
+    "SELECT * FROM productos 
+    WHERE id_cl = $id_cl 
+    AND codigo_barra = '$cod_barra' 
+    AND estado = 'S'";
     $resultado = $conexion->query($sql);;
 
     $cod_barra = 0;

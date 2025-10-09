@@ -12,6 +12,8 @@
 
     /* ---------------------------------------------------- CONSULTA SQL ---------------------------------------------- */
 	
+    //setear charset
+    $conexion -> set_charset("utf8");
     $sql = 
     "SELECT s.id, s.id_cl, cl.nombre, DATE_FORMAT(s.fecha_sugerencia, 'Recibida el %d-%m-%Y a las %H:%i:%s') AS fecha_sugerencia, s.sugerencia, s.estado 
     FROM sugerencias s

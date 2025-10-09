@@ -15,7 +15,7 @@
                                 <label for="">Nombre promoción</label>
                             </div>
                             <div class="col-lg-8">
-                                <input type="text" id="txtNombrePromocion" class="form-control" onkeyup="crearNombre()">
+                                <input type="text" id="txtNombrePromocion" class="form-control">
                             </div>
                         </div>
                         <div class="row">
@@ -23,7 +23,7 @@
                                 <label for="">Producto</label>
                             </div>
                             <div class="col-lg-8">
-                                <select id="slctProductoPromocion" class="form-control" style="width: 100%" onchange="crearProductoPromocion()"></select>
+                                <select id="slctProductoPromocion" class="form-control" style="width: 100%"></select>
                             </div>
                         </div>
                         <div class="row">
@@ -31,7 +31,7 @@
                                 <label for="">Unidades</label>
                             </div>
                             <div class="col-lg-8">
-                                <input type="number" id="txtNumeroUnidades" class="form-control" onkeyup="crearUnidades()">
+                                <input type="number" id="txtNumeroUnidades" class="form-control">
                             </div>
                         </div>
                         <div class="row">
@@ -39,14 +39,14 @@
                                 <label for="">Precio</label>
                             </div>
                             <div class="col-lg-8">
-                                <input type="number" id="txtPrecioPromocion" class="form-control" onkeyup="crearPrecio()">
+                                <input type="number" id="txtPrecioPromocion" class="form-control">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class='modal-footer'>
-                El registro de promociones cuenta con la función de AutoGuardado.
+                <button id="btnGuardarPromocion" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>

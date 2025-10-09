@@ -88,7 +88,7 @@
 			</div>
 			<div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5" class="responsive">
-                    <img src="img/shopping.jpg" width="701" srcset="">
+                    <img src="img/logo_vendelopos.png" width="100%" srcset="">
                 </div>
 				<div class="col-md-5 col-lg-5 col-lg-offset-2">
                     
@@ -125,6 +125,7 @@
     <script type='text/javascript' src='js/vegas/jquery.vegas.js'></script>
     <script type='text/javascript' src='js/image-background.js'></script>
     <script type="text/javascript" src="js/jquery.tabSlideOut.v1.3.js"></script>
+    <script type="text/javascript" src="js/sweetalert.min.js"></script>
     
     <script type="text/javascript" src="css/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -132,6 +133,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/mensajes-swal.js"></script>
+    <script src="js/registro_errores/registro_error_conexion_db.js"></script>
     <script src="main.js"></script>
 
 

@@ -3,11 +3,7 @@
 	session_start();
 	date_default_timezone_set('America/Santiago');
     ini_set('display_errors', '1');
-
-	$id_us = $_SESSION['user']['id'];
-	$nombre = $_SESSION['user']["nombre"];
-	$id_cl = $_SESSION['user']["id_cl"];
-
+	
 	require_once '../../../../conexion.php';
 	require_once '../../../../env_var/env_db.php';
 	

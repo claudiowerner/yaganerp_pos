@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `margen_ganancia`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `margen_ganancia` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_cl` int(11) DEFAULT NULL,
-  `porcentaje` int(11) DEFAULT NULL,
+  `id_cl` int(11) NOT NULL,
+  `porcentaje` decimal(10,0) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-25 15:23:09
+-- Dump completed on 2025-10-08 13:15:27

@@ -41,7 +41,7 @@ var table;
           "data": null,
           "render": function (data, type, row) {
             return "<button type='submit' id='btnEditar' class='btn btn-primary' onClick='abrirModalEditar("+data.id+")'><i class='fa fa-edit' aria-hidden='true'></i></button>"+
-            "<button type='submit' id='btnEliminar' class='btn btn-danger' onClick='eliminarPedido("+data.id+")'><i class='fa fa-trash-o' aria-hidden='true'></i></span></button>";
+            "<button type='submit' id='btnEliminar' class='btn btn-danger' onClick='eliminarPedido("+data.id+")'><i class='fa fa-trash' aria-hidden='true'></i></span></button>";
           }
         }
       ],
