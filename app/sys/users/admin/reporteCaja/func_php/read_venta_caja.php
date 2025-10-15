@@ -25,26 +25,14 @@ session_start();
 
   //set charset
   $conexion -> set_charset("utf8");
-  //query
-  $sql =
-  "SELECT id, estado
-  FROM cajas 
-  WHERE id_cl = '$id_cl'
-  AND estado = 'S'";
-
-  $res = $conexion->query($sql);;
-  while($row = $res->fetch_assoc())
-  {
-    $arrayCaja[] = $row["id"];
-    $arrayEstado[] = $row["estado"];
-  }
 
   //Agregar las cajas eliminadas a la lista
-  $sql = "SELECT c.id, c.estado
+  $sql = "SELECT c.id, c.estado, SUM(v.cantidad*v.valor) AS valor
   FROM cajas c
   JOIN ventas v 
   ON v.id_caja = c.id
   WHERE c.id_cl = $id_cl
+  GROUP BY c.id
   HAVING SUM(v.cantidad*v.valor)>1";
   $res = $conexion->query($sql);;
   while($row = $res->fetch_assoc())

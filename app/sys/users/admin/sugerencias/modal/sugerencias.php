@@ -8,7 +8,7 @@
                 <h5 class='modal-title' id=''>Escriba su sugerencia</h5>
             </div>
             <div class='modal-body'>
-                <textarea name="" id="txtSugerencia" maxlength="2000" onkeyup="contar_caracteres()" class="form-control" style="width: 100%; height: 350px" onkeyup="contar_caracteres()"></textarea>
+                <textarea name="" id="txtSugerencia" pattern="[a-z]" maxlength="2000" onkeyup="contar_caracteres()" class="form-control" style="width: 100%; height: 350px" onkeyup="contar_caracteres()"></textarea>
                 <div>
                     <span id="caract">0</span>/<span id="caractMaximo">2000</span>
                 </div>

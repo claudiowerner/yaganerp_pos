@@ -23,6 +23,7 @@ if(isset($_SESSION['user'])){
     $arrNombreUsuario = array();
     $arrFechaRegistro = array();
     $arrTotalCuentas = array();
+    $arrTelefono = array();
 
     //consultar ID del cliente 
     $sql = "SELECT id 
@@ -44,7 +45,7 @@ if(isset($_SESSION['user'])){
     for($i=0; $i<$largo_array_id; $i++)
     {
       $id = $arrId[$i];
-      $sql = "SELECT rut 
+      $sql = "SELECT rut, telefono
       FROM clientes_negocio 
       WHERE id = $id
       AND id_cl = $id_cl";
@@ -55,6 +56,7 @@ if(isset($_SESSION['user'])){
         while($row = $res->fetch_array())
         {
           $arrRut[] = $row["rut"];
+          $arrTelefono[] = $row["telefono"];
         }
       }
     }
@@ -80,8 +82,6 @@ if(isset($_SESSION['user'])){
           $arrApellido[] = mb_convert_encoding($row["apellido"], "UTF-8", "ISO-8859-1");
           $arrNombreUsuario[] = mb_convert_encoding($row["nombre_usuario"], "UTF-8", "ISO-8859-1");
           $arrFechaRegistro[] = $row["fecha_registro"];
-          
-          
         }
       }
     }
@@ -121,7 +121,8 @@ if(isset($_SESSION['user'])){
           "apellido" => $arrApellido[$i],
           "nombre_usuario" => $arrNombreUsuario[$i],
           "fecha_registro" => $arrFechaRegistro[$i],
-          "total_cuentas" => $arrTotalCuentas[$i]
+          "total_cuentas" => $arrTotalCuentas[$i],
+          "telefono" => $arrTelefono[$i]
         );
       }
     }

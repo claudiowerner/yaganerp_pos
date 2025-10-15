@@ -63,7 +63,6 @@
             $arrValor[] = $row["valor"];
         }
     }
-
     
     if($cont>0)
     {

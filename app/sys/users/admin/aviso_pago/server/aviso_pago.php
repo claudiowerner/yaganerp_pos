@@ -2,14 +2,15 @@
     
 	session_start();
     setlocale (LC_TIME, "es_CL.UTF-8");
+	date_default_timezone_set('America/Santiago');
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
 	
 	
 	require_once '../../../../conexion.php';
 	require_once '../../../../php/mb_encoding.php';
     
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
     $id_us = $_SESSION['user']['id'];
     $nombre = $_SESSION['user']["nombre"];
     $id_cl = $_SESSION['user']["id_cl"];

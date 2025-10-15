@@ -3,15 +3,9 @@
 
 	session_start();
 	date_default_timezone_set('America/Santiago');
-	if(isset($_SESSION['user'])){
-      	$tipo = $_SESSION['user']['tipo_usuario'];
-     	if($tipo == 1){
-       	    //header('Location: ../');
-     	}
-     	    }else{
-    	    header('Location: ../../../../index.php');
-     	}
-		 require_once '../../../../conexion.php';
+	
+	
+	require_once '../../../../conexion.php';
 
 
 	ini_set('display_errors', 1);
@@ -24,12 +18,14 @@
     $rut = $_POST['rut'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
+    $telefono = $_POST['telefono'];
     $id = $_POST['id'];
 
 	$sql = "UPDATE clientes_negocio 
 	SET rut = '$rut',
 	nombre = '$nombre',
-	apellido = '$apellido'
+	apellido = '$apellido',
+	telefono = '$telefono'
 	WHERE id = $id
 	AND id_cl = $id_cl";
 

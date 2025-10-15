@@ -23,7 +23,7 @@ function llenarSelectProducto()
     stock = parseInt(p.stock_minimo);
 
     //si el stock es menor o igual al stock mínimo
-    if(cantidad<stock)
+    if(cantidad<stock||cantidad==stock)
     {
       template+=`<option value="${p.id}">${p.codigo_barra} - ${p.nombre_prod} - ${p.nombre_cat} -- STOCK CRÍTICO (`+p.cantidad+`)</option>`;
     }

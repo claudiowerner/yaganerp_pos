@@ -64,9 +64,8 @@
                                 <div class="card card-warning" id="${task.id}">
                                     <div class="card-header">
                                         <?php
-                                            require "modal.php";
-                                            echo modalRegistro();
-                                            echo modalEditar();
+                                            require "modals/modal_registro.php";
+                                            require "modals/modal_editar.php";
                                         ?>
 
                                         <h1>Cuentas corrientes de cliente</h1>

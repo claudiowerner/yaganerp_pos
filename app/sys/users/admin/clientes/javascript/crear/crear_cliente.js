@@ -1,22 +1,13 @@
-
-
-
-
-
-
-
-
-
-
-
 //Acción de botón guardar
 $("#btnGuardar").on("click",function(e)
 {
     let rut = $("#txtRutClte").val();
     let nombre =$("#txtNombreClte").val();
     let apellido =$("#txtApellido").val();
+    let telefono =$("#txtTelefono").val();
+    alert("Teléfono: "+telefono)
     
-    if(rut==""||nombre==""||apellido=="")
+    if(rut==""||nombre==""||apellido==""||telefono=="")
     {
         msjes_swal("Aviso", "Debe rellenar todos los campos", "warning")
     }
@@ -33,7 +24,7 @@ $("#btnGuardar").on("click",function(e)
             }
             else
             {
-                crearCliente(rut, nombre, apellido);
+                crearCliente(rut, nombre, apellido, telefono);
             }
         }
         else

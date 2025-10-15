@@ -26,7 +26,7 @@
 
 	//Actualizar nombre
 	$res = "";
-	$sql = "UPDATE Cajas SET nom_caja = '$nom' WHERE id = $idCaja;";
+	$sql = "UPDATE cajas SET nom_caja = '$nom' WHERE id = $idCaja;";
 	$res = $conexion->query($sql);
 
 	$json = array();

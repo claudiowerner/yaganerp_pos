@@ -21,14 +21,14 @@
         "SELECT * FROM productos
         WHERE codigo_barra = '$cod_barra'
         AND id_cl = $id_cl";
-        $resultado = $conexion->query($sql);;
+        $resultado = $conexion->query($sql);
 
         if($resultado->num_rows!=0)
         {
             while($row = $resultado->fetch_array())
             {
                 $json= array(
-                    "id"=>intval($row["id_prod"]    ),
+                    "id"=>intval($row["id_prod"]),
                     "encontrado"=> true
                 );
             }

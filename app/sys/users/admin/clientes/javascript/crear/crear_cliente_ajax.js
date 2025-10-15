@@ -1,10 +1,11 @@
 //función de guardar información en la BD
-function crearCliente(rut, nombre, apellido)
+function crearCliente(rut, nombre, apellido, telefono)
 {
     datos = {
         "rut": rut,
         "nombre": nombre,
         "apellido": apellido,
+        "telefono": telefono,
         "fecha": getFecha()
     }
     $.ajax({

@@ -1,7 +1,6 @@
 //Funcion que carga los correlativos para mostrar las boletas
 function cargarVentasPorDia(año, mes, fecha)
 {
-
     //modals
     $("#modalDiaBoleta").modal("hide");
     $("#modalCorrelativo").modal("show");
@@ -21,10 +20,9 @@ function cargarVentasPorDia(año, mes, fecha)
         success: function(e)
         {
             let json = JSON.parse(e);
-            
             //rellenar tabla
             let template = ``;
-            if(json.res>0)
+            if(Array.isArray(json))
             {
                 json.forEach(j=>{
                     let valor_formateado = formatearNumero("V", j.valor);

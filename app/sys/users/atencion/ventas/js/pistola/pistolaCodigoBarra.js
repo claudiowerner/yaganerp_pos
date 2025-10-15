@@ -31,11 +31,11 @@ $("#txtCodBarra").on("keyup", function(enter)
         codigo = $("#txtCodBarra").val();
         //se descarga el ID del producto seleccionado según codigo de barra
         let descarga = descargarID(codigo);
-        let producto = JSON.parse(descarga);
+        let pr = JSON.parse(descarga);
         
         //si el producto se ha encontrado
-        if(producto.encontrado)
-        {
+        if(pr.encontrado)
+        {   
             //comprobar estado stock mínimo (ACTIVO: TRUE; INACTIVO: FALSE)
             let descargaStock = comprobarEstadoStockMinimo();
 
@@ -45,8 +45,7 @@ $("#txtCodBarra").on("keyup", function(enter)
             if(estadoStockMinimo.activo)
             {
                 //Descarga y parseo de la cantidad de producto
-                console.log(comprobarCantidad(producto.id))
-                let cantidadProd = parseInt(comprobarCantidad(producto.id));
+                let cantidadProd = parseInt(comprobarCantidad(pr.id));
 
                 //descarga del stock minimo
                 let stockMinimo = obtenerStockMinimo();
@@ -58,28 +57,29 @@ $("#txtCodBarra").on("keyup", function(enter)
                     let j = jsonStockMinimo;
                     if(cantidadProd>j.stock_minimo)
                     {
-                        registro(producto.id);
+                        registro(pr.id);
                     }
-                    if(cantidadProd<j.stock_minimo||cantidadProd==0)
+                    else
                     {
-                        msjes_swal("Aviso", "Quedan "+cantidadProd+" unidades del producto escaneado", "warning");
-                        registro(producto.id);
+                        if(cantidadProd<j.stock_minimo||cantidadProd==0)
+                        {
+                            msjes_swal("Aviso", "Quedan "+cantidadProd+" unidades del producto escaneado", "warning");
+                            registro(pr.id);
+                        }    
+                        else
+                        {
+                            registro(pr.id);
+                        }
                     }
                 }
-                if(jsonStockMinimo.titulo)
-                {
-                    let j = jsonStockMinimo;
-                    msjes_swal(j.titulo, j.mensaje, j.icono);
-                }
+                aplicarPromo(pr.id, id_venta);
             }
-            
         }
         else
         {
-            registro(producto.id);
+            msjes_swal(pr.titulo, pr.mensaje, pr.icono);
         }
         $("#txtCodBarra").val("");
         $("#txtCodBarra").trigger("focus");
-    aplicar_promo(idProd, id_venta);
     }
 });

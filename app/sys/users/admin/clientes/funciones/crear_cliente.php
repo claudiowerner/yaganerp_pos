@@ -28,6 +28,7 @@
     $rut = $_POST['rut'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
+    $telefono = $_POST['telefono'];
 	
 
     //obtener fecha
@@ -35,8 +36,7 @@
 	$fecha = $_POST["fecha"];
 	$sql = 
 	"INSERT INTO clientes_negocio 
-	VALUES (null, '$id_cl', '$rut', '$nombre', '$apellido', 'S', '$id_us', '$fecha');
-	";
+	VALUES (null, '$id_cl', '$rut', '$nombre', '$apellido', '$telefono', 'S', '$id_us', '$fecha');";
 	$res = $conexion->query($sql);
 
 	$json = array();

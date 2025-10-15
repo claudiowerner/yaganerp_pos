@@ -22,6 +22,7 @@ function editarClienteBD(datos)
             }
             $("#btnEditar").html("Guardar");
             $("#btnEditar").prop("disabled", false);
+            $("#producto").DataTable().ajax.reload();
         }
     })
 }
