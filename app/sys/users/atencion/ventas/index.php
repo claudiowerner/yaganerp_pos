@@ -119,9 +119,17 @@
         <script src="../../../js/validarRut.js"></script>
         <script src="js/venta/editar/anularVenta.js"></script>
         <script src="js/correlativo/correlativo.js"></script>
-        <script src="js/caja_atencion/cerrarCaja.js"></script>
+        
         <script src="js/caja_atencion/crear/crear_movimiento.js"></script>
-        <script src="js/caja_atencion/leer/leer_movimiento_caja.js"></script>
+        <script src="js/caja_atencion/editar/abrir_modal_cierre_caja.js"></script>
+        <script src="js/caja_atencion/editar/cerrar_caja.js"></script>
+        
+        <script src="js/caja_dinero/leer/abrir_modal_movimiento_caja.js"></script>
+        <script src="js/caja_dinero/leer/leer_movimiento_caja.js"></script>
+        
+        <script src="js/caja_atencion/editar/validar_venta_activa.js"></script>
+        
+
         <script src="js/venta/leer/cargarIDVenta.js"></script>
         <script src="js/fecha_hora/getFechaHora.js"></script>
         <script src="js/stock/comprobar_estado_stock_minimo.js"></script>
@@ -185,13 +193,6 @@
         <script src="js/promociones/aplicar_promo_actualizar_cantidad.js"></script>
         <script src="js/promociones/anular_promocion.js"></script>
         <script src="js/promociones/obtener_id_producto.js"></script>
-        
-
-
-
-
-
-
     </body>
 
 </html>

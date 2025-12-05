@@ -13,6 +13,7 @@
 
 
     require_once '../../../../../../conexion.php';
+    require_once '../../../../../../php/mb_encoding.php';
 
     //definición de arrays
     $arrId = array();
@@ -27,7 +28,7 @@
     while ($row = $res->fetch_array())
     {
       $arrId[] = $row["id"];
-      $arrNombre[] = $row["nombre_metodo_pago"];
+      $arrNombre[] = mb_encoding($row["nombre_metodo_pago"]);
     }
 
     //contador de número de métodos de pago
@@ -45,7 +46,7 @@
       AND corr.id_cierre = $turno
       AND v.forma_pago = $id
       AND v.id_caja = $caja";
-      $res = $conexion->query($sql);;
+      $res = $conexion->query($sql);
       while($row = $res->fetch_array())
       {
         if($row["valor"]=="")
@@ -66,7 +67,8 @@
       FROM correlativo 
       WHERE id_cl = $id_cl 
       AND id_cierre = $turno
-      AND forma_pago = $fp";
+      AND forma_pago = $fp
+      AND caja = $caja";
       $res = $conexion->query($sql);;
       while($row = $res->fetch_array())
       {

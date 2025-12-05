@@ -26,16 +26,6 @@
 
 	require_once '../../../../../conexion.php';
 
-  //anular ventas con valor 0
-  $sql = 
-  "UPDATE correlativo 
-  SET estado = 'N',
-  fecha_cierre = '$fecha'
-  WHERE valor = 0 
-  AND id_cl = $id_cl
-  AND id_cierre = $idCierre";
-  $res = $conexion->query($sql);;
-
 	//Comprobar si existen mesas con ventas abiertas
 
 	$sql = 
