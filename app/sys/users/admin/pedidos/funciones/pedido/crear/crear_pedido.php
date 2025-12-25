@@ -14,7 +14,13 @@
 	$nombre = $_SESSION['user']["nombre"];
 	$id_cl = $_SESSION['user']["id_cl"];
 
-	$fecha = $_POST['fecha'];
+
+	$id_temp = $_POST['id_temp'];
+
+
+	$hoy = getdate();
+	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"];
+            
 
 	$json = array();
 
@@ -25,6 +31,7 @@
 	(null, 
 	'$id_cl', 
 	'Pedido sin nombre',
+	$id_temp,
 	'1', 
 	'A', 
 	'A',

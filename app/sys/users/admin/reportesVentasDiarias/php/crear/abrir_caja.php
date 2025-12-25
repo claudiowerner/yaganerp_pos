@@ -7,6 +7,7 @@
 	$id_cl = $_SESSION['user']["id_cl"];
 
 	$nomCaja = $_POST['nomCaja'];
+	$id_temp = 0;
 
 	$hoy = getDate();
 
@@ -14,6 +15,17 @@
 
 	require_once '../../../../../conexion.php';
 	
+	//obtener ID de temporada abierta
+	$sql = 
+	"SELECT id 
+	FROM temporada 
+	WHERE id_cl = $id_cl 
+	AND estado = 'S'";
+
+	$res = $conexion->query($sql);
+	$id = $res->fetch_assoc();
+	$id_temp = $id["id"];
+
 	//query
 	$sql = 
 	"INSERT INTO cierre_caja 
@@ -21,6 +33,7 @@
 		null, 
 		'$id_cl',
 		'$nomCaja', 
+		$id_temp,
 		'$id_us', 
 		'$fecha', 
 		'0000-00-00 00:00:00', 

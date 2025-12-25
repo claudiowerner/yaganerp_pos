@@ -1,6 +1,7 @@
 {
     "require": {
         "twbs/bootstrap": "5.3",
-        "vlucas/phpdotenv": "^5.6"
+        "vlucas/phpdotenv": "^5.6",
+        "datatables/datatables": "^1.10"
     }
 }

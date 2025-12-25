@@ -64,18 +64,28 @@
                                 <div class="card card-warning" id="">
                                     <div class="card-header">
                                         <?php
-                                            require "modal.php";
-                                            echo modalRegistro();
-                                            echo modalEditar();
-                                            echo modalResumenPedidos();
+                                            require "modal/pedido/editar.php";
+                                            require "modal/pedido/registro.php";
+                                            require "modal/pedido/resumen_pedidos.php";
+
+                                            require "modal/temporada/aviso_cero_temporadas.php";
+                                            require "modal/temporada/temporadas.php";
                                         ?>
 
                                         <div align=left>
                                             <h1>Pedidos</h1>
                                             <button type="button" class="btn btn-success" id="btnAgregarPedido">Agregar pedido</button>
                                             <button type="button" class="btn btn-primary" id="btnResumenPedidos">Ver resúmen de pedidos</button>
-                                            <div align=right>
-                                                Monto total en pedidos HECHOS: <strong id='montoPedido'>CARGANDO...</strong>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <strong>Temporada seleccionada: </strong>
+                                                    <button id="btnTemporada" class="btn btn-primary">Cargando...</button>
+                                                    <span id="idTemporada" style="display: none"></span>
+                                                </div>
+                                                <div class="col-lg-6" align="right">
+                                                    Monto total en pedidos HECHOS: <strong id='montoPedido'>CARGANDO...</strong>
+                                                </div>
                                             </div>
                                             <table id="pedidos" class="table table-bordered table-hover dt-resposive display nowrap">
                                                 <thead>
@@ -144,8 +154,18 @@
     <script src="js/pedido/leer/resumen_pedidos.js"></script>
     <script src="js/pedido/calculo/calcular_valor.js"></script>
     <script src="js/pedido/eliminar/eliminar_pedido.js"></script>
-    <script src="js/proveedores/cargar_proveedores.js"></script>
+    <script src="js/proveedores/cargar_proveedores.js"></script>>
+
+    <!--Temporadas-->
+    <script src="js/temporada/obtener_nombre_temporada_seleccionada.js"></script>
+    <script src="js/temporada/leer_temporadas_activas.js"></script>
+    <script src="js/temporada/abrir_modal_temporadas.js"></script>
+    <script src="js/temporada/main.js"></script>
+    <script src="js/main/main.js"></script>
+
+    
     <script src="../../../js/numberFormat.js"></script>
+
 </body>
 
 </html>

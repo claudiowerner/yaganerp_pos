@@ -2,9 +2,10 @@
 //función que crea el pedido
 function crearPedido()
 {
+    let id_temp = $("#idTemporada").text();
     return $.ajax({
         url:"funciones/pedido/crear/crear_pedido.php",
-        data: {"fecha": getFecha()},
+        data: {"id_temp": id_temp},
         type: "POST",
         async: false
     }).responseText
@@ -53,7 +54,7 @@ $("#btnAgregarPedido").on("click", function(e)
     let fecha = getFecha()
     
     
-    crearPedido();
+    console.log(crearPedido());
     idPedido = parseInt(obtenerIDPedido());
     $("#idPedido").html(idPedido);
 

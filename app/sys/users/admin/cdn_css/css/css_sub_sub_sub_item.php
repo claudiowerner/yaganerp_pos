@@ -13,6 +13,7 @@
     <link rel='stylesheet' href='../../../../../../js/tip/tooltipster.css'>
     <link rel='stylesheet' type='text/css' href='../../../../../../js/vegas/jquery.vegas.css' />
     <link rel='stylesheet' type='text/css' href='../../../../../../js/number-progress-bar/number-pb.css'>
+    <link rel='stylesheet' type='text/css' href="../../../../../../datatables/css/datatables.jqueryui.css">
     <!-- pace loader -->
     <script src='../../js/pace/pace.js'></script>
     <link href='../../../../../../js/pace/themes/orange/pace-theme-flash.css' rel='stylesheet' />

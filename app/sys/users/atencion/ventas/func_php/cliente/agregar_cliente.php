@@ -23,7 +23,8 @@
 	$sql = 
 	"SELECT rut FROM clientes_negocio
 	WHERE id_cl = $id_cl
-	AND rut = '$rut'";
+	AND rut = '$rut'
+	AND estado!='N'";
 	$res = $conexion->query($sql);;
 	
 	if($res->num_rows>0)

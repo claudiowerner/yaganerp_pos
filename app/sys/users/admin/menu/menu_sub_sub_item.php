@@ -26,6 +26,18 @@
                             <span>Cajas</span>
                         </a>
                     </li>
+
+                    <li class="devider-title">
+                        <h3>
+                            <span>Organización del negocio</span>
+                        </h3>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip" href="../../../temporadas/index.php?ct=0">
+                        <i class="fa-solid fa-building"></i>
+                            Temporadas de ventas
+                        </a>
+                    </li>
                     <li class="devider-title">
                             <h3>
                                 <span>Cuentas y proveedores</span>

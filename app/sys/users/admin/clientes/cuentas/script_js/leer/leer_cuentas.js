@@ -19,8 +19,7 @@ function cargar_dataTable()
                 "bSortable": false,
                 "mRender": function(data, type, value) {
                     let boton;
-
-                    if(data.estado == "A")
+                    if(data.estado == "N"|| data.estado == "A" || data.estadp == "P")
                     {
                         boton = "<button class='btn btn-danger' width='100%' disabled>POR PAGAR</button>";
                     }
