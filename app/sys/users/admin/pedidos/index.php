@@ -125,8 +125,6 @@
     ================================================== -->
     <!-- Main jQuery Plugins -->
     <?php require "../cdn_css/cdn/cdn_item.php";?>
-    <!--Datatables-->
-    <script type="text/javascript" src="../../../datatables/datatables.js"></script>
 
 
     <!--llamada a pedidos-->
@@ -138,6 +136,10 @@
     <script src="js/pedido/leer/cargarEstadoPagoPedido.js"></script>
     <script src="js/pedido/leer/cargarFacturaConIva.js"></script>
     <script src="js/pedido/registro_pedido/agregarPedido.js"></script>
+    <script src="js/pedido/registro_pedido/crear_pedido.js"></script>
+    <script src="js/pedido/registro_pedido/obtener_id_pedido.js"></script>
+    <script src="js/pedido/registro_pedido/comprobar_pedido_vacio.js"></script>
+    <script src="js/pedido/registro_pedido/cerrar_edicion_pedido.js"></script>
     <script src="js/pedido/registro_pedido/finalizar_pedido.js"></script>
     <script src="js/pedido/detalle_pedido/agregar_detalle.js"></script>
     <script src="js/pedido/detalle_pedido/cargar_detalle_pedido.js"></script>
@@ -160,7 +162,6 @@
     <script src="js/temporada/obtener_nombre_temporada_seleccionada.js"></script>
     <script src="js/temporada/leer_temporadas_activas.js"></script>
     <script src="js/temporada/abrir_modal_temporadas.js"></script>
-    <script src="js/temporada/main.js"></script>
     <script src="js/main/main.js"></script>
 
     

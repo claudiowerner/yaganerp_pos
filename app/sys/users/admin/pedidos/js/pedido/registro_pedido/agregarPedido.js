@@ -1,71 +1,41 @@
-
-//función que crea el pedido
-function crearPedido()
+$("#btnAgregarPedido").on("click", function(e)
 {
+
     let id_temp = $("#idTemporada").text();
-    return $.ajax({
+    $.ajax({
         url:"funciones/pedido/crear/crear_pedido.php",
         data: {"id_temp": id_temp},
         type: "POST",
-        async: false
-    }).responseText
-}
+        success: function(e)
+        {
+            let j = JSON.parse(e);
+            if(j.registro)
+            {
+                //rellenar select con proveedores
+                imprimirProveedores()
+                let idPedido;
+                //obtener la fecha
+                let fecha = getFecha()
+                
+                idPedido = parseInt(obtenerIDPedido());
+                $("#idPedido").html(idPedido);
 
-//funcion que carga el ID de un pedido
-function obtenerIDPedido()
-{
-    return $.ajax({
-        url:"funciones/pedido/read/pedido/cargar_id_pedido_nuevo.php",
-        type: "POST",
-        async: false
-    }).responseText
-}
+                let registrarPedido = agregarDetallePedido(idPedido, fecha);
+                
+                
+                let pedidos = imprimirDetallePedido($("#idPedido").text());
+                $("#bodyPedidos").html(pedidos);
+                $("#modalRegistro").modal("show");
 
-//funcion que devuelve si el pedido está vacío o no
-function comprobarPedidoVacio(id)
-{
-    return $.ajax({
-        url:"funciones/pedido/read/comprobar_pedido_vacio.php",
-        data: {"id_pedido": id},
-        type: "POST",
-        async: false
-    }).responseText
-}
+                crearPedido();
+                leer_pedidos(id_temp);
 
-/*función que cierra la edición inicial del pedido 
-(se cierra la edición del pedido al agregar el primer detalle)*/
-
-function cerrarEdicionPedido(id_pedido)
-{
-    return $.ajax({
-        url:"funciones/pedido/editar/editar_estado_edicion.php",
-        data: {"id_pedido": id_pedido},
-        type: "POST",
-        async: false
-    }).responseText
-}
-
-$("#btnAgregarPedido").on("click", function(e)
-{
-    //rellenar select con proveedores
-    imprimirProveedores()
-    let idPedido;
-    //obtener la fecha
-    let fecha = getFecha()
+            }
+            else
+            {
+                msjes_swal("Error", "Error al intentar crear pedido.", "error");
+            }
+        }
+    })
     
-    
-    console.log(crearPedido());
-    idPedido = parseInt(obtenerIDPedido());
-    $("#idPedido").html(idPedido);
-
-    let registrarPedido = agregarDetallePedido(idPedido, fecha);
-    
-    
-    let pedidos = imprimirDetallePedido($("#idPedido").text());
-    $("#bodyPedidos").html(pedidos);
-    $("#modalRegistro").modal("show");
-
-    
-    $('#pedidos').DataTable().ajax.reload();
-
 });

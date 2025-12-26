@@ -25,7 +25,8 @@ function eliminarPedido(id)
             let j = JSON.parse(eliminarPedido);
 
             msjes_swal(j.titulo, j.mensaje, j.icono);
-            $('#pedidos').DataTable().ajax.reload();
+            let id_temp = $("#idTemporada").text();
+            leer_pedidos(id_temp);
             imprimirMontoTotalPedido()
         } 
         else 
