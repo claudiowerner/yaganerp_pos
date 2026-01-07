@@ -67,6 +67,7 @@
                                             require "productos/modals/modal_abrir_detalles.php";
                                             require "productos/modals/modal_editar.php";
                                             require "productos/modals/modal_registro.php";
+                                            require "productos/modals/modal_resumen_productos.php";
                                             require "codigo_barra/modals/modal_generar_codigo_barra.php";
                                             require "promociones/modal/modal_registrar_promocion.php";
                                             require "promociones/modal/modal_editar_promocion.php";
@@ -138,6 +139,8 @@
     <script src="productos/js/leer/validar_existencia_producto.js"></script>
     <script src="productos/js/leer/validar_pesaje.js"></script>
     <script src="productos/js/leer/configuracion_productos.js"></script>
+    <script src="productos/js/leer/obtener_numero_productos.js"></script>
+    <script src="productos/js/leer/obtener_resumen_productos.js"></script>
     <script src="productos/js/switches/switch_pesaje_editar.js"></script>
     <script src="productos/js/switches/switch_pesaje.js"></script>
 
@@ -159,4 +162,7 @@
     <script src="promociones/js/editar/editar_unidades_promocion.js"></script>
     <script src="promociones/js/editar/editar_precio_promocion.js"></script>
     <script src="promociones/js/eliminar/eliminar_promocion.js"></script>
+
+    <!--Main-->
+    <script src="productos/js/main/main.js"></script>
 </html>

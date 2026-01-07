@@ -31,6 +31,9 @@ $("#swEstadoPagoRegistrar").on("click", function(e)
     let id_pedido = $("#idPedido").text();
     let estado_pago = editarEstadoPago(id_pedido, e_pedido);
     imprimirMontoTotalPedido();
+    
+    let id_temp = $("#idTemporada").text();
+    leer_pedidos(id_temp);
 })
 
 

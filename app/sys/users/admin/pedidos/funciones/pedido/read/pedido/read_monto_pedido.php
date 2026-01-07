@@ -10,6 +10,9 @@
 	
 	require_once '../../../../../../../conexion.php';
 	
+
+	$id_temp = $_POST["id_temp"];
+
 	//query
 	$sql = 
 	"SELECT SUM(pd.valor*pd.cantidad) AS valor	
@@ -19,9 +22,9 @@
 	WHERE pd.id_cl = $id_cl
 	AND p.estado_pago = 'C'
 	AND p.estado = 'C'
-	AND pd.estado!='N'";
-
-	$resultado = $conexion->query($sql);;
+	AND pd.estado!='N'
+	AND p.temporada = '$id_temp'";
+	$resultado = $conexion->query($sql);
 	if ($resultado->num_rows > 0){
 		
 		while ($row = $resultado->fetch_array())

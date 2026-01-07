@@ -1,18 +1,7 @@
 <?php
 
   session_start();
-
-  if(isset($_SESSION['user']))
-  {
-    $tipo = $_SESSION['user']['tipo_usuario'];
-    if($tipo == 3){
-      header('Location: ../');
-    }
-  }
-  else
-  {
-    header('Location: ../');
-  }
+	date_default_timezone_set('America/Santiago');
 
 
   $id_us = $_SESSION['user']['id'];
@@ -22,7 +11,7 @@
 
 	$hoy = getdate();
 	$fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']." ".$hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"];
-  $idCierre = $_GET['idCierre'];
+  $idCierre = $_POST['id'];
 
 	require_once '../../../../../conexion.php';
 

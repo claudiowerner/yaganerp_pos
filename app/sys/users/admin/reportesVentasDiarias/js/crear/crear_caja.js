@@ -23,5 +23,8 @@ $("#btnCrearCajaNueva").on("click", function(e)
                 }
             }
         }
+    })
+    .fail(function(e){
+        alert(e.responseText)
     });
 })

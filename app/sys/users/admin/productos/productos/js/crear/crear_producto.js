@@ -85,6 +85,7 @@ $("#btnGuardar").on("click",function(e)
                         $("#formRegistro").trigger('reset');
                         $("#modalRegistro").modal("hide");
                         $("#formRegistroProducto").trigger("reset");
+                        obtener_numero_productos();
                     }
                 }
             })

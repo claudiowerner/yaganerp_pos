@@ -1,0 +1,1 @@
+obtener_numero_productos();

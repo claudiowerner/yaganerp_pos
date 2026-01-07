@@ -1,25 +1,25 @@
 <?php
-  session_start();
+    session_start();
 
-  if(isset($_SESSION['user']))
-  {
-    $tipo = $_SESSION['user']['tipo_usuario'];
-    if($tipo == 3)
+    if(isset($_SESSION['user']))
     {
-      header('Location: ../');
+        $tipo = $_SESSION['user']['tipo_usuario'];
+        if($tipo == 3)
+        {
+        header('Location: ../');
+        }
     }
-  }
-  else
-  {
-    header('Location: ../');
-  }
+    else
+    {
+        header('Location: ../');
+    }
 
-  require_once '../../../conexion.php';
+    require_once '../../../conexion.php';
 
-  $id_us = $_SESSION['user']['id'];
-  $nombre = $_SESSION['user']["nombre"];
-  $id_cl = $_SESSION['user']["id_cl"];
-  
+    $id_us = $_SESSION['user']['id'];
+    $nombre = $_SESSION['user']["nombre"];
+    $id_cl = $_SESSION['user']["id_cl"];
+    
 
 
 ?>
@@ -54,19 +54,27 @@
             <?php 
                 require "../menu/menu_item.php";
                 require "../menu/top_menu_item.php";
-                require "modal.php";
+                
+                
+                //Modal temporadas
+                require "modal/abrir_caja.php";
+                require "modal/aviso_cero_temporadas.php";
+                require "modal/editar_caja.php";
+                require "modal/solicitar_autorizacion_cierre.php";
+                require "modal/solicitar_clave_aut_abrir.php";
+                require "modal/temporadas.php";
             ?>
             <!-- CONTENT -->
             <div class="wrap-fluid" id="paper-bg">
                 <div class="row">
                     <div class="col-lg-12">
                         <div id="pantallaPrincipal" class="plan">
-                            
                             <div class="col-md-12">
                                 <div class="card card-warning" id="${task.id}">
-                                    <div class="card-header">
+                                    <div class="card-header" align="left">
                                         <h1>Reporte de caja diaria</h1>
                                         <button id="btnCrearCajaNueva" class="btn btn-success" >Abrir caja</button>
+                                        <button id="btnTemporada" class="btn btn-primary">Cargando...</button>
                                         <table id="cierreCaja" class="table table-bordered table-hover dt-resposive display nowrap">
                                             <thead>
                                                 <tr>
@@ -132,6 +140,10 @@
     <script src="js/editar/editar_caja_ajax.js"></script>
     <script src="js/editar/abrir_modal_editar.js"></script>
     <script src="js/editar/cerrar_caja.js"></script>
+
+    <!--Temporada-->
+    <script src="js/temporada/abrir_modal_temporadas.js"></script>
+
     <!--Main-->
     <script src="js/main/main.js"></script>
     

@@ -59,7 +59,6 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div id="pantallaPrincipal" class="plan">
-                            
                             <div class="col-md-12">
                                 <div class="card card-warning" id="">
                                     <div class="card-header">

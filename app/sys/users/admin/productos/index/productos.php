@@ -1,8 +1,17 @@
 <div id="productos" class="tab-pane fade">
-    <h1 align='left'>Productos</h1>
-    <div align='left' class="tab-content">
-        <button align='left' type="button" class="btn btn-success" id="btnAgregarCategoria">Agregar producto</button>
-        <button align='left' type="button" class="btn btn-success" id="imprimirPrecios">Imprimir precios</button>
+    <div class="row">
+        <div class="col-lg-6" style = "text-align: left">
+            <h1>Productos</h1>
+            <button type="button" class="btn btn-success" id="btnAgregarCategoria">Agregar producto</button>
+            <button type="button" class="btn btn-success" id="imprimirPrecios">Imprimir precios</button>
+            <button type="button" class="btn btn-primary" id="btnResumenProductos">Resumen de productos</button>
+        </div>
+        <div class="col-lg-6" style = "text-align: right; padding: 30px">
+            <label>Número de productos activos: </label>
+            <span id="num_prod_activos">Cargando...</span>
+        </div>
+    </div>
+    <div class="tab-content col-lg-12"></div>
         <property name="characterEncoding" value="UTF-8">
             <table id="producto" class="table table-bordered table-hover dt-resposive display nowrap">
                 <thead>

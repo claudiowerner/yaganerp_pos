@@ -108,6 +108,10 @@ function eliminarDetallePedido(id)
         let template = imprimirDetallePedido(idPedido);
         $("#bodyPedidos").html(template);
     }
+
+    
+    let id_temp = $("#idTemporada").text();
+    leer_pedidos(id_temp);
 }
 /*funcion que elimina un detalle específico de un pedido en el modal de editar.*/
 function eliminarDetallePedidoEditar(id)

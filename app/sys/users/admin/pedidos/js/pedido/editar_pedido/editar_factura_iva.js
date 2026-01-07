@@ -31,6 +31,10 @@ $("#swFacturaConIvaRegistrar").on("click", function(e)
     }
     let id_pedido = $("#idPedido").text();
     editarFacturaConIva(id_pedido, e_fac);
+
+    
+    let id_temp = $("#idTemporada").text();
+    leer_pedidos(id_temp);
 })
 
 

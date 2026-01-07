@@ -36,6 +36,7 @@ function eliminarProducto(id, nombre)
             if(json.eliminar)
             {
                 $('#producto').DataTable().ajax.reload();
+                obtener_numero_productos()
             }
         }
         else 

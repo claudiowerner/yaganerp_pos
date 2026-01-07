@@ -24,6 +24,7 @@ function abrirModalEditar(pesaje, id, codigo_barra, nombre_prod, id_categoria, i
     cargarUnidadEspecifica(id);
     abrirProductoEspecifico(id);
     cargarCategoria(id_categoria);
+    obtener_numero_productos()
     
     
     //Validar si el producto seleccionado tiene pesaje
