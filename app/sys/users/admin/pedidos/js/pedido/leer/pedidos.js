@@ -11,7 +11,6 @@ function leer_pedidos(id)
 		data: {"id_temp": id},
 		success: function(e)
 		{
-			console.log(e);
 			$('#pedidos').DataTable({
 				data: e,
 				language: {

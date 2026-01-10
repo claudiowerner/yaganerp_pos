@@ -19,7 +19,7 @@
 	$id_us = $_SESSION['user']['id'];
 	$nombre = $_SESSION['user']["nombre"];
 	$id_cl = $_SESSION['user']["id_cl"];
-	
+	$id_temp = $_POST["id_temp"];
 
 
 	require_once '../../../../../conexion.php';
@@ -48,6 +48,7 @@
 	JOIN usuarios u 
 	ON cc.creado_por = u.id 
 	WHERE cc.id_cl = '$id_cl'
+	AND cc.temporada = '$id_temp'
 	ORDER BY id DESC";
 	$res = $conexion->query($sql);
 	//contador de filas de registros
@@ -88,7 +89,7 @@
 	for($i=0;$i<$contador;$i++)
 	{
 		$id_cierre = $arrId[$i];
-		$sql = "SELECT SUM((v.valor - v.valorDescto)*v.cantidad) AS valor 
+		$sql = "SELECT COALESCE(SUM((v.valor - v.valorDescto)*v.cantidad), 0) AS valor 
 		FROM ventas v
 		JOIN correlativo corr
 		ON corr.correlativo = v.id_venta 

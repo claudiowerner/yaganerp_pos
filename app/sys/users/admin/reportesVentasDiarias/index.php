@@ -128,11 +128,13 @@
     <script src="js/leer/leer_cierres_caja_ajax_filtrados.js"></script>
     <script src="js/leer/validar_clave_autorizacion.js"></script>
     <script src="js/leer/cargar_cierres_caja.js"></script>
-    <script src="js/leer/cargar_cierres_caja.js"></script>
     <script src="js/leer/id_usuario.js"></script>
     <script src="js/leer/imprimir.js"></script>
     <script src="js/leer/cierre_caja.js"></script>
     <script src="js/leer/filtro_fechas_cierre_caja.js"></script>
+    
+    <!--Temporadas-->
+    <script src="js/temporada/obtener_nombre_temporada_seleccionada.js"></script>
 
     <!--Editar caja-->
     <script src="js/editar/validar_cierre_caja.js"></script>

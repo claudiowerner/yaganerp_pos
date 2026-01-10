@@ -14,7 +14,6 @@ $("#btnResumenProductos").click(function(e)
 			js.forEach(j=>{
 				template += `<tr><td><label>${j.nombre}</label></td><td>${j.cantidad}</td></tr>`;
 			})
-			alert(template)
 			$("#bodyResumenProductos").html(template);
 		}
     })

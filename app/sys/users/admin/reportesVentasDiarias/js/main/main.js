@@ -1,0 +1,1 @@
+obtener_temporada_seleccionada(undefined)
