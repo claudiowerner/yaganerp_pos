@@ -5,6 +5,8 @@
     <!--  <link rel='stylesheet' href='css/bootstrap-theme.min.css'> -->
 
     <!-- Custom styles for this template -->
+    <link rel='stylesheet' href='../css/fontawesome/fontawesome.css'>
+    <link rel='stylesheet' href='../datatables/dataTables.css'>
     <link rel='stylesheet' href='../css/theme.css'>
     <link rel='stylesheet' href='estadoItem.css'>
     <link rel='stylesheet' href='switch.css'>

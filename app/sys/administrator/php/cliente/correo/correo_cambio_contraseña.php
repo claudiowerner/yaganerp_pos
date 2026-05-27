@@ -11,6 +11,7 @@
 	require_once '../../../../vendor/phpmailer/phpmailer/src/SMTP.php';
 	require_once '../../../../vendor/phpmailer/phpmailer/src/Exception.php';
 	require_once '../../../../conexion.php';
+	require_once '../../../../env_var/env_smtp.php';
 	
 	//definicion de fecha
 	$fh = getdate();
@@ -102,12 +103,12 @@
 	//Configuracion del servidor
 	$mail = new PHPMailer();
 	$mail -> isSMTP();
-	$mail -> Host 			= 'mail.calendarit.cl';							
-	$mail -> SMTPAuth 		= true;																
-	$mail -> Username 		= 'contacto@calendarit.cl';					
-	$mail -> Password 		= 'xXUzYTC.z+~N';									
-	$mail -> SMTPSecure 	= 'ssl';													
-	$mail -> Port			= 465;						
+	$mail -> Host 			= getenv("SMTP_HOST");							
+	$mail -> SMTPAuth 		= getenv("SMTP_AUTH");															
+	$mail -> Username 		= getenv("SMTP_USER");					
+	$mail -> Password 		= getenv("SMTP_PASS");									
+	$mail -> SMTPSecure 	= getenv("SMTP_SECURE");												
+	$mail -> Port			= getenv("SMTP_PORT");						
 
 	//Receptores
 	$mail -> setFrom("noreply@calendarit.cl", "Contacto VendeloPOS Software");
