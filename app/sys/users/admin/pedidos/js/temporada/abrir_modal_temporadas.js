@@ -23,6 +23,7 @@ $("#btnTemporada").click(function(e)
                     clase = "btn btn-primary";
                 }
                 template += `<button class="${clase}" onclick="obtener_temporada_seleccionada(${j.id})">${j.nombre}</button>`;
+            
             });
             $("#temporadasCreadas").html(template);
         }

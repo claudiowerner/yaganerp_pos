@@ -118,19 +118,7 @@
     ================================================== -->
     <!-- Main jQuery Plugins -->
     <?php require "cdn_css/cdn/cdn_index.php";?>
-    <script src="graficos/js/grafico/loader.js"></script>
-    <script src='graficos/js/grafico/cargar_fechas.js'></script>
-    <script src='graficos/js/grafico/grafico_anual.js'></script>
-    <script src='graficos/js/grafico/grafico_ventas_hora.js'></script>
-    <script src='graficos/js/grafico/cargar_años.js'></script>
-    <script src='graficos/js/grafico/graficos.js'></script>
-
-
-    <!--Calendario de ventas-->
-    <script src='graficos/js/calendario/cargar_año_venta.js'></script>
-    <script src='graficos/js/calendario/cargar_mes_venta.js'></script>
-    <script src='graficos/js/calendario/cargar_dias_venta.js'></script>
-    <script src='graficos/js/calendario/calendario.js'></script>
+    
 
     
 

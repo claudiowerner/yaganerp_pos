@@ -6,6 +6,8 @@
     <!-- Custom styles for this template -->
     <link rel='stylesheet' href='../../../css/theme.css'>
     <link rel='stylesheet' href='../../../css/dashboard.css'>
+    <link rel='stylesheet' href='../../../css/toastr.min.css'>
+    <link rel='stylesheet' href='../../../css/style.css'>
     <link rel='stylesheet' href='../../../css/style.css'>
     <link rel='stylesheet' href='../../../css/select2.css'>
     <link rel='stylesheet' href='../../../css/dripicon.css'>

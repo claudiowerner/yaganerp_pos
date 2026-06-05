@@ -54,6 +54,7 @@
                 require "../menu/menu_item.php";
                 require "../menu/top_menu_item.php";
             ?>
+            <span id="id_pedido" style="display: none">ESPERANDO ID DE PEDIDO</span>
             <!-- CONTENT -->
             <div class="wrap-fluid" id="paper-bg">
                 <div class="row">
@@ -150,6 +151,7 @@
     <script src="js/pedido/editar_pedido/editar_estado_pago.js"></script>
     <script src="js/pedido/editar_pedido/editar_factura_iva.js"></script>
     <script src="js/pedido/editar_pedido/abrir_pedido_a_editar.js"></script>
+    <script src="js/pedido/editar_pedido/editar_temporada.js"></script>
     <script src="js/pedido/leer/obtener_valor_pedido.js"></script>
     <script src="js/pedido/leer/obtener_numero_productos.js"></script>
     <script src="js/pedido/leer/resumen_pedidos.js"></script>
@@ -161,6 +163,8 @@
     <script src="js/temporada/obtener_nombre_temporada_seleccionada.js"></script>
     <script src="js/temporada/leer_temporadas_activas.js"></script>
     <script src="js/temporada/abrir_modal_temporadas.js"></script>
+    <script src="js/temporada/leer_temporadas_select.js"></script>
+    <script src="js/temporada/cambiar_temporada.js"></script>
     <script src="js/main/main.js"></script>
 
     

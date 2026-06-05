@@ -6,7 +6,6 @@ function imprimirMontoTotalPedido(id_temp)
 		type: "POST",
 		success: function(e)
 		{
-			console.log(e);
 			let resultado = formatearNumero("P",e);
 			$("#montoPedido").html(resultado);
 		}

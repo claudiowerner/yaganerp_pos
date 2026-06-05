@@ -6,7 +6,7 @@ function abrir_modal_registro()
 $("#btnAgregarTemporada").click(function(e)
 {
     //VALIDAR EXISTENCIA TEMPORADAS ACTIVAS
-    $.ajax({
+    /*$.ajax({
         url: "script_php/leer/leer_temporadas_activas.php",
         type: "POST",
         success: function(e)
@@ -21,5 +21,7 @@ $("#btnAgregarTemporada").click(function(e)
                 abrir_modal_registro();   
             }
         }
-    })
+    })*/
+
+    abrir_modal_registro();
 })

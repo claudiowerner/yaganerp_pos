@@ -21,10 +21,11 @@ $("#btnAgregarProductoEditar2").on("click", function(e)
 
 function accionAgregarProducto()
 {
-    let id_pedido = $("#idPedido").text();
+    let id_pedido = $("#id_pedido").text();
     let fecha_reg = getFecha();
     let agregar = agregarDetallePedido(id_pedido, fecha_reg);
     let respuesta = imprimirDetallePedido(id_pedido);
+    console.log(respuesta)
     $("#bodyPedidos").html(respuesta);
 }
 

@@ -1,7 +1,8 @@
 <?php
-session_start();
-require '../../../../../conexion.php';
 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+
+    session_start();
+    require '../../../../../conexion.php';
 
 	date_default_timezone_set('America/Santiago');
 

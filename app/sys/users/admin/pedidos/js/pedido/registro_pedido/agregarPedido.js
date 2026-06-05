@@ -1,10 +1,7 @@
 $("#btnAgregarPedido").on("click", function(e)
 {
-
-    let id_temp = $("#idTemporada").text();
     $.ajax({
         url:"funciones/pedido/crear/crear_pedido.php",
-        data: {"id_temp": id_temp},
         type: "POST",
         success: function(e)
         {
@@ -16,20 +13,18 @@ $("#btnAgregarPedido").on("click", function(e)
                 let idPedido;
                 //obtener la fecha
                 let fecha = getFecha()
-                
                 idPedido = parseInt(obtenerIDPedido());
-                $("#idPedido").html(idPedido);
+                $("#id_pedido").html(idPedido);
 
                 let registrarPedido = agregarDetallePedido(idPedido, fecha);
-                
                 
                 let pedidos = imprimirDetallePedido($("#idPedido").text());
                 $("#bodyPedidos").html(pedidos);
                 $("#modalRegistro").modal("show");
 
-                crearPedido();
+                let id_temp = parseInt($("#slctTemporada").val());
                 leer_pedidos(id_temp);
-
+                
             }
             else
             {

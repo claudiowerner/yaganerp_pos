@@ -15,7 +15,7 @@ function conexionBDEdicion(datos)
 function editarNombrePedido()
 {
     let nombre = $("#txtNombrePedido").val();
-    let id_pedido = $("#idPedido").text();
+    let id_pedido = $("#id_pedido").text();
 
     let datos = {
         "nombre_pedido": nombre,
@@ -104,7 +104,7 @@ function eliminarDetallePedido(id)
 
     if(response==1)
     {
-        idPedido = $("#idPedido").text();
+        idPedido = $("#id_pedido").text();
         let template = imprimirDetallePedido(idPedido);
         $("#bodyPedidos").html(template);
     }
@@ -133,7 +133,7 @@ function eliminarDetallePedido(id)
 
     if(response==1)
     {
-        let idPedido = $("#idPedido").text();
+        let idPedido = $("#id_pedido").text();
         let template = imprimirDetallePedido(idPedido);
         $("#bodyPedidos").html(template);
     }

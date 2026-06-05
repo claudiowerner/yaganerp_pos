@@ -13,6 +13,13 @@
 						<td><label>Nombre del pedido:</label></td>
 						<td><input type=text id='txtNombrePedido' class='form-control' onkeyup="editarNombrePedido('')" value='Pedido sin nombre'></td>
 					</tr>
+					<tr>
+						<td><label>Temporada</label></td>
+						<td>
+							<select name="slctTemporada" id="slctTemporada" onchange="editar_temporada()" class="form-control">
+							</select>
+						</td>
+					</tr>
 				</table>
 				<table id='contenido'>
 					<tr>

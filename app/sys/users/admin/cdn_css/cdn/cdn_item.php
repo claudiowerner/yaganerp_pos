@@ -1,5 +1,6 @@
 <script type='text/javascript' src='../../../js/jquery.js'></script>
     <script type='text/javascript' src='../../../js/numberFormat.js'></script>
+    <script type='text/javascript' src='../../../js/toastr/toastr.js'></script>
     <script type='text/javascript' src='../../../js/jquery-ui.min.js'></script>
     <script type='text/javascript' src='../../../js/mensajes-swal.js'></script>
     <script type='text/javascript' src='../../../js/sweetalert.min.js'></script>

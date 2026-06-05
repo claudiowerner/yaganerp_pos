@@ -13,9 +13,26 @@
 	$id_us = $_SESSION['user']['id'];
 	$nombre = $_SESSION['user']["nombre"];
 	$id_cl = $_SESSION['user']["id_cl"];
+	$id_temp = 0;
 
 
-	$id_temp = $_POST['id_temp'];
+	//obtener ID de última temporada
+	$sql = 
+	"SELECT id FROM temporada 
+	WHERE id_cl = ? 
+	AND estado = 'S'";
+
+	if($consulta = $mysqli -> prepare($sql))
+	{
+		$consulta -> bind_param("i", $id_cl);
+
+		$consulta -> execute();
+
+		$res = $consulta -> get_result();
+		$res = $res -> fetch_assoc();
+
+		$id_temp = $res["id"];
+	}
 
 
 	$hoy = getdate();
